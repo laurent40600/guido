@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Guide fiscal pour les auto-entrepreneurs en 2026</title>
+<style>
+  @page { size: A4; margin: 27mm 22mm 25mm 22mm; }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #241f1a;
+    font-size: 12.5pt;
+    line-height: 1.68;
+  }
+
+  h1, h2, h3, h4 { color: #1e2a4a; font-weight: 800; }
+
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt;
+    margin: 0 0 16pt;
+    padding-bottom: 8pt;
+    border-bottom: 2px solid #e0a63c;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #a86f22; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1e2a4a; color: #e0a63c;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block;
+    background: #fdf6e8; color: #a86f22;
+    border: 1px solid #e0a63c66;
+    border-radius: 999px;
+    padding: 6pt 16pt;
+    font-size: 10.5pt; font-weight: 700;
+    margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 32pt; max-width: 540px; line-height: 1.22; }
+  .cover .tagline { color: #c98a2e; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #241f1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { color: #241f1a; font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic;
+    color: #241f1a;
+    border-left: 3px solid #1e2a4a;
+    padding-left: 12pt;
+    margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt;
+    padding: 14pt 18pt;
+    margin: 16pt 0;
+    font-size: 11.8pt;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-example { background: #f4f1ea; border-left: 5px solid #1e2a4a; }
+  .box-example .box-title { color: #1e2a4a; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #e0a63c; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-recap { background: #eef0f5; border-left: 5px solid #57647d; }
+  .box-recap .box-title { color: #1e2a4a; }
+  .box-case { background: #f6f8f4; border-left: 5px solid #4d7c4a; }
+  .box-case .box-title { color: #3f6b3d; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1e2a4a; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+
+  .cat-vente { color: #1e2a4a; }
+  .cat-bic { color: #a86f22; }
+  .cat-bnc { color: #b3492f; }
+
+  .source { font-size: 10pt; color: #241f1a; font-style: italic; }
+
+  dl.lexique dt { font-weight: 800; color: #1e2a4a; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1e2a4a; font-size: 12.5pt; margin-bottom: 4pt; }
+  .faq-a { margin-top: 4pt; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt;
+    position: relative;
+    border-bottom: 1px solid #e7e5e4;
+    margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: #e0a63c;
+    font-size: 14pt;
+  }
+
+  ol.steps { padding-left: 0; list-style: none; counter-reset: step; }
+  ol.steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 40pt;
+    margin-bottom: 16pt;
+  }
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28pt;
+    height: 28pt;
+    border-radius: 50%;
+    background: #1e2a4a;
+    color: #e0a63c;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ol.steps li strong { color: #1e2a4a; }
+
+  .disclaimer {
+    margin-top: 24pt;
+    padding: 16pt;
+    background: #f8f6f2;
+    border-radius: 10pt;
+    font-size: 11pt;
+    color: #241f1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Guide fiscal pour les auto-entrepreneurs en 2026</h1>
+  <p class="tagline">Tout ce qui change en 2026, expliqué simplement, sans jargon</p>
+  <p class="meta">Création, seuils, cotisations, versement libératoire, protection sociale,<br/>facturation, calendrier des déclarations et cas particuliers — avec un<br/>traitement détaillé pour chacune des trois catégories, des exemples chiffrés<br/>à chaque étape, et trois études de cas complètes sur une année entière</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction — pourquoi 2026 change la donne</li>
+    <li>Créer sa micro-entreprise étape par étape<span>Le parcours complet via le guichet unique, délais et coûts</span></li>
+    <li>Comprendre le régime en 2026 : les trois catégories en un coup d'œil</li>
+    <li>Les nouveaux seuils de chiffre d'affaires 2026, catégorie par catégorie</li>
+    <li>Cotisations sociales : le calcul détaillé pour chaque catégorie</li>
+    <li>Ce que vos cotisations financent : retraite, maladie, protection sociale</li>
+    <li>Versement libératoire : la simulation complète pour chaque catégorie</li>
+    <li>TVA et franchise en base : ce qu'il faut vraiment savoir</li>
+    <li>Bien facturer : mentions obligatoires et pénalités<span>La checklist complète, avec les nouveautés de septembre 2026</span></li>
+    <li>Le calendrier des déclarations, mois par mois</li>
+    <li>Urssaf : ce qu'il ne faut surtout pas oublier</li>
+    <li>Cas particuliers : activité mixte, cumul salarié, fonctionnaire, retraite</li>
+    <li>Trois études de cas complètes, une par catégorie<span>Une année entière, mois par mois, du lancement au bilan</span></li>
+    <li>Ce qui change par rapport à 2025 : la synthèse</li>
+    <li>Les erreurs les plus coûteuses à éviter</li>
+    <li>Check-list récapitulative : votre plan d'action 2026</li>
+    <li>Lexique</li>
+    <li>Questions fréquentes<span>Les questions réellement les plus posées par les auto-entrepreneurs</span></li>
+    <li>Avertissement</li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction — pourquoi 2026 change la donne</h2>
+  <p class="lede">En sortant de cette introduction, vous saurez précisément quels changements de 2026 vous concernent et dans quel ordre les traiter.</p>
+
+  <p>Ce guide part d'un principe simple : vous n'êtes pas un « auto-entrepreneur » générique. Vous vendez des produits, ou vous facturez des prestations de services, ou vous exercez une profession libérale — et ces trois situations obéissent à des règles, des taux et des seuils différents. La plupart des contenus disponibles en ligne noient ces différences dans des généralités. Ici, chaque calcul important est présenté séparément pour les trois catégories, avec des exemples chiffrés propres à chacune, et trois études de cas complètes vous montrent, à la fin de ce guide, comment tout s'articule sur une année entière.</p>
+
+  <p>Trois choses ont bougé en 2026, et elles ne se valent pas toutes en importance.</p>
+
+  <p><strong>D'abord une bonne nouvelle</strong> : les seuils de chiffre d'affaires pour rester en micro-entreprise ont été relevés, et ils sont désormais gelés jusqu'en 2028. Si vous étiez proche de la limite, vous avez probablement gagné de la marge — mais cette marge n'est pas la même selon que vous vendez des produits ou que vous facturez des services.</p>
+
+  <p><strong>Ensuite un changement qui coûte de l'argent</strong> : le taux de cotisations sociales des professions libérales relevant du régime général (BNC hors CIPAV) a augmenté au 1er janvier 2026, et le dispositif d'aide à la création d'entreprise (ACRE) est devenu nettement moins généreux à partir du 1er juillet 2026 — pour toutes les catégories.</p>
+
+  <p><strong>Enfin une fausse alerte</strong> : la réforme qui prévoyait un seuil unique de TVA à 25 000 € pour tous les indépendants — largement commentée dans la presse en 2025 — a été abandonnée. Le chapitre 8 clarifie précisément ce qui a été acté et ce qui ne l'a pas été.</p>
+
+  <p>Ce guide couvre les trois catégories du régime micro-entrepreneur définies par le Code général des impôts : la vente de marchandises, restauration et hébergement (régime micro-BIC, article 50-0 du CGI), les prestations de services commerciales et artisanales (également micro-BIC), et les professions libérales (régime micro-BNC, article 102 ter du CGI).</p>
+
+  <div class="box box-recap">
+    <span class="box-title">À retenir avant de commencer</span>
+    <p>Les seuils de CA montent pour tout le monde, mais différemment selon la catégorie. Les cotisations des professions libérales BNC montent. L'ACRE devient moins avantageuse à partir de juillet, pour toutes les catégories. La réforme de la TVA à 25 000 € n'a pas eu lieu.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Créer sa micro-entreprise étape par étape</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez exactement quoi faire, dans quel ordre, pour créer votre micro-entreprise sans blocage administratif.</p>
+
+  <p>Depuis 2023, toutes les formalités de création d'entreprise en France passent par une plateforme unique : le <strong>guichet unique de l'INPI</strong> (<em>procedures.inpi.fr</em>). La démarche est entièrement en ligne et <strong>gratuite</strong> pour une micro-entreprise.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Créer un compte sur procedures.inpi.fr</strong><br/>
+      Une adresse email valide et un mot de passe suffisent pour commencer.
+    </li>
+    <li>
+      <strong>Choisir « Créer une entreprise » puis « Entrepreneur individuel »</strong><br/>
+      Le formulaire s'adapte ensuite selon le régime fiscal et social choisi (micro-BIC ou micro-BNC).
+    </li>
+    <li>
+      <strong>Renseigner votre identité et votre activité</strong><br/>
+      État civil complet, adresse de domiciliation de l'entreprise, description précise de l'activité, date de début souhaitée. Un code APE est proposé automatiquement à partir de votre description, mais il reste modifiable.
+    </li>
+    <li>
+      <strong>Déposer vos pièces justificatives</strong><br/>
+      Pièce d'identité, justificatif de domicile, déclaration de non-condamnation et, selon l'activité, un justificatif de qualification professionnelle ou une autorisation préalable.
+    </li>
+    <li>
+      <strong>Signer et valider</strong><br/>
+      Après relecture, vous confirmez l'exactitude des informations et validez — aucun paiement n'est demandé pour une micro-entreprise.
+    </li>
+  </ol>
+
+  <div class="box box-example">
+    <span class="box-title">💡 À quoi s'attendre</span>
+    <p>Le délai moyen de traitement est de <strong>1 à 2 semaines</strong> pour un dossier complet et une activité non réglementée. Comptez 4 à 6 semaines en cas de pièce manquante ou d'activité soumise à autorisation préalable (professions réglementées notamment).</p>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Choisissez votre date de début d'activité avec les chapitres 5 et 12 de ce guide en tête : elle détermine le taux d'ACRE dont vous bénéficierez et le prorata de vos seuils de chiffre d'affaires pour votre première année.</p>
+  </div>
+
+  <h3>Ce qu'il faut décider avant de vous lancer</h3>
+  <p>Au moment de la création, trois choix s'offrent à vous et engagent votre première année :</p>
+  <ul>
+    <li>La fréquence de déclaration de votre chiffre d'affaires : mensuelle ou trimestrielle (chapitre 10) ;</li>
+    <li>La demande ou non de l'ACRE, taux minoré de cotisations pendant les premiers mois (chapitre 5) ;</li>
+    <li>L'option ou non pour le versement libératoire de l'impôt sur le revenu, à demander dans les 3 mois suivant la création pour une application immédiate (chapitre 7).</li>
+  </ul>
+</section>
+
+<section class="chapter">
+  <h2>3. Comprendre le régime en 2026 : les trois catégories en un coup d'œil</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez situer votre activité dans la bonne catégorie et retrouver en un coup d'œil tous les chiffres qui s'appliquent à vous.</p>
+
+  <p>Avant d'entrer dans le détail, voici la vue d'ensemble à laquelle vous pourrez revenir tout au long de ce guide. Chaque catégorie combine un régime social (les cotisations), un régime fiscal (l'abattement ou le versement libératoire) et un régime de TVA (la franchise en base) qui lui sont propres.</p>
+
+  <table>
+    <tr>
+      <th>Catégorie</th>
+      <th><span class="cat-vente">Vente / hébergement</span></th>
+      <th><span class="cat-bic">Services BIC</span></th>
+      <th><span class="cat-bnc">Professions libérales BNC</span></th>
+    </tr>
+    <tr><td>Exemples d'activités</td><td>Vente de produits, restauration à emporter, location meublée</td><td>Artisanat, bâtiment, coiffure à domicile, développement web en tant que prestataire commercial</td><td>Conseil, formation, professions intellectuelles, certaines professions réglementées</td></tr>
+    <tr><td>Seuil de CA 2026-2028</td><td>203 100 €</td><td>83 600 €</td><td>83 600 €</td></tr>
+    <tr><td>Taux de cotisations sociales 2026</td><td>12,3 %</td><td>21,2 %</td><td>25,6 % (23,2 % si CIPAV)</td></tr>
+    <tr><td>Abattement forfaitaire (régime classique)</td><td>71 %</td><td>50 %</td><td>34 %</td></tr>
+    <tr><td>Taux du versement libératoire</td><td>1 %</td><td>1,7 %</td><td>2,2 %</td></tr>
+    <tr><td>Seuil de franchise en base de TVA</td><td>85 000 € (93 500 € majoré)</td><td>37 500 € (41 250 € majoré)</td><td>37 500 € (41 250 € majoré)</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Gardez ce tableau sous la main : la plupart des erreurs de calcul viennent d'un chiffre appliqué à la mauvaise catégorie (par exemple utiliser l'abattement de 71 % pour une activité de service, ou le seuil de TVA de la vente pour une prestation intellectuelle).</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Les nouveaux seuils de chiffre d'affaires 2026, catégorie par catégorie</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez exactement jusqu'à quel chiffre d'affaires vous pouvez facturer sans sortir du régime micro-entrepreneur, pour votre catégorie précise.</p>
+
+  <table>
+    <tr><th>Catégorie</th><th>Seuil 2025</th><th>Seuil 2026-2028</th><th>Évolution</th></tr>
+    <tr><td>Vente de marchandises, restauration, hébergement</td><td>188 700 €</td><td>203 100 €</td><td>+ 14 400 €</td></tr>
+    <tr><td>Services BIC et professions libérales BNC</td><td>77 700 €</td><td>83 600 €</td><td>+ 5 900 €</td></tr>
+  </table>
+  <p class="source">Source : arrêté fixant les limites de la micro-entreprise pour 2026-2028.</p>
+
+  <h3><span class="cat-vente">Catégorie vente / hébergement</span></h3>
+  <div class="box box-example">
+    <span class="box-title">💡 Exemple concret</span>
+    <p>Vous vendez des bijoux artisanaux en ligne. En 2025, vous avez réalisé 190 000 € de chiffre d'affaires : vous dépassiez déjà l'ancien seuil de 188 700 €. En 2026, avec le nouveau seuil à 203 100 €, ce même niveau d'activité reste parfaitement dans les clous — le relèvement du seuil vous a évité une sortie de régime.</p>
+  </div>
+
+  <h3><span class="cat-bic">Catégorie services BIC</span></h3>
+  <div class="box box-example">
+    <span class="box-title">💡 Exemple concret</span>
+    <p>Vous êtes développeur web freelance et facturez 79 000 € en 2025 : vous dépassiez l'ancien seuil de 77 700 €. En 2026, le seuil est relevé à 83 600 € — ce même chiffre d'affaires reste sous le plafond, sans qu'aucune démarche ne soit nécessaire de votre part.</p>
+  </div>
+
+  <h3><span class="cat-bnc">Catégorie professions libérales BNC</span></h3>
+  <div class="box box-example">
+    <span class="box-title">💡 Exemple concret</span>
+    <p>Vous êtes consultante en formation et facturez 82 000 € en 2026 — vous restez sous le seuil de 83 600 €, mais avec une marge de seulement 1 600 €. Contrairement à la catégorie vente (plafond à plus de 200 000 €), les catégories services et BNC ont une marge beaucoup plus resserrée : une hausse d'activité modeste peut suffire à dépasser le seuil l'année suivante.</p>
+  </div>
+
+  <h3>Le cas de l'activité mixte</h3>
+  <p>Si vous exercez une <strong>activité mixte</strong> (par exemple vous vendez des produits et facturez aussi des prestations), c'est le plafond global de 203 100 € qui s'applique à l'ensemble de votre chiffre d'affaires, à condition que la partie « prestations de services » ne dépasse pas, à elle seule, 83 600 €.</p>
+
+  <div class="box box-example">
+    <span class="box-title">💡 Exemple concret — activité mixte</span>
+    <p>Une esthéticienne à domicile vend aussi des produits cosmétiques. Elle facture 150 000 € de vente de produits et 60 000 € de prestations (soins). Le total (210 000 €) dépasse le plafond global de 203 100 €, alors même que la partie « prestations » (60 000 €) reste sous son propre plafond de 83 600 €. C'est le cumul global qui pose ici problème, pas l'une ou l'autre des deux activités prise isolément.</p>
+  </div>
+
+  <h3>Si vous créez votre activité en cours d'année</h3>
+  <p>Les seuils ci-dessus s'entendent pour une année complète. Si vous démarrez le 1er juillet 2026, votre plafond est proratisé au nombre de jours restant dans l'année civile. Pour une activité de services créée au 1er juillet 2026 (184 jours restants sur 365), le plafond applicable est d'environ 83 600 € × (184 / 365) ≈ 42 150 €.</p>
+
+  <h3>Que se passe-t-il en cas de dépassement ?</h3>
+  <p>Un dépassement ponctuel, une seule année, n'a pas de conséquence immédiate : vous restez en micro-entreprise. Ce n'est qu'en cas de <strong>dépassement pendant deux années civiles consécutives</strong> que vous basculez, le 1er janvier de l'année suivante, vers un régime réel d'imposition (avec des obligations comptables plus lourdes : bilan, compte de résultat, comptabilité en partie double).</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si vous savez que vous allez dépasser le seuil deux années de suite, anticipez : contactez un expert-comptable quelques mois avant le changement de régime plutôt qu'au moment de la déclaration. La bascule vers un régime réel implique de nouvelles obligations (TVA le cas échéant, comptabilité en partie double) qu'il vaut mieux préparer en amont.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Cotisations sociales : le calcul détaillé pour chaque catégorie</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez calculer vous-même le montant exact de vos cotisations sociales, pour votre catégorie précise, mois par mois et à l'année.</p>
+
+  <p>Les cotisations sociales de l'auto-entrepreneur se calculent simplement : elles sont un pourcentage direct du chiffre d'affaires encaissé, sans notion de bénéfice ni de charges à déduire. C'est tout l'intérêt — et toute la limite — du régime micro-social : contrairement à une société, vous ne payez jamais de cotisation si vous n'encaissez rien, mais vous ne pouvez pas non plus déduire vos frais réels (matériel, local, déplacements) du calcul.</p>
+
+  <table>
+    <tr><th>Activité</th><th>Taux 2026</th></tr>
+    <tr><td>Vente de marchandises</td><td>12,3 %</td></tr>
+    <tr><td>Prestations de services BIC (commerciales / artisanales)</td><td>21,2 %</td></tr>
+    <tr><td>Professions libérales BNC (régime général de la sécurité sociale des indépendants)</td><td>25,6 %</td></tr>
+    <tr><td>Professions libérales relevant de la CIPAV</td><td>23,2 %</td></tr>
+  </table>
+  <p class="source">Source : Urssaf, évolution des taux de cotisations sociales des auto-entrepreneurs 2026.</p>
+
+  <p>Le taux applicable aux professions libérales BNC hors CIPAV est passé de <strong>24,6 % à 25,6 %</strong> au 1er janvier 2026, dans le cadre du financement de la protection sociale des indépendants <span class="source">(loi de financement de la sécurité sociale pour 2026)</span>.</p>
+
+  <h3><span class="cat-vente">Calcul détaillé — Vente de marchandises</span></h3>
+  <div class="box box-example">
+    <span class="box-title">💡 Exemple concret</span>
+    <p>Un vendeur d'articles de déco en ligne facture 60 000 € de chiffre d'affaires sur l'année, soit une moyenne de 5 000 € par mois.<br/>
+    Cotisations mensuelles moyennes : 5 000 € × 12,3 % = <strong>615 €</strong>.<br/>
+    Cotisations annuelles : 60 000 € × 12,3 % = <strong>7 380 €</strong>.</p>
+  </div>
+
+  <h3><span class="cat-bic">Calcul détaillé — Prestations de services BIC</span></h3>
+  <div class="box box-example">
+    <span class="box-title">💡 Exemple concret</span>
+    <p>Un consultant en informatique facture 30 000 € de chiffre d'affaires sur l'année, soit 2 500 € par mois.<br/>
+    Cotisations mensuelles : 2 500 € × 21,2 % = <strong>530 €</strong>.<br/>
+    Cotisations annuelles : 30 000 € × 21,2 % = <strong>6 360 €</strong>.</p>
+  </div>
+
+  <h3><span class="cat-bnc">Calcul détaillé — Professions libérales BNC</span></h3>
+  <div class="box box-example">
+    <span class="box-title">💡 Exemple concret</span>
+    <p>Une formatrice indépendante facture 35 000 € de chiffre d'affaires sur l'année, soit environ 2 917 € par mois.<br/>
+    Cotisations mensuelles : 2 917 € × 25,6 % ≈ <strong>747 €</strong>.<br/>
+    Cotisations annuelles : 35 000 € × 25,6 % = <strong>8 960 €</strong>.<br/>
+    Si elle relevait de la CIPAV (23,2 %) plutôt que du régime général, ses cotisations annuelles seraient de 35 000 € × 23,2 % = 8 120 €, soit 840 € de moins sur l'année.</p>
+  </div>
+
+  <h3>Le cas particulier de l'ACRE (aide à la création d'entreprise)</h3>
+  <p>Si vous créez votre activité, vous pouvez demander l'ACRE, qui applique un <strong>taux minoré</strong> pendant les premiers mois d'activité au lieu du taux plein. Jusqu'en 2026, ce taux minoré correspondait à 50 % du taux habituel (soit une exonération réelle de 50 %). <strong>À partir du 1er juillet 2026, ce taux minoré passe à 75 % du taux habituel</strong> — l'exonération réelle tombe donc à 25 % <span class="source">(réforme de l'ACRE, LFSS 2026)</span>, et ce pour les trois catégories.</p>
+
+  <table>
+    <tr><th>Catégorie (base mensuelle)</th><th>Cotisation taux plein</th><th>Avec ACRE ancien (50 %)</th><th>Avec ACRE nouveau (75 %)</th><th>Surcoût mensuel</th></tr>
+    <tr><td>Vente — 5 000 €/mois</td><td>615 €</td><td>307,50 €</td><td>461,25 €</td><td>+ 153,75 €</td></tr>
+    <tr><td>Services BIC — 2 500 €/mois</td><td>530 €</td><td>265 €</td><td>397,50 €</td><td>+ 132,50 €</td></tr>
+    <tr><td>BNC — 2 917 €/mois</td><td>747 €</td><td>373,33 €</td><td>560 €</td><td>+ 186,67 €</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce timing</span>
+    <p>Si vous hésitez entre lancer votre activité en juin ou en juillet 2026, sachez que les modalités transitoires de l'ACRE peuvent avantager les créations légèrement antérieures au 1er juillet, quelle que soit votre catégorie. Vérifiez les conditions exactes auprès de l'Urssaf au moment de votre demande, la date de bascule pouvant s'appliquer différemment selon la date de début d'activité.</p>
+  </div>
+
+  <h3>Pas de cotisation minimale, mais pas de comblement possible non plus</h3>
+  <p>Contrairement au régime des travailleurs indépendants « classiques » (hors micro), il n'existe <strong>aucune cotisation minimale</strong> en micro-entreprise : si votre chiffre d'affaires est nul sur une période, vous ne payez rien. C'est un avantage en cas d'activité irrégulière, mais cela a une contrepartie importante détaillée au chapitre suivant : des périodes sans chiffre d'affaires peuvent aussi signifier des trimestres de retraite non validés.</p>
+</section>
+
+<section class="chapter">
+  <h2>6. Ce que vos cotisations financent : retraite, maladie, protection sociale</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez quels droits sociaux concrets vos cotisations vous ouvrent, et à partir de quel niveau de chiffre d'affaires.</p>
+
+  <h3>La retraite : valider des trimestres, pas juste cotiser</h3>
+  <p>Vos cotisations sociales financent, entre autres, vos droits à la retraite de base. Mais ce n'est pas le montant cotisé qui compte pour valider un trimestre : c'est un seuil de chiffre d'affaires (après abattement forfaitaire) à atteindre. À faible activité, il est donc possible de cotiser sans valider tous ses trimestres de l'année.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce retraite</span>
+    <p>Si votre activité génère un chiffre d'affaires irrégulier ou modeste certaines années, vérifiez votre relevé de carrière sur <em>info-retraite.fr</em> pour repérer d'éventuels trimestres non validés. Il est parfois possible de régulariser ou d'envisager un rachat de trimestres a posteriori — mieux vaut le savoir tôt que de le découvrir à l'approche de la retraite.</p>
+  </div>
+
+  <h3>Les indemnités journalières (arrêt maladie)</h3>
+  <p>En cas d'arrêt de travail pour maladie, un auto-entrepreneur peut percevoir des indemnités journalières (IJ) de l'Assurance Maladie, sous conditions :</p>
+  <ul>
+    <li>Être affilié depuis au moins 12 mois ;</li>
+    <li>Avoir un chiffre d'affaires moyen sur les 3 dernières années supérieur à <strong>4 806 €</strong> en 2026 (soit 10 % du plafond annuel de la sécurité sociale, fixé à 48 060 € en 2026) ;</li>
+    <li>Être à jour de ses cotisations.</li>
+  </ul>
+  <p>Ce seuil de chiffre d'affaires diffère selon la catégorie, puisqu'il s'apprécie après abattement forfaitaire :</p>
+  <table>
+    <tr><th>Catégorie</th><th>CA annuel moyen minimum pour ouvrir droit aux IJ (approximatif)</th></tr>
+    <tr><td><span class="cat-vente">Vente</span> (abattement 71 %)</td><td>≈ 16 572 €</td></tr>
+    <tr><td><span class="cat-bic">Services BIC</span> (abattement 50 %)</td><td>≈ 9 612 €</td></tr>
+    <tr><td><span class="cat-bnc">BNC</span> (abattement 34 %)</td><td>≈ 7 282 €</td></tr>
+  </table>
+  <p>Le montant de l'indemnité journalière correspond à 1/730ᵉ du revenu annuel moyen des 3 dernières années civiles, plafonné à <strong>65,84 €</strong> par jour en 2026 <span class="source">(ameli.fr, Urssaf)</span>.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Si votre chiffre d'affaires est en dessous de ces seuils (activité de complément, démarrage progressif), vous n'aurez droit à aucune indemnité journalière en cas d'arrêt de travail. Une assurance prévoyance complémentaire privée peut alors être pertinente, en particulier pour les professions BNC où le seuil de déclenchement est certes plus bas, mais où les revenus sont aussi souvent plus irréguliers en début d'activité.</p>
+  </div>
+
+  <h3>L'assurance chômage des indépendants (ATI)</h3>
+  <p>Les auto-entrepreneurs peuvent, sous conditions restrictives (cessation d'activité pour cause de liquidation judiciaire notamment, et un niveau de revenu antérieur minimum), bénéficier de l'allocation des travailleurs indépendants (ATI). Ce n'est ni un chômage classique, ni automatique — à ne pas confondre avec l'assurance chômage des salariés.</p>
+</section>
+
+<section class="chapter">
+  <h2>7. Versement libératoire : la simulation complète pour chaque catégorie</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez si le versement libératoire vous fait gagner ou perdre de l'argent, pour votre catégorie et votre situation fiscale précises.</p>
+
+  <p>Le versement libératoire est une option qui permet de payer l'impôt sur le revenu sous forme d'un pourcentage fixe du chiffre d'affaires, chaque mois ou trimestre, en même temps que les cotisations sociales — plutôt que de le régler l'année suivante selon le barème progressif classique. La base légale est l'article 151-0 du Code général des impôts (CGI), qui renvoie aux régimes définis aux articles 50-0 (micro-BIC) et 102 ter (micro-BNC) du même code.</p>
+
+  <h3>Qui peut en bénéficier ?</h3>
+  <p>Il faut que le revenu fiscal de référence (RFR) de votre foyer, constaté au titre de l'avant-dernière année (donc <strong>2024</strong> pour une option applicable en 2026), ne dépasse pas <strong>29 315 €</strong> par part de quotient familial. Ce plafond est majoré de 50 % par demi-part supplémentaire et de 25 % par quart de part.</p>
+
+  <div class="box box-example">
+    <span class="box-title">💡 Exemple concret</span>
+    <p>Un couple marié avec un enfant à charge (2,5 parts) doit avoir un RFR 2024 inférieur à 29 315 € × 2,5 = <strong>73 287,50 €</strong> pour rester éligible en 2026.</p>
+  </div>
+
+  <h3>La vraie question à se poser : le versement libératoire est-il avantageux ?</h3>
+  <p>Sans versement libératoire, votre chiffre d'affaires bénéficie d'un <strong>abattement forfaitaire</strong> avant d'être soumis au barème progressif de l'impôt sur le revenu : 71 % pour la vente, 50 % pour les services BIC, 34 % pour le BNC. Le versement libératoire ne remplace donc pas « rien » — il remplace ce mécanisme d'abattement suivi du barème progressif.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce clé — la plus importante de ce chapitre</span>
+    <p>Le versement libératoire n'est réellement intéressant que si le taux marginal d'imposition (TMI) de votre foyer est <strong>supérieur ou égal à 11 %</strong>. En dessous de ce seuil (foyer peu ou pas imposable), le régime classique avec abattement forfaitaire coûte souvent moins cher, voire rien du tout — et ce quelle que soit votre catégorie. Beaucoup d'auto-entrepreneurs cochent l'option « par réflexe » à la création, sans avoir fait ce calcul.</p>
+  </div>
+
+  <p>Les tableaux suivants comparent, pour chaque catégorie, le coût du versement libératoire à celui du régime classique selon trois niveaux de taux marginal d'imposition du foyer. Ce sont des approximations pédagogiques : le calcul réel dépend du barème progressif complet appliqué à l'ensemble des revenus du foyer, pas d'un taux unique appliqué mécaniquement.</p>
+
+  <h3><span class="cat-vente">Simulation — Vente (CA annuel : 80 000 €)</span></h3>
+  <table>
+    <tr><th>TMI du foyer</th><th>Impôt régime classique (base 23 200 € après abattement 71 %)</th><th>Impôt versement libératoire (1 %)</th><th>Option la plus avantageuse</th></tr>
+    <tr><td>0 %</td><td>0 €</td><td>800 €</td><td>Régime classique (− 800 €)</td></tr>
+    <tr><td>11 %</td><td>2 552 €</td><td>800 €</td><td>Versement libératoire (− 1 752 €)</td></tr>
+    <tr><td>30 %</td><td>6 960 €</td><td>800 €</td><td>Versement libératoire (− 6 160 €)</td></tr>
+  </table>
+
+  <h3><span class="cat-bic">Simulation — Services BIC (CA annuel : 40 000 €)</span></h3>
+  <table>
+    <tr><th>TMI du foyer</th><th>Impôt régime classique (base 20 000 € après abattement 50 %)</th><th>Impôt versement libératoire (1,7 %)</th><th>Option la plus avantageuse</th></tr>
+    <tr><td>0 %</td><td>0 €</td><td>680 €</td><td>Régime classique (− 680 €)</td></tr>
+    <tr><td>11 %</td><td>2 200 €</td><td>680 €</td><td>Versement libératoire (− 1 520 €)</td></tr>
+    <tr><td>30 %</td><td>6 000 €</td><td>680 €</td><td>Versement libératoire (− 5 320 €)</td></tr>
+  </table>
+
+  <h3><span class="cat-bnc">Simulation — Professions libérales BNC (CA annuel : 35 000 €)</span></h3>
+  <table>
+    <tr><th>TMI du foyer</th><th>Impôt régime classique (base 23 100 € après abattement 34 %)</th><th>Impôt versement libératoire (2,2 %)</th><th>Option la plus avantageuse</th></tr>
+    <tr><td>0 %</td><td>0 €</td><td>770 €</td><td>Régime classique (− 770 €)</td></tr>
+    <tr><td>11 %</td><td>2 541 €</td><td>770 €</td><td>Versement libératoire (− 1 771 €)</td></tr>
+    <tr><td>30 %</td><td>6 930 €</td><td>770 €</td><td>Versement libératoire (− 6 160 €)</td></tr>
+  </table>
+
+  <h3>Comment faire la demande ?</h3>
+  <p>L'option se demande directement auprès de l'Urssaf, <strong>avant le 30 septembre</strong> de l'année précédant celle où vous voulez qu'elle s'applique (soit le 30 septembre 2025 pour une application en 2026), ou dans les 3 mois suivant la création de votre activité pour une application immédiate.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce vigilance annuelle</span>
+    <p>Une fois choisie, l'option se reconduit tacitement — mais votre éligibilité, elle, doit être vérifiée chaque année. Un mariage, une hausse des revenus du conjoint ou tout autre changement de situation peut vous faire perdre le bénéfice du versement libératoire sans que l'administration ne vous prévienne automatiquement. Vérifiez votre RFR chaque année avant l'échéance du 30 septembre.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>8. TVA et franchise en base : ce qu'il faut vraiment savoir</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez si vous devez facturer la TVA, à partir de quel seuil précis pour votre activité, et ce qui a réellement changé en 2026.</p>
+
+  <h3>Les seuils inchangés en 2026</h3>
+  <table>
+    <tr><th>Activité</th><th>Seuil de base</th><th>Seuil majoré</th></tr>
+    <tr><td><span class="cat-vente">Vente / hébergement</span></td><td>85 000 €</td><td>93 500 €</td></tr>
+    <tr><td><span class="cat-bic">Prestations de services</span></td><td>37 500 €</td><td>41 250 €</td></tr>
+    <tr><td>Avocats, auteurs, artistes-interprètes</td><td>50 000 €</td><td>55 000 €</td></tr>
+  </table>
+
+  <h3>Le point sur la réforme qui n'a pas eu lieu</h3>
+  <p>Le projet de loi de finances pour 2025 prévoyait d'unifier tous les seuils de franchise en base de TVA à <strong>25 000 €</strong>, quelle que soit l'activité — une mesure qui aurait fait basculer une grande partie des auto-entrepreneurs vers la TVA. Face à la mobilisation des indépendants, cette réforme a été suspendue, puis <strong>définitivement abandonnée par la loi n° 2025-1044 du 3 novembre 2025</strong>. Les seuils applicables en 2026 restent donc ceux du tableau ci-dessus.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Erreur fréquente</span>
+    <p>Beaucoup d'auto-entrepreneurs ont entendu parler du seuil unique à 25 000 € sans savoir qu'il avait été abandonné, et adaptent leurs prix ou leur activité en anticipation d'une réforme qui ne s'applique pas. Vérifiez toujours la version en vigueur avant de changer vos pratiques de facturation.</p>
+  </div>
+
+  <h3>Comment fonctionne concrètement le dépassement</h3>
+  <p>Il existe deux seuils, pas un seul : le <strong>seuil de base</strong> et le <strong>seuil majoré</strong>. Tant que vous restez sous le seuil de base, rien ne change. Entre le seuil de base et le seuil majoré, vous conservez la franchise en base l'année du dépassement, mais vous en sortez au 1er janvier suivant si vous êtes toujours au-dessus du seuil de base. Si vous dépassez le <strong>seuil majoré</strong> en cours d'année, vous perdez la franchise <strong>immédiatement</strong>, dès le premier jour du mois de dépassement — pas en fin d'année.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce piège sous-estimé</span>
+    <p>Le dépassement du seuil majoré fait perdre la franchise en base <strong>en cours d'année</strong>, avec effet immédiat sur les factures suivantes. Beaucoup pensent qu'ils ont « jusqu'à la fin de l'année » pour réagir, ce qui est faux. Toute facture émise après le dépassement doit inclure la TVA, sous peine de devoir la reverser de votre poche sans pouvoir la refacturer rétroactivement au client déjà facturé.</p>
+  </div>
+
+  <h3>Que faire concrètement en cas de dépassement ?</h3>
+  <p>Dès le dépassement du seuil majoré, vous devez : facturer la TVA sur vos ventes suivantes, vous immatriculer auprès du service des impôts des entreprises (SIE) pour vos futures déclarations, et choisir un régime de TVA (réel simplifié ou réel normal selon votre activité). Ce basculement est indépendant de votre régime social micro-entrepreneur : vous pouvez rester en micro-social tout en facturant la TVA.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce clients B2B</span>
+    <p>Si l'essentiel de votre clientèle est composée de professionnels (qui récupèrent la TVA sur leurs achats), l'absence de TVA sur vos factures n'est pas toujours un avantage — le client pro récupère normalement sa TVA, donc ne pas la facturer peut au contraire donner une image de structure moins établie. Il est possible de renoncer volontairement à la franchise en base pour facturer la TVA — et la récupérer sur vos propres achats professionnels.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>9. Bien facturer : mentions obligatoires et pénalités</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez rédiger une facture conforme, et ce qu'il vous en coûte si elle ne l'est pas.</p>
+
+  <h3>La checklist des mentions obligatoires</h3>
+  <ul>
+    <li>Vos nom, prénom (ou nom commercial) et adresse ;</li>
+    <li>Votre numéro SIREN (et SIRET si vous le souhaitez) ;</li>
+    <li>La mention « TVA non applicable, article 293 B du CGI » si vous êtes en franchise en base ;</li>
+    <li>Un numéro de facture unique, basé sur une séquence chronologique continue ;</li>
+    <li>La date d'émission et la date de la prestation ou vente si différente ;</li>
+    <li>L'identité complète du client (nom, adresse) ;</li>
+    <li>La désignation précise de la prestation ou du produit, la quantité et le prix unitaire ;</li>
+    <li>Le montant total à payer et les conditions de paiement (délai, moyens acceptés) ;</li>
+    <li>Pour les clients professionnels : le taux des pénalités de retard applicables et l'indemnité forfaitaire de recouvrement.</li>
+  </ul>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Nouveauté à partir du 1er septembre 2026</span>
+    <p>Quatre nouvelles mentions deviennent obligatoires : le numéro SIREN du client (pour les clients professionnels), l'adresse de livraison si elle diffère de l'adresse de facturation, la catégorie de l'opération (vente de biens, prestation de services...), et la mention « Option pour le paiement de la taxe d'après les débits » lorsqu'elle s'applique.</p>
+  </div>
+
+  <h3>Les pénalités de retard entre professionnels</h3>
+  <p>Pour toute facture adressée à un client professionnel, des pénalités de retard s'appliquent automatiquement en cas de paiement tardif, <strong>sans qu'un rappel ne soit nécessaire</strong>. Le taux applicable en 2026 est généralement de 3 fois le taux d'intérêt légal, soit <strong>7,86 %</strong>, auquel s'ajoute une <strong>indemnité forfaitaire de recouvrement de 40 €</strong> par facture impayée à l'échéance.</p>
+
+  <div class="box box-example">
+    <span class="box-title">💡 Exemple concret</span>
+    <p>Une facture de 2 000 € réglée avec 30 jours de retard par un client professionnel donne droit, en plus du montant dû, à des pénalités de retard calculées sur la période de retard au taux de 7,86 %, et à l'indemnité forfaitaire de 40 € — à condition que ces mentions figurent bien sur votre facture d'origine.</p>
+  </div>
+
+  <h3>Les sanctions en cas de facture non conforme</h3>
+  <p>Ne pas émettre de facture alors que c'est obligatoire constitue une infraction. Une mention manquante ou inexacte expose à une amende de <strong>15 € par mention</strong>, plafonnée à <strong>25 % du montant de la facture</strong>. En cas de manquement systématique ou de récidive, l'amende peut atteindre <strong>75 000 €</strong>.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Utilisez un même modèle de facture pour toutes vos factures, avec toutes les mentions déjà pré-remplies : c'est le moyen le plus simple d'éviter un oubli répété qui pourrait, en cas de contrôle, être requalifié en manquement systématique plutôt qu'en simple erreur ponctuelle.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>10. Le calendrier des déclarations, mois par mois</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez quelles déclarations faire, à quelle fréquence, et à quelles dates précises.</p>
+
+  <h3>La déclaration de chiffre d'affaires à l'Urssaf</h3>
+  <p>Vous choisissez, dès l'inscription, une fréquence de déclaration : <strong>mensuelle</strong> ou <strong>trimestrielle</strong>. Ce choix est modifiable au 1er janvier de chaque année.</p>
+
+  <table>
+    <tr><th>Mois</th><th>Si déclaration mensuelle</th><th>Si déclaration trimestrielle</th></tr>
+    <tr><td>Janvier</td><td>Déclarer le CA de décembre</td><td>Déclarer le CA du 4ᵉ trimestre (oct-nov-déc)</td></tr>
+    <tr><td>Février</td><td>Déclarer le CA de janvier</td><td>—</td></tr>
+    <tr><td>Mars</td><td>Déclarer le CA de février</td><td>—</td></tr>
+    <tr><td>Avril</td><td>Déclarer le CA de mars</td><td>Déclarer le CA du 1er trimestre (jan-fév-mars)</td></tr>
+    <tr><td>Mai</td><td>Déclarer le CA d'avril</td><td>—</td></tr>
+    <tr><td>Juin</td><td>Déclarer le CA de mai</td><td>—</td></tr>
+    <tr><td>Juillet</td><td>Déclarer le CA de juin</td><td>Déclarer le CA du 2ᵉ trimestre (avr-mai-juin)</td></tr>
+    <tr><td>Août</td><td>Déclarer le CA de juillet</td><td>—</td></tr>
+    <tr><td>Septembre</td><td>Déclarer le CA d'août — <strong>date limite du 30 pour le versement libératoire de l'année suivante</strong></td><td>Idem</td></tr>
+    <tr><td>Octobre</td><td>Déclarer le CA de septembre</td><td>Déclarer le CA du 3ᵉ trimestre (juil-août-sept)</td></tr>
+    <tr><td>Novembre</td><td>Déclarer le CA d'octobre</td><td>—</td></tr>
+    <tr><td>Décembre</td><td>Déclarer le CA de novembre — <strong>date limite du 15 pour la CFE</strong></td><td>Idem</td></tr>
+  </table>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Erreur fréquente n°1</span>
+    <p>Oublier de déclarer lorsque le chiffre d'affaires du mois ou du trimestre est nul. La déclaration « à zéro » est <strong>obligatoire</strong>, même sans aucune facturation sur la période. L'absence de déclaration expose à une pénalité forfaitaire, même si aucune cotisation n'était due.</p>
+  </div>
+
+  <h3>La Cotisation Foncière des Entreprises (CFE)</h3>
+  <p>La CFE est due chaque année, avec une <strong>exonération la première année civile d'activité</strong>. Elle doit ensuite être réglée avant le <strong>15 décembre</strong> de chaque année.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce CFE</span>
+    <p>L'exonération de première année n'est pas automatique dans tous les cas : pensez à vérifier que votre déclaration initiale (formulaire 1447-C-SD) a bien été transmise avant le 31 décembre de l'année de création. Sans cette démarche, la CFE peut vous être réclamée dès l'année suivante.</p>
+  </div>
+
+  <h3>La déclaration annuelle de revenus (2042-C-PRO)</h3>
+  <p>Chaque année, lors de votre déclaration de revenus, vous devez reporter votre chiffre d'affaires sur le formulaire complémentaire <strong>2042-C-PRO</strong> — y compris si vous avez opté pour le versement libératoire.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Erreur fréquente n°2</span>
+    <p>Croire que le versement libératoire dispense de toute déclaration de revenus. C'est faux : le chiffre d'affaires doit être déclaré chaque année sur la 2042-C-PRO, ne serait-ce que pour le calcul du revenu fiscal de référence du foyer (qui conditionne d'autres droits et prestations).</p>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce trésorerie</span>
+    <p>Plutôt que d'attendre l'échéance pour découvrir ce que vous devez, mettez de côté un pourcentage fixe de chaque encaissement dès qu'il arrive — par exemple via un virement automatique programmé vers un compte séparé, à hauteur de 25 à 30 % du montant selon votre régime. Vous ne serez ainsi jamais pris de court, même en cas de mois exceptionnel.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>11. Urssaf : ce qu'il ne faut surtout pas oublier</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez éviter les pièges administratifs les plus fréquents avec l'Urssaf, au-delà du simple calendrier de déclaration déjà vu au chapitre précédent.</p>
+
+  <h3>Garder une trace de tout</h3>
+  <p>Conservez systématiquement vos accusés de réception de déclaration, vos justificatifs de paiement de cotisations et l'historique de votre chiffre d'affaires déclaré. La durée de conservation généralement recommandée est d'au moins 3 ans, mais en pratique il est plus sûr de tout garder tant que l'activité existe. En cas de contrôle ou de litige sur un montant de cotisation, ce sont ces documents qui font foi.</p>
+
+  <h3>Des coordonnées à jour dans son espace en ligne</h3>
+  <p>Toutes les communications importantes de l'Urssaf (rappels de déclaration, changement de taux, demande de pièce complémentaire) passent par l'espace en ligne <em>autoentrepreneur.urssaf.fr</em> et par l'adresse email associée. Une adresse email obsolète ou jamais consultée est une des causes les plus fréquentes d'oubli — pas un manque de rigueur de votre part, simplement une notification jamais vue.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Piège fréquent — le rejet de prélèvement</span>
+    <p>Si vos cotisations sont réglées par prélèvement automatique, assurez-vous que le compte bancaire associé est approvisionné à la date exacte du prélèvement. Un rejet entraîne à la fois des frais bancaires (facturés par votre banque) et une majoration de retard sur les cotisations elles-mêmes — un double coût pour un simple oubli de trésorerie.</p>
+  </div>
+
+  <h3>L'attestation de vigilance</h3>
+  <p>Si vous travaillez avec des donneurs d'ordre professionnels (fréquent dans le BTP, mais pas uniquement), ceux-ci ont l'obligation légale de vérifier votre situation vis-à-vis de l'Urssaf avant de vous régler une facture au-delà d'un certain montant. C'est <strong>l'attestation de vigilance</strong>, gratuite et téléchargeable directement depuis votre espace en ligne, valable un mois. Ne pas être en mesure de la fournir rapidement peut retarder un paiement qui vous est dû.</p>
+
+  <h3>Corriger une erreur de déclaration</h3>
+  <p>Une erreur de montant dans une déclaration de chiffre d'affaires n'est pas irréversible : une déclaration rectificative peut être transmise directement depuis votre espace en ligne. Ne laissez jamais une erreur sans la corriger — elle fausse durablement le calcul de vos cotisations et de vos droits sociaux (retraite, indemnités journalières).</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si vous avez un doute sur un montant déjà déclaré, mieux vaut le corriger immédiatement plutôt que d'attendre : plus une erreur est ancienne, plus elle est fastidieuse à retrouver et à justifier auprès de l'administration.</p>
+  </div>
+
+  <h3>Ne pas oublier de se radier en cas de cessation d'activité</h3>
+  <p>Si vous arrêtez votre activité, la cessation doit être déclarée sans délai auprès du <strong>guichet unique de l'INPI</strong>. Tant que cette démarche n'est pas faite, votre obligation de déclaration périodique — même à zéro — continue de courir formellement, et l'absence de déclaration après une cessation non déclarée peut entraîner des pénalités pour des périodes où l'activité n'existait pourtant plus.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Piège fréquent — la radiation oubliée</span>
+    <p>Beaucoup d'auto-entrepreneurs qui arrêtent discrètement leur activité (sans jamais déclarer la cessation) continuent de recevoir des rappels, voire des pénalités pour déclarations manquantes, alors même qu'ils ne facturent plus rien depuis longtemps. La radiation n'est jamais automatique.</p>
+  </div>
+
+  <h3>Sécuriser son compte en ligne</h3>
+  <p>Votre espace Urssaf permet de modifier vos coordonnées bancaires de prélèvement et de versement. Utilisez un mot de passe solide et propre à ce compte, et surveillez toute notification de changement que vous n'auriez pas vous-même initié.</p>
+</section>
+
+<section class="chapter">
+  <h2>12. Cas particuliers : activité mixte, cumul salarié, fonctionnaire, retraite</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez si votre situation personnelle (autre emploi, statut, retraite) a un impact sur votre micro-entreprise.</p>
+
+  <h3>Cumuler avec un emploi salarié</h3>
+  <p>Le cumul entre un emploi salarié (CDI, CDD, intérim) et une micro-entreprise est <strong>légal et libre</strong>, sans autorisation particulière à demander à votre employeur, sauf clause d'exclusivité ou de non-concurrence prévue à votre contrat de travail — à vérifier avant de vous lancer. Sur le plan fiscal, votre salaire et votre chiffre d'affaires se déclarent séparément, puis s'additionnent pour déterminer le taux marginal d'imposition de votre foyer. Le salaire n'entre jamais dans le calcul des seuils de la micro-entreprise.</p>
+
+  <h3>Cumuler avec un statut de fonctionnaire</h3>
+  <p>Depuis la loi du 6 août 2019 de transformation de la fonction publique, un fonctionnaire peut créer une micro-entreprise, à condition d'en informer son administration par écrit avant de débuter l'activité. Le formalisme diffère selon la quotité de travail :</p>
+  <ul>
+    <li>À temps plein : une <strong>autorisation</strong> de la hiérarchie est nécessaire, accordée pour deux ans, renouvelable un an ;</li>
+    <li>À temps partiel (70 % ou moins) : une simple <strong>déclaration</strong> suffit.</li>
+  </ul>
+
+  <h3>Cumuler avec la retraite</h3>
+  <p>Un retraité peut créer une micro-entreprise. Les règles de plafonnement des revenus cumulés diffèrent selon le régime de retraite :</p>
+  <ul>
+    <li>Retraités du régime général : le cumul des revenus (pension + chiffre d'affaires après abattement) ne doit pas dépasser <strong>23 550 €</strong> par an en 2026, sous peine de suspension temporaire d'une partie de la pension ;</li>
+    <li>Professions libérales réglementées : le plafond de cumul s'élève à <strong>47 100 €</strong> par an en 2026 ;</li>
+    <li>Fonctionnaires retraités : une demande à titre dérogatoire est nécessaire auprès de l'administration d'origine.</li>
+  </ul>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Ces plafonds de cumul emploi-retraite sont distincts des seuils de chiffre d'affaires de la micro-entreprise vus au chapitre 4. Un retraité peut donc être dans les clous du régime micro-entrepreneur tout en dépassant le plafond de cumul emploi-retraite applicable à sa pension — les deux limites doivent être vérifiées séparément.</p>
+  </div>
+
+  <h3>Le conjoint collaborateur</h3>
+  <p>Si votre conjoint (marié, pacsé ou en concubinage reconnu) participe régulièrement à votre activité sans être rémunéré ni associé, il peut être déclaré comme <strong>conjoint collaborateur</strong> auprès de l'Urssaf. Ce statut lui ouvre des droits propres (retraite, formation professionnelle) moyennant une cotisation additionnelle, calculée sur une base forfaitaire ou sur un pourcentage de vos revenus.</p>
+</section>
+
+<section class="chapter">
+  <h2>13. Trois études de cas complètes, une par catégorie</h2>
+  <p class="lede">En sortant de ce chapitre, vous aurez vu comment tous les mécanismes de ce guide s'articulent ensemble, sur une année entière, pour chacune des trois catégories.</p>
+
+  <h3><span class="cat-vente">Étude de cas 1 — Vente : Léa, bougies artisanales en ligne</span></h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Le parcours de Léa sur l'année 2026</span>
+    <p><strong>Mars</strong> — Léa crée sa micro-entreprise via le guichet unique (délai : 10 jours, gratuit). Elle choisit la déclaration <strong>mensuelle</strong> et demande l'<strong>ACRE</strong>.</p>
+    <p><strong>Mars à juin</strong> — Son chiffre d'affaires progresse : 1 500 €, 2 000 €, 2 500 €, 3 000 €. Ses cotisations, avec l'ACRE à 50 %, s'élèvent chaque mois à CA × 12,3 % × 50 %. Pour juin (3 000 €) : 3 000 × 12,3 % × 50 % = <strong>184,50 €</strong>.</p>
+    <p><strong>Juillet à décembre</strong> — Son activité continue de croître (3 500 € à 5 500 € par mois). L'ACRE passe au nouveau taux minoré de 75 % à partir de juillet. Pour septembre (4 500 €) : 4 500 × 12,3 % × 75 % = <strong>415,13 €</strong>, contre 276,75 € avec l'ancien taux — un écart qu'elle avait anticipé grâce au chapitre 5.</p>
+    <p><strong>Bilan annuel</strong> — Chiffre d'affaires total : 39 500 €, bien en dessous du seuil de 203 100 € et du seuil de TVA de 85 000 €. Cotisations totales sur l'année : environ 3 400 €. Le foyer de Léa étant faiblement imposé (TMI à 0 %), elle a choisi de <strong>ne pas opter</strong> pour le versement libératoire — un choix cohérent avec l'astuce clé du chapitre 7. Première année : exonérée de CFE.</p>
+  </div>
+
+  <h3><span class="cat-bic">Étude de cas 2 — Services BIC : Karim, développeur web freelance</span></h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Le parcours de Karim sur l'année 2026</span>
+    <p><strong>Janvier</strong> — Karim est déjà en activité depuis 2024. Il choisit la déclaration <strong>trimestrielle</strong>. Son épouse est salariée avec un revenu confortable : le TMI de leur foyer est de 30 %. Il a donc opté pour le <strong>versement libératoire</strong> (1,7 %) dès le départ — un choix qui, selon la simulation du chapitre 7, lui fait économiser plusieurs milliers d'euros par an par rapport au régime classique.</p>
+    <p><strong>1er trimestre</strong> — CA de 9 000 €. Cotisations : 9 000 × 21,2 % = 1 908 €. Versement libératoire : 9 000 × 1,7 % = 153 €.</p>
+    <p><strong>2ᵉ trimestre</strong> — Un gros contrat porte son CA cumulé sur l'année à 32 000 € fin juin. Toujours sous le seuil de TVA (37 500 €).</p>
+    <p><strong>3ᵉ trimestre</strong> — En août, son CA cumulé sur l'année franchit le <strong>seuil majoré de TVA (41 250 €)</strong>. Conformément au chapitre 8, il doit facturer la TVA <strong>dès la facture suivante</strong> — pas en fin d'année. Il s'immatricule en urgence auprès du SIE et met à jour son modèle de facture avec les nouvelles mentions.</p>
+    <p><strong>Bilan annuel</strong> — Chiffre d'affaires total : 58 000 €, sous le seuil micro-entreprise (83 600 €) mais désormais assujetti à la TVA depuis août. Cotisations totales : environ 12 296 €. Versement libératoire total : environ 986 €.</p>
+  </div>
+
+  <h3><span class="cat-bnc">Étude de cas 3 — Professions libérales BNC : Sophie, consultante en formation</span></h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Le parcours de Sophie sur l'année 2026</span>
+    <p><strong>Janvier à mars</strong> — Sophie facture régulièrement, environ 3 000 € par mois. Cotisations mensuelles : 3 000 × 25,6 % = 768 €.</p>
+    <p><strong>Avril à juin</strong> — Un creux d'activité : aucune mission signée. Elle <strong>déclare son chiffre d'affaires à zéro</strong> chaque mois, comme le rappelle le chapitre 10 — une déclaration qu'elle n'oublie pas, contrairement à l'erreur fréquente n°1 du chapitre 15.</p>
+    <p><strong>Juillet à décembre</strong> — L'activité reprend, avec un total de 21 000 € sur le second semestre.</p>
+    <p><strong>Bilan annuel</strong> — Chiffre d'affaires total : 30 000 €, bien en dessous des seuils. Mais avec 3 mois à zéro, Sophie s'interroge sur ses trimestres de retraite validés dans l'année — elle vérifie son relevé sur <em>info-retraite.fr</em>, comme suggéré au chapitre 6, et découvre qu'elle a validé 3 trimestres sur 4. Elle décide d'augmenter légèrement ses tarifs l'année suivante pour sécuriser le quatrième trimestre malgré des creux d'activité possibles.</p>
+    <p><strong>Un imprévu en fin d'année</strong> — Un nouveau client, une grande entreprise, lui demande une <strong>attestation de vigilance</strong> avant de régler sa facture de 6 000 €. Elle la télécharge en quelques clics depuis son espace Urssaf, comme expliqué au chapitre 11, et évite ainsi un retard de paiement.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>14. Ce qui change par rapport à 2025 : la synthèse</h2>
+  <p class="lede">En sortant de ce chapitre, vous saurez dire en une phrase ce qui a réellement changé pour vous en 2026.</p>
+
+  <table>
+    <tr><th>Sujet</th><th>2025</th><th>2026</th></tr>
+    <tr><td>Seuil vente / hébergement</td><td>188 700 €</td><td>203 100 €</td></tr>
+    <tr><td>Seuil services BIC / BNC</td><td>77 700 €</td><td>83 600 €</td></tr>
+    <tr><td>Cotisation BNC (régime général)</td><td>24,6 %</td><td>25,6 %</td></tr>
+    <tr><td>Exonération ACRE</td><td>50 %</td><td>25 % (à partir du 1er juillet)</td></tr>
+    <tr><td>Seuils de franchise en base de TVA</td><td>Inchangés</td><td>Inchangés — réforme du seuil unique abandonnée</td></tr>
+    <tr><td>Mentions obligatoires sur facture</td><td>Régime antérieur</td><td>4 nouvelles mentions à partir du 1er septembre</td></tr>
+  </table>
+
+  <p>Concrètement, selon votre catégorie : les vendeurs et prestataires de services gagnent de la marge sur leurs seuils sans rien changer à leur pratique ; les professions libérales BNC hors CIPAV voient leurs cotisations augmenter légèrement ; et tous les créateurs d'activité doivent tenir compte du nouveau calendrier de l'ACRE si leur lancement est prévu autour du 1er juillet 2026.</p>
+</section>
+
+<section class="chapter">
+  <h2>15. Les erreurs les plus coûteuses à éviter</h2>
+  <p class="lede">En sortant de ce chapitre, vous connaîtrez les erreurs qui coûtent le plus cher aux auto-entrepreneurs, avec de quoi les éviter concrètement.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 1. Oublier la déclaration « à zéro »</span>
+    <p>Même sans chiffre d'affaires sur la période, la déclaration Urssaf reste obligatoire. Son absence expose à une pénalité forfaitaire, cumulable à chaque échéance manquée.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 2. Croire que le versement libératoire dispense de déclarer ses revenus</span>
+    <p>La 2042-C-PRO doit être remplie chaque année, versement libératoire ou non — son omission peut déclencher une relance, voire une taxation d'office sur une base estimée par l'administration.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 3. Rater l'échéance du 30 septembre pour le versement libératoire</span>
+    <p>Une demande transmise le 1er octobre reporte l'application de l'option d'une année entière. Si le calcul vous est favorable, ce retard peut coûter plusieurs centaines, voire plusieurs milliers d'euros selon votre catégorie et votre TMI (voir les simulations du chapitre 7).</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 4. Ne pas surveiller le dépassement du seuil de TVA en temps réel</span>
+    <p>Le dépassement du seuil majoré fait perdre la franchise dès le mois concerné. Continuer à facturer sans TVA après ce point oblige à la reverser rétroactivement, sans pouvoir la refacturer aux clients déjà facturés.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 5. Ne pas anticiper la sortie du régime micro après deux ans de dépassement</span>
+    <p>Le passage à un régime réel implique une comptabilité en partie double et de nouvelles obligations fiscales. S'y préparer six mois à l'avance évite un rattrapage précipité et coûteux en accompagnement comptable d'urgence.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 6. Oublier la déclaration initiale de CFE (1447-C-SD)</span>
+    <p>Sans cette déclaration transmise avant le 31 décembre de l'année de création, l'exonération de première année n'est pas garantie, et la CFE peut être appelée dès l'année suivante.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 7. Confondre le seuil de chiffre d'affaires de la micro-entreprise et le seuil de franchise en base de TVA</span>
+    <p>Ce sont deux plafonds totalement différents, avec des montants différents selon la catégorie (voir le tableau du chapitre 3). Rester sous l'un ne garantit pas de rester sous l'autre.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 8. Négliger sa couverture en cas d'arrêt de travail</span>
+    <p>Si votre chiffre d'affaires est sous les seuils d'ouverture des indemnités journalières (chapitre 6), un arrêt de travail prolongé peut se traduire par une perte de revenu totale, sans aucune indemnisation de l'Assurance Maladie. Une prévoyance complémentaire privée mérite d'être étudiée dès le lancement de l'activité, pas après un incident.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 9. Émettre des factures non conformes</span>
+    <p>Une mention manquante ou inexacte expose à une amende de 15 € par mention, plafonnée à 25 % du montant de la facture — et jusqu'à 75 000 € en cas de manquement systématique (chapitre 9).</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>16. Check-list récapitulative : votre plan d'action 2026</h2>
+  <p class="lede">Une synthèse actionnable, à cocher au fil de l'année.</p>
+
+  <h3>À faire dès maintenant</h3>
+  <ul class="checklist">
+    <li>Vérifier dans quelle catégorie se situe mon activité, et noter mon seuil de CA, mon taux de cotisation et mon taux de versement libératoire précis (chapitre 3).</li>
+    <li>Calculer si le versement libératoire m'est réellement favorable, en fonction du TMI de mon foyer (chapitre 7).</li>
+    <li>Vérifier mon chiffre d'affaires cumulé par rapport aux deux seuils de TVA — base et majoré (chapitre 8).</li>
+    <li>Vérifier que mon modèle de facture contient toutes les mentions obligatoires, y compris celles applicables à partir de septembre 2026 (chapitre 9).</li>
+    <li>Mettre en place un virement automatique d'épargne de précaution (25 à 30 % de chaque encaissement) vers un compte séparé (chapitre 10).</li>
+  </ul>
+
+  <h3>Avant le 30 septembre 2026</h3>
+  <ul class="checklist">
+    <li>Revoir mon option de versement libératoire pour l'année suivante, à la lumière de mon RFR 2024/2025 (chapitre 7).</li>
+  </ul>
+
+  <h3>Avant le 15 décembre 2026</h3>
+  <ul class="checklist">
+    <li>Régler la CFE si je ne suis plus en première année d'exonération (chapitre 10).</li>
+  </ul>
+
+  <h3>Chaque mois ou trimestre</h3>
+  <ul class="checklist">
+    <li>Déclarer mon chiffre d'affaires à l'Urssaf, même à zéro (chapitre 10).</li>
+  </ul>
+
+  <h3>Une fois par an, lors de ma déclaration de revenus</h3>
+  <ul class="checklist">
+    <li>Reporter mon chiffre d'affaires sur le formulaire 2042-C-PRO, versement libératoire ou non (chapitre 10).</li>
+    <li>Vérifier mon relevé de carrière retraite si mon activité a été irrégulière (chapitre 6).</li>
+  </ul>
+</section>
+
+<section class="chapter">
+  <h2>17. Lexique</h2>
+  <p class="lede">Tous les termes techniques utilisés dans ce guide, expliqués simplement.</p>
+
+  <dl class="lexique">
+    <dt>Abattement forfaitaire</dt>
+    <dd>Pourcentage automatiquement déduit du chiffre d'affaires avant calcul de l'impôt sur le revenu, censé représenter les charges professionnelles, sans avoir à les justifier une à une.</dd>
+
+    <dt>Attestation de vigilance</dt>
+    <dd>Document gratuit téléchargeable depuis son espace Urssaf, prouvant que l'on est à jour de ses déclarations et cotisations. Souvent exigé par les donneurs d'ordre professionnels avant le règlement d'une facture.</dd>
+
+    <dt>ATI (Allocation des Travailleurs Indépendants)</dt>
+    <dd>Dispositif d'aide financière temporaire pour les indépendants en cessation d'activité, sous conditions restrictives — à ne pas confondre avec l'assurance chômage des salariés.</dd>
+
+    <dt>BIC (Bénéfices Industriels et Commerciaux)</dt>
+    <dd>Catégorie fiscale regroupant les activités de vente de marchandises et la plupart des prestations de services commerciales ou artisanales.</dd>
+
+    <dt>BNC (Bénéfices Non Commerciaux)</dt>
+    <dd>Catégorie fiscale regroupant les professions libérales (conseil, professions réglementées, activités intellectuelles).</dd>
+
+    <dt>CFE (Cotisation Foncière des Entreprises)</dt>
+    <dd>Impôt local dû chaque année par toute entreprise, y compris les micro-entreprises, sauf exonération de première année.</dd>
+
+    <dt>CIPAV</dt>
+    <dd>Caisse de retraite spécifique à certaines professions libérales réglementées, avec ses propres taux de cotisation.</dd>
+
+    <dt>Conjoint collaborateur</dt>
+    <dd>Statut permettant à un conjoint participant régulièrement à l'activité, sans rémunération ni association, d'acquérir des droits sociaux propres.</dd>
+
+    <dt>Franchise en base de TVA</dt>
+    <dd>Régime qui dispense de facturer et de déclarer la TVA tant que le chiffre d'affaires reste sous certains seuils.</dd>
+
+    <dt>Guichet unique (INPI)</dt>
+    <dd>Plateforme en ligne qui centralise depuis 2023 toutes les formalités d'entreprise : création, modification d'activité et radiation.</dd>
+
+    <dt>Indemnités journalières (IJ)</dt>
+    <dd>Compensation financière versée par l'Assurance Maladie en cas d'arrêt de travail, sous conditions de chiffre d'affaires minimum et d'ancienneté.</dd>
+
+    <dt>Micro-entreprise</dt>
+    <dd>Régime juridique et social simplifié destiné aux entrepreneurs individuels dont l'activité reste sous certains seuils de chiffre d'affaires.</dd>
+
+    <dt>Prélèvement à la source</dt>
+    <dd>Mécanisme de collecte de l'impôt sur le revenu au moment où le revenu est perçu ; pour les auto-entrepreneurs, le versement libératoire en tient lieu lorsqu'il est choisi.</dd>
+
+    <dt>Radiation</dt>
+    <dd>Démarche officielle de cessation d'activité auprès du guichet unique de l'INPI. Tant qu'elle n'est pas faite, les obligations déclaratives continuent formellement de courir.</dd>
+
+    <dt>Régime micro-fiscal</dt>
+    <dd>Option fiscale associée à la micro-entreprise, avec abattement forfaitaire et, éventuellement, versement libératoire.</dd>
+
+    <dt>Revenu fiscal de référence (RFR)</dt>
+    <dd>Montant calculé chaque année par l'administration fiscale à partir des revenus du foyer, utilisé pour déterminer l'éligibilité à certains dispositifs comme le versement libératoire.</dd>
+
+    <dt>SIE (Service des Impôts des Entreprises)</dt>
+    <dd>Interlocuteur fiscal pour les démarches liées à la TVA une fois la franchise en base dépassée.</dd>
+
+    <dt>TMI (Taux Marginal d'Imposition)</dt>
+    <dd>Taux d'imposition applicable à la dernière tranche de revenu de votre foyer fiscal — c'est ce taux, et non un taux moyen, qui détermine l'intérêt du versement libératoire.</dd>
+
+    <dt>Urssaf</dt>
+    <dd>Organisme qui collecte les cotisations sociales des auto-entrepreneurs et centralise leurs déclarations de chiffre d'affaires.</dd>
+
+    <dt>Versement libératoire</dt>
+    <dd>Option permettant de payer l'impôt sur le revenu sous forme d'un pourcentage fixe du chiffre d'affaires, en même temps que les cotisations sociales.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>18. Questions fréquentes</h2>
+  <p class="lede">Les questions réellement les plus posées par les auto-entrepreneurs sur les moteurs de recherche et forums spécialisés, avec des réponses directes.</p>
+
+  <div class="faq-item">
+    <p class="faq-q">Le guide remplace-t-il un comptable ?</p>
+    <p class="faq-a">Non. Il vous donne une vision claire et à jour pour piloter votre activité et poser les bonnes questions, mais ne remplace pas un accompagnement personnalisé pour les situations complexes (activité mixte, changement de régime, contrôle fiscal, etc.).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Il couvre quelles activités ?</p>
+    <p class="faq-a">Les trois catégories de micro-entreprise : vente de marchandises, prestations de services (BIC), et professions libérales (BNC).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Combien de temps et combien coûte la création d'une micro-entreprise ?</p>
+    <p class="faq-a">La démarche est gratuite et se fait entièrement en ligne sur le guichet unique de l'INPI. Comptez 1 à 2 semaines pour un dossier complet et une activité non réglementée, jusqu'à 4 à 6 semaines en cas de pièce manquante ou d'activité soumise à autorisation.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Dois-je payer des impôts dès le premier euro facturé ?</p>
+    <p class="faq-a">Oui, dans le sens où votre chiffre d'affaires doit être déclaré dès le premier encaissement et entre dans le calcul de votre impôt sur le revenu (avec ou sans versement libératoire). En revanche, si votre foyer n'est pas imposable, l'impôt réellement dû peut être nul en régime classique — ce qui n'est pas le cas avec le versement libératoire (voir chapitre 7).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Que se passe-t-il si je dépasse le seuil une seule année ?</p>
+    <p class="faq-a">Rien d'automatique : vous restez en micro-entreprise. Seul un dépassement pendant deux années civiles consécutives entraîne une sortie du régime au 1er janvier suivant.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je facturer la TVA si je le souhaite, même sous le seuil ?</p>
+    <p class="faq-a">Oui. Vous pouvez renoncer volontairement à la franchise en base de TVA, notamment si votre clientèle est majoritairement composée de professionnels qui récupèrent la TVA sur leurs achats (voir l'astuce du chapitre 8).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Dois-je faire une démarche particulière si je dépasse le seuil de TVA ?</p>
+    <p class="faq-a">Oui : dès le dépassement du seuil majoré, vous devez facturer la TVA sur vos ventes suivantes et vous immatriculer auprès du service des impôts des entreprises pour vos futures déclarations de TVA.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je changer de catégorie en cours de route ?</p>
+    <p class="faq-a">Si la nature réelle de votre activité change (par exemple vous passez de la vente pure à des prestations de services), le taux de cotisation et le seuil applicables changent avec elle. Signalez tout changement d'activité à l'Urssaf pour éviter un décalage entre votre déclaration et votre activité réelle.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Le versement libératoire est-il intéressant si je suis aussi salarié à côté ?</p>
+    <p class="faq-a">C'est justement dans ce cas de cumul qu'il faut être le plus vigilant : votre salaire fait souvent grimper le TMI du foyer au-delà de 11 %, ce qui peut rendre le versement libératoire avantageux sur votre chiffre d'affaires — mais seul un calcul basé sur votre situation réelle (chapitre 7) permet de le confirmer.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Que se passe-t-il si je n'ai aucun chiffre d'affaires pendant plusieurs mois ?</p>
+    <p class="faq-a">Vous ne payez aucune cotisation, mais vous devez tout de même déclarer un chiffre d'affaires à zéro à chaque échéance (chapitre 10). Attention également à l'impact sur vos trimestres de retraite si les mois à zéro sont nombreux dans l'année (chapitre 6).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Comment savoir si mon activité relève du BIC ou du BNC ?</p>
+    <p class="faq-a">En simplifiant : la vente de biens et la plupart des activités artisanales ou commerciales relèvent du BIC ; les activités intellectuelles, de conseil ou les professions libérales relèvent du BNC. En cas de doute, le code APE attribué à la création (modifiable) et le formulaire du guichet unique orientent généralement vers la bonne catégorie — un expert-comptable peut trancher les cas ambigus.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je avoir plusieurs activités en même temps sous un seul statut de micro-entrepreneur ?</p>
+    <p class="faq-a">Oui, c'est le cas de l'activité mixte détaillé au chapitre 4 : le chiffre d'affaires de chaque activité se cumule pour apprécier les seuils, avec un plafond global et un sous-plafond spécifique pour la partie prestations de services.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Que se passe-t-il si je ne facture pas correctement mes clients ?</p>
+    <p class="faq-a">Une facture non conforme (mention manquante ou inexacte) expose à une amende de 15 € par mention, plafonnée à 25 % du montant de la facture, et jusqu'à 75 000 € en cas de manquement systématique (chapitre 9).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ai-je droit au chômage si j'arrête mon activité ?</p>
+    <p class="faq-a">Pas automatiquement. L'allocation des travailleurs indépendants (ATI) existe mais sous conditions restrictives (notamment une cessation liée à une liquidation judiciaire) — ce n'est pas un équivalent de l'assurance chômage des salariés (chapitre 6).</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="disclaimer">
+    <strong>Avertissement.</strong> Ce guide a été rédigé sur la base de la réglementation en vigueur au moment de sa publication (2026). Il a une vocation informative et pratique, et ne saurait se substituer à l'avis d'un professionnel qualifié (expert-comptable, avocat fiscaliste) pour votre situation personnelle. La réglementation applicable aux auto-entrepreneurs évolue régulièrement ; en cas de doute, vérifiez les informations auprès de l'Urssaf ou de l'administration fiscale avant toute décision engageante.
+  </div>
+</section>
+
+</body>
+</html>

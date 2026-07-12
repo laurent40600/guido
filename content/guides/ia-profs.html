@@ -1,0 +1,1265 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>L'IA pour les profs</title>
+<style>
+  @page { size: A4; margin: 29mm 24mm 27mm 24mm; }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 28pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-case { background: #f6f8f4; border-left: 5px solid #4d7c4a; }
+  .box-case .box-title { color: #3f6b3d; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; }
+  .box-template {
+    background: #fff; border: 1.5px dashed #1E2A4A; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-template .box-title { color: #1E2A4A; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+
+  .source { font-size: 10pt; color: #1a1a1a; font-style: italic; }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1E2A4A; font-size: 12.5pt; margin-bottom: 4pt; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+
+  ol.steps { padding-left: 0; list-style: none; counter-reset: step; }
+  ol.steps li { counter-increment: step; position: relative; padding-left: 40pt; margin-bottom: 16pt; }
+  ol.steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0;
+    width: 28pt; height: 28pt; border-radius: 50%;
+    background: #1E2A4A; color: #C98A2E; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps li strong { color: #1E2A4A; }
+
+  .subject-heading {
+    background: #1E2A4A; color: #fff; padding: 8pt 14pt; border-radius: 8pt;
+    font-size: 13pt; font-weight: 800; margin: 26pt 0 12pt;
+  }
+
+  .disclaimer {
+    margin-top: 24pt; padding: 16pt; background: #f8f6f2;
+    border-radius: 10pt; font-size: 11pt; color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>L'IA pour les profs : créer ses cours, corrections et exercices en deux fois moins de temps</h1>
+  <p class="tagline">Récupérer tes soirées et tes week-ends, sans perdre en qualité pédagogique</p>
+  <p class="meta">Séquences pédagogiques, exercices, grilles de correction, premier passage<br/>de correction assisté — avec les limites à connaître (RGPD élèves, notation<br/>finale) et le Pack Prof bonus : 30 prompts par matière + template Canva</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction — le vrai coût du temps de préparation</li>
+    <li>Partie 1 — Préparer ses cours plus vite<span>Séquences pédagogiques, différenciation, outils et template de fiche</span></li>
+    <li>Partie 2 — Créer exercices et évaluations<span>Exercices variés, grilles de correction, QCM, rédaction, cas pratiques</span></li>
+    <li>Partie 3 — Corriger plus vite<span>Premier passage assisté, commentaires personnalisés, ce que l'IA ne doit jamais faire</span></li>
+    <li>Partie 4 — Mettre en place ton système<span>Un plan sur 3 semaines, checklist, erreurs à éviter</span></li>
+    <li id="toc-bonus-item">Partie 5 — Bonus : le Pack Prof<span>30 prompts par matière + le template Canva de fiche de cours</span></li>
+    <li>Lexique</li>
+    <li>Questions fréquentes</li>
+    <li>Avertissement</li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction — le vrai coût du temps de préparation</h2>
+  <p class="lede">En sortant de cette introduction, tu sauras précisément ce que ce guide va changer dans ton quotidien, et ce qu'il ne fera jamais à ta place.</p>
+
+  <h3>Le vrai coût du temps de préparation</h3>
+  <p>Selon la note d'information n°25-62 de la DEPP (ministère de l'Éducation nationale, novembre 2025), les enseignants français travaillent en moyenne <strong>41h30 par semaine</strong> hors vacances scolaires. La moitié de ce temps est consacrée à l'enseignement devant les élèves ; un tiers à la préparation des cours et à la correction des copies.</p>
+
+  <p>Concrètement, cela représente <strong>16 heures par semaine</strong> de préparation et correction dans le second degré, et <strong>12 heures</strong> dans le premier degré — un temps qui se glisse presque toujours en dehors des heures de classe : le soir, le week-end, pendant les vacances.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce guide ne prétend pas supprimer ce temps de préparation — il n'existe pas de raccourci magique pour bien enseigner. Il te montre où l'IA peut légitimement réduire la partie mécanique et répétitive de ce travail (premier jet d'une séquence, génération d'exercices, première passe de correction), pour te laisser plus de temps sur ce qui compte vraiment : l'ajustement pédagogique, le lien avec tes élèves, la notation finale.</p>
+  </div>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>Ce guide couvre trois usages, dans l'ordre où ils s'enchaînent naturellement dans ton année :</p>
+  <ul>
+    <li><strong>Préparer</strong> — générer une séquence pédagogique complète à partir d'un simple objectif, l'adapter à différents niveaux ;</li>
+    <li><strong>Créer des exercices et évaluations</strong> — varier les formats, générer des grilles de correction et des barèmes automatiquement ;</li>
+    <li><strong>Corriger</strong> — obtenir un premier passage de correction assisté, générer des commentaires personnalisés sans les rédiger un par un.</li>
+  </ul>
+
+  <p>Le Pack Prof en bonus (partie 5) te donne 30 prompts prêts à l'emploi classés par matière, et un guide pas à pas pour recréer un template Canva de fiche de cours en 10 minutes.</p>
+
+  <h3>Prérequis : aucune compétence technique nécessaire</h3>
+  <p>Tu n'as pas besoin de savoir programmer, ni de comprendre le fonctionnement d'un modèle de langage. Ce guide utilise deux outils grand public — ChatGPT et Claude — que tu utilises probablement déjà comme n'importe quel enseignant curieux. Tout ce qu'il te faut, c'est un compte gratuit sur l'un des deux, et 10 minutes pour tester le premier prompt du guide.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Ce que l'IA ne fait jamais</span>
+    <p>Aucun outil d'IA ne remplace ton jugement pédagogique, ne décide de la notation finale d'un élève à ta place, et ne doit recevoir de copies contenant des informations identifiantes sur tes élèves. Le chapitre 4.3 y est entièrement consacré — lis-le avant de commencer à utiliser l'IA pour la correction.</p>
+  </div>
+
+  <h3>Pour qui est ce guide, concrètement</h3>
+  <p>Les usages décrits dans ce guide s'appliquent à tous les niveaux d'enseignement, avec des nuances selon ton contexte :</p>
+
+  <table>
+    <tr><th>Niveau</th><th>Ce qui change</th></tr>
+    <tr><td>Premier degré (primaire)</td><td>Une seule classe, tous sujets confondus — les prompts de séquence et de différenciation sont particulièrement utiles pour couvrir plusieurs matières avec un temps de préparation limité par matière.</td></tr>
+    <tr><td>Collège</td><td>Plusieurs classes du même niveau ou de niveaux différents — les prompts de réutilisation et d'adaptation rapide (chapitre 2.2) permettent de dupliquer un contenu déjà préparé pour une autre classe.</td></tr>
+    <tr><td>Lycée</td><td>Programmes plus denses et évaluations plus formalisées — les prompts de grille de correction et de barème (chapitre 3.2) sont particulièrement rentables sur des évaluations longues (dissertations, épreuves type bac).</td></tr>
+  </table>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Préparer ses cours plus vite</h2>
+  <p class="lede">En sortant de cette partie, tu sauras générer une séquence pédagogique complète à partir d'un simple objectif, l'adapter à plusieurs niveaux de classe, et tu auras un template de fiche de préparation prêt à remplir.</p>
+
+  <h3>2.1 Bien formuler une demande à l'IA : les 4 réflexes qui changent tout</h3>
+  <p>Avant d'entrer dans le détail, quatre réflexes simples améliorent la qualité de <strong>toutes</strong> tes demandes, quel que soit l'usage de ce guide :</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Donne le contexte, pas juste la demande</strong><br/>
+      "Génère des exercices" donne un résultat générique. "Génère des exercices pour une classe qui a du mal avec les fractions depuis le début de l'année" donne un résultat adapté à la situation réelle.
+    </li>
+    <li>
+      <strong>Précise toujours le niveau exact</strong><br/>
+      Une même notion se traite très différemment en 6e ou en 3e — indique toujours la classe précise, jamais juste "collège".
+    </li>
+    <li>
+      <strong>Demande une justification, pas juste un résultat</strong><br/>
+      Pour un corrigé ou une grille de notation, demande systématiquement la justification de chaque point attribué — cela te permet de vérifier la cohérence en un coup d'œil.
+    </li>
+    <li>
+      <strong>Indique explicitement ce que l'IA ne doit pas faire</strong><br/>
+      "Ne propose pas de note" ou "n'invente pas de contenu hors programme" évite les débordements que ce guide signale à plusieurs reprises.
+    </li>
+  </ol>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces quatre réflexes sont déjà intégrés dans tous les prompts de ce guide — garde-les en tête pour tes propres variations, ou pour tout autre usage que tu inventeras au fil de l'année.</p>
+  </div>
+
+  <h3>2.2 Générer une séquence pédagogique complète à partir d'un objectif</h3>
+  <p>La méthode consiste à donner à l'IA l'objectif pédagogique, le niveau de classe, et la durée disponible — puis à laisser l'outil structurer une proposition de séquence complète que tu ajustes ensuite avec ton expérience du terrain.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Définis ton objectif précisément</strong><br/>
+      Pas "parler de la Révolution française", mais "comprendre les causes économiques et sociales qui ont mené aux États généraux de 1789".
+    </li>
+    <li>
+      <strong>Donne le niveau et la durée</strong><br/>
+      Classe, nombre de séances, durée de chaque séance.
+    </li>
+    <li>
+      <strong>Utilise le prompt ci-dessous</strong><br/>
+      Il structure la demande pour obtenir une séquence exploitable dès le premier essai.
+    </li>
+    <li>
+      <strong>Relis et adapte avec ton expérience</strong><br/>
+      L'IA propose une structure solide, mais c'est toi qui connais tes élèves, leur rythme, et les points qui vont coincer.
+    </li>
+  </ol>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — séquence pédagogique complète</span>
+    <span class="prompt-text">Génère une séquence pédagogique complète pour : [objectif précis]. Niveau : [classe]. Durée : [nombre] séances de [durée] chacune. Pour chaque séance, indique : l'objectif spécifique, le déroulé (accroche, activité principale, synthèse), une estimation du temps par phase, et le matériel nécessaire. Termine par une proposition d'évaluation finale alignée sur l'objectif de départ.</span>
+  </div>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Sarah, professeure d'histoire-géographie au collège</span>
+    <p>Sarah doit construire une séquence de 4 séances sur les causes de la Révolution française pour une classe de 4e. Avant, elle passait environ 2 heures à structurer le déroulé complet. Avec le prompt ci-dessus, elle obtient en quelques minutes une proposition de 4 séances avec accroche, activité principale et synthèse pour chacune. Elle passe ensuite 30 minutes à ajuster : elle remplace une activité qu'elle juge trop complexe pour sa classe, et ajoute un document qu'elle sait pertinent pour ce groupe précis. Temps total : 45 minutes, contre 2 heures auparavant.</p>
+  </div>
+
+  <h3>2.3 Adapter un cours à différents niveaux (différenciation)</h3>
+  <p>Une même séquence doit souvent être ajustée pour des élèves en difficulté, des élèves à l'aise, ou une classe à profils très hétérogènes. Plutôt que de récrire trois versions à la main, tu peux demander à l'IA de décliner un même contenu en plusieurs niveaux de difficulté.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — différenciation pédagogique</span>
+    <span class="prompt-text">Voici une activité que j'utilise en classe : [colle ou décris l'activité]. Décline-la en 3 versions : une version simplifiée pour des élèves en difficulté (moins d'éléments à traiter simultanément, consignes plus explicites), une version standard, et une version enrichie pour des élèves à l'aise (complexité supplémentaire, question ouverte). Garde le même objectif d'apprentissage pour les trois versions.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Demande toujours à l'IA de préciser <strong>ce qui change concrètement</strong> entre les versions (nombre de consignes, présence d'un exemple guidé, niveau de vocabulaire) plutôt qu'une différenciation vague. Une différenciation utile se voit dans le détail, pas dans l'intention.</p>
+  </div>
+
+  <h3>2.4 Outils concrets + template de fiche de préparation</h3>
+  <p>Pour cet usage, ChatGPT et Claude rendent un service très comparable — les deux génèrent des séquences structurées de qualité similaire. Le choix se joue surtout sur le budget et tes préférences de style d'écriture.</p>
+
+  <table>
+    <tr><th>Outil</th><th>Offre gratuite</th><th>Offre payante</th></tr>
+    <tr><td>ChatGPT (OpenAI)</td><td>Oui, limitée à environ 10 messages toutes les 5 heures</td><td>8 $/mois (Go) ou 20 $/mois (Plus)</td></tr>
+    <tr><td>Claude (Anthropic)</td><td>Oui, limitée sur une fenêtre glissante de 5 heures</td><td>20 $/mois (Pro)</td></tr>
+  </table>
+  <p class="source">Prix constatés en 2026, susceptibles d'évoluer — vérifie les tarifs à jour sur le site de chaque éditeur.</p>
+
+  <p>Une fois ta séquence générée et ajustée, voici un template de fiche de préparation que tu peux remplir directement, dans ton traitement de texte habituel ou dans le template Canva du chapitre 5.2.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Template — Fiche de préparation de séance</span>
+    <strong>Matière :</strong> [matière] — <strong>Niveau :</strong> [classe] — <strong>Durée :</strong> [durée]<br/>
+    <strong>Objectif de la séance :</strong> [objectif précis, formulé en une phrase]<br/><br/>
+    <strong>Déroulé</strong><br/>
+    [Temps] — Accroche : [description]<br/>
+    [Temps] — Activité principale : [description, modalité (individuel/groupe)]<br/>
+    [Temps] — Synthèse / trace écrite : [description]<br/><br/>
+    <strong>Matériel nécessaire :</strong> [liste]<br/>
+    <strong>Différenciation prévue :</strong> [si applicable]<br/>
+    <strong>Évaluation / vérification des acquis :</strong> [modalité]
+  </div>
+
+  <h3>2.5 Exemple complet avant/après</h3>
+  <p>Pour rendre tout ça concret, voici un exemple réel de ce qu'un enseignant tape, et ce que l'IA en fait — pas un extrait retouché, mais le type d'échange que tu auras toi-même.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    séquence sur les fractions pour une 6e, 3 séances de 55 min, ils ont déjà vu les nombres décimaux
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait, séance 1)</span>
+    <strong>Séance 1 — Découvrir la notion de fraction</strong><br/>
+    Objectif : comprendre qu'une fraction représente une partie d'un tout partagé en parts égales.<br/><br/>
+    <strong>Accroche (10 min)</strong> — Partage concret d'une pizza en carton découpée en parts égales devant la classe ; questionnement oral sur "combien de parts sur combien au total ?"<br/>
+    <strong>Activité principale (30 min)</strong> — Manipulation avec des bandes de papier pliées en 2, 4, 8 parts égales ; les élèves écrivent la fraction correspondante à chaque pliage, en binôme.<br/>
+    <strong>Synthèse (15 min)</strong> — Trace écrite collective : définition de numérateur et dénominateur, un exemple illustré.<br/><br/>
+    <strong>Matériel :</strong> bandes de papier, ciseaux, un support visuel (pizza en carton ou équivalent)
+  </div>
+
+  <p>Remarque ce que l'IA a fait à partir d'une phrase brute : elle a tenu compte du prérequis mentionné (nombres décimaux déjà vus), proposé une accroche concrète adaptée à l'âge, et minuté chaque phase pour tenir dans les 55 minutes.</p>
+
+  <h3>2.6 Gérer les imprévus et ajuster en cours de séquence</h3>
+  <p>Une séquence ne se déroule jamais exactement comme prévu : une notion prend plus de temps que prévu, une classe est plus lente qu'anticipé sur une activité, un jour férié décale le calendrier. L'IA aide aussi à réajuster rapidement plutôt qu'à tout recalculer à la main.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — réajuster une séquence en cours de route</span>
+    <span class="prompt-text">Voici ma séquence prévue : [colle ou résume les séances restantes]. La séance 2 a pris plus de temps que prévu et il me reste seulement [nombre] séances de [durée] au lieu de [nombre initial]. Propose-moi une version condensée qui conserve l'objectif final, en indiquant ce qui peut être raccourci ou donné en travail autonome plutôt qu'en classe.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Garde toujours en tête l'objectif final de la séquence en le redonnant explicitement à l'IA lors d'un réajustement — cela évite qu'elle propose une version condensée qui perd de vue ce qui compte vraiment pour la suite du programme.</p>
+  </div>
+
+  <h3>2.7 Ce qui change selon ta matière</h3>
+  <p>Tous les prompts de ce guide fonctionnent quelle que soit ta discipline, mais l'usage réel de l'IA en préparation de cours prend une couleur différente selon la nature de ta matière. Voici les nuances à connaître avant de te lancer.</p>
+
+  <table>
+    <tr><th>Famille de matières</th><th>Ce qui est particulièrement rentable</th><th>Point de vigilance propre à la matière</th></tr>
+    <tr><td>Mathématiques / Sciences</td><td>Générer des séries d'exercices progressifs et des schémas-bilans de trace écrite, où la structure se répète chapitre après chapitre</td><td>Vérifier systématiquement l'exactitude des calculs et des unités — l'IA peut se tromper sur un résultat numérique précis</td></tr>
+    <tr><td>Français / Lettres</td><td>Varier les supports de compréhension de texte et générer des fiches de vocabulaire thématiques rapidement</td><td>Ne jamais laisser l'IA choisir les textes étudiés à ta place sur des œuvres au programme — elle peut se tromper sur une édition ou une pagination précise</td></tr>
+    <tr><td>Langues vivantes</td><td>Créer des dialogues et mises en situation variées pour la production orale, décliner un même point grammatical en plusieurs registres</td><td>Vérifier le naturel des expressions générées — un modèle d'IA peut proposer une formulation grammaticalement correcte mais peu idiomatique (voir chapitre 4.7)</td></tr>
+    <tr><td>Histoire-Géographie / SES</td><td>Construire rapidement des études de documents et des mises en situation de débat argumenté</td><td>Vérifier les dates, chiffres et références précises — demande toujours une double vérification factuelle sur un point historique ou statistique précis</td></tr>
+    <tr><td>Arts / EPS / Technologie</td><td>Générer des fiches d'observation, des grilles d'évaluation de compétences pratiques, des supports théoriques d'accompagnement</td><td>L'IA décrit mal ce qui relève du geste physique ou du rendu visuel réel — reste l'observation directe pour la partie pratique elle-même</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si ta matière n'apparaît pas exactement dans ce tableau (technologie, SVT, documentation...), rattache-la à la famille la plus proche : une matière avec une forte composante expérimentale se rapprochera des sciences, une matière avec une forte composante rédactionnelle se rapprochera du français.</p>
+  </div>
+
+  <h3>2.8 Construire une banque de séquences réutilisable d'une année sur l'autre</h3>
+  <p>L'un des bénéfices les plus sous-estimés de ce système n'apparaît pas la première année, mais la deuxième : une séquence générée et ajustée une fois peut être conservée, puis réutilisée et affinée à chaque nouvelle rentrée, plutôt que redémarrée de zéro.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Garde une trace de chaque séquence validée</strong><br/>
+      Enregistre la version finale (après tes ajustements) dans un dossier classé par chapitre, pas seulement la version brute générée par l'IA.
+    </li>
+    <li>
+      <strong>Note ce qui a bien fonctionné et ce qui a coincé</strong><br/>
+      Une ligne suffit : "activité 2 trop longue pour 55 min" ou "les élèves ont adoré l'accroche". Cette note vaudra de l'or l'année suivante.
+    </li>
+    <li>
+      <strong>L'année suivante, reprends la version affinée, pas un nouveau prompt</strong><br/>
+      Demande à l'IA d'ajuster la version existante à partir de tes notes, plutôt que de régénérer une séquence entièrement nouvelle — le résultat est plus proche de ce qui a réellement fonctionné en classe.
+    </li>
+  </ol>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La vraie économie de temps de ce guide ne se voit pas seulement la première année d'usage : elle s'accumule d'année en année, à mesure que ta banque de séquences déjà testées et affinées grandit.</p>
+  </div>
+
+  <h3>2.9 Cas particulier — classes avec dispositif d'inclusion (ULIS, UPE2A, co-enseignement)</h3>
+  <p>Les classes accueillant des élèves suivis en dispositif ULIS, UPE2A (élèves allophones) ou bénéficiant d'un co-enseignement demandent une différenciation encore plus fine que celle du chapitre 2.3 — souvent avec des adaptations qui dépassent la simple simplification d'un exercice.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — adapter un support pour un dispositif d'inclusion</span>
+    <span class="prompt-text">Voici une activité que j'utilise en classe : [colle ou décris l'activité]. Adapte-la pour un élève [en dispositif ULIS avec un trouble des apprentissages / allophone de niveau A1-A2 en français]. Réduis la charge de lecture, propose un support visuel ou un exemple guidé supplémentaire, et garde le même objectif d'apprentissage que pour le reste de la classe.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Partage toujours l'adaptation générée avec l'enseignant référent ou l'AESH concerné avant de l'utiliser — l'IA propose une base de travail générique, pas une adaptation validée pour le PPS (projet personnalisé de scolarisation) ou le PAI (projet d'accueil individualisé) précis de l'élève.</p>
+  </div>
+
+  <h3>2.10 Créer des supports pour la classe inversée</h3>
+  <p>En classe inversée, les élèves découvrent une notion chez eux (vidéo, fiche de lecture) avant de la travailler en classe par la pratique. L'IA aide à préparer rapidement le support de découverte, la partie la plus chronophage de cette approche.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — fiche de découverte pour la classe inversée</span>
+    <span class="prompt-text">Crée une fiche de découverte à lire à la maison sur [notion], niveau [classe], destinée à préparer une séance de classe inversée. Formulation simple et accessible en autonomie, avec 3 exemples concrets, et termine par 3 questions de vérification de compréhension que l'élève s'auto-corrige avant de venir en classe.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Garde la fiche de découverte volontairement courte (une demi-page maximum) — l'objectif est une première rencontre avec la notion, pas une maîtrise complète avant la séance en classe.</p>
+  </div>
+
+  <h3>2.11 Cas particulier — enseignement en lycée professionnel (bac pro, CAP)</h3>
+  <p>L'enseignement en voie professionnelle a une contrainte propre : articuler en permanence le programme théorique avec un référentiel de compétences professionnelles précis, souvent en lien avec les périodes de formation en milieu professionnel (PFMP).</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — séquence articulée avec un référentiel professionnel</span>
+    <span class="prompt-text">Génère une séquence pédagogique pour [matière], niveau [CAP / Bac pro, spécialité], sur l'objectif : [objectif]. Relie explicitement chaque activité à une compétence du référentiel du diplôme (indique la compétence visée à côté de chaque activité), et propose au moins un exemple de mise en situation directement inspiré d'un contexte professionnel réel du secteur.</span>
+  </div>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — professeur de gestion-administration en bac pro</span>
+    <p>Un enseignant prépare une séquence sur la gestion des relances clients pour une classe de bac pro AGOrA. En précisant le référentiel dans le prompt ci-dessus, il obtient une séquence dont chaque activité est reliée à une compétence évaluée en épreuve, avec une mise en situation calquée sur un cas d'entreprise réaliste — directement réutilisable en amont d'une PFMP dans ce secteur.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Créer exercices et évaluations</h2>
+  <p class="lede">En sortant de cette partie, tu sauras générer des exercices variés à partir d'un chapitre, créer des grilles de correction automatiquement, et varier les formats d'évaluation sans tout refaire à chaque fois.</p>
+
+  <h3>3.1 Générer des exercices variés à partir d'un chapitre</h3>
+  <p>La clé est de donner à l'IA le contenu exact du chapitre (ou un résumé fidèle), plutôt qu'un simple titre — plus le contexte est précis, plus les exercices générés sont pertinents et alignés sur ce que tu as réellement enseigné.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — exercices à partir d'un chapitre</span>
+    <span class="prompt-text">Voici le contenu du chapitre que je viens d'enseigner : [colle le résumé ou les notions clés]. Génère 8 exercices de difficulté progressive, du plus simple (application directe) au plus complexe (transfert dans une situation nouvelle). Pour chaque exercice, indique la notion précise qu'il évalue.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Demande systématiquement une <strong>progression de difficulté explicite</strong> plutôt qu'une simple liste d'exercices — cela te permet de construire directement une fiche d'exercices différenciée sans travail supplémentaire.</p>
+  </div>
+
+  <h3>3.2 Créer des grilles de correction et des barèmes automatiquement</h3>
+  <p>Une grille de correction claire, écrite avant la correction elle-même, est ce qui rend une notation à la fois plus rapide et plus juste. L'IA peut générer une première version de grille à partir de ton énoncé, que tu ajustes ensuite selon tes exigences.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — grille de correction et barème</span>
+    <span class="prompt-text">Voici l'énoncé d'une évaluation : [colle l'énoncé]. Génère une grille de correction détaillée avec un barème sur [nombre] points, en décomposant chaque question en critères précis (ex. "identification correcte de la notion : 2 points, justification argumentée : 3 points"). Ajoute une ligne pour la présentation et la rédaction si pertinent pour cette matière.</span>
+  </div>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Karim, professeur de mathématiques au lycée</span>
+    <p>Karim prépare une évaluation sur les fonctions dérivées pour une classe de 1ère. Il rédige son énoncé comme d'habitude, puis demande à Claude de générer la grille de correction avec le prompt ci-dessus. En quelques minutes, il obtient un barème détaillé question par question, qu'il affine en ajustant deux points de pondération qu'il juge mal calibrés. Il gagne environ 20 minutes par évaluation sur la seule construction du barème — un temps qui se répète à chaque contrôle de l'année.</p>
+  </div>
+
+  <h3>3.3 Varier les formats (QCM, rédaction, cas pratiques)</h3>
+  <p>Varier les formats d'évaluation sur l'année évite la lassitude et permet d'évaluer des compétences différentes. L'IA facilite particulièrement la création de formats qui demandent normalement du temps de mise en forme, comme les QCM.</p>
+
+  <table>
+    <tr><th>Format</th><th>Ce que l'IA fait bien</th><th>Ce que tu dois vérifier</th></tr>
+    <tr><td>QCM</td><td>Génère rapidement des distracteurs plausibles (mauvaises réponses crédibles)</td><td>Vérifier qu'aucune question n'a de réponse ambiguë ou à double interprétation</td></tr>
+    <tr><td>Rédaction / dissertation</td><td>Propose un sujet et des attentes de plan</td><td>Adapter le niveau d'exigence à ta classe réelle</td></tr>
+    <tr><td>Cas pratique</td><td>Construit une mise en situation réaliste et cohérente</td><td>Vérifier la pertinence du contexte par rapport au programme exact</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — QCM avec corrections</span>
+    <span class="prompt-text">Génère un QCM de [nombre] questions sur : [notion/chapitre]. Pour chaque question, propose 4 réponses dont une seule correcte, avec des distracteurs plausibles (pas de réponse absurde qui se repère trop facilement). Indique la bonne réponse et une courte justification pour chaque question, séparément du QCM lui-même.</span>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Relis systématiquement chaque question générée avant de la donner à tes élèves. L'IA peut occasionnellement produire une question dont la formulation est ambiguë ou dont la "bonne" réponse est discutable selon l'angle du programme — une relecture de 5 minutes évite ce type de désagrément le jour de l'évaluation.</p>
+  </div>
+
+  <h3>3.4 Créer des supports pour le travail de groupe</h3>
+  <p>Les activités en groupe demandent souvent plusieurs supports différents (un par groupe ou par rôle), ce qui multiplie le temps de préparation. L'IA génère facilement ces variantes en une seule fois.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — supports différenciés pour travail de groupe</span>
+    <span class="prompt-text">Je veux organiser un travail de groupe sur [notion/thème], niveau [classe], avec [nombre] groupes ayant chacun un rôle ou un angle différent. Génère un support d'une demi-page par groupe : la mission du groupe, les documents ou informations dont il dispose, et la production attendue à la fin (pour une mise en commun collective).</span>
+  </div>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Nadia, professeure de SVT au collège</span>
+    <p>Nadia organise un travail de groupe en 4 équipes sur les écosystèmes, chaque groupe étudiant un milieu différent (forêt, océan, désert, montagne). Avec le prompt ci-dessus, elle génère les 4 fiches de mission en une seule conversation, en précisant les 4 milieux dans sa demande initiale. Elle gagne environ 45 minutes par rapport à la rédaction manuelle de 4 supports distincts, et peut consacrer ce temps à préparer la synthèse finale de mise en commun.</p>
+  </div>
+
+  <h3>3.5 Exemple complet avant/après</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    grille correction dissertation histoire terminale sur la guerre froide, sujet "la guerre froide un conflit indirect", note sur 20
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait)</span>
+    <strong>Grille de correction — 20 points</strong><br/>
+    Introduction et problématisation (3 pts) — Contextualisation, annonce du plan, problématique pertinente<br/>
+    Argumentation partie 1 : les formes du conflit indirect (5 pts) — Exemples précis (guerre de Corée, crises...), analyse développée<br/>
+    Argumentation partie 2 : les limites de l'affrontement direct (5 pts) — Dissuasion nucléaire, diplomatie, exemples<br/>
+    Argumentation partie 3 : conséquences géopolitiques (4 pts) — Bipolarisation du monde, non-alignement<br/>
+    Conclusion (2 pts) — Bilan et ouverture<br/>
+    Rédaction et méthode (1 pt) — Orthographe, structure des paragraphes
+  </div>
+
+  <p>À partir d'une phrase courte, l'IA a proposé un découpage en 6 critères pondérés, cohérent avec la structure attendue d'une dissertation d'histoire — un gain de temps réel sur la partie la plus fastidieuse de la préparation d'une évaluation notée.</p>
+
+  <h3>3.6 Étude de cas complète — construire un bac blanc de A à Z</h3>
+  <p>Les chapitres précédents montrent chaque étape séparément. Voici comment elles s'enchaînent en pratique, sur un cas réel de bout en bout.</p>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Thomas, professeur de SES en terminale</span>
+    <p><strong>Le besoin</strong> — Thomas doit préparer un bac blanc de SES complet : un sujet de dissertation avec dossier documentaire, sa grille de correction détaillée, et une séance de préparation avec un QCM de révision des notions clés.</p>
+    <p><strong>Étape 1 — Le sujet</strong> — Il donne à l'IA le thème du chapitre ("la mobilité sociale") et le format attendu à l'examen (dissertation avec dossier documentaire de 2-3 documents), en précisant le niveau. Il obtient une proposition de sujet et une liste de documents-types à associer (qu'il remplace ensuite par de vrais documents choisis dans son manuel).</p>
+    <p><strong>Étape 2 — Le barème</strong> — Avec le prompt du chapitre 3.2, il génère une grille de correction sur 20 points décomposée en maîtrise des notions, exploitation du dossier documentaire, structure de l'argumentation et qualité rédactionnelle.</p>
+    <p><strong>Étape 3 — La séance de révision</strong> — Il génère un QCM de 10 questions (chapitre 3.3) sur les notions clés du chapitre, qu'il fait passer en autoévaluation la semaine précédant le bac blanc.</p>
+    <p><strong>Étape 4 — La vérification</strong> — Avant de valider quoi que ce soit, il relit intégralement le sujet généré, vérifie que les documents proposés correspondent à des sources réelles et disponibles, et ajuste deux critères du barème qu'il juge mal pondérés par rapport à ses exigences habituelles.</p>
+    <p><strong>Bilan</strong> — L'ensemble de cette préparation (sujet, dossier, barème, QCM de révision), qui lui prenait auparavant environ 3 heures un week-end, lui a pris environ 1h15 avec l'IA, vérification incluse.</p>
+  </div>
+
+  <h3>3.7 Créer une progression d'évaluations sur toute l'année</h3>
+  <p>Plutôt que de générer chaque évaluation isolément à l'approche de la date, tu peux demander à l'IA de t'aider à construire la logique d'ensemble sur l'année, pour t'assurer que les formats et le niveau d'exigence progressent de façon cohérente.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — planifier une progression d'évaluations</span>
+    <span class="prompt-text">Voici les [nombre] chapitres que je vais enseigner cette période à des [classe] : [liste les chapitres dans l'ordre]. Propose-moi, pour chaque chapitre, un format d'évaluation adapté (QCM, rédaction, cas pratique, oral...) en variant les formats sur la période, avec une montée en exigence progressive du premier au dernier chapitre.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Utilise ce prompt en tout début de trimestre ou de période, une seule fois, puis reviens sur les prompts détaillés de fabrication (chapitres 3.1 à 3.3) au fur et à mesure que chaque évaluation approche — la vue d'ensemble évite de te retrouver avec cinq QCM d'affilée par manque d'anticipation.</p>
+  </div>
+
+  <h3>3.8 Créer un sujet de rattrapage équivalent pour une copie absente</h3>
+  <p>Un élève absent le jour d'une évaluation doit passer un sujet différent mais de difficulté équivalente, pour éviter qu'il ait eu connaissance du premier sujet entre-temps. Recréer un sujet équivalent à la main prend du temps ; l'IA le fait en quelques minutes à partir du sujet original.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — sujet de rattrapage équivalent</span>
+    <span class="prompt-text">Voici le sujet d'évaluation original : [colle le sujet]. Crée un sujet de rattrapage sur les mêmes notions, avec un niveau de difficulté strictement équivalent et le même barème, mais des questions et un contexte différents (autres exemples, autres valeurs numériques si pertinent) pour qu'un élève n'ait pas d'avantage à avoir eu connaissance du premier sujet.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Vérifie toujours que le niveau de difficulté est réellement équivalent, pas seulement les notions abordées — un sujet de rattrapage perçu comme "plus facile" ou "plus dur" par le reste de la classe peut créer un sentiment d'injustice si l'information circule.</p>
+  </div>
+
+  <h3>3.9 Évaluer une compétence transversale avec une grille dédiée</h3>
+  <p>Travail de groupe, prise de parole à l'oral, autonomie dans la recherche documentaire : ces compétences transversales sont de plus en plus attendues dans les évaluations, mais elles demandent une grille différente d'une évaluation de connaissances classique.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — grille de compétence transversale</span>
+    <span class="prompt-text">Je veux évaluer la compétence [travail de groupe / prise de parole à l'oral / autonomie dans une recherche], niveau [classe], dans le cadre de [décris l'activité]. Génère une grille d'évaluation avec 4 critères observables et concrets (pas de formulation vague comme "bonne participation"), chacun avec 3 niveaux de maîtrise décrits explicitement.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Exige toujours des critères "observables" — une grille utilisable en classe doit permettre de cocher ce que tu vois réellement pendant l'activité, pas ce que tu supposes du niveau général de l'élève.</p>
+  </div>
+
+  <h3>3.10 Préparer un oral d'examen (grand oral, soutenance, épreuve orale de bac pro)</h3>
+  <p>Les épreuves orales (grand oral de terminale, soutenance de rapport de stage, épreuves orales de bac pro ou de CAP) demandent une préparation différente : il s'agit moins de créer un support que d'aider l'élève à structurer et à s'entraîner à sa prise de parole.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — grille de préparation à un oral d'examen</span>
+    <span class="prompt-text">Je prépare mes élèves de [classe/filière] à [type d'oral : grand oral / soutenance de stage / épreuve orale de bac pro]. Génère une grille d'auto-préparation que je distribuerai aux élèves : les attentes du jury pour ce type d'épreuve, une structure de plan en 3-4 temps, et 5 questions de relance type que le jury pourrait poser, pour qu'ils s'entraînent à y répondre à l'oral entre eux.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Utilise l'IA pour préparer la trame et les questions d'entraînement, jamais pour "écrire le discours" à la place de l'élève — l'objectif d'un oral d'examen est justement d'évaluer sa capacité à s'exprimer avec ses propres mots, pas à réciter un texte généré.</p>
+  </div>
+
+  <h3>3.11 Évaluer un projet ou un exposé mené sur plusieurs semaines</h3>
+  <p>Les projets longs (exposé de groupe, projet interdisciplinaire, TPE/grand oral) demandent un suivi en plusieurs étapes plutôt qu'une évaluation ponctuelle — l'IA aide à cadrer chaque jalon sans passer un temps disproportionné à la conception du suivi.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — jalons d'évaluation pour un projet long</span>
+    <span class="prompt-text">Mes élèves de [classe] mènent un projet sur [durée, ex. 6 semaines] : [décris le projet]. Propose-moi 3 jalons intermédiaires d'évaluation (ce qui doit être fait à chaque étape, avec un critère de validation simple pour chacun), et une grille d'évaluation finale sur [nombre] points qui tient compte de la régularité du travail, pas seulement du rendu final.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Les jalons intermédiaires sont ce qui permet de repérer un groupe en difficulté avant qu'il ne soit trop tard pour rattraper le projet — ne les saute pas même quand le calendrier est serré.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Corriger plus vite</h2>
+  <p class="lede">En sortant de cette partie, tu sauras utiliser l'IA pour un premier passage de correction et pour générer des commentaires personnalisés, tout en sachant précisément où s'arrête son rôle.</p>
+
+  <h3>4.1 Premier passage de correction assisté par IA (dissertations, rédactions)</h3>
+  <p>L'IA peut lire une copie et repérer des éléments objectifs — structure du plan, présence ou absence des idées attendues, fautes de langue — pour te faire gagner du temps sur ce premier passage mécanique. La décision finale de notation reste entièrement la tienne.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — premier passage de correction</span>
+    <span class="prompt-text">Voici une copie d'élève (anonymisée, sans nom ni information identifiante) : [colle le texte de la copie]. Voici les attentes de l'exercice : [rappelle le sujet et les critères attendus]. Identifie : la structure du plan utilisée, les idées attendues présentes ou absentes, les fautes de langue récurrentes. Ne propose pas de note — seulement une analyse factuelle que j'utiliserai pour affiner ma propre évaluation.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce prompt demande explicitement à l'IA de ne pas proposer de note. C'est volontaire : demander une analyse factuelle plutôt qu'un jugement chiffré te laisse la main sur la décision finale, tout en profitant du gain de temps sur le repérage des éléments objectifs de la copie.</p>
+  </div>
+
+  <h3>4.2 Générer des commentaires personnalisés sans les écrire un par un</h3>
+  <p>Rédiger un commentaire réellement personnalisé pour chaque copie, sur une classe de 30 élèves, est l'une des tâches les plus chronophages de la correction. L'IA peut générer une première version à partir de tes observations rapides, que tu ajustes en quelques secondes par élève plutôt qu'en repartant de zéro.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — commentaire personnalisé</span>
+    <span class="prompt-text">Voici mes observations rapides sur cette copie : [note en quelques mots-clés ce que tu as remarqué : points forts, points faibles, effort constaté]. Rédige un commentaire de 3-4 lignes, constructif et encourageant, qui mentionne un point fort précis et un axe d'amélioration concret pour progresser. Ton bienveillant mais honnête, adapté à un(e) élève de [niveau].</span>
+  </div>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Léa, professeure de français au collège</span>
+    <p>Léa corrige 28 rédactions de 4e. Pour chaque copie, elle note en 30 secondes ses observations clés sur un brouillon ("bon plan, arguments un peu répétitifs, syntaxe correcte"), puis utilise le prompt ci-dessus pour générer un commentaire personnalisé qu'elle ajuste rapidement avant de le recopier sur la copie. Elle estime gagner environ 10 minutes par classe de 28 copies sur la seule rédaction des commentaires — sans jamais déléguer la note elle-même, qu'elle détermine toujours en lisant intégralement chaque copie.</p>
+  </div>
+
+  <h3>4.3 Ce que l'IA ne doit JAMAIS faire</h3>
+  <p>C'est le chapitre le plus important de ce guide. Trois limites non négociables, avec le cadre réglementaire qui les justifie.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 1. La notation finale reste toujours humaine</span>
+    <p>L'IA peut t'aider à repérer des éléments objectifs dans une copie, mais la décision finale de notation — le chiffre ou l'appréciation qui compte pour l'élève — doit toujours venir de ta lecture complète et de ton jugement professionnel. C'est une question de responsabilité pédagogique autant que d'équité : un modèle de langage n'a pas la connaissance du contexte de classe, de la progression individuelle de l'élève, ou des circonstances particulières d'un devoir.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 2. Le risque de biais</span>
+    <p>Les modèles d'IA peuvent reproduire des biais présents dans leurs données d'entraînement (formulation, style d'écriture favorisé, attentes implicites). Un même argument, bien ou mal formulé selon des codes qui ne sont pas universels, peut être évalué différemment par l'IA alors qu'il serait équivalent sur le fond. Ne jamais utiliser une suggestion de l'IA comme jugement de valeur final sans vérification humaine.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 3. RGPD et données des élèves</span>
+    <p>Selon les recommandations de la CNIL pour les enseignants, avant de soumettre une copie à un outil d'IA, tu dois retirer toute information permettant d'identifier l'élève (nom, prénom, et tout élément identifiant qui figurerait dans le texte). Le RGPD impose un principe de minimisation : seules les données strictement nécessaires à l'usage pédagogique visé peuvent être traitées, et les élèves étant pour la plupart mineurs, cette vigilance est renforcée.</p>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce — anonymiser une copie en 30 secondes</span>
+    <p>Avant de coller une copie dans une conversation IA : retire le nom et prénom en en-tête, remplace toute mention d'un nom propre dans le texte par une lettre neutre ("l'élève A"), et vérifie qu'aucune information personnelle (adresse, situation familiale mentionnée dans une rédaction) ne subsiste. Ce réflexe devient automatique après quelques copies.</p>
+  </div>
+
+  <p>La CNIL publie deux guides spécifiquement destinés au monde éducatif : un pour les enseignants utilisant l'IA dans leurs missions, un autre pour les responsables d'établissement qui déploient des systèmes d'IA. Le ministère de l'Éducation nationale a par ailleurs annoncé le développement d'une IA "souveraine" dédiée aux enseignants (préparation de cours, correction), prévue pour l'année scolaire 2026-2027 — ce guide se concentre sur les outils grand public déjà disponibles aujourd'hui (ChatGPT, Claude), pas sur cet outil encore à venir.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Utiliser l'IA pour gagner du temps sur la correction est légitime et de plus en plus reconnu par l'institution elle-même. La bonne pratique se résume à trois réflexes : anonymiser systématiquement, ne jamais déléguer la note finale, et rester vigilant sur les biais possibles d'une suggestion générée.</p>
+  </div>
+
+  <h3>4.4 Étude de cas complète — un paquet de copies avec Léa</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Léa corrige 28 copies de rédaction en une soirée</span>
+    <p><strong>Avant de commencer</strong> — Léa scanne ou tape les copies qu'elle veut traiter avec l'IA, en retirant systématiquement les noms et prénoms (chapitre 4.3), et remplace toute mention d'élève dans le texte par "l'élève".</p>
+    <p><strong>Exemple concret</strong> — Pour une copie donnée, elle colle : <em>"L'élève a rédigé un texte sur le thème du voyage. Plan en deux parties, arguments présents mais peu développés, plusieurs répétitions du mot 'voyage', quelques fautes d'accord sujet-verbe."</em> Elle utilise le prompt du chapitre 4.1 avec cette copie anonymisée.</p>
+    <p><strong>Ce que l'IA lui renvoie</strong> — Une analyse factuelle confirmant la structure en deux parties, un repérage précis des répétitions lexicales (avec le nombre d'occurrences du mot "voyage"), et la liste des erreurs d'accord relevées avec leur emplacement dans le texte.</p>
+    <p><strong>Ce que Léa fait ensuite</strong> — Elle lit intégralement la copie elle-même (elle ne s'appuie jamais uniquement sur l'analyse), confirme que l'analyse de l'IA correspond à sa propre lecture, et détermine la note finale en tenant compte d'éléments que l'IA ne peut pas évaluer : la progression de cet élève depuis le début de l'année, son investissement en classe.</p>
+    <p><strong>Bilan de la soirée</strong> — Sur 28 copies, Léa estime avoir gagné environ 45 minutes sur le repérage initial des éléments objectifs (structure, répétitions, fautes récurrentes), un temps réinvesti dans la rédaction de commentaires plus détaillés qu'à l'accoutumée.</p>
+  </div>
+
+  <h3>4.5 Organiser sa correction sur toute une classe</h3>
+  <p>Corriger 25 à 30 copies avec l'aide de l'IA demande une organisation légèrement différente d'une correction traditionnelle, pour ne pas perdre de temps à répéter les mêmes manipulations copie par copie.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Prépare ton prompt une seule fois</strong><br/>
+      Écris le prompt d'analyse (chapitre 4.1) une fois, avec les attentes de l'exercice déjà renseignées, et réutilise-le pour chaque copie en ne changeant que le texte collé.
+    </li>
+    <li>
+      <strong>Anonymise par lot</strong><br/>
+      Si tu tapes les copies plutôt que de les scanner, retire systématiquement les noms avant de commencer, plutôt que copie par copie — cela évite l'oubli en cours de route.
+    </li>
+    <li>
+      <strong>Traite par blocs de 5-6 copies</strong><br/>
+      Fais une pause de lecture complète après chaque bloc pour garder une vision d'ensemble de la classe et éviter que les analyses de l'IA ne deviennent le seul point de repère.
+    </li>
+    <li>
+      <strong>Réserve la fin de la correction à l'harmonisation</strong><br/>
+      Une fois toutes les copies traitées, relis rapidement l'ensemble des notes attribuées pour vérifier leur cohérence globale sur la classe.
+    </li>
+  </ol>
+
+  <h3>4.6 Matières objectives et matières interprétatives : une vigilance différente</h3>
+  <p>Le rôle de l'IA en correction n'est pas identique selon la nature de la matière — la vigilance à avoir n'est pas la même pour une copie de mathématiques que pour une dissertation de français ou de philosophie.</p>
+
+  <table>
+    <tr><th>Type de matière</th><th>Ce que l'IA repère bien</th><th>Vigilance particulière</th></tr>
+    <tr><td>Matières à réponses objectives (maths, sciences, langues sur des points précis)</td><td>Exactitude d'un calcul, présence d'une méthode attendue, erreur de raisonnement identifiable</td><td>Vérifier qu'une méthode différente mais correcte n'est pas signalée comme fausse</td></tr>
+    <tr><td>Matières interprétatives (français, philosophie, histoire sur l'argumentation)</td><td>Structure du plan, présence des idées attendues, repérage des répétitions</td><td>Ne jamais laisser l'IA juger de la qualité ou de l'originalité d'une argumentation — c'est une appréciation qui doit rester humaine</td></tr>
+  </table>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Sur les matières interprétatives en particulier, une "bonne" argumentation peut prendre des formes très différentes selon la sensibilité et le style de l'élève. Utilise l'IA pour le repérage factuel (structure, idées présentes), jamais pour juger de la qualité littéraire ou de l'originalité d'une pensée.</p>
+  </div>
+
+  <h3>4.7 Cas particulier — corriger la production en langues vivantes</h3>
+  <p>La correction en langue vivante a une spécificité que les autres matières n'ont pas : une phrase peut être grammaticalement correcte tout en étant peu naturelle pour un locuteur natif. C'est le point de vigilance principal à connaître avant d'utiliser l'IA sur ce type de production.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — repérage sur une production écrite en langue</span>
+    <span class="prompt-text">Voici une production écrite d'élève en [langue], anonymisée : [colle le texte]. Niveau visé : [A2/B1/etc.]. Identifie séparément : les erreurs grammaticales, les erreurs lexicales, et les formulations grammaticalement correctes mais peu naturelles pour un locuteur natif (avec une suggestion de formulation plus idiomatique à titre indicatif). Ne propose pas de note.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce — la production orale</span>
+    <p>Pour une production orale, transcris d'abord les points clés ou un résumé de ce que l'élève a dit (sans enregistrement audio transmis à l'outil, pour rester dans le cadre RGPD du chapitre 4.3), puis utilise le même prompt en précisant qu'il s'agit d'une transcription d'oral — l'IA adaptera son repérage aux critères d'une grille d'expression orale (fluidité, prise de risque lexicale, prononciation si mentionnée).</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Ne transmets jamais un fichier audio ou vidéo d'un élève à un outil d'IA grand public — au-delà du RGPD sur les données identifiantes, la voix elle-même est une donnée biométrique. Reste toujours sur une transcription textuelle anonymisée, jamais sur le fichier média original.</p>
+  </div>
+
+  <h3>4.8 Étude de cas — corriger des copies avec une méthode alternative correcte</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Karim, professeur de mathématiques au lycée</span>
+    <p>Karim utilise le premier passage de correction assisté (chapitre 4.1) sur un paquet de copies portant sur la résolution d'équations. Sur une copie, l'IA signale une "méthode non conforme à celle attendue" pour un exercice où l'élève a résolu par une factorisation astucieuse plutôt que par la méthode enseignée en classe. Karim relit la copie intégralement, confirme que le raisonnement de l'élève est mathématiquement valide malgré une méthode différente, et ignore la remarque de l'IA sur ce point précis.</p>
+    <p><strong>Ce que ça illustre</strong> — l'IA compare souvent implicitement une copie à "la" méthode la plus standard, sans connaître toutes les méthodes alternatives valables enseignées ailleurs ou trouvées spontanément par un élève. Sur les matières à réponses objectives, ce point de vigilance (déjà signalé au chapitre 4.6) se vérifie particulièrement sur les exercices ouverts à plusieurs méthodes de résolution.</p>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Sur ce type d'exercice, précise dans ton prompt : "signale si une méthode différente de celle attendue est utilisée, sans la considérer comme fausse par défaut" — cela réduit sensiblement ce type de faux signalement.</p>
+  </div>
+
+  <h3>4.9 Faire de la correction un temps d'apprentissage pour l'élève</h3>
+  <p>Au-delà de gagner du temps sur ta propre correction, l'IA permet aussi de préparer des supports d'auto-correction guidée que les élèves utilisent eux-mêmes après une évaluation — une pratique qui renforce l'appropriation des erreurs, sans remplacer ta correction individuelle.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — fiche d'auto-correction guidée</span>
+    <span class="prompt-text">Voici le sujet et le corrigé d'une évaluation : [colle sujet et corrigé]. Crée une fiche d'auto-correction que je distribuerai aux élèves après la remise des copies : pour chaque question, une reformulation de la consigne, les points clés attendus dans la réponse, et une question de relance ("as-tu bien...") pour qu'ils identifient eux-mêmes leur erreur avant de voir ta correction détaillée.</span>
+  </div>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — usage en classe entière</span>
+    <p>Une enseignante de collège distribue cette fiche en même temps que les copies corrigées, et laisse 10 minutes en classe pour que chaque élève confronte sa copie à la fiche avant qu'elle ne reprenne les points les plus manqués collectivement. Elle constate que les questions posées ensuite sont plus ciblées, les élèves ayant déjà identifié eux-mêmes une partie de leurs erreurs.</p>
+  </div>
+
+  <h3>4.10 Corriger un rapport de stage ou un dossier professionnel</h3>
+  <p>En voie professionnelle et en lycée général avec stage obligatoire, corriger un rapport de stage ou un dossier professionnel demande une grille différente d'une copie classique : la forme professionnelle du document compte autant que le fond.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — grille de correction d'un rapport de stage</span>
+    <span class="prompt-text">Je corrige des rapports de stage pour des [classe/filière]. Génère une grille de correction sur [nombre] points intégrant : la structure attendue d'un rapport professionnel (présentation de l'entreprise, missions, analyse réflexive, conclusion), la qualité de l'expression écrite professionnelle, et la mise en lien explicite avec le référentiel de compétences si pertinent pour cette filière.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Anonymise le rapport avant de le soumettre comme pour toute autre copie (chapitre 4.3) — un rapport de stage contient souvent le nom de l'entreprise et parfois des informations sur des tiers (tuteur de stage, clients) qu'il vaut mieux également neutraliser par prudence.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Mettre en place ton système</h2>
+  <p class="lede">En sortant de cette partie, tu auras un plan concret sur trois semaines pour intégrer ces outils dans ta pratique, sans bouleverser ta façon d'enseigner du jour au lendemain.</p>
+
+  <h3>5.1 Planning de mise en place sur 3 semaines</h3>
+
+  <h4>Semaine 1 — La préparation de cours</h4>
+  <ul>
+    <li>Choisir un outil (ChatGPT ou Claude) et créer un compte gratuit ;</li>
+    <li>Générer une séquence complète pour ton prochain chapitre avec le prompt du chapitre 2.1 ;</li>
+    <li>Comparer le temps passé à ta méthode habituelle, sur cette seule séquence.</li>
+  </ul>
+
+  <h4>Semaine 2 — Les exercices et évaluations</h4>
+  <ul>
+    <li>Générer une série d'exercices progressifs pour ton prochain chapitre (chapitre 3.1) ;</li>
+    <li>Tester la génération d'une grille de correction sur ta prochaine évaluation (chapitre 3.2) ;</li>
+    <li>Varier un format d'évaluation que tu n'utilises pas souvent (QCM par exemple).</li>
+  </ul>
+
+  <h4>Semaine 3 — La correction</h4>
+  <ul>
+    <li>Tester le premier passage de correction assisté sur un paquet de copies, en anonymisant systématiquement (chapitre 4.1) ;</li>
+    <li>Tester la génération de commentaires personnalisés sur la même série (chapitre 4.2) ;</li>
+    <li>Relire le chapitre 4.3 une deuxième fois avant de généraliser la pratique à toutes tes classes.</li>
+  </ul>
+
+  <h3>5.2 Checklist récapitulative</h3>
+  <ul class="checklist">
+    <li>J'ai un compte sur ChatGPT ou Claude et j'ai testé au moins un prompt de chaque partie de ce guide.</li>
+    <li>Je sauvegarde mes prompts préférés dans un document facilement accessible.</li>
+    <li>J'anonymise systématiquement toute copie avant de la soumettre à un outil d'IA.</li>
+    <li>Je ne délègue jamais la notation finale à l'IA — je lis toujours intégralement une copie avant de noter.</li>
+    <li>Je vérifie toujours un exercice ou une question générée avant de la donner à mes élèves.</li>
+    <li>Je garde une trace de ma pratique de l'IA en classe, en cohérence avec les recommandations de mon établissement.</li>
+  </ul>
+
+  <h3>5.3 Erreurs à éviter</h3>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 1. La dépendance à l'IA</span>
+    <p>Utiliser l'IA pour un premier jet est utile ; s'appuyer dessus sans jamais reconstruire soi-même une séquence ou un exercice fait perdre en agilité pédagogique avec le temps. Continue à préparer certains contenus entièrement par toi-même, ne serait-ce que pour garder la main.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 2. La perte de recul pédagogique</span>
+    <p>Une séquence générée par l'IA peut sembler complète et cohérente sans être pour autant adaptée à ta classe réelle. Le temps gagné sur la génération doit être réinvesti dans l'ajustement fin — pas dans une utilisation telle quelle sans relecture critique.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 3. Oublier d'anonymiser une copie</span>
+    <p>C'est l'erreur la plus simple à commettre par habitude ou précipitation. Fais-en un réflexe systématique, sans exception, y compris pour un usage que tu juges anodin.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 4. Uniformiser excessivement les évaluations</span>
+    <p>Générer tous tes QCM et exercices avec la même structure de prompt peut, avec le temps, rendre tes évaluations trop prévisibles pour les élèves. Varie régulièrement les formats et les approches, comme tu le ferais sans IA.</p>
+  </div>
+
+  <h3>5.4 Adapter le système selon ton contexte</h3>
+  <p>Ce planning de 3 semaines est une base, pas un cadre rigide. Selon ta situation, certains ajustements rendent le système plus réaliste à tenir dans la durée.</p>
+
+  <table>
+    <tr><th>Contexte</th><th>Ajustement recommandé</th></tr>
+    <tr><td>Plusieurs matières à préparer (premier degré)</td><td>Concentre-toi d'abord sur la matière où tu perds le plus de temps actuellement, plutôt que de tout changer en même temps</td></tr>
+    <tr><td>Plusieurs classes du même niveau</td><td>Prépare une seule fois avec l'IA, puis réutilise et ajuste légèrement pour chaque classe plutôt que de relancer un prompt par classe</td></tr>
+    <tr><td>Enseignant en début de carrière</td><td>Utilise davantage les prompts de séquence complète (chapitre 2.1), qui compensent le temps que l'expérience donne habituellement pour structurer un cours rapidement</td></tr>
+    <tr><td>Enseignant très expérimenté</td><td>Utilise surtout l'IA pour les tâches mécaniques (grilles, QCM, premier passage de correction) plutôt que pour la conception pédagogique, où ton expérience est déjà optimisée</td></tr>
+  </table>
+
+  <h3>5.5 Mesurer le temps réellement gagné</h3>
+  <p>Pour savoir si ce système te fait vraiment gagner du temps, tiens un compte simple pendant deux semaines : note le temps passé sur une préparation, un jeu d'exercices ou une correction avant d'utiliser l'IA, puis note le même temps une fois la méthode de ce guide en place. La plupart des enseignants qui adoptent ces prompts constatent un gain de 40 à 60 % du temps passé sur ces tâches précises — mais c'est ta propre mesure qui compte, pas une moyenne générale.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le temps gagné n'a de sens que s'il est réinvesti quelque part : dans l'ajustement pédagogique fin, dans un meilleur équilibre de vie, ou simplement dans une soirée récupérée. Ce guide n'a pas d'autre objectif.</p>
+  </div>
+
+  <h3>5.6 Cas particulier — professeur remplaçant ou sur plusieurs établissements</h3>
+  <p>Enseigner sur plusieurs établissements, ou remplacer au pied levé sur un chapitre qu'on ne connaît pas encore, change la donne : le temps de préparation est encore plus contraint, et le manque de connaissance fine de la classe rend certains ajustements plus difficiles.</p>
+
+  <table>
+    <tr><th>Contrainte spécifique</th><th>Comment l'IA aide concrètement</th></tr>
+    <tr><td>Découvrir un chapitre à enseigner dans l'urgence</td><td>Génère une séquence complète (chapitre 2.2) à partir du simple intitulé du chapitre pour avoir une trame exploitable en moins de 15 minutes</td></tr>
+    <tr><td>Pas d'historique sur le niveau réel de la classe</td><td>Demande une version "standard" sans hypothèse de niveau, puis observe la première séance pour ajuster toi-même la suite — ne sur-adapte pas à l'aveugle dès le premier cours</td></tr>
+    <tr><td>Plusieurs établissements, plusieurs progressions différentes</td><td>Conserve un même prompt de base et ne change que le niveau et l'objectif d'un établissement à l'autre, plutôt que de repartir de zéro à chaque fois</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Dans ce contexte, la génération de séquence complète (chapitre 2.2) est l'usage le plus rentable de ce guide : c'est celui qui compense le mieux l'absence de préparation en amont propre au remplacement.</p>
+  </div>
+
+  <h3>5.7 Cas particulier — professeur des écoles, plusieurs matières</h3>
+  <p>Enseigner toutes les matières à une seule classe pose un défi différent : la préparation se répète chaque jour sur des disciplines très variées (français, mathématiques, histoire-géographie, sciences, EMC), avec un temps global forcément limité par matière.</p>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Julien, professeur des écoles en CM1</span>
+    <p>Julien prépare chaque semaine 5 matières différentes pour sa classe unique. Plutôt que d'utiliser l'IA en profondeur sur chaque matière, il a choisi de l'utiliser systématiquement pour deux tâches précises et récurrentes, quelle que soit la matière : générer la trace écrite de fin de séance (chapitre 2.4) et créer un exercice différencié à trois niveaux pour son groupe le plus hétérogène (chapitre 2.3). En restant sur ces deux usages ciblés répétés chaque jour sur une matière différente, il estime gagner environ 30 minutes par jour, sans avoir à apprendre un usage différent de l'IA par discipline.</p>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Avec plusieurs matières à couvrir chaque semaine, mieux vaut maîtriser parfaitement 2 ou 3 prompts de ce guide et les répéter sur toutes tes matières, plutôt que d'essayer les 30 prompts du Pack Prof en une seule semaine. La régularité sur un petit nombre d'usages fait gagner plus de temps qu'une exploration large et dispersée.</p>
+  </div>
+
+  <h3>5.8 Rester à jour : des outils qui évoluent vite</h3>
+  <p>ChatGPT et Claude évoluent par mises à jour régulières — nouvelles versions, nouvelles fonctionnalités, changements de tarifs. Ce guide reflète la situation constatée en 2026 ; voici comment rester à jour sans y consacrer un temps disproportionné.</p>
+
+  <ul class="checklist">
+    <li>Je vérifie une à deux fois par an les tarifs et limites d'usage gratuites des outils que j'utilise, qui évoluent régulièrement.</li>
+    <li>Je ne change pas d'outil à chaque nouvelle sortie médiatisée — un outil que je maîtrise déjà bien reste souvent plus rentable qu'un outil "nouveau" à réapprendre.</li>
+    <li>Je consulte les canaux d'information de mon académie sur l'IA en éducation, qui relaient les évolutions réglementaires (RGPD, future IA souveraine du ministère) plus vite qu'une veille personnelle.</li>
+  </ul>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Les prompts et méthodes de ce guide reposent sur des principes stables (contexte précis, niveau explicite, vérification systématique) qui resteront valables même quand les outils précis auront changé de nom ou de version.</p>
+  </div>
+
+  <h3>5.9 Mutualiser ses prompts avec ses collègues</h3>
+  <p>Le gain de temps individuel décrit dans ce guide se démultiplie à l'échelle d'une équipe pédagogique : un prompt affiné par un collègue sur un chapitre commun (même niveau, même discipline) profite immédiatement à toute l'équipe qui enseigne la même chose.</p>
+
+  <table>
+    <tr><th>Cadre de mutualisation</th><th>Ce qui se partage bien</th></tr>
+    <tr><td>Équipe disciplinaire (même matière)</td><td>Les prompts de séquence et de grille de correction (chapitres 2.2 et 3.2), directement réutilisables d'un collègue à l'autre sur un même chapitre de programme</td></tr>
+    <tr><td>Équipe de niveau (plusieurs matières, même classe)</td><td>Les prompts de différenciation et d'adaptation pour dispositifs d'inclusion (chapitre 2.9), utiles à toute l'équipe suivant les mêmes élèves</td></tr>
+    <tr><td>Établissement entier</td><td>Les bonnes pratiques RGPD (anonymisation, chapitre 4.3) méritent d'être harmonisées à l'échelle de l'établissement plutôt que laissées à l'initiative de chacun</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Un simple document partagé (tableur ou traitement de texte commun) listant "prompt / chapitre concerné / dernière mise à jour" suffit pour démarrer une mutualisation d'équipe, sans outil spécifique à mettre en place.</p>
+  </div>
+
+  <h3>5.10 Questions pratiques : compte, historique et confidentialité</h3>
+  <table>
+    <tr><th>Question pratique</th><th>Réponse</th></tr>
+    <tr><td>Compte personnel ou compte professionnel ?</td><td>Un compte gratuit personnel suffit pour tous les usages de ce guide. Certains établissements déploient des accès dédiés — renseigne-toi auprès de ta direction si un tel accès existe, il peut offrir des garanties de confidentialité supplémentaires.</td></tr>
+    <tr><td>Faut-il supprimer l'historique des conversations contenant des copies anonymisées ?</td><td>Par prudence et cohérence avec le principe de minimisation du RGPD, supprime régulièrement les conversations contenant des copies d'élèves, même anonymisées, une fois l'usage terminé.</td></tr>
+    <tr><td>Peut-on utiliser l'IA depuis un ordinateur personnel pour du travail professionnel ?</td><td>Oui, rien ne l'interdit en soi, mais applique les mêmes règles de vigilance (anonymisation, pas de nom d'établissement identifiant) que sur un poste professionnel.</td></tr>
+  </table>
+
+  <h3>5.11 Cas particulier — enseigner en réseau d'éducation prioritaire (REP/REP+)</h3>
+  <p>En REP/REP+, la charge de travail liée à la différenciation et au soutien individualisé est souvent plus élevée que la moyenne — l'IA peut y jouer un rôle particulièrement utile, à condition de l'utiliser sur les bons leviers.</p>
+
+  <table>
+    <tr><th>Levier prioritaire en REP/REP+</th><th>Chapitre de ce guide à mobiliser en premier</th></tr>
+    <tr><td>Différenciation fine et fréquente</td><td>Chapitre 2.3 (différenciation) et 2.9 (dispositifs d'inclusion), à utiliser de façon quasi systématique plutôt qu'occasionnelle</td></tr>
+    <tr><td>Supports visuels et charge de lecture réduite</td><td>Chapitre 2.10 (classe inversée), en insistant sur des supports courts et très illustrés</td></tr>
+    <tr><td>Valorisation explicite des progrès</td><td>Chapitre 4.2 (commentaires personnalisés), en insistant sur un ton encourageant qui valorise la progression individuelle plutôt que la seule performance</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>En REP/REP+ plus qu'ailleurs, le temps gagné grâce à l'IA sur les tâches mécaniques (chapitres 2 et 3) a le plus de valeur s'il est réinvesti dans le suivi individualisé et la relation avec les élèves — c'est souvent ce qui fait la différence dans ces contextes, plus que le contenu des cours lui-même.</p>
+  </div>
+
+  <h3>5.12 Bilan : ce qu'un enseignant type peut réellement attendre en une année</h3>
+  <p>Pour conclure cette partie, un ordre de grandeur réaliste plutôt qu'une promesse générique — construit à partir des gains estimés dans les différents chapitres de ce guide.</p>
+
+  <table>
+    <tr><th>Poste de temps</th><th>Gain estimé par usage</th><th>Fréquence typique sur l'année</th></tr>
+    <tr><td>Préparation de séquence (chapitre 2.2)</td><td>~1h à 1h15 par séquence</td><td>Une dizaine de fois par an et par matière enseignée</td></tr>
+    <tr><td>Grille de correction et barème (chapitre 3.2)</td><td>~20 minutes par évaluation</td><td>À chaque évaluation notée, soit une quinzaine de fois par an</td></tr>
+    <tr><td>Premier passage de correction (chapitre 4.1-4.2)</td><td>~10 minutes par paquet de 28 copies</td><td>À chaque évaluation notée</td></tr>
+  </table>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces ordres de grandeur ne remplacent pas ta propre mesure (chapitre 5.5) — ils donnent simplement un repère réaliste pour juger si le temps que tu observes chez toi est cohérent, ou si un usage particulier mérite d'être ajusté.</p>
+  </div>
+</section>
+
+<div id="bonus-section">
+<section class="chapter">
+  <h2>6. Partie 5 — Bonus : le Pack Prof</h2>
+  <p class="lede">30 prompts prêts à l'emploi classés par matière, et un guide pas à pas pour recréer un template Canva de fiche de cours en 10 minutes.</p>
+
+  <h3>6.1 Trente prompts prêts à l'emploi, classés par matière</h3>
+  <p>Chaque prompt ci-dessous est directement copiable dans ChatGPT ou Claude. Remplace les champs entre crochets par tes propres informations avant de l'envoyer.</p>
+
+  <div class="subject-heading">📐 Mathématiques</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Exercices progressifs</span>
+    <span class="prompt-text">Génère 6 exercices de difficulté progressive sur [notion mathématique], niveau [classe], du simple calcul d'application au problème nécessitant un transfert. Indique la notion précise évaluée pour chaque exercice.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — QCM avec corrections</span>
+    <span class="prompt-text">Crée un QCM de 10 questions sur [notion], niveau [classe], avec 4 réponses par question dont des distracteurs correspondant à des erreurs de calcul fréquentes. Fournis les corrigés avec la méthode de résolution pour chaque question.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Évaluation avec barème</span>
+    <span class="prompt-text">Rédige une évaluation de mathématiques sur [chapitre], niveau [classe], durée [durée], sur [nombre] points. Fournis en parallèle un barème détaillé décomposant chaque question en sous-critères de notation.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Trace écrite / résumé de cours</span>
+    <span class="prompt-text">Rédige une trace écrite synthétique sur [notion], niveau [classe] : définitions clés, propriété(s) essentielle(s), un exemple résolu pas à pas. Format adapté à une copie dans le cahier de cours.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Activité ludique</span>
+    <span class="prompt-text">Propose une activité ludique (jeu, défi par équipes, énigme) pour réviser [notion], niveau [classe], réalisable en [durée] avec le matériel disponible en classe standard.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Différenciation</span>
+    <span class="prompt-text">Décline cet exercice en 3 niveaux de difficulté : [colle l'exercice]. Version simplifiée avec étapes guidées, version standard, version enrichie avec une question ouverte de transfert.</span>
+  </div>
+
+  <div class="subject-heading">📖 Français</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7 — Exercices progressifs</span>
+    <span class="prompt-text">Génère 6 exercices de grammaire/conjugaison progressifs sur [notion], niveau [classe]. Du repérage simple à la production autonome d'une phrase utilisant correctement la notion.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8 — QCM de compréhension de texte</span>
+    <span class="prompt-text">Voici un texte : [colle le texte ou un résumé fidèle]. Crée un QCM de 8 questions de compréhension, avec des distracteurs plausibles basés sur une lecture rapide ou erronée du texte. Fournis les corrigés justifiés par une citation du texte.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9 — Évaluation de rédaction avec barème</span>
+    <span class="prompt-text">Propose un sujet de rédaction sur [thème], niveau [classe], avec les attentes de plan. Fournis un barème sur [nombre] points intégrant fond (idées, structure) et forme (orthographe, syntaxe).</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10 — Fiche de vocabulaire</span>
+    <span class="prompt-text">Crée une fiche de vocabulaire sur le thème [thème], niveau [classe] : 10 mots avec définition simple, un exemple de phrase pour chacun, et 3 questions pour vérifier l'acquisition.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 11 — Activité ludique</span>
+    <span class="prompt-text">Propose un jeu d'écriture collaboratif pour travailler [notion : dialogue, description, argumentation...], niveau [classe], réalisable en [durée].</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 12 — Trace écrite</span>
+    <span class="prompt-text">Rédige une trace écrite synthétique sur [notion grammaticale ou littéraire], niveau [classe], avec la règle, un exemple, et un piège fréquent à éviter.</span>
+  </div>
+
+  <div class="subject-heading">🌍 Histoire-Géographie</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 13 — Exercices progressifs</span>
+    <span class="prompt-text">Génère 6 exercices progressifs sur [période/notion], niveau [classe], du repérage chronologique simple à l'analyse de document nécessitant une mise en relation de plusieurs facteurs.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 14 — QCM avec corrections</span>
+    <span class="prompt-text">Crée un QCM de 10 questions sur [période/notion], niveau [classe]. Fournis les corrigés avec une courte justification historique/géographique pour chaque réponse.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 15 — Évaluation avec barème (étude de document)</span>
+    <span class="prompt-text">Propose une évaluation basée sur l'étude d'un document sur [thème], niveau [classe]. Questions progressives (prélèvement d'information, mise en relation, analyse critique) avec barème détaillé sur [nombre] points.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 16 — Trace écrite / synthèse</span>
+    <span class="prompt-text">Rédige une trace écrite synthétique sur [notion], niveau [classe] : dates clés, définitions, une carte mentale textuelle des causes/conséquences si pertinent.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 17 — Activité ludique (jeu de rôle / débat)</span>
+    <span class="prompt-text">Propose une activité de jeu de rôle ou de débat argumenté sur [événement/enjeu], niveau [classe], avec les rôles à distribuer et les points de vue attendus pour chacun.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 18 — Différenciation</span>
+    <span class="prompt-text">Décline cette analyse de document en 3 niveaux : [colle l'exercice]. Version guidée avec questions fléchées, version standard, version enrichie demandant une mise en perspective avec un autre événement/période.</span>
+  </div>
+
+  <div class="subject-heading">🗣️ Langues vivantes</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 19 — Exercices progressifs</span>
+    <span class="prompt-text">Génère 6 exercices progressifs sur [point grammatical/lexical], niveau [classe, ex. A2], en [langue]. Du repérage simple à la production autonome d'une phrase ou d'un court paragraphe.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 20 — QCM de compréhension</span>
+    <span class="prompt-text">Voici un texte/dialogue en [langue] : [colle ou résume le contenu]. Crée un QCM de 8 questions de compréhension en [langue], avec corrigés.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 21 — Évaluation avec barème</span>
+    <span class="prompt-text">Propose une évaluation de [langue] sur [notion], niveau [classe], intégrant compréhension écrite et production écrite courte. Barème sur [nombre] points séparant les deux compétences.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 22 — Fiche de vocabulaire thématique</span>
+    <span class="prompt-text">Crée une fiche de vocabulaire en [langue] sur le thème [thème], niveau [classe] : 12 mots/expressions avec traduction, un exemple de phrase, et un court dialogue les réutilisant.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 23 — Activité ludique (jeu de rôle)</span>
+    <span class="prompt-text">Propose un jeu de rôle en [langue] sur la situation [situation, ex. commander au restaurant], niveau [classe], avec les expressions clés à réemployer.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 24 — Trace écrite</span>
+    <span class="prompt-text">Rédige une trace écrite synthétique sur [point grammatical], niveau [classe], en [langue] : règle expliquée simplement, 2 exemples, un point de vigilance fréquent pour des francophones.</span>
+  </div>
+
+  <div class="subject-heading">🔬 Sciences</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 25 — Exercices progressifs</span>
+    <span class="prompt-text">Génère 6 exercices progressifs sur [notion scientifique], niveau [classe], de la restitution de connaissance à l'analyse d'une expérience ou d'un schéma.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 26 — QCM avec corrections</span>
+    <span class="prompt-text">Crée un QCM de 10 questions sur [notion], niveau [classe], avec des distracteurs correspondant à des idées reçues ou erreurs de raisonnement fréquentes. Fournis les corrigés justifiés.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 27 — Évaluation avec barème</span>
+    <span class="prompt-text">Propose une évaluation sur [chapitre], niveau [classe], incluant au moins une question d'analyse de résultats expérimentaux. Barème détaillé sur [nombre] points.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 28 — Trace écrite / schéma-bilan</span>
+    <span class="prompt-text">Rédige une trace écrite synthétique sur [notion], niveau [classe] : définitions clés, description d'un schéma-bilan (à main levée ensuite), une expérience de référence à retenir.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 29 — Activité ludique (démarche d'investigation)</span>
+    <span class="prompt-text">Propose une activité d'investigation scientifique courte sur [notion], niveau [classe], réalisable en [durée] avec du matériel simple de salle de classe (sans laboratoire spécialisé).</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 30 — Différenciation</span>
+    <span class="prompt-text">Décline cette analyse expérimentale en 3 niveaux : [colle l'exercice]. Version guidée avec grille de lecture des résultats, version standard, version enrichie demandant de formuler une nouvelle hypothèse testable.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces 30 prompts sont des points de départ, pas des formules figées. N'hésite pas à les combiner ou à les adapter à ta discipline précise si tu enseignes une matière non listée ici — la structure (contexte + niveau + format demandé + corrigé séparé) fonctionne pour n'importe quelle matière.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6.2 Le template Canva de fiche de cours</h2>
+  <p class="lede">Un guide pas à pas pour recréer toi-même, en 10 minutes, un template de fiche de cours aux couleurs de ta pratique — pas un fichier fourni, mais une méthode que tu peux refaire à volonté.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Précision importante</span>
+    <p>Ce chapitre est un <strong>guide pour recréer le template toi-même dans Canva</strong>, pas un fichier .canva livré avec ce guide. Canva ne permet pas l'export ni le partage d'un modèle sous forme de fichier autonome utilisable hors de la plateforme — la seule façon de te transmettre ce design est de te donner les instructions précises pour le reconstruire, ce que fait ce chapitre.</p>
+  </div>
+
+  <h3>Format et couleurs</h3>
+  <table>
+    <tr><th>Élément</th><th>Réglage</th></tr>
+    <tr><td>Format</td><td>A4 portrait (21 × 29,7 cm)</td></tr>
+    <tr><td>Couleur principale (titres, bandeau)</td><td>Indigo #1E2A4A</td></tr>
+    <tr><td>Couleur d'accent (encadrés, séparateurs)</td><td>Doré #C98A2E</td></tr>
+    <tr><td>Fond des blocs secondaires</td><td>Beige clair #F4EBD9</td></tr>
+    <tr><td>Police des titres</td><td>Une police sans-serif épaisse type "Montserrat" ou "Poppins" (disponibles gratuitement dans Canva)</td></tr>
+    <tr><td>Police du texte courant</td><td>Une police sans-serif lisible type "Lato" ou "Open Sans"</td></tr>
+  </table>
+
+  <h3>Structure détaillée de la fiche</h3>
+  <ol class="steps">
+    <li>
+      <strong>Bandeau titre</strong><br/>
+      Un rectangle pleine largeur en indigo #1E2A4A en haut de page, avec le nom de la matière et le titre du chapitre en blanc, police titre.
+    </li>
+    <li>
+      <strong>Bloc objectifs</strong><br/>
+      Un encadré avec fond beige clair #F4EBD9 et bordure dorée fine, listant 2 à 3 objectifs de la séance sous forme de puces courtes.
+    </li>
+    <li>
+      <strong>Bloc déroulé en tableau</strong><br/>
+      Un tableau à 3 colonnes (Temps / Phase / Description) avec l'en-tête en indigo et texte blanc, lignes alternées blanc et gris très clair.
+    </li>
+    <li>
+      <strong>Bloc matériel</strong><br/>
+      Une liste courte avec une icône (disponible dans la bibliothèque Canva) devant chaque élément.
+    </li>
+    <li>
+      <strong>Bloc trace écrite</strong><br/>
+      Un encadré à bordure pointillée indigo, pensé pour être imprimé et rempli à la main ou pour recevoir le texte de la trace écrite définitive.
+    </li>
+    <li>
+      <strong>Pied de page</strong><br/>
+      Une fine ligne dorée horizontale, avec le nom de l'enseignant, la classe et la date en petits caractères.
+    </li>
+  </ol>
+
+  <h3>Les étapes précises pour le construire dans Canva</h3>
+  <ol class="steps">
+    <li>
+      <strong>Ouvre Canva et cherche un modèle de base</strong><br/>
+      Dans la barre de recherche de modèles, tape "fiche pédagogique" — Canva propose plusieurs modèles A4 déjà structurés en blocs, ce qui t'évite de partir d'une page blanche.
+    </li>
+    <li>
+      <strong>Choisis un modèle avec une structure proche</strong><br/>
+      Privilégie un modèle qui a déjà un bandeau titre et au moins un tableau ou une zone de liste — tu auras moins d'éléments à créer de toutes pièces.
+    </li>
+    <li>
+      <strong>Recolore aux couleurs de la charte</strong><br/>
+      Sélectionne chaque élément coloré et remplace la couleur par les codes hexadécimaux du tableau ci-dessus (#1E2A4A pour l'indigo, #C98A2E pour le doré, #F4EBD9 pour le beige clair) via le sélecteur de couleur personnalisée de Canva.
+    </li>
+    <li>
+      <strong>Ajoute ou ajuste les blocs manquants</strong><br/>
+      Utilise les éléments "tableau", "forme rectangle" et "ligne" de la bibliothèque Canva pour ajouter les blocs qui manquent par rapport à la structure détaillée ci-dessus.
+    </li>
+    <li>
+      <strong>Change les polices</strong><br/>
+      Sélectionne les titres et applique la police "Montserrat" ou "Poppins" ; sélectionne le texte courant et applique "Lato" ou "Open Sans", disponibles gratuitement dans la bibliothèque de polices Canva.
+    </li>
+    <li>
+      <strong>Enregistre-le comme modèle personnel</strong><br/>
+      Une fois satisfait du résultat, utilise la fonction "Enregistrer comme modèle" de Canva (accessible depuis le menu du fichier) pour le retrouver directement dans tes modèles personnels à chaque nouvelle fiche de cours, sans repartir de zéro.
+    </li>
+  </ol>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Une fois ton modèle personnel enregistré, dupliquer une fiche pour un nouveau chapitre prend moins d'une minute : ouvre le modèle, remplace le texte de chaque bloc, exporte en PDF. La mise en forme ne demande plus aucun travail après cette première construction.</p>
+  </div>
+</section>
+</div>
+
+<section class="chapter">
+  <h2>7. Lexique</h2>
+  <p class="lede">Les termes utilisés dans ce guide, expliqués simplement.</p>
+
+  <dl class="lexique">
+    <dt>Anonymisation</dt>
+    <dd>Suppression de toute information permettant d'identifier un élève (nom, prénom, éléments identifiants) avant de transmettre un contenu à un outil tiers.</dd>
+
+    <dt>Barème</dt>
+    <dd>Répartition détaillée des points d'une évaluation, précisant combien de points sont attribués à chaque critère de réussite.</dd>
+
+    <dt>CNIL</dt>
+    <dd>Commission Nationale de l'Informatique et des Libertés — autorité française qui encadre la protection des données personnelles, dont celles des élèves.</dd>
+
+    <dt>Différenciation pédagogique</dt>
+    <dd>Adaptation d'un même contenu pédagogique à différents niveaux ou besoins d'élèves, tout en conservant le même objectif d'apprentissage.</dd>
+
+    <dt>Distracteur</dt>
+    <dd>Dans un QCM, une réponse fausse mais plausible, destinée à représenter une erreur de raisonnement fréquente plutôt qu'une réponse absurde facilement écartée.</dd>
+
+    <dt>Prompt</dt>
+    <dd>Le texte que tu écris à un assistant IA pour lui demander de faire quelque chose. Plus il est précis, meilleur est le résultat.</dd>
+
+    <dt>RGPD</dt>
+    <dd>Règlement Général sur la Protection des Données — encadre le traitement des données personnelles, avec une vigilance renforcée lorsque les personnes concernées sont mineures, comme la plupart des élèves.</dd>
+
+    <dt>Séquence pédagogique</dt>
+    <dd>Ensemble structuré de plusieurs séances organisées autour d'un même objectif d'apprentissage global.</dd>
+
+    <dt>Trace écrite</dt>
+    <dd>Résumé synthétique d'une notion, destiné à être copié ou collé dans le cahier de cours de l'élève comme référence.</dd>
+
+    <dt>Anonymisation par lot</dt>
+    <dd>Fait de retirer les informations identifiantes d'un ensemble de copies avant de commencer une session de correction assistée, plutôt que copie par copie, pour éviter tout oubli en cours de route.</dd>
+
+    <dt>Donnée biométrique</dt>
+    <dd>Donnée personnelle issue d'une caractéristique physique ou comportementale (dont la voix) permettant d'identifier une personne — soumise à un régime de protection renforcé sous le RGPD.</dd>
+
+    <dt>Grille de correction</dt>
+    <dd>Document préparé avant la correction, listant les critères précis de réussite d'une évaluation et les points associés à chacun, afin de rendre la notation plus rapide et plus homogène entre les copies.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>8. Questions fréquentes</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Faut-il payer un abonnement pour utiliser ce guide ?</p>
+    <p>Non. Les offres gratuites de ChatGPT et Claude suffisent pour la plupart des usages décrits. Un abonnement payant devient utile seulement si tu dépasses régulièrement les limites d'usage gratuites.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Mon établissement autorise-t-il l'usage de l'IA pour la correction ?</p>
+    <p>Cela dépend de ta hiérarchie et des recommandations locales. La CNIL confirme que les enseignants peuvent utiliser l'IA pour leurs missions courantes (préparation, correction, évaluation), mais renseigne-toi sur les éventuelles consignes spécifiques de ton établissement ou académie.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je utiliser ces prompts pour n'importe quelle matière ?</p>
+    <p>Oui. Les 30 prompts du Pack Prof couvrent 5 matières, mais leur structure (contexte + niveau + format + corrigé séparé) s'adapte à n'importe quelle discipline — adapte simplement le vocabulaire disciplinaire.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Le template Canva est-il fourni en fichier téléchargeable ?</p>
+    <p>Non, et ce n'est pas possible techniquement : Canva ne permet pas l'export d'un modèle sous forme de fichier partageable. Le chapitre 6.2 te donne toutes les instructions pour le recréer toi-même en 10 minutes, et l'enregistrer ensuite comme modèle personnel réutilisable.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">L'IA peut-elle se tromper dans un exercice ou une évaluation générée ?</p>
+    <p>Oui, c'est pourquoi ce guide insiste sur la relecture systématique avant de donner un contenu généré à tes élèves. L'IA accélère la rédaction, pas la responsabilité pédagogique.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide fonctionne-t-il si je remplace ou si j'enseigne sur plusieurs établissements ?</p>
+    <p>Oui, le chapitre 5.6 traite spécifiquement de ce cas : les prompts de génération de séquence complète (chapitre 2.2) sont particulièrement utiles pour compenser l'absence de préparation en amont propre à un remplacement.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Je suis professeur des écoles avec plusieurs matières à préparer — par où commencer ?</p>
+    <p>Le chapitre 5.7 recommande de choisir 2 à 3 prompts que tu maîtrises bien et de les répéter sur toutes tes matières, plutôt que d'essayer d'exploiter tous les usages du guide en une seule semaine.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je soumettre un enregistrement audio ou vidéo d'un élève à un outil d'IA ?</p>
+    <p>Non. La voix est une donnée biométrique protégée par le RGPD. Le chapitre 4.7 recommande de toujours passer par une transcription textuelle anonymisée, jamais par le fichier média original.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="disclaimer">
+    <strong>Avertissement.</strong> Ce guide a une vocation pratique et informative. Les outils, prix et fonctionnalités décrits reflètent la situation constatée en 2026 et peuvent évoluer — vérifie toujours les informations à jour auprès des éditeurs concernés. Les éléments relatifs au RGPD et aux recommandations de la CNIL sont fournis à titre informatif et ne remplacent pas les consignes officielles de ton établissement ou académie. Ce guide ne remplace pas ton jugement pédagogique professionnel, qui doit toujours prévaloir sur toute suggestion générée par un outil d'IA.
+  </div>
+</section>
+
+</body>
+</html>

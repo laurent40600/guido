@@ -1,0 +1,1229 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Devenir freelance après 40 ans</title>
+<style>
+  @page { size: A4; margin: 29mm 24mm 27mm 24mm; }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 26pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-case { background: #f6f8f4; border-left: 5px solid #4d7c4a; }
+  .box-case .box-title { color: #3f6b3d; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; }
+  .box-template {
+    background: #fff; border: 1.5px dashed #1E2A4A; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-template .box-title { color: #1E2A4A; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+
+  .source { font-size: 10pt; color: #1a1a1a; font-style: italic; }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1E2A4A; font-size: 12.5pt; margin-bottom: 4pt; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+
+  ol.steps { padding-left: 0; list-style: none; counter-reset: step; }
+  ol.steps li { counter-increment: step; position: relative; padding-left: 40pt; margin-bottom: 16pt; }
+  ol.steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0;
+    width: 28pt; height: 28pt; border-radius: 50%;
+    background: #1E2A4A; color: #C98A2E; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps li strong { color: #1E2A4A; }
+
+  .subject-heading {
+    background: #1E2A4A; color: #fff; padding: 8pt 14pt; border-radius: 8pt;
+    font-size: 13pt; font-weight: 800; margin: 26pt 0 12pt;
+  }
+
+  .disclaimer {
+    margin-top: 24pt; padding: 16pt; background: #f8f6f2;
+    border-radius: 10pt; font-size: 11pt; color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Devenir freelance après 40 ans : le guide pour sécuriser sa transition sans tout perdre</h1>
+  <p class="tagline">Ton expérience est un vrai atout — encore faut-il sécuriser le saut correctement</p>
+  <p class="meta">Matelas de sécurité, dispositifs à connaître (ARE, ACRE, portage salarial),<br/>positionnement, premiers clients en 90 jours — avec les risques réels à ne pas<br/>minimiser et le Pack Transition bonus : 30 prompts par usage + template Canva</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction — la peur légitime de tout perdre</li>
+    <li>Partie 1 — Sécuriser sa transition financièrement<span>Matelas de sécurité, ARE/ACRE/portage salarial, lisser la baisse de revenu</span></li>
+    <li>Partie 2 — Valoriser son expérience<span>Transformer son parcours en offre claire, positionnement, tarifs</span></li>
+    <li>Partie 3 — Trouver ses premiers clients<span>Réseau, LinkedIn pour quadra/quinqua, méthode 90 jours</span></li>
+    <li>Partie 4 — Mettre en place ton système<span>Un plan sur 3 à 6 mois, checklist, erreurs à éviter</span></li>
+    <li id="toc-bonus-item">Partie 5 — Bonus : le Pack Transition<span>30 prompts par usage + le template Canva one-pager freelance</span></li>
+    <li>Lexique</li>
+    <li>Questions fréquentes</li>
+    <li>Avertissement</li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction — la peur légitime de tout perdre</h2>
+  <p class="lede">En sortant de cette introduction, tu sauras précisément ce que ce guide va changer dans ta transition, et ce qu'il ne fera jamais à ta place.</p>
+
+  <h3>Pourquoi cette peur est légitime — et pourquoi elle ne doit pas t'arrêter</h3>
+  <p>À 40 ans passés, le saut vers le freelance ne ressemble pas à celui d'un jeune diplômé de 25 ans. Un crédit immobilier en cours, des enfants à charge, une épargne construite sur des années : le risque financier est réel, et il serait malhonnête de te dire le contraire.</p>
+
+  <p>Cette peur n'est pas un signe de faiblesse ou de manque d'ambition. C'est un signal rationnel qui te pousse à préparer ta transition sérieusement plutôt qu'à sauter dans le vide. Ce guide part de ce constat : la prudence n'est pas l'ennemie du projet, elle en est la condition de réussite.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce guide ne minimise jamais le risque financier d'une reconversion à cet âge. Il te donne une méthode pour le réduire concrètement — matelas de sécurité réel, dispositifs existants, plan de transition étalé — plutôt qu'une promesse facile de réussite garantie.</p>
+  </div>
+
+  <h3>Ce que 15-20 ans de salariat changent par rapport à un freelance de 25 ans</h3>
+  <p>Tu pars avec des atouts qu'un jeune freelance n'a pas encore : un réseau professionnel construit sur des années, une expertise éprouvée sur le terrain, une crédibilité immédiate face à un client qui cherche un problème réglé, pas un stagiaire à former.</p>
+
+  <table>
+    <tr><th>Atout</th><th>Pourquoi il compte</th></tr>
+    <tr><td>Réseau professionnel existant</td><td>Ancien collègues, clients, partenaires — un vivier de premiers contacts qu'un jeune freelance doit construire de zéro</td></tr>
+    <tr><td>Expertise terrain éprouvée</td><td>Des résultats concrets à montrer, pas seulement des compétences théoriques ou une promesse</td></tr>
+    <tr><td>Crédibilité immédiate</td><td>Un client senior préfère souvent confier une mission à quelqu'un qui a "vécu" le sujet de l'intérieur</td></tr>
+    <tr><td>Maturité dans la gestion de la relation client</td><td>15-20 ans de vie professionnelle donnent une aisance dans la négociation et la gestion des attentes qu'un débutant n'a pas encore</td></tr>
+  </table>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>Ce guide couvre quatre étapes, dans l'ordre où elles s'enchaînent naturellement dans ta transition :</p>
+  <ul>
+    <li><strong>Sécuriser</strong> — calculer ton matelas réel, connaître les dispositifs qui réduisent le risque financier ;</li>
+    <li><strong>Valoriser</strong> — transformer ton expérience en offre claire et vendable, fixer tes tarifs sans te sous-vendre ;</li>
+    <li><strong>Prospecter</strong> — activer ton réseau et LinkedIn pour décrocher tes 3 premiers clients ;</li>
+    <li><strong>Mettre en place</strong> — un plan de transition réaliste sur 3 à 6 mois, avant et après ton départ.</li>
+  </ul>
+
+  <p>Le Pack Transition en bonus (partie 5) te donne 30 prompts prêts à l'emploi classés par usage, et un guide pas à pas pour recréer un template Canva de one-pager freelance en 10 minutes.</p>
+
+  <h3>Prérequis : aucune compétence technique nécessaire</h3>
+  <p>Tu n'as pas besoin de savoir programmer, ni de comprendre le fonctionnement d'un modèle de langage. Ce guide utilise deux outils grand public — ChatGPT et Claude — pour t'aider à clarifier ton positionnement, rédiger tes messages de prospection et préparer tes outils de présentation. Un compte gratuit sur l'un des deux suffit pour commencer.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Ce que l'IA ne fait jamais</span>
+    <p>Aucun outil d'IA ne peut évaluer ta situation financière personnelle, ne remplace un conseil comptable ou juridique sur ton cas précis, et ne garantit jamais l'obtention d'un client. Ce guide t'aide à structurer ta réflexion et tes messages — les décisions financières et le démarchage restent entièrement de ton ressort.</p>
+  </div>
+
+  <h3>Pour qui est ce guide, concrètement</h3>
+  <p>Les situations de départ varient, et la méthode de ce guide s'adapte à chacune :</p>
+
+  <table>
+    <tr><th>Situation de départ</th><th>Ce qui change</th></tr>
+    <tr><td>Salarié en poste, réflexion en cours</td><td>Tu as le temps de préparer ta transition en douceur avant de partir — c'est la situation la plus favorable, à privilégier si possible.</td></tr>
+    <tr><td>Rupture conventionnelle déjà engagée ou actée</td><td>Tu bénéficies potentiellement de l'ARE (chapitre 2.3) — un filet de sécurité à intégrer dans ton calcul de matelas.</td></tr>
+    <tr><td>Licenciement subi, transition non choisie</td><td>La méthode reste la même, mais le chapitre 2.7 t'aide à adapter le rythme à une situation plus urgente et moins préparée en amont.</td></tr>
+  </table>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Sécuriser sa transition financièrement</h2>
+  <p class="lede">En sortant de cette partie, tu sauras calculer ton matelas de sécurité réel, connaître les dispositifs qui réduisent le risque financier, et anticiper la baisse de revenu des premiers mois.</p>
+
+  <h3>2.1 Bien formuler une demande à l'IA : les 4 réflexes qui changent tout</h3>
+  <p>Avant d'entrer dans le détail, quatre réflexes simples améliorent la qualité de <strong>toutes</strong> tes demandes, quel que soit l'usage de ce guide :</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Donne ta situation précise, pas une généralité</strong><br/>
+      "Aide-moi à trouver des clients" donne un résultat générique. Ton métier, ton secteur, ton ancienneté et ta situation familiale donnent un résultat exploitable.
+    </li>
+    <li>
+      <strong>Précise toujours ton contexte financier de départ</strong><br/>
+      Charges fixes, épargne disponible, indemnités éventuelles — l'IA structure bien mieux un plan quand elle connaît ta situation réelle, même en ordre de grandeur.
+    </li>
+    <li>
+      <strong>Demande une décomposition, pas juste une réponse globale</strong><br/>
+      Pour un calcul ou un plan, demande systématiquement le détail étape par étape — cela te permet de vérifier chaque hypothèse et de l'ajuster à ta réalité.
+    </li>
+    <li>
+      <strong>Indique explicitement ce que l'IA ne doit pas faire</strong><br/>
+      "Ne me donne pas de conseil juridique ou fiscal définitif" évite les débordements que ce guide signale à plusieurs reprises.
+    </li>
+  </ol>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces quatre réflexes sont déjà intégrés dans tous les prompts de ce guide — garde-les en tête pour tes propres variations, ou pour tout autre usage que tu inventeras au fil de ta transition.</p>
+  </div>
+
+  <h3>2.2 Calculer son matelas de sécurité réel avant de se lancer</h3>
+  <p>Un matelas de sécurité mal calculé est l'une des premières causes d'échec d'une transition freelance. Il ne s'agit pas d'un chiffre approximatif, mais d'un calcul précis basé sur tes charges fixes réelles.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Liste toutes tes charges fixes mensuelles</strong><br/>
+      Crédit immobilier ou loyer, charges familiales, assurances, abonnements incompressibles — le montant en dessous duquel tu ne peux pas descendre.
+    </li>
+    <li>
+      <strong>Additionne ton épargne mobilisable</strong><br/>
+      Épargne de précaution, éventuelle indemnité de rupture, en excluant l'épargne retraite ou tout ce qui n'est pas facilement disponible.
+    </li>
+    <li>
+      <strong>Calcule ton nombre de mois de couverture</strong><br/>
+      Épargne mobilisable divisée par tes charges fixes mensuelles — c'est ton vrai matelas, exprimé en mois de tenue sans aucun revenu freelance.
+    </li>
+    <li>
+      <strong>Vise un minimum réaliste avant de te lancer</strong><br/>
+      La plupart des transitions réussies s'appuient sur un matelas d'au moins 6 mois de charges fixes couvertes, davantage si tu as des personnes à charge.
+    </li>
+  </ol>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — calculer son matelas de sécurité</span>
+    <span class="prompt-text">Aide-moi à calculer mon matelas de sécurité avant de me lancer en freelance. Mes charges fixes mensuelles : [liste : crédit/loyer, charges familiales, assurances]. Mon épargne mobilisable : [montant]. Éventuelle indemnité de rupture : [montant si applicable]. Calcule le nombre de mois de charges fixes que je peux couvrir, et indique si ce chiffre te semble suffisant pour une transition freelance à mon âge et ma situation.</span>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Ne compte jamais sur un revenu freelance dès le premier mois pour boucler ton budget. La plupart des freelances mettent plusieurs mois à atteindre un rythme de facturation stable — ton matelas doit couvrir cette période sans aucune rentrée d'argent garantie.</p>
+  </div>
+
+  <h3>2.3 Les dispositifs à connaître : ARE, ACRE, rupture conventionnelle</h3>
+  <p>Plusieurs dispositifs existent pour réduire le risque financier de la transition. Les connaître avant de partir change concrètement ta marge de manœuvre.</p>
+
+  <table>
+    <tr><th>Dispositif</th><th>Ce qu'il apporte</th><th>Condition clé</th></tr>
+    <tr><td>ARE (Allocation de Retour à l'Emploi)</td><td>Une allocation chômage versée par France Travail, potentiellement cumulable partiellement avec un début d'activité freelance</td><td>Accessible en cas de licenciement ou de rupture conventionnelle — pas en cas de démission simple, sauf cas de démission légitime</td></tr>
+    <tr><td>ACRE (Aide à la Création ou Reprise d'Entreprise)</td><td>Une exonération partielle et dégressive de charges sociales la première année d'activité en tant qu'indépendant</td><td>Sous conditions d'éligibilité à vérifier auprès de l'Urssaf au moment de la création</td></tr>
+    <tr><td>Rupture conventionnelle vs démission</td><td>La rupture conventionnelle ouvre droit à l'ARE ; la démission classique n'y donne en principe pas droit</td><td>Négociable avec l'employeur, contrairement à la démission qui est unilatérale</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Avant toute décision, prends rendez-vous avec un conseiller France Travail pour vérifier tes droits précis et les règles de cumul ARE/activité freelance applicables à ta situation — ces règles évoluent et un cas particulier peut changer le calcul.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Ne démissionne jamais sans avoir vérifié tes droits à l'ARE si une rupture conventionnelle est envisageable avec ton employeur. La différence peut représenter plusieurs mois de revenu de sécurité pendant ta transition.</p>
+  </div>
+
+  <h3>2.4 Le portage salarial comme transition en douceur</h3>
+  <p>Le portage salarial permet de facturer tes premières missions freelance tout en gardant un statut de salarié porté, cotisant normalement à la retraite et à l'assurance chômage. C'est une option à considérer pour tester ton activité avant de créer ta propre structure.</p>
+
+  <table>
+    <tr><th>Avantage</th><th>Limite</th></tr>
+    <tr><td>Statut salarié maintenu (retraite, chômage, prévoyance)</td><td>Frais de gestion prélevés par la société de portage sur ton chiffre d'affaires</td></tr>
+    <tr><td>Aucune création de structure nécessaire pour démarrer</td><td>Moins adapté sur le long terme si ton activité se développe fortement</td></tr>
+    <tr><td>Bonne solution pour tester son activité avant de trancher</td><td>Toutes les activités ne sont pas éligibles (certaines professions réglementées, activité commerciale pure)</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Le portage salarial est particulièrement adapté si tu hésites encore entre freelance et un retour au salariat — il te permet de tester ton activité pendant plusieurs mois sans devoir choisir un statut définitif dès le départ.</p>
+  </div>
+
+  <h3>2.5 Anticiper et lisser la baisse de revenu des 6 premiers mois</h3>
+  <p>Même avec un bon matelas, une baisse de revenu progressive doit être anticipée dans ton budget, pas découverte en cours de route.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — lisser sa baisse de revenu</span>
+    <span class="prompt-text">Aide-moi à construire un budget prévisionnel sur 6 mois pour ma transition freelance. Mon revenu salarié actuel : [montant net mensuel]. Mon matelas de sécurité : [nombre de mois calculé au chapitre 2.2]. Estimation de mon chiffre d'affaires freelance progressif : [mois 1 : montant, mois 2 : montant...]. Indique le point où mon matelas commence à se réduire, et à partir de quel mois je dois atteindre un chiffre d'affaires minimum pour ne plus l'entamer.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un revenu freelance qui met 4 à 6 mois à devenir stable n'est pas un échec — c'est la norme pour la grande majorité des transitions. L'anticiper dans ton budget évite la panique au 3e mois sans facturation suffisante.</p>
+  </div>
+
+  <h3>2.6 Exemple complet avant/après</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    43 ans cadre marketing, credit 900e/mois, 2 enfants, epargne 18000e, indemnite rupture conventionnelle 12000e, veut savoir si je peux me lancer
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait)</span>
+    <strong>Calcul de ton matelas de sécurité</strong><br/>
+    Charges fixes estimées (crédit + charges familiales) : à partir de 900 €/mois de crédit, prévoir un total de charges fixes probablement plus élevé une fois assurances et charges courantes ajoutées — à préciser.<br/><br/>
+    Épargne mobilisable : 18 000 € + indemnité de rupture 12 000 € = 30 000 €.<br/><br/>
+    Si tes charges fixes totales s'élèvent par exemple à 2 000 €/mois, ton matelas représente environ 15 mois de couverture — une base solide pour te lancer, à condition de vérifier également tes droits à l'ARE suite à la rupture conventionnelle.
+  </div>
+
+  <p>À partir d'informations brutes, l'IA structure un calcul clair et identifie immédiatement l'information manquante (le détail des charges fixes) plutôt que de deviner un chiffre au hasard — un réflexe à retrouver dans tous tes échanges avec l'IA sur ce sujet.</p>
+
+  <h3>2.7 Cas particulier — transition non choisie (licenciement)</h3>
+  <p>Si ta transition freelance fait suite à un licenciement plutôt qu'à un choix préparé en amont, le rythme et les priorités changent légèrement.</p>
+
+  <table>
+    <tr><th>Différence</th><th>Ajustement recommandé</th></tr>
+    <tr><td>Moins de temps de préparation en amont</td><td>Concentre-toi en priorité sur le chapitre 2.3 (dispositifs) pour sécuriser un revenu de transition pendant que tu prépares ton positionnement</td></tr>
+    <tr><td>Pression psychologique plus forte</td><td>Ne saute pas les étapes de positionnement (partie 2) même sous pression — un positionnement flou par précipitation coûte plus cher en temps perdu qu'un délai de quelques semaines bien utilisé</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Dans cette situation, envisage sérieusement une période de portage salarial (chapitre 2.4) le temps de stabiliser tes premiers clients, plutôt que de créer immédiatement ta structure définitive sous pression.</p>
+  </div>
+
+  <h3>2.8 Cas particulier — conjoint sans revenu stable ou famille monoparentale</h3>
+  <p>Le calcul du risque n'est pas le même selon que tu es seul responsable des charges du foyer ou que tu partages ce risque avec un conjoint ayant un revenu stable. Cette situation doit peser directement sur ton matelas de sécurité cible.</p>
+
+  <table>
+    <tr><th>Situation</th><th>Ajustement recommandé</th></tr>
+    <tr><td>Conjoint avec revenu stable</td><td>Le risque du foyer est partiellement mutualisé — un matelas de 6 mois peut suffire si le positionnement est déjà solide</td></tr>
+    <tr><td>Conjoint également en transition ou sans emploi</td><td>Vise un matelas plus large (9-12 mois), et priorise le portage salarial (chapitre 2.4) pour sécuriser un revenu pendant la phase de démarrage</td></tr>
+    <tr><td>Famille monoparentale</td><td>Le matelas de sécurité doit être calculé sans aucune marge de mutualisation — prévois systématiquement la fourchette haute des recommandations de ce guide</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Dans ces situations, ne minimise jamais le calcul par optimisme — un matelas légèrement surdimensionné coûte quelques mois d'attente supplémentaires ; un matelas sous-dimensionné peut compromettre toute la transition en cours de route.</p>
+  </div>
+
+  <h3>2.9 Construire un fonds de trésorerie professionnel distinct</h3>
+  <p>Au-delà du matelas de sécurité personnel, ton activité elle-même a besoin d'une trésorerie propre : les clients ne paient pas toujours immédiatement, et certaines charges professionnelles tombent avant même la première facture encaissée.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — estimer sa trésorerie professionnelle de départ</span>
+    <span class="prompt-text">Aide-moi à estimer la trésorerie professionnelle minimale à prévoir pour démarrer mon activité freelance en [secteur] : frais de création de structure, assurance professionnelle, outils/abonnements nécessaires, et délai moyen de paiement client dans ce secteur. Distingue bien cette trésorerie de mon matelas de sécurité personnel.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Confondre ton épargne personnelle et la trésorerie de ton activité est une source fréquente de confusion et de stress. Même en entreprise individuelle, garde une séparation claire entre les deux, ne serait-ce que sur un compte bancaire dédié.</p>
+  </div>
+
+  <h3>2.10 Ce qui change selon ton âge dans la tranche 40-60 ans</h3>
+  <p>"Après 40 ans" recouvre des réalités très différentes selon que tu es en milieu de carrière ou proche de la retraite — l'horizon de temps et les priorités ne sont pas les mêmes.</p>
+
+  <table>
+    <tr><th>Tranche d'âge</th><th>Ce qui change dans l'approche</th></tr>
+    <tr><td>40-45 ans</td><td>Horizon long devant toi — tu peux te permettre de construire une activité qui monte en puissance progressivement sur 2-3 ans</td></tr>
+    <tr><td>46-55 ans</td><td>Vise une stabilisation plus rapide du revenu, tout en gardant à l'esprit l'impact sur tes futurs droits à la retraite selon le statut choisi</td></tr>
+    <tr><td>55 ans et plus</td><td>Vérifie precisément l'impact du changement de statut sur tes droits à la retraite déjà acquis avant de trancher, et envisage le portage salarial (chapitre 2.4) qui préserve ces droits plus simplement</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Quel que soit ton âge dans cette tranche, une simulation de tes droits à la retraite selon le statut choisi (auprès de ta caisse de retraite ou d'un conseiller) est un réflexe à ne pas négliger — les règles de cotisation diffèrent significativement entre salariat, portage et indépendance classique.</p>
+  </div>
+
+  <h3>2.11 Anticiper la fiscalité de sa première année</h3>
+  <p>Le décalage entre le moment où tu factures et le moment où tu paies réellement tes impôts et cotisations surprend souvent les nouveaux indépendants — anticiper ce décalage évite une mauvaise surprise en cours d'année.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — anticiper sa fiscalité de première année</span>
+    <span class="prompt-text">Je démarre une activité freelance sous le statut [statut envisagé, ex. micro-entreprise, société]. Explique-moi simplement le principe du décalage entre facturation et paiement des cotisations/impôts pour ce statut, et le pourcentage approximatif de mon chiffre d'affaires que je devrais mettre de côté systématiquement pour ne pas être pris au dépourvu.</span>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Ne dépense jamais l'intégralité d'une rentrée d'argent freelance comme s'il s'agissait d'un salaire net. Une part significative doit être mise de côté systématiquement pour les cotisations et impôts à venir — le pourcentage exact dépend de ton statut et doit être vérifié avec un professionnel.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Valoriser son expérience</h2>
+  <p class="lede">En sortant de cette partie, tu sauras transformer 15-20 ans de salariat en offre freelance claire, trouver ton positionnement, et fixer tes tarifs sans te sous-vendre.</p>
+
+  <h3>3.1 Transformer son parcours en offre freelance claire et vendable</h3>
+  <p>Ton parcours salarié est riche, mais un client freelance ne veut pas un CV — il veut savoir précisément quel problème tu résous pour lui. La transformation est un exercice de traduction, pas de résumé.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — transformer son parcours en offre</span>
+    <span class="prompt-text">Voici mon parcours professionnel : [décris ton poste, tes responsabilités, tes résultats marquants sur 15-20 ans]. Aide-moi à le transformer en une offre freelance claire : quel problème précis je peux résoudre pour un client, en une phrase, puis 3 preuves concrètes tirées de mon expérience qui démontrent que je sais le faire.</span>
+  </div>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Nathalie, ex-directrice commerciale de 47 ans</span>
+    <p>Nathalie a passé 18 ans à diriger des équipes commerciales dans l'industrie. Son CV listait des responsabilités générales ("management d'équipe, pilotage du chiffre d'affaires, relation client"). Avec le prompt ci-dessus, elle reformule son offre en : "J'aide les PME industrielles à structurer leur force de vente quand leur croissance dépasse leur organisation commerciale actuelle." Cette phrase, bien plus précise, lui permet immédiatement de savoir à qui s'adresser et quoi dire en prospection.</p>
+  </div>
+
+  <h3>3.2 Trouver son positionnement : l'erreur de vouloir tout proposer</h3>
+  <p>La tentation est grande de proposer large pour ne "fermer aucune porte". C'est pourtant l'erreur la plus fréquente chez les freelances qui peinent à démarrer — un positionnement flou ne parle à personne en particulier.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — resserrer son positionnement</span>
+    <span class="prompt-text">Voici les services que j'envisage de proposer en freelance : [liste tout ce que tu pourrais faire]. Aide-moi à identifier un positionnement resserré : un secteur ou type de client précis, un problème précis à résoudre, plutôt qu'une offre générale. Explique-moi pourquoi un positionnement plus étroit est plus facile à vendre qu'une offre large.</span>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Un positionnement resserré ne t'enferme pas définitivement — tu pourras toujours élargir ton offre une fois tes premiers clients acquis. Mais démarrer large dilue ton message et ralentit ta prospection.</p>
+  </div>
+
+  <h3>3.3 Fixer ses tarifs sans se sous-vendre par manque de confiance</h3>
+  <p>Sous-évaluer son tarif de départ par manque de confiance est un piège classique, particulièrement fréquent après une reconversion. Ton expérience a une valeur réelle, qui doit se refléter dans ton tarif.</p>
+
+  <table>
+    <tr><th>Niveau d'expérience</th><th>Repère de positionnement tarifaire</th></tr>
+    <tr><td>Expertise senior (15-20 ans, poste à responsabilité)</td><td>Tarif dans la tranche haute du marché de ton secteur — ton expérience justifie une prime par rapport à un freelance junior</td></tr>
+    <tr><td>Reconversion vers un nouveau métier</td><td>Tarif d'entrée du marché au démarrage, en expliquant clairement la partie de ton expérience transférable qui justifie de ne pas partir de zéro</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — fixer son tarif</span>
+    <span class="prompt-text">Je me lance en freelance sur [ton positionnement], avec [nombre] années d'expérience dans [secteur]. Aide-moi à fixer un tarif journalier ou un forfait de départ cohérent avec mon expérience, sans me sous-vendre. Donne-moi aussi un argumentaire court à utiliser si un client trouve mon tarif élevé.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un tarif trop bas n'attire pas plus de clients — il attire souvent les clients les plus difficiles, qui négocient encore davantage. Un tarif cohérent avec ton expérience filtre naturellement les clients qui valorisent réellement ce que tu apportes.</p>
+  </div>
+
+  <h3>3.4 Exemple complet avant/après</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    20 ans responsable RH grande entreprise, veux faire du conseil RH pour PME, je sais pas comment le dire simplement
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait)</span>
+    <strong>Positionnement proposé</strong><br/>
+    "J'aide les PME de 20 à 100 salariés à structurer leur fonction RH sans avoir besoin d'un DRH à temps plein."<br/><br/>
+    <strong>Pourquoi ça fonctionne</strong> — cette phrase précise la taille d'entreprise ciblée (20-100 salariés), le problème résolu (pas de moyens pour un DRH permanent), et ta valeur ajoutée (l'expérience d'un grand groupe appliquée à une PME).<br/><br/>
+    <strong>3 preuves à mobiliser</strong> — un projet de structuration RH mené en grande entreprise, un exemple de process simplifié pour une équipe plus petite, une référence chiffrée si disponible (turnover réduit, process de recrutement accéléré).
+  </div>
+
+  <p>À partir d'une expérience vécue comme "trop générale pour être vendable", l'IA a produit un positionnement précis en quelques lignes — la matière première était là, il manquait seulement la formulation.</p>
+
+  <h3>3.5 Cas particulier — reconversion complète vers un nouveau métier</h3>
+  <p>Si ton projet freelance n'est pas la poursuite de ton métier salarié mais une reconversion complète, la valorisation de ton expérience demande un exercice différent.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — valoriser une reconversion complète</span>
+    <span class="prompt-text">Je me reconvertis de [ancien métier] vers [nouveau métier freelance]. Identifie les compétences transférables de mon ancien métier qui restent pertinentes dans ma nouvelle activité (organisation, gestion de projet, relation client, etc.), pour que je puisse les mentionner sans donner l'impression de repartir totalement de zéro.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Même dans une reconversion complète, des compétences transversales (gestion de projet, négociation, communication) restent réellement valorisables — ne les efface pas de ton discours sous prétexte que le métier change.</p>
+  </div>
+
+  <h3>3.6 Cas particulier — profession réglementée ou statut spécifique</h3>
+  <p>Certaines activités (conseil juridique, professions de santé, certains métiers du chiffre) sont soumises à des obligations d'assurance, de qualification ou de statut spécifiques avant de pouvoir exercer en freelance.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Si ton activité relève d'une profession réglementée, vérifie les obligations précises (diplôme, assurance responsabilité civile professionnelle, inscription à un ordre) avant de commencer à facturer — ce n'est pas une formalité à régulariser après coup.</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — identifier les obligations de son secteur</span>
+    <span class="prompt-text">Je souhaite exercer en freelance dans le secteur [secteur, ex. conseil juridique, coaching certifié, expertise comptable]. Liste les points que je dois vérifier avant de démarrer (qualifications requises, assurances obligatoires, inscriptions professionnelles) pour que je puisse les confirmer auprès des organismes compétents.</span>
+  </div>
+
+  <h3>3.7 Étude de cas complète — un parcours de valorisation</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Sophie, 44 ans, ex-cheffe de projet informatique</span>
+    <p><strong>Le point de départ</strong> — Sophie a géré des projets informatiques pendant 16 ans dans une grande entreprise. Son premier réflexe est de vouloir proposer "du conseil en gestion de projet" au sens large — une offre trop générale pour se différencier.</p>
+    <p><strong>Le travail de resserrement</strong> — Avec le prompt du chapitre 3.2, elle identifie que sa vraie valeur ajoutée est d'aider des PME à reprendre un projet informatique en difficulté (retard, budget dépassé). Elle resserre son positionnement autour de ce problème précis.</p>
+    <p><strong>La valorisation de l'expérience</strong> — Elle identifie 3 preuves concrètes : un projet redressé avec 2 mois de retard rattrapés, une méthode de reporting qu'elle a mise en place et qui a réduit les malentendus avec la direction, une équipe qu'elle a stabilisée après un fort turnover.</p>
+    <p><strong>Le tarif</strong> — Fort de ce positionnement précis et de preuves concrètes, elle fixe un tarif journalier dans la tranche haute du marché du conseil en gestion de projet, sans se sous-vendre malgré sa reconversion récente.</p>
+    <p><strong>Bilan</strong> — Le passage d'une offre généraliste ("conseil en gestion de projet") à un positionnement précis ("redressement de projets informatiques en difficulté pour PME") a été, selon Sophie elle-même, le changement qui a le plus accéléré ses premiers échanges avec des prospects sérieux.</p>
+  </div>
+
+  <h3>3.8 Se former ou certifier son expertise avant de se lancer</h3>
+  <p>Selon ton secteur, une certification ou une formation courte peut renforcer ta crédibilité freelance — mais ce n'est pas systématiquement nécessaire, et cela ne doit jamais devenir un prétexte pour retarder indéfiniment ton lancement.</p>
+
+  <table>
+    <tr><th>Situation</th><th>Recommandation</th></tr>
+    <tr><td>Ton expérience salariée couvre déjà le positionnement visé</td><td>Une certification n'est généralement pas indispensable — tes résultats concrets suffisent comme preuve</td></tr>
+    <tr><td>Reconversion vers un domaine partiellement nouveau</td><td>Une formation courte et ciblée peut combler un point précis, sans pour autant repartir sur un cursus complet</td></tr>
+    <tr><td>Secteur réglementé (chapitre 3.6)</td><td>Certaines certifications sont obligatoires, pas optionnelles — à vérifier avant tout engagement de formation</td></tr>
+  </table>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Se former en boucle ("encore une certification avant de me sentir prêt") est un piège classique qui retarde indéfiniment le lancement réel de l'activité. Si ton expérience couvre déjà le positionnement visé, la meilleure formation est souvent ta première mission réelle.</p>
+  </div>
+
+  <h3>3.9 Adapter son offre selon la taille de client visé</h3>
+  <p>Vendre à une PME, à un grand groupe ou à des particuliers demande une approche différente — le cycle de décision, l'interlocuteur et les attentes ne sont pas les mêmes.</p>
+
+  <table>
+    <tr><th>Type de client</th><th>Ce qui change</th></tr>
+    <tr><td>PME / TPE</td><td>Décision souvent rapide, un seul interlocuteur (souvent le dirigeant) — privilégie un discours direct et concret</td></tr>
+    <tr><td>Grand groupe</td><td>Cycle de décision plus long, plusieurs interlocuteurs, procédures d'achat parfois formalisées — ton réseau interne devient un atout décisif pour accélérer</td></tr>
+    <tr><td>Particuliers</td><td>Décision liée à la confiance immédiate et au bouche-à-oreille — les avis et références comptent davantage qu'un discours d'expertise formel</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si tu vises des grands groupes, ton ancien réseau interne (anciens collègues devenus décideurs) est souvent le levier le plus efficace pour raccourcir un cycle de décision habituellement long avec ce type de client.</p>
+  </div>
+
+  <h3>3.10 Étude de cas complète — de la reconversion à la stabilisation</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Philippe, 49 ans, ex-responsable production industrielle</span>
+    <p><strong>Le point de départ</strong> — Après 22 ans dans l'industrie, Philippe est licencié suite à une fermeture de site. Il envisage de devenir consultant en amélioration de la production pour PME industrielles.</p>
+    <p><strong>Sécuriser (partie 1)</strong> — Il calcule son matelas de sécurité : indemnités de licenciement plus épargne représentent 14 mois de charges fixes couvertes. Il vérifie ses droits ARE auprès de France Travail, qui confirme un cumul partiel possible avec un début d'activité freelance.</p>
+    <p><strong>Valoriser (partie 2)</strong> — Plutôt qu'un positionnement générique en "conseil industriel", il resserre son offre autour de la réduction des temps d'arrêt de production, un problème précis qu'il a résolu à plusieurs reprises dans sa carrière. Il fixe un tarif journalier dans la tranche haute du marché du conseil industriel.</p>
+    <p><strong>Prospecter (partie 3)</strong> — Il active son réseau de 25 ans dans le secteur : anciens fournisseurs, partenaires techniques, anciens collègues devenus décideurs ailleurs. En 90 jours, il décroche 2 missions courtes via ce réseau.</p>
+    <p><strong>Mettre en place (partie 4)</strong> — Il suit son budget prévisionnel mensuellement et constate un léger retard par rapport à ses projections initiales au 3e mois — il ajuste en intensifiant sa prospection sur les plateformes freelance (chapitre 4.10) en complément du réseau.</p>
+    <p><strong>Bilan à 6 mois</strong> — Philippe atteint un rythme de facturation stable au 5e mois, légèrement plus tard que prévu mais toujours dans la limite de son matelas de sécurité initial — confirmant l'intérêt d'avoir visé une marge de sécurité confortable dès le départ plutôt qu'un calcul optimiste.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Trouver ses premiers clients</h2>
+  <p class="lede">En sortant de cette partie, tu sauras activer ton réseau sans impression de mendier, utiliser LinkedIn efficacement pour un profil quadra/quinqua, et tu auras une méthode concrète pour décrocher tes 3 premiers clients en 90 jours.</p>
+
+  <h3>4.1 Activer son réseau professionnel sans avoir l'impression de mendier</h3>
+  <p>Ton réseau construit sur 15-20 ans est ton actif le plus précieux pour démarrer. Le principal frein n'est pas le manque de contacts, mais la gêne à les solliciter directement.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — message de reprise de contact professionnel</span>
+    <span class="prompt-text">Rédige un message à envoyer à un ancien collègue/contact professionnel avec qui je n'ai pas échangé depuis un moment, pour l'informer de mon lancement en freelance sur [positionnement]. Ton naturel, sans donner l'impression de demander un service — informatif d'abord, avec une ouverture discrète si un besoin ou une mise en relation pouvait exister.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Informer ton réseau de ton changement de statut n'est pas "mendier" — c'est une information professionnelle légitime. La gêne vient souvent d'une formulation trop insistante ; un message factuel et sans pression est toujours bien reçu.</p>
+  </div>
+
+  <h3>4.2 Utiliser LinkedIn efficacement pour un profil quadra/quinqua</h3>
+  <p>Les codes qui fonctionnent pour un jeune freelance (ton très décontracté, storytelling personnel appuyé) ne sont pas ceux qui parlent le mieux à un profil plus expérimenté. La crédibilité et la clarté priment sur l'audace de ton.</p>
+
+  <table>
+    <tr><th>Élément du profil</th><th>Approche recommandée pour un profil expérimenté</th></tr>
+    <tr><td>Titre du profil</td><td>Positionnement clair et concret plutôt qu'une formule accrocheuse ("Coach de vie 3.0") — mise sur la précision</td></tr>
+    <tr><td>Résumé ("À propos")</td><td>Structuré autour de résultats concrets et de l'expérience, pas d'un ton trop familier</td></tr>
+    <tr><td>Fréquence de publication</td><td>Une régularité mesurée (1-2 fois par semaine) avec du contenu à valeur ajoutée plutôt qu'un rythme quotidien difficile à tenir</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — optimiser son titre LinkedIn</span>
+    <span class="prompt-text">Voici mon positionnement freelance : [positionnement défini au chapitre 3.2]. Rédige 3 propositions de titre LinkedIn qui reflètent ce positionnement de façon claire et professionnelle, sans formule marketing excessive, adaptées à un profil de [ton âge] ans avec [nombre] années d'expérience.</span>
+  </div>
+
+  <h3>4.3 La méthode pour décrocher ses 3 premiers clients en 90 jours</h3>
+  <p>Une méthode structurée sur 90 jours, plutôt qu'une prospection dispersée, augmente significativement tes chances de décrocher rapidement des premières missions.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Jours 1-15 : lister et prioriser tes contacts</strong><br/>
+      Dresse une liste de 30 à 50 contacts de ton réseau (anciens collègues, clients, partenaires), classés par pertinence par rapport à ton positionnement.
+    </li>
+    <li>
+      <strong>Jours 15-45 : contacter par vagues de 10</strong><br/>
+      Envoie le message du chapitre 4.1 par groupes de 10 contacts, en espaçant les envois pour pouvoir répondre personnellement à chaque retour.
+    </li>
+    <li>
+      <strong>Jours 45-75 : transformer les échanges en rendez-vous</strong><br/>
+      Pour chaque contact intéressé ou qui te met en relation, propose un échange court (15-20 minutes) pour clarifier un besoin potentiel, sans pression commerciale.
+    </li>
+    <li>
+      <strong>Jours 75-90 : formaliser tes premières propositions</strong><br/>
+      Transforme les échanges les plus concrets en propositions commerciales claires, avec le tarif défini au chapitre 3.3.
+    </li>
+  </ol>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Ne vise pas la perfection sur ta première proposition commerciale — une offre claire envoyée rapidement vaut mieux qu'un document parfait envoyé trop tard, une fois l'intérêt du contact retombé.</p>
+  </div>
+
+  <h3>4.4 Exemple complet avant/après</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    message a un ancien collegue que jai pas vu depuis 3 ans, je me lance freelance conseil finance pour pme, veux pas avoir lair de mendier un contrat
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait)</span>
+    Bonjour [Prénom],<br/><br/>
+    Cela fait un moment ! J'espère que tout va bien de ton côté. Je voulais te tenir informé d'un changement de cap : je me lance en freelance pour accompagner des PME sur leurs sujets de pilotage financier.<br/><br/>
+    Pas de demande particulière de ma part pour l'instant — simplement l'envie de garder le contact et de te partager cette nouvelle étape. N'hésite pas si l'occasion d'échanger se présente un jour.<br/><br/>
+    Au plaisir de te relire !
+  </div>
+
+  <p>À partir d'une préoccupation brute ("ne pas avoir l'air de mendier"), l'IA a produit un message qui informe sans solliciter directement — une nuance essentielle qui change complètement la façon dont le message est reçu.</p>
+
+  <h3>4.5 Cas particulier — secteur avec peu de présence en ligne</h3>
+  <p>Certains métiers (artisanat, conseil très terrain, certains secteurs industriels) ont une clientèle peu présente sur LinkedIn. La méthode de prospection doit alors s'adapter à des canaux plus traditionnels.</p>
+
+  <table>
+    <tr><th>Canal alternatif</th><th>Usage recommandé</th></tr>
+    <tr><td>Réseau professionnel physique (salons, syndicats professionnels)</td><td>Prioritaire si ta clientèle cible fréquente peu les réseaux sociaux professionnels</td></tr>
+    <tr><td>Recommandation directe par téléphone ou email</td><td>Reprend la logique du chapitre 4.1 mais sans passer par LinkedIn — le message reste le même sur le fond</td></tr>
+    <tr><td>Présence locale (chambre de commerce, réseaux d'entrepreneurs locaux)</td><td>Particulièrement pertinent pour une clientèle de PME locales ou de TPE</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si ta cible n'est pas sur LinkedIn, n'y consacre pas un temps disproportionné. Adapte simplement les prompts de ce guide (messages, positionnement) au canal réellement utilisé par tes clients potentiels.</p>
+  </div>
+
+  <h3>4.6 Cas particulier — prospecter un ancien employeur</h3>
+  <p>Ton ancien employeur peut devenir ton premier client freelance — une situation fréquente et parfaitement légitime, à condition de la gérer avec tact et dans le respect de tes éventuelles clauses contractuelles.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Avant toute démarche, vérifie ton contrat de travail et ta clause de non-concurrence éventuelle. Certaines clauses limitent explicitement la possibilité de travailler pour un ancien employeur pendant une durée définie après le départ.</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — proposer ses services à son ancien employeur</span>
+    <span class="prompt-text">Je viens de quitter [ancien employeur] où j'occupais le poste de [poste]. Je souhaite leur proposer mes services en freelance sur [positionnement]. Rédige un message qui présente cette proposition de façon naturelle et professionnelle, sans donner l'impression de "revenir par la fenêtre" après être parti par la porte.</span>
+  </div>
+</section>
+
+  <h3>4.7 Étude de cas complète — les 90 jours de Marc</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Marc, ex-directeur technique de 51 ans, décroche ses 3 premiers clients</span>
+    <p><strong>Semaines 1-2</strong> — Marc liste 40 contacts de son réseau (anciens collègues, fournisseurs, partenaires techniques) et les classe selon la pertinence par rapport à son positionnement en conseil technique pour PME industrielles.</p>
+    <p><strong>Semaines 3-6</strong> — Il envoie le message de reprise de contact par vagues de 10, en personnalisant chaque envoi avec un détail de la relation passée. Sur 40 contacts, 12 répondent positivement.</p>
+    <p><strong>Semaines 7-10</strong> — Il propose un échange court à chacun des 12 contacts intéressés. 5 échanges révèlent un besoin concret à court terme.</p>
+    <p><strong>Semaines 11-13</strong> — Marc envoie 5 propositions commerciales formalisées, avec le tarif défini selon la méthode du chapitre 3.3. 3 sont acceptées.</p>
+    <p><strong>Bilan</strong> — En 90 jours, Marc décroche 3 clients à partir de son réseau existant, sans prospection à froid ni publicité — confirmant que le réseau construit sur 20 ans de carrière reste le levier le plus rapide pour démarrer.</p>
+  </div>
+
+  <h3>4.8 Gérer plusieurs opportunités en parallèle sans se disperser</h3>
+  <p>Une fois la prospection lancée, plusieurs échanges peuvent avancer en même temps — un bon problème à avoir, à condition de ne pas perdre le fil de chaque dossier.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Template — Suivi des opportunités en cours</span>
+    <strong>Contact :</strong> [nom] — <strong>Origine :</strong> [réseau/LinkedIn/recommandation]<br/>
+    <strong>Statut :</strong> [premier échange / proposition envoyée / en attente de réponse]<br/>
+    <strong>Prochaine action :</strong> [relance/appel] — <strong>Date prévue :</strong> [date]<br/>
+    <strong>Montant potentiel :</strong> [estimation si connue]
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Un simple tableau avec ces colonnes suffit pour ne perdre le fil d'aucune opportunité — pas besoin d'un outil de gestion commerciale complexe pour tes premiers mois d'activité.</p>
+  </div>
+
+  <h3>4.9 Mesurer l'efficacité de sa prospection</h3>
+  <p>Savoir combien de messages génèrent combien de rendez-vous, puis combien de clients, te permet d'ajuster ta méthode plutôt que de continuer une approche qui ne fonctionne pas.</p>
+
+  <table>
+    <tr><th>Étape</th><th>Ce qu'il faut suivre</th></tr>
+    <tr><td>Messages envoyés</td><td>Nombre de contacts sollicités sur la période</td></tr>
+    <tr><td>Réponses positives</td><td>Taux de réponse — un taux très faible peut indiquer un message ou un positionnement à ajuster</td></tr>
+    <tr><td>Rendez-vous obtenus</td><td>Taux de transformation réponse → échange réel</td></tr>
+    <tr><td>Propositions envoyées et signées</td><td>Taux de transformation échange → client, le chiffre le plus révélateur de la solidité de ton offre</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si ton taux de réponse est faible mais que les rendez-vous obtenus se transforment bien en clients, le problème vient probablement du message ou du ciblage — pas de ton offre elle-même. Ajuste en priorité l'étape où le taux chute le plus.</p>
+  </div>
+
+  <h3>4.10 Cas particulier — utiliser une plateforme de mise en relation freelance</h3>
+  <p>Des plateformes comme Malt ou Comet mettent en relation freelances et entreprises. Elles peuvent compléter ta prospection par réseau, sans s'y substituer entièrement.</p>
+
+  <table>
+    <tr><th>Avantage</th><th>Limite</th></tr>
+    <tr><td>Visibilité auprès de clients qui ne font pas partie de ton réseau existant</td><td>Concurrence directe visible avec d'autres freelances, parfois sur le seul critère du tarif</td></tr>
+    <tr><td>Simplicité de mise en relation et de facturation selon la plateforme</td><td>Commission prélevée par la plateforme sur certaines missions</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Utilise ces plateformes en complément de ton réseau (partie 3), pas comme unique canal de prospection — ton expérience et ton réseau construits sur 15-20 ans restent ton avantage le plus difficile à répliquer pour un concurrent plus jeune sur ces plateformes.</p>
+  </div>
+
+  <h3>4.11 Gérer le syndrome de l'imposteur en prospection</h3>
+  <p>Douter de sa légitimité après une longue carrière salariée, au moment de se présenter comme expert freelance, est extrêmement fréquent — et n'a aucun rapport avec la réalité de ton niveau de compétence.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — objectiver sa légitimité</span>
+    <span class="prompt-text">Voici mon parcours : [décris ton expérience]. J'ai du mal à me sentir légitime pour me présenter comme expert sur [positionnement]. Liste-moi factuellement les éléments concrets de mon parcours qui démontrent cette légitimité, pour m'aider à objectiver la situation plutôt que de me fier uniquement à mon ressenti.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le syndrome de l'imposteur touche autant, sinon plus, les profils expérimentés qui changent de statut que les débutants. Le décalage entre ton ressenti et la réalité de ton expertise est normal au début d'une transition — il s'atténue avec les premiers retours clients concrets.</p>
+  </div>
+
+  <h3>4.12 Demander et valoriser ses premiers témoignages clients</h3>
+  <p>Un témoignage, même court, pèse davantage dans une décision d'achat qu'une longue présentation de tes compétences. Dès ta première mission terminée, le bon réflexe est de le demander rapidement, pendant que la satisfaction du client est encore fraîche.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — demander un témoignage client</span>
+    <span class="prompt-text">Rédige un message à envoyer à un client pour lequel je viens de terminer [mission], lui demandant s'il accepterait de me laisser un court témoignage sur notre collaboration, à utiliser dans ma communication professionnelle. Ton naturel, sans insistance, qui facilite une réponse rapide.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Facilite la tâche du client en proposant 2-3 questions simples auxquelles répondre plutôt qu'une demande ouverte ("dites-moi ce que vous avez pensé de la mission") — un client occupé répond plus volontiers à des questions précises qu'à une page blanche.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Mettre en place ton système</h2>
+  <p class="lede">En sortant de cette partie, tu auras un plan concret sur 3 à 6 mois pour organiser ta transition, avant et après ton départ du poste salarié.</p>
+
+  <h3>5.1 Planning de transition sur 3 à 6 mois</h3>
+
+  <h4>Mois 1-2 — Avant le départ (pendant que tu es encore salarié)</h4>
+  <ul>
+    <li>Calculer ton matelas de sécurité réel (chapitre 2.2) ;</li>
+    <li>Définir ton positionnement et ton offre (chapitre 3.2) ;</li>
+    <li>Commencer à activer discrètement ton réseau proche, sans annoncer officiellement ton départ.</li>
+  </ul>
+
+  <h4>Mois 3-4 — Autour du départ</h4>
+  <ul>
+    <li>Sécuriser les modalités de ton départ (rupture conventionnelle si possible, vérification des droits ARE — chapitre 2.3) ;</li>
+    <li>Lancer la vague de contacts sur 90 jours (chapitre 4.3) ;</li>
+    <li>Mettre à jour ton profil LinkedIn (chapitre 4.2) et préparer ton one-pager (chapitre 6.2).</li>
+  </ul>
+
+  <h4>Mois 5-6 — Après le départ</h4>
+  <ul>
+    <li>Formaliser tes premières propositions commerciales ;</li>
+    <li>Suivre ton budget prévisionnel (chapitre 2.5) pour vérifier que la réalité correspond à tes projections ;</li>
+    <li>Ajuster ton positionnement si les premiers retours du marché révèlent un besoin différent de ce que tu avais anticipé.</li>
+  </ul>
+
+  <h3>5.2 Checklist récapitulative</h3>
+  <ul class="checklist">
+    <li>J'ai calculé mon matelas de sécurité réel et il couvre au moins 6 mois de charges fixes.</li>
+    <li>J'ai vérifié mes droits ARE/ACRE auprès de France Travail et de l'Urssaf avant de finaliser mon départ.</li>
+    <li>J'ai un positionnement clair, pas une offre générale qui essaie de plaire à tout le monde.</li>
+    <li>J'ai un tarif cohérent avec mon expérience, pas un tarif bas par manque de confiance.</li>
+    <li>J'ai activé mon réseau professionnel avant même d'avoir quitté mon poste, dans la mesure du possible.</li>
+    <li>Je n'ai pas démissionné sans avoir au moins entamé des discussions concrètes avec des clients potentiels.</li>
+  </ul>
+
+  <h3>5.3 Erreurs à éviter</h3>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 1. Démissionner trop vite, sans clients en vue</span>
+    <p>Quitter son poste sans avoir amorcé sa prospection ni sécurisé un dispositif de transition (ARE, portage salarial) est l'erreur la plus coûteuse. Prépare ta transition en amont dans la mesure du possible, plutôt que de partir avant d'être prêt.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 2. Sous-estimer les charges réelles d'indépendant</span>
+    <p>Cotisations sociales, assurance professionnelle, comptabilité : le revenu brut facturé n'est jamais le revenu net disponible. Intègre ces charges dans ton calcul de tarif dès le départ, pas après ta première déclaration.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 3. Négliger sa protection sociale</span>
+    <p>Le statut d'indépendant change ta couverture santé, ta prévoyance et tes droits à la retraite. Vérifie précisément ce qui change par rapport à ton statut salarié, et envisage une complémentaire adaptée si nécessaire — ce n'est pas un détail à régler "plus tard".</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 4. Vouloir tout faire seul sans jamais demander conseil</span>
+    <p>Un expert-comptable ou un conseiller en gestion de patrimoine, même pour une consultation ponctuelle, peut t'éviter des erreurs coûteuses sur ton statut juridique ou fiscal. Ce n'est pas un luxe réservé aux grandes structures.</p>
+  </div>
+
+  <h3>5.4 Adapter le système selon ton contexte</h3>
+  <p>Ce planning de 3 à 6 mois est une base, pas un cadre rigide. Selon ta situation, certains ajustements rendent la transition plus réaliste.</p>
+
+  <table>
+    <tr><th>Contexte</th><th>Ajustement recommandé</th></tr>
+    <tr><td>Charges familiales importantes (enfants, crédit conséquent)</td><td>Vise un matelas de sécurité plus large que le minimum de 6 mois, et privilégie le portage salarial en première étape (chapitre 2.4)</td></tr>
+    <tr><td>Conjoint avec un revenu stable</td><td>Le risque global du foyer est réduit — le rythme de transition peut être légèrement plus rapide si le positionnement et le réseau sont déjà solides</td></tr>
+    <tr><td>Reconversion complète vers un nouveau métier</td><td>Prévois un délai plus long avant la stabilisation du revenu (chapitre 3.5), et renforce ton matelas de sécurité en conséquence</td></tr>
+    <tr><td>Poursuite du même métier en freelance</td><td>Le réseau existant permet souvent une transition plus rapide, car la crédibilité et les preuves de compétence sont déjà établies</td></tr>
+  </table>
+
+  <h3>5.5 Mesurer sa progression réelle</h3>
+  <p>Pour savoir si ta transition avance comme prévu, compare régulièrement ta réalité à ton budget prévisionnel (chapitre 2.5) et à ton planning (chapitre 5.1), plutôt que de te fier à une impression générale.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un décalage par rapport à ton plan initial n'est pas un échec — c'est une information à utiliser pour ajuster ton positionnement, ton rythme de prospection ou ton budget. La transition freelance après 40 ans se construit par ajustements successifs, rarement d'un seul bloc.</p>
+  </div>
+
+  <h3>5.6 Cas particulier — se lancer à deux (couple ou associé)</h3>
+  <p>Se lancer avec un conjoint ou un associé change la dynamique du risque : les charges peuvent être mutualisées, mais la dépendance à un seul projet commun augmente aussi l'exposition du foyer si les deux revenus reposent sur la même activité.</p>
+
+  <table>
+    <tr><th>Configuration</th><th>Point de vigilance</th></tr>
+    <tr><td>Couple qui se lance ensemble dans le même projet</td><td>Prévoir un matelas de sécurité pour le foyer entier, pas seulement pour une personne — le risque n'est pas divisé par deux, il est partagé</td></tr>
+    <tr><td>Association avec un tiers</td><td>Clarifier par écrit dès le départ la répartition des rôles, des revenus et les conditions de sortie de l'association</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Dans une association, fais relire les modalités de répartition par un professionnel (avocat, expert-comptable) avant de démarrer — un désaccord non anticipé sur ce sujet est une cause fréquente de rupture d'association, bien plus que le manque de clients.</p>
+  </div>
+
+  <h3>5.7 Rester à jour : les dispositifs et le marché évoluent</h3>
+  <p>Les règles de l'ARE, de l'ACRE et des statuts juridiques évoluent régulièrement. Ce guide reflète la situation constatée en 2026 ; voici comment rester à jour sans y consacrer un temps disproportionné.</p>
+
+  <ul class="checklist">
+    <li>Je vérifie ma situation précise auprès de France Travail et de l'Urssaf avant toute décision définitive, plutôt que de me fier à une information généraliste.</li>
+    <li>Je ne fonde pas mes calculs sur des règles anciennes trouvées en ligne sans vérifier leur date de publication.</li>
+    <li>Je garde mes prompts et templates qui fonctionnent bien dans un document stable, indépendant des outils utilisés.</li>
+  </ul>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Les principes de ce guide (calcul du matelas, positionnement clair, activation du réseau) restent valables même quand les dispositifs précis auront changé de nom ou de montant.</p>
+  </div>
+
+  <h3>5.8 Bilan : ce qu'un profil type peut réellement attendre en un an</h3>
+  <p>Pour conclure cette partie, un ordre de grandeur réaliste plutôt qu'une promesse générique — construit à partir des étapes décrites dans ce guide.</p>
+
+  <table>
+    <tr><th>Étape</th><th>Délai réaliste</th></tr>
+    <tr><td>Positionnement clair et validé (partie 2)</td><td>2 à 4 semaines de réflexion et d'échanges avec l'IA et ton entourage professionnel</td></tr>
+    <tr><td>Premiers clients signés (partie 3)</td><td>Environ 90 jours à partir du lancement actif de la prospection, souvent via le réseau existant</td></tr>
+    <tr><td>Revenu freelance stabilisé (partie 1)</td><td>4 à 6 mois pour la majorité des transitions, avec des variations selon le secteur et le réseau de départ</td></tr>
+  </table>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces ordres de grandeur ne remplacent pas ta propre mesure (chapitre 5.5) — ils donnent simplement un repère réaliste pour juger si ta progression est cohérente, ou si un ajustement de positionnement ou de rythme s'impose.</p>
+  </div>
+
+  <h3>5.9 Cas particulier — cumul emploi-création (garder une activité à temps partiel)</h3>
+  <p>Certaines transitions se font progressivement, en gardant une activité salariée à temps partiel ou un dernier contrat pendant que l'activité freelance démarre. Cette option réduit le risque, à condition de respecter certaines règles.</p>
+
+  <table>
+    <tr><th>Point à vérifier</th><th>Pourquoi c'est important</th></tr>
+    <tr><td>Clause d'exclusivité de ton contrat de travail</td><td>Certains contrats interdisent explicitement une activité indépendante en parallèle du poste salarié</td></tr>
+    <tr><td>Obligation de loyauté envers l'employeur</td><td>Même sans clause d'exclusivité, l'activité freelance ne doit jamais concurrencer directement ton employeur actuel</td></tr>
+    <tr><td>Temps réellement disponible</td><td>Un cumul mal dimensionné peut nuire à la qualité du poste salarié comme de l'activité freelance naissante</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si cette option est envisageable pour toi, elle permet de tester ton positionnement et ta prospection (partie 3) sans encore avoir quitté la sécurité du salariat — une façon prudente de valider ton projet avant de franchir le pas définitivement.</p>
+  </div>
+
+  <h3>5.10 Cas particulier — rester solo ou construire une structure plus large</h3>
+  <p>Certains freelances restent seuls durablement, d'autres envisagent à terme d'embaucher ou de s'associer. Cette question ne doit généralement pas être tranchée dès le lancement, mais mérite d'être gardée à l'esprit.</p>
+
+  <table>
+    <tr><th>Trajectoire</th><th>Ce qui compte au démarrage</th></tr>
+    <tr><td>Rester freelance solo durablement</td><td>Optimiser ton propre tarif et ta charge de travail plutôt que de chercher à développer un volume d'affaires nécessitant une équipe</td></tr>
+    <tr><td>Envisager de développer une structure plus large</td><td>Documenter dès le départ tes méthodes et process (chapitre 6.1) pour qu'ils soient transmissibles plus tard, sans pour autant en faire une priorité immédiate</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Ne te mets pas la pression dès le départ pour "faire grossir" ton activité. La majorité des transitions réussies après 40 ans commencent par une stabilisation solo avant d'envisager, si souhaité, une structure plus large une fois la base de clients établie.</p>
+  </div>
+</section>
+
+<div id="bonus-section">
+<section class="chapter">
+  <h2>6. Partie 5 — Bonus : le Pack Transition</h2>
+  <p class="lede">30 prompts prêts à l'emploi classés par usage, et un guide pas à pas pour recréer un template Canva de one-pager freelance en 10 minutes.</p>
+
+  <h3>6.1 Trente prompts prêts à l'emploi, classés par usage</h3>
+  <p>Chaque prompt ci-dessous est directement copiable dans ChatGPT ou Claude. Remplace les champs entre crochets par tes propres informations avant de l'envoyer.</p>
+
+  <div class="subject-heading">🎯 Clarifier son positionnement freelance</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Positionnement en une phrase</span>
+    <span class="prompt-text">Voici mon parcours : [décris ton expérience]. Aide-moi à formuler mon positionnement freelance en une phrase claire : quel problème précis je résous, pour quel type de client.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Resserrer une offre trop large</span>
+    <span class="prompt-text">Voici tout ce que je pourrais proposer en freelance : [liste]. Aide-moi à choisir un positionnement resserré autour d'un seul problème précis, plutôt qu'une offre généraliste.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Identifier son client idéal</span>
+    <span class="prompt-text">Mon positionnement : [positionnement]. Décris le profil de mon client idéal : taille d'entreprise, secteur, problème qu'il rencontre, ce qui le pousserait à me contacter.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Différencier son offre de la concurrence</span>
+    <span class="prompt-text">Mon positionnement : [positionnement]. Voici ce que font des concurrents sur ce marché : [décris-les si tu les connais]. Aide-moi à identifier ce qui pourrait différencier mon offre.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Nommer son offre clairement</span>
+    <span class="prompt-text">Mon positionnement : [positionnement]. Propose 5 façons de nommer mon offre ou mon service principal, de façon claire et compréhensible en une lecture, sans jargon marketing.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Valider son positionnement avant de se lancer</span>
+    <span class="prompt-text">Voici mon positionnement freelance : [positionnement]. Liste 5 questions que je devrais me poser pour vérifier qu'il est suffisamment clair et vendable avant de commencer ma prospection.</span>
+  </div>
+
+  <div class="subject-heading">🗣️ Rédiger son pitch de réseau</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7 — Pitch oral en 30 secondes</span>
+    <span class="prompt-text">Mon positionnement : [positionnement]. Rédige un pitch oral de 30 secondes à utiliser lors d'un événement professionnel ou d'un appel, naturel et pas trop commercial.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8 — Message de reprise de contact</span>
+    <span class="prompt-text">Rédige un message à envoyer à un ancien contact professionnel pour l'informer de mon lancement en freelance sur [positionnement], sans donner l'impression de demander un service.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9 — Répondre à "et toi, tu fais quoi maintenant ?"</span>
+    <span class="prompt-text">Rédige une réponse courte et naturelle à la question "et toi, tu fais quoi maintenant ?" posée par un contact professionnel, basée sur mon positionnement : [positionnement].</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10 — Pitch écrit pour un email de présentation</span>
+    <span class="prompt-text">Rédige un court paragraphe de présentation (3-4 phrases) à inclure dans un email de prospection, basé sur mon positionnement : [positionnement] et mon expérience : [résumé].</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 11 — Pitch pour un client qui ne connaît pas mon secteur</span>
+    <span class="prompt-text">Rédige une version de mon pitch simplifiée pour un interlocuteur qui ne connaît pas bien [ton secteur], sans jargon technique, basée sur : [positionnement].</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 12 — Pitch de relance après un silence</span>
+    <span class="prompt-text">Rédige un message court pour relancer un contact à qui j'ai présenté mon activité il y a [durée], sans nouvelle depuis, ton léger et sans pression.</span>
+  </div>
+
+  <div class="subject-heading">💼 Optimiser son profil LinkedIn</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 13 — Titre de profil</span>
+    <span class="prompt-text">Mon positionnement : [positionnement]. Propose 3 titres LinkedIn clairs et professionnels, adaptés à un profil de [âge] ans avec [nombre] années d'expérience.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 14 — Section "À propos"</span>
+    <span class="prompt-text">Rédige la section "À propos" de mon profil LinkedIn, basée sur mon parcours : [résumé] et mon positionnement freelance : [positionnement]. Ton professionnel, structuré autour de résultats concrets.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 15 — Post d'annonce de lancement</span>
+    <span class="prompt-text">Rédige un post LinkedIn pour annoncer mon lancement en freelance sur [positionnement], après [nombre] années en tant que salarié. Ton sobre et professionnel, sans excès d'enthousiasme artificiel.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 16 — Post de partage d'expertise</span>
+    <span class="prompt-text">Rédige un post LinkedIn qui partage un enseignement concret tiré de mon expérience sur [sujet lié à ton positionnement], pour démontrer mon expertise sans être commercial.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 17 — Description d'une expérience passée</span>
+    <span class="prompt-text">Voici mon poste précédent : [décris le poste et les missions]. Reformule cette expérience dans mon profil LinkedIn pour qu'elle mette en avant les compétences transférables vers mon activité freelance : [positionnement].</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 18 — Message d'invitation personnalisé</span>
+    <span class="prompt-text">Rédige un message d'invitation LinkedIn personnalisé pour [type de contact, ex. un ancien client, un contact de secteur], en lien avec mon positionnement : [positionnement].</span>
+  </div>
+
+  <div class="subject-heading">📇 Prospecter d'anciens contacts professionnels</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 19 — Message à un ancien client</span>
+    <span class="prompt-text">Rédige un message à un ancien client avec qui j'ai travaillé quand j'étais salarié chez [ancien employeur], pour l'informer de mon lancement en freelance sur [positionnement].</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 20 — Demande de mise en relation</span>
+    <span class="prompt-text">Rédige un message à un contact pour lui demander s'il connaît quelqu'un qui pourrait avoir besoin de [ton service], sans pression, en lui laissant la liberté de ne pas donner suite.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 21 — Proposer un échange informel</span>
+    <span class="prompt-text">Rédige un message pour proposer un échange informel de 15-20 minutes à un contact intéressé par mon activité, sans pression commerciale, pour clarifier un besoin potentiel.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 22 — Relance après un échange sans suite</span>
+    <span class="prompt-text">Rédige un message de relance à un contact avec qui j'ai eu un échange il y a [durée], sans suite depuis, ton léger qui laisse la porte ouverte sans insister.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 23 — Remercier une mise en relation</span>
+    <span class="prompt-text">Rédige un message de remerciement à un contact qui m'a mis en relation avec un client potentiel, quel que soit le résultat de cette mise en relation.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 24 — Préparer une liste de contacts prioritaires</span>
+    <span class="prompt-text">Voici les catégories de contacts de mon réseau : [liste, ex. anciens collègues, anciens clients, partenaires]. Aide-moi à prioriser lesquels contacter en premier selon la pertinence par rapport à mon positionnement : [positionnement].</span>
+  </div>
+
+  <div class="subject-heading">💰 Fixer et défendre ses tarifs</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 25 — Fixer un tarif de départ</span>
+    <span class="prompt-text">Je me lance en freelance sur [positionnement], avec [nombre] années d'expérience dans [secteur]. Aide-moi à fixer un tarif journalier ou un forfait de départ cohérent avec mon expérience.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 26 — Répondre à une demande de baisse de prix</span>
+    <span class="prompt-text">Un prospect me demande de baisser mon tarif de [montant/pourcentage]. Rédige une réponse qui explique la valeur de mon expertise sans être sur la défensive, et propose éventuellement un compromis raisonnable (ex. périmètre réduit plutôt que prix réduit).</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 27 — Présenter son tarif dans une proposition</span>
+    <span class="prompt-text">Rédige la section tarifaire d'une proposition commerciale pour [mission décrite], avec mon tarif de [montant], en expliquant clairement ce qui est inclus.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 28 — Argumentaire face à un tarif jugé élevé</span>
+    <span class="prompt-text">Un prospect trouve mon tarif de [montant] élevé pour [mission]. Rédige un argumentaire court qui justifie ce tarif par mon expérience et les résultats attendus, sans être arrogant.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 29 — Structurer une offre à plusieurs niveaux de prix</span>
+    <span class="prompt-text">Mon service principal : [décris-le]. Aide-moi à structurer 2-3 formules à des tarifs différents (ex. accompagnement ponctuel vs suivi mensuel), pour proposer un choix à mes prospects.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 30 — Revoir ses tarifs après les premiers clients</span>
+    <span class="prompt-text">J'ai signé mes [nombre] premiers clients à [tarif de départ]. Voici mon niveau de demande depuis le lancement : [décris, ex. beaucoup de demandes, peu de demandes]. Aide-moi à évaluer si je devrais ajuster mon tarif pour la suite.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces 30 prompts sont des points de départ, pas des formules figées. N'hésite pas à les combiner ou à les adapter à ton secteur précis — la structure (contexte + expérience + objectif précis) fonctionne pour n'importe quelle situation de transition.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6.2 Le template Canva "one-pager freelance"</h2>
+  <p class="lede">Un guide pas à pas pour recréer toi-même, en 10 minutes, un one-pager de présentation pour ta prospection — pas un fichier fourni, mais une méthode que tu peux refaire à volonté.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Précision importante</span>
+    <p>Ce chapitre est un <strong>guide pour recréer le template toi-même dans Canva</strong>, pas un fichier .canva livré avec ce guide. Canva ne permet pas l'export ni le partage d'un modèle sous forme de fichier autonome utilisable hors de la plateforme — la seule façon de te transmettre ce design est de te donner les instructions précises pour le reconstruire, ce que fait ce chapitre.</p>
+  </div>
+
+  <h3>Format et couleurs</h3>
+  <table>
+    <tr><th>Élément</th><th>Réglage</th></tr>
+    <tr><td>Format</td><td>A4 portrait (21 × 29,7 cm)</td></tr>
+    <tr><td>Couleur principale (bandeau, titres)</td><td>Indigo #1E2A4A</td></tr>
+    <tr><td>Couleur d'accent (séparateurs, mise en valeur)</td><td>Doré #C98A2E</td></tr>
+    <tr><td>Fond des blocs secondaires</td><td>Beige clair #F4EBD9</td></tr>
+    <tr><td>Police des titres</td><td>Une police sans-serif épaisse type "Montserrat" ou "Poppins" (disponibles gratuitement dans Canva)</td></tr>
+    <tr><td>Police du texte courant</td><td>Une police sans-serif lisible type "Lato" ou "Open Sans"</td></tr>
+  </table>
+
+  <h3>Structure détaillée du one-pager</h3>
+  <ol class="steps">
+    <li>
+      <strong>Bandeau nom et positionnement</strong><br/>
+      Un rectangle pleine largeur en indigo #1E2A4A en haut de page, avec ton nom en grand et ton positionnement (chapitre 3.2) juste en dessous, en doré.
+    </li>
+    <li>
+      <strong>Bloc expérience clé en 3 points</strong><br/>
+      Trois lignes courtes reprenant les 3 preuves concrètes identifiées au chapitre 3.1 — pas un historique complet de carrière, seulement l'essentiel qui appuie ton positionnement.
+    </li>
+    <li>
+      <strong>Bloc services proposés</strong><br/>
+      Une liste courte (2-4 services) avec une icône devant chacun, reprenant les formules définies au chapitre 6.1 (prompt 29) si tu as structuré plusieurs niveaux d'offre.
+    </li>
+    <li>
+      <strong>Bloc témoignages ou références</strong><br/>
+      Si tu disposes déjà d'un retour client ou d'une référence professionnelle, un court encadré avec fond beige clair #F4EBD9 pour le mettre en valeur — sinon, ce bloc peut être omis dans un premier temps.
+    </li>
+    <li>
+      <strong>Bloc contact</strong><br/>
+      En bas de page, une bande avec ton email, ton téléphone et un lien vers ton profil LinkedIn, pensée pour être facilement recopiée par un contact intéressé.
+    </li>
+  </ol>
+
+  <h3>Les étapes précises pour le construire dans Canva</h3>
+  <ol class="steps">
+    <li>
+      <strong>Ouvre Canva et cherche un modèle de base</strong><br/>
+      Dans la barre de recherche de modèles, tape "one-pager" ou "personal resume" — Canva propose plusieurs modèles A4 déjà structurés en blocs, ce qui t'évite de partir d'une page blanche.
+    </li>
+    <li>
+      <strong>Choisis un modèle avec une structure proche</strong><br/>
+      Privilégie un modèle qui a déjà un bandeau titre et des zones de texte séparées — tu auras moins d'éléments à créer de toutes pièces.
+    </li>
+    <li>
+      <strong>Recolore aux couleurs de la charte</strong><br/>
+      Sélectionne chaque élément coloré et remplace la couleur par les codes hexadécimaux du tableau ci-dessus (#1E2A4A pour l'indigo, #C98A2E pour le doré, #F4EBD9 pour le beige clair) via le sélecteur de couleur personnalisée de Canva.
+    </li>
+    <li>
+      <strong>Ajoute ou ajuste les blocs manquants</strong><br/>
+      Utilise les éléments "icône", "forme rectangle" et "ligne" de la bibliothèque Canva pour ajouter les blocs qui manquent par rapport à la structure détaillée ci-dessus.
+    </li>
+    <li>
+      <strong>Change les polices</strong><br/>
+      Sélectionne les titres et applique la police "Montserrat" ou "Poppins" ; sélectionne le texte courant et applique "Lato" ou "Open Sans", disponibles gratuitement dans la bibliothèque de polices Canva.
+    </li>
+    <li>
+      <strong>Enregistre-le comme modèle personnel</strong><br/>
+      Une fois satisfait du résultat, utilise la fonction "Enregistrer comme modèle" de Canva (accessible depuis le menu du fichier) pour le mettre à jour facilement à mesure que ton activité évolue (nouvelle référence client, nouveau service).
+    </li>
+  </ol>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Exporte ton one-pager à la fois en PDF (à joindre par email) et en image (à partager facilement sur LinkedIn ou par message) — les deux formats servent des usages différents dans ta prospection.</p>
+  </div>
+</section>
+</div>
+
+<section class="chapter">
+  <h2>7. Lexique</h2>
+  <p class="lede">Les termes utilisés dans ce guide, expliqués simplement.</p>
+
+  <dl class="lexique">
+    <dt>ACRE (Aide à la Création ou Reprise d'Entreprise)</dt>
+    <dd>Exonération partielle et dégressive de cotisations sociales la première année d'activité en tant qu'indépendant, sous conditions d'éligibilité.</dd>
+
+    <dt>ARE (Allocation de Retour à l'Emploi)</dt>
+    <dd>Allocation chômage versée par France Travail, accessible en cas de licenciement ou de rupture conventionnelle, potentiellement cumulable partiellement avec un début d'activité freelance selon les règles en vigueur.</dd>
+
+    <dt>France Travail</dt>
+    <dd>Organisme public chargé de l'accompagnement des demandeurs d'emploi et du versement des allocations chômage (anciennement Pôle emploi).</dd>
+
+    <dt>Matelas de sécurité</dt>
+    <dd>Montant d'épargne mobilisable rapporté aux charges fixes mensuelles, exprimé en nombre de mois de couverture sans revenu freelance.</dd>
+
+    <dt>Portage salarial</dt>
+    <dd>Statut permettant de facturer des missions freelance tout en conservant un statut de salarié porté, cotisant à la retraite et à l'assurance chômage via une société de portage.</dd>
+
+    <dt>Positionnement</dt>
+    <dd>Définition précise du problème résolu et du type de client visé par une offre freelance, par opposition à une offre générale peu différenciée.</dd>
+
+    <dt>Prompt</dt>
+    <dd>Le texte que tu écris à un assistant IA pour lui demander de faire quelque chose. Plus il est précis, meilleur est le résultat.</dd>
+
+    <dt>Rupture conventionnelle</dt>
+    <dd>Mode de rupture du contrat de travail négocié entre l'employeur et le salarié, ouvrant droit à l'ARE contrairement à une démission classique.</dd>
+
+    <dt>Trésorerie professionnelle</dt>
+    <dd>Fonds distinct de l'épargne personnelle, dédié aux besoins financiers de l'activité (charges professionnelles, délais de paiement clients), à ne pas confondre avec le matelas de sécurité personnel.</dd>
+
+    <dt>Taux de transformation</dt>
+    <dd>Proportion de contacts qui passent d'une étape de prospection à la suivante (réponse, rendez-vous, client signé), utilisée pour évaluer l'efficacité de sa méthode de prospection.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>8. Questions fréquentes</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Faut-il payer un abonnement pour utiliser ce guide ?</p>
+    <p>Non. Les offres gratuites de ChatGPT et Claude suffisent pour la plupart des usages décrits. Un abonnement payant devient utile seulement si tu dépasses régulièrement les limites d'usage gratuites.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide remplace-t-il un conseil comptable ou juridique personnalisé ?</p>
+    <p>Non. Il t'aide à structurer ta réflexion et à préparer les bonnes questions, mais ta situation précise (statut, fiscalité, droits ARE) doit toujours être vérifiée auprès d'un professionnel ou de l'organisme compétent.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Est-ce trop tard pour se lancer après 45 ou 50 ans ?</p>
+    <p>Non — l'expérience accumulée est un atout réel pour la crédibilité et le réseau, deux leviers essentiels en freelance. Le risque financier doit simplement être sécurisé davantage qu'à 25 ans, ce qui est précisément l'objet de ce guide.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Le template Canva est-il fourni en fichier téléchargeable ?</p>
+    <p>Non, et ce n'est pas possible techniquement : Canva ne permet pas l'export d'un modèle sous forme de fichier partageable. Le chapitre 6.2 te donne toutes les instructions pour le recréer toi-même en 10 minutes.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Combien de temps faut-il vraiment pour stabiliser un revenu freelance ?</p>
+    <p>Cela varie selon le secteur et le réseau de départ, mais 4 à 6 mois pour atteindre un rythme stable est une durée réaliste pour la majorité des transitions — c'est la raison pour laquelle ce guide insiste autant sur le matelas de sécurité (chapitre 2.2).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je proposer mes services à mon ancien employeur ?</p>
+    <p>Oui, dans de nombreux cas, mais vérifie d'abord ta clause de non-concurrence éventuelle (chapitre 4.6) avant toute démarche — certains contrats limitent cette possibilité pendant une durée définie après le départ.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Faut-il se former ou se certifier avant de se lancer ?</p>
+    <p>Pas systématiquement (chapitre 3.8). Si ton expérience salariée couvre déjà ton positionnement, une certification n'est généralement pas indispensable. Elle devient nécessaire seulement pour les secteurs réglementés ou une reconversion vers un domaine réellement nouveau.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="disclaimer">
+    <strong>Avertissement.</strong> Ce guide a une vocation pratique et informative. Les dispositifs, montants et règles décrits (ARE, ACRE, portage salarial) reflètent la situation constatée en 2026 et peuvent évoluer — vérifie toujours les informations à jour auprès de France Travail, de l'Urssaf ou d'un professionnel compétent. Ce guide ne constitue pas un conseil financier, juridique ou fiscal personnalisé et ne garantit aucun résultat commercial. Le risque financier d'une reconversion reste réel à tout âge ; ce guide vise à t'aider à le réduire, jamais à le nier.
+  </div>
+</section>
+
+</body>
+</html>

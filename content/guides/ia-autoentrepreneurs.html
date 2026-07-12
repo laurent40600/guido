@@ -1,0 +1,1119 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>L'IA pour les auto-entrepreneurs</title>
+<style>
+  @page { size: A4; margin: 29mm 24mm 27mm 24mm; }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 30pt; max-width: 540px; line-height: 1.22; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box { border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt; }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-case { background: #f6f8f4; border-left: 5px solid #4d7c4a; }
+  .box-case .box-title { color: #3f6b3d; }
+  .box-prompt {
+    background: #1E2A4A; color: #fff; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt;
+    font-family: "Courier New", monospace; line-height: 1.55;
+  }
+  .box-prompt .box-title { color: #C98A2E; font-family: "Helvetica Neue", Arial, sans-serif; }
+  .box-template {
+    background: #fff; border: 1.5px dashed #1E2A4A; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+  }
+  .box-template .box-title { color: #1E2A4A; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+
+  .source { font-size: 10pt; color: #1a1a1a; font-style: italic; }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1E2A4A; font-size: 12.5pt; margin-bottom: 4pt; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+
+  ol.steps { padding-left: 0; list-style: none; counter-reset: step; }
+  ol.steps li { counter-increment: step; position: relative; padding-left: 40pt; margin-bottom: 16pt; }
+  ol.steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0;
+    width: 28pt; height: 28pt; border-radius: 50%;
+    background: #1E2A4A; color: #C98A2E; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps li strong { color: #1E2A4A; }
+
+  .disclaimer {
+    margin-top: 24pt; padding: 16pt; background: #f8f6f2;
+    border-radius: 10pt; font-size: 11pt; color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>L'IA pour les auto-entrepreneurs : automatiser devis, relances et compta</h1>
+  <p class="tagline">Gagner des heures chaque semaine, sans compétences techniques</p>
+  <p class="meta">Devis en 5 minutes, relances qui obtiennent une réponse, compta<br/>simplifiée — avec des outils réels, des prix à jour, des scripts prêts<br/>à copier-coller, deux études de cas complètes et 20 prompts pour<br/>chaque situation concrète</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction — ce que l'IA change vraiment pour toi</li>
+    <li>Partie 1 — Les devis automatisés<span>Créer, personnaliser, relancer et envoyer un devis</span></li>
+    <li>Partie 2 — Les relances clients<span>Se faire payer sans se fâcher avec ses clients, B2B et B2C</span></li>
+    <li>Partie 3 — La compta simplifiée<span>Catégoriser, préparer, déléguer — et savoir où s'arrêter</span></li>
+    <li>Partie 4 — Mettre en place ton système<span>Un plan sur 3 semaines, une checklist, les pièges à éviter</span></li>
+    <li>Bonus — Outils et prompts prêts à l'emploi<span>Tarifs 2026 et 20 prompts copier-coller</span></li>
+    <li>Lexique</li>
+    <li>Questions fréquentes</li>
+    <li>Avertissement</li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction — ce que l'IA change vraiment pour toi</h2>
+  <p class="lede">En sortant de cette introduction, tu sauras précisément ce que ce guide va t'apporter, et ce qu'il ne fera pas à ta place.</p>
+
+  <p>Tu es auto-entrepreneur. Tu factures, tu relances, tu déclares — et à côté de ça, il faut bien trouver le temps de faire le travail qui te fait vivre. Ce guide part d'un constat simple : une bonne partie de ces tâches administratives peut être largement accélérée avec des outils d'intelligence artificielle que tu utilises peut-être déjà pour autre chose, comme ChatGPT ou Claude.</p>
+
+  <p>Pas de jargon technique ici. Tu n'as pas besoin de savoir coder, ni de comprendre comment fonctionne un modèle de langage. Tu as juste besoin de savoir quoi taper, dans quel outil, et quoi faire du résultat.</p>
+
+  <p>Ce guide couvre trois usages concrets, dans l'ordre où tu vas probablement les rencontrer dans ton activité :</p>
+  <ul>
+    <li><strong>Les devis</strong> — en générer un propre, personnalisé, en quelques minutes au lieu d'une demi-heure ;</li>
+    <li><strong>Les relances</strong> — récupérer l'argent qu'on te doit sans passer pour quelqu'un d'agressif, en respectant les règles selon que ton client est un particulier ou un professionnel ;</li>
+    <li><strong>La compta</strong> — catégoriser tes dépenses et préparer tes déclarations plus vite, sans jamais confondre "plus vite" avec "sans vérifier".</li>
+  </ul>
+
+  <p>Pour rendre tout ça concret, deux études de cas suivent Camille (graphiste indépendante) et Thomas (consultant en informatique) sur plusieurs semaines de leur activité — tu verras exactement comment ils utilisent ces outils au quotidien, avec leurs vrais chiffres.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Ce que l'IA ne fait pas</span>
+    <p>Aucun outil d'IA grand public ne se connecte directement à ton compte bancaire, ne calcule tes cotisations Urssaf à ta place avec une valeur légale, et ne remplace un expert-comptable pour les situations complexes. Ce guide te montre où l'IA t'aide réellement à gagner du temps, et où elle s'arrête — le chapitre 4.4 y est entièrement consacré.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir avant de commencer</span>
+    <p>Tu n'as besoin que de deux types d'outils : un assistant IA généraliste (ChatGPT ou Claude) pour rédiger, reformuler et analyser des documents, et un outil métier dédié (comme Indy ou Dext) pour tout ce qui a une valeur légale ou comptable. Ce guide t'explique où tracer la ligne entre les deux, et te donne des scripts et des prompts que tu peux utiliser dès aujourd'hui.</p>
+  </div>
+
+  <h3>1.1 Choisir entre ChatGPT et Claude : lequel pour toi ?</h3>
+  <p>Ce guide utilise les deux noms indifféremment, parce que pour les usages décrits ici (rédaction, analyse de documents), les deux outils rendent un service très comparable. Voici tout de même quelques repères pour choisir si tu dois n'en garder qu'un :</p>
+
+  <table>
+    <tr><th>Critère</th><th>ChatGPT (OpenAI)</th><th>Claude (Anthropic)</th></tr>
+    <tr><td>Offre gratuite</td><td>Limitée à environ 10 messages toutes les 5 heures</td><td>Limitée sur une fenêtre glissante de 5 heures également</td></tr>
+    <tr><td>Offre payante d'entrée</td><td>8 $/mois (Go) ou 20 $/mois (Plus)</td><td>20 $/mois (Pro)</td></tr>
+    <tr><td>Analyse de documents/reçus</td><td>Oui, upload de photos et PDF</td><td>Oui, upload de photos et PDF</td></tr>
+    <tr><td>Rédaction (devis, emails, relances)</td><td>Très bon niveau</td><td>Très bon niveau</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Le plus simple est de tester les deux offres gratuites sur un vrai devis ou une vraie relance de ton activité, et de garder celui dont le style d'écriture te convient le mieux — la différence se joue surtout sur le ton final, pas sur la capacité technique pour ces usages précis.</p>
+  </div>
+
+  <h3>1.2 Bien formuler une demande à l'IA : les 4 réflexes qui changent tout</h3>
+  <p>Avant d'entrer dans le détail des trois parties de ce guide, quatre réflexes simples améliorent la qualité de <strong>toutes</strong> tes demandes, quel que soit l'usage :</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Donne le contexte, pas juste la demande</strong><br/>
+      "Rédige une relance" donne un résultat générique. "Rédige une relance pour un client fidèle qui a toujours payé à temps jusqu'ici" donne un résultat adapté à la situation réelle.
+    </li>
+    <li>
+      <strong>Précise le ton attendu</strong><br/>
+      Si tu ne le précises pas, l'IA choisit un ton neutre par défaut. Indique "chaleureux", "direct", "très formel" selon ta relation avec le destinataire.
+    </li>
+    <li>
+      <strong>Demande plusieurs versions plutôt qu'une seule</strong><br/>
+      Il est presque toujours plus rapide de choisir entre 2 ou 3 propositions que de faire recommencer une version qui ne te convient pas.
+    </li>
+    <li>
+      <strong>Indique explicitement ce que l'IA ne doit pas faire</strong><br/>
+      "Ne mentionne pas de pénalités" ou "ne calcule pas mes cotisations" évite les débordements que ce guide signale à plusieurs reprises.
+    </li>
+  </ol>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces quatre réflexes sont déjà intégrés dans tous les prompts de ce guide — mais garde-les en tête pour tes propres variations, ou pour tout autre usage que tu inventeras au fil du temps.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Les devis automatisés</h2>
+  <p class="lede">En sortant de cette partie, tu sauras générer un devis complet et conforme en moins de 5 minutes, le personnaliser sans tout réécrire, et relancer un devis resté sans réponse.</p>
+
+  <h3>2.1 Créer un devis type avec l'IA en 5 minutes</h3>
+  <p>L'idée n'est pas de laisser l'IA "inventer" ton devis — c'est de lui donner les bonnes informations une fois, et de la laisser assembler le document proprement. Voici la méthode, avec ChatGPT ou Claude (les deux fonctionnent de la même façon pour cet usage) :</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Ouvre une conversation et décris ta prestation</strong><br/>
+      Donne le nom du client, la prestation, le prix, les délais. Pas besoin de formuler joliment — l'IA s'en charge.
+    </li>
+    <li>
+      <strong>Donne le prompt ci-dessous (à copier-coller)</strong><br/>
+      Il structure la demande pour que l'IA génère un devis complet dès le premier essai.
+    </li>
+    <li>
+      <strong>Relis et vérifie les montants</strong><br/>
+      L'IA rédige bien, mais c'est toi qui restes responsable des chiffres. Vérifie toujours le total et le taux de TVA applicable.
+    </li>
+    <li>
+      <strong>Colle le résultat dans ton outil de facturation</strong><br/>
+      L'IA rédige le contenu, mais l'envoi et la numérotation légale du devis doivent passer par un outil dédié comme Indy (chapitre 2.4) pour rester conforme.
+    </li>
+  </ol>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — devis en 5 minutes</span>
+    Rédige un devis professionnel pour mon activité d'auto-entrepreneur, avec les informations suivantes :<br/>
+    - Client : [nom du client]<br/>
+    - Prestation : [description de la prestation]<br/>
+    - Prix : [montant] € (préciser si TTC ou HT selon ma situation TVA)<br/>
+    - Délai de réalisation : [délai]<br/>
+    - Conditions de paiement : [ex. 30% à la commande, solde à la livraison]<br/><br/>
+    Structure le devis avec : mes coordonnées, celles du client, un numéro de devis, la date, le détail de la prestation ligne par ligne, le total, les conditions de paiement, et une date de validité de l'offre (30 jours par défaut). Ton professionnel mais chaleureux, sans jargon juridique inutile.
+  </div>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Camille, graphiste indépendante</span>
+    <p>Camille reçoit une demande d'un restaurateur pour la création de son identité visuelle (logo, carte de visite, menu). Avant, elle passait facilement 30 minutes à rédiger un devis détaillé. Avec le prompt ci-dessus, elle donne à Claude : "Client : Restaurant Le Basilic, prestation : création logo + carte de visite + menu, prix 850€, délai 3 semaines, 30% à la commande". En moins de 2 minutes, elle obtient un devis structuré avec le détail des trois prestations, qu'elle ajuste légèrement avant de le transférer dans Indy pour l'envoi officiel. Temps total : 5 minutes, contre 30 auparavant.</p>
+    <p><strong>Un an plus tard</strong> — Camille produit environ 8 devis par mois avec cette méthode, contre 3 à 4 auparavant faute de temps. Elle attribue directement cette augmentation à sa capacité à répondre aux demandes le jour même plutôt que plusieurs jours après — un facteur qui compte souvent plus que le prix dans la décision finale du client.</p>
+  </div>
+
+  <h3>2.2 Personnaliser sans tout réécrire à chaque fois</h3>
+  <p>La vraie astuce n'est pas de retaper un prompt à chaque nouveau client — c'est de créer <strong>un modèle unique que tu réutilises</strong>, en ne changeant que ce qui varie.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce — le prompt "squelette"</span>
+    <p>Sauvegarde le prompt du chapitre 2.1 dans un fichier texte ou dans tes notes. À chaque nouveau devis, tu changes seulement les 5 informations entre crochets et tu recolles le reste tel quel. Sur ChatGPT comme sur Claude, tu peux aussi épingler une conversation dédiée "Mes devis" et simplement continuer à donner de nouvelles informations dans la même discussion — l'IA garde le format en mémoire pour toute la conversation.</p>
+  </div>
+
+  <p>Si tu factures souvent le même type de prestation (par exemple toujours des séances de coaching à durée fixe, ou toujours le même pack de prestations), tu peux aller plus loin : demande à l'IA de te générer directement <strong>plusieurs variantes de prix</strong> (pack découverte, pack standard, pack premium) en une seule fois, pour n'avoir plus qu'à envoyer celle qui correspond à la demande du client.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — 3 formules de prix</span>
+    À partir de cette prestation : [description], génère 3 formules de prix différentes (découverte, standard, premium) avec un contenu clairement différencié pour chaque niveau, et un prix pour chacune. Présente le résultat sous forme de tableau comparatif que je peux envoyer directement à mon client pour qu'il choisisse.
+  </div>
+
+  <h3>2.3 Adapter son devis selon le type de client</h3>
+  <p>Un devis pour un particulier et un devis pour une entreprise n'ont pas exactement les mêmes attentes, même si les mentions légales sont proches :</p>
+
+  <table>
+    <tr><th>Type de client</th><th>Ce qui change dans le devis</th></tr>
+    <tr><td>Particulier</td><td>Ton plus simple et direct, prix généralement présenté TTC, pas de mention de numéro de TVA intracommunautaire du client (il n'en a pas).</td></tr>
+    <tr><td>Professionnel / entreprise</td><td>Demande le numéro SIREN du client si tu factures la TVA, prévois une présentation HT + TVA + TTC bien distincte, et anticipe des délais de paiement plus longs (30 à 45 jours étant courants en B2B).</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — devis à relancer</span>
+    J'ai envoyé ce devis il y a [nombre] jours à [nom du client] et je n'ai pas eu de réponse : [colle le résumé du devis]. Rédige un message court et non-insistant pour relancer poliment, en proposant de répondre à d'éventuelles questions, sans donner l'impression d'attendre une réponse immédiate.
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Un devis sans réponse après 5 à 7 jours mérite une relance légère — pas pour "forcer la vente", mais parce qu'un devis oublié dans une boîte mail est souvent juste un oubli, pas un refus. Une relance courte et sans pression a un vrai taux de conversion.</p>
+  </div>
+
+  <h3>2.4 Outils concrets (ChatGPT, Claude, Dext, Indy)</h3>
+  <p>Chacun de ces outils joue un rôle différent — ce n'est pas "lequel choisir" mais "lequel pour quoi faire" :</p>
+
+  <table>
+    <tr><th>Outil</th><th>Rôle pour tes devis</th><th>Prix 2026</th></tr>
+    <tr><td>ChatGPT / Claude</td><td>Rédiger le contenu du devis, reformuler, adapter le ton, comparer des formules</td><td>Gratuit (usage limité) ou environ 20 €/mois pour un usage confortable</td></tr>
+    <tr><td>Indy</td><td>Générer le devis final <strong>numéroté légalement</strong>, l'envoyer, le convertir en facture d'un clic</td><td>Gratuit pour les devis et factures illimités</td></tr>
+    <tr><td>Dext</td><td>Pas utile pour les devis — dédié à la capture des dépenses (voir partie 3)</td><td>—</td></tr>
+  </table>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point important</span>
+    <p>ChatGPT et Claude rédigent très bien le <strong>contenu</strong> d'un devis, mais aucun des deux n'est un logiciel de facturation conforme : ils ne gèrent pas la numérotation légale continue de tes documents, ni leur archivage. Pour la version finale que tu envoies à un client, passe toujours par un outil dédié comme Indy.</p>
+  </div>
+
+  <h3>2.5 Un template de devis prêt à l'emploi</h3>
+  <p>Si tu préfères partir d'un modèle fixe plutôt que de demander à l'IA de tout générer, voici une structure que tu peux copier telle quelle et compléter à la main ou avec l'aide de l'IA pour la partie descriptive :</p>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Template — Devis</span>
+    <strong>[Ton nom / nom commercial]</strong> — [Adresse] — SIREN [numéro]<br/><br/>
+    <strong>DEVIS N° [année][numéro séquentiel]</strong><br/>
+    Date d'émission : [date] · Valable jusqu'au : [date + 30 jours]<br/><br/>
+    <strong>Destinataire :</strong> [Nom / raison sociale du client] — [Adresse]<br/><br/>
+    <strong>Détail de la prestation</strong><br/>
+    [Description] — [Quantité] — [Prix unitaire] — [Total ligne]<br/>
+    ... (une ligne par prestation)<br/><br/>
+    <strong>Total [HT / TTC] : [montant] €</strong><br/>
+    [Mention "TVA non applicable, article 293 B du CGI" si en franchise en base]<br/><br/>
+    <strong>Conditions :</strong> [modalités de paiement, acompte éventuel]<br/>
+    Bon pour accord, le [date] — Signature du client
+  </div>
+
+  <h3>2.6 Structurer une vraie proposition commerciale (pas juste un devis)</h3>
+  <p>Pour des prestations plus importantes (plusieurs milliers d'euros, missions longues, gros clients), un simple devis avec des lignes de prix ne suffit souvent pas à convaincre. Une proposition commerciale plus étoffée — qui explique le problème du client, la solution proposée, et pourquoi toi précisément — augmente sensiblement le taux d'acceptation. C'est un exercice de rédaction plus long, donc un usage où l'IA fait gagner encore plus de temps.</p>
+
+  <table>
+    <tr><th>Section</th><th>Contenu</th></tr>
+    <tr><td>Accroche</td><td>Une phrase qui montre que tu as compris le besoin exact du client, pas un besoin générique.</td></tr>
+    <tr><td>Le problème</td><td>Reformule la situation actuelle du client avec ses propres mots autant que possible.</td></tr>
+    <tr><td>La solution proposée</td><td>Ce que tu vas faire concrètement, étape par étape.</td></tr>
+    <tr><td>Pourquoi toi</td><td>Une expérience, une référence, une méthode qui te distingue — sans en faire des tonnes.</td></tr>
+    <tr><td>Le prix et les modalités</td><td>Le détail chiffré, comme dans un devis classique.</td></tr>
+    <tr><td>Les prochaines étapes</td><td>Ce qu'il se passe concrètement si le client dit oui, et d'ici quand.</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — proposition commerciale complète</span>
+    Rédige une proposition commerciale (pas un simple devis) pour la prestation suivante :<br/>
+    - Client : [nom], contexte : [décris la situation du client et son besoin en quelques phrases]<br/>
+    - Prestation proposée : [description détaillée]<br/>
+    - Prix : [montant] €, délai : [délai]<br/>
+    - Un élément qui me différencie : [ex. expérience similaire, méthode particulière, références]<br/><br/>
+    Structure la proposition en 6 parties : accroche personnalisée, reformulation du problème du client, solution proposée étape par étape, pourquoi je suis le bon choix, prix et modalités, prochaines étapes concrètes. Ton confiant sans être commercial ou artificiel.
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Cette structure ne remplace pas le devis légal (chapitre 2.5) — elle vient avant, comme document de présentation. Le devis chiffré et numéroté reste indispensable une fois que le client a dit oui.</p>
+  </div>
+
+  <h3>2.7 Exemple complet avant/après : la différence que fait l'IA</h3>
+  <p>Pour rendre tout ça concret, voici un exemple réel de ce que reçoit l'IA et de ce qu'elle en fait — pas un extrait retouché, mais le type d'échange que tu auras toi-même.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    devis pour marie dupont, elle veut un site vitrine 5 pages, 1200 euros, je livre dans 1 mois, elle paie moitié maintenant moitié à la fin
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait)</span>
+    <strong>DEVIS N° 2026-014</strong><br/>
+    Date d'émission : [date] · Valable jusqu'au : [date + 30 jours]<br/><br/>
+    <strong>Destinataire :</strong> Marie Dupont<br/><br/>
+    <strong>Détail de la prestation</strong><br/>
+    Création d'un site vitrine (5 pages) — Conception graphique, développement, mise en ligne — 1 200,00 €<br/><br/>
+    <strong>Total : 1 200,00 €</strong><br/><br/>
+    <strong>Conditions de paiement :</strong> 50 % à la commande (600,00 €), solde de 600,00 € à la livraison<br/>
+    <strong>Délai de réalisation :</strong> 1 mois à compter de la validation du devis<br/><br/>
+    Bon pour accord, le [date] — Signature de la cliente
+  </div>
+
+  <p>Remarque ce que l'IA a fait toute seule à partir d'une phrase brute et mal ponctuée : elle a structuré les informations, calculé l'acompte de 50 % (600€), et complété le format avec les mentions attendues d'un devis. C'est exactement ce gain-là que tu retrouves à chaque utilisation.</p>
+
+  <h3>2.8 Gérer les objections de prix</h3>
+  <p>Un client qui demande une remise ou négocie ton prix n'est pas un problème à résoudre dans l'urgence — c'est une situation fréquente que l'IA aide à traiter posément, sans céder par réflexe ni braquer le client par une réponse trop sèche.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — répondre à une demande de remise</span>
+    Un client me demande une remise sur ce devis : [résume le devis et la demande de remise]. Je [souhaite / ne souhaite pas] accorder une remise, et si oui jusqu'à [montant ou pourcentage maximum]. Rédige une réponse qui explique la valeur de la prestation sans être sur la défensive, et qui propose une solution concrète (remise partielle, réduction du périmètre, paiement échelonné) plutôt qu'un simple refus ou une acceptation immédiate.
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Face à une demande de remise, il est souvent plus simple de <strong>réduire le périmètre</strong> de la prestation à prix égal (moins de révisions, un délai plus long, une option en moins) que de baisser ton tarif horaire réel. Demande à l'IA de te proposer les deux options — remise directe et réduction de périmètre — pour choisir en connaissance de cause.</p>
+  </div>
+
+  <h3>2.9 Étude de cas — Léa, coach professionnelle en abonnement</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Un modèle différent : la prestation récurrente</span>
+    <p>Léa propose un accompagnement mensuel (2 séances de coaching + suivi par message) plutôt que des prestations ponctuelles. Son défi n'est pas de générer un devis unique, mais de présenter clairement une offre récurrente avec engagement de durée.</p>
+    <p>Elle utilise un prompt adapté : "Génère une proposition pour un abonnement mensuel de coaching à 180€/mois, incluant 2 séances et un suivi par message, avec un engagement minimum de 3 mois et une résiliation possible avec un mois de préavis ensuite." Claude lui structure une offre avec la mensualité, la durée d'engagement, les modalités de résiliation, et une clause claire sur ce qui se passe en cas d'arrêt anticipé.</p>
+    <p><strong>Point de vigilance qu'elle applique</strong> — une offre avec engagement doit être limpide sur les conditions de sortie. Elle relit toujours cette partie avec un œil critique avant envoi, car c'est souvent la source de litiges si elle reste floue.</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — offre d'abonnement / prestation récurrente</span>
+    Génère une proposition pour une prestation récurrente : [description de la prestation], tarif mensuel [montant] €, ce qui est inclus [liste], durée d'engagement minimum [durée], conditions de résiliation après l'engagement [conditions]. Sois particulièrement clair et complet sur les modalités de résiliation — c'est le point que les clients lisent le plus attentivement dans ce type d'offre.
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Les relances clients</h2>
+  <p class="lede">En sortant de cette partie, tu sauras relancer un client en retard de paiement de façon ferme mais professionnelle, avec trois scripts prêts à l'emploi, et tu comprendras la différence essentielle entre relancer un particulier et relancer une entreprise.</p>
+
+  <h3>3.1 Automatiser les relances impayés sans paraître agressif</h3>
+  <p>La difficulté d'une relance, ce n'est jamais la rédaction — c'est le ton. Trop mou, elle ne sert à rien. Trop dur, tu abîmes la relation client pour une facture qui, la plupart du temps, est juste un oubli. La bonne méthode : <strong>une escalade progressive</strong>, en trois temps, où chaque relance est un peu plus ferme que la précédente.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une relance efficace rappelle les faits (facture, montant, date d'échéance) sans accuser, propose une solution simple (payer maintenant, ou signaler un problème), et — à partir de la deuxième relance envers un professionnel — mentionne les conséquences prévues par la loi. Ce n'est pas une menace, c'est une information à laquelle tu as droit de rappeler.</p>
+  </div>
+
+  <h3>3.2 La distinction essentielle : client professionnel (B2B) ou particulier (B2C)</h3>
+  <p>C'est le point que la plupart des guides sur ce sujet passent sous silence, et qui change pourtant complètement ce que tu peux légitimement écrire dans une relance.</p>
+
+  <table>
+    <tr><th>Type de client</th><th>Base légale</th><th>Pénalités de retard</th></tr>
+    <tr><td>Professionnel (B2B)</td><td>Article L441-10 du Code de commerce</td><td><strong>Automatiques et obligatoires</strong> dès l'échéance dépassée, même sans mise en demeure. Taux par défaut : taux de la BCE majoré de 10 points (soit environ <strong>12,15 %</strong> en 2026), sauf taux différent prévu au contrat — qui ne peut jamais être inférieur à 3 fois le taux d'intérêt légal (environ 7,86 % en 2026). S'y ajoute une indemnité forfaitaire de recouvrement de 40 €.</td></tr>
+    <tr><td>Particulier (B2C)</td><td>Article 1231-6 du Code civil</td><td><strong>Facultatives.</strong> Le mécanisme automatique du Code de commerce ne s'applique pas. Des pénalités ne sont dues que si elles ont été prévues explicitement dans tes conditions générales de vente, et à des conditions qui ne soient pas abusives.</td></tr>
+  </table>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Erreur fréquente</span>
+    <p>Envoyer une relance à un particulier en mentionnant des pénalités de retard "automatiques" comme s'il s'agissait d'un client professionnel. Si tu n'as rien prévu dans tes CGV, tu ne peux pas les réclamer — tu peux seulement rappeler l'échéance et demander un règlement rapide.</p>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Le taux de pénalité "BCE + 10 points" change chaque semestre avec le taux de refinancement de la Banque Centrale Européenne. Plutôt que d'écrire un pourcentage fixe sur tes factures (qui deviendra vite obsolète), beaucoup d'auto-entrepreneurs préfèrent écrire directement la formule "taux de la BCE en vigueur, majoré de 10 points" — elle reste exacte automatiquement, année après année.</p>
+  </div>
+
+  <h3>3.3 Scripts de relance à copier-coller (J+7, J+15, J+30)</h3>
+  <p>Les trois scripts suivants sont formulés pour un client professionnel. Pour un particulier, retire simplement la mention des pénalités de retard (chapitre 3.2), sauf si tes CGV les prévoient explicitement.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📧 Relance 1 — J+7 (rappel amical)</span>
+    Objet : Petit rappel — facture n°[numéro]<br/><br/>
+    Bonjour [prénom],<br/><br/>
+    J'espère que tout va bien de votre côté. Je me permets de vous signaler que la facture n°[numéro] d'un montant de [montant] €, envoyée le [date], arrive à échéance dans quelques jours (ou est arrivée à échéance le [date]).<br/><br/>
+    C'est probablement passé entre les mailles — n'hésitez pas à me dire si vous avez besoin d'un justificatif ou d'un renvoi de la facture.<br/><br/>
+    Belle journée,<br/>[Ton prénom]
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">📧 Relance 2 — J+15 (rappel ferme, client professionnel)</span>
+    Objet : Relance — facture n°[numéro] toujours en attente<br/><br/>
+    Bonjour [prénom],<br/><br/>
+    Je reviens vers vous concernant la facture n°[numéro] d'un montant de [montant] €, échue depuis le [date]. Je n'ai pas encore reçu le règlement à ce jour.<br/><br/>
+    Pourriez-vous me confirmer une date de paiement ? Je vous rappelle que passé ce délai, des pénalités de retard s'appliquent de plein droit conformément aux mentions figurant sur la facture, ainsi qu'une indemnité forfaitaire de recouvrement de 40 €.<br/><br/>
+    Je reste à votre disposition pour en discuter si besoin.<br/><br/>
+    Cordialement,<br/>[Ton prénom]
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">📧 Relance 2 bis — J+15 (rappel ferme, client particulier)</span>
+    Objet : Relance — facture n°[numéro] toujours en attente<br/><br/>
+    Bonjour [prénom],<br/><br/>
+    Je reviens vers vous concernant la facture n°[numéro] d'un montant de [montant] €, échue depuis le [date]. Je n'ai pas encore reçu le règlement à ce jour.<br/><br/>
+    Pourriez-vous me confirmer une date de paiement dans les prochains jours ? N'hésitez pas à revenir vers moi si vous rencontrez une difficulté particulière, nous trouverons une solution ensemble.<br/><br/>
+    Cordialement,<br/>[Ton prénom]
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">📧 Relance 3 — J+30 (mise en demeure amiable)</span>
+    Objet : Dernier rappel avant démarches formelles — facture n°[numéro]<br/><br/>
+    Bonjour [prénom],<br/><br/>
+    Malgré mes précédentes relances des [dates], la facture n°[numéro] d'un montant de [montant] € reste impayée à ce jour, soit 30 jours après son échéance.<br/><br/>
+    Je vous demande de bien vouloir régulariser cette situation sous 8 jours. Passé ce délai, je me verrai contraint(e) d'engager les démarches de recouvrement prévues par la loi.<br/><br/>
+    Je reste ouvert(e) à trouver une solution amiable si vous rencontrez une difficulté particulière — n'hésitez pas à me contacter directement.<br/><br/>
+    Cordialement,<br/>[Ton prénom]
+  </div>
+
+  <h3>3.4 Que faire si la relance ne suffit pas</h3>
+  <p>Passé la troisième relance sans réponse ni paiement, les prochaines étapes sortent du cadre d'un simple email :</p>
+  <ul>
+    <li><strong>La mise en demeure formelle</strong> — une lettre recommandée avec accusé de réception, avec la mention explicite "mise en demeure". C'est une étape légale distincte d'une relance classique, souvent nécessaire avant toute procédure judiciaire ;</li>
+    <li><strong>L'injonction de payer</strong> — une procédure simplifiée auprès du tribunal, sans avocat obligatoire pour de petits montants, qui permet d'obtenir un titre exécutoire ;</li>
+    <li><strong>Le recours à un service de recouvrement</strong> — pour les montants plus importants ou les clients récurrents en défaut de paiement.</li>
+  </ul>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ L'IA n'écrit pas de mise en demeure formelle à ta place</span>
+    <p>Une mise en demeure a une valeur juridique précise et des mentions obligatoires. Un chatbot généraliste peut t'aider à en comprendre la structure ou à préparer tes arguments, mais pour un document qui engage une procédure judiciaire, fais-le relire par un professionnel du droit avant envoi.</p>
+  </div>
+
+  <h3>3.5 Comment l'IA rédige des emails qui obtiennent une réponse</h3>
+  <p>Les scripts ci-dessus couvrent la plupart des cas, mais parfois tu as une relation particulière avec un client (un habitué, un client difficile, une grosse entreprise avec un service compta séparé) qui mérite un ton sur-mesure. C'est là que l'IA est utile : donne-lui le contexte, elle adapte.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — relance sur-mesure</span>
+    Rédige un email de relance pour une facture impayée, avec ce contexte :<br/>
+    - Client : [nom], type : [professionnel / particulier], relation : [ex. client fidèle depuis 2 ans / nouveau client / grand compte]<br/>
+    - Facture n°[numéro], montant [montant] €, échue depuis [nombre] jours<br/>
+    - Ton souhaité : [ferme mais courtois / très diplomatique / direct]<br/>
+    - Historique : [ex. c'est la première relance / j'ai déjà relancé deux fois]<br/><br/>
+    Propose-moi 2 versions : une courte et directe, une plus détaillée avec plus de contexte. Ne mentionne des pénalités de retard que si le client est un professionnel, et seulement si je te le confirme explicitement.
+  </div>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Thomas, consultant en informatique</span>
+    <p>Thomas facture une mission de 3 200 € à une PME cliente. À J+15, toujours pas de règlement. Il utilise le prompt de relance sur-mesure en précisant "client professionnel, relation cordiale depuis 1 an, premières relance". Claude lui propose deux versions ; il choisit la version courte, ajoute la mention des pénalités de retard conformément à sa facture d'origine, et envoie. Le client répond sous 48h en expliquant un simple oubli administratif et règle dans la semaine. Thomas n'a jamais eu besoin d'aller jusqu'à la relance J+30.</p>
+    <p><strong>Un an plus tard</strong> — Thomas a systématisé ses relances avec le tableau de suivi du chapitre 3.6. Son délai moyen de paiement est passé de 34 jours à 16 jours, et il n'a plus eu besoin d'envoyer une seule relance J+30 depuis huit mois : ses relances J+7 suffisent presque toujours, parce qu'elles partent désormais systématiquement, sans qu'il ait besoin d'y penser.</p>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Demande toujours à l'IA de te proposer 2 ou 3 versions plutôt qu'une seule — le ton "juste" dépend de ta relation avec le client, et il est plus rapide de choisir entre trois options que de faire réécrire une version qui ne te convient pas.</p>
+  </div>
+
+  <h3>3.6 Suivre ses relances sans perdre le fil</h3>
+  <p>La difficulté n'est pas de rédiger une relance — c'est de se souvenir qu'il faut la faire, au bon moment, sans y penser en permanence. Un tableau de suivi minimal, tenu à jour en 2 minutes par semaine, règle ce problème :</p>
+
+  <table>
+    <tr><th>Client</th><th>N° facture</th><th>Montant</th><th>Échéance</th><th>Relance envoyée</th><th>Prochaine action</th></tr>
+    <tr><td>[Nom]</td><td>[N°]</td><td>[€]</td><td>[date]</td><td>J+7 le [date]</td><td>Relance J+15 le [date]</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — faire le point sur ses impayés</span>
+    Voici ma liste de factures impayées avec leur date d'échéance : [colle la liste]. Pour chacune, indique-moi si elle nécessite une relance J+7, J+15 ou J+30 selon le nombre de jours de retard, et dans quel ordre les traiter en priorité (montant décroissant).
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Bloque un créneau fixe chaque semaine (15 minutes le lundi matin, par exemple) pour passer en revue ce tableau et envoyer les relances dues. Un système suivi de façon irrégulière ne vaut pas mieux que pas de système du tout.</p>
+  </div>
+
+  <h3>3.7 Le client répond mais ne paie toujours pas</h3>
+  <p>Un cas fréquent : le client répond à ta relance, promet de régler "cette semaine", puis ne fait rien. Voici comment gérer cette situation sans reprendre du début à chaque fois.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — relance après une promesse non tenue</span>
+    Ce client m'avait dit qu'il réglerait la facture n°[numéro] de [montant] € le [date promise], mais je n'ai toujours rien reçu au [date d'aujourd'hui]. Rédige un message qui rappelle cet engagement sans être accusateur, et qui demande une nouvelle date précise (pas une nouvelle promesse vague).
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Une deuxième promesse non tenue est un signal à prendre au sérieux. Si le montant est significatif, c'est le moment de basculer vers une communication plus formelle (chapitre 3.4) plutôt que de multiplier les relances amicales indéfiniment.</p>
+  </div>
+
+  <h3>3.8 Cas particuliers de relance</h3>
+  <p>Certaines situations demandent une approche différente des trois scripts standards. En voici trois fréquentes, avec le prompt adapté à chacune.</p>
+
+  <h4>L'acompte n'a pas été versé avant le début de la prestation</h4>
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt — acompte non versé</span>
+    Le client [nom] devait verser un acompte de [montant] € avant que je commence la prestation [description], convenu pour le [date]. Je n'ai rien reçu et la date de début approche. Rédige un message clair qui rappelle que le démarrage est conditionné au versement de l'acompte, sans donner l'impression de revenir sur l'accord initial.
+  </div>
+
+  <h4>Le client conteste la prestation ou sa qualité</h4>
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt — contestation de prestation</span>
+    Le client [nom] refuse de payer la facture n°[numéro] en expliquant : [résume son argument]. Voici mon point de vue sur la situation : [explique ta position]. Aide-moi à rédiger une réponse factuelle et posée qui répond point par point à son argument, propose une solution concrète si elle est raisonnable, et évite toute escalade émotionnelle.
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Une contestation sérieuse et argumentée mérite une vraie réponse écrite avant toute relance de paiement — insister sur le règlement sans répondre au fond envenime généralement la situation plutôt que de la résoudre.</p>
+  </div>
+
+  <h4>Le client est injoignable</h4>
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt — dernier contact avant démarches formelles</span>
+    Je n'ai plus de réponse du client [nom] depuis [nombre] jours malgré [nombre] relances (par email et/ou téléphone). Rédige un dernier message qui l'informe que, sans réponse sous [délai], je considérerai la voie amiable épuisée et engagerai les démarches formelles prévues par la loi.
+  </div>
+
+  <h3>3.9 Le cas des clients à l'étranger</h3>
+  <p>Si une partie de ta clientèle est basée hors de France, quelques ajustements s'imposent avant d'envoyer une relance standard :</p>
+
+  <ul>
+    <li><strong>Devise</strong> — précise toujours la devise de facturation (EUR, USD...) dans chaque relance, même si elle figurait déjà sur la facture ;</li>
+    <li><strong>Base légale différente</strong> — les règles de pénalités de retard vues au chapitre 3.2 sont celles du droit français. Un client basé dans un autre pays de l'Union européenne ou hors UE peut relever de règles différentes selon le droit applicable prévu à ton contrat ou à tes CGV ;</li>
+    <li><strong>Langue</strong> — une relance dans la langue du client (ou au minimum en anglais) est généralement mieux reçue qu'une relance en français pour un client non francophone.</li>
+  </ul>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — relance pour un client à l'étranger</span>
+    Rédige une relance en anglais (ou en [langue]) pour une facture de [montant] [devise] envoyée à [nom du client], échue depuis [nombre] jours. Ton professionnel et courtois, sans mentionner de pénalités de retard basées sur le droit français, puisque le client n'y est pas nécessairement soumis.
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Pour un litige avec un client à l'étranger, les démarches de recouvrement formelles (chapitre 3.4) sont significativement plus complexes qu'au niveau national. Un expert-comptable ou un avocat habitué aux litiges transfrontaliers est fortement recommandé au-delà de la simple relance amiable.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — La compta simplifiée</h2>
+  <p class="lede">En sortant de cette partie, tu sauras quelles tâches comptables l'IA peut vraiment t'aider à accélérer, et lesquelles doivent impérativement rester sous ton contrôle direct.</p>
+
+  <h3>4.1 Catégoriser ses dépenses avec l'IA</h3>
+  <p>ChatGPT et Claude peuvent tous les deux lire une photo ou un PDF que tu leur envoies (jusqu'à environ 30 Mo par fichier) et en extraire les informations utiles. C'est une vraie capacité, pas une extrapolation marketing : tu peux littéralement prendre en photo un ticket de caisse ou un reçu, l'envoyer dans la conversation, et demander une catégorisation.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — catégoriser un reçu</span>
+    Voici une photo d'un reçu / d'une facture. Extrais : la date, le montant total, le montant de TVA si indiqué, le nom du fournisseur, et propose une catégorie de dépense adaptée à une activité d'auto-entrepreneur (ex. fournitures, déplacement, matériel, abonnement logiciel, repas professionnel). Présente le résultat sous forme de tableau que je peux copier dans mon tableur.
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>En régime micro-entrepreneur, ces dépenses ne sont <strong>pas déduites</strong> de ton chiffre d'affaires imposable (l'abattement forfaitaire en tient déjà lieu — voir le guide fiscal Guido). Catégoriser tes dépenses n'a donc pas d'effet direct sur tes impôts, mais reste très utile pour piloter ta trésorerie personnelle et savoir où part réellement ton argent.</p>
+  </div>
+
+  <h3>4.2 Étude de cas — un mois de reçus avec Camille</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Le mois d'octobre de Camille, graphiste</span>
+    <p><strong>Semaine 1</strong> — Camille prend en photo ses 4 reçus de la semaine (papeterie, essence pour un rendez-vous client, abonnement à un logiciel de création, café avec un prospect) au fur et à mesure, directement depuis son téléphone.</p>
+    <p><strong>Fin de mois</strong> — Elle envoie les 16 photos accumulées à Claude en une seule conversation, avec le prompt du chapitre 4.1 appliqué à chaque reçu. En 10 minutes, elle obtient un tableau complet : date, montant, catégorie pour chacune des 16 dépenses.</p>
+    <p><strong>Résultat</strong> — Elle copie ce tableau dans son propre suivi de trésorerie (un simple tableur). Elle constate que ses abonnements logiciels représentent une part croissante de ses dépenses mensuelles — une information qu'elle n'aurait pas remarquée sans cette catégorisation régulière.</p>
+    <p><strong>Ce qu'elle ne fait pas</strong> — Elle ne considère jamais ce tableau comme un document comptable officiel. Ses vraies factures et son suivi de chiffre d'affaires pour l'Urssaf restent gérés dans Indy.</p>
+  </div>
+
+  <h3>4.3 Préparer sa déclaration Urssaf plus vite</h3>
+  <p>L'IA ne calcule pas tes cotisations à ta place avec une valeur légale — mais elle peut t'aider à <strong>organiser</strong> tes chiffres avant de les saisir sur le site de l'Urssaf ou dans ton outil de facturation.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — préparer sa déclaration</span>
+    Voici la liste de mes factures encaissées ce mois-ci : [colle la liste : date, client, montant]. Additionne le chiffre d'affaires total du mois, et présente-le clairement pour que je puisse le reporter dans ma déclaration Urssaf. Ne calcule pas le montant de mes cotisations — je m'en charge moi-même ou via mon outil de facturation habituel.
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Ne fais jamais calculer tes cotisations par un chatbot généraliste</span>
+    <p>ChatGPT et Claude peuvent additionner des montants, mais ils ne connaissent pas nécessairement le taux de cotisation exact applicable à ta catégorie d'activité au moment précis où tu leur poses la question, et une erreur de calcul ne serait pas détectée par toi si tu ne vérifies pas. Utilise un outil spécialisé comme Indy pour le calcul réel de tes cotisations, ou vérifie chaque chiffre par toi-même à partir des taux officiels.</p>
+  </div>
+
+  <h3>4.4 Les outils qui font le pont entre banque et compta</h3>
+  <p>Deux outils spécialisés couvrent ce que les assistants IA généralistes ne font pas :</p>
+
+  <table>
+    <tr><th>Outil</th><th>Ce qu'il fait concrètement</th><th>Prix 2026</th></tr>
+    <tr><td>Dext</td><td>Capture et extrait automatiquement les données de tes factures d'achat et reçus (fournisseur, montant, TVA, échéance), avec connexion à plus de 11 500 banques. Ce n'est <strong>pas</strong> un logiciel de comptabilité complet — c'est une couche de capture à brancher sur un outil existant.</td><td>À partir d'environ 25 €/mois (facturation annuelle)</td></tr>
+    <tr><td>Indy</td><td>Calcule automatiquement tes cotisations Urssaf selon ton régime (avec ou sans ACRE) et t'indique précisément quoi déclarer à chaque échéance. Intègre un compte professionnel avec IBAN français.</td><td>Gratuit pour les devis/factures ; à partir de 9 €/mois pour l'automatisation Urssaf/TVA</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce — quand basculer vers un outil dédié</span>
+    <p>Si ton volume de reçus est faible (quelques-uns par semaine, comme Camille), le prompt du chapitre 4.1 avec ChatGPT ou Claude suffit largement — inutile de payer pour Dext. Le seuil de bascule se situe généralement autour d'une trentaine de documents par mois : au-delà, le temps passé à envoyer chaque reçu un par un dépasse le temps qu'un outil automatisé te ferait gagner.</p>
+  </div>
+
+  <h3>4.5 Ce que l'IA ne doit PAS faire (limites légales)</h3>
+  <p>C'est le chapitre le plus important de cette partie. Voici les limites réelles, pas des suppositions :</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Pas de connexion bancaire directe</span>
+    <p>Ni ChatGPT ni Claude ne se connectent à ton compte bancaire. Tu dois toujours exporter ou copier tes données toi-même (relevé, capture d'écran, export CSV) avant de les analyser. Seuls des outils dédiés comme Dext (via ses intégrations bancaires) ou Indy (avec son compte pro intégré) automatisent réellement ce lien.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Aucune valeur comptable ou légale</span>
+    <p>Une catégorisation de dépenses générée par un chatbot n'a aucune valeur probante en cas de contrôle. Elle t'aide à gagner du temps dans ton organisation personnelle, mais tes documents comptables officiels doivent rester dans un outil dédié ou chez ton expert-comptable.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Ne remplace pas un expert-comptable</span>
+    <p>Pour toute situation qui sort du calcul de routine — changement de régime, activité mixte, contrôle fiscal, question d'interprétation — l'avis d'un professionnel reste indispensable. L'IA t'aide à préparer tes questions, pas à y répondre à sa place sur des sujets engageants.</p>
+  </div>
+
+  <h3>4.6 Vie privée et données confidentielles : ce qu'il faut savoir</h3>
+  <p>Utiliser un assistant IA pour ta compta implique de lui transmettre des informations sur ton activité, parfois sur tes clients. Quelques principes simples permettent de rester prudent sans se priver des bénéfices de l'outil :</p>
+  <ul>
+    <li><strong>Ne transmets jamais</strong> d'identifiants bancaires, de mots de passe, ou de numéros de carte bancaire dans un chatbot, même pour "juste vérifier quelque chose" ;</li>
+    <li><strong>Vérifie les conditions d'utilisation</strong> en vigueur au moment où tu utilises l'outil, en particulier concernant la conservation et l'usage de tes données pour l'entraînement de futurs modèles — ces politiques diffèrent souvent entre les offres gratuites et payantes, et évoluent régulièrement ;</li>
+    <li><strong>Anonymise quand c'est possible</strong> — pour catégoriser un reçu, le nom du client final n'est généralement pas nécessaire ;</li>
+    <li><strong>Reste responsable au titre du RGPD</strong> — si tu traites des données personnelles de tiers (clients, prospects) via un outil tiers, tu restes responsable du traitement vis-à-vis du Règlement Général sur la Protection des Données. Vérifie que l'outil que tu utilises est adapté à un usage professionnel.</li>
+  </ul>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Les politiques de confidentialité évoluent régulièrement et diffèrent selon l'outil et l'offre choisie. Avant de transmettre des données sensibles sur ton activité ou tes clients, prends 5 minutes pour consulter la politique de confidentialité en vigueur sur le site de l'éditeur — ne te fie jamais à ce que tu as lu il y a plusieurs mois.</p>
+  </div>
+
+  <h3>4.7 Combien de temps gagnes-tu réellement ? Le comparatif chiffré</h3>
+  <p>Avant de choisir tes outils, il est utile de savoir où se situe réellement le gain de temps selon ton volume d'activité. Voici une estimation basée sur des usages réels, à ajuster selon ta propre situation :</p>
+
+  <table>
+    <tr><th>Volume mensuel</th><th>Méthode manuelle</th><th>Avec prompt IA (chapitre 4.1)</th><th>Avec Dext</th></tr>
+    <tr><td>5 à 10 reçus</td><td>~30 min</td><td>~10 min</td><td>Pas rentable (coût > temps gagné)</td></tr>
+    <tr><td>20 à 30 reçus</td><td>~1h30</td><td>~25 min</td><td>Rentable si tu factures ton temps plus de 20-25€/heure</td></tr>
+    <tr><td>50+ reçus</td><td>~3h</td><td>~50 min (mais fastidieux à envoyer un par un)</td><td>Nettement rentable — capture automatique en quelques minutes</td></tr>
+  </table>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le prompt IA (chapitre 4.1) est le bon choix par défaut jusqu'à un certain volume. Au-delà d'une trentaine de documents mensuels, le temps passé à photographier et envoyer chaque reçu individuellement dans une conversation devient lui-même le facteur limitant — c'est le signal pour basculer vers un outil de capture automatisée comme Dext.</p>
+  </div>
+
+  <h3>4.8 Étude de cas complète — le mois de Thomas avec Dext</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Thomas, consultant en informatique, gère un volume plus important</span>
+    <p><strong>Contexte</strong> — Contrairement à Camille, Thomas facture plusieurs clients par mois et engage des frais réguliers : déplacements chez les clients, matériel informatique, abonnements à plusieurs outils professionnels. Il génère facilement 40 à 50 reçus et factures fournisseurs par mois.</p>
+    <p><strong>Avant Dext</strong> — Il utilisait le prompt de catégorisation du chapitre 4.1 avec Claude, mais devait envoyer chaque reçu individuellement dans la conversation. Sur un mois chargé, cela représentait près de 3 heures cumulées.</p>
+    <p><strong>Avec Dext</strong> — Il prend simplement les reçus en photo au fur et à mesure via l'application, qui les catégorise automatiquement avec une précision annoncée de 99,9 %. Dext se connecte aussi directement à son compte bancaire professionnel pour rapprocher automatiquement les paiements. Son temps de traitement mensuel est tombé à environ 20 minutes de vérification rapide.</p>
+    <p><strong>Ce qui n'a pas changé</strong> — Thomas continue de vérifier chaque mois que le total correspond bien à ses relevés bancaires avant de considérer sa comptabilité personnelle à jour, et ses déclarations Urssaf officielles restent calculées et transmises via Indy, pas via Dext.</p>
+    <p><strong>Bilan</strong> — Le coût de Dext (environ 25 €/mois) est largement compensé par le temps gagné, dès lors que Thomas facture son temps professionnel bien au-dessus de ce montant horaire.</p>
+  </div>
+
+  <h3>4.9 Comment fonctionne concrètement l'intégration Dext ↔ logiciel de comptabilité</h3>
+  <p>Un point souvent mal compris : Dext ne remplace pas ton outil de facturation ou de comptabilité, il vient <strong>avant</strong> lui dans la chaîne. Le principe :</p>
+  <ol class="steps">
+    <li>
+      <strong>Capture</strong><br/>
+      Tu prends en photo ou scannes un reçu, une facture fournisseur, ou tu connectes ton compte bancaire.
+    </li>
+    <li>
+      <strong>Extraction automatique</strong><br/>
+      L'OCR de Dext lit le document et en extrait fournisseur, montant, TVA, date d'échéance.
+    </li>
+    <li>
+      <strong>Vérification rapide</strong><br/>
+      Tu valides ou corriges les informations extraites — l'étape la plus rapide du processus.
+    </li>
+    <li>
+      <strong>Transfert vers l'outil de comptabilité</strong><br/>
+      Les données validées sont envoyées automatiquement vers ton logiciel de comptabilité (Xero, QuickBooks, Sage, ou un export compatible avec ton propre outil).
+    </li>
+  </ol>
+
+  <h3>4.10 Les catégories de dépenses courantes pour un auto-entrepreneur</h3>
+  <p>Pour que tes prompts de catégorisation (chapitre 4.1) restent cohérents d'un mois à l'autre, voici une liste de catégories de référence que tu peux indiquer à l'IA ou simplement utiliser comme base :</p>
+
+  <table>
+    <tr><th>Catégorie</th><th>Exemples</th></tr>
+    <tr><td>Fournitures et matériel</td><td>Papeterie, petit matériel, consommables</td></tr>
+    <tr><td>Équipement professionnel</td><td>Ordinateur, logiciel, matériel photo/vidéo</td></tr>
+    <tr><td>Abonnements logiciels</td><td>Outils de création, de gestion, d'IA</td></tr>
+    <tr><td>Déplacements</td><td>Essence, péage, billets de train, hôtel</td></tr>
+    <tr><td>Repas professionnels</td><td>Déjeuners d'affaires, cafés avec des prospects</td></tr>
+    <tr><td>Communication</td><td>Téléphone, internet, hébergement de site</td></tr>
+    <tr><td>Formation</td><td>Cours, livres professionnels, conférences</td></tr>
+    <tr><td>Frais bancaires</td><td>Frais de tenue de compte professionnel, commissions</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — catégorisation avec liste imposée</span>
+    Voici mes catégories de dépenses habituelles : fournitures, équipement, abonnements logiciels, déplacements, repas professionnels, communication, formation, frais bancaires. Catégorise ce reçu en choisissant uniquement parmi cette liste, sans en inventer une nouvelle.
+  </div>
+
+  <h3>4.11 Cas particulier : si tu factures la TVA</h3>
+  <p>Si tu as dépassé le seuil de franchise en base ou choisi d'y renoncer volontairement, tes reçus de dépenses prennent une importance différente : la TVA que tu paies sur tes achats professionnels peut être récupérée. C'est une raison supplémentaire de bien extraire ce montant à chaque catégorisation.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — extraction TVA pour récupération</span>
+    Voici mes reçus du mois [liste ou photos]. Pour chacun, extrais le montant hors taxe, le montant de TVA, et le taux appliqué (5,5 %, 10 % ou 20 %). Présente un total de TVA récupérable en fin de tableau. Je vérifierai ensuite ce total avec mon expert-comptable ou mon logiciel de déclaration de TVA avant de le déclarer.
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>La récupération de TVA a des règles précises (TVA non récupérable sur certaines dépenses comme les véhicules de tourisme, par exemple). Un total généré par l'IA est une aide à l'organisation, pas une déclaration de TVA valide en l'état — fais-le vérifier avant de le déclarer officiellement.</p>
+  </div>
+
+  <h3>4.12 Vérifier la fiabilité d'un résultat : méthode en 3 points</h3>
+  <p>Ce guide répète souvent "vérifie avant d'utiliser officiellement" — voici concrètement comment le faire en pratique, sans que ça devienne une tâche aussi longue que celle que tu voulais éviter.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Vérifie les totaux, pas chaque ligne</strong><br/>
+      Sur une catégorisation de reçus ou un calcul de chiffre d'affaires, recalcule mentalement le total et compare-le à celui généré par l'IA. Un écart signale une erreur à investiguer ligne par ligne ; une correspondance suffit généralement à valider l'ensemble.
+    </li>
+    <li>
+      <strong>Recoupe avec une source indépendante</strong><br/>
+      Compare un chiffre d'affaires mensuel généré par l'IA avec le total de ton outil de facturation (Indy). Les deux devraient toujours correspondre exactement.
+    </li>
+    <li>
+      <strong>Repère les montants "trop ronds" ou incohérents</strong><br/>
+      Un taux de TVA à 20 % appliqué à un produit alimentaire (normalement 5,5 %), ou un total qui ne correspond à aucune addition simple des lignes, sont des signaux qui méritent une vérification manuelle immédiate.
+    </li>
+  </ol>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Cette vérification prend rarement plus de 2 minutes une fois l'habitude prise — bien moins que le temps que tu as gagné en laissant l'IA faire le travail de saisie initial.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Mettre en place ton système</h2>
+  <p class="lede">En sortant de cette partie, tu auras un plan concret sur trois semaines pour intégrer ces outils dans ton quotidien, sans tout bouleverser d'un coup.</p>
+
+  <h3>5.1 Planning semaine 1 / 2 / 3</h3>
+
+  <h4>Semaine 1 — Les devis</h4>
+  <ul>
+    <li>Créer un compte gratuit sur Indy (ou vérifier que ton outil actuel gère bien la numérotation légale) ;</li>
+    <li>Sauvegarder le prompt du chapitre 2.1 dans tes notes ;</li>
+    <li>Générer ton prochain devis avec la méthode du guide, et comparer le temps passé à d'habitude ;</li>
+    <li>Identifier tes devis en attente depuis plus de 7 jours et envoyer une relance légère (chapitre 2.3).</li>
+  </ul>
+
+  <h4>Semaine 2 — Les relances</h4>
+  <ul>
+    <li>Identifier les factures actuellement en retard, et les classer par ancienneté (J+7, J+15, J+30) ;</li>
+    <li>Pour chacune, vérifier s'il s'agit d'un client professionnel ou particulier (chapitre 3.2) ;</li>
+    <li>Envoyer les relances correspondantes avec les scripts adaptés du chapitre 3.3 ;</li>
+    <li>Mettre en place un rappel personnel (calendrier, notes) pour ne plus jamais dépasser 7 jours sans réagir à un retard.</li>
+  </ul>
+
+  <h4>Semaine 3 — La compta</h4>
+  <ul>
+    <li>Tester le prompt de catégorisation du chapitre 4.1 sur 5 reçus récents ;</li>
+    <li>Estimer ton volume mensuel de documents pour décider si un outil dédié comme Dext (chapitre 4.4) devient rentable ;</li>
+    <li>Relire le chapitre 4.5 une deuxième fois — c'est celui qui t'évite le plus d'ennuis ;</li>
+    <li>Vérifier la politique de confidentialité de l'outil que tu utilises le plus (chapitre 4.6).</li>
+  </ul>
+
+  <h3>5.2 Mesurer le temps réellement gagné</h3>
+  <p>Pour savoir si ce système te fait vraiment gagner du temps (et pas juste te donner l'impression d'être plus efficace), tiens un compte simple pendant deux semaines :</p>
+  <ul>
+    <li>Note le temps passé sur chaque devis, relance ou session de catégorisation avant de changer de méthode ;</li>
+    <li>Note le même temps une fois la méthode de ce guide en place ;</li>
+    <li>Compare. La plupart des auto-entrepreneurs constatent un gain de 60 à 80 % du temps passé sur ces tâches précises — mais c'est ta propre mesure qui compte, pas une moyenne générale.</li>
+  </ul>
+
+  <h3>5.3 Checklist récapitulative</h3>
+  <ul class="checklist">
+    <li>J'ai un compte sur un outil de facturation conforme (Indy ou équivalent) pour mes devis et factures finales.</li>
+    <li>J'ai sauvegardé mes prompts (devis, relance, catégorisation) dans un endroit facile d'accès.</li>
+    <li>Je sais distinguer un client professionnel d'un client particulier avant d'envoyer une relance.</li>
+    <li>Je sais quelles pénalités de retard figurent sur mes factures avant de les mentionner dans une relance.</li>
+    <li>Je vérifie toujours les montants et taux générés par l'IA avant de les utiliser officiellement.</li>
+    <li>Je ne colle jamais d'identifiants bancaires ou d'informations confidentielles dans un chatbot.</li>
+    <li>Je sais à quel moment une situation nécessite un vrai expert-comptable plutôt qu'un prompt.</li>
+    <li>J'ai vérifié la politique de confidentialité de l'outil IA que j'utilise pour mes données professionnelles.</li>
+  </ul>
+
+  <h3>5.4 Erreurs à éviter</h3>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 1. Faire confiance aveuglément aux chiffres générés</span>
+    <p>L'IA peut faire des erreurs de calcul, surtout sur des montants complexes ou des taux qui changent chaque semestre. Vérifie systématiquement avant d'envoyer un document officiel.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 2. Confondre client particulier et client professionnel dans une relance</span>
+    <p>Mentionner des pénalités de retard "automatiques" à un particulier alors que la loi ne le prévoit pas ainsi peut nuire à ta crédibilité, voire être perçu comme une pratique abusive.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 3. Envoyer une relance avec des pénalités non mentionnées sur la facture d'origine</span>
+    <p>Tu ne peux réclamer des pénalités de retard ou l'indemnité forfaitaire que si elles figuraient déjà sur la facture initiale — pour un client professionnel comme pour un particulier avec CGV adaptées.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 4. Utiliser un outil professionnel gratuit pour des données confidentielles sans vérifier ses conditions</span>
+    <p>Les politiques de confidentialité et de conservation des données diffèrent entre les offres gratuites et payantes, et évoluent dans le temps. Vérifie les conditions en vigueur avant d'y transmettre des informations sur tes clients.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 5. Confondre "l'IA a organisé mes chiffres" et "j'ai une comptabilité en règle"</span>
+    <p>L'organisation personnelle et la comptabilité officielle sont deux choses différentes. La première peut passer par un prompt ; la seconde doit rester dans un outil ou un cabinet comptable reconnu.</p>
+  </div>
+
+  <h3>5.5 Que faire si le système ne tient pas dans la durée</h3>
+  <p>Beaucoup de bonnes résolutions administratives s'essoufflent après quelques semaines. Voici les trois raisons les plus fréquentes, et comment y remédier sans tout abandonner.</p>
+
+  <table>
+    <tr><th>Symptôme</th><th>Cause probable</th><th>Ajustement</th></tr>
+    <tr><td>Les reçus s'accumulent sans être traités</td><td>La catégorisation est repoussée à "quand j'aurai le temps"</td><td>Fixe un créneau fixe et court (10 minutes, même jour chaque semaine) plutôt qu'une tâche ouverte</td></tr>
+    <tr><td>Les relances ne partent plus</td><td>Le tableau de suivi (chapitre 3.6) n'est plus à jour</td><td>Couple la mise à jour du tableau à une habitude déjà existante (ex. juste après avoir consulté tes emails le lundi)</td></tr>
+    <tr><td>Les devis reprennent 30 minutes comme avant</td><td>Le prompt "squelette" a été perdu ou n'est plus sous la main</td><td>Garde-le dans un endroit que tu consultes de toute façon (notes du téléphone, favoris du navigateur)</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Un système administratif qui demande de la discipline nouvelle échoue presque toujours. Un système qui s'accroche à une habitude que tu as déjà (consulter tes emails, faire ta compta du dimanche soir) tient beaucoup plus longtemps.</p>
+  </div>
+
+  <h3>5.6 Adapter le système quand ton activité grandit</h3>
+  <p>Ce qui fonctionne à 5 clients par mois ne tient plus forcément à 20. Voici les seuils à partir desquels reconsidérer chaque brique du système :</p>
+
+  <table>
+    <tr><th>Volume d'activité</th><th>Ce qui reste suffisant</th><th>Ce qu'il faut reconsidérer</th></tr>
+    <tr><td>Quelques clients par mois</td><td>Prompts manuels pour devis, relances et catégorisation</td><td>Rien de particulier — c'est le cas type couvert par ce guide</td></tr>
+    <tr><td>Une dizaine de clients actifs, facturation régulière</td><td>Les prompts restent efficaces pour devis et relances</td><td>Le tableau de suivi manuel (chapitre 3.6) devient limite — envisage les rappels automatiques intégrés à Indy</td></tr>
+    <tr><td>Volume soutenu, plusieurs dizaines de documents comptables par mois</td><td>—</td><td>Bascule vers Dext pour la capture (chapitre 4.4), et envisage un accompagnement comptable régulier plutôt que ponctuel</td></tr>
+  </table>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce guide te donne un système qui fonctionne très bien pour une activité individuelle de taille courante. Si ton activité grandit au point de nécessiter une équipe ou une structure plus lourde, la question n'est plus "quel prompt utiliser" mais "à quel moment un statut juridique différent devient plus adapté" — un sujet qui dépasse le cadre de ce guide et mérite un vrai échange avec un expert-comptable.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Bonus — Outils et prompts prêts à l'emploi</h2>
+  <p class="lede">Une réserve de prompts à copier directement, et un récapitulatif des tarifs 2026 pour choisir tes outils en connaissance de cause.</p>
+
+  <h3>6.1 Liste d'outils avec prix (2026)</h3>
+  <table>
+    <tr><th>Outil</th><th>Offre gratuite</th><th>Offre payante</th><th>Usage principal</th></tr>
+    <tr><td>Claude (Anthropic)</td><td>Oui, avec limites d'usage sur fenêtre de 5h</td><td>20 $/mois (Pro) · 100-200 $/mois (Max)</td><td>Rédaction, analyse de documents/reçus</td></tr>
+    <tr><td>ChatGPT (OpenAI)</td><td>Oui, avec limites (10 messages/5h)</td><td>8 $/mois (Go) · 20 $/mois (Plus) · 100-200 $/mois (Pro)</td><td>Rédaction, analyse de documents/reçus</td></tr>
+    <tr><td>Dext</td><td>Offre "Dext Facturation" pour la conformité e-facturation</td><td>À partir d'environ 25 $/mois (annuel)</td><td>Capture et OCR de factures/reçus en volume</td></tr>
+    <tr><td>Indy</td><td>Oui, devis et factures illimités</td><td>9 €/mois (Plus) · 15-59 €/mois (Premium)</td><td>Facturation légale, automatisation Urssaf/TVA</td></tr>
+  </table>
+  <p class="source">Prix hors taxes constatés en 2026, susceptibles d'évoluer — vérifie les tarifs à jour sur le site de chaque éditeur avant de t'engager.</p>
+
+  <h3>6.2 Prompts prêts à copier-coller</h3>
+
+  <div class="box box-prompt">
+    <span class="box-title">1. Devis complet</span>
+    Rédige un devis professionnel pour mon activité d'auto-entrepreneur avec : client [nom], prestation [description], prix [montant] €, délai [délai], conditions de paiement [conditions]. Structure complète avec mentions légales de base.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">2. Trois formules de prix</span>
+    À partir de cette prestation [description], génère 3 formules de prix (découverte, standard, premium) sous forme de tableau comparatif à envoyer au client.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">3. Relance de devis sans réponse</span>
+    J'ai envoyé ce devis il y a [nombre] jours à [nom] : [résumé]. Rédige un message court et non-insistant pour relancer poliment.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">4. Relance J+7</span>
+    Rédige un email de relance amicale pour une facture n°[numéro] de [montant] € arrivant à échéance le [date], pour un client [nom] avec qui j'ai une bonne relation.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">5. Relance J+15 (client professionnel)</span>
+    Rédige un email de relance ferme mais courtois pour une facture n°[numéro] de [montant] € échue depuis 15 jours envers un client professionnel, en mentionnant les pénalités de retard prévues sur la facture.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">6. Relance J+15 (client particulier)</span>
+    Rédige un email de relance ferme mais courtois pour une facture n°[numéro] de [montant] € échue depuis 15 jours envers un particulier, sans mentionner de pénalités automatiques.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">7. Relance J+30</span>
+    Rédige un email de mise en demeure amiable pour une facture n°[numéro] de [montant] € échue depuis 30 jours, avec un délai de régularisation de 8 jours avant démarches formelles.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">8. Catégoriser un reçu</span>
+    Voici une photo d'un reçu. Extrais la date, le montant, la TVA et le fournisseur, et propose une catégorie de dépense professionnelle. Présente en tableau.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">9. Résumé mensuel de chiffre d'affaires</span>
+    Voici la liste de mes factures encaissées ce mois [colle les données]. Additionne le total et présente-le clairement pour ma déclaration Urssaf, sans calculer mes cotisations.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">10. Email de bienvenue nouveau client</span>
+    Rédige un email d'accueil pour un nouveau client [nom] qui vient de valider un devis pour [prestation], avec les prochaines étapes et un ton chaleureux et professionnel.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">11. Description de prestation pour un site ou réseau social</span>
+    Rédige une description de 100 mots pour présenter ma prestation [description] à des clients potentiels, ton direct et concret, sans superlatifs vides.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">12. Réponse à un avis client</span>
+    Voici un avis client : [colle l'avis]. Rédige une réponse professionnelle adaptée (remerciement si positif, réponse constructive et posée si négatif).
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">13. Préparer un rendez-vous avec son expert-comptable</span>
+    Voici ma situation : [décris ta situation ou ta question]. Aide-moi à formuler 3 à 5 questions précises et pertinentes à poser à mon expert-comptable sur ce sujet, sans essayer d'y répondre à sa place.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">14. Synthèse d'un contrat ou CGV avant signature</span>
+    Voici un contrat / des CGV que je dois signer [colle le texte]. Résume les points clés en langage simple : engagements, durée, conditions de résiliation, pénalités. Signale les clauses inhabituelles, sans te substituer à un avis juridique.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">15. Bilan mensuel d'activité</span>
+    Voici mes chiffres du mois : chiffre d'affaires [montant], nombre de nouveaux clients [nombre], factures en attente [liste]. Rédige-moi une synthèse courte de mon mois, avec un point d'attention si quelque chose se dégrade par rapport au mois précédent [donne les chiffres du mois précédent si disponibles].
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">16. Checklist de démarrage pour un nouveau projet client</span>
+    Je démarre une mission pour [client] sur [description de la prestation]. Génère-moi une checklist des informations à collecter et des étapes à valider avant de commencer (accès nécessaires, éléments à recevoir du client, jalons à fixer), adaptée à ce type de prestation.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">17. Annonce d'une hausse de tarif</span>
+    Je dois annoncer une hausse de tarif de [ancien prix] à [nouveau prix] à mes clients réguliers, applicable à partir du [date]. Rédige un message qui explique le changement sans être défensif, avec un délai de prévenance raisonnable et une reconnaissance de leur fidélité.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">18. Reconnaître une erreur auprès d'un client</span>
+    J'ai fait une erreur sur ce dossier : [décris l'erreur]. Rédige un message qui la reconnaît clairement, sans minimiser ni sur-dramatiser, et qui propose une solution concrète pour la corriger.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">19. Remerciement à un partenaire ou sous-traitant</span>
+    Je veux remercier [nom], qui m'a [décris ce qu'il a fait : recommandé un client, dépanné en urgence, etc.]. Rédige un message chaleureux et sincère, sans formule toute faite.
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">20. Préparer son bilan annuel avant la déclaration de revenus</span>
+    Voici mon chiffre d'affaires mois par mois sur l'année : [liste les 12 montants]. Calcule le total annuel, identifie le mois le plus fort et le plus faible, et présente une synthèse claire que je pourrai utiliser pour préparer ma déclaration de revenus avec mon expert-comptable.
+  </div>
+
+  <h3>6.3 Pour aller plus loin</h3>
+  <p>Les trois usages détaillés dans ce guide (devis, relances, compta) sont ceux qui font gagner le plus de temps pour le moins d'effort de mise en place. Une fois qu'ils sont installés dans ton quotidien, d'autres tâches administratives et de communication se prêtent au même type d'automatisation légère :</p>
+
+  <ul>
+    <li><strong>Rédiger des posts pour tes réseaux sociaux professionnels</strong> — donne le sujet et le ton, l'IA rédige plusieurs variantes ;</li>
+    <li><strong>Résumer les notes d'un appel ou d'une réunion client</strong> — colle tes notes brutes prises pendant l'appel, demande un résumé structuré avec les actions à suivre ;</li>
+    <li><strong>Préparer une trame d'entretien client</strong> — pour cadrer un premier échange avec un nouveau prospect sans rien oublier d'important ;</li>
+    <li><strong>Traduire un email ou un document</strong> — utile si tu travailles occasionnellement avec des clients à l'étranger.</li>
+  </ul>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>La méthode reste toujours la même, quel que soit l'usage : donne à l'IA un contexte précis (pas juste "aide-moi"), demande plusieurs versions si le ton compte, et vérifie toujours le résultat avant de l'utiliser officiellement.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Lexique</h2>
+  <p class="lede">Les termes utilisés dans ce guide, expliqués simplement.</p>
+
+  <dl class="lexique">
+    <dt>Assistant IA généraliste</dt>
+    <dd>Un outil comme ChatGPT ou Claude, capable de rédiger, reformuler et analyser des documents sur demande, sans être spécialisé dans un métier particulier.</dd>
+
+    <dt>B2B / B2C</dt>
+    <dd>Abréviations pour "business to business" (entre professionnels) et "business to consumer" (vers un particulier) — une distinction qui change les règles applicables aux pénalités de retard.</dd>
+
+    <dt>Indemnité forfaitaire de recouvrement</dt>
+    <dd>Somme de 40 € que tu peux réclamer à un client professionnel en cas de retard de paiement, à condition qu'elle figure sur ta facture d'origine.</dd>
+
+    <dt>Mise en demeure</dt>
+    <dd>Lettre formelle, généralement recommandée avec accusé de réception, sommant un débiteur de régler une somme due — une étape légale distincte d'une simple relance.</dd>
+
+    <dt>OCR (reconnaissance optique de caractères)</dt>
+    <dd>Technologie qui extrait automatiquement le texte d'une image ou d'un scan, utilisée par des outils comme Dext pour lire tes reçus et factures.</dd>
+
+    <dt>Outil métier</dt>
+    <dd>Un logiciel spécialisé dans une tâche précise (facturation, comptabilité) avec une valeur légale, par opposition à un assistant IA généraliste.</dd>
+
+    <dt>Pénalités de retard</dt>
+    <dd>Majoration due en cas de facture impayée après échéance. Automatique et obligatoire entre professionnels (Code de commerce), facultative envers un particulier (Code civil).</dd>
+
+    <dt>Prompt</dt>
+    <dd>Le texte que tu écris à un assistant IA pour lui demander de faire quelque chose. Plus il est précis, meilleur est le résultat.</dd>
+
+    <dt>RGPD</dt>
+    <dd>Règlement Général sur la Protection des Données — encadre le traitement des données personnelles, y compris lorsque tu utilises un outil tiers pour gérer des informations sur tes clients.</dd>
+
+    <dt>Franchise en base de TVA</dt>
+    <dd>Régime qui dispense de facturer et de déclarer la TVA tant que le chiffre d'affaires reste sous certains seuils. Voir le guide fiscal Guido pour le détail complet.</dd>
+
+    <dt>Injonction de payer</dt>
+    <dd>Procédure judiciaire simplifiée, sans avocat obligatoire pour de petits montants, permettant d'obtenir un titre exécutoire contre un débiteur qui ne répond pas aux relances amiables.</dd>
+
+    <dt>Proposition commerciale</dt>
+    <dd>Document de présentation plus détaillé qu'un devis classique, qui explique le contexte, la solution proposée et la valeur ajoutée avant d'en arriver au prix.</dd>
+
+    <dt>Titre exécutoire</dt>
+    <dd>Décision de justice qui autorise, en cas de non-paiement persistant, le recours à un huissier pour recouvrer une créance de force.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>8. Questions fréquentes</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Faut-il payer un abonnement pour utiliser ce guide ?</p>
+    <p>Non. Les offres gratuites de ChatGPT et Claude suffisent pour la plupart des usages décrits ici. Un abonnement payant (20 €/mois environ) devient utile si tu dépasses régulièrement les limites d'usage gratuites.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">L'IA peut-elle se tromper dans mes devis ou ma compta ?</p>
+    <p>Oui, c'est pourquoi ce guide insiste sur la vérification systématique des montants avant tout envoi ou déclaration officielle. L'IA accélère la rédaction, pas la responsabilité.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je mentionner des pénalités de retard à un client particulier ?</p>
+    <p>Seulement si tes conditions générales de vente le prévoient explicitement et de façon non abusive. Contrairement aux clients professionnels, il n'y a pas de mécanisme automatique pour les particuliers (chapitre 3.2).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Est-ce que je peux tout faire avec seulement ChatGPT ou Claude, sans Dext ni Indy ?</p>
+    <p>Pour un faible volume d'activité, oui. Dès que le volume de reçus ou la complexité de ta comptabilité augmente (au-delà d'une trentaine de documents par mois environ), un outil dédié devient plus rentable en temps que de tout faire à la main via un chatbot.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Mes données sont-elles en sécurité si je les transmets à ChatGPT ou Claude ?</p>
+    <p>Les politiques varient selon l'offre et évoluent régulièrement. Ne transmets jamais d'identifiants bancaires ou de mots de passe, et vérifie la politique de confidentialité en vigueur avant de transmettre des données sensibles sur tes clients (chapitre 4.6).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Combien de temps faut-il pour mettre en place tout ce que décrit ce guide ?</p>
+    <p>Le planning du chapitre 5.1 est prévu sur 3 semaines, à raison de quelques minutes par jour. Rien n'empêche d'aller plus vite si tu as un devis ou une relance à envoyer dès aujourd'hui — commence directement par le chapitre correspondant.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Que faire si un client ne répond à aucune des relances ?</p>
+    <p>Passé la relance J+30 sans réponse ni paiement, il est temps de passer à une démarche plus formelle : mise en demeure par lettre recommandée, puis éventuellement injonction de payer (chapitre 3.4). Un chatbot généraliste peut t'aider à comprendre ces étapes, mais pas à rédiger le document formel lui-même.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Dois-je utiliser le même outil IA pour tout (devis, relances, compta) ?</p>
+    <p>Ce n'est pas obligatoire, mais c'est plus simple : rester sur un seul assistant (ChatGPT ou Claude) te permet de garder tes prompts et ton historique de conversation au même endroit. Les outils métier dédiés (Indy, Dext) s'utilisent en complément, pas en remplacement.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="disclaimer">
+    <strong>Avertissement.</strong> Ce guide a une vocation pratique et informative. Les outils, prix, fonctionnalités et taux légaux décrits reflètent la situation constatée en 2026 et peuvent évoluer — vérifie toujours les informations à jour auprès des éditeurs et sources officielles concernés. Ce guide ne remplace pas l'avis d'un expert-comptable ou d'un avocat pour les situations complexes, et les auteurs ne sauraient être tenus responsables de l'usage fait des prompts, scripts ou méthodes proposés.
+  </div>
+</section>
+
+</body>
+</html>

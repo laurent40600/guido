@@ -1,0 +1,1281 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>L'IA pour les agents immobiliers</title>
+<style>
+  @page { size: A4; margin: 29mm 24mm 27mm 24mm; }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 27pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-case { background: #f6f8f4; border-left: 5px solid #4d7c4a; }
+  .box-case .box-title { color: #3f6b3d; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; }
+  .box-template {
+    background: #fff; border: 1.5px dashed #1E2A4A; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-template .box-title { color: #1E2A4A; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+
+  .source { font-size: 10pt; color: #1a1a1a; font-style: italic; }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1E2A4A; font-size: 12.5pt; margin-bottom: 4pt; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+
+  ol.steps { padding-left: 0; list-style: none; counter-reset: step; }
+  ol.steps li { counter-increment: step; position: relative; padding-left: 40pt; margin-bottom: 16pt; }
+  ol.steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0;
+    width: 28pt; height: 28pt; border-radius: 50%;
+    background: #1E2A4A; color: #C98A2E; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps li strong { color: #1E2A4A; }
+
+  .subject-heading {
+    background: #1E2A4A; color: #fff; padding: 8pt 14pt; border-radius: 8pt;
+    font-size: 13pt; font-weight: 800; margin: 26pt 0 12pt;
+  }
+
+  .disclaimer {
+    margin-top: 24pt; padding: 16pt; background: #f8f6f2;
+    border-radius: 10pt; font-size: 11pt; color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>L'IA pour les agents immobiliers : rédiger ses annonces et répondre aux prospects deux fois plus vite</h1>
+  <p class="tagline">Récupérer des heures chaque semaine, sans rien perdre du contact humain qui fait vendre</p>
+  <p class="meta">Annonces qui vendent, réponses aux prospects, posts réseaux sociaux, avis Google<br/>et newsletter — avec les limites à connaître (obligations légales d'affichage,<br/>contact humain) et le Pack Agent bonus : 30 prompts par usage + template Canva</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction — le vrai coût du temps perdu</li>
+    <li>Partie 1 — Rédiger des annonces qui vendent<span>Générer une annonce complète, adapter le ton, template prêt à l'emploi</span></li>
+    <li>Partie 2 — Répondre aux prospects plus vite<span>Demandes de visite, relances, qualification des prospects sérieux</span></li>
+    <li>Partie 3 — Communication et réseaux sociaux<span>Posts Instagram/Facebook, avis Google, newsletter automatisée</span></li>
+    <li>Partie 4 — Mettre en place ton système<span>Un plan sur 3 semaines, checklist, erreurs à éviter</span></li>
+    <li id="toc-bonus-item">Partie 5 — Bonus : le Pack Agent<span>30 prompts par usage + le template Canva de fiche bien immobilier</span></li>
+    <li>Lexique</li>
+    <li>Questions fréquentes</li>
+    <li>Avertissement</li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction — le vrai coût du temps perdu</h2>
+  <p class="lede">En sortant de cette introduction, tu sauras précisément ce que ce guide va changer dans ton quotidien, et ce qu'il ne fera jamais à ta place.</p>
+
+  <h3>Le vrai coût du temps perdu</h3>
+  <p>Rédiger une annonce vraiment vendeuse prend du temps : trouver les bons mots, éviter les formules toutes faites, adapter le ton au bien. Pour un agent qui gère 15 à 20 mandats actifs, cela représente facilement plusieurs heures chaque semaine — avant même de répondre aux appels et aux messages des prospects.</p>
+
+  <p>À cela s'ajoute la gestion des prospects : répondre à une demande de visite, relancer après une visite sans être lourd, trier les curieux des acheteurs sérieux. Ce sont des tâches répétitives, mais qui demandent d'être bien formulées à chaque fois pour ne pas donner une mauvaise image de l'agence.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce guide ne prétend pas remplacer ta connaissance du marché local ni ta relation avec tes clients — c'est ce qui fait vendre, pas un texte généré. Il te montre où l'IA peut légitimement réduire la partie mécanique et répétitive de ton travail (premier jet d'annonce, réponse standard, post réseau social), pour te laisser plus de temps sur les visites et la négociation.</p>
+  </div>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>Ce guide couvre trois usages, dans l'ordre où ils s'enchaînent naturellement dans ta semaine :</p>
+  <ul>
+    <li><strong>Rédiger</strong> — générer une annonce complète à partir de quelques infos brutes, l'adapter selon le type de bien ;</li>
+    <li><strong>Répondre aux prospects</strong> — scripts de réponse aux demandes de visite, relances après visite, qualification rapide ;</li>
+    <li><strong>Communiquer</strong> — posts réseaux sociaux pour chaque nouveau bien, réponses aux avis Google, newsletter mensuelle.</li>
+  </ul>
+
+  <p>Le Pack Agent en bonus (partie 5) te donne 30 prompts prêts à l'emploi classés par usage, et un guide pas à pas pour recréer un template Canva de fiche bien immobilier en 10 minutes.</p>
+
+  <h3>Prérequis : aucune compétence technique nécessaire</h3>
+  <p>Tu n'as pas besoin de savoir programmer, ni de comprendre le fonctionnement d'un modèle de langage. Ce guide utilise deux outils grand public — ChatGPT et Claude — que tu utilises peut-être déjà pour préparer un email ou une annonce. Tout ce qu'il te faut, c'est un compte gratuit sur l'un des deux, et 10 minutes pour tester le premier prompt du guide.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Ce que l'IA ne fait jamais</span>
+    <p>Aucun outil d'IA ne connaît le bien mieux que toi, ne doit inventer une information sur un bien que tu n'as pas vérifiée, et ne te dispense jamais des obligations légales d'affichage (DPE, surface, honoraires). Le chapitre 5.3 y revient en détail — lis-le avant de généraliser l'usage de l'IA à toutes tes annonces.</p>
+  </div>
+
+  <h3>Pour qui est ce guide, concrètement</h3>
+  <p>Les usages décrits dans ce guide s'appliquent à tous les contextes d'exercice, avec des nuances selon ta situation :</p>
+
+  <table>
+    <tr><th>Contexte</th><th>Ce qui change</th></tr>
+    <tr><td>Agent indépendant / mandataire</td><td>Tu gères seul la rédaction, la communication et le suivi — les prompts de ce guide couvrent l'ensemble de ta charge de travail, du premier contact à la newsletter.</td></tr>
+    <tr><td>Agence avec plusieurs agents</td><td>Les templates et prompts peuvent être partagés entre collègues pour harmoniser le ton des annonces et des réponses, tout en gardant la touche personnelle de chacun.</td></tr>
+    <tr><td>Réseau de mandataires</td><td>Les prompts de communication (chapitre 4) sont particulièrement utiles pour construire une présence régulière sur les réseaux sociaux, souvent le point faible d'un mandataire qui débute.</td></tr>
+  </table>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Rédiger des annonces qui vendent</h2>
+  <p class="lede">En sortant de cette partie, tu sauras générer une annonce complète à partir de quelques infos brutes, l'adapter selon le type de bien, et tu auras un template prêt à remplir pour chaque nouveau mandat.</p>
+
+  <h3>2.1 Bien formuler une demande à l'IA : les 4 réflexes qui changent tout</h3>
+  <p>Avant d'entrer dans le détail, quatre réflexes simples améliorent la qualité de <strong>toutes</strong> tes demandes, quel que soit l'usage de ce guide :</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Donne les infos brutes, pas une phrase toute faite</strong><br/>
+      Liste surface, pièces, quartier, atouts, état général — laisse l'IA structurer le texte. Tu obtiendras un résultat plus riche qu'en lui demandant de "reformuler une phrase".
+    </li>
+    <li>
+      <strong>Précise toujours le type de bien et la cible</strong><br/>
+      Un studio pour étudiant et une maison familiale ne se vendent pas avec le même vocabulaire — indique toujours à qui s'adresse le bien.
+    </li>
+    <li>
+      <strong>Demande plusieurs variantes, pas un seul texte</strong><br/>
+      Pour une annonce ou un post, demande 2-3 versions de longueur ou de ton différents — tu choisis ensuite celle qui te ressemble le plus.
+    </li>
+    <li>
+      <strong>Indique explicitement ce que l'IA ne doit pas faire</strong><br/>
+      "N'invente aucune caractéristique non mentionnée" évite les débordements que ce guide signale à plusieurs reprises.
+    </li>
+  </ol>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces quatre réflexes sont déjà intégrés dans tous les prompts de ce guide — garde-les en tête pour tes propres variations, ou pour tout autre usage que tu inventeras au fil de ton activité.</p>
+  </div>
+
+  <h3>2.2 Générer une annonce complète à partir d'infos brutes</h3>
+  <p>La méthode consiste à donner à l'IA toutes les informations factuelles du bien en vrac, puis à laisser l'outil structurer une annonce complète que tu vérifies et ajustes ensuite.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Liste les infos brutes</strong><br/>
+      Surface, nombre de pièces, étage, quartier, atouts (luminosité, calme, proximité transports), état des travaux, DPE.
+    </li>
+    <li>
+      <strong>Précise le type de bien et la cible visée</strong><br/>
+      Appartement de standing, studio étudiant, maison familiale — chacun appelle un ton différent (chapitre 2.3).
+    </li>
+    <li>
+      <strong>Utilise le prompt ci-dessous</strong><br/>
+      Il structure la demande pour obtenir une annonce exploitable dès le premier essai.
+    </li>
+    <li>
+      <strong>Relis et vérifie chaque information</strong><br/>
+      L'IA peut reformuler avec élégance, mais c'est toi qui garantis l'exactitude de chaque caractéristique annoncée.
+    </li>
+  </ol>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — annonce immobilière complète</span>
+    <span class="prompt-text">Rédige une annonce immobilière pour : [type de bien], [surface] m², [nombre] pièces, situé [quartier/ville]. Atouts : [liste les atouts]. État : [état général, travaux récents]. DPE : [lettre]. Cible : [type d'acheteur visé]. Structure l'annonce en une accroche, un descriptif détaillé, et une conclusion qui donne envie de visiter. Ton [professionnel/chaleureux/dynamique]. N'invente aucune caractéristique non mentionnée ci-dessus.</span>
+  </div>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Sophie, agent indépendante</span>
+    <p>Sophie doit rédiger l'annonce d'un T3 de 68 m² dans un quartier résidentiel. Avant, elle passait environ 30 minutes à trouver la bonne accroche et à structurer le texte. Avec le prompt ci-dessus, elle obtient en quelques minutes une annonce complète et bien structurée. Elle passe ensuite 5 minutes à vérifier chaque donnée chiffrée et à ajuster une formulation qu'elle juge trop générique. Temps total : 10 minutes, contre 30 auparavant.</p>
+  </div>
+
+  <h3>2.3 Adapter le ton selon le type de bien</h3>
+  <p>Un appartement de standing, un studio étudiant et une maison familiale ne se vendent pas avec les mêmes mots. Le vocabulaire, le rythme des phrases et les atouts mis en avant doivent correspondre à l'acheteur visé.</p>
+
+  <table>
+    <tr><th>Type de bien</th><th>Ton à privilégier</th><th>Atouts à mettre en avant</th></tr>
+    <tr><td>Appartement de standing</td><td>Sobre, valorisant, vocabulaire qualitatif sans excès</td><td>Prestations, vue, calme, adresse, finitions</td></tr>
+    <tr><td>Studio étudiant</td><td>Direct, pratique, rassurant sur le budget</td><td>Proximité transports/universités, charges incluses, meublé</td></tr>
+    <tr><td>Maison familiale</td><td>Chaleureux, projectif ("on s'imagine y vivre")</td><td>Jardin, chambres, école à proximité, quartier calme</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — décliner une annonce selon la cible</span>
+    <span class="prompt-text">Voici une annonce que j'ai rédigée : [colle l'annonce]. Décline-la en 2 versions : une version pour [cible 1, ex. jeune couple actif] et une version pour [cible 2, ex. investisseur locatif]. Garde les mêmes informations factuelles, mais adapte le ton et les atouts mis en avant selon chaque cible.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Demande toujours à l'IA de préciser <strong>ce qui change concrètement</strong> entre les versions (vocabulaire, atouts mis en avant en premier) plutôt qu'une adaptation vague — cela t'aide aussi à mieux cerner toi-même le profil de chaque acheteur.</p>
+  </div>
+
+  <h3>2.4 Outils concrets + template d'annonce prêt à l'emploi</h3>
+  <p>Pour cet usage, ChatGPT et Claude rendent un service très comparable — les deux génèrent des annonces bien structurées. Le choix se joue surtout sur le budget et tes préférences de style d'écriture.</p>
+
+  <table>
+    <tr><th>Outil</th><th>Offre gratuite</th><th>Offre payante</th></tr>
+    <tr><td>ChatGPT (OpenAI)</td><td>Oui, limitée à environ 10 messages toutes les 5 heures</td><td>8 $/mois (Go) ou 20 $/mois (Plus)</td></tr>
+    <tr><td>Claude (Anthropic)</td><td>Oui, limitée sur une fenêtre glissante de 5 heures</td><td>20 $/mois (Pro)</td></tr>
+  </table>
+  <p class="source">Prix constatés en 2026, susceptibles d'évoluer — vérifie les tarifs à jour sur le site de chaque éditeur.</p>
+
+  <p>Une fois ton annonce générée et ajustée, voici un template que tu peux remplir directement pour chaque nouveau mandat, avant même de lancer l'IA.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Template — Fiche infos brutes pour rédaction d'annonce</span>
+    <strong>Type de bien :</strong> [appartement/maison/studio] — <strong>Surface :</strong> [m²] — <strong>Pièces :</strong> [nombre]<br/>
+    <strong>Localisation :</strong> [quartier/ville] — <strong>Étage :</strong> [si applicable]<br/><br/>
+    <strong>Atouts :</strong> [luminosité, calme, vue, proximité...]<br/>
+    <strong>État :</strong> [travaux récents, à rafraîchir, neuf]<br/>
+    <strong>DPE :</strong> [lettre] — <strong>Charges :</strong> [montant]<br/><br/>
+    <strong>Cible visée :</strong> [type d'acheteur]<br/>
+    <strong>Ton souhaité :</strong> [professionnel/chaleureux/dynamique]
+  </div>
+
+  <h3>2.5 Exemple complet avant/après</h3>
+  <p>Pour rendre tout ça concret, voici un exemple réel de ce qu'un agent tape, et ce que l'IA en fait — pas un extrait retouché, mais le type d'échange que tu auras toi-même.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    T2 45m2 3e etage sans ascenseur, quartier calme proche gare, refait a neuf cuisine et sdb, balcon plein sud, dpe C, cible jeune actif
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait)</span>
+    <strong>Charme et praticité à deux pas de la gare</strong><br/>
+    Ce T2 de 45 m² au 3e étage a été entièrement rénové : cuisine et salle de bain refaites à neuf, dans un esprit contemporain et lumineux. Le balcon plein sud offre un vrai espace extérieur, rare sur ce secteur.<br/><br/>
+    Idéalement situé dans un quartier calme, à quelques minutes à pied de la gare — un atout de poids pour vos trajets quotidiens. DPE : C.<br/><br/>
+    Un bien parfait pour un jeune actif qui cherche l'équilibre entre calme résidentiel et accès rapide aux transports.
+  </div>
+
+  <p>À partir d'une phrase brute sans ponctuation, l'IA a structuré une accroche, mis en avant les atouts dans un ordre pertinent pour la cible visée, et intégré le DPE sans l'oublier — un gain de temps réel sur la partie rédactionnelle la plus fastidieuse.</p>
+
+  <h3>2.6 Rédiger l'annonce d'un bien avec des caractéristiques atypiques</h3>
+  <p>Un bien avec un défaut réel (vis-à-vis, absence d'ascenseur, travaux à prévoir) demande un exercice d'équilibre : rester honnête sans plomber l'annonce. L'IA aide à trouver la formulation juste, à condition de lui donner l'information exacte.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — présenter un point faible avec honnêteté</span>
+    <span class="prompt-text">Voici un bien avec ce point faible réel : [décris le défaut, ex. absence d'ascenseur au 4e étage]. Rédige une formulation honnête qui ne le cache pas mais le met en perspective avec un atout compensatoire réel (ex. loyer plus accessible, vue dégagée). N'invente aucun atout qui ne m'a pas été communiqué.</span>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Ne jamais utiliser l'IA pour minimiser ou cacher un défaut réel du bien. Au-delà du risque de perte de confiance avec l'acheteur, une annonce trompeuse peut engager ta responsabilité professionnelle.</p>
+  </div>
+
+  <h3>2.7 Ce qui change selon le marché local</h3>
+  <p>Le ton et l'urgence d'une annonce ne sont pas les mêmes selon que tu vends dans un marché tendu (forte demande, biens rares) ou plus détendu (offre abondante, délais de vente plus longs).</p>
+
+  <table>
+    <tr><th>Type de marché</th><th>Ajustement recommandé</th></tr>
+    <tr><td>Marché tendu (grandes villes, secteurs prisés)</td><td>Une annonce factuelle et efficace suffit souvent — la rareté du bien fait le travail ; inutile d'en rajouter sur l'urgence</td></tr>
+    <tr><td>Marché détendu (zones rurales, périurbain)</td><td>Une annonce plus projective et détaillée aide à se démarquer sur un marché avec plus de choix pour l'acheteur</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Précise toujours le type de marché dans ton prompt ("secteur très demandé" ou "délai de vente moyen plus long dans ce secteur") — l'IA adaptera naturellement le ton de l'annonce en conséquence.</p>
+  </div>
+
+  <h3>2.8 Construire une bibliothèque d'annonces réutilisables</h3>
+  <p>Une bonne annonce, une fois trouvée, n'est jamais entièrement à usage unique. La structure qui a bien fonctionné pour un type de bien peut être réutilisée et adaptée pour le mandat suivant similaire, plutôt que d'être régénérée de zéro à chaque fois.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Garde une trace de tes meilleures annonces</strong><br/>
+      Classe-les par type de bien (T2, T3, maison, studio) dans un dossier simple — pas seulement la version brute générée, mais la version finale après tes ajustements.
+    </li>
+    <li>
+      <strong>Note ce qui a bien fonctionné</strong><br/>
+      Une accroche qui a généré beaucoup de demandes de visite, une structure qui t'a fait gagner du temps : garde une ligne de commentaire à côté de chaque annonce archivée.
+    </li>
+    <li>
+      <strong>Réutilise la structure, pas le texte tel quel</strong><br/>
+      Demande à l'IA de s'inspirer de la structure d'une annonce archivée pour un nouveau bien similaire, plutôt que de recopier telle quelle une annonce qui décrivait un bien différent.
+    </li>
+  </ol>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — réutiliser une structure d'annonce qui a fonctionné</span>
+    <span class="prompt-text">Voici une annonce qui a bien fonctionné pour un bien similaire : [colle l'ancienne annonce]. Utilise la même structure et le même ton pour rédiger l'annonce de ce nouveau bien : [infos brutes du nouveau bien]. N'invente aucune caractéristique non mentionnée pour ce nouveau bien.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Cette bibliothèque personnelle devient plus utile avec le temps : après quelques mois, tu auras une structure éprouvée pour chaque type de bien que tu vends régulièrement, ce qui réduit encore le temps de rédaction.</p>
+  </div>
+
+  <h3>2.9 Cas particulier — location saisonnière et meublés touristiques</h3>
+  <p>Une annonce de location saisonnière répond à une logique différente d'une vente ou d'une location classique : l'acheteur décide en quelques secondes, souvent sur une plateforme avec beaucoup de biens concurrents visibles simultanément.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — annonce de location saisonnière</span>
+    <span class="prompt-text">Rédige une annonce pour une location saisonnière : [type de bien], [capacité] personnes, à [localisation]. Atouts : [équipements, proximité plage/centre-ville/activités]. Ton vivant et projectif ("imaginez vos vacances..."), avec une accroche qui donne envie de réserver immédiatement. Mentionne les équipements clés (wifi, climatisation, parking) en évidence.</span>
+  </div>
+
+  <table>
+    <tr><th>Différence avec une vente classique</th><th>Ce qui change dans le prompt</th></tr>
+    <tr><td>Décision très rapide de l'internaute</td><td>Accroche encore plus courte et immédiate, équipements pratiques mis en avant dès les premières lignes</td></tr>
+    <tr><td>Comparaison directe avec d'autres annonces similaires</td><td>Mettre en avant un ou deux éléments réellement différenciants plutôt qu'une liste exhaustive</td></tr>
+    <tr><td>Absence de visite avant réservation</td><td>Être exhaustif et honnête sur les équipements réels pour éviter une déception à l'arrivée</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Pour la location saisonnière, demande systématiquement à l'IA une version "courte" pensée pour l'aperçu d'une plateforme (les premières lignes visibles avant le clic) en plus de la description complète — c'est souvent cette accroche qui détermine si l'internaute clique ou passe au bien suivant.</p>
+  </div>
+
+  <h3>2.10 Cas particulier — bien neuf (VEFA) et programmes immobiliers</h3>
+  <p>Vendre un bien sur plan (VEFA) demande de décrire un logement qui n'existe pas encore physiquement — la rédaction s'appuie sur les plans et les prestations prévues, pas sur une visite réelle.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — annonce d'un bien neuf sur plan</span>
+    <span class="prompt-text">Rédige une annonce pour un bien neuf en VEFA : [type de bien], [surface] m², dans le programme [nom du programme] à [localisation]. Prestations prévues : [liste, ex. balcon, parking, prestations DPE A]. Livraison prévue : [trimestre/année]. Ton valorisant sur les avantages du neuf (garanties, normes énergétiques récentes, personnalisation possible), sans décrire d'éléments visuels qui ne sont pas encore réalisés.</span>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Ne jamais faire décrire par l'IA un rendu ou une ambiance qui n'a pas été validée par le promoteur (couleurs, matériaux non confirmés). Reste sur les éléments contractuels et les prestations réellement prévues au descriptif du programme.</p>
+  </div>
+
+  <h3>2.11 Ce que l'IA ne remplace pas : les photos et visuels</h3>
+  <p>Aucun texte, aussi bien rédigé soit-il, ne compense des photos de mauvaise qualité. L'IA t'aide sur la rédaction, mais la partie visuelle reste entièrement ton travail — ou celui d'un photographe professionnel.</p>
+
+  <table>
+    <tr><th>Ce que l'IA fait</th><th>Ce qui reste ton travail</th></tr>
+    <tr><td>Rédiger le texte de l'annonce et des posts</td><td>Prendre ou faire prendre des photos nettes, bien cadrées, avec une bonne lumière</td></tr>
+    <tr><td>Suggérer une structure de présentation</td><td>Choisir l'ordre des photos, ranger et désencombrer le bien avant la prise de vue</td></tr>
+    <tr><td>Proposer un texte pour une visite virtuelle</td><td>Réaliser ou faire réaliser la visite virtuelle elle-même (photos 360°, vidéo)</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Investir dans quelques photos de qualité (lumière naturelle, rangement, angle large) a souvent plus d'impact sur le nombre de demandes de visite qu'un texte d'annonce parfaitement optimisé. Les deux se complètent, mais ne se remplacent pas.</p>
+  </div>
+
+  <h3>2.12 Adapter une annonce selon le portail de diffusion</h3>
+  <p>Une même annonce ne se présente pas exactement de la même façon sur un grand portail (SeLoger, Leboncoin) et sur ton propre site ou tes réseaux sociaux — chaque canal a ses codes et ses contraintes de longueur.</p>
+
+  <table>
+    <tr><th>Canal</th><th>Contrainte ou usage</th><th>Ajustement</th></tr>
+    <tr><td>Grand portail (SeLoger, Leboncoin...)</td><td>Souvent un titre très court en plus de la description</td><td>Demande à l'IA un titre distinct optimisé pour tenir en une ligne</td></tr>
+    <tr><td>Site propre de l'agence</td><td>Pas de contrainte de longueur</td><td>Version complète et détaillée, avec plus de contexte sur le quartier</td></tr>
+    <tr><td>Réseaux sociaux</td><td>Lecture rapide sur mobile</td><td>Version courte et visuelle (chapitre 4.1), différente de l'annonce classique</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — décliner une annonce pour plusieurs canaux</span>
+    <span class="prompt-text">Voici une annonce complète : [colle l'annonce]. Décline-la en 3 versions : un titre court optimisé pour un portail d'annonces (moins de 70 caractères), une version complète pour mon site, et une version courte et visuelle pour les réseaux sociaux.</span>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Répondre aux prospects plus vite</h2>
+  <p class="lede">En sortant de cette partie, tu sauras répondre plus vite aux demandes de visite, relancer après une visite sans paraître insistant, et repérer un prospect sérieux avant de perdre du temps.</p>
+
+  <h3>3.1 Scripts de réponse automatisée aux demandes de visite</h3>
+  <p>Une demande de visite mérite une réponse rapide et engageante — plus tu réponds vite, plus tu maximises tes chances de transformer le contact en visite réelle. L'IA t'aide à préparer une réponse type que tu personnalises en quelques secondes.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — réponse à une demande de visite</span>
+    <span class="prompt-text">Rédige une réponse par email/SMS à un prospect qui demande à visiter [type de bien] à [localisation]. Ton chaleureux et professionnel. Propose 2 créneaux de visite ([créneau 1] et [créneau 2]), demande une confirmation, et pose une question pour mieux cerner son projet (budget, délai d'achat, financement en cours).</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Prépare 2-3 variantes du script (email formel, SMS court, message vocal transcrit) une bonne fois pour toutes — tu n'auras ensuite qu'à changer le bien et les créneaux à chaque nouvelle demande.</p>
+  </div>
+
+  <h3>3.2 Relancer après une visite sans paraître insistant</h3>
+  <p>La relance post-visite est un exercice délicat : montrer de l'intérêt pour le retour du prospect sans donner l'impression de le harceler. Le bon timing et la bonne formulation font toute la différence.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — relance après visite (J+2)</span>
+    <span class="prompt-text">Rédige un message de relance à envoyer 2 jours après la visite de [type de bien] par [prénom du prospect]. Ton léger et non insistant : demande son ressenti sur la visite, reste disponible pour répondre à ses questions, sans donner l'impression de le presser à se décider.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — relance après visite (J+8, sans retour)</span>
+    <span class="prompt-text">Le prospect n'a pas répondu à ma première relance après la visite de [type de bien]. Rédige un second message, plus court, qui l'informe d'une actualité neutre sur le bien (ex. "toujours disponible", "une autre visite est prévue cette semaine") sans donner l'impression de faire pression.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Deux relances espacées suffisent dans la grande majorité des cas. Au-delà, le risque de paraître insistant dépasse le bénéfice potentiel — mieux vaut laisser la porte ouverte et se concentrer sur d'autres prospects.</p>
+  </div>
+
+  <h3>3.3 Qualifier un prospect avant de perdre du temps sur une visite peu sérieuse</h3>
+  <p>Toutes les demandes de visite ne se valent pas. Quelques questions bien posées avant de fixer un rendez-vous permettent de repérer un projet sérieux et d'éviter une visite qui n'aboutira à rien.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — questions de qualification avant visite</span>
+    <span class="prompt-text">Génère 5 questions à poser par téléphone ou message à un prospect avant de fixer une visite pour [type de bien], afin d'évaluer : son budget réel, l'état de son financement (prêt accordé, apport disponible), son délai d'achat souhaité, et la raison de son intérêt pour ce bien précis. Formule les questions de façon naturelle, pas comme un interrogatoire.</span>
+  </div>
+
+  <table>
+    <tr><th>Signal</th><th>Ce qu'il indique</th></tr>
+    <tr><td>Financement déjà étudié ou prêt accordé</td><td>Projet avancé, sérieux à prioriser</td></tr>
+    <tr><td>Délai d'achat flou ("on regarde, sans urgence")</td><td>Projet en amont, à suivre sans prioriser</td></tr>
+    <tr><td>Questions très précises sur le bien (charges, copropriété, travaux prévus)</td><td>Intérêt réel et déjà informé</td></tr>
+    <tr><td>Demande de visite pour "se faire une idée du marché"</td><td>Prospect en phase d'exploration, à qualifier avant d'investir du temps</td></tr>
+  </table>
+
+  <h3>3.4 Exemple complet avant/après</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    relance visite T3 marc pas eu de nouvelles depuis 5 jours, rester dispo sans insister
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait)</span>
+    Bonjour Marc,<br/><br/>
+    J'espère que vous allez bien. Je me permets de revenir vers vous suite à la visite du T3 la semaine dernière — n'hésitez pas à me faire part de vos impressions si vous avez eu le temps d'y réfléchir.<br/><br/>
+    Je reste bien sûr disponible pour répondre à toute question complémentaire, sans aucune pression de votre côté.<br/><br/>
+    Bien cordialement.
+  </div>
+
+  <p>À partir d'une note brute, l'IA a produit un message au ton juste : chaleureux, sans relance insistante, et qui laisse la porte ouverte à une réponse du prospect quand il sera prêt.</p>
+
+  <h3>3.5 Gérer les objections courantes</h3>
+  <p>"Le prix est trop élevé", "je veux réfléchir", "je visite d'autres biens avant de me décider" : ces objections reviennent constamment. Préparer une réponse posée à l'avance évite l'improvisation sous pression.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — répondre à une objection</span>
+    <span class="prompt-text">Un prospect m'oppose cette objection après la visite de [type de bien] : "[objection exacte du prospect]". Rédige une réponse qui reconnaît son point de vue sans être sur la défensive, apporte un élément factuel pertinent (ex. comparables du marché, atout du bien), et l'invite à poursuivre l'échange sans pression.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Garde toujours une trace des 3-4 objections qui reviennent le plus souvent sur tes biens — tu peux préparer une réponse type pour chacune une bonne fois pour toutes, plutôt que d'improviser à chaque fois.</p>
+  </div>
+
+  <h3>3.6 Étude de cas complète — une semaine de prospects avec Sophie</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Sophie gère 12 demandes de prospects en une semaine</span>
+    <p><strong>Lundi</strong> — Sophie reçoit 4 demandes de visite pour 3 biens différents. Elle utilise le script du chapitre 3.1 pour répondre à chacune en moins de 5 minutes, en adaptant les créneaux disponibles.</p>
+    <p><strong>Mercredi</strong> — Avant de confirmer une visite pour un bien qu'elle sait très demandé, elle envoie les questions de qualification du chapitre 3.3. Un des quatre prospects répond de façon évasive sur son financement — elle priorise les trois autres.</p>
+    <p><strong>Vendredi</strong> — Deux visites ont eu lieu en début de semaine sans retour. Elle envoie la relance J+2 du chapitre 3.2 aux deux prospects, personnalisée en 2 minutes chacune.</p>
+    <p><strong>Bilan de la semaine</strong> — Sophie estime avoir gagné environ 1h30 sur l'ensemble des réponses et relances de la semaine, un temps réinvesti dans deux visites supplémentaires qu'elle n'aurait pas pu caler autrement.</p>
+  </div>
+
+  <h3>3.7 Cas particulier — prospects internationaux ou non francophones</h3>
+  <p>Un prospect qui achète depuis l'étranger ou qui ne maîtrise pas parfaitement le français demande une communication un peu différente : plus explicite sur les démarches, et parfois dans une autre langue.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — répondre à un prospect en anglais</span>
+    <span class="prompt-text">Traduis et adapte ce message en anglais pour un prospect international : [colle ton message en français]. Garde un ton professionnel et chaleureux, adapté à quelqu'un qui découvre peut-être le marché immobilier français et ses démarches spécifiques (compromis de vente, notaire, délais).</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Avec un prospect international, ajoute toujours une phrase qui explicite une étape du processus français qui pourrait ne pas avoir d'équivalent direct ailleurs (le rôle du notaire, le délai de rétractation) — cela évite les malentendus et rassure sur ton professionnalisme.</p>
+  </div>
+
+  <h3>3.8 Suivre plusieurs prospects en parallèle sans rien perdre</h3>
+  <p>Quand plusieurs prospects sont actifs sur plusieurs biens en même temps, le principal risque n'est pas le manque de temps mais la confusion : oublier où en est chaque échange, répéter une information déjà donnée, ou mélanger deux dossiers.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Template — Fiche de suivi prospect</span>
+    <strong>Nom :</strong> [nom] — <strong>Bien concerné :</strong> [référence/adresse]<br/>
+    <strong>Dernier contact :</strong> [date] — <strong>Prochaine action :</strong> [relance/appel/visite]<br/><br/>
+    <strong>Statut financement :</strong> [confirmé/en cours/non renseigné]<br/>
+    <strong>Niveau d'intérêt estimé :</strong> [élevé/moyen/à confirmer]<br/>
+    <strong>Notes :</strong> [éléments personnels ou objections mentionnées]
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Avant de rédiger une relance avec l'IA, colle toujours les notes de ta fiche de suivi dans le prompt plutôt que de compter sur ta mémoire — cela évite de répéter une question déjà posée ou d'oublier un détail personnel mentionné par le prospect lors d'un échange précédent.</p>
+  </div>
+
+  <h3>3.9 Gérer un prospect qui négocie fortement le prix</h3>
+  <p>Une négociation serrée demande de rester factuel et posé, sans céder à la pression ni fermer la porte trop vite. L'IA aide à préparer une réponse structurée qui s'appuie sur des éléments de marché plutôt que sur l'émotion.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — répondre à une négociation de prix</span>
+    <span class="prompt-text">Un prospect propose [montant] pour un bien affiché à [prix affiché]. Voici des éléments de comparaison du marché : [biens comparables récents, délai de vente moyen du secteur]. Rédige une réponse qui présente ces éléments factuels de façon posée, sans fermer la porte à la discussion, et propose une contre-proposition ou une prochaine étape.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Garde toujours en tête que la décision finale de contre-proposition revient au vendeur, pas à toi ni à l'IA — ton rôle est de présenter clairement l'offre et les éléments de marché pour l'aider à décider.</p>
+  </div>
+
+  <h3>3.10 Gérer un prospect qui compare plusieurs biens en même temps</h3>
+  <p>Un acheteur sérieux visite souvent plusieurs biens en parallèle, parfois avec d'autres agences. Plutôt que de le voir comme un frein, c'est une occasion de mettre en avant ce qui distingue réellement ton bien.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — répondre à un prospect qui hésite entre plusieurs biens</span>
+    <span class="prompt-text">Un prospect m'indique qu'il hésite entre ce bien et [autre bien/critère de comparaison, ex. un bien moins cher mais plus loin des transports]. Voici les atouts réels de mon bien : [liste]. Rédige une réponse qui met en avant ces atouts de façon factuelle, sans dénigrer l'autre option, et qui l'aide à clarifier ses propres priorités.</span>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Ne jamais dénigrer un bien concurrent, même indirectement. Une comparaison qui reste factuelle et centrée sur les atouts réels de ton bien est toujours perçue comme plus professionnelle qu'une critique de l'offre concurrente.</p>
+  </div>
+
+  <h3>3.11 Étude de cas complète — de la première demande à l'offre acceptée</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Julien, agent en ville moyenne</span>
+    <p><strong>J1 — Première demande</strong> — Un prospect contacte Julien via un portail d'annonces pour une maison de 110 m². Il répond en 10 minutes avec le script du chapitre 3.1, en proposant deux créneaux de visite.</p>
+    <p><strong>J3 — Qualification</strong> — Avant de confirmer, Julien envoie les questions de qualification du chapitre 3.3. Le prospect confirme un prêt pré-accordé et un délai d'achat de 2 mois — un profil sérieux à prioriser.</p>
+    <p><strong>J5 — Visite et relance</strong> — La visite se passe bien. Deux jours après, Julien envoie la relance J+2 du chapitre 3.2, personnalisée avec un détail mentionné pendant la visite (l'intérêt du prospect pour le jardin).</p>
+    <p><strong>J10 — Négociation</strong> — Le prospect propose un montant inférieur de 5 % au prix affiché. Julien utilise le prompt du chapitre 3.9 pour préparer une réponse appuyée sur deux biens comparables récemment vendus dans le secteur.</p>
+    <p><strong>J14 — Offre acceptée</strong> — Après un compromis à mi-chemin entre les deux montants, l'offre est acceptée. Julien envoie un message de suivi (prompt 12 du Pack Agent) pour informer le prospect des prochaines étapes.</p>
+    <p><strong>Bilan</strong> — Sur l'ensemble du parcours, Julien estime avoir gagné environ 45 minutes cumulées sur la rédaction des différents messages, sans jamais déléguer la décision de négociation elle-même.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Communication et réseaux sociaux</h2>
+  <p class="lede">En sortant de cette partie, tu sauras générer des posts pour chaque nouveau bien, répondre aux avis Google avec le bon ton, et mettre en place une newsletter mensuelle automatisée pour ta base de contacts.</p>
+
+  <h3>4.1 Générer des posts Instagram/Facebook pour chaque nouveau bien</h3>
+  <p>Un post réseau social efficace n'est pas une simple copie de l'annonce : il doit accrocher en quelques secondes de scroll, avec un ton plus direct et visuel. L'IA génère rapidement une base que tu adaptes avec tes photos.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — post réseau social pour un nouveau bien</span>
+    <span class="prompt-text">Rédige un post Instagram/Facebook pour annoncer la mise en vente de [type de bien], [surface] m², à [localisation]. Ton dynamique et accrocheur, adapté aux réseaux sociaux (phrases courtes, emojis pertinents avec modération). Termine par un appel à l'action clair ("Contactez-moi pour une visite" ou équivalent). Propose 2 versions : une courte pour story, une plus détaillée pour publication classique.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>L'IA gère très bien le texte, mais ne remplace pas de bonnes photos. Prévois toujours des visuels de qualité avant de publier — le texte le plus accrocheur ne compense pas une photo floue ou mal cadrée.</p>
+  </div>
+
+  <h3>4.2 Répondre aux avis Google (positifs et négatifs) avec le bon ton</h3>
+  <p>Un avis Google mérite toujours une réponse, qu'il soit positif ou négatif — cela montre aux futurs clients que tu es attentif et professionnel. Le ton diffère cependant complètement selon le cas.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — répondre à un avis positif</span>
+    <span class="prompt-text">Voici un avis Google positif reçu : "[colle l'avis]". Rédige une réponse chaleureuse et personnalisée qui remercie le client en mentionnant un élément précis de son avis (pas une formule générique), sans être trop long.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — répondre à un avis négatif</span>
+    <span class="prompt-text">Voici un avis Google négatif reçu : "[colle l'avis]". Rédige une réponse professionnelle qui reconnaît le ressenti du client sans être sur la défensive, apporte un élément de contexte factuel si pertinent, et propose de poursuivre l'échange en privé pour résoudre le problème. Ton posé, jamais agressif.</span>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Ne jamais publier une réponse à un avis négatif sans l'avoir relue toi-même. Un ton perçu comme agressif ou désinvolte, même généré par erreur, se voit publiquement et peut faire plus de mal qu'un silence.</p>
+  </div>
+
+  <h3>4.3 Créer une newsletter mensuelle automatisée pour sa base de contacts</h3>
+  <p>Une newsletter régulière garde ton nom dans l'esprit de ta base de contacts, même quand ils ne sont pas en recherche active. L'IA t'aide à structurer un contenu mensuel sans y passer une soirée entière.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — newsletter mensuelle</span>
+    <span class="prompt-text">Rédige une newsletter mensuelle pour ma base de contacts immobiliers. Structure : un edito court sur la tendance du marché local ce mois-ci, une sélection de [nombre] biens récemment mis en vente ([liste-les brièvement]), et une section "le saviez-vous" avec un conseil pratique pour un futur acheteur ou vendeur. Ton informatif et chaleureux, pas commercial à outrance.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Garde toujours la même structure d'un mois sur l'autre — tes contacts s'habituent au format, et toi tu gagnes du temps en ne changeant que le contenu de chaque section.</p>
+  </div>
+
+  <h3>4.4 Varier les formats de contenu</h3>
+  <p>Stories, carrousels, vidéos courtes : chaque format a ses codes. L'IA aide surtout sur le texte d'accompagnement — le visuel et le montage restent un savoir-faire à part, qui ne s'improvise pas avec un simple prompt.</p>
+
+  <table>
+    <tr><th>Format</th><th>Ce que l'IA fait bien</th><th>Ce qui reste ton travail</th></tr>
+    <tr><td>Story Instagram</td><td>Texte court et accrocheur, questions interactives ("sondage")</td><td>Prendre la photo/vidéo, choisir le bon moment de publication</td></tr>
+    <tr><td>Carrousel</td><td>Structurer le texte de chaque slide de façon cohérente</td><td>Sélectionner et ordonner les photos, mise en page visuelle</td></tr>
+    <tr><td>Vidéo courte (reel/short)</td><td>Rédiger un script parlé court et dynamique</td><td>Le tournage, le montage, et le naturel devant la caméra</td></tr>
+  </table>
+
+  <h3>4.5 Étude de cas complète — un calendrier de contenu sur un mois</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — un mois de communication pour une petite agence</span>
+    <p><strong>Semaine 1</strong> — Post de présentation d'un nouveau mandat (chapitre 4.1), généré et publié en 15 minutes avec les photos du bien.</p>
+    <p><strong>Semaine 2</strong> — Réponse à deux avis Google reçus dans la semaine, un positif et un négatif (chapitre 4.2), chacun relu avant publication.</p>
+    <p><strong>Semaine 3</strong> — Story "le saviez-vous" sur une astuce pour les primo-accédants, texte généré en 5 minutes à partir d'une idée brute.</p>
+    <p><strong>Semaine 4</strong> — Newsletter mensuelle envoyée à la base de contacts (chapitre 4.3), avec une sélection de 3 biens du mois.</p>
+    <p><strong>Bilan</strong> — L'ensemble de ce calendrier de contenu, qui aurait pris plusieurs heures réparties sur le mois en rédaction pure, a été produit en environ 1h de temps de rédaction cumulé, laissant plus de place à la prise de photos et au choix des visuels.</p>
+  </div>
+
+  <h3>4.6 Cas particulier — biens de luxe et biens accessibles</h3>
+  <p>Le ton de communication d'un bien d'exception et d'un bien plus accessible ne se ressemble pas — la sobriété prime pour le premier, la proximité pour le second.</p>
+
+  <table>
+    <tr><th>Type de bien</th><th>Ton de communication</th></tr>
+    <tr><td>Bien de luxe / d'exception</td><td>Sobre, discret, peu d'emojis, vocabulaire choisi — l'exclusivité se ressent dans la retenue, pas dans la surenchère</td></tr>
+    <tr><td>Bien accessible / premier achat</td><td>Chaleureux, proche, rassurant sur le budget et les démarches — le ton doit donner confiance à un acheteur souvent moins expérimenté</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Précise toujours le positionnement du bien dans ton prompt ("bien haut de gamme, communication sobre" ou "premier achat, ton rassurant") — cela évite à l'IA de produire un texte trop enthousiaste pour un bien d'exception, ou trop froid pour un premier achat.</p>
+  </div>
+
+  <h3>4.7 Cas particulier — communication en réseau de mandataires</h3>
+  <p>Un mandataire rattaché à un réseau national doit souvent concilier sa propre identité locale avec la charte de communication du réseau. L'IA aide à trouver le bon équilibre sans dénaturer ni l'une ni l'autre.</p>
+
+  <table>
+    <tr><th>Élément</th><th>Ce qui reste au réseau</th><th>Ce qui reste personnel</th></tr>
+    <tr><td>Logo, couleurs, mentions légales</td><td>Toujours ceux du réseau, non négociables</td><td>—</td></tr>
+    <tr><td>Ton et style d'écriture des posts</td><td>Cohérent avec la charte générale</td><td>Ta touche personnelle sur les formulations</td></tr>
+    <tr><td>Choix des biens mis en avant, fréquence</td><td>—</td><td>Ta propre stratégie de visibilité locale</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si ton réseau impose une charte de communication précise, colle-la en résumé dans ton prompt ("ton toujours positif, jamais d'emoji, mention du réseau en fin de post") pour que chaque texte généré la respecte automatiquement, sans avoir à le vérifier à chaque fois.</p>
+  </div>
+
+  <h3>4.8 Mesurer l'impact de sa communication</h3>
+  <p>Publier régulièrement ne suffit pas si tu ne sais pas ce qui fonctionne réellement. Quelques indicateurs simples suffisent à ajuster ta stratégie sans y passer des heures d'analyse.</p>
+
+  <ul class="checklist">
+    <li>Je note le nombre de demandes de contact générées par chaque post ou newsletter, même approximativement.</li>
+    <li>J'identifie les 2-3 formats qui génèrent le plus de réactions (commentaires, messages privés, demandes de visite).</li>
+    <li>Je compare le ton et le contenu des posts qui ont le mieux fonctionné pour orienter mes prochains prompts.</li>
+    <li>Je ne change pas de stratégie après un seul post décevant — je regarde la tendance sur plusieurs semaines.</li>
+  </ul>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>L'IA t'aide à produire du contenu régulièrement, mais c'est ton suivi des résultats qui te permet d'affiner le ton et les formats qui parlent vraiment à ton audience locale.</p>
+  </div>
+
+  <h3>4.9 Contenu evergreen vs contenu ponctuel</h3>
+  <p>Tout ton contenu ne doit pas tourner autour de tes mandats du moment. Un contenu "evergreen" (utile en toute saison) construit ta crédibilité sur la durée, en complément de tes posts liés à un bien précis.</p>
+
+  <table>
+    <tr><th>Type de contenu</th><th>Exemple</th><th>Fréquence conseillée</th></tr>
+    <tr><td>Ponctuel (lié à un bien)</td><td>Nouveau mandat, vente conclue</td><td>À chaque événement réel</td></tr>
+    <tr><td>Evergreen (utile en tout temps)</td><td>"Le saviez-vous" sur le DPE, les frais de notaire, les étapes d'un achat</td><td>1 à 2 fois par mois, en complément</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — idée de contenu evergreen</span>
+    <span class="prompt-text">Propose 5 idées de posts "evergreen" (utiles toute l'année, pas liés à un bien précis) pour un compte professionnel d'agent immobilier, sur des thèmes variés : démarches d'achat, conseils vendeurs, vie de quartier, actualité réglementaire simple à comprendre.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Alterne toujours contenu ponctuel et evergreen dans ton calendrier mensuel — un compte qui ne parle que de ses mandats en cours donne une image uniquement commerciale, alors que le contenu evergreen installe ta crédibilité d'expert local.</p>
+  </div>
+
+  <h3>4.10 Cas particulier — lancer un compte professionnel depuis zéro</h3>
+  <p>Démarrer une présence réseaux sociaux sans aucun historique demande une approche différente : construire une audience avant de pouvoir compter sur elle pour générer des contacts.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Premier mois : contenu evergreen uniquement</strong><br/>
+      Publie 2-3 posts "le saviez-vous" (chapitre 4.9) pour installer un premier socle de contenu utile, avant même d'avoir un mandat à communiquer.
+    </li>
+    <li>
+      <strong>Deuxième mois : premiers mandats</strong><br/>
+      Ajoute progressivement des posts de nouveaux biens (chapitre 4.1), en gardant un rythme régulier plutôt qu'une publication isolée suivie de silence.
+    </li>
+    <li>
+      <strong>Troisième mois : régularité et premiers avis</strong><br/>
+      Commence à solliciter des avis Google auprès de tes premiers clients satisfaits (prompt 22 du Pack Agent) pour construire ta crédibilité en parallèle de ta présence sociale.
+    </li>
+  </ol>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>La régularité compte plus que le volume au démarrage : mieux vaut 2 posts par semaine tenus dans la durée qu'une publication quotidienne abandonnée au bout d'un mois.</p>
+  </div>
+
+  <h3>4.11 Répondre aux messages privés et commentaires rapidement</h3>
+  <p>Un commentaire ou un message privé sans réponse pendant plusieurs jours donne une mauvaise image, même s'il ne s'agit que d'une question simple. L'IA aide à préparer des réponses types pour les questions les plus fréquentes.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — réponses types aux questions fréquentes en message privé</span>
+    <span class="prompt-text">Génère 5 réponses types courtes pour les questions les plus fréquentes reçues en message privé sur les réseaux sociaux d'une agence immobilière : disponibilité d'un bien, prix, possibilité de visite, zone géographique couverte, prise de rendez-vous pour une estimation. Ton amical et réactif.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Garde ces réponses types à portée de main (note ou document), et personnalise-les en quelques secondes avec le nom de la personne et le bien concerné — la rapidité de réponse compte souvent plus que la longueur du message sur ces canaux.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Mettre en place ton système</h2>
+  <p class="lede">En sortant de cette partie, tu auras un plan concret sur trois semaines pour intégrer ces outils dans ta pratique, sans bouleverser ta façon de travailler du jour au lendemain.</p>
+
+  <h3>5.1 Planning de mise en place sur 3 semaines</h3>
+
+  <h4>Semaine 1 — Les annonces</h4>
+  <ul>
+    <li>Choisir un outil (ChatGPT ou Claude) et créer un compte gratuit ;</li>
+    <li>Générer une annonce complète pour ton prochain mandat avec le prompt du chapitre 2.2 ;</li>
+    <li>Comparer le temps passé à ta méthode habituelle, sur cette seule annonce.</li>
+  </ul>
+
+  <h4>Semaine 2 — Les prospects</h4>
+  <ul>
+    <li>Utiliser le script de réponse aux demandes de visite sur tes prochains contacts (chapitre 3.1) ;</li>
+    <li>Tester les questions de qualification avant une visite (chapitre 3.3) ;</li>
+    <li>Programmer une relance J+2 après ta prochaine visite (chapitre 3.2).</li>
+  </ul>
+
+  <h4>Semaine 3 — La communication</h4>
+  <ul>
+    <li>Générer un post réseau social pour ton prochain nouveau mandat (chapitre 4.1) ;</li>
+    <li>Répondre à un avis Google en attente avec le prompt adapté (chapitre 4.2) ;</li>
+    <li>Préparer la structure de ta prochaine newsletter mensuelle (chapitre 4.3).</li>
+  </ul>
+
+  <h3>5.2 Checklist récapitulative</h3>
+  <ul class="checklist">
+    <li>J'ai un compte sur ChatGPT ou Claude et j'ai testé au moins un prompt de chaque partie de ce guide.</li>
+    <li>Je sauvegarde mes prompts préférés dans un document facilement accessible.</li>
+    <li>Je vérifie systématiquement chaque information factuelle avant de publier une annonce générée.</li>
+    <li>Je ne délègue jamais les obligations légales d'affichage à l'IA — je les vérifie toujours moi-même.</li>
+    <li>Je relis toute réponse à un avis Google avant de la publier, surtout si l'avis est négatif.</li>
+    <li>Je garde le contact humain et ma connaissance du bien au centre de chaque échange avec un prospect.</li>
+  </ul>
+
+  <h3>5.3 Erreurs à éviter</h3>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 1. Perdre le contact humain</span>
+    <p>Un message trop lisse ou trop générique se repère vite par un prospect. Utilise l'IA pour un premier jet, mais ajoute toujours ta touche personnelle — une référence à un échange précédent, un détail qui montre que tu suis vraiment le dossier.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 2. Publier une information erronée sur un bien</span>
+    <p>L'IA peut mal interpréter une information mal formulée dans ton prompt, ou en généraliser une par erreur. Relis systématiquement chaque donnée chiffrée (surface, prix, charges, DPE) avant toute publication.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 3. Déléguer les obligations légales d'affichage à l'IA</span>
+    <p>Le diagnostic de performance énergétique (DPE), la surface loi Carrez pour un lot de copropriété, et la mention claire des honoraires d'agence et de qui les prend en charge sont des obligations réglementaires sur toute annonce immobilière en France. Ce sont des données factuelles à vérifier toi-même dans le dossier du bien — l'IA ne peut ni les connaître ni les garantir à ta place.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 4. Uniformiser excessivement tes annonces</span>
+    <p>Générer toutes tes annonces avec la même structure de prompt peut, avec le temps, donner un style reconnaissable et impersonnel. Varie les accroches et les formulations, comme tu le ferais sans IA.</p>
+  </div>
+
+  <h3>5.4 Adapter le système selon ton contexte</h3>
+  <p>Ce planning de 3 semaines est une base, pas un cadre rigide. Selon ta situation, certains ajustements rendent le système plus réaliste à tenir dans la durée.</p>
+
+  <table>
+    <tr><th>Contexte</th><th>Ajustement recommandé</th></tr>
+    <tr><td>Agent qui débute</td><td>Utilise davantage les prompts de rédaction complète (chapitre 2.2), qui compensent le temps que l'expérience donne habituellement pour trouver le bon ton rapidement</td></tr>
+    <tr><td>Agent expérimenté</td><td>Utilise surtout l'IA pour les tâches mécaniques (relances, posts réseaux sociaux) plutôt que pour la rédaction d'annonce, où ton expérience est déjà optimisée</td></tr>
+    <tr><td>Zone rurale / périurbaine</td><td>Priorise les prompts de communication (chapitre 4) pour compenser une visibilité en ligne souvent plus faible que dans les grandes villes</td></tr>
+    <tr><td>Zone urbaine dense (grande métropole)</td><td>Priorise les prompts de qualification de prospects (chapitre 3.3), le volume de demandes y étant généralement plus élevé</td></tr>
+  </table>
+
+  <h3>5.5 Mesurer le temps réellement gagné</h3>
+  <p>Pour savoir si ce système te fait vraiment gagner du temps, tiens un compte simple pendant deux semaines : note le temps passé sur une annonce, une relance ou un post avant d'utiliser l'IA, puis note le même temps une fois la méthode de ce guide en place. La plupart des agents qui adoptent ces prompts constatent un gain de 40 à 60 % du temps passé sur ces tâches précises — mais c'est ta propre mesure qui compte, pas une moyenne générale.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le temps gagné n'a de sens que s'il est réinvesti quelque part : dans plus de visites, une meilleure préparation de tes rendez-vous, ou simplement un meilleur équilibre de vie. Ce guide n'a pas d'autre objectif.</p>
+  </div>
+
+  <h3>5.6 Cas particulier — mandat exclusif vs mandat simple</h3>
+  <p>La communication autour d'un bien en mandat exclusif peut être plus soutenue (tu es seul à le proposer, autant investir sur sa visibilité), tandis qu'un mandat simple partagé avec d'autres agences appelle une communication plus mesurée.</p>
+
+  <table>
+    <tr><th>Type de mandat</th><th>Approche recommandée</th></tr>
+    <tr><td>Mandat exclusif</td><td>Investis davantage dans la communication réseaux sociaux (chapitre 4.1) — tu es seul bénéficiaire de la visibilité générée</td></tr>
+    <tr><td>Mandat simple</td><td>Priorise la réactivité sur les demandes de visite (chapitre 3.1) — la rapidité de réponse fait souvent la différence face à la concurrence sur le même bien</td></tr>
+  </table>
+
+  <h3>5.7 Mutualiser ses prompts en agence</h3>
+  <p>Si tu travailles avec des collègues, un prompt affiné par l'un profite immédiatement à toute l'équipe pour un usage similaire — annonce, réponse à avis, post réseau social.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Un simple document partagé listant "prompt / usage concerné / dernière mise à jour" suffit pour démarrer une mutualisation d'équipe, sans outil spécifique à mettre en place. Cela permet aussi d'harmoniser le ton entre agents d'une même agence.</p>
+  </div>
+
+  <h3>5.8 Passer d'une méthode 100% manuelle à l'IA, en douceur</h3>
+  <p>Il n'est pas nécessaire de tout changer d'un coup. Le passage le plus réaliste se fait bien après bien, en testant un usage à la fois plutôt qu'en bouleversant toute ta méthode de travail en une semaine.</p>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Marc, agent depuis 15 ans, réticent au départ</span>
+    <p>Marc rédigeait toutes ses annonces lui-même depuis des années et se méfiait de l'idée de "faire écrire un robot". Il a commencé par un seul usage : générer un premier jet d'annonce (chapitre 2.2), qu'il retravaillait ensuite entièrement à sa façon. Après quelques semaines, il a constaté que ses annonces gagnaient du temps sans perdre en qualité — il a alors élargi l'usage aux relances, puis aux posts réseaux sociaux. Six mois plus tard, il utilise la majorité des prompts de ce guide, mais garde toujours la relecture finale comme un réflexe non négociable.</p>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si tu es réticent au départ, commence par l'usage qui te fait perdre le plus de temps aujourd'hui — c'est là que le bénéfice sera le plus immédiatement visible, et cela construit la confiance pour élargir ensuite à d'autres usages.</p>
+  </div>
+
+  <h3>5.9 Rester à jour : des outils qui évoluent vite</h3>
+  <p>ChatGPT et Claude évoluent par mises à jour régulières — nouvelles fonctionnalités, changements de tarifs. Ce guide reflète la situation constatée en 2026 ; voici comment rester à jour sans y consacrer un temps disproportionné.</p>
+
+  <ul class="checklist">
+    <li>Je vérifie une à deux fois par an les tarifs et limites d'usage gratuites des outils que j'utilise, qui évoluent régulièrement.</li>
+    <li>Je ne change pas d'outil à chaque nouvelle sortie médiatisée — un outil que je maîtrise déjà bien reste souvent plus rentable qu'un outil "nouveau" à réapprendre.</li>
+    <li>Je garde mes prompts qui fonctionnent bien dans un document stable, indépendant de l'outil utilisé — ils resteront valables même si je change d'outil un jour.</li>
+  </ul>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Les prompts et méthodes de ce guide reposent sur des principes stables (informations factuelles précises, ton adapté à la cible, vérification systématique) qui resteront valables même quand les outils précis auront changé de nom ou de version.</p>
+  </div>
+
+  <h3>5.10 Cas particulier — activité à forte saisonnalité (littoral, montagne)</h3>
+  <p>Dans les secteurs très saisonniers, la charge de travail et le type de biens à communiquer varient fortement selon la période de l'année. Le système mis en place doit s'adapter à ce rythme plutôt que de rester identique toute l'année.</p>
+
+  <table>
+    <tr><th>Période</th><th>Priorité</th></tr>
+    <tr><td>Haute saison (forte demande de visites/locations)</td><td>Priorise les prompts de réactivité aux prospects (chapitre 3.1) — le volume de demandes y est le plus élevé</td></tr>
+    <tr><td>Basse saison</td><td>Priorise la communication de fond (chapitre 4.9, contenu evergreen) et la préparation des annonces pour la saison suivante</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Prépare tes templates d'annonces et tes posts de lancement de saison en basse saison, quand tu as plus de temps disponible — tu n'auras qu'à les activer rapidement dès que la demande reprend.</p>
+  </div>
+
+  <h3>5.11 Bilan : ce qu'un agent type peut réellement attendre en un an</h3>
+  <p>Pour conclure cette partie, un ordre de grandeur réaliste plutôt qu'une promesse générique — construit à partir des gains estimés dans les différents chapitres de ce guide.</p>
+
+  <table>
+    <tr><th>Poste de temps</th><th>Gain estimé par usage</th><th>Fréquence typique</th></tr>
+    <tr><td>Rédaction d'annonce (chapitre 2.2)</td><td>~20 minutes par annonce</td><td>À chaque nouveau mandat</td></tr>
+    <tr><td>Réponse aux demandes de visite (chapitre 3.1)</td><td>~5 minutes par demande</td><td>Plusieurs fois par semaine</td></tr>
+    <tr><td>Post réseau social (chapitre 4.1)</td><td>~15 minutes par post</td><td>1 à 2 fois par semaine</td></tr>
+  </table>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces ordres de grandeur ne remplacent pas ta propre mesure (chapitre 5.5) — ils donnent simplement un repère réaliste pour juger si le temps que tu observes chez toi est cohérent, ou si un usage particulier mérite d'être ajusté.</p>
+  </div>
+
+  <h3>5.12 Cas particulier — agent qui gère aussi la gestion locative</h3>
+  <p>En plus de la transaction, beaucoup d'agents suivent des biens en gestion locative : relations avec les locataires, suivi des loyers, réponses aux demandes courantes. Certains prompts de ce guide s'adaptent directement à cette activité.</p>
+
+  <table>
+    <tr><th>Usage transaction</th><th>Équivalent en gestion locative</th></tr>
+    <tr><td>Réponse à une demande de visite (chapitre 3.1)</td><td>Réponse à une demande de visite pour une location, avec mention des conditions (garant, dossier)</td></tr>
+    <tr><td>Relance après visite (chapitre 3.2)</td><td>Relance après une visite de location, avec un délai souvent plus court avant décision</td></tr>
+    <tr><td>Newsletter aux contacts (chapitre 4.3)</td><td>Communication régulière aux propriétaires bailleurs sur l'état de leur bien en gestion</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — point mensuel à un propriétaire bailleur</span>
+    <span class="prompt-text">Rédige un message mensuel à un propriétaire dont je gère le bien en location : [informations factuelles, ex. loyer perçu, incident signalé le cas échéant]. Ton professionnel et rassurant, structuré en 2-3 points clairs.</span>
+  </div>
+</section>
+
+<div id="bonus-section">
+<section class="chapter">
+  <h2>6. Partie 5 — Bonus : le Pack Agent</h2>
+  <p class="lede">30 prompts prêts à l'emploi classés par usage, et un guide pas à pas pour recréer un template Canva de fiche bien immobilier en 10 minutes.</p>
+
+  <h3>6.1 Trente prompts prêts à l'emploi, classés par usage</h3>
+  <p>Chaque prompt ci-dessous est directement copiable dans ChatGPT ou Claude. Remplace les champs entre crochets par tes propres informations avant de l'envoyer.</p>
+
+  <div class="subject-heading">🏠 Annonces immobilières</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Annonce complète</span>
+    <span class="prompt-text">Rédige une annonce immobilière pour [type de bien], [surface] m², [nombre] pièces, à [localisation]. Atouts : [liste]. État : [état]. DPE : [lettre]. Cible : [type d'acheteur]. Structure en accroche, descriptif, conclusion.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Accroche courte</span>
+    <span class="prompt-text">Génère 5 accroches courtes (une phrase chacune) pour une annonce de [type de bien] à [localisation], mettant en avant [atout principal]. Varie le style entre chaque proposition.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Adapter à une cible</span>
+    <span class="prompt-text">Voici une annonce : [colle l'annonce]. Adapte-la pour cibler [type d'acheteur, ex. investisseur locatif], en mettant en avant les atouts pertinents pour ce profil sans changer les informations factuelles.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Présenter un point faible</span>
+    <span class="prompt-text">Voici un point faible réel du bien : [décris-le]. Rédige une formulation honnête qui ne le cache pas mais le met en perspective avec un atout compensatoire réel : [atout].</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Annonce pour bien de luxe</span>
+    <span class="prompt-text">Rédige une annonce sobre et discrète pour [type de bien d'exception] à [localisation], [surface] m². Atouts : [liste]. Ton haut de gamme, peu d'emojis, vocabulaire choisi, sans excès.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Annonce pour premier achat</span>
+    <span class="prompt-text">Rédige une annonce chaleureuse et rassurante pour [type de bien], pensée pour un primo-accédant. Insiste sur le budget accessible et les démarches simples, sans jargon technique.</span>
+  </div>
+
+  <div class="subject-heading">📞 Relances et emails prospects</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7 — Réponse à une demande de visite</span>
+    <span class="prompt-text">Rédige une réponse à un prospect qui demande à visiter [type de bien] à [localisation]. Propose 2 créneaux : [créneau 1] et [créneau 2]. Ton chaleureux et professionnel.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8 — Relance après visite (J+2)</span>
+    <span class="prompt-text">Rédige un message de relance à envoyer 2 jours après la visite de [type de bien] par [prénom]. Ton léger, demande son ressenti, sans pression.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9 — Relance sans réponse (J+8)</span>
+    <span class="prompt-text">Le prospect n'a pas répondu à ma première relance après visite de [type de bien]. Rédige un second message court avec une actualité neutre sur le bien, sans pression.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10 — Questions de qualification</span>
+    <span class="prompt-text">Génère 5 questions naturelles à poser à un prospect avant une visite de [type de bien], pour évaluer budget, financement, délai d'achat et motivation.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 11 — Répondre à une objection</span>
+    <span class="prompt-text">Un prospect m'oppose : "[objection exacte]" après la visite de [type de bien]. Rédige une réponse posée qui reconnaît son point de vue et apporte un élément factuel pertinent.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 12 — Email de suivi après offre</span>
+    <span class="prompt-text">Rédige un email de suivi à un prospect qui a fait une offre sur [type de bien], pour l'informer de l'avancement (offre transmise au vendeur, en attente de réponse), ton rassurant et professionnel.</span>
+  </div>
+
+  <div class="subject-heading">📱 Posts réseaux sociaux</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 13 — Post nouveau mandat</span>
+    <span class="prompt-text">Rédige un post Instagram/Facebook pour annoncer la mise en vente de [type de bien], [surface] m², à [localisation]. Ton dynamique, emojis avec modération, appel à l'action clair.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 14 — Story courte</span>
+    <span class="prompt-text">Rédige un texte de story Instagram (2-3 phrases max) pour teaser un nouveau bien : [type de bien] à [localisation]. Ton accrocheur, incite à envoyer un message privé pour plus d'infos.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 15 — Carrousel visite virtuelle</span>
+    <span class="prompt-text">Rédige le texte de 5 slides d'un carrousel présentant [type de bien] : slide 1 accroche, slides 2-4 une pièce/atout chacune, slide 5 appel à l'action.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 16 — Post "le saviez-vous"</span>
+    <span class="prompt-text">Rédige un post "le saviez-vous" sur le thème [thème, ex. DPE, frais de notaire, primo-accession], vulgarisé pour un public non expert, ton informatif et accessible.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 17 — Script vidéo courte</span>
+    <span class="prompt-text">Rédige un script parlé de 30 secondes pour une vidéo courte présentant [type de bien] à [localisation]. Ton naturel et dynamique, phrases courtes adaptées à l'oral.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 18 — Post vente conclue</span>
+    <span class="prompt-text">Rédige un post de remerciement pour annoncer la vente conclue de [type de bien], sans divulguer d'informations confidentielles sur les parties, ton chaleureux et professionnel.</span>
+  </div>
+
+  <div class="subject-heading">⭐ Réponses aux avis clients</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 19 — Répondre à un avis positif</span>
+    <span class="prompt-text">Voici un avis Google positif : "[colle l'avis]". Rédige une réponse chaleureuse qui mentionne un élément précis de l'avis, sans formule générique.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 20 — Répondre à un avis négatif</span>
+    <span class="prompt-text">Voici un avis Google négatif : "[colle l'avis]". Rédige une réponse professionnelle et posée, qui reconnaît le ressenti et propose de poursuivre l'échange en privé.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 21 — Répondre à un avis mitigé</span>
+    <span class="prompt-text">Voici un avis mitigé (points positifs et négatifs) : "[colle l'avis]". Rédige une réponse qui remercie pour les points positifs et adresse le point négatif de façon factuelle et constructive.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 22 — Demander un avis à un client satisfait</span>
+    <span class="prompt-text">Rédige un message court à envoyer à un client satisfait après la conclusion d'une vente/location, pour lui demander poliment de laisser un avis Google, sans être insistant.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 23 — Réponse à un avis injuste ou faux</span>
+    <span class="prompt-text">Voici un avis que je considère factuellement inexact : "[colle l'avis]". Rédige une réponse ferme mais courtoise qui rétablit les faits sans agressivité, en proposant un échange direct pour clarifier la situation.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 24 — Bilan mensuel des avis</span>
+    <span class="prompt-text">Voici les avis reçus ce mois-ci : "[liste-les brièvement]". Résume les points forts et les points d'amélioration récurrents qui en ressortent, de façon factuelle et actionnable.</span>
+  </div>
+
+  <div class="subject-heading">📬 Newsletter et suivi client</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 25 — Newsletter mensuelle</span>
+    <span class="prompt-text">Rédige une newsletter mensuelle : edito court sur la tendance du marché local, sélection de [nombre] biens récents ([liste-les]), section "le saviez-vous" avec un conseil pratique.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 26 — Email de vœux / fidélisation</span>
+    <span class="prompt-text">Rédige un email de fin d'année à envoyer à ma base de contacts, ton chaleureux et sincère, sans caractère commercial appuyé, qui donne envie de reprendre contact en cas de futur projet.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 27 — Relance d'un contact ancien</span>
+    <span class="prompt-text">Rédige un message pour reprendre contact avec un prospect qui avait manifesté un intérêt il y a [durée], sans nouvelle depuis. Ton léger, propose une actualité pertinente (nouveau bien correspondant à son projet initial).</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 28 — Email d'estimation offerte</span>
+    <span class="prompt-text">Rédige un email à destination de propriétaires du secteur [secteur], proposant une estimation gratuite de leur bien, ton informatif et non intrusif, avec un appel à l'action simple.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 29 — Suivi après signature</span>
+    <span class="prompt-text">Rédige un message de suivi à envoyer 1 mois après la signature d'une vente/location, pour prendre des nouvelles du client dans son nouveau logement, ton sincère et sans arrière-pensée commerciale.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 30 — Segmenter sa base de contacts</span>
+    <span class="prompt-text">Voici les types de contacts dans ma base : [liste, ex. acheteurs actifs, vendeurs potentiels, anciens clients]. Propose une segmentation simple pour adapter le contenu de ma newsletter à chaque groupe.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces 30 prompts sont des points de départ, pas des formules figées. N'hésite pas à les combiner ou à les adapter à ton secteur précis (location, gestion, biens atypiques) — la structure (contexte + informations factuelles + ton souhaité) fonctionne pour n'importe quel usage.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6.2 Le template Canva de fiche bien immobilier</h2>
+  <p class="lede">Un guide pas à pas pour recréer toi-même, en 10 minutes, un template de fiche bien immobilier aux couleurs de ta pratique — pas un fichier fourni, mais une méthode que tu peux refaire à volonté.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Précision importante</span>
+    <p>Ce chapitre est un <strong>guide pour recréer le template toi-même dans Canva</strong>, pas un fichier .canva livré avec ce guide. Canva ne permet pas l'export ni le partage d'un modèle sous forme de fichier autonome utilisable hors de la plateforme — la seule façon de te transmettre ce design est de te donner les instructions précises pour le reconstruire, ce que fait ce chapitre.</p>
+  </div>
+
+  <h3>Format et couleurs</h3>
+  <table>
+    <tr><th>Élément</th><th>Réglage</th></tr>
+    <tr><td>Format</td><td>A4 portrait (21 × 29,7 cm) pour l'impression, ou 1080 × 1350 px pour les réseaux sociaux</td></tr>
+    <tr><td>Couleur principale (bandeau, titres)</td><td>Indigo #1E2A4A</td></tr>
+    <tr><td>Couleur d'accent (prix, séparateurs)</td><td>Doré #C98A2E</td></tr>
+    <tr><td>Fond des blocs secondaires</td><td>Beige clair #F4EBD9</td></tr>
+    <tr><td>Police des titres</td><td>Une police sans-serif épaisse type "Montserrat" ou "Poppins" (disponibles gratuitement dans Canva)</td></tr>
+    <tr><td>Police du texte courant</td><td>Une police sans-serif lisible type "Lato" ou "Open Sans"</td></tr>
+  </table>
+
+  <h3>Structure détaillée de la fiche</h3>
+  <ol class="steps">
+    <li>
+      <strong>Bandeau prix et localisation</strong><br/>
+      Un rectangle pleine largeur en indigo #1E2A4A en haut de page, avec le prix en gros en doré et la localisation en blanc juste en dessous.
+    </li>
+    <li>
+      <strong>Photo principale</strong><br/>
+      Une grande photo du bien juste sous le bandeau, occupant environ un tiers de la fiche — la meilleure photo disponible, en priorité un extérieur ou une pièce à vivre lumineuse.
+    </li>
+    <li>
+      <strong>Bloc caractéristiques en icônes</strong><br/>
+      Une ligne d'icônes (disponibles dans la bibliothèque Canva) pour surface, nombre de pièces, chambres et DPE, avec le chiffre à côté de chaque icône.
+    </li>
+    <li>
+      <strong>Bloc description</strong><br/>
+      Un encadré avec fond beige clair #F4EBD9, reprenant le texte de l'annonce généré au chapitre 2.2, raccourci pour l'espace disponible.
+    </li>
+    <li>
+      <strong>Bloc contact / coordonnées de l'agent</strong><br/>
+      En bas de page, une bande avec ta photo ou ton logo, ton nom, ton téléphone et une icône de contact — pensée pour être reconnaissable en un coup d'œil.
+    </li>
+  </ol>
+
+  <h3>Les étapes précises pour le construire dans Canva</h3>
+  <ol class="steps">
+    <li>
+      <strong>Ouvre Canva et cherche un modèle de base</strong><br/>
+      Dans la barre de recherche de modèles, tape "fiche immobilière" ou "real estate flyer" — Canva propose plusieurs modèles déjà structurés en blocs, ce qui t'évite de partir d'une page blanche.
+    </li>
+    <li>
+      <strong>Choisis un modèle avec une structure proche</strong><br/>
+      Privilégie un modèle qui a déjà un bandeau titre, une zone photo et un bloc de caractéristiques — tu auras moins d'éléments à créer de toutes pièces.
+    </li>
+    <li>
+      <strong>Recolore aux couleurs de la charte</strong><br/>
+      Sélectionne chaque élément coloré et remplace la couleur par les codes hexadécimaux du tableau ci-dessus (#1E2A4A pour l'indigo, #C98A2E pour le doré, #F4EBD9 pour le beige clair) via le sélecteur de couleur personnalisée de Canva.
+    </li>
+    <li>
+      <strong>Ajoute ou ajuste les blocs manquants</strong><br/>
+      Utilise les éléments "icône", "forme rectangle" et "ligne" de la bibliothèque Canva pour ajouter les blocs qui manquent par rapport à la structure détaillée ci-dessus.
+    </li>
+    <li>
+      <strong>Change les polices</strong><br/>
+      Sélectionne les titres et applique la police "Montserrat" ou "Poppins" ; sélectionne le texte courant et applique "Lato" ou "Open Sans", disponibles gratuitement dans la bibliothèque de polices Canva.
+    </li>
+    <li>
+      <strong>Enregistre-le comme modèle personnel</strong><br/>
+      Une fois satisfait du résultat, utilise la fonction "Enregistrer comme modèle" de Canva (accessible depuis le menu du fichier) pour le retrouver directement dans tes modèles personnels à chaque nouveau bien, sans repartir de zéro.
+    </li>
+  </ol>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Une fois ton modèle personnel enregistré, dupliquer une fiche pour un nouveau bien prend moins d'une minute : ouvre le modèle, remplace la photo et le texte de chaque bloc, exporte en PDF ou en image pour les réseaux sociaux. La mise en forme ne demande plus aucun travail après cette première construction.</p>
+  </div>
+</section>
+</div>
+
+<section class="chapter">
+  <h2>7. Lexique</h2>
+  <p class="lede">Les termes utilisés dans ce guide, expliqués simplement.</p>
+
+  <dl class="lexique">
+    <dt>DPE (Diagnostic de Performance Énergétique)</dt>
+    <dd>Document obligatoire évaluant la consommation énergétique d'un bien, noté de A à G. Sa mention est obligatoire sur toute annonce immobilière en France.</dd>
+
+    <dt>Loi Carrez</dt>
+    <dd>Loi qui impose de mentionner la surface exacte d'un lot de copropriété (hors caves, garages, terrasses) dans toute annonce et tout acte de vente.</dd>
+
+    <dt>Mandat exclusif</dt>
+    <dd>Contrat par lequel un vendeur confie la vente de son bien à une seule agence, qui est alors seule habilitée à le proposer.</dd>
+
+    <dt>Mandat simple</dt>
+    <dd>Contrat par lequel un vendeur peut confier la vente de son bien à plusieurs agences simultanément, ou le vendre lui-même.</dd>
+
+    <dt>Prompt</dt>
+    <dd>Le texte que tu écris à un assistant IA pour lui demander de faire quelque chose. Plus il est précis, meilleur est le résultat.</dd>
+
+    <dt>Qualification d'un prospect</dt>
+    <dd>Démarche consistant à évaluer le sérieux et l'avancement du projet d'un prospect (budget, financement, délai) avant de lui consacrer du temps.</dd>
+
+    <dt>Relance</dt>
+    <dd>Message envoyé après un premier contact ou une visite pour relancer l'échange, sans donner l'impression de faire pression sur le prospect.</dd>
+
+    <dt>Honoraires d'agence</dt>
+    <dd>Rémunération de l'agence immobilière pour son service, dont le montant et la partie qui les prend en charge (vendeur ou acquéreur) doivent être clairement indiqués dans toute annonce.</dd>
+
+    <dt>VEFA (Vente en l'État Futur d'Achèvement)</dt>
+    <dd>Vente d'un bien immobilier neuf avant ou pendant sa construction, sur la base de plans et d'un descriptif contractuel plutôt que d'une visite réelle.</dd>
+
+    <dt>Contenu evergreen</dt>
+    <dd>Contenu de communication utile en toute saison, non lié à un bien ou un événement précis (conseils pratiques, explications de démarches), par opposition à un contenu ponctuel.</dd>
+
+    <dt>Comparables (biens comparables)</dt>
+    <dd>Biens similaires récemment vendus ou en vente dans le même secteur, utilisés comme référence factuelle pour justifier un prix lors d'une négociation.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>8. Questions fréquentes</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Faut-il payer un abonnement pour utiliser ce guide ?</p>
+    <p>Non. Les offres gratuites de ChatGPT et Claude suffisent pour la plupart des usages décrits. Un abonnement payant devient utile seulement si tu dépasses régulièrement les limites d'usage gratuites.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">L'IA peut-elle rédiger une annonce complètement seule, sans mon intervention ?</p>
+    <p>Elle peut générer un premier jet complet, mais tu dois toujours vérifier chaque information factuelle (surface, DPE, honoraires) avant publication — c'est ta responsabilité, jamais celle de l'IA.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide fonctionne-t-il pour la location, pas seulement la vente ?</p>
+    <p>Oui, la grande majorité des prompts (annonces, réponses aux prospects, communication) s'adaptent directement à la location — adapte simplement le vocabulaire (loyer plutôt que prix de vente, par exemple).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Le template Canva est-il fourni en fichier téléchargeable ?</p>
+    <p>Non, et ce n'est pas possible techniquement : Canva ne permet pas l'export d'un modèle sous forme de fichier partageable. Le chapitre 6.2 te donne toutes les instructions pour le recréer toi-même en 10 minutes, et l'enregistrer ensuite comme modèle personnel réutilisable.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je utiliser ces prompts pour un bien atypique (local commercial, terrain) ?</p>
+    <p>Oui, la structure des prompts (infos brutes + cible + ton souhaité) s'adapte à n'importe quel type de bien — ajuste simplement les caractéristiques demandées selon le type de bien concerné.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide fonctionne-t-il si je travaille en réseau de mandataires ?</p>
+    <p>Oui, le chapitre 4.7 traite spécifiquement de ce cas : concilier la charte de communication du réseau avec ta touche personnelle, en précisant les contraintes du réseau directement dans tes prompts.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Comment gérer un prospect qui négocie fortement le prix ?</p>
+    <p>Le chapitre 3.9 propose un prompt pour structurer une réponse factuelle, appuyée sur des biens comparables du marché, sans céder à la pression ni fermer la porte à la discussion.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Le guide couvre-t-il les biens neufs (VEFA) ?</p>
+    <p>Oui, le chapitre 2.10 explique comment adapter la rédaction à un bien vendu sur plan, en restant strictement sur les éléments contractuels validés par le promoteur.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="disclaimer">
+    <strong>Avertissement.</strong> Ce guide a une vocation pratique et informative. Les outils, prix et fonctionnalités décrits reflètent la situation constatée en 2026 et peuvent évoluer — vérifie toujours les informations à jour auprès des éditeurs concernés. Les obligations légales d'affichage (DPE, surface loi Carrez, honoraires) restent en toutes circonstances de la responsabilité de l'agent immobilier, jamais de l'IA. Ce guide ne remplace pas ta connaissance du marché local ni ton jugement professionnel, qui doivent toujours prévaloir sur toute suggestion générée par un outil d'IA.
+  </div>
+</section>
+
+</body>
+</html>
