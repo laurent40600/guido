@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>32 prompts IA pour profs de français</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 26pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  .subject-heading {
+    background: #1E2A4A; color: #fff; padding: 8pt 14pt; border-radius: 8pt;
+    font-size: 13pt; font-weight: 800; margin: 26pt 0 6pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — PACK DE PROMPTS 2026</span>
+  <h1>32 prompts IA pour profs de français</h1>
+  <p class="tagline">Préparer, analyser et corriger plus vite</p>
+  <p class="meta">32 prompts prêts à copier-coller dans ChatGPT ou Claude, classés en 6 catégories,<br/>pour préparer tes séquences, analyser des textes, travailler l'écriture et l'oral,<br/>réviser vocabulaire et grammaire, et corriger plus vite</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Comment utiliser ce pack<span>Le principe des crochets, et comment bien les utiliser</span></li>
+    <li>Préparer ses séquences de cours<span>6 prompts</span></li>
+    <li>Analyser des textes<span>6 prompts</span></li>
+    <li>Travailler l'écriture<span>6 prompts</span></li>
+    <li>Préparer l'oral<span>5 prompts</span></li>
+    <li>Vocabulaire et grammaire<span>5 prompts</span></li>
+    <li>Corriger et communiquer<span>4 prompts</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Comment utiliser ce pack</h2>
+  <p class="lede">Chaque prompt contient des crochets [comme ceci] : remplace-les par ton œuvre, ton niveau ou ton thème avant de coller le prompt dans ChatGPT ou Claude. Plus tu précises le contexte, plus le résultat sera exploitable directement en classe.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Relis toujours le contenu généré avant de le distribuer : vérifie les citations et références d'œuvres, l'IA peut se tromper sur des détails précis.</p>
+    <p>Un prompt précis (œuvre exacte, niveau, objectif) donne un résultat directement utilisable.</p>
+    <p>Garde ce document ouvert à côté de ton IA pour piocher le bon prompt selon ton besoin du moment.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Préparer ses séquences de cours</h2>
+  <p class="lede">Pour structurer l'étude d'une œuvre ou d'un thème sans partir d'une page blanche.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Séquence de cours en 5 séances</span>
+    <span class="prompt-text">Crée une séquence de cours en 5 séances sur [œuvre/thème, ex : L'Étranger de Camus] pour des élèves de [niveau], avec pour chaque séance : l'objectif, le support étudié et une problématique à traiter.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une séquence complète sur une œuvre ou un thème avant de détailler chaque séance</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Trois problématiques pour un extrait</span>
+    <span class="prompt-text">Propose 3 problématiques différentes pour étudier cet extrait en classe, adaptées à des élèves de [niveau] : [coller l'extrait ou le décrire].</span>
+    <p class="prompt-usage">À quoi ça sert : trouver un angle d'analyse pertinent quand on manque d'inspiration sur un texte</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Progression annuelle</span>
+    <span class="prompt-text">Rédige la progression annuelle de français pour un niveau [niveau], en respectant les objets d'étude du programme et en répartissant les œuvres sur l'année.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer sa programmation annuelle en début d'année</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Notion littéraire expliquée simplement</span>
+    <span class="prompt-text">Explique la notion de [notion littéraire, ex : le romantisme] à des élèves de [niveau] avec une définition simple et un exemple tiré d'une œuvre connue.</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une explication claire prête pour introduire une notion littéraire</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Plan de révision sur 2 semaines</span>
+    <span class="prompt-text">Crée un plan de révision de 2 semaines avant l'évaluation sur [œuvre/notions], avec les points clés à retenir et un exercice type par jour.</span>
+    <p class="prompt-usage">À quoi ça sert : donner un vrai plan de révision structuré aux élèves</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Activité d'accroche originale</span>
+    <span class="prompt-text">Propose une activité d'accroche originale pour démarrer l'étude de [œuvre/thème] et capter l'attention de la classe dès la première séance.</span>
+    <p class="prompt-usage">À quoi ça sert : varier ses entrées en matière plutôt que de commencer systématiquement par la biographie de l'auteur</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Analyser des textes</h2>
+  <p class="lede">Pour préparer questionnaires, explications linéaires et mises en réseau de textes.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Grille d'analyse de texte</span>
+    <span class="prompt-text">Crée une grille d'analyse de texte avec des questions de compréhension progressives pour cet extrait : [coller le texte], adaptée à des élèves de [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : générer un questionnaire de lecture analytique complet en quelques minutes</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Procédés littéraires et leurs effets</span>
+    <span class="prompt-text">Identifie 5 procédés littéraires marquants dans cet extrait et explique leur effet sur le lecteur, dans un langage accessible à des élèves de [niveau] : [coller le texte].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer rapidement les points d'analyse stylistique à mettre en avant</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Explication linéaire modèle</span>
+    <span class="prompt-text">Rédige une explication linéaire modèle de cet extrait, découpée en 3 mouvements, adaptée au format attendu pour des élèves de [niveau] : [coller le texte].</span>
+    <p class="prompt-usage">À quoi ça sert : avoir un exemple de méthode à présenter aux élèves avant qu'ils s'exercent seuls</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Comparaison de deux extraits</span>
+    <span class="prompt-text">Propose une comparaison entre ces deux extraits sur [thème commun], en mettant en avant leurs points communs et leurs différences de traitement : [coller les deux extraits].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une séance de mise en réseau de textes</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Structure narrative d'une œuvre</span>
+    <span class="prompt-text">Analyse la structure narrative de cette œuvre et identifie les moments clés de l'intrigue, avec une brève explication de leur rôle : [titre de l'œuvre].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une vue d'ensemble de l'œuvre avant de rentrer dans le détail de chaque extrait</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Questions d'interprétation</span>
+    <span class="prompt-text">Rédige 5 questions ouvertes qui poussent à l'interprétation (pas juste à la compréhension littérale) sur ce texte, adaptées à des élèves de [niveau] : [coller le texte].</span>
+    <p class="prompt-usage">À quoi ça sert : aller au-delà des questions de simple compréhension en classe</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Travailler l'écriture</h2>
+  <p class="lede">Pour les sujets de rédaction, exemples modèles et méthodologie.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Sujets de rédaction avec critères</span>
+    <span class="prompt-text">Propose 3 sujets de rédaction sur le thème de [thème], adaptés à des élèves de [niveau], avec pour chacun les critères d'évaluation attendus.</span>
+    <p class="prompt-usage">À quoi ça sert : générer des sujets de rédaction variés avec leur grille de correction</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Exemple de production réussie</span>
+    <span class="prompt-text">Rédige un exemple de production réussie (environ [nombre] mots) sur ce sujet de rédaction : [sujet], pour servir de modèle aux élèves de [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : avoir un exemple concret à montrer aux élèves plutôt qu'une consigne abstraite</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Fiche méthode en 5 étapes</span>
+    <span class="prompt-text">Crée une fiche méthode simple en 5 étapes pour rédiger [type d'écrit, ex : un commentaire de texte, une dissertation], avec un exemple de plan.</span>
+    <p class="prompt-usage">À quoi ça sert : donner un support méthodologique clair et réutilisable</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Exercice d'écriture d'invention</span>
+    <span class="prompt-text">Propose un exercice d'écriture d'invention à partir de cet extrait, avec une consigne précise et les critères de réussite attendus : [coller l'extrait].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer un exercice créatif qui reste évaluable objectivement</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Grille d'auto-évaluation</span>
+    <span class="prompt-text">Rédige une grille d'auto-évaluation simple que les élèves peuvent utiliser pour relire leur propre rédaction avant de la rendre, sur [type d'écrit].</span>
+    <p class="prompt-usage">À quoi ça sert : responsabiliser les élèves sur la relecture avant la remise du devoir</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Amorces pour débloquer la page blanche</span>
+    <span class="prompt-text">Propose 3 amorces de rédaction différentes pour aider un élève qui a la page blanche sur ce sujet : [sujet de rédaction].</span>
+    <p class="prompt-usage">À quoi ça sert : débloquer les élèves en difficulté face à une consigne d'écriture</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Préparer l'oral</h2>
+  <p class="lede">Pour les grilles d'évaluation, questions de relance et accompagnement des élèves stressés.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Grille d'évaluation de l'oral</span>
+    <span class="prompt-text">Rédige une grille d'évaluation de l'oral pour une présentation sur [œuvre/sujet], avec les critères attendus (contenu, expression, gestion du temps) et leur pondération.</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier les attendus de l'oral avant l'épreuve</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Questions de relance après un exposé</span>
+    <span class="prompt-text">Propose 5 questions de relance possibles à poser après un exposé oral sur [œuvre/thème], pour approfondir la réflexion de l'élève.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer ses questions d'entretien à l'avance</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Support pour élève stressé</span>
+    <span class="prompt-text">Crée un support de préparation pour un élève stressé par l'oral, avec des conseils concrets sur la structure de sa présentation et la gestion du trac.</span>
+    <p class="prompt-usage">À quoi ça sert : accompagner un élève en difficulté face à l'épreuve orale</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Exemple de plan d'exposé</span>
+    <span class="prompt-text">Rédige un exemple de plan d'exposé oral de 5 minutes sur [œuvre/thème], adapté à des élèves de [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : donner un exemple concret de structuration d'un oral</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Débat argumenté en classe</span>
+    <span class="prompt-text">Propose une activité de débat argumenté en classe sur [thème lié à une œuvre étudiée], avec la répartition des rôles et les consignes de mise en œuvre.</span>
+    <p class="prompt-usage">À quoi ça sert : varier les formats d'expression orale en classe</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Vocabulaire et grammaire</h2>
+  <p class="lede">Pour des fiches et exercices ciblés, rapides à générer.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Fiche de vocabulaire de 15 mots</span>
+    <span class="prompt-text">Rédige une fiche de vocabulaire de 15 mots sur le thème de [thème/œuvre], avec définition simple et une phrase d'exemple pour chaque mot.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer rapidement une fiche de lexique liée à une œuvre ou un thème</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Exercice de conjugaison</span>
+    <span class="prompt-text">Crée un exercice de conjugaison sur [temps/mode] avec 10 phrases à compléter, adapté à des élèves de [niveau], et donne la correction.</span>
+    <p class="prompt-usage">À quoi ça sert : générer un exercice de grammaire ciblé en quelques secondes</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Règle de grammaire expliquée</span>
+    <span class="prompt-text">Explique la règle de [point de grammaire, ex : l'accord du participe passé] de façon simple, avec 3 exemples et un piège fréquent à éviter.</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une explication claire et un exemple de piège classique à anticiper</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Questions de dictée préparée</span>
+    <span class="prompt-text">Génère 5 questions de dictée préparée (mots ou règles à retenir) à partir de ce texte : [coller le texte].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une dictée avec ses points de vigilance identifiés à l'avance</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Exercice de réécriture</span>
+    <span class="prompt-text">Rédige un exercice de réécriture où les élèves doivent transformer des phrases selon une consigne précise (ex : changer le temps, la voix, la personne), sur le thème de [thème], avec correction.</span>
+    <p class="prompt-usage">À quoi ça sert : travailler la manipulation grammaticale de façon active</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Corriger et communiquer</h2>
+  <p class="lede">Pour accélérer la correction et personnaliser les retours aux élèves et familles.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Corrigé type avec barème</span>
+    <span class="prompt-text">Rédige un corrigé type de cette dissertation/commentaire avec les points clés attendus et une proposition de barème : [sujet].</span>
+    <p class="prompt-usage">À quoi ça sert : harmoniser sa notation et gagner du temps à la correction</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Reformulation des erreurs récurrentes</span>
+    <span class="prompt-text">Identifie les erreurs récurrentes dans cette copie et propose une reformulation des passages à améliorer, en gardant les idées de l'élève : [coller la copie].</span>
+    <p class="prompt-usage">À quoi ça sert : accélérer la correction tout en gardant un retour personnalisé</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Appréciation de bulletin</span>
+    <span class="prompt-text">Rédige une appréciation de bulletin pour un élève avec le profil suivant : [décrire le profil], en restant constructif et personnalisé.</span>
+    <p class="prompt-usage">À quoi ça sert : gagner du temps sur la rédaction des bulletins</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Conseils individualisés</span>
+    <span class="prompt-text">Propose 3 conseils concrets et actionnables à donner à un élève qui a des difficultés récurrentes en [expression écrite/analyse littéraire/orthographe].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un retour individualisé motivant plutôt qu'une liste de fautes</p>
+  </div>
+</section>
+
+</body>
+</html>

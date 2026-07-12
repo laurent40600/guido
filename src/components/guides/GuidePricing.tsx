@@ -99,7 +99,13 @@ export default function GuidePricing({
         Pour qui : <span className="font-semibold text-navy-900">{guide.audience}</span>
       </p>
 
-      <div className="mt-4 grid gap-5 sm:grid-cols-2">
+      <div
+        className={
+          guide.offers.length === 1
+            ? "mt-4 max-w-md"
+            : "mt-4 grid gap-5 sm:grid-cols-2"
+        }
+      >
         {guide.offers.map((offer) => {
           const { displayPrice, strikePrice, promoActive } = resolveOfferPrice(offer);
 

@@ -8,6 +8,7 @@ import { db } from "@/lib/db";
 
 const navLinks = [
   { label: "Guides", href: "/guides" },
+  { label: "Prompts", href: "/prompts" },
   { label: "À propos", href: "/a-propos" },
 ];
 

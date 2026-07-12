@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Conditions Générales d'Utilisation et de Vente — Guido",
+  title: "Conditions Générales d'Utilisation — Guido",
   description:
-    "Conditions générales d'utilisation et de vente du site Guido : propriété intellectuelle, achat des guides, droit de rétractation.",
+    "Conditions générales d'utilisation du site Guido : propriété intellectuelle, compte utilisateur, usage autorisé.",
 };
 
 export default function CguPage() {
@@ -19,7 +20,7 @@ export default function CguPage() {
               Mentions légales
             </span>
             <h1 className="mt-6 text-4xl font-black text-navy-900 md:text-5xl">
-              Conditions Générales d&apos;Utilisation et de Vente
+              Conditions Générales d&apos;Utilisation
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-base text-stone-600">
               Dernière mise à jour : 12 juillet 2026
@@ -28,58 +29,43 @@ export default function CguPage() {
 
           <div className="mt-14 rounded-2xl border border-gold-600/30 bg-gold-50 p-6 text-base leading-relaxed text-navy-900">
             <strong>Modèle à personnaliser :</strong> les champs entre
-            crochets (identité de l&apos;éditeur, SIRET, adresse, hébergeur…)
-            doivent être complétés avec vos informations réelles avant
-            publication. Il est recommandé de faire valider ce document par
-            un professionnel du droit avant sa mise en ligne définitive.
+            crochets doivent être complétés avec les informations réelles
+            de l&apos;éditeur avant publication. Il est recommandé de faire
+            valider ce document par un professionnel du droit.
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-stone-200 bg-white p-6">
+            <p className="font-semibold text-navy-900">Les autres documents légaux du Site :</p>
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+              <li><Link href="/mentions-legales" className="font-semibold text-gold-700 hover:text-gold-800">→ Mentions légales</Link></li>
+              <li><Link href="/cgv" className="font-semibold text-gold-700 hover:text-gold-800">→ Conditions Générales de Vente</Link></li>
+              <li><Link href="/politique-de-confidentialite" className="font-semibold text-gold-700 hover:text-gold-800">→ Politique de confidentialité</Link></li>
+              <li><Link href="/politique-de-remboursement" className="font-semibold text-gold-700 hover:text-gold-800">→ Politique de remboursement</Link></li>
+            </ul>
           </div>
 
           <div className="mt-12 space-y-12 text-base leading-relaxed text-stone-700">
             <div>
               <h2 className="text-2xl font-bold text-navy-900">
-                1. Éditeur du site
+                1. Objet
               </h2>
               <p className="mt-4">
-                Le site Guido (ci-après « le Site ») est édité par
-                [Nom / raison sociale de l&apos;éditeur], [statut juridique,
-                ex. entreprise individuelle], immatriculé sous le numéro SIRET
-                [numéro SIRET], dont le siège est situé [adresse complète].
-              </p>
-              <p className="mt-4">
-                Responsable de la publication : [Nom du responsable].
-                Contact :{" "}
-                <a
-                  href="mailto:contact@guido.fr"
-                  className="font-semibold text-gold-700 hover:text-gold-800"
-                >
-                  contact@guido.fr
-                </a>
-                .
-              </p>
-              <p className="mt-4">
-                Hébergeur du Site : [Nom de l&apos;hébergeur], [adresse de
-                l&apos;hébergeur], [contact de l&apos;hébergeur].
+                Les présentes Conditions Générales d&apos;Utilisation («
+                CGU ») régissent l&apos;accès et l&apos;utilisation du site
+                Guido (« le Site ») et de son contenu. L&apos;achat des
+                guides numériques (« les Guides ») est en outre régi par
+                les{" "}
+                <Link href="/cgv" className="font-semibold text-gold-700 hover:text-gold-800">
+                  Conditions Générales de Vente
+                </Link>
+                . Toute utilisation du Site implique l&apos;acceptation
+                pleine et entière des présentes CGU.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl font-bold text-navy-900">
-                2. Objet et champ d&apos;application
-              </h2>
-              <p className="mt-4">
-                Les présentes Conditions Générales d&apos;Utilisation et de
-                Vente (« CGU/CGV ») régissent l&apos;accès au Site, sa
-                consultation, ainsi que l&apos;achat et l&apos;utilisation des
-                guides numériques (« les Guides ») vendus sur le Site. Toute
-                utilisation du Site ou tout achat d&apos;un Guide implique
-                l&apos;acceptation pleine et entière des présentes CGU/CGV,
-                sans réserve.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-navy-900">
-                3. Propriété intellectuelle
+                2. Propriété intellectuelle
               </h2>
               <p className="mt-4">
                 L&apos;ensemble des contenus présents sur le Site et dans les
@@ -117,47 +103,39 @@ export default function CguPage() {
 
             <div>
               <h2 className="text-2xl font-bold text-navy-900">
-                4. Produits, commandes et paiement
+                3. Compte utilisateur
               </h2>
               <p className="mt-4">
-                Les Guides sont des contenus numériques au format PDF,
-                téléchargeables après validation du paiement. Les prix sont
-                indiqués en euros, toutes taxes comprises. L&apos;éditeur se
-                réserve le droit de modifier ses prix à tout moment, les
-                Guides étant facturés sur la base des tarifs en vigueur au
-                moment de la validation de la commande.
-              </p>
-              <p className="mt-4">
-                Le paiement est exigible immédiatement à la commande. La
-                commande n&apos;est considérée comme définitive qu&apos;après
-                confirmation du paiement par le prestataire de paiement
-                utilisé par le Site.
+                La création d&apos;un compte est nécessaire pour acheter et
+                accéder aux Guides. Vous vous engagez à fournir des
+                informations exactes lors de votre inscription et à les
+                maintenir à jour depuis votre espace{" "}
+                <Link href="/compte/parametres" className="font-semibold text-gold-700 hover:text-gold-800">
+                  Paramètres du compte
+                </Link>
+                . Vous êtes seul responsable de la confidentialité de votre
+                mot de passe et de toute activité effectuée depuis votre
+                compte. Un compte est strictement personnel et ne peut être
+                partagé.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl font-bold text-navy-900">
-                5. Droit de rétractation
+                4. Usage autorisé du site
               </h2>
               <p className="mt-4">
-                Conformément à l&apos;article L.221-28 du Code de la
-                consommation, le droit de rétractation ne peut pas être
-                exercé pour les contenus numériques non fournis sur un
-                support matériel dont l&apos;exécution a commencé après
-                accord préalable exprès du consommateur et renoncement
-                exprès à son droit de rétractation.
-              </p>
-              <p className="mt-4">
-                En conséquence, en validant sa commande, l&apos;acheteur
-                reconnaît expressément demander l&apos;accès immédiat au
-                Guide dès confirmation du paiement et renonce à son droit de
-                rétractation de 14 jours applicable aux achats à distance.
+                Vous vous engagez à ne pas utiliser le Site d&apos;une
+                manière susceptible d&apos;en perturber le fonctionnement,
+                à ne pas tenter de contourner les mesures de protection des
+                contenus, et à ne pas utiliser le Site à des fins illicites
+                ou frauduleuses.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl font-bold text-navy-900">
-                6. Responsabilité
+                5. Responsabilité
               </h2>
               <p className="mt-4">
                 Les Guides ont une vocation informative et pratique. Ils ne
@@ -179,44 +157,21 @@ export default function CguPage() {
 
             <div>
               <h2 className="text-2xl font-bold text-navy-900">
-                7. Données personnelles
-              </h2>
-              <p className="mt-4">
-                Les données collectées lors d&apos;une commande (identité,
-                e-mail, informations de paiement) sont traitées uniquement
-                aux fins de gestion de la commande et de la relation client,
-                conformément au Règlement Général sur la Protection des
-                Données (RGPD). Elles ne sont ni cédées ni revendues à des
-                tiers. Vous disposez d&apos;un droit d&apos;accès, de
-                rectification et de suppression de vos données en écrivant à{" "}
-                <a
-                  href="mailto:contact@guido.fr"
-                  className="font-semibold text-gold-700 hover:text-gold-800"
-                >
-                  contact@guido.fr
-                </a>
-                .
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-navy-900">
-                8. Modification des présentes conditions
+                6. Modification des présentes conditions
               </h2>
               <p className="mt-4">
                 L&apos;éditeur se réserve le droit de modifier les présentes
-                CGU/CGV à tout moment. La version applicable est celle en
-                vigueur sur le Site à la date de la commande ou de la
-                consultation.
+                CGU à tout moment. La version applicable est celle en
+                vigueur sur le Site à la date de consultation.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl font-bold text-navy-900">
-                9. Droit applicable et litiges
+                7. Droit applicable et litiges
               </h2>
               <p className="mt-4">
-                Les présentes CGU/CGV sont soumises au droit français. En cas
+                Les présentes CGU sont soumises au droit français. En cas
                 de litige, une solution amiable sera recherchée en priorité
                 avant toute action judiciaire. À défaut d&apos;accord, les
                 tribunaux français compétents seront seuls saisis du litige.

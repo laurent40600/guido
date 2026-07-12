@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Sommeil et écrans</title>
+<style>
+  @page { size: A4; margin: 29mm 24mm 27mm 24mm; }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 26pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-case { background: #f6f8f4; border-left: 5px solid #4d7c4a; }
+  .box-case .box-title { color: #3f6b3d; }
+  .box-medical {
+    background: #eef3f6; border: 1.5px solid #4a7a9e; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-medical .box-title { color: #2c5876; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; }
+  .box-template {
+    background: #fff; border: 1.5px dashed #1E2A4A; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-template .box-title { color: #1E2A4A; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+
+  .source { font-size: 10pt; color: #1a1a1a; font-style: italic; }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1E2A4A; font-size: 12.5pt; margin-bottom: 4pt; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+
+  ol.steps { padding-left: 0; list-style: none; counter-reset: step; }
+  ol.steps li { counter-increment: step; position: relative; padding-left: 40pt; margin-bottom: 16pt; }
+  ol.steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0;
+    width: 28pt; height: 28pt; border-radius: 50%;
+    background: #1E2A4A; color: #C98A2E; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps li strong { color: #1E2A4A; }
+
+  .subject-heading {
+    background: #1E2A4A; color: #fff; padding: 8pt 14pt; border-radius: 8pt;
+    font-size: 13pt; font-weight: 800; margin: 26pt 0 12pt;
+  }
+
+  .disclaimer {
+    margin-top: 24pt; padding: 16pt; background: #f8f6f2;
+    border-radius: 10pt; font-size: 11pt; color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Sommeil et écrans : le guide pour les travailleurs à domicile qui n'arrivent plus à décrocher</h1>
+  <p class="tagline">Retrouver un vrai sommeil, sans culpabiliser et sans t'imposer l'impossible</p>
+  <p class="meta">Comprendre l'effet des écrans le soir, reprendre le contrôle de tes soirées,<br/>construire un rituel de sommeil réaliste et tenir dans la durée — avec le Pack<br/>Sommeil bonus : 30 prompts par usage + template Canva de suivi hebdomadaire</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction — pourquoi le télétravail abîme ton sommeil</li>
+    <li>Partie 1 — Comprendre ce qui se passe vraiment<span>Lumière bleue, stimulation cognitive, procrastination du coucher</span></li>
+    <li>Partie 2 — Reprendre le contrôle des écrans le soir<span>Couper avec le travail, rituel de fermeture, environnement numérique</span></li>
+    <li>Partie 3 — Construire un vrai rituel du soir<span>Routine réaliste, gérer le stress professionnel, optimiser sa chambre</span></li>
+    <li>Partie 4 — Tenir dans la durée<span>Plan sur 21 jours, checklist, erreurs à éviter</span></li>
+    <li id="toc-bonus-item">Partie 5 — Bonus : le Pack Sommeil<span>30 prompts par usage + le template Canva de tracker de sommeil</span></li>
+    <li>Lexique</li>
+    <li>Questions fréquentes</li>
+    <li>Avertissement</li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction — pourquoi le télétravail abîme ton sommeil</h2>
+  <p class="lede">En sortant de cette introduction, tu sauras précisément ce que ce guide va changer dans tes soirées, et ce qu'il ne remplace jamais.</p>
+
+  <h3>Pourquoi le travail à domicile abîme particulièrement le sommeil</h3>
+  <p>Quand le bureau et la maison sont le même endroit, ton cerveau perd un repère essentiel : la transition. Le trajet retour, même contraignant, jouait un rôle réel de décompression entre le mode "travail" et le mode "repos".</p>
+
+  <p>Sans lui, la journée de travail se prolonge souvent bien après l'heure officielle : un dernier email, une notification Slack, un dossier "juste pour vérifier". Résultat : le corps reste en état d'alerte bien après que le cerveau a décidé d'arrêter de travailler.</p>
+
+  <p>À cela s'ajoutent des écrans omniprésents — l'ordinateur de travail, puis le téléphone, puis la télévision ou une série pour "décompresser" — qui repoussent mécaniquement l'heure du coucher et perturbent le signal naturel d'endormissement.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce n'est pas un manque de volonté. C'est une conséquence directe de l'absence de frontière physique entre travail et repos, combinée à une exposition aux écrans qui n'a jamais été aussi longue en soirée. Ce guide t'aide à recréer ces frontières, concrètement.</p>
+  </div>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>Ce guide couvre quatre étapes, dans l'ordre où elles s'enchaînent naturellement :</p>
+  <ul>
+    <li><strong>Comprendre</strong> — pourquoi les écrans le soir perturbent autant l'endormissement, sans jargon médical ;</li>
+    <li><strong>Reprendre le contrôle</strong> — couper réellement avec le travail et aménager ton environnement numérique le soir ;</li>
+    <li><strong>Construire un rituel</strong> — une routine de sommeil réaliste, adaptée à ta vraie vie, pas à un idéal inatteignable ;</li>
+    <li><strong>Tenir dans la durée</strong> — un plan progressif sur 21 jours, sans te mettre une pression inutile.</li>
+  </ul>
+
+  <p>Le Pack Sommeil en bonus (partie 5) te donne 30 prompts prêts à l'emploi pour personnaliser ton plan avec l'IA, et un guide pas à pas pour recréer un tracker de sommeil hebdomadaire dans Canva.</p>
+
+  <div class="box-medical">
+    <span class="box-title">🩺 Ce que ce guide n'est pas</span>
+    <p>Ce guide porte sur l'hygiène de sommeil, les habitudes et l'environnement — pas sur le diagnostic ou le traitement de troubles du sommeil. Il ne remplace en aucun cas un avis médical.</p>
+    <p>Si tu souffres d'insomnie persistante, d'une fatigue anormale malgré un temps de sommeil suffisant, ou si tu penses avoir un trouble du sommeil (apnée, ronflements importants avec pauses respiratoires, réveils fréquents inexpliqués), consulte un professionnel de santé. Ce guide t'aide à améliorer ton hygiène de sommeil ; il ne peut ni diagnostiquer ni traiter un trouble médical.</p>
+  </div>
+
+  <h3>Prérequis</h3>
+  <p>Aucune compétence particulière n'est nécessaire pour suivre ce guide. Pour le Pack Sommeil bonus, tu auras besoin d'un compte gratuit sur ChatGPT ou Claude — deux outils grand public que tu utilises peut-être déjà — pour personnaliser ton plan avec les prompts fournis.</p>
+
+  <h3>Pour qui est ce guide, concrètement</h3>
+  <table>
+    <tr><th>Situation</th><th>Ce qui te parlera particulièrement</th></tr>
+    <tr><td>Télétravail à temps plein</td><td>Les chapitres sur la coupure travail/repos et le rituel de fermeture (partie 2) — ta principale difficulté est probablement l'absence de frontière</td></tr>
+    <tr><td>Travail à domicile indépendant (freelance, activité propre)</td><td>Le chapitre sur les horaires atypiques et la pression professionnelle qui remonte le soir (parties 1 et 3)</td></tr>
+    <tr><td>Télétravail partiel (quelques jours par semaine)</td><td>Le plan sur 21 jours (partie 4), à adapter aux jours où tu es effectivement à la maison</td></tr>
+  </table>
+
+  <h3>Combien de temps consacrer à ce guide</h3>
+  <p>Tu n'as pas besoin de tout lire d'un coup ni de tout mettre en place en même temps. Voici comment répartir ta lecture et ta mise en pratique selon le temps dont tu disposes.</p>
+
+  <table>
+    <tr><th>Temps disponible</th><th>Ce que tu peux faire</th></tr>
+    <tr><td>10 minutes</td><td>Lire l'introduction et faire l'auto-évaluation du chapitre 2.10 pour situer ton point de départ</td></tr>
+    <tr><td>Une heure</td><td>Lire les parties 1 et 2 en entier, et mettre en place un premier rituel de fermeture (chapitre 3.2)</td></tr>
+    <tr><td>Une semaine</td><td>Lire l'ensemble du guide et démarrer la semaine 1 du plan progressif (chapitre 5.1)</td></tr>
+    <tr><td>Trois semaines</td><td>Suivre le plan complet du chapitre 5.1, du début à la consolidation</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si tu ne devais retenir qu'une seule action de tout ce guide pour commencer dès ce soir, ce serait le rituel de fermeture du chapitre 3.2 — c'est le levier le plus simple à mettre en place et souvent le plus rapide à ressentir.</p>
+  </div>
+
+  <h3>Ce que disent les travailleurs à domicile qui ont mis en place ce type de démarche</h3>
+  <p>Les études de cas de ce guide (une par partie) sont des situations illustratives, construites à partir de difficultés fréquemment rencontrées par les travailleurs à domicile. Elles ne remplacent pas ton propre parcours — chaque situation est différente — mais elles donnent un aperçu concret de la façon dont ces principes se traduisent en pratique, semaine après semaine.</p>
+
+  <h3>Ce que ce guide ne couvre pas</h3>
+  <p>Pour être honnête sur son périmètre, ce guide ne traite pas :</p>
+  <ul>
+    <li>Le décalage horaire lié aux voyages (jet lag), qui répond à des mécanismes différents de ceux abordés ici ;</li>
+    <li>Le travail posté ou de nuit à proprement parler (équipes 3x8), qui demande des repères spécifiques non couverts par ce guide ;</li>
+    <li>Le diagnostic ou le traitement de troubles du sommeil (apnée, insomnie chronique, narcolepsie...), qui relèvent exclusivement d'un professionnel de santé (voir chapitre 5.7).</li>
+  </ul>
+  <p>Si l'une de ces situations te concerne au premier plan, ce guide peut rester utile pour la partie "hygiène de sommeil générale", mais il ne remplacera pas un accompagnement spécifique à ta situation.</p>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Comprendre ce qui se passe vraiment</h2>
+  <p class="lede">En sortant de cette partie, tu sauras pourquoi les écrans le soir perturbent ton endormissement, pourquoi tu peux être épuisé sans réussir à dormir, et comment le cercle vicieux de la procrastination du coucher s'installe.</p>
+
+  <h3>2.1 L'effet de la lumière bleue et de la stimulation cognitive tardive</h3>
+  <p>Deux mécanismes bien distincts entrent en jeu le soir, et il est utile de les différencier.</p>
+
+  <p><strong>La lumière bleue</strong> émise par les écrans retarde la sécrétion de mélatonine, l'hormone qui signale à ton corps qu'il est temps de dormir. Plus l'exposition est proche du coucher, plus ce décalage est important.</p>
+
+  <p><strong>La stimulation cognitive</strong> est un mécanisme différent, souvent sous-estimé : répondre à un email professionnel, suivre une conversation animée, ou même regarder un contenu prenant maintient ton cerveau en état d'éveil actif, indépendamment de la lumière émise. Un écran en mode "nuit" réduit la lumière bleue, mais ne réduit en rien la stimulation cognitive d'un contenu de travail.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Baisser la luminosité de ton écran le soir est utile, mais insuffisant si le contenu que tu consultes reste cognitivement stimulant (emails de travail, actualités anxiogènes, réseaux sociaux). Les deux leviers doivent être travaillés ensemble.</p>
+  </div>
+
+  <h3>2.2 Pourquoi on peut être épuisé mais incapable de s'endormir</h3>
+  <p>C'est l'une des expériences les plus frustrantes du télétravail : se sentir vidé toute la journée, et pourtant se retrouver complètement éveillé une fois couché.</p>
+
+  <p>Ce phénomène s'explique souvent par un décalage entre fatigue physique et activation mentale. Le corps est fatigué, mais l'esprit reste en mode "résolution de problèmes" — encore en train de tourner autour d'un sujet professionnel non résolu, une charge mentale qui ne "s'éteint" pas simplement parce que l'ordinateur est fermé.</p>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Camille, consultante en télétravail</span>
+    <p>Camille ferme son ordinateur vers 19h, épuisée par sa journée. Mais une fois couchée, son esprit repasse en boucle une réunion tendue de l'après-midi. Elle reste éveillée plus d'une heure, alors qu'elle se sentait pourtant "à bout" quelques heures plus tôt. Ce n'est pas un manque de fatigue — c'est un esprit qui n'a pas eu de sas de décompression avant le coucher (voir chapitre 3.2).</p>
+  </div>
+
+  <h3>2.3 Le cercle vicieux entre procrastination du coucher et écrans</h3>
+  <p>La "procrastination du coucher" (repousser volontairement l'heure de dormir malgré la fatigue) est particulièrement fréquente chez les personnes dont la journée de travail manque de coupures nettes.</p>
+
+  <p>Le mécanisme est simple à comprendre : si la journée n'a offert aucun vrai temps "pour soi", le soir devient le seul moment disponible pour se le réapproprier — quitte à sacrifier le sommeil. Résultat : on repousse le coucher en enchaînant les écrans, précisément parce qu'on manque de moments de détente dans la journée.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Le vrai levier n'est pas de "se forcer" à éteindre les écrans plus tôt — c'est de réintroduire de vrais moments de détente dans la journée, pour que le soir n'ait plus à jouer ce rôle de seule soupape de décompression.</p>
+  </div>
+
+  <h3>2.4 Ce que dit l'hygiène du sommeil, sans jargon médical</h3>
+  <p>L'hygiène du sommeil regroupe l'ensemble des habitudes qui favorisent un bon endormissement et un sommeil de qualité. Trois principes reviennent constamment dans les recommandations de bon sens sur le sujet :</p>
+
+  <table>
+    <tr><th>Principe</th><th>En pratique</th></tr>
+    <tr><td>Régularité des horaires</td><td>Se coucher et se lever à des heures proches d'un jour à l'autre, y compris le week-end si possible</td></tr>
+    <tr><td>Réduction de la stimulation avant le coucher</td><td>Écrans, contenus de travail, discussions animées à distancer de l'heure du coucher</td></tr>
+    <tr><td>Environnement propice</td><td>Chambre sombre, fraîche, et autant que possible dédiée au repos (voir chapitre 3.3)</td></tr>
+  </table>
+
+  <p class="source">Ces principes relèvent de l'hygiène de sommeil généralement admise et ne constituent pas un avis médical personnalisé.</p>
+
+  <h3>2.5 Cas particulier — horaires atypiques et fuseaux horaires</h3>
+  <p>Travailler à domicile avec des horaires décalés (clients à l'international, visioconférences tardives) ajoute une difficulté supplémentaire : il n'y a parfois aucun moment de la soirée qui soit vraiment "libre" d'obligations professionnelles.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si tes horaires sont structurellement irréguliers, la régularité à viser n'est pas l'heure de coucher elle-même, mais la <strong>routine qui la précède</strong> (chapitre 3.1) — elle peut rester identique même si l'heure varie d'un jour à l'autre.</p>
+  </div>
+
+  <h3>2.6 Étude de cas complète — comprendre son propre schéma</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Thomas, développeur en télétravail complet</span>
+    <p><strong>Le constat</strong> — Thomas se couche épuisé mais met souvent 45 minutes à s'endormir. En y regardant de plus près, il identifie trois facteurs qui se cumulent : il répond encore à des messages Slack jusqu'à 21h, il regarde des vidéos techniques "pour se détendre" (donc cognitivement stimulantes), et il n'a aucun rituel de transition entre l'écran et le lit.</p>
+    <p><strong>Ce qu'il change</strong> — Il ne change rien du jour au lendemain, mais commence à noter ces trois facteurs chaque soir pendant une semaine (voir le tracker du chapitre 5.2), pour objectiver plutôt que deviner ce qui, chez lui précisément, retarde l'endormissement.</p>
+    <p><strong>Ce que ça montre</strong> — Comprendre SON propre schéma, plutôt qu'appliquer une routine générique, est la première étape la plus utile avant de changer quoi que ce soit.</p>
+  </div>
+
+  <h3>2.7 Mythes courants sur le sommeil et les écrans</h3>
+  <p>Beaucoup d'idées reçues circulent sur ce sujet. Voici les plus fréquentes, remises en perspective simplement.</p>
+
+  <table>
+    <tr><th>Mythe</th><th>Ce qu'on peut dire plus justement</th></tr>
+    <tr><td>"Le mode nuit résout le problème des écrans le soir"</td><td>Il réduit la lumière bleue, mais pas la stimulation cognitive d'un contenu de travail (voir chapitre 2.1)</td></tr>
+    <tr><td>"Il faut arrêter tous les écrans 2h avant de dormir, sinon rien ne sert"</td><td>Une réduction progressive et partielle apporte déjà un bénéfice réel ; l'absolu n'est pas nécessaire pour progresser</td></tr>
+    <tr><td>"Si je suis fatigué, je vais forcément bien dormir"</td><td>Fatigue physique et capacité à s'endormir sont deux choses différentes (voir chapitre 2.2)</td></tr>
+    <tr><td>"Un seul mauvais soir ruine toute une routine"</td><td>Le sommeil varie naturellement ; c'est la tendance sur plusieurs semaines qui compte (voir chapitre 5.5)</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Se méfier des solutions qui promettent un résultat "immédiat et total" — l'hygiène de sommeil fonctionne par accumulation de petits ajustements tenus dans la durée, pas par un geste unique miracle.</p>
+  </div>
+
+  <h3>2.8 Le rôle du stress professionnel en soirée, sans jargon médical</h3>
+  <p>Le stress professionnel qui se prolonge en soirée entretient un état d'alerte physiologique (rythme cardiaque plus élevé, esprit en alerte) qui rend l'endormissement plus difficile, indépendamment de la présence ou non d'un écran.</p>
+
+  <p>C'est pour cette raison que ce guide travaille les deux leviers en parallèle : réduire l'exposition aux écrans ET réduire la stimulation liée au stress professionnel (chapitre 4.2), plutôt que de traiter les écrans comme seule cause.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un écran éteint mais un esprit encore en état d'alerte professionnelle retarde tout autant l'endormissement qu'un écran allumé. Les deux dimensions comptent.</p>
+  </div>
+
+  <h3>2.9 Cas particulier — une période de charge de travail exceptionnelle</h3>
+  <p>Un pic ponctuel (bouclage, lancement, période comptable) peut dégrader temporairement le sommeil, sans que ce soit le signe d'un problème durable.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Dans ces périodes, vise le minimum tenable plutôt que l'idéal : garde au moins le rituel de fermeture (chapitre 3.2), quitte à repousser les autres ajustements à une période plus calme.</p>
+  </div>
+
+  <h3>2.10 Exercice — repérer tes propres signaux d'alerte</h3>
+  <p>Avant de passer à l'action (partie 2), prends deux minutes pour répondre honnêtement à ces quatre questions. Il n'y a pas de bonne ou mauvaise réponse — l'objectif est juste d'objectiver ta situation de départ.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Auto-évaluation rapide</span>
+    <strong>1.</strong> À quelle heure consultes-tu en général ton dernier écran avant de dormir ? [réponse]<br/>
+    <strong>2.</strong> Ce dernier écran est-il plutôt professionnel ou de détente ? [réponse]<br/>
+    <strong>3.</strong> Combien de temps mets-tu, en moyenne, à t'endormir une fois couché ? [réponse]<br/>
+    <strong>4.</strong> Repenses-tu souvent au travail au moment de te coucher ? [réponse]
+  </div>
+
+  <p>Garde ces réponses de côté : elles te serviront de point de départ pour le plan progressif du chapitre 5.1.</p>
+
+  <h3>2.11 Ruminations nocturnes et réveils en pleine nuit liés au travail</h3>
+  <p>Certaines personnes s'endorment sans difficulté mais se réveillent en pleine nuit avec une pensée professionnelle qui tourne en boucle, sans réussir à se rendormir facilement.</p>
+
+  <p>Ce phénomène suit souvent le même mécanisme que la difficulté d'endormissement (chapitre 2.2) : une charge mentale non "refermée" refait surface dès que l'attention n'est plus occupée par autre chose.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Garde un carnet et un stylo à portée de main la nuit. Si une pensée professionnelle te réveille, note-la en quelques mots sans chercher à la résoudre, puis repose le carnet — le simple fait de l'avoir "sortie de ta tête" facilite souvent le retour au sommeil.</p>
+  </div>
+
+  <h3>2.12 Étude de cas — quand plusieurs facteurs se cumulent</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Nadia, indépendante en télétravail depuis 3 ans</span>
+    <p><strong>La situation</strong> — Nadia cumule plusieurs facteurs à la fois : des horaires irréguliers selon ses clients, un bureau installé dans un coin de son salon-chambre, et l'habitude de terminer ses soirées sur les réseaux sociaux jusqu'à l'épuisement.</p>
+    <p><strong>Pourquoi elle ne sait pas par où commencer</strong> — Face à plusieurs facteurs cumulés, la tentation est de vouloir tout changer en même temps, ce qui mène le plus souvent à l'abandon rapide (voir chapitre 5.3).</p>
+    <p><strong>Ce qu'elle choisit de faire</strong> — Elle sélectionne un seul levier pour commencer : le rituel de fermeture (chapitre 3.2), qu'elle adapte à ses horaires irréguliers (chapitre 2.5). Les autres facteurs (aménagement de l'espace, réseaux sociaux) seront traités dans les semaines suivantes, un par un.</p>
+    <p><strong>Ce que ça montre</strong> — Face à une situation avec plusieurs facteurs cumulés, choisir un seul point d'entrée réaliste vaut mieux que de se disperser sur tout à la fois.</p>
+  </div>
+
+  <h3>2.13 Cas particulier — sensibilité forte au bruit ou à la lumière</h3>
+  <p>Certaines personnes sont naturellement plus sensibles aux stimulations sensorielles le soir : le moindre bruit ou la moindre source lumineuse suffit à retarder leur endormissement, bien plus que la moyenne.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si c'est ton cas, les ajustements d'environnement du chapitre 4.3 (obscurité, réduction du bruit) auront probablement un effet plus marqué chez toi que la moyenne des lecteurs de ce guide — ils méritent d'être traités en priorité plutôt qu'en dernier.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Reprendre le contrôle des écrans le soir</h2>
+  <p class="lede">En sortant de cette partie, tu sauras créer une vraie coupure entre ta journée de travail et ta soirée, mettre en place un rituel de fermeture concret, et aménager ton environnement numérique pour qu'il ne travaille plus contre toi.</p>
+
+  <h3>3.1 Créer une vraie coupure entre la journée de travail et la soirée</h3>
+  <p>Sans trajet retour, la coupure doit être recréée volontairement. Elle n'a pas besoin d'être longue pour être efficace — elle doit surtout être <strong>nette et répétée chaque jour</strong>.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Template — Ma coupure de fin de journée</span>
+    <strong>Signal de fin de travail :</strong> [action précise, ex. fermer l'ordinateur, ranger le bureau]<br/>
+    <strong>Sas de transition (5-15 min) :</strong> [marche courte, douche, changement de vêtements...]<br/>
+    <strong>Ce que je ne fais plus après ce signal :</strong> [emails, Slack, dossiers en cours]
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Un signal physique (fermer l'ordinateur, changer de pièce, changer de vêtements) fonctionne mieux qu'une simple intention mentale — ton cerveau a besoin d'un repère concret pour associer "fin du travail" à un vrai changement d'état.</p>
+  </div>
+
+  <h3>3.2 Un rituel de "fermeture" du travail</h3>
+  <p>Le rituel de fermeture est une pratique simple, empruntée à la gestion de projet : clôturer explicitement sa journée de travail avant de passer à autre chose, pour éviter que les tâches non terminées ne continuent à occuper l'esprit le soir.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Note ce qui reste en suspens</strong><br/>
+      2 minutes suffisent : liste rapide de ce qui n'est pas terminé, pour "déposer" cette charge mentale sur le papier plutôt que dans ta tête.
+    </li>
+    <li>
+      <strong>Identifie la première tâche de demain</strong><br/>
+      Savoir par quoi tu commenceras réduit l'anxiété du "et si j'oubliais quelque chose d'important".
+    </li>
+    <li>
+      <strong>Prononce ou écris une phrase de clôture</strong><br/>
+      Une phrase simple ("Ma journée de travail est terminée") peut sembler artificielle, mais elle donne à ton cerveau un repère explicite de transition.
+    </li>
+  </ol>
+
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Amélie, gestion de projet à domicile</span>
+    <p>Amélie avait l'habitude de "vérifier une dernière fois" ses emails avant de dîner, ce qui relançait systématiquement une charge mentale professionnelle en soirée. En ajoutant un rituel de fermeture de 5 minutes en fin d'après-midi (liste des tâches en suspens + tâche du lendemain), elle a arrêté cette vérification compulsive : elle savait déjà, sur le papier, ce qui restait à faire.</p>
+  </div>
+
+  <h3>3.3 Aménager son environnement numérique</h3>
+  <p>Au-delà des habitudes, quelques réglages concrets réduisent la tentation et l'intrusion des écrans en soirée.</p>
+
+  <table>
+    <tr><th>Réglage</th><th>Effet</th></tr>
+    <tr><td>Notifications professionnelles coupées après une heure fixe</td><td>Supprime la tentation de réagir à un message "juste avant de dormir"</td></tr>
+    <tr><td>Mode nuit / filtre de lumière bleue activé automatiquement le soir</td><td>Réduit une partie de l'impact lumineux (mais pas la stimulation cognitive, voir chapitre 2.1)</td></tr>
+    <tr><td>Applications professionnelles regroupées et masquées en soirée</td><td>Réduit les ouvertures "par réflexe" du soir</td></tr>
+    <tr><td>Chargeur de téléphone hors de la chambre</td><td>Retire la tentation de consultation nocturne et le réflexe du réveil sur écran</td></tr>
+  </table>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — planifier ses réglages numériques du soir</span>
+    <span class="prompt-text">Voici mes habitudes actuelles d'utilisation du téléphone et de l'ordinateur le soir : [décris tes habitudes]. Aide-moi à établir une liste de réglages concrets (notifications, mode nuit, emplacement de charge) adaptés à mon usage, réalistes à tenir sur la durée sans que je me sente privé.</span>
+  </div>
+
+  <h3>3.4 Exemple complet avant/après</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    je regarde mon tel jusqu'a m'endormir toutes les nofications sont allumées meme le taf, jarrive pas a le lacher
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait)</span>
+    <strong>Trois changements progressifs, à ton rythme :</strong><br/>
+    1. Coupe uniquement les notifications professionnelles (pas toutes) après 19h — un changement moins radical, plus facile à tenir.<br/>
+    2. Charge ton téléphone dans une autre pièce, ne serait-ce que 3 soirs par semaine pour commencer.<br/>
+    3. Remplace le scroll d'endormissement par un contenu neutre et non professionnel (podcast calme, musique) les jours où le sevrage total semble trop difficile.
+  </div>
+
+  <p>Remarque l'approche progressive plutôt que radicale — c'est délibéré, et c'est le principe qui structure tout le plan du chapitre 4.1.</p>
+
+  <h3>3.5 Cas particulier — quand le travail déborde structurellement le soir</h3>
+  <p>Astreintes, clients à l'international, pics d'activité récurrents : parfois, le travail déborde sur la soirée de façon structurelle, pas occasionnelle.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Si le débordement est chronique et non ponctuel, la vraie question à traiter est organisationnelle (charge de travail, horaires, astreintes) — aucune routine du soir ne compense durablement une charge de travail structurellement incompatible avec le repos. Ce guide t'aide à protéger ce qui peut l'être, pas à rendre soutenable une organisation qui ne l'est pas.</p>
+  </div>
+
+  <h3>3.6 Étude de cas complète — une semaine de transition</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Julien reprend le contrôle de ses soirées</span>
+    <p><strong>Lundi</strong> — Julien met en place le rituel de fermeture du chapitre 3.2 : liste des tâches en suspens avant de quitter son bureau (qui est aussi son salon).</p>
+    <p><strong>Mercredi</strong> — Il coupe les notifications professionnelles à partir de 19h, en gardant les autres notifications actives pour ne pas se sentir totalement coupé du monde.</p>
+    <p><strong>Vendredi</strong> — Il constate qu'il consulte son téléphone professionnel presque par réflexe, sans raison précise. Il décide de le charger dans l'entrée à partir du week-end.</p>
+    <p><strong>Bilan</strong> — Après une semaine, Julien ne dort pas encore mieux de façon spectaculaire, mais il remarque déjà moins de ruminations professionnelles au moment de se coucher — un premier signe encourageant, qu'il note dans son tracker (chapitre 5.2).</p>
+  </div>
+
+  <h3>3.7 Gérer les outils collaboratifs professionnels en dehors des horaires</h3>
+  <p>Slack, Teams, messagerie professionnelle : ces outils sont pensés pour être disponibles en continu, ce qui entretient une disponibilité perçue bien au-delà des horaires réels.</p>
+
+  <table>
+    <tr><th>Outil</th><th>Réglage utile le soir</th></tr>
+    <tr><td>Slack / Teams</td><td>Statut "absent" programmé automatiquement après une heure fixe, notifications coupées sur ces créneaux</td></tr>
+    <tr><td>Messagerie professionnelle</td><td>Compte pro retiré de l'écran d'accueil du téléphone, ou application masquée dans un dossier</td></tr>
+    <tr><td>Applications de visioconférence</td><td>Notifications de réunion désactivées après l'heure de fin de journée</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Un statut "absent" programmé automatiquement, plutôt qu'activé manuellement chaque soir, évite d'avoir à y penser — et donc d'oublier de le faire les jours chargés.</p>
+  </div>
+
+  <h3>3.8 Cas particulier — plusieurs employeurs ou clients aux exigences différentes</h3>
+  <p>Freelances et personnes en cumul d'activités jonglent parfois avec des attentes de réactivité différentes selon l'interlocuteur, ce qui complique la définition d'une heure de coupure unique.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Sans limite explicite communiquée, certains clients supposent une disponibilité totale par défaut. Une phrase simple dans ta signature d'email ou ton message d'absence ("Je réponds habituellement avant 19h") pose un cadre sans confrontation.</p>
+  </div>
+
+  <h3>3.9 Exercice — construire ton propre rituel de fermeture</h3>
+  <p>Reprends le template du chapitre 3.1 et complète-le maintenant, avec tes propres horaires et contraintes réelles — pas une version théorique.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Mon rituel de fermeture, version personnalisée</span>
+    <strong>Heure cible de fin de travail :</strong> [heure]<br/>
+    <strong>Outil professionnel le plus difficile à lâcher :</strong> [Slack / emails / autre]<br/>
+    <strong>Réglage que je mets en place cette semaine :</strong> [un seul réglage du tableau du chapitre 3.7]<br/>
+    <strong>Comment je saurai que ça fonctionne :</strong> [signe concret, ex. moins de vérifications le soir]
+  </div>
+
+  <h3>3.10 Ce qui change selon ton métier</h3>
+  <table>
+    <tr><th>Type de métier</th><th>Point d'attention particulier</th></tr>
+    <tr><td>Relation client / support</td><td>La pression de réactivité est souvent la plus forte — le statut "absent" programmé (chapitre 3.7) est particulièrement utile</td></tr>
+    <tr><td>Création / conception</td><td>Le risque est de continuer à "réfléchir" au projet sans écran allumé — le rituel de fermeture (chapitre 3.2) aide à poser aussi ce type de charge mentale</td></tr>
+    <tr><td>Gestion / coordination d'équipe</td><td>La tentation de rester joignable "au cas où" est forte — clarifier avec l'équipe les horaires de disponibilité réduit cette pression</td></tr>
+  </table>
+
+  <h3>3.11 Cas particulier — travailler avec une équipe sur plusieurs fuseaux horaires</h3>
+  <p>Quand une partie de l'équipe ou des clients se trouve sur un fuseau horaire très différent, des sollicitations peuvent arriver à n'importe quelle heure de la soirée, ce qui complique encore la coupure.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Répondre systématiquement en soirée à des messages arrivés d'un autre fuseau horaire crée une attente implicite de disponibilité permanente. Définir et communiquer une plage horaire claire de réponse, même approximative, protège ta soirée sans nuire à la collaboration.</p>
+  </div>
+
+  <h3>3.12 Étude de cas complète — reprendre le contrôle après plusieurs années d'habitudes ancrées</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Marc, télétravail depuis 6 ans, notifications allumées en permanence</span>
+    <p><strong>Le point de départ</strong> — Marc travaille à domicile depuis six ans et n'a jamais vraiment installé de frontière entre travail et soirée : notifications actives 24h/24, téléphone professionnel et personnel confondus.</p>
+    <p><strong>La première semaine</strong> — Il commence uniquement par couper les notifications professionnelles après 20h (chapitre 3.3), sans toucher au reste.</p>
+    <p><strong>La deuxième semaine</strong> — Il ajoute le rituel de fermeture de 5 minutes (chapitre 3.2), qu'il associe à un signal physique : ranger son ordinateur portable dans un tiroir plutôt que de le laisser sur la table du salon.</p>
+    <p><strong>Le bilan à un mois</strong> — Des habitudes ancrées depuis plusieurs années ne se défont pas en quelques jours, mais Marc constate que les soirs où il applique ces deux changements, il s'endort sensiblement plus vite. Il choisit de consolider ces deux acquis avant d'ajouter autre chose.</p>
+  </div>
+
+  <h3>3.13 Cas particulier — enfants qui interrompent le rituel du soir</h3>
+  <p>Avec des enfants à la maison, le rituel de fermeture et la routine du soir sont souvent interrompus par des besoins imprévisibles (coucher des enfants, dernier imprévu), ce qui peut sembler incompatible avec une routine stable.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Découpe ton rituel de fermeture en une version "express" de 2 minutes maximum (chapitre 3.2), utilisable même les soirs les plus chargés — l'essentiel est qu'il existe sous une forme ou une autre chaque jour, pas qu'il dure longtemps.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Construire un vrai rituel du soir</h2>
+  <p class="lede">En sortant de cette partie, tu auras une routine pré-sommeil réaliste et adaptée à ta vie, des outils pour gérer les pensées professionnelles qui remontent au coucher, et une chambre pensée pour favoriser le sommeil.</p>
+
+  <h3>4.1 Une routine pré-sommeil réaliste, adaptée à une vraie vie</h3>
+  <p>Beaucoup de routines de sommeil qu'on trouve en ligne sont irréalistes pour une vraie vie de télétravailleur : trop longues, trop rigides, ou pensées pour quelqu'un sans enfants, sans imprévu, et avec beaucoup de temps libre.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une routine de 10 minutes suivie tous les soirs vaut infiniment mieux qu'une routine d'une heure suivie deux fois par semaine. Vise la version la plus simple que tu peux réellement tenir, pas la version idéale.</p>
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Template — Routine minimale réaliste (10 minutes)</span>
+    <strong>[2 min]</strong> Rituel de fermeture du travail (chapitre 3.2), si pas déjà fait plus tôt<br/>
+    <strong>[3 min]</strong> Un changement d'état physique (changer de vêtements, brossage de dents, lumière tamisée)<br/>
+    <strong>[5 min]</strong> Une activité calme et non professionnelle (lecture papier, étirements légers, respiration)
+  </div>
+
+  <h3>4.2 Gérer les pensées et le stress professionnel qui remontent au moment de dormir</h3>
+  <p>C'est souvent le point le plus difficile : le corps est prêt à dormir, mais l'esprit continue de tourner autour d'un sujet de travail non résolu.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">📋 Prompt à copier-coller — vider sa charge mentale avant de dormir</span>
+    <span class="prompt-text">Voici ce qui tourne dans ma tête ce soir concernant le travail : [décris brièvement]. Aide-moi à reformuler ces pensées en une liste courte d'actions pour demain, afin de les "poser" plutôt que de continuer à y penser au moment de dormir.</span>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Le simple fait d'écrire une pensée qui tourne en boucle — même sans la résoudre — réduit souvent son intensité. Garde un carnet près du lit pour cet usage précis, plutôt que ton téléphone.</p>
+  </div>
+
+  <h3>4.3 Optimiser sa chambre et son cadre de sommeil</h3>
+  <p>L'environnement physique de sommeil compte autant que les habitudes. Pour un télétravailleur, la question du rangement du matériel de travail hors de la chambre est particulièrement importante.</p>
+
+  <table>
+    <tr><th>Élément</th><th>Recommandation générale</th></tr>
+    <tr><td>Matériel de travail (ordinateur, dossiers)</td><td>Hors de la chambre si possible ; à défaut, hors du champ de vision depuis le lit</td></tr>
+    <tr><td>Lumière</td><td>La plus sombre possible ; rideaux occultants si la pièce donne sur une rue éclairée</td></tr>
+    <tr><td>Température</td><td>Une pièce légèrement fraîche est généralement plus propice à l'endormissement qu'une pièce surchauffée</td></tr>
+    <tr><td>Bruit</td><td>Limiter les sources de bruit imprévisibles (notifications, appareils en veille avec voyants lumineux)</td></tr>
+  </table>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Si le télétravail en studio ou petit espace rend impossible de sortir totalement le matériel de travail de la chambre, ne culpabilise pas de ne pas atteindre la situation "idéale" — le chapitre 4.5 (cas particulier petits espaces) te propose des alternatives réalistes.</p>
+  </div>
+
+  <h3>4.4 Exemple complet avant/après</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    mon bureau est dans ma chambre, ordi allumé en face du lit, jarrive pas a vraiment "quitter" le taf le soir
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait)</span>
+    <strong>Trois ajustements possibles sans déménager le bureau :</strong><br/>
+    1. Tourner l'écran de façon à ce qu'il ne soit plus visible depuis le lit, même éteint — la présence visuelle du poste de travail entretient l'association mentale "chambre = travail".<br/>
+    2. Recouvrir l'écran d'un tissu simple le soir, comme un signal visuel de "fermeture" en plus du rituel du chapitre 3.2.<br/>
+    3. Si possible, déplacer uniquement les éléments les plus "visibles" du travail (dossiers, deuxième écran) plutôt que tout le poste, pour un résultat déjà notable sans réaménagement complet.
+  </div>
+
+  <h3>4.5 Cas particulier — vivre en petit espace</h3>
+  <p>Studio, une seule pièce principale, bureau forcément dans la chambre : la séparation physique idéale entre travail et repos n'est pas toujours possible. Ce n'est pas un échec, c'est une contrainte réelle à contourner autrement.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Quand la séparation spatiale n'est pas possible, la séparation <strong>temporelle et visuelle</strong> (chapitres 3.2 et 4.4) devient encore plus importante : rituel de fermeture net, matériel caché ou recouvert, et un signal physique fort de transition.</p>
+  </div>
+
+  <h3>4.6 Étude de cas complète — réaménager sans déménager</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Sarah, télétravail en studio de 22m²</span>
+    <p><strong>La contrainte</strong> — Sarah travaille et dort dans la même pièce, sans possibilité de séparer physiquement les deux espaces.</p>
+    <p><strong>Ce qu'elle met en place</strong> — Un paravent léger entre le coin bureau et le lit (moins de 30€), qui masque visuellement le poste de travail sans nécessiter de réaménagement. Elle y ajoute le rituel de fermeture du chapitre 3.2 et recouvre son écran d'un tissu chaque soir.</p>
+    <p><strong>Le résultat</strong> — Sans changer de logement, Sarah recrée une frontière visuelle et symbolique suffisante pour que son cerveau associe de nouveau une partie de la pièce au repos plutôt qu'au travail en continu.</p>
+  </div>
+
+  <h3>4.7 Alimentation et stimulants en soirée : ce qu'on peut ajuster</h3>
+  <p>Sans entrer dans un registre médical, quelques habitudes alimentaires simples influencent la facilité d'endormissement en soirée.</p>
+
+  <table>
+    <tr><th>Élément</th><th>Ce qu'on observe généralement</th></tr>
+    <tr><td>Caféine (café, thé, boissons énergisantes)</td><td>Reste active plusieurs heures dans l'organisme ; une consommation tardive peut retarder l'endormissement chez beaucoup de personnes</td></tr>
+    <tr><td>Alcool</td><td>Peut donner une impression de facilité d'endormissement, mais dégrade généralement la qualité du sommeil en seconde partie de nuit</td></tr>
+    <tr><td>Repas très copieux tard le soir</td><td>Peut rendre l'endormissement plus inconfortable pour certaines personnes</td></tr>
+  </table>
+
+  <div class="box-medical">
+    <span class="box-title">🩺 Précision</span>
+    <p>Ces observations sont des repères généraux d'hygiène de sommeil, pas des recommandations nutritionnelles ou médicales personnalisées. Si tu as une question spécifique sur ton alimentation et ton sommeil, un médecin ou un diététicien est le bon interlocuteur.</p>
+  </div>
+
+  <h3>4.8 Cas particulier — partenaire ou colocataire aux horaires différents</h3>
+  <p>Partager son espace de sommeil avec quelqu'un dont les horaires ou les habitudes d'écran diffèrent des tiens ajoute une contrainte réelle à la mise en place d'une routine.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Plutôt que d'imposer ta routine à l'autre, concentre-toi sur ce qui dépend uniquement de toi : ton propre écran, ton propre rituel de fermeture, et éventuellement un casque anti-lumière si l'autre personne garde un écran allumé.</p>
+  </div>
+
+  <h3>4.9 Exercice — construire ta routine personnalisée en 3 étapes</h3>
+  <div class="box box-template">
+    <span class="box-title">📄 Ma routine du soir, version personnalisée</span>
+    <strong>Étape 1 (signal de transition) :</strong> [ex. changer de vêtements, douche]<br/>
+    <strong>Étape 2 (activité calme choisie) :</strong> [ex. lecture, étirements, respiration]<br/>
+    <strong>Étape 3 (dernier geste avant d'éteindre la lumière) :</strong> [ex. noter une pensée, vérifier le réveil]
+  </div>
+
+  <h3>4.10 Activité physique et sommeil : quelques repères simples</h3>
+  <p>Une activité physique régulière dans la journée est généralement associée à un meilleur sommeil, mais le moment compte : une activité intense très proche du coucher peut au contraire retarder l'endormissement chez certaines personnes, en augmentant temporairement l'éveil physiologique.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si tu pratiques une activité physique intense en fin de journée, essaie de laisser au moins une à deux heures avant le coucher pour laisser retomber cette activation, et privilégie une activité plus douce (marche, étirements) dans l'heure qui précède.</p>
+  </div>
+
+  <h3>4.11 Cas particulier — bruit de voisinage ou immeuble mal isolé</h3>
+  <p>Vivre dans un immeuble bruyant ou mal isolé phoniquement complique l'optimisation de la chambre (chapitre 4.3) sans pouvoir toujours agir sur la source du bruit.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Un bruit de fond stable et neutre (ventilateur, bruit blanc) peut masquer des bruits extérieurs imprévisibles, souvent plus perturbants qu'un bruit constant. C'est une solution d'appoint peu coûteuse quand il n'est pas possible d'agir sur la source du bruit.</p>
+  </div>
+
+  <h3>4.12 Étude de cas complète — repenser sa chambre en location, sans travaux</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Yanis, locataire, chambre donnant sur une rue passante</span>
+    <p><strong>La contrainte</strong> — Yanis loue un appartement dont la chambre donne sur une rue commerçante bruyante et éclairée toute la nuit par une enseigne. Il ne peut pas faire de travaux, ni changer les fenêtres.</p>
+    <p><strong>Ce qu'il met en place</strong> — Des rideaux occultants à fixation par velcro, sans perçage, pour bloquer la lumière de l'enseigne (chapitre 4.3). Pour le bruit, il ajoute un petit ventilateur d'appoint la nuit, qui crée un bruit de fond stable couvrant les bruits de rue les plus perturbants (chapitre 4.11).</p>
+    <p><strong>Le résultat</strong> — Sans aucun aménagement lourd ni investissement important, Yanis réduit significativement les deux facteurs environnementaux qui perturbaient le plus son sommeil, à un coût de moins de 40€.</p>
+  </div>
+
+  <h3>4.13 Literie et confort physique : quelques repères simples</h3>
+  <p>Un matelas ou un oreiller mal adaptés peuvent contribuer à un sommeil moins réparateur, indépendamment de tous les facteurs numériques traités dans ce guide.</p>
+
+  <table>
+    <tr><th>Signe</th><th>Piste à considérer</th></tr>
+    <tr><td>Réveils avec douleurs au dos ou à la nuque</td><td>Vérifier l'ancienneté du matelas et l'adaptation de l'oreiller à ta position de sommeil habituelle</td></tr>
+    <tr><td>Sensation de chaleur excessive la nuit</td><td>Privilégier une literie respirante et une température de pièce plus fraîche (voir chapitre 4.3)</td></tr>
+  </table>
+
+  <p class="source">Ces repères sont des observations générales de confort, pas des recommandations médicales ou d'achat personnalisées.</p>
+
+  <h3>4.14 La lumière du matin, un complément utile au travail du soir</h3>
+  <p>Ce guide se concentre sur la soirée, mais un point du matin mérite d'être mentionné : s'exposer à la lumière naturelle peu après le réveil aide à synchroniser le rythme circadien (voir lexique), ce qui facilite en retour l'endormissement le soir suivant.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Quelques minutes près d'une fenêtre ou dehors juste après le réveil, sans écran, complètent utilement le travail fait sur tes soirées — les deux bouts de la journée s'influencent mutuellement.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Tenir dans la durée</h2>
+  <p class="lede">En sortant de cette partie, tu auras un plan progressif sur 21 jours, une checklist claire, et tu sauras repérer les erreurs qui font le plus souvent échouer ce type de changement d'habitudes.</p>
+
+  <h3>5.1 Plan progressif sur 21 jours</h3>
+
+  <h4>Semaine 1 — Observer et amorcer (jours 1 à 7)</h4>
+  <ul>
+    <li>Remplir le tracker de sommeil chaque soir (chapitre 5.2), sans encore rien changer d'autre ;</li>
+    <li>Mettre en place le rituel de fermeture du travail (chapitre 3.2) ;</li>
+    <li>Identifier ton propre schéma de retard d'endormissement (chapitre 2.6).</li>
+  </ul>
+
+  <h4>Semaine 2 — Ajuster l'environnement (jours 8 à 14)</h4>
+  <ul>
+    <li>Couper les notifications professionnelles après une heure fixe (chapitre 3.3) ;</li>
+    <li>Sortir ou masquer le matériel de travail du champ de vision du lit (chapitre 4.3) ;</li>
+    <li>Tester la routine minimale de 10 minutes (chapitre 4.1).</li>
+  </ul>
+
+  <h4>Semaine 3 — Consolider (jours 15 à 21)</h4>
+  <ul>
+    <li>Garder uniquement les changements qui ont vraiment fonctionné pour toi ;</li>
+    <li>Ajuster ce qui n'a pas tenu, sans repartir de zéro (chapitre 5.6) ;</li>
+    <li>Faire le bilan de ton tracker sur les 21 jours pour objectiver ta progression.</li>
+  </ul>
+
+  <h3>5.2 Checklist récapitulative</h3>
+  <ul class="checklist">
+    <li>J'ai un rituel de fermeture du travail que je suis presque tous les jours.</li>
+    <li>Mes notifications professionnelles sont coupées après une heure fixe le soir.</li>
+    <li>Mon matériel de travail n'est plus visible depuis mon lit, ou recouvert.</li>
+    <li>J'ai une routine pré-sommeil courte et réaliste que je tiens réellement.</li>
+    <li>Je note mes soirées dans le tracker pour objectiver ma progression.</li>
+    <li>Je sais que ce guide ne remplace pas un avis médical en cas de trouble persistant.</li>
+  </ul>
+
+  <h3>5.3 Erreurs à éviter</h3>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 1. Se mettre trop de pression</span>
+    <p>Viser une routine "parfaite" dès le premier soir mène presque toujours à l'abandon. Les changements progressifs et incomplets, mais tenus dans la durée, valent mieux qu'un changement radical abandonné au bout d'une semaine.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 2. Adopter des solutions extrêmes intenables</span>
+    <p>Supprimer totalement les écrans le soir du jour au lendemain, ou s'interdire toute activité de détente numérique, fonctionne rarement sur la durée. Préfère une réduction progressive et réaliste (chapitre 3.4) à une interdiction totale que tu ne tiendras pas.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 3. Culpabiliser après une mauvaise nuit</span>
+    <p>Une nuit difficile ne signifie pas que "rien ne fonctionne". Le sommeil varie naturellement d'un jour à l'autre ; c'est la tendance sur plusieurs semaines qui compte, pas une nuit isolée.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 4. Ignorer des signaux qui justifient un avis médical</span>
+    <p>Si malgré une bonne hygiène de sommeil suivie sur plusieurs semaines, la fatigue reste anormale ou l'insomnie persiste, ce n'est plus du ressort de ce guide — consulte un professionnel de santé (voir chapitre 5.7).</p>
+  </div>
+
+  <h3>5.4 Adapter le plan selon ton contexte</h3>
+  <table>
+    <tr><th>Contexte</th><th>Ajustement recommandé</th></tr>
+    <tr><td>Enfants à la maison le soir</td><td>Décale les horaires du plan plutôt que de sauter les étapes — la routine peut commencer plus tard, l'essentiel est qu'elle existe</td></tr>
+    <tr><td>Colocation ou vie à plusieurs</td><td>Concentre-toi d'abord sur les éléments qui ne dépendent que de toi (chapitre 3.2, chapitre 3.3) avant les changements d'environnement partagé</td></tr>
+    <tr><td>Horaires de travail variables</td><td>Fixe la <strong>routine</strong>, pas l'heure — voir chapitre 2.5 sur les horaires atypiques</td></tr>
+  </table>
+
+  <h3>5.5 Mesurer ses progrès sans devenir obsessionnel</h3>
+  <p>Le tracker de sommeil (chapitre 5.2) est un outil d'observation, pas un objectif de performance. Le but n'est pas d'obtenir une "note parfaite" chaque soir, mais de repérer des tendances sur plusieurs jours.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Regarde ton tracker une fois par semaine, pas chaque matin. Une lecture quotidienne trop attentive peut elle-même devenir une source de stress autour du sommeil — l'effet inverse de ce que tu recherches.</p>
+  </div>
+
+  <h3>5.6 Cas particulier — une rechute après une bonne période</h3>
+  <p>Une période de stress professionnel intense, un déplacement, ou simplement une période chargée peuvent faire retomber d'anciennes habitudes. C'est normal, et ce n'est pas reparti de zéro.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une rechute ne signifie pas que les 21 jours précédents n'ont servi à rien. Reprends simplement le rituel de fermeture (chapitre 3.2) et la routine minimale (chapitre 4.1) — les deux éléments les plus simples à réactiver rapidement.</p>
+  </div>
+
+  <h3>5.7 Quand consulter un professionnel de santé</h3>
+  <p>Ce guide couvre l'hygiène de sommeil — pas le diagnostic. Certains signaux justifient de consulter, sans attendre d'avoir "tout essayé" seul :</p>
+
+  <ul>
+    <li>Une insomnie qui persiste malgré plusieurs semaines de bonne hygiène de sommeil ;</li>
+    <li>Une fatigue anormale en journée malgré un temps de sommeil qui semble suffisant ;</li>
+    <li>Des ronflements importants avec des pauses respiratoires observées par un proche ;</li>
+    <li>Des réveils fréquents et inexpliqués, ou une somnolence qui interfère avec la conduite ou le travail.</li>
+  </ul>
+
+  <div class="box-medical">
+    <span class="box-title">🩺 Rappel important</span>
+    <p>Ces signaux ne constituent pas un diagnostic — ils indiquent simplement qu'une consultation médicale est la démarche appropriée, plutôt que de continuer à ajuster seul son hygiène de sommeil. Un médecin ou un centre du sommeil pourra, si nécessaire, orienter vers les examens adaptés.</p>
+  </div>
+
+  <h3>5.8 Aller plus loin après les 21 jours</h3>
+  <p>Le plan de ce guide couvre les trois premières semaines, celles où se joue l'essentiel de la mise en place. Après cela, l'enjeu change : il ne s'agit plus d'installer de nouvelles habitudes, mais de les maintenir sans y penser en permanence.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Reprends ton tracker (chapitre 5.2 du Pack Sommeil) une fois par mois plutôt qu'une fois par semaine, simplement pour vérifier que tes habitudes tiennent toujours — sans en faire un suivi permanent.</p>
+  </div>
+
+  <h3>5.9 Exercice complet — ton bilan hebdomadaire guidé</h3>
+  <p>À la fin de chaque semaine du plan, prends cinq minutes pour répondre à ces questions. Elles t'aident à ajuster sans attendre la fin des 21 jours.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Bilan de la semaine</span>
+    <strong>Ce qui a le mieux fonctionné cette semaine :</strong> [réponse]<br/>
+    <strong>Ce qui n'a pas tenu, et pourquoi :</strong> [réponse]<br/>
+    <strong>Un seul ajustement pour la semaine prochaine :</strong> [réponse]
+  </div>
+
+  <h3>5.10 Cas particulier — reprise après des vacances ou un arrêt</h3>
+  <p>Les vacances ou une pause professionnelle bousculent souvent les horaires et les habitudes mises en place. C'est normal, et ce n'est pas un échec du plan.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Au retour, ne reprends pas les 21 jours depuis le début : reprends directement à la semaine 2 (chapitre 5.1), en te concentrant d'abord sur le rituel de fermeture et la routine minimale, les deux éléments les plus rapides à réactiver.</p>
+  </div>
+
+  <h3>5.11 Questions pratiques : ajuster son plan sans tout recommencer</h3>
+  <p>Il est normal qu'un élément du plan ne fonctionne pas tel quel pour toi. Plutôt que d'abandonner l'ensemble, identifie précisément ce qui coince (horaire irréaliste ? environnement contraint ? résistance d'un proche ?) et ajuste uniquement cet élément, en gardant le reste du plan intact.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un plan ajusté et partiellement suivi sur la durée vaut toujours mieux qu'un plan "parfait" abandonné après une semaine.</p>
+  </div>
+
+  <h3>5.12 Cas particulier — changement d'emploi, de poste ou d'organisation du travail</h3>
+  <p>Un nouveau poste, un nouveau rythme d'équipe ou un changement d'employeur peut remettre en cause des habitudes tout juste installées.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Considère chaque changement professionnel majeur comme un motif légitime de refaire, en accéléré, la semaine 1 du plan (observer et amorcer) — tes anciens repères ne s'appliquent plus forcément tels quels au nouveau contexte.</p>
+  </div>
+
+  <h3>5.13 Bilan : ce qu'on peut réellement attendre après 21 jours</h3>
+  <p>Sois réaliste sur ce que ce plan peut t'apporter : il ne transformera pas un sommeil difficile en sommeil parfait en trois semaines. Ce qu'on observe le plus souvent, c'est une réduction progressive du temps d'endormissement, moins de ruminations professionnelles au coucher, et une routine du soir qui demande de moins en moins d'effort de volonté.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>L'objectif de ce guide n'est pas un sommeil "parfait", mais un sommeil suffisamment meilleur, obtenu par des changements que tu peux réellement tenir dans ta vie de travailleur à domicile.</p>
+  </div>
+
+  <h3>5.14 Impliquer son entourage dans le changement</h3>
+  <p>Quand tu partages ton logement, informer brièvement les personnes autour de toi de ce que tu essaies de mettre en place peut faciliter les choses — ne serait-ce que pour qu'elles comprennent pourquoi tu ranges soudainement ton téléphone dans une autre pièce le soir.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Pas besoin d'un grand discours : une phrase simple ("j'essaie de moins regarder mon téléphone le soir pour mieux dormir") suffit généralement à obtenir de la compréhension, voire du soutien.</p>
+  </div>
+</section>
+
+<div id="bonus-section">
+<section class="chapter">
+  <h2>6. Partie 5 — Bonus : le Pack Sommeil</h2>
+  <p class="lede">30 prompts prêts à l'emploi classés par usage, et un guide pas à pas pour recréer un tracker de sommeil hebdomadaire dans Canva en 10 minutes.</p>
+
+  <div class="box-medical">
+    <span class="box-title">🩺 Précision sur l'usage de ces prompts</span>
+    <p>Les prompts ci-dessous t'aident à personnaliser ton plan, ta routine ou ta gestion du stress avec l'aide d'une IA (ChatGPT, Claude) — ils ne servent en aucun cas à obtenir un diagnostic médical. Aucune IA ne peut diagnostiquer un trouble du sommeil ; seul un professionnel de santé le peut.</p>
+  </div>
+
+  <h3>6.0 Comment bien utiliser ces prompts avec l'IA</h3>
+  <p>Quelques repères simples pour tirer le meilleur parti des 30 prompts qui suivent.</p>
+
+  <ul>
+    <li><strong>Sois précis dans les champs entre crochets</strong> — plus tu donnes de détails concrets sur ta situation, plus la réponse sera utile et personnalisée ;</li>
+    <li><strong>N'hésite pas à relancer</strong> — si la première réponse ne te convient pas, précise ce qui ne colle pas à ta situation plutôt que de l'abandonner ;</li>
+    <li><strong>Reste dans le registre habitudes et organisation</strong> — ces prompts servent à personnaliser ta routine, jamais à poser une question médicale à l'IA.</li>
+  </ul>
+
+  <h3>6.1 Trente prompts prêts à l'emploi, classés par usage</h3>
+  <p>Chaque prompt ci-dessous est directement copiable dans ChatGPT ou Claude. Remplace les champs entre crochets par tes propres informations avant de l'envoyer.</p>
+
+  <div class="subject-heading">🌙 Construire sa routine du soir personnalisée</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Routine minimale de départ</span>
+    <span class="prompt-text">Voici mon emploi du temps de fin de journée : [décris tes horaires et contraintes]. Aide-moi à construire une routine pré-sommeil de 10 minutes maximum, réaliste et tenable tous les soirs.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Adapter une routine existante</span>
+    <span class="prompt-text">Voici la routine que j'essaie de suivre : [décris-la]. Elle ne tient pas dans la durée. Aide-moi à l'simplifier pour qu'elle soit plus facile à respecter, en gardant seulement l'essentiel.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Routine pour horaires irréguliers</span>
+    <span class="prompt-text">Mes horaires de coucher varient beaucoup selon les jours : [décris]. Aide-moi à construire une routine qui reste identique même quand l'heure de coucher change.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Routine à deux ou en famille</span>
+    <span class="prompt-text">Je vis avec [conjoint/enfants/colocataires] et ma routine du soir doit s'accorder avec la leur. Voici notre organisation actuelle : [décris]. Propose une routine réaliste qui tient compte de cette contrainte.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Ajouter une activité de détente non numérique</span>
+    <span class="prompt-text">Je veux remplacer le temps d'écran avant de dormir par une activité calme sans écran. Voici ce que j'aime faire habituellement : [décris tes centres d'intérêt]. Propose 5 idées adaptées à 10-15 minutes avant le coucher.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Routine de reprise après une rechute</span>
+    <span class="prompt-text">J'avais une bonne routine du soir, mais je l'ai perdue depuis [durée/raison]. Aide-moi à la reprendre progressivement sans me mettre trop de pression dès le premier soir.</span>
+  </div>
+
+  <div class="subject-heading">💼 Gérer le stress professionnel avant le coucher</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7 — Vider sa charge mentale du jour</span>
+    <span class="prompt-text">Voici ce qui tourne dans ma tête ce soir concernant le travail : [décris]. Aide-moi à transformer ces pensées en une liste d'actions claires pour demain, pour pouvoir les "poser" ce soir.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8 — Préparer un rituel de fermeture</span>
+    <span class="prompt-text">Je termine ma journée de travail vers [heure]. Aide-moi à construire un rituel de fermeture de 5 minutes maximum (tâches en suspens, priorité du lendemain, signal de clôture).</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9 — Gérer une réunion ou un événement stressant</span>
+    <span class="prompt-text">J'ai vécu un événement professionnel stressant aujourd'hui : [décris brièvement, sans détails confidentiels]. Aide-moi à formuler ce qui doit encore être fait à ce sujet, pour arrêter d'y penser ce soir.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10 — Anticiper une journée chargée à venir</span>
+    <span class="prompt-text">Je sais que demain sera une journée particulièrement chargée : [décris]. Aide-moi à préparer une liste claire ce soir pour ne pas y penser en boucle au moment de dormir.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 11 — Distinguer l'urgent de l'important le soir</span>
+    <span class="prompt-text">Voici les sujets professionnels qui me préoccupent ce soir : [liste-les]. Aide-moi à identifier lesquels sont réellement urgents et lesquels peuvent clairement attendre demain.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 12 — Préparer une réponse à envoyer demain</span>
+    <span class="prompt-text">Je veux répondre à ce message professionnel, mais je préfère le faire demain plutôt que ce soir : [colle le message]. Rédige un brouillon de réponse que je pourrai relire et envoyer demain matin.</span>
+  </div>
+
+  <div class="subject-heading">📅 Adapter le plan 21 jours à son emploi du temps</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 13 — Personnaliser le plan de base</span>
+    <span class="prompt-text">Voici mon emploi du temps type sur une semaine : [décris]. Adapte le plan progressif sur 21 jours de ce guide (observer, ajuster l'environnement, consolider) à mes contraintes réelles.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 14 — Reprendre le plan après une interruption</span>
+    <span class="prompt-text">J'ai commencé le plan 21 jours mais je l'ai interrompu au jour [numéro] à cause de [raison]. Aide-moi à reprendre sans repartir de zéro.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 15 — Adapter le plan à un déplacement professionnel</span>
+    <span class="prompt-text">Je pars en déplacement professionnel [durée] pendant mon plan 21 jours. Aide-moi à adapter les étapes prévues pour cette période, sans tout abandonner.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 16 — Prioriser une seule étape si le temps manque</span>
+    <span class="prompt-text">Je n'ai pas le temps de suivre toutes les étapes du plan cette semaine. Voici mes contraintes : [décris]. Si je ne devais en garder qu'une seule cette semaine, laquelle serait la plus utile ?</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 17 — Étendre le plan sur plus de 21 jours</span>
+    <span class="prompt-text">Je préfère avancer plus lentement que le plan de base. Aide-moi à étaler les 3 semaines du plan sur 6 semaines, à un rythme plus progressif.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 18 — Bilan de mi-parcours</span>
+    <span class="prompt-text">Je suis à la moitié du plan 21 jours. Voici ce que j'ai réussi à mettre en place et ce qui n'a pas tenu : [décris]. Aide-moi à ajuster la suite du plan en conséquence.</span>
+  </div>
+
+  <div class="subject-heading">📵 Réduire progressivement les écrans le soir</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 19 — Plan de réduction progressive</span>
+    <span class="prompt-text">Je passe actuellement environ [durée] sur mon téléphone/ordinateur après le dîner. Aide-moi à construire un plan de réduction progressive sur plusieurs semaines, pas un sevrage brutal.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 20 — Réglages de notifications à mettre en place</span>
+    <span class="prompt-text">Voici les applications que je consulte le plus le soir par réflexe : [liste-les]. Propose des réglages de notifications réalistes pour réduire ces interruptions sans tout couper d'un coup.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 21 — Remplacer un usage précis par une alternative</span>
+    <span class="prompt-text">J'utilise [application/usage précis, ex. scroller les réseaux sociaux] pour me détendre le soir. Propose 3 alternatives sans écran qui pourraient remplir la même fonction de détente.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 22 — Gérer la tentation de "vérifier une dernière fois"</span>
+    <span class="prompt-text">J'ai souvent besoin de "vérifier une dernière fois" mes messages avant de dormir. Aide-moi à comprendre pourquoi et à trouver une alternative qui rassure sans passer par l'écran.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 23 — Réduire les écrans un jour précis de la semaine</span>
+    <span class="prompt-text">Je veux commencer par réduire les écrans le soir seulement un jour par semaine avant d'étendre. Aide-moi à choisir le jour le plus réaliste selon mon emploi du temps : [décris ta semaine].</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 24 — Gérer une rechute sur les écrans</span>
+    <span class="prompt-text">J'avais réduit mes écrans le soir mais j'ai repris mes anciennes habitudes depuis [durée]. Aide-moi à identifier ce qui a déclenché cette rechute et comment repartir.</span>
+  </div>
+
+  <div class="subject-heading">🛏️ Créer un environnement de sommeil optimal chez soi</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 25 — Optimiser sa chambre avec peu de moyens</span>
+    <span class="prompt-text">Voici ma chambre actuelle : [décris l'espace et le budget disponible]. Propose 5 améliorations concrètes et peu coûteuses pour un environnement plus propice au sommeil.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 26 — Séparer visuellement travail et repos en petit espace</span>
+    <span class="prompt-text">Mon bureau est dans ma chambre, sans possibilité de le déplacer. Voici la configuration de la pièce : [décris]. Propose des solutions pour réduire visuellement la présence du travail le soir.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 27 — Gérer le bruit et la lumière extérieurs</span>
+    <span class="prompt-text">Ma chambre est exposée à [bruit/lumière extérieure, décris]. Propose des solutions réalistes et accessibles pour limiter cette gêne au coucher.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 28 — Adapter l'environnement en colocation</span>
+    <span class="prompt-text">Je vis en colocation et je ne contrôle pas tout l'environnement de mon logement. Voici ma situation : [décris]. Aide-moi à identifier ce qui reste sous mon contrôle direct dans ma propre chambre.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 29 — Choisir un rituel de rangement du soir</span>
+    <span class="prompt-text">Je veux instaurer un petit rituel de rangement de mon espace de travail avant de dormir. Voici mon espace : [décris]. Propose une version qui prend moins de 5 minutes.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 30 — Bilan de son environnement de sommeil</span>
+    <span class="prompt-text">Voici une description complète de ma chambre et de mes habitudes du soir : [décris tout]. Fais-moi un bilan des 3 points qui, selon les principes d'hygiène de sommeil, mériteraient d'être améliorés en priorité.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces 30 prompts sont des points de départ, pas des formules figées. N'hésite pas à les combiner ou à les adapter à ta situation précise — et rappelle-toi qu'ils t'aident à personnaliser ton hygiène de sommeil, jamais à obtenir un diagnostic médical.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6.2 Le template Canva "tracker de sommeil hebdomadaire"</h2>
+  <p class="lede">Un guide pas à pas pour recréer toi-même, en 10 minutes, un tracker de sommeil hebdomadaire — pas un fichier fourni, mais une méthode que tu peux refaire à volonté.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Précision importante</span>
+    <p>Ce chapitre est un <strong>guide pour recréer le template toi-même dans Canva</strong>, pas un fichier .canva livré avec ce guide. Canva ne permet pas l'export ni le partage d'un modèle sous forme de fichier autonome utilisable hors de la plateforme — la seule façon de te transmettre ce design est de te donner les instructions précises pour le reconstruire, ce que fait ce chapitre.</p>
+  </div>
+
+  <h3>Format et couleurs</h3>
+  <table>
+    <tr><th>Élément</th><th>Réglage</th></tr>
+    <tr><td>Format</td><td>A4 portrait (21 × 29,7 cm)</td></tr>
+    <tr><td>Couleur principale (bandeau, titres)</td><td>Indigo #1E2A4A</td></tr>
+    <tr><td>Couleur d'accent (séparateurs, cases à remplir)</td><td>Doré #C98A2E</td></tr>
+    <tr><td>Fond des blocs secondaires</td><td>Beige clair #F4EBD9</td></tr>
+    <tr><td>Police des titres</td><td>Une police sans-serif épaisse type "Montserrat" ou "Poppins" (disponibles gratuitement dans Canva)</td></tr>
+    <tr><td>Police du texte courant</td><td>Une police sans-serif lisible type "Lato" ou "Open Sans"</td></tr>
+  </table>
+
+  <h3>Structure détaillée du tracker</h3>
+  <ol class="steps">
+    <li>
+      <strong>Bandeau titre</strong><br/>
+      Un rectangle pleine largeur en indigo #1E2A4A en haut de page, avec "Tracker de sommeil" et la semaine concernée.
+    </li>
+    <li>
+      <strong>Tableau principal — 7 jours</strong><br/>
+      Un tableau à 5 colonnes : Jour, Heure de coucher, Heure du dernier écran, Qualité du sommeil ressentie (échelle simple), Note libre.
+    </li>
+    <li>
+      <strong>Bloc légende</strong><br/>
+      Un encadré beige clair #F4EBD9 expliquant l'échelle de qualité utilisée (ex. de 1 à 5) et comment remplir la colonne "note libre".
+    </li>
+    <li>
+      <strong>Bloc bilan de la semaine</strong><br/>
+      Un encadré à bordure dorée en bas de page, pour noter une observation générale de la semaine une fois le tableau rempli.
+    </li>
+  </ol>
+
+  <h3>Les étapes précises pour le construire dans Canva</h3>
+  <ol class="steps">
+    <li>
+      <strong>Ouvre Canva et cherche un modèle de base</strong><br/>
+      Dans la barre de recherche de modèles, tape "habit tracker" ou "planner hebdomadaire" — Canva propose plusieurs modèles A4 déjà structurés en tableau, ce qui t'évite de partir d'une page blanche.
+    </li>
+    <li>
+      <strong>Choisis un modèle avec un tableau 7 jours</strong><br/>
+      Privilégie un modèle qui a déjà une grille ou un tableau pour 7 lignes — tu auras moins de mise en forme à faire toi-même.
+    </li>
+    <li>
+      <strong>Recolore aux couleurs de la charte</strong><br/>
+      Sélectionne chaque élément coloré et remplace la couleur par les codes hexadécimaux du tableau ci-dessus (#1E2A4A pour l'indigo, #C98A2E pour le doré, #F4EBD9 pour le beige clair) via le sélecteur de couleur personnalisée de Canva.
+    </li>
+    <li>
+      <strong>Ajuste les colonnes du tableau</strong><br/>
+      Renomme les colonnes existantes ou ajoutes-en pour obtenir : Jour, Heure de coucher, Heure du dernier écran, Qualité ressentie, Note libre.
+    </li>
+    <li>
+      <strong>Change les polices</strong><br/>
+      Sélectionne les titres et applique la police "Montserrat" ou "Poppins" ; sélectionne le texte courant et applique "Lato" ou "Open Sans", disponibles gratuitement dans la bibliothèque de polices Canva.
+    </li>
+    <li>
+      <strong>Enregistre-le comme modèle personnel</strong><br/>
+      Une fois satisfait du résultat, utilise la fonction "Enregistrer comme modèle" de Canva (accessible depuis le menu du fichier) pour le réutiliser chaque semaine sans repartir de zéro.
+    </li>
+  </ol>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Imprime ton tracker ou garde-le ouvert sur ta tablette près du lit — le remplir à la main juste avant de dormir prend moins d'une minute et devient vite un réflexe qui s'intègre à ta routine du soir (chapitre 4.1).</p>
+  </div>
+
+  <h3>Variantes du tracker selon tes préférences</h3>
+  <table>
+    <tr><th>Format</th><th>Avantage</th><th>Comment faire</th></tr>
+    <tr><td>Papier imprimé</td><td>Aucune tentation d'écran au moment de le remplir le soir</td><td>Exporte ton modèle Canva en PDF et imprime une feuille par semaine</td></tr>
+    <tr><td>Tablette (sans notifications)</td><td>Pratique si tu voyages ou changes souvent de lieu</td><td>Garde le fichier Canva ouvert en mode lecture, en coupant les notifications de l'appareil</td></tr>
+    <tr><td>Tableur simple (Google Sheets, Excel)</td><td>Pratique pour visualiser des tendances sur plusieurs semaines d'un coup</td><td>Recrée les mêmes colonnes que le tableau Canva dans une feuille de calcul, une ligne par jour</td></tr>
+  </table>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Point de vigilance</span>
+    <p>Si tu choisis la version tablette ou tableur numérique, veille à ce que consulter ton tracker le soir ne devienne pas lui-même un prétexte à rester sur un écran plus longtemps que prévu — la version papier reste la plus sûre à cet égard.</p>
+  </div>
+
+  <h3>Foire aux questions sur le Pack Sommeil</h3>
+
+  <div class="faq-item">
+    <p class="faq-q">Dois-je utiliser les 30 prompts, ou seulement certains ?</p>
+    <p>Utilise uniquement ceux qui correspondent à ta situation actuelle. Il n'est pas nécessaire de tous les essayer — commence par la catégorie la plus utile à ton besoin immédiat (par exemple, la routine du soir ou la gestion du stress professionnel).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je utiliser ces prompts avec un autre assistant IA que ChatGPT ou Claude ?</p>
+    <p>Oui, ces prompts fonctionnent avec la plupart des assistants conversationnels grand public. Ils sont rédigés de façon générique, sans fonctionnalité propre à un outil en particulier.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Le tracker Canva est-il indispensable pour suivre le plan 21 jours ?</p>
+    <p>Non. Le tracker est un outil d'aide à l'observation, mais tu peux tout à fait suivre le plan du chapitre 5.1 avec un simple carnet ou même sans support écrit, si tu préfères. Il facilite simplement le suivi objectif de ta progression.</p>
+  </div>
+</section>
+</div>
+
+<section class="chapter">
+  <h2>7. Lexique</h2>
+  <p class="lede">Les termes utilisés dans ce guide, expliqués simplement.</p>
+
+  <dl class="lexique">
+    <dt>Hygiène de sommeil</dt>
+    <dd>Ensemble des habitudes et de l'environnement qui favorisent un bon endormissement et un sommeil de qualité, par opposition au diagnostic ou au traitement médical des troubles du sommeil.</dd>
+
+    <dt>Mélatonine</dt>
+    <dd>Hormone naturellement sécrétée en soirée qui signale au corps qu'il est temps de dormir ; sa sécrétion peut être retardée par une exposition à la lumière, notamment celle des écrans.</dd>
+
+    <dt>Procrastination du coucher</dt>
+    <dd>Fait de repousser volontairement l'heure du coucher malgré la fatigue, souvent pour se réapproprier un temps personnel manquant dans la journée.</dd>
+
+    <dt>Prompt</dt>
+    <dd>Le texte que tu écris à un assistant IA pour lui demander de faire quelque chose. Plus il est précis, meilleur est le résultat.</dd>
+
+    <dt>Rituel de fermeture</dt>
+    <dd>Pratique consistant à clôturer explicitement sa journée de travail (tâches en suspens, priorité du lendemain, signal de transition) pour limiter les ruminations professionnelles le soir.</dd>
+
+    <dt>Stimulation cognitive</dt>
+    <dd>Activation mentale provoquée par un contenu qui capte l'attention ou sollicite la réflexion (email de travail, actualité, conversation), indépendamment de la lumière émise par l'écran.</dd>
+
+    <dt>Cortisol</dt>
+    <dd>Hormone liée à l'état d'alerte et au stress ; un niveau élevé en soirée, souvent lié à une charge professionnelle non "refermée", peut rendre l'endormissement plus difficile.</dd>
+
+    <dt>Fenêtre d'endormissement</dt>
+    <dd>Période pendant laquelle le corps est physiologiquement prêt à s'endormir ; la manquer (en restant stimulé) peut donner une impression de "regain d'énergie" qui retarde encore le coucher.</dd>
+
+    <dt>Rythme circadien</dt>
+    <dd>Horloge biologique interne qui régule le cycle veille-sommeil sur environ 24 heures ; la régularité des horaires (chapitre 2.4) aide à la stabiliser.</dd>
+
+    <dt>Tracker de sommeil</dt>
+    <dd>Outil d'observation simple (papier ou numérique) permettant de noter chaque soir quelques indicateurs (heure de coucher, dernier écran, qualité ressentie) pour objectiver sa progression sans se fier uniquement à son ressenti.</dd>
+
+    <dt>Bedtime procrastination (procrastination du coucher)</dt>
+    <dd>Nom anglophone parfois utilisé pour désigner la procrastination du coucher (voir plus haut), fréquent dans la littérature de vulgarisation sur le sommeil.</dd>
+
+    <dt>Hygiène numérique du soir</dt>
+    <dd>Ensemble des réglages et habitudes concernant l'usage des écrans en soirée (notifications, luminosité, emplacement de charge) qui accompagnent l'hygiène de sommeil au sens large.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>8. Questions fréquentes</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide peut-il m'aider si j'ai déjà un trouble du sommeil diagnostiqué ?</p>
+    <p>Ce guide porte sur l'hygiène de sommeil générale, pas sur la prise en charge d'un trouble diagnostiqué. Si tu as déjà un diagnostic, suis les recommandations de ton médecin en priorité ; ce guide peut éventuellement compléter une prise en charge, jamais la remplacer.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Faut-il tout arrêter les écrans le soir pour que ça fonctionne ?</p>
+    <p>Non. Ce guide privilégie une réduction progressive et réaliste (chapitre 3.4 et Pack Sommeil) plutôt qu'un sevrage total, souvent intenable sur la durée.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Combien de temps avant de voir des résultats ?</p>
+    <p>Le plan de ce guide s'étale sur 21 jours (chapitre 5.1), mais certains effets (moins de ruminations le soir) peuvent se ressentir dès la première semaine. Le sommeil varie naturellement d'un jour à l'autre : regarde la tendance, pas une nuit isolée.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Le template Canva est-il fourni en fichier téléchargeable ?</p>
+    <p>Non, et ce n'est pas possible techniquement : Canva ne permet pas l'export d'un modèle sous forme de fichier partageable. Le chapitre 6.2 te donne toutes les instructions pour le recréer toi-même en 10 minutes.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">À partir de quand faut-il consulter un médecin plutôt que suivre ce guide ?</p>
+    <p>Si une insomnie persiste malgré plusieurs semaines de bonne hygiène de sommeil, ou en cas de fatigue anormale, de ronflements avec pauses respiratoires ou de somnolence gênante en journée, consulte un professionnel de santé (voir chapitre 5.7). Ce guide ne diagnostique ni ne traite aucun trouble.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Dois-je suivre les 4 parties dans l'ordre, ou puis-je picorer selon mes besoins ?</p>
+    <p>L'ordre proposé (comprendre, reprendre le contrôle, construire un rituel, tenir dans la durée) suit une logique progressive, mais rien n'empêche de commencer directement par la partie qui répond à ta difficulté la plus urgente, par exemple la partie 3 si ta chambre est ta priorité immédiate.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide fonctionne-t-il si je ne travaille à domicile que quelques jours par semaine ?</p>
+    <p>Oui. Adapte simplement le plan du chapitre 5.1 et le tableau du chapitre 5.4 à tes jours effectifs de télétravail — les principes restent les mêmes, seule la fréquence d'application change.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">J'ai déjà essayé plusieurs routines de sommeil sans succès. En quoi celle-ci serait différente ?</p>
+    <p>Ce guide part du principe qu'une routine générique et rigide échoue souvent parce qu'elle ne correspond pas à une vraie vie. L'accent est mis ici sur des versions minimales et personnalisables (chapitres 4.1, 4.9), pensées pour être réellement tenues plutôt qu'idéales sur le papier.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Les prompts du Pack Sommeil remplacent-ils les conseils de ce guide ?</p>
+    <p>Non, ils les complètent : les prompts t'aident à personnaliser les principes déjà expliqués dans les parties 1 à 4 à ta situation précise. Ils ne remplacent ni la lecture du guide, ni un avis médical si nécessaire.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide est-il adapté si je vis seul ou si je vis en famille ?</p>
+    <p>Les deux. Les principes de base (rituel de fermeture, réduction progressive des écrans, aménagement de la chambre) s'appliquent dans les deux cas ; certains chapitres (3.13, 4.8, 5.4) donnent des ajustements spécifiques selon ta situation familiale.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Que faire si je n'arrive à suivre aucune étape du plan une semaine donnée ?</p>
+    <p>Reprends simplement la semaine suivante là où tu en étais, sans culpabiliser (voir chapitre 5.3). Une semaine sans progression n'annule pas les semaines précédentes, et ce n'est pas un échec du plan.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Faut-il refaire l'auto-évaluation du chapitre 2.10 régulièrement ?</p>
+    <p>Ce n'est pas obligatoire, mais la refaire toutes les quelques semaines (par exemple à la fin du plan de 21 jours, chapitre 5.1) permet de mesurer objectivement le chemin parcouru depuis ton point de départ.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="disclaimer">
+    <strong>Avertissement.</strong> Ce guide a une vocation pratique et informative sur l'hygiène de sommeil (habitudes et environnement). Il ne constitue en aucun cas un avis médical, un diagnostic ou un traitement, et ne remplace pas une consultation auprès d'un professionnel de santé. En cas d'insomnie persistante, de fatigue anormale ou de suspicion de trouble du sommeil, consulte un médecin. Les informations générales sur l'hygiène de sommeil reflètent des principes de bon sens largement admis et peuvent évoluer ; elles ne remplacent pas un suivi médical personnalisé.
+  </div>
+</section>
+
+</body>
+</html>

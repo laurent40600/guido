@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Sortir de la procrastination : retrouver sa motivation et reprendre le contrôle de son temps</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 26pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-case { background: #f6f8f4; border-left: 5px solid #4d7c4a; }
+  .box-case .box-title { color: #3f6b3d; }
+  .box-note {
+    background: #eef3f6; border: 1.5px solid #4a7a9e; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-note .box-title { color: #2c5876; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; }
+  .box-template {
+    background: #fff; border: 1.5px dashed #1E2A4A; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-template .box-title { color: #1E2A4A; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+
+  .source { font-size: 10pt; color: #1a1a1a; font-style: italic; }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1E2A4A; font-size: 12.5pt; margin-bottom: 4pt; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+
+  ol.steps { padding-left: 0; list-style: none; counter-reset: step; }
+  ol.steps li { counter-increment: step; position: relative; padding-left: 40pt; margin-bottom: 16pt; }
+  ol.steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0;
+    width: 28pt; height: 28pt; border-radius: 50%;
+    background: #1E2A4A; color: #C98A2E; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps li strong { color: #1E2A4A; }
+
+  .subject-heading {
+    background: #1E2A4A; color: #fff; padding: 8pt 14pt; border-radius: 8pt;
+    font-size: 13pt; font-weight: 800; margin: 26pt 0 12pt;
+  }
+
+  .disclaimer {
+    margin-top: 24pt; padding: 16pt; background: #f8f6f2;
+    border-radius: 10pt; font-size: 11pt; color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Sortir de la procrastination : retrouver sa motivation et reprendre le contrôle de son temps</h1>
+  <p class="tagline">Comprendre ton fonctionnement, avancer sans culpabiliser, et reprendre la main sur ton temps</p>
+  <p class="meta">Les vraies causes de la procrastination expliquées simplement, des méthodes concrètes<br/>pour reprendre le contrôle de ton temps, et un plan progressif pour retrouver ta motivation<br/>durablement — avec le Pack Motivation bonus : 30 prompts par usage + template Canva de planning hebdomadaire</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction — la procrastination n'est pas un défaut de caractère<span>Le mécanisme réel, le cercle vicieux, ce que ce guide va changer</span></li>
+    <li>Partie 1 — Comprendre pourquoi on procrastine<span>Les vraies causes, le rôle du cerveau, ton profil de procrastinateur</span></li>
+    <li>Partie 2 — Reprendre le contrôle de son temps<span>Pomodoro, règle des 2 minutes, découpage des tâches, environnement</span></li>
+    <li>Partie 3 — Retrouver sa motivation durablement<span>Objectifs, systèmes et habitudes, gérer les rechutes</span></li>
+    <li>Partie 4 — Tenir dans la durée<span>Plan sur 21 jours, checklist, erreurs à éviter</span></li>
+    <li id="toc-bonus-item">Partie 5 — Bonus : le Pack Motivation<span>30 prompts par usage + le template Canva de planning hebdomadaire</span></li>
+    <li>Lexique</li>
+    <li>Questions fréquentes</li>
+    <li>Avertissement</li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction — la procrastination n'est pas un défaut de caractère</h2>
+  <p class="lede">En sortant de cette introduction, tu sauras pourquoi tu procrastines vraiment, comment fonctionne le cercle culpabilité / évitement, et ce que ce guide va changer concrètement pour toi.</p>
+
+  <h3>Pourquoi la procrastination n'est pas de la paresse</h3>
+  <p>Procrastiner, ce n'est pas ne rien faire par manque de volonté. C'est éviter une émotion désagréable liée à une tâche précise — pas la tâche elle-même.</p>
+
+  <p>Peur de mal faire, tâche floue, sentiment d'être dépassé·e : le cerveau associe la tâche à un inconfort. Il cherche alors un soulagement immédiat, souvent en faisant autre chose.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Tu n'es pas paresseux·se. Tu évites une émotion, pas un devoir. Comprendre cette nuance change déjà la façon dont tu peux agir dessus.</p>
+  </div>
+
+  <h3>Le cercle vicieux culpabilité / évitement / culpabilité renforcée</h3>
+  <p>Ce cercle se répète toujours de la même façon, et c'est ce qui le rend si épuisant :</p>
+
+  <ol class="steps">
+    <li><strong>Une tâche génère de l'inconfort.</strong><br/>Peur de l'échec, tâche floue, ou simplement trop grosse pour être abordée d'un bloc.</li>
+    <li><strong>Tu l'évites, et tu ressens un soulagement immédiat.</strong><br/>Ce soulagement est réel et rapide — c'est justement ce qui rend l'évitement si tentant.</li>
+    <li><strong>La culpabilité arrive ensuite.</strong><br/>"J'aurais dû m'y mettre", "je suis nul·le pour ça" : le discours intérieur devient sévère.</li>
+    <li><strong>Cette culpabilité rend la tâche encore plus inconfortable à aborder.</strong><br/>Et le cycle recommence, un peu plus lourd à chaque tour.</li>
+  </ol>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La culpabilité ne t'a jamais aidé·e à t'y mettre plus vite. Elle alourdit simplement la tâche suivante. Sortir de ce cercle commence par arrêter de l'alimenter.</p>
+  </div>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>Ce guide avance en quatre étapes, dans un ordre qui s'enchaîne naturellement :</p>
+  <ul>
+    <li><strong>Comprendre</strong> — pourquoi tu procrastines vraiment, sans jugement ni étiquette ;</li>
+    <li><strong>Reprendre le contrôle de ton temps</strong> — des méthodes concrètes, pas un planning parfait intenable ;</li>
+    <li><strong>Retrouver ta motivation durablement</strong> — construire des systèmes plutôt que d'attendre un déclic ;</li>
+    <li><strong>Tenir dans la durée</strong> — un plan progressif sur 21 jours, sans pression inutile.</li>
+  </ul>
+
+  <p>Le Pack Motivation en bonus (partie 5) te donne 30 prompts prêts à l'emploi pour avancer avec l'aide d'une IA, et un guide pas à pas pour recréer un planning hebdomadaire anti-procrastination dans Canva.</p>
+
+  <h3>Prérequis</h3>
+  <p>Aucune compétence particulière n'est nécessaire pour suivre ce guide. Pour le Pack Motivation bonus, tu auras besoin d'un compte gratuit sur ChatGPT ou Claude pour utiliser les prompts, et d'un compte gratuit Canva pour le template.</p>
+
+  <h3>Pour qui est ce guide, concrètement</h3>
+  <table>
+    <tr><th>Situation</th><th>Ce qui te parlera particulièrement</th></tr>
+    <tr><td>Tu repousses une tâche précise depuis des semaines</td><td>La partie 1, pour comprendre ce qui bloque vraiment</td></tr>
+    <tr><td>Tes journées partent dans tous les sens</td><td>La partie 2, avec des méthodes concrètes et réalistes</td></tr>
+    <tr><td>Tu démarres bien puis abandonnes après quelques jours</td><td>La partie 3, pour construire une motivation qui tient dans la durée</td></tr>
+  </table>
+
+  <h3>Comment utiliser ce guide selon le temps dont tu disposes</h3>
+  <table>
+    <tr><th>Temps disponible</th><th>Ce que tu peux faire</th></tr>
+    <tr><td>10 minutes</td><td>Lire l'introduction et identifier ton profil de procrastinateur (chapitre 2.7)</td></tr>
+    <tr><td>Une heure</td><td>Lire la partie 1 en entier pour comprendre ton propre mécanisme</td></tr>
+    <tr><td>Une semaine</td><td>Lire l'ensemble du guide et découper ta tâche la plus bloquante (chapitre 3.3)</td></tr>
+    <tr><td>Trois semaines</td><td>Suivre le plan progressif complet de la partie 4</td></tr>
+  </table>
+
+  <h3>Ce que ce guide ne couvre pas</h3>
+  <p>Pour être honnête sur son périmètre, ce guide ne traite pas :</p>
+  <ul>
+    <li>Le diagnostic ou le traitement de troubles de l'attention, d'anxiété ou de dépression ;</li>
+    <li>L'accompagnement d'un épuisement professionnel avancé (burnout) ;</li>
+    <li>Les situations où la procrastination s'accompagne d'une souffrance psychologique importante.</li>
+  </ul>
+
+  <div class="box box-note">
+    <span class="box-title">🧭 Ce que ce guide n'est pas</span>
+    <p>Ce guide est informatif et pratique : il t'aide à comprendre ton fonctionnement et à agir concrètement sur ton quotidien. Il ne constitue ni un diagnostic ni un accompagnement thérapeutique.</p>
+    <p>Si ta procrastination s'accompagne d'un épuisement marqué, d'une tristesse durable ou d'une souffrance qui dépasse la simple gêne organisationnelle, un professionnel de santé (médecin, psychologue) est le bon interlocuteur. Ce guide complète cet accompagnement, il ne s'y substitue pas.</p>
+  </div>
+
+  <h3>Ton premier exercice</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 À faire maintenant, en 2 minutes</span>
+    <p>Note la dernière tâche que tu as repoussée. Puis note, en une phrase, l'émotion que tu ressens quand tu y penses (peur de mal faire, ennui, sentiment d'être dépassé·e, autre chose).</p>
+    <p>Ne cherche pas encore à la résoudre. Le simple fait de nommer cette émotion est la première étape — tu la retrouveras au chapitre 2.1.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Comprendre pourquoi on procrastine</h2>
+  <p class="lede">En sortant de cette partie, tu sauras identifier les vraies causes de ta procrastination, comprendre le rôle de ton cerveau dans ce mécanisme, et reconnaître ton propre profil de procrastinateur.</p>
+
+  <h3>2.1 La peur de l'échec : le mécanisme caché derrière l'évitement</h3>
+  <p>Beaucoup de procrastination démarre par une peur simple : et si je m'y mettais et que ce n'était pas assez bien ?</p>
+
+  <p>Tant que la tâche n'est pas commencée, cette peur reste hypothétique. La repousser permet, sans le vouloir, de repousser aussi le moment d'être jugé·e — par les autres ou par soi-même.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Remplace "je dois réussir cette tâche" par "je dois juste commencer cette tâche". Le premier jet n'a pas besoin d'être bon, il a juste besoin d'exister.</p>
+  </div>
+
+  <h3>2.2 Le perfectionnisme : quand "bien faire" devient un piège</h3>
+  <p>Le perfectionnisme ne pousse pas à mieux faire, il pousse souvent à ne pas commencer du tout. Si le résultat doit être parfait, mieux vaut, inconsciemment, ne pas s'y risquer.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un travail imparfait et terminé fait toujours plus avancer qu'un travail parfait resté dans ta tête. "Fait" vaut mieux que "parfait" (voir lexique).</p>
+  </div>
+
+  <h3>2.3 Tâches floues ou trop grosses : le cerveau fuit ce qu'il ne sait pas découper</h3>
+  <p>"Faire le dossier", "s'occuper de la maison", "avancer sur le projet" : ce sont des intentions, pas des tâches. Le cerveau ne sait pas par où commencer, alors il ne commence pas.</p>
+
+  <p>Une tâche vague demande un effort de clarification avant même de pouvoir démarrer. Cet effort supplémentaire suffit souvent à décourager.</p>
+
+  <h3>2.4 Le rôle du cerveau : gratification immédiate contre récompense lointaine</h3>
+  <p>Face à un choix entre un petit plaisir immédiat (vérifier son téléphone) et une récompense lointaine (finir un projet dans trois semaines), le cerveau favorise presque toujours l'immédiat.</p>
+
+  <p>Ce n'est pas une faiblesse personnelle : c'est un biais partagé par tout le monde, plus ou moins marqué selon les personnes et les contextes.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ton cerveau n'est pas défaillant, il suit une logique ancienne : privilégier ce qui est certain et proche plutôt que ce qui est incertain et lointain.</p>
+  </div>
+
+  <h3>2.5 Le "moi futur" : pourquoi on lui fait des promesses qu'on ne tient pas</h3>
+  <p>"Demain je m'y mets" fonctionne rarement, parce que le "moi de demain" fera face exactement au même inconfort que le "moi d'aujourd'hui".</p>
+
+  <p>Reporter une tâche ne change pas les conditions qui la rendent difficile à démarrer — cela ne fait que décaler le problème.</p>
+
+  <h3>2.6 Procrastination active et procrastination passive</h3>
+  <p>Certaines personnes procrastinent en ne faisant rien. D'autres procrastinent en s'occupant beaucoup — ranger, répondre à des mails secondaires, planifier sans jamais exécuter.</p>
+
+  <p>Cette seconde forme est plus difficile à repérer, car elle donne l'impression d'être productif·ve alors qu'elle évite, elle aussi, la tâche qui compte vraiment.</p>
+
+  <h3>2.7 Les profils de procrastinateurs : plusieurs mécanismes, pas une seule cause</h3>
+  <p>Il n'existe pas un seul type de procrastinateur. Reconnaître ton profil dominant t'aide à cibler les bonnes méthodes plutôt que d'en essayer au hasard.</p>
+
+  <table>
+    <tr><th>Profil</th><th>Ce qui le déclenche</th><th>Piste rapide</th></tr>
+    <tr><td>Le perfectionniste</td><td>Peur que le résultat ne soit pas assez bon</td><td>Viser un premier jet volontairement imparfait (chapitre 2.2)</td></tr>
+    <tr><td>L'anxieux / évitant</td><td>Peur de l'échec ou du jugement</td><td>Découper la tâche pour réduire l'enjeu perçu (chapitre 3.3)</td></tr>
+    <tr><td>L'indécis</td><td>Trop d'options, peur de faire le mauvais choix</td><td>Fixer une règle simple de décision (chapitre 4.2)</td></tr>
+    <tr><td>Le rebelle</td><td>Sentiment de ne pas choisir la tâche lui-même</td><td>Reformuler la tâche comme un choix personnel</td></tr>
+    <tr><td>Le surchargé</td><td>Trop de tâches en même temps, charge mentale élevée</td><td>Prioriser une seule tâche par jour (chapitre 3.6)</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Tu peux reconnaître plusieurs profils à la fois, et ce profil peut varier selon les tâches. Ce n'est pas une étiquette figée, juste un repère utile.</p>
+  </div>
+
+  <h3>2.8 Identifier ton propre profil</h3>
+  <p>Pense à une tâche que tu repousses actuellement, puis pose-toi ces questions simples pour reconnaître ton profil dominant sur cette tâche précise :</p>
+
+  <ul class="checklist">
+    <li>J'ai peur que le résultat ne soit pas à la hauteur → profil perfectionniste</li>
+    <li>Je redoute une réaction négative si je m'y mets → profil anxieux</li>
+    <li>Je ne sais pas par quel bout la prendre → profil indécis</li>
+    <li>Je n'ai pas choisi cette tâche et ça me pèse → profil rebelle</li>
+    <li>J'ai trop de choses en tête pour m'y mettre → profil surchargé</li>
+  </ul>
+
+  <h3>2.9 Démystifier les idées reçues sur la procrastination</h3>
+  <table>
+    <tr><th>Idée reçue</th><th>Ce qu'on peut dire plus justement</th></tr>
+    <tr><td>"Il suffit de se discipliner"</td><td>La discipline seule s'épuise vite ; des méthodes concrètes tiennent mieux dans la durée (partie 2)</td></tr>
+    <tr><td>"Les gens qui procrastinent sont paresseux"</td><td>La procrastination touche aussi des personnes très investies, bloquées par la peur ou le flou (chapitre 2.1 à 2.3)</td></tr>
+    <tr><td>"Il faut attendre d'être motivé pour commencer"</td><td>La motivation suit souvent l'action, elle ne la précède pas (chapitre 4.1)</td></tr>
+    <tr><td>"Une rechute veut dire que rien ne fonctionne"</td><td>Les rechutes sont normales et n'annulent pas les progrès faits avant (chapitre 4.7)</td></tr>
+  </table>
+
+  <h3>2.10 Cas particulier — quand la procrastination cache autre chose</h3>
+  <p>Parfois, la procrastination n'est qu'un symptôme visible d'une fatigue plus profonde : surcharge chronique, épuisement professionnel, ou un fonctionnement attentionnel différent (TDAH).</p>
+
+  <div class="box box-note">
+    <span class="box-title">🧭 Précision</span>
+    <p>Si repousser les tâches s'accompagne d'une fatigue qui ne passe pas, de difficultés de concentration marquées depuis longtemps, ou d'une souffrance générale, ce guide reste utile pour les méthodes pratiques, mais un avis professionnel est particulièrement pertinent dans ton cas.</p>
+  </div>
+
+  <h3>2.11 Le cycle dopamine, un peu plus en détail</h3>
+  <p>La dopamine n'est pas seulement une "hormone du plaisir" : c'est surtout un signal d'anticipation. Elle s'active avant la récompense, pas seulement pendant.</p>
+
+  <table>
+    <tr><th>Situation</th><th>Ce qui se passe dans le cerveau</th><th>Conséquence concrète</th></tr>
+    <tr><td>Notification de téléphone</td><td>Pic de dopamine immédiat et prévisible</td><td>Le cerveau la préfère à une tâche dont la récompense est incertaine et lointaine</td></tr>
+    <tr><td>Tâche floue sans étape claire</td><td>Aucun signal d'anticipation ne se déclenche</td><td>Rien ne "donne envie" de commencer, même si la tâche est importante</td></tr>
+    <tr><td>Étape minuscule et claire</td><td>Un petit pic d'anticipation dès qu'elle est visible</td><td>Le démarrage devient beaucoup plus facile (voir chapitre 3.3)</td></tr>
+  </table>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Rendre une tâche plus concrète ne change pas seulement ton organisation : ça change aussi le signal que ton cerveau reçoit avant de commencer.</p>
+  </div>
+
+  <h3>2.12 Procrastination et charge mentale invisible</h3>
+  <p>Certaines tâches procrastinées ne sont ni urgentes ni visibles par les autres : démarches administratives, tri de documents, mails en retard. Elles pèsent pourtant sur l'énergie mentale disponible.</p>
+
+  <table>
+    <tr><th>Type de tâche invisible</th><th>Pourquoi elle est facile à repousser</th></tr>
+    <tr><td>Démarches administratives</td><td>Aucune échéance immédiate visible, effet différé dans le temps</td></tr>
+    <tr><td>Tri de mails ou de documents</td><td>Tâche sans fin claire, jamais vraiment "terminée"</td></tr>
+    <tr><td>Rendez-vous à prendre (médical, technique)</td><td>Nécessite une action de démarrage (appeler, écrire) qui semble disproportionnée par rapport à la tâche</td></tr>
+  </table>
+
+  <p>Ces tâches gagnent souvent à être traitées avec la règle des 2 minutes (chapitre 3.2) plutôt qu'avec un système complexe.</p>
+
+  <h3>2.13 Cas particulier — un changement de vie récent</h3>
+  <p>Déménagement, nouveau poste, rupture, arrivée d'un enfant : après un grand changement, il est normal que la procrastination augmente temporairement, le temps que de nouveaux repères se mettent en place.</p>
+
+  <div class="box box-note">
+    <span class="box-title">🧭 Précision</span>
+    <p>Si ta procrastination a nettement augmenté après un événement de vie récent, ce n'est pas un recul personnel : ton énergie disponible est simplement mobilisée ailleurs pour l'instant. Les méthodes de ce guide restent utiles, avec un rythme adapté (chapitre 5.4).</p>
+  </div>
+
+  <h3>2.14 Cas particulier — la comparaison sociale</h3>
+  <p>Voir d'autres personnes sembler "tout gérer" (réseaux sociaux, collègues, entourage) peut renforcer le sentiment d'être en retard, ce qui alimente à son tour l'évitement.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Ce que tu vois des autres est presque toujours une version filtrée de leur organisation réelle. Compare ta semaine à ta propre semaine précédente, pas à l'image que d'autres donnent d'eux-mêmes.</p>
+  </div>
+
+  <h3>2.15 Procrastination et perte de repères temporels</h3>
+  <p>Quand on évite une tâche, le temps qui passe devient flou : une "petite pause" de dix minutes peut facilement en devenir quarante sans qu'on s'en rende compte.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Un minuteur visible pendant tes pauses (chapitre 3.1) t'aide à garder ce repère temporel, sans avoir à compter uniquement sur ta perception du temps qui passe.</p>
+  </div>
+
+  <h3>2.16 Le rôle de l'entourage proche</h3>
+  <p>Si les personnes qui t'entourent procrastinent beaucoup elles aussi, ce fonctionnement peut sembler "normal" et passer inaperçu plus longtemps. Ce n'est pas un problème en soi, mais ça peut retarder le moment où tu décides d'agir.</p>
+
+  <h3>2.17 Procrastination et technologie : notifications et boucles infinies</h3>
+  <p>Les applications à défilement infini (réseaux sociaux, vidéos courtes) sont conçues pour retenir l'attention le plus longtemps possible. Face à une tâche floue, elles offrent une alternative immédiate et sans effort.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce n'est pas un manque de volonté qui te fait ouvrir ton téléphone : c'est un design pensé pour ça. Réduire l'accessibilité de ces applications (chapitre 3.7) compte souvent plus que la volonté elle-même.</p>
+  </div>
+
+  <h3>2.18 Le coût caché du multitâche</h3>
+  <p>Passer sans arrêt d'une tâche à l'autre donne une impression de productivité, mais chaque bascule a un coût réel de concentration — le temps pour "revenir" pleinement dans une tâche après une interruption n'est pas nul.</p>
+
+  <p>Ce coût invisible explique en partie pourquoi une journée qui semble chargée peut laisser l'impression de n'avoir rien avancé de concret.</p>
+
+  <h3>2.19 Le perfectionnisme numérique : chercher le bon outil avant de commencer</h3>
+  <p>Passer du temps à comparer applications, méthodes ou plannings peut donner l'impression d'avancer, alors que c'est parfois une nouvelle façon d'éviter la tâche elle-même.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Un carnet et un stylo suffisent pour commencer. Améliore ton système une fois que tu as des semaines de pratique réelle derrière toi, pas avant.</p>
+  </div>
+
+  <h3>2.20 Étude de cas complète — reconnaître son propre mécanisme</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Karim, 34 ans</span>
+    <p><strong>Le constat</strong> — Karim repousse depuis six semaines un rapport professionnel important. Il se dit "flemmard" et culpabilise chaque soir en y pensant.</p>
+    <p><strong>Ce qu'il découvre</strong> — En lisant les chapitres 2.1 et 2.7, il reconnaît un profil perfectionniste : il redoute que le rapport ne soit pas assez complet, alors il ne l'ouvre même pas.</p>
+    <p><strong>Ce que ça change</strong> — Nommer précisément ce mécanisme lui permet d'aborder le chapitre 3.3 avec un objectif clair : découper le rapport en étapes assez petites pour ne plus avoir peur de s'y mettre.</p>
+  </div>
+
+  <h3>2.21 Ton exercice de cette partie</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Ton diagnostic express</span>
+    <p>Reprends la tâche que tu as notée en introduction. À partir du tableau du chapitre 2.7, identifie ton ou tes profils dominants sur cette tâche précise.</p>
+    <p>Garde cette réponse sous les yeux : la partie 2 te donnera des méthodes ciblées selon ce profil.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Reprendre le contrôle de son temps</h2>
+  <p class="lede">En sortant de cette partie, tu auras des méthodes concrètes pour démarrer une tâche, organiser ta semaine sans planning parfait, et limiter les distractions sans compter uniquement sur ta volonté.</p>
+
+  <h3>3.1 La technique Pomodoro, expliquée simplement</h3>
+  <p>Le principe : travailler sur une seule tâche pendant une durée courte et fixe, puis faire une vraie pause. La contrainte de temps réduit la pression et rend la tâche moins intimidante.</p>
+
+  <ol class="steps">
+    <li><strong>Choisis une seule tâche.</strong><br/>Pas une liste, une seule action précise que tu vas faire maintenant.</li>
+    <li><strong>Lance un minuteur sur 25 minutes.</strong><br/>Pendant ce temps, une seule règle : pas de changement de tâche.</li>
+    <li><strong>Travaille jusqu'à la sonnerie, même de façon imparfaite.</strong><br/>L'objectif est d'avancer, pas de finir.</li>
+    <li><strong>Fais une vraie pause de 5 minutes.</strong><br/>Lève-toi, éloigne-toi de l'écran, laisse ton attention se relâcher.</li>
+    <li><strong>Recommence, et prends une pause plus longue toutes les 4 sessions.</strong><br/>15 à 20 minutes après le quatrième cycle.</li>
+  </ol>
+
+  <table>
+    <tr><th>Variante</th><th>Quand l'utiliser</th></tr>
+    <tr><td>Pomodoro classique (25/5)</td><td>Tâches qui demandent une attention soutenue</td></tr>
+    <tr><td>Pomodoro court (15/5)</td><td>Tâche que tu redoutes particulièrement — pour abaisser la barrière de départ</td></tr>
+    <tr><td>Pomodoro long (50/10)</td><td>Tâches où tu as déjà l'élan, pour ne pas casser ta concentration</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Sur une tâche que tu redoutes vraiment, commence par un seul Pomodoro de 15 minutes. Tu peux presque toujours tenir 15 minutes, même sur ce que tu repousses depuis des semaines.</p>
+  </div>
+
+  <h3>3.2 La règle des 2 minutes</h3>
+  <p>Si une action prend moins de 2 minutes, fais-la immédiatement plutôt que de la noter pour plus tard. La noter prend souvent plus de temps que de la faire.</p>
+
+  <p>Cette règle vide en continu les petites tâches qui, accumulées, créent une charge mentale disproportionnée par rapport à leur taille réelle.</p>
+
+  <h3>3.3 Découper une grosse tâche en étapes minuscules</h3>
+  <p>Une tâche floue ou énorme bloque. Une tâche découpée en étapes de 15 à 20 minutes chacune se démarre presque toujours plus facilement.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📝 Avant / Après</span>
+    <p><strong>Avant (bloquant)</strong> — "Préparer le dossier client."</p>
+    <p><strong>Après (découpé)</strong> — 1. Lister les documents à réunir (10 min). 2. Récupérer les 3 premiers documents (15 min). 3. Rédiger l'introduction du dossier (20 min). 4. Relire et compléter (20 min).</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Si une étape te semble encore intimidante, elle est probablement encore trop grosse. Redécoupe-la, sans te juger : ce n'est pas un échec, c'est un ajustement normal.</p>
+  </div>
+
+  <h3>3.4 Combien de temps prévoir par étape</h3>
+  <p>Une bonne étape tient en 10 à 20 minutes. Assez courte pour ne pas faire peur, assez longue pour représenter un vrai progrès.</p>
+
+  <h3>3.5 Organiser sa semaine de façon réaliste</h3>
+  <p>Un planning parfait, rempli à 100 %, échoue presque toujours dès le premier imprévu. Un planning réaliste laisse volontairement de la marge.</p>
+
+  <table>
+    <tr><th>Planning "idéal"</th><th>Planning réaliste</th></tr>
+    <tr><td>Chaque créneau est occupé</td><td>30 à 40 % du temps reste volontairement libre</td></tr>
+    <tr><td>Une seule version possible de la journée</td><td>Une tâche prioritaire par jour, le reste s'ajuste</td></tr>
+    <tr><td>Un imprévu fait tout dérailler</td><td>Un imprévu déplace une tâche, sans tout annuler</td></tr>
+  </table>
+
+  <h3>3.6 Prioriser sans tout faire</h3>
+  <p>Chaque jour, choisis une seule tâche prioritaire — celle qui, si elle est faite, rend la journée réussie même si rien d'autre n'avance.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Le template Canva du chapitre 6.2 reprend exactement ce principe : une tâche prioritaire par jour, plutôt qu'une liste interminable.</p>
+  </div>
+
+  <h3>3.7 Créer un environnement qui limite les distractions</h3>
+  <p>Compter uniquement sur la volonté pour résister aux distractions est épuisant. Il est plus efficace de rendre la distraction moins accessible.</p>
+
+  <ul>
+    <li>Mets ton téléphone dans une autre pièce le temps d'un Pomodoro ;</li>
+    <li>Ferme les onglets et applications qui n'ont rien à voir avec la tâche en cours ;</li>
+    <li>Préviens ton entourage d'un créneau "ne pas déranger" quand c'est possible ;</li>
+    <li>Prépare ton espace de travail la veille pour réduire les frictions de démarrage.</li>
+  </ul>
+
+  <h3>3.8 Le rôle des rituels de démarrage</h3>
+  <p>Un petit rituel avant de commencer (préparer sa boisson, ranger son bureau, ouvrir uniquement le bon document) signale à ton cerveau que le moment de travailler commence.</p>
+
+  <h3>3.9 Cas particulier — travail à domicile et horaires irréguliers</h3>
+  <p>Sans les repères d'un bureau partagé, les frontières entre les temps de travail et de repos s'estompent facilement. Fixer des heures de début et de fin, même approximatives, aide à recréer ces repères.</p>
+
+  <h3>3.10 Cas particulier — plusieurs projets en parallèle</h3>
+  <p>Quand plusieurs projets avancent en même temps, réserve un créneau distinct pour chacun plutôt que de basculer sans arrêt de l'un à l'autre : chaque bascule a un coût de concentration réel.</p>
+
+  <h3>3.11 La matrice urgent / important, simplifiée</h3>
+  <p>Beaucoup de procrastination vient d'un mélange entre l'urgent et l'important. Ces deux critères ne se recoupent pas toujours, et les confondre mène souvent à traiter en premier ce qui crie le plus fort, pas ce qui compte le plus.</p>
+
+  <table>
+    <tr><th>Type de tâche</th><th>Exemple</th><th>Que faire</th></tr>
+    <tr><td>Urgent et important</td><td>Échéance imminente sur un dossier clé</td><td>À traiter en priorité absolue, en tâche prioritaire du jour</td></tr>
+    <tr><td>Important mais pas urgent</td><td>Un projet personnel sans échéance fixe</td><td>À planifier volontairement, sinon il ne se fait jamais (chapitre 3.5)</td></tr>
+    <tr><td>Urgent mais peu important</td><td>Une sollicitation ponctuelle d'un collègue</td><td>À déléguer ou traiter rapidement, sans lui laisser prendre toute la journée</td></tr>
+    <tr><td>Ni urgent ni important</td><td>Réorganiser sa boîte mail pour la troisième fois</td><td>À repousser sciemment, sans culpabilité</td></tr>
+  </table>
+
+  <h3>3.12 Le time-blocking : réserver des créneaux dédiés</h3>
+  <p>Plutôt qu'une liste de tâches sans horaire, attribue à chaque tâche importante un créneau précis dans ton agenda. Un créneau réservé se protège plus facilement qu'une intention vague.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Bloque aussi des créneaux courts pour les tâches invisibles (chapitre 2.12) — sans créneau dédié, elles finissent presque toujours par disparaître de la semaine.</p>
+  </div>
+
+  <h3>3.13 Tâches récurrentes et tâches ponctuelles</h3>
+  <table>
+    <tr><th>Type</th><th>Bonne pratique</th></tr>
+    <tr><td>Tâche récurrente (facturation, entretien, suivi)</td><td>Lui donner un créneau fixe chaque semaine, pour qu'elle ne dépende plus d'y penser</td></tr>
+    <tr><td>Tâche ponctuelle (projet, démarche unique)</td><td>La découper en étapes datées plutôt que de la laisser "en attente" indéfiniment</td></tr>
+  </table>
+
+  <h3>3.14 Utiliser des rappels visuels sans se noyer sous les notifications</h3>
+  <p>Un post-it, une liste affichée ou un planning visible (chapitre 6.2) rappellent une tâche sans interrompre ta concentration, contrairement à une notification sonore qui te sort d'un Pomodoro en cours.</p>
+
+  <h3>3.15 Cas particulier — travailler avec des interruptions fréquentes</h3>
+  <p>Open space, enfants à la maison, sollicitations constantes : dans ces contextes, viser des Pomodoro courts (15 minutes) et profiter des micro-fenêtres disponibles est plus réaliste qu'espérer de longues plages ininterrompues.</p>
+
+  <h3>3.16 Cas particulier — les tâches qu'on ne peut pas découper facilement</h3>
+  <p>Un appel téléphonique, un rendez-vous à prendre, une démarche administrative en une seule fois : ces tâches se découpent mal, mais on peut découper leur préparation (rassembler les informations, écrire ce qu'on veut dire avant d'appeler).</p>
+
+  <h3>3.17 Le rôle des transitions entre tâches</h3>
+  <p>Enchaîner deux tâches très différentes sans transition laisse souvent des résidus d'attention de la première tâche, qui nuisent au démarrage de la seconde. Une pause courte de 2 à 3 minutes entre deux tâches aide à "changer de casquette" plus proprement.</p>
+
+  <h3>3.18 Automatiser ce qui peut l'être</h3>
+  <p>Réponses types pour les mails récurrents, checklists réutilisables, modèles de documents : chaque tâche automatisée une fois libère de l'énergie pour les tâches qui demandent réellement de la réflexion.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Dès que tu refais une action pour la troisième fois de la même façon, demande-toi si elle peut devenir un modèle réutilisable plutôt qu'être refaite de zéro à chaque fois.</p>
+  </div>
+
+  <h3>3.19 Dire non ou reporter une sollicitation sans culpabiliser</h3>
+  <p>Accepter une sollicitation par réflexe, même mineure, grignote le temps réservé à ta tâche prioritaire. "Je regarde ça plus tard dans la semaine" est une réponse légitime, pas un manque de service rendu.</p>
+
+  <h3>3.20 Cas particulier — semaines irrégulières</h3>
+  <p>Freelance, horaires variables, semaines jamais identiques : dans ce cas, planifie par blocs de disponibilité réelle plutôt que par jours fixes, et réévalue ta tâche prioritaire à chaque début de semaine plutôt qu'un mois à l'avance.</p>
+
+  <h3>3.22 Le rôle du sommeil et de l'énergie disponible</h3>
+  <p>Une nuit courte réduit fortement la capacité à démarrer une tâche difficile, bien avant de réduire la capacité à la terminer une fois lancée. Protéger un minimum de sommeil est souvent plus rentable qu'une méthode d'organisation supplémentaire.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Les jours de fatigue marquée, réserve tes Pomodoro aux tâches les plus simples de ta liste, et repousse volontairement les tâches qui demandent le plus de décisions.</p>
+  </div>
+
+  <h3>3.23 Anticiper les tâches saisonnières ou récurrentes annuelles</h3>
+  <p>Déclaration annuelle, bilan de fin d'année, entretien de rentrée : ces tâches reviennent chaque année et sont pourtant souvent redécouvertes dans l'urgence. Les noter à l'avance dans ton planning, dès qu'elles sont identifiées, évite cet effet de surprise répété.</p>
+
+  <h3>3.24 Utiliser une liste unique plutôt que plusieurs listes éparpillées</h3>
+  <p>Une tâche notée dans trois endroits différents (carnet, application, mémoire) demande une énergie de suivi supplémentaire. Centraliser dans un seul endroit, même simple, réduit cette charge invisible.</p>
+
+  <table>
+    <tr><th>Situation</th><th>Bonne pratique</th></tr>
+    <tr><td>Plusieurs listes actuellement</td><td>Choisis-en une seule et migre les autres progressivement, sans tout refaire en un jour</td></tr>
+    <tr><td>Aucune liste actuellement</td><td>Commence simple : papier, notes du téléphone, ou le planning du chapitre 6.2</td></tr>
+  </table>
+
+  <h3>3.25 Cas particulier — travail en équipe et dépendances entre tâches</h3>
+  <p>Quand ta tâche dépend d'une autre personne, l'attente peut se transformer en prétexte pour tout repousser. Relance une seule fois avec une date précise, puis avance sur la partie qui ne dépend que de toi en parallèle.</p>
+
+  <h3>3.26 Revoir son organisation chaque semaine</h3>
+  <p>Un court rituel de 10 minutes en fin de semaine — ce qui a avancé, ce qui a coincé, la tâche prioritaire de la semaine suivante — évite de repartir de zéro chaque lundi.</p>
+
+  <h3>3.27 Le rôle des débuts de journée</h3>
+  <p>Commencer la journée par une tâche facile et rapide crée un premier élan qui facilite souvent le passage à des tâches plus exigeantes ensuite. À l'inverse, commencer par la tâche la plus lourde sans échauffement décourage parfois avant même de démarrer.</p>
+
+  <h3>3.28 Cas particulier — trop d'outils de productivité, pas assez d'action</h3>
+  <p>Accumuler les applications, plannings et méthodes peut devenir, sans qu'on s'en aperçoive, une nouvelle forme de procrastination (voir chapitre 2.19). Un seul outil bien utilisé vaut mieux que cinq outils partiellement suivis.</p>
+
+  <h3>3.29 Revenir à une méthode simple quand tout semble compliqué</h3>
+  <p>Si ton organisation actuelle te semble lourde à maintenir, ce n'est pas un échec : reviens temporairement à une seule méthode (par exemple uniquement le Pomodoro et une tâche prioritaire par jour) avant de rajouter le reste progressivement.</p>
+
+  <h3>3.30 Étude de cas complète — une semaine réorganisée</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Léa, 41 ans, indépendante</span>
+    <p><strong>Avant</strong> — Léa planifiait ses semaines à l'heure près, sans marge. Le moindre imprévu faisait s'effondrer tout le planning, ce qui la démotivait pour le reste de la semaine.</p>
+    <p><strong>Le changement</strong> — Elle garde désormais un créneau flou de 90 minutes chaque jour, sans tâche assignée à l'avance, pour absorber les imprévus, et bloque ses tâches invisibles (chapitre 2.12) dans un créneau fixe le vendredi.</p>
+    <p><strong>Le résultat</strong> — Un imprévu ne fait plus dérailler toute sa semaine. Elle tient son planning avec beaucoup moins d'effort qu'avant.</p>
+  </div>
+
+  <h3>3.31 Ton exercice de cette partie</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Découpe ta tâche bloquante</span>
+    <p>Reprends la tâche identifiée en partie 1. Découpe-la en 4 à 6 étapes de 10 à 20 minutes chacune, en t'inspirant de l'exemple du chapitre 3.3.</p>
+    <p>Choisis uniquement la première étape, et planifie-la dans les 24 prochaines heures.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Retrouver sa motivation durablement</h2>
+  <p class="lede">En sortant de cette partie, tu sauras fixer des objectifs qui tiennent dans le temps, construire des systèmes plutôt que d'attendre un pic de motivation, et gérer une rechute sans que ça remette tout en cause.</p>
+
+  <h3>4.1 Pourquoi la motivation seule ne suffit jamais</h3>
+  <p>On attend souvent d'être motivé·e pour commencer. Dans la pratique, c'est presque toujours l'inverse : la motivation arrive après avoir commencé, pas avant.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>N'attends pas d'être motivé·e pour t'y mettre. Mets-toi en mouvement sur une petite étape, et la motivation suivra le plus souvent d'elle-même.</p>
+  </div>
+
+  <h3>4.2 Fixer des objectifs spécifiques, réalistes et motivants</h3>
+  <p>Un objectif vague ne donne rien à viser concrètement. Un bon objectif répond à trois critères simples.</p>
+
+  <table>
+    <tr><th>Critère</th><th>Ce que ça veut dire</th><th>Exemple</th></tr>
+    <tr><td>Spécifique</td><td>Une action précise, pas une intention générale</td><td>"Écrire l'introduction du rapport" plutôt que "avancer sur le rapport"</td></tr>
+    <tr><td>Réaliste</td><td>Atteignable avec le temps et l'énergie réellement disponibles</td><td>20 minutes ce soir, pas 3 heures après une journée chargée</td></tr>
+    <tr><td>Motivant</td><td>Relié à une raison qui compte pour toi</td><td>"Pour ne plus y penser le week-end" plutôt qu'une obligation abstraite</td></tr>
+  </table>
+
+  <h3>4.3 Construire des systèmes plutôt que de compter sur la volonté</h3>
+  <p>Un objectif dit où aller. Un système dit ce que tu fais chaque jour pour y arriver, indépendamment de ton niveau de motivation du moment.</p>
+
+  <p>La volonté fluctue. Un système bien construit continue de fonctionner même les jours où la motivation est basse.</p>
+
+  <h3>4.4 La méthode des petites habitudes (habit stacking)</h3>
+  <p>Attache une nouvelle habitude à une habitude déjà existante : "après [habitude existante], je fais [nouvelle petite action]". Le repère existant sert de déclencheur automatique.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📝 Exemple</span>
+    <p>"Après mon café du matin, j'ouvre mon document et j'écris une seule phrase." La barrière de démarrage devient presque nulle, et une phrase en amène souvent une deuxième.</p>
+  </div>
+
+  <h3>4.5 Réduire la friction : rendre l'action plus facile que l'évitement</h3>
+  <p>Prépare ce dont tu as besoin la veille : document ouvert, matériel sorti, onglet prêt. Chaque étape enlevée au moment de démarrer augmente tes chances réelles de t'y mettre.</p>
+
+  <h3>4.6 Se récompenser sans saboter ses efforts</h3>
+  <p>Une petite récompense après une étape terminée renforce l'habitude. Choisis-la simple et proportionnée : une pause, une boisson, un moment de détente — pas de quoi annuler l'effort fourni.</p>
+
+  <h3>4.7 Pourquoi les rechutes sont normales, pas des échecs</h3>
+  <p>La procrastination n'avance pas en ligne droite. Il y aura des jours où tu ne suivras pas ton système, et ce n'est pas la preuve que "rien ne fonctionne".</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une rechute est un jour, pas une tendance. Ce qui compte, c'est ce que tu fais le jour suivant, pas le fait d'avoir raté un jour.</p>
+  </div>
+
+  <h3>4.8 Reprendre après une rechute sans tout remettre en cause</h3>
+  <p>Après un jour raté, reprends exactement là où tu en étais, sur la plus petite étape possible. Ne cherche pas à "rattraper" en faisant beaucoup plus d'un coup : c'est souvent ce qui mène à l'abandon complet.</p>
+
+  <h3>4.9 Cas particulier — motivation en berne sur un projet long terme</h3>
+  <p>Sur un projet de plusieurs mois, il est normal que la motivation initiale s'essouffle. Découper le projet en jalons courts et visibles aide à retrouver régulièrement un sentiment de progression.</p>
+
+  <h3>4.10 Cas particulier — motivation qui dépend fortement du regard des autres</h3>
+  <p>Si ta motivation baisse dès que personne ne regarde tes avancées, relier ta tâche à une raison personnelle (plutôt qu'à une validation extérieure) la rend plus stable dans la durée.</p>
+
+  <h3>4.11 Objectifs à court terme et objectifs à long terme : les articuler</h3>
+  <p>Un objectif lointain motive rarement au quotidien s'il reste isolé. Relie-le à un objectif court terme concret, atteignable cette semaine, qui avance visiblement vers le premier.</p>
+
+  <table>
+    <tr><th>Objectif long terme</th><th>Objectif court terme relié</th></tr>
+    <tr><td>Terminer un projet dans 3 mois</td><td>Avancer un jalon précis cette semaine</td></tr>
+    <tr><td>Améliorer son organisation générale</td><td>Tenir une seule méthode (ex. Pomodoro) pendant 7 jours</td></tr>
+  </table>
+
+  <h3>4.12 La règle des "2 minutes non négociables" par jour</h3>
+  <p>Sur un objectif durable, engage-toi sur un minimum ridiculement petit et non négociable — 2 minutes par jour — plutôt qu'un objectif ambitieux facilement abandonné dès un jour chargé.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>2 minutes tenues tous les jours construisent plus de régularité qu'une heure prévue trois fois par semaine et respectée une fois sur deux.</p>
+  </div>
+
+  <h3>4.13 Suivre sa progression sans tomber dans l'obsession du chiffre</h3>
+  <p>Suivre ses progrès aide à voir le chemin parcouru, mais transformer ce suivi en pression quotidienne (nombre de jours parfaits, séries à ne pas casser) peut recréer exactement la pression que ce guide cherche à réduire.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Si rater un jour de suivi te donne envie d'abandonner complètement, allège le suivi lui-même plutôt que d'abandonner l'habitude qu'il mesure.</p>
+  </div>
+
+  <h3>4.14 Cas particulier — la motivation qui s'effondre après un premier succès</h3>
+  <p>Il arrive qu'un bon résultat initial retire l'envie de continuer, une fois la pression retombée. Prévoir dès le départ un objectif suivant, même modeste, limite cet effet.</p>
+
+  <h3>4.15 Cas particulier — objectifs imposés versus objectifs personnels</h3>
+  <p>Un objectif fixé par quelqu'un d'autre (hiérarchie, obligation) motive rarement de la même façon qu'un objectif choisi. Relier cet objectif imposé à un bénéfice personnel concret (compétence acquise, tranquillité retrouvée) aide à le rendre plus soutenable.</p>
+
+  <h3>4.16 Le rôle de l'auto-compassion dans une motivation durable</h3>
+  <p>Se parler comme on parlerait à quelqu'un qu'on aime, plutôt qu'avec sévérité, n'est pas de l'indulgence excessive : c'est ce qui permet de reprendre plus vite après une baisse de motivation (voir lexique).</p>
+
+  <h3>4.17 Le rôle de l'identité : "quelqu'un qui fait" plutôt que "quelqu'un qui doit faire"</h3>
+  <p>"Je fais 10 minutes d'écriture chaque jour" ancre davantage une habitude que "je dois écrire plus". La première phrase parle de qui tu es en train de devenir, la seconde reste une contrainte extérieure.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Chaque petite action tenue renforce l'idée que tu es "quelqu'un qui avance sur ses projets" — cette image de toi-même devient, avec le temps, plus motivante que l'objectif final lui-même.</p>
+  </div>
+
+  <h3>4.18 Utiliser la visualisation du futur proche plutôt que lointain</h3>
+  <p>S'imaginer dans un mois précis, avec un résultat concret déjà obtenu, motive davantage qu'un objectif flou "un jour". Plus l'image est proche et détaillée, plus elle influence l'action présente.</p>
+
+  <h3>4.19 Motivation et environnement social : s'entourer de pairs</h3>
+  <p>Être entouré, même à distance, de personnes qui avancent sur des objectifs similaires (communauté, groupe, binôme) rend plus naturel de continuer, sans que ce soit une pression supplémentaire.</p>
+
+  <h3>4.20 Cas particulier — motivation en période de fatigue générale ou de stress élevé</h3>
+  <p>En période de stress élevé, la motivation baisse mécaniquement pour presque tout le monde. Réduire temporairement l'ambition du système (chapitre 4.12) plutôt que de l'abandonner permet de garder le fil sans s'épuiser davantage.</p>
+
+  <h3>4.21 Créer un rituel de clôture de journée</h3>
+  <p>Terminer sa journée par une note simple ("qu'est-ce qui a avancé aujourd'hui, même petit") aide à voir les progrès qui passent souvent inaperçus, et facilite le démarrage du lendemain.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Ce rituel peut tenir en une seule ligne, notée dans le champ "petite victoire du jour" du template Canva (chapitre 6.2).</p>
+  </div>
+
+  <h3>4.22 Utiliser un allié de responsabilisation</h3>
+  <p>Partager ton objectif avec une personne de confiance, et lui donner un point d'étape à une date précise, ajoute une motivation externe légère qui complète utilement ta motivation personnelle, sans s'y substituer.</p>
+
+  <h3>4.23 La motivation liée au sens : relier la tâche à une valeur personnelle</h3>
+  <p>Une tâche reliée explicitement à ce qui compte vraiment pour toi (ta tranquillité, tes proches, un projet qui te tient à cœur) résiste mieux aux baisses de motivation qu'une tâche vécue comme une simple obligation.</p>
+
+  <h3>4.24 Cas particulier — plusieurs objectifs personnels en compétition</h3>
+  <p>Quand plusieurs objectifs importants se disputent le même temps libre, choisis-en un seul comme prioritaire pour les prochaines semaines. Les autres attendent, sans disparaître, plutôt que d'avancer tous lentement en même temps.</p>
+
+  <h3>4.25 Le rôle du repos actif dans la régénération de la motivation</h3>
+  <p>Un vrai temps de repos — sans écran ni sollicitation — régénère davantage la motivation qu'un temps de repos passif passé à défiler des contenus. La fatigue mentale ne se résout pas toujours en faisant "moins", mais parfois en faisant "autrement".</p>
+
+  <h3>4.26 Motivation et perfectionnisme du système lui-même</h3>
+  <p>Vouloir un système parfaitement optimisé avant de s'y tenir est une autre forme de perfectionnisme (chapitre 2.2), appliquée cette fois à l'organisation plutôt qu'à la tâche. Un système imparfait mais utilisé bat toujours un système idéal jamais stabilisé.</p>
+
+  <h3>4.27 Bilan intermédiaire : ajuster son système sans le jeter</h3>
+  <p>Si ton système ne fonctionne plus aussi bien qu'au début, ajuste un seul élément à la fois (le déclencheur, la durée, la récompense) plutôt que d'en changer entièrement. La plupart des systèmes ont juste besoin d'un petit réglage, pas d'un redémarrage complet.</p>
+
+  <h3>4.28 Étude de cas complète — tenir un objectif sur plusieurs mois</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Sami, 29 ans</span>
+    <p><strong>Le point de départ</strong> — Sami se lance dans un projet personnel avec beaucoup d'enthousiasme, puis abandonne après trois semaines dès la première grosse baisse de motivation.</p>
+    <p><strong>Le changement</strong> — Il met en place un système simple : 15 minutes chaque matin, quel que soit son niveau de motivation, avec un jalon visible toutes les deux semaines et un minimum non négociable de 2 minutes les jours les plus chargés.</p>
+    <p><strong>Le résultat</strong> — Malgré plusieurs creux de motivation sur plusieurs mois, il continue d'avancer, parce que le système ne dépend pas de son envie du jour.</p>
+  </div>
+
+  <h3>4.29 Ton exercice de cette partie</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Construis ton premier système</span>
+    <p>Choisis une habitude que tu fais déjà tous les jours (café du matin, brossage de dents, trajet). Attache-lui une micro-action de 2 minutes liée à ta tâche prioritaire.</p>
+    <p>Teste ce système pendant 3 jours avant de juger s'il fonctionne pour toi.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Tenir dans la durée</h2>
+  <p class="lede">En sortant de cette partie, tu auras un plan progressif sur 21 jours, une checklist claire, et tu sauras repérer les erreurs les plus fréquentes à éviter.</p>
+
+  <h3>5.1 Plan progressif sur 21 jours</h3>
+
+  <h4>Semaine 1 — Comprendre et observer (jours 1 à 7)</h4>
+  <ul>
+    <li>Identifier ta tâche la plus bloquante et ton profil de procrastinateur (chapitre 2.8) ;</li>
+    <li>Découper cette tâche en étapes de 10 à 20 minutes (chapitre 3.3) ;</li>
+    <li>Tester un premier Pomodoro court sur la première étape (chapitre 3.1).</li>
+  </ul>
+
+  <h4>Semaine 2 — Mettre en place des méthodes concrètes (jours 8 à 14)</h4>
+  <ul>
+    <li>Organiser ta semaine avec 30 à 40 % de marge (chapitre 3.5) ;</li>
+    <li>Réduire une source de distraction dans ton environnement (chapitre 3.7) ;</li>
+    <li>Choisir une tâche prioritaire chaque jour, avec le template du chapitre 6.2.</li>
+  </ul>
+
+  <h4>Semaine 3 — Construire un système durable (jours 15 à 21)</h4>
+  <ul>
+    <li>Mettre en place ta première petite habitude (chapitre 4.4) ;</li>
+    <li>Garder uniquement les changements qui ont vraiment fait une différence pour toi ;</li>
+    <li>Faire le bilan de tes 21 jours, y compris les jours où ça n'a pas fonctionné.</li>
+  </ul>
+
+  <h3>5.2 Checklist récapitulative</h3>
+  <ul class="checklist">
+    <li>Je sais nommer la vraie cause derrière ma procrastination sur une tâche donnée.</li>
+    <li>Je découpe mes tâches floues ou trop grosses en étapes de 10 à 20 minutes.</li>
+    <li>J'ai testé au moins une session Pomodoro sur une tâche que je redoutais.</li>
+    <li>Mon planning laisse volontairement de la marge pour les imprévus.</li>
+    <li>J'ai réduit au moins une source de distraction facilement évitable.</li>
+    <li>J'ai mis en place au moins une petite habitude reliée à un déclencheur existant.</li>
+    <li>Je sais qu'une rechute est un jour, pas un échec global.</li>
+  </ul>
+
+  <h3>5.3 Erreurs à éviter</h3>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 1. Vouloir tout changer d'un coup</span>
+    <p>Changer son organisation, ses habitudes et son environnement en même temps épuise vite. Un changement à la fois, tenu dans la durée, vaut mieux qu'un bouleversement abandonné après une semaine.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 2. Chercher une solution miracle</span>
+    <p>Aucune méthode ne supprime la procrastination d'un coup. Ce sont des petits ajustements répétés qui font la différence, pas une astuce unique et définitive.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 3. Se comparer aux autres</span>
+    <p>Ton rythme n'est pas celui de quelqu'un d'autre. Comparer tes progrès à ceux d'une autre personne ajoute une pression inutile qui favorise, justement, la procrastination.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 4. Vouloir un système parfait dès le départ</span>
+    <p>Un système imparfait mais suivi bat toujours un système idéal jamais mis en place. Ajuste-le en marchant plutôt que d'attendre la version parfaite pour commencer.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 5. Abandonner après une seule rechute</span>
+    <p>Un jour raté ne annule pas les progrès précédents. Reprendre le jour suivant, sur la plus petite étape possible, suffit à relancer la dynamique (chapitre 4.8).</p>
+  </div>
+
+  <h3>5.4 Adapter le plan selon ton contexte</h3>
+  <table>
+    <tr><th>Contexte</th><th>Ajustement recommandé</th></tr>
+    <tr><td>Emploi du temps très chargé</td><td>Réduis chaque étape du plan de moitié plutôt que de sauter des semaines entières</td></tr>
+    <tr><td>Plusieurs tâches bloquantes en parallèle</td><td>Applique le plan à une seule tâche à la fois avant d'en ajouter une autre</td></tr>
+    <tr><td>Motivation très basse dès le départ</td><td>Commence uniquement par la semaine 1, sans te projeter sur les 21 jours</td></tr>
+  </table>
+
+  <h3>5.5 Cas particulier — une période particulièrement difficile</h3>
+  <p>Il est normal de traverser, y compris pendant ces 21 jours, une période plus difficile où presque rien n'avance. Cela ne signifie pas que les méthodes ne fonctionnent pas.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Si une période difficile se prolonge nettement, allège volontairement le plan plutôt que de l'abandonner complètement — une seule petite action par jour suffit pour garder le fil.</p>
+  </div>
+
+  <h3>5.6 Impliquer son entourage</h3>
+  <p>Dire simplement à ton entourage ce que tu essaies de changer peut t'apporter du soutien, et parfois un peu de bienveillance supplémentaire dans les moments plus difficiles.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Une phrase simple ("j'essaie de mieux m'organiser sur [tâche], ça peut prendre du temps") suffit généralement, sans avoir à te justifier davantage.</p>
+  </div>
+
+  <h3>5.7 Bilan : ce qu'on peut réellement attendre après 21 jours</h3>
+  <p>Sois réaliste sur ce que ce plan peut t'apporter : il ne transformera pas ta relation au temps du jour au lendemain. Ce qu'on observe le plus souvent, c'est une meilleure compréhension de ton propre mécanisme, quelques méthodes concrètes qui tiennent, et moins de culpabilité au quotidien.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>L'objectif de ce guide n'est pas de devenir quelqu'un d'autre, mais de reprendre progressivement la main sur ton temps, avec des méthodes qui te ressemblent.</p>
+  </div>
+
+  <h3>5.8 Cas particulier — reprendre après une longue pause</h3>
+  <p>Si tu interromps le plan plusieurs semaines, ne recommence pas depuis le jour 1 par principe. Reprends à la semaine qui correspond le mieux à ta situation actuelle — souvent la semaine 1, le temps de réobserver où tu en es.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Une longue pause n'efface pas ce que tu as compris de ton propre mécanisme en partie 1. Ce socle reste acquis, même si les habitudes concrètes sont à relancer.</p>
+  </div>
+
+  <h3>5.9 Aller plus loin après les 21 jours</h3>
+  <p>Une fois le plan terminé, garde uniquement les méthodes qui t'ont vraiment aidé·e, et laisse tomber celles qui ne te correspondaient pas — il n'y a pas d'obligation à toutes les utiliser en même temps indéfiniment.</p>
+
+  <p>Tu peux ensuite appliquer les mêmes principes à une nouvelle tâche bloquante, en reprenant directement à la partie 1 pour l'identifier, sans repasser par tout le guide.</p>
+
+  <h3>5.10 Créer un rituel de révision hebdomadaire</h3>
+  <p>Même après les 21 jours, garde un court moment chaque semaine pour regarder ce qui a fonctionné et ce qui a coincé. Ce rituel simple remplace avantageusement un système figé qui ne s'ajuste jamais à ta situation réelle.</p>
+
+  <table>
+    <tr><th>Question à te poser</th><th>Ce qu'elle révèle</th></tr>
+    <tr><td>Qu'est-ce qui a le mieux fonctionné cette semaine ?</td><td>Ce qu'il faut garder en priorité</td></tr>
+    <tr><td>Qu'est-ce qui a été systématiquement repoussé ?</td><td>Une tâche à redécouper ou un système à ajuster (partie 2 et 3)</td></tr>
+    <tr><td>Ai-je eu au moins une petite victoire chaque jour ?</td><td>Ton niveau réel de progression, au-delà de l'impression générale</td></tr>
+  </table>
+
+  <h3>5.11 Cas particulier — un objectif professionnel imposé pendant le plan</h3>
+  <p>Si un objectif non choisi s'ajoute pendant tes 21 jours (nouvelle mission, échéance imposée), traite-le avec les mêmes méthodes — découpage, tâche prioritaire du jour — plutôt que de mettre le plan en pause pour tout ce qui n'est pas cet objectif.</p>
+
+  <h3>5.12 Après plusieurs mois : et si la procrastination revient ?</h3>
+  <p>Il est normal que certains anciens réflexes reviennent après plusieurs mois, en particulier lors d'un changement de contexte. Ce retour n'efface pas ce que tu as appris : reprends simplement les méthodes qui t'avaient le mieux réussi, sans repartir de zéro ni te juger sévèrement.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce guide n'est pas une case à cocher une fois pour toutes. C'est une boîte à outils que tu peux rouvrir chaque fois qu'un nouveau blocage apparaît, sans culpabilité d'avoir à y revenir.</p>
+  </div>
+
+  <h3>5.13 Garder une trace de ce qui fonctionne pour toi</h3>
+  <p>Note, même brièvement, les méthodes qui t'ont le mieux réussi pendant ces 21 jours. Cette trace personnelle vaudra, la prochaine fois qu'un blocage apparaît, plus que n'importe quel conseil générique — y compris ceux de ce guide.</p>
+</section>
+
+<div id="bonus-section">
+<section class="chapter">
+  <h2>6. Partie 5 — Bonus : le Pack Motivation</h2>
+  <p class="lede">30 prompts prêts à l'emploi classés par usage, et un guide pas à pas pour recréer un planning hebdomadaire anti-procrastination dans Canva en 10 minutes.</p>
+
+  <h3>6.1 30 prompts prêts à l'emploi, classés par usage</h3>
+  <p>Copie-colle ces prompts directement dans ChatGPT ou Claude, en remplaçant les champs entre [crochets] par ta propre situation.</p>
+
+  <div class="subject-heading">🧩 Découper une tâche qui bloque en étapes gérables</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Découper une tâche floue</span>
+    <span class="prompt-text">Voici une tâche que je repousse depuis un moment : [décris la tâche]. Aide-moi à la découper en 5 à 7 étapes concrètes de 10 à 20 minutes chacune, dans un ordre logique.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Trouver la toute première étape</span>
+    <span class="prompt-text">Voici ma tâche : [décris la tâche]. Quelle serait la plus petite première étape possible, réalisable en moins de 10 minutes, pour simplement commencer ?</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Simplifier une étape encore trop grosse</span>
+    <span class="prompt-text">Cette étape me semble encore trop intimidante : [décris l'étape]. Aide-moi à la redécouper en sous-étapes plus petites et plus simples à démarrer.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Clarifier une tâche vague</span>
+    <span class="prompt-text">Mon intention est : [décris l'intention, ex. "avancer sur le projet X"]. Aide-moi à la transformer en une action précise et concrète, avec un résultat observable.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Estimer le temps réel nécessaire</span>
+    <span class="prompt-text">Voici les étapes de ma tâche : [liste les étapes]. Aide-moi à estimer un temps réaliste pour chacune, en tenant compte du fait que je sous-estime souvent le temps nécessaire.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Découper un projet sur plusieurs semaines</span>
+    <span class="prompt-text">Voici un projet à mener sur plusieurs semaines : [décris le projet]. Découpe-le en jalons hebdomadaires clairs, avec un résultat visible à chaque étape.</span>
+  </div>
+
+  <div class="subject-heading">🔍 Comprendre pourquoi on évite une tâche précise</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7 — Identifier l'émotion derrière l'évitement</span>
+    <span class="prompt-text">Je repousse cette tâche depuis [durée] : [décris la tâche]. Aide-moi à identifier, parmi la peur de l'échec, le perfectionnisme, le flou ou la surcharge, ce qui explique le plus probablement mon évitement.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8 — Reconnaître son profil de procrastinateur</span>
+    <span class="prompt-text">Voici comment je réagis face à cette tâche : [décris tes pensées et réactions]. À partir des profils perfectionniste, anxieux, indécis, rebelle et surchargé, lequel me correspond le plus sur cette tâche ?</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9 — Questionner une peur précise</span>
+    <span class="prompt-text">J'ai peur que [décris la peur, ex. "le résultat ne soit pas assez bon"] si je m'attaque à cette tâche. Aide-moi à évaluer, de façon posée, ce qui se passerait réellement dans le pire des cas.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10 — Distinguer procrastination active et passive</span>
+    <span class="prompt-text">Voici comment je passe mon temps au lieu de faire [la tâche] : [décris tes activités de substitution]. Aide-moi à voir si je suis dans une procrastination "passive" ou "active" et ce que ça implique.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 11 — Comprendre un cercle de culpabilité</span>
+    <span class="prompt-text">Voici ce que je me dis quand je repousse cette tâche : [décris ton discours intérieur]. Aide-moi à repérer où ce discours alimente le cercle culpabilité / évitement plutôt que de m'aider à avancer.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 12 — Faire la différence avec une simple fatigue</span>
+    <span class="prompt-text">Je ne sais pas si j'évite [la tâche] par procrastination ou parce que je suis simplement épuisé·e en ce moment : [décris ton état général]. Aide-moi à y voir plus clair.</span>
+  </div>
+
+  <div class="subject-heading">🗓️ Construire un planning hebdomadaire réaliste</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 13 — Construire une semaine avec de la marge</span>
+    <span class="prompt-text">Voici mes engagements fixes cette semaine : [liste-les]. Aide-moi à construire un planning qui laisse environ 30 % de temps libre pour les imprévus.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 14 — Choisir une tâche prioritaire par jour</span>
+    <span class="prompt-text">Voici ma liste de tâches pour la semaine : [liste-les]. Aide-moi à choisir une seule tâche prioritaire par jour, en tenant compte de leur urgence et de leur importance réelle.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 15 — Répartir une grosse échéance sur la semaine</span>
+    <span class="prompt-text">J'ai une échéance importante dans [délai] : [décris la tâche]. Aide-moi à la répartir sur les jours restants de façon réaliste, sans surcharger une seule journée.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 16 — Absorber un imprévu sans tout annuler</span>
+    <span class="prompt-text">Voici mon planning prévu cette semaine : [décris-le]. Un imprévu vient de s'ajouter : [décris l'imprévu]. Aide-moi à réajuster le reste de la semaine sans tout annuler.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 17 — Planifier plusieurs projets en parallèle</span>
+    <span class="prompt-text">Je dois avancer en parallèle sur ces projets : [liste-les]. Aide-moi à leur réserver des créneaux distincts dans la semaine plutôt que de passer de l'un à l'autre sans arrêt.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 18 — Revoir un planning qui a échoué</span>
+    <span class="prompt-text">Mon planning de la semaine dernière n'a pas été suivi : [décris ce qui s'est passé]. Aide-moi à comprendre ce qui a coincé et à construire une version plus réaliste pour la semaine prochaine.</span>
+  </div>
+
+  <div class="subject-heading">🔁 Créer des habitudes durables</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 19 — Construire un habit stacking</span>
+    <span class="prompt-text">Voici une habitude que j'ai déjà tous les jours : [décris-la]. Aide-moi à lui attacher une nouvelle micro-habitude de 2 minutes liée à [ton objectif].</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 20 — Réduire la friction de démarrage</span>
+    <span class="prompt-text">Voici ma routine actuelle pour commencer [la tâche] : [décris-la]. Aide-moi à identifier ce que je peux préparer à l'avance pour réduire les frictions au moment de démarrer.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 21 — Choisir une récompense adaptée</span>
+    <span class="prompt-text">Je viens de terminer [la tâche ou l'étape]. Propose-moi 3 idées de petites récompenses simples et proportionnées, sans que ça sabote mes efforts.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 22 — Tenir une habitude sur plusieurs semaines</span>
+    <span class="prompt-text">J'essaie de tenir cette habitude depuis [durée] : [décris-la]. Aide-moi à identifier ce qui pourrait la rendre plus facile à tenir sur la durée.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 23 — Adapter une habitude à un emploi du temps chargé</span>
+    <span class="prompt-text">Mon emploi du temps est très chargé : [décris tes contraintes]. Aide-moi à adapter cette habitude — [décris-la] — pour qu'elle prenne moins de 5 minutes par jour.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 24 — Relier une habitude à une motivation personnelle</span>
+    <span class="prompt-text">Voici pourquoi je veux tenir cette habitude sur le long terme : [décris ta raison]. Aide-moi à reformuler mon objectif pour qu'il soit relié à cette raison plutôt qu'à une obligation abstraite.</span>
+  </div>
+
+  <div class="subject-heading">🔄 Rebondir après une période de rechute</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 25 — Reprendre après un jour raté</span>
+    <span class="prompt-text">J'ai raté ma routine hier sur [décris la tâche ou l'habitude]. Aide-moi à définir la plus petite action possible pour reprendre aujourd'hui, sans chercher à rattraper le retard d'un coup.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 26 — Sortir d'une rechute prolongée</span>
+    <span class="prompt-text">Je n'ai pas suivi mon plan depuis [durée], sur [décris la situation]. Aide-moi à reprendre progressivement, en commençant par l'étape la plus simple possible.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 27 — Désamorcer la culpabilité après une rechute</span>
+    <span class="prompt-text">Depuis ma rechute, je me dis : [décris ton discours intérieur]. Aide-moi à reformuler ces pensées de façon plus bienveillante et plus utile pour avancer.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 28 — Comprendre ce qui a déclenché la rechute</span>
+    <span class="prompt-text">Voici ce qui s'est passé juste avant que j'arrête de suivre mon plan : [décris le contexte]. Aide-moi à identifier ce qui a probablement déclenché cette rechute.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 29 — Alléger un plan devenu trop lourd</span>
+    <span class="prompt-text">Mon plan actuel me semble trop ambitieux en ce moment : [décris-le]. Aide-moi à l'alléger temporairement, tout en gardant au moins une action quotidienne minimale.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 30 — Faire le bilan après une période difficile</span>
+    <span class="prompt-text">Voici comment se sont passées mes dernières semaines : [décris la période]. Aide-moi à faire un bilan honnête et bienveillant, et à identifier une seule chose simple à reprendre cette semaine.</span>
+  </div>
+
+</section>
+
+<section class="chapter">
+  <h2>6.2 Le template Canva "planning hebdomadaire anti-procrastination"</h2>
+  <p class="lede">Un guide pas à pas pour recréer toi-même, en 10 minutes, un planning hebdomadaire simple qui t'aide à prioriser une seule tâche par jour et à repérer tes petites victoires.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Précision importante</span>
+    <p>Ce chapitre est un <strong>guide pour recréer le template toi-même dans Canva</strong>, pas un fichier .canva livré avec ce guide. Canva ne permet pas l'export ni le partage d'un modèle sous forme de fichier autonome utilisable hors de la plateforme — la seule façon de te transmettre ce design est de te donner les instructions précises pour le reconstruire, ce que fait ce chapitre.</p>
+  </div>
+
+  <h3>Format et couleurs</h3>
+  <table>
+    <tr><th>Élément</th><th>Réglage</th></tr>
+    <tr><td>Format</td><td>A4 portrait (21 × 29,7 cm)</td></tr>
+    <tr><td>Couleur principale (bandeau, titres)</td><td>Indigo #1E2A4A</td></tr>
+    <tr><td>Couleur d'accent (séparateurs, cases à cocher)</td><td>Doré #C98A2E</td></tr>
+    <tr><td>Fond des blocs secondaires</td><td>Beige clair #F4EBD9</td></tr>
+    <tr><td>Police des titres</td><td>Une police sans-serif épaisse type "Montserrat" ou "Poppins" (disponibles gratuitement dans Canva)</td></tr>
+    <tr><td>Police du texte courant</td><td>Une police sans-serif lisible type "Lato" ou "Open Sans"</td></tr>
+  </table>
+
+  <h3>Structure détaillée du planning</h3>
+  <ol class="steps">
+    <li>
+      <strong>Bandeau titre</strong><br/>
+      Un rectangle pleine largeur en indigo #1E2A4A en haut de page, avec "Planning de la semaine" et la semaine concernée.
+    </li>
+    <li>
+      <strong>Grille principale — 7 colonnes</strong><br/>
+      Une colonne par jour de la semaine. Pour chaque jour, prévoir quatre zones : la tâche prioritaire du jour, un créneau de temps dédié, une case à cocher, et une ligne "petite victoire du jour".
+    </li>
+    <li>
+      <strong>Bloc légende</strong><br/>
+      Un encadré beige clair #F4EBD9 expliquant brièvement comment remplir chaque zone, en particulier la ligne "petite victoire du jour".
+    </li>
+    <li>
+      <strong>Bloc bilan de la semaine</strong><br/>
+      Un encadré à bordure dorée en bas de page, pour noter une observation générale de la semaine — ce qui a fonctionné, ce qui a coincé.
+    </li>
+  </ol>
+
+  <h3>Les étapes précises pour le construire dans Canva</h3>
+  <ol class="steps">
+    <li>
+      <strong>Ouvre Canva et cherche un modèle de base</strong><br/>
+      Dans la barre de recherche de modèles, tape "weekly planner" — Canva propose plusieurs modèles A4 déjà structurés en colonnes, ce qui t'évite de partir d'une page blanche.
+    </li>
+    <li>
+      <strong>Choisis un modèle avec 7 colonnes</strong><br/>
+      Privilégie un modèle qui a déjà une grille pour les 7 jours de la semaine — tu auras moins de mise en forme à faire toi-même.
+    </li>
+    <li>
+      <strong>Recolore aux couleurs de la charte</strong><br/>
+      Sélectionne chaque élément coloré et remplace la couleur par les codes hexadécimaux du tableau ci-dessus (#1E2A4A pour l'indigo, #C98A2E pour le doré, #F4EBD9 pour le beige clair) via le sélecteur de couleur personnalisée de Canva.
+    </li>
+    <li>
+      <strong>Ajoute les 4 zones dans chaque colonne</strong><br/>
+      Pour chaque jour : un champ texte "Tâche prioritaire", un champ "Créneau", une case à cocher (forme carrée ou icône Canva), et une ligne "Petite victoire du jour".
+    </li>
+    <li>
+      <strong>Change les polices</strong><br/>
+      Sélectionne les titres et applique la police "Montserrat" ou "Poppins" ; sélectionne le texte courant et applique "Lato" ou "Open Sans", disponibles gratuitement dans la bibliothèque de polices Canva.
+    </li>
+    <li>
+      <strong>Enregistre-le comme modèle personnel</strong><br/>
+      Une fois satisfait du résultat, utilise la fonction "Enregistrer comme modèle" de Canva (accessible depuis le menu du fichier) pour le réutiliser chaque semaine sans repartir de zéro.
+    </li>
+  </ol>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Remplis la ligne "petite victoire du jour" même les jours difficiles — elle rend visible ce qui a fonctionné, y compris quand tu as l'impression de ne pas avoir avancé.</p>
+  </div>
+
+  <h3>Variantes du template selon tes préférences</h3>
+  <table>
+    <tr><th>Format</th><th>Avantage</th><th>Comment faire</th></tr>
+    <tr><td>Papier imprimé</td><td>Facile à cocher au fil de la journée, sans écran</td><td>Exporte ton modèle Canva en PDF et imprime une feuille par semaine</td></tr>
+    <tr><td>Tablette ou téléphone</td><td>Toujours à portée de main pour le consulter</td><td>Garde le fichier Canva ouvert en mode lecture sur ton appareil</td></tr>
+    <tr><td>Tableur simple (Google Sheets, Excel)</td><td>Pratique pour visualiser plusieurs semaines d'affilée</td><td>Recrée les mêmes colonnes que le planning Canva dans une feuille de calcul</td></tr>
+  </table>
+
+  <h3>Foire aux questions sur le Pack Motivation</h3>
+
+  <div class="faq-item">
+    <p class="faq-q">Les prompts remplacent-ils le travail de fond du guide ?</p>
+    <p>Non. Ils t'aident à appliquer plus vite ce que tu as déjà compris dans les parties 1 à 4, pas à sauter ces étapes.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Dois-je utiliser les 30 prompts d'un coup ?</p>
+    <p>Non. Utilise uniquement ceux qui correspondent à ta situation actuelle. Commence par la catégorie la plus utile à ton besoin immédiat, par exemple découper une tâche qui bloque.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Le template Canva est-il indispensable pour suivre le plan 21 jours ?</p>
+    <p>Non. Le template facilite le suivi quotidien, mais tu peux suivre le plan du chapitre 5.1 avec un simple carnet si tu préfères.</p>
+  </div>
+
+</section>
+</div>
+
+<section class="chapter">
+  <h2>7. Lexique</h2>
+  <p class="lede">Les termes utilisés dans ce guide, expliqués simplement.</p>
+
+  <dl class="lexique">
+    <dt>Procrastination</dt>
+    <dd>Le fait de reporter volontairement une tâche importante, malgré la conscience que ce report aura probablement des conséquences négatives.</dd>
+
+    <dt>Perfectionnisme</dt>
+    <dd>Un standard d'exigence si élevé qu'il freine, plutôt qu'il n'améliore, le passage à l'action.</dd>
+
+    <dt>Biais du présent (gratification immédiate)</dt>
+    <dd>La tendance du cerveau à préférer une petite récompense immédiate à une récompense plus importante mais lointaine.</dd>
+
+    <dt>Charge cognitive</dt>
+    <dd>La quantité d'effort mental que demande une tâche, en particulier quand elle reste floue ou mal définie.</dd>
+
+    <dt>Technique Pomodoro</dt>
+    <dd>Une méthode de gestion du temps qui alterne des sessions de travail courtes et fixes avec de vraies pauses régulières.</dd>
+
+    <dt>Habit stacking (ancrage d'habitude)</dt>
+    <dd>Le fait d'attacher une nouvelle habitude à une habitude déjà existante, qui sert alors de déclencheur automatique.</dd>
+
+    <dt>Friction (comportementale)</dt>
+    <dd>L'ensemble des petits efforts qui rendent une action plus difficile à démarrer — les réduire facilite le passage à l'action.</dd>
+
+    <dt>Système (vs objectif)</dt>
+    <dd>Un objectif dit où aller ; un système décrit ce que tu fais chaque jour pour y arriver, indépendamment de ta motivation du moment.</dd>
+
+    <dt>Rechute</dt>
+    <dd>Un moment où l'ancien schéma d'évitement revient, sans que cela efface les progrès faits précédemment.</dd>
+
+    <dt>"Fait vaut mieux que parfait"</dt>
+    <dd>Un principe qui rappelle qu'un travail terminé, même imparfait, fait toujours plus avancer qu'un travail idéal resté inachevé.</dd>
+
+    <dt>Profil de procrastinateur</dt>
+    <dd>Une tendance dominante (perfectionniste, anxieux, indécis, rebelle, surchargé) qui explique pourquoi une tâche précise est évitée.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>8. Questions fréquentes</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide remplace-t-il un accompagnement psychologique ?</p>
+    <p>Non. Ce guide t'aide à comprendre ton fonctionnement et à agir concrètement au quotidien, mais ne constitue pas un accompagnement thérapeutique. En cas de souffrance importante, un professionnel de santé reste le bon interlocuteur (voir avertissement).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Quelle est la différence entre les deux offres ?</p>
+    <p>Le Guide seul couvre la compréhension de la procrastination, les méthodes pour reprendre le contrôle de son temps et la construction d'une motivation durable (Parties 1 à 4). Guide + Pack Motivation ajoute en bonus 30 prompts prêts à l'emploi classés par usage et un guide pas à pas pour recréer un template Canva de planning hebdomadaire.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Dois-je suivre les 4 parties dans l'ordre ?</p>
+    <p>L'ordre proposé suit une logique progressive, mais tu peux commencer directement par la partie qui répond à ton besoin le plus urgent, par exemple la partie 2 si tu as une tâche précise à débloquer rapidement.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Combien de temps avant de voir des résultats ?</p>
+    <p>Certaines méthodes, comme le découpage d'une tâche ou un Pomodoro court, peuvent débloquer une situation dès le premier essai. Des changements plus durables demandent généralement quelques semaines, d'où le plan progressif sur 21 jours (partie 4).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Que faire si je rate un jour du plan de 21 jours ?</p>
+    <p>Reprends simplement le jour suivant, sur la plus petite étape possible, sans culpabiliser (voir chapitre 4.8 et 5.5). Un jour raté n'annule pas les jours précédents.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide est-il adapté si je pense avoir un TDAH ?</p>
+    <p>Ce guide peut apporter des méthodes utiles, mais il ne remplace pas un diagnostic ou un accompagnement spécifique. Si tu penses être concerné·e, un professionnel de santé est le mieux placé pour t'orienter (voir chapitre 2.10).</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Les prompts de l'IA remplacent-ils un vrai plan d'action personnel ?</p>
+    <p>Non, ils t'aident à formuler et à accélérer certaines étapes (découper une tâche, préparer un planning), mais l'action reste toujours la tienne à mener.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide fonctionne-t-il aussi bien pour le travail que pour la vie personnelle ?</p>
+    <p>Oui. Les mécanismes décrits (peur de l'échec, tâches floues, gratification immédiate) sont les mêmes, que la tâche évitée soit professionnelle ou personnelle.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Que faire si je procrastine sur plusieurs tâches en même temps ?</p>
+    <p>Choisis une seule tâche pour commencer à appliquer les méthodes de ce guide (voir chapitre 3.10). Vouloir tout débloquer en même temps mène souvent à ne rien débloquer du tout.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Le template Canva est-il nécessaire pour profiter du guide ?</p>
+    <p>Non, c'est un bonus pratique inclus dans l'offre Guide + Pack Motivation, mais toutes les méthodes du guide fonctionnent sans lui.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="disclaimer">
+    <strong>Avertissement.</strong> Ce guide a une vocation informative et pratique : il t'aide à comprendre les mécanismes de la procrastination et à mettre en place des méthodes concrètes pour reprendre le contrôle de ton temps et retrouver ta motivation. Il ne constitue en aucun cas un diagnostic, un accompagnement thérapeutique ou une prise en charge médicale, et ne remplace pas une consultation auprès d'un professionnel de santé. Si ta procrastination s'accompagne d'un épuisement marqué, d'une souffrance psychologique importante ou de difficultés que tu penses liées à un trouble de l'attention (TDAH), à un burnout ou à une dépression, consulte un professionnel de santé. Les informations générales de ce guide reflètent des repères largement admis en psychologie du comportement et peuvent évoluer ; elles ne remplacent pas un accompagnement personnalisé.
+  </div>
+</section>
+
+</body>
+</html>

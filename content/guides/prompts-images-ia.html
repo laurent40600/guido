@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>60 prompts pour générer des images professionnelles avec l'IA</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 26pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-note {
+    background: #eef3f6; border: 1.5px solid #4a7a9e; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-note .box-title { color: #2c5876; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-params {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+
+  .source { font-size: 10pt; color: #1a1a1a; font-style: italic; }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  .subject-heading {
+    background: #1E2A4A; color: #fff; padding: 8pt 14pt; border-radius: 8pt;
+    font-size: 13pt; font-weight: 800; margin: 26pt 0 12pt;
+  }
+
+  .disclaimer {
+    margin-top: 24pt; padding: 16pt; background: #f8f6f2;
+    border-radius: 10pt; font-size: 11pt; color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — PACK DE PROMPTS 2026</span>
+  <h1>60 prompts pour générer des images professionnelles avec l'IA</h1>
+  <p class="tagline">Compatible Midjourney, DALL-E et Stable Diffusion</p>
+  <p class="meta">60 prompts prêts à copier-coller, classés en 6 catégories, un glossaire des<br/>paramètres techniques pour affiner tes résultats, et une note claire sur les droits<br/>d'usage commercial de tes images générées</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction — comment utiliser ce pack<span>Compatibilité, prérequis, comment lire un prompt</span></li>
+    <li>Portraits professionnels et photos d'équipe<span>10 prompts</span></li>
+    <li>Visuels produits et e-commerce<span>10 prompts</span></li>
+    <li>Visuels pour réseaux sociaux et contenu<span>10 prompts</span></li>
+    <li>Présentations, slides et visuels de marque<span>10 prompts</span></li>
+    <li>Décors, arrière-plans et ambiances<span>10 prompts</span></li>
+    <li>Logos, icônes et éléments graphiques<span>10 prompts</span></li>
+    <li>Glossaire des paramètres techniques<span>Midjourney, DALL-E, Stable Diffusion</span></li>
+    <li>Droits d'usage commercial<span>Ce qu'il faut vérifier avant d'utiliser tes images</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction — comment utiliser ce pack</h2>
+  <p class="lede">En sortant de cette introduction, tu sauras avec quels outils utiliser ce pack, comment lire un prompt, et comment l'adapter à ton besoin en 30 secondes.</p>
+
+  <h3>Compatible avec les principaux outils d'IA générative</h3>
+  <p>Les 60 prompts de ce pack fonctionnent avec les trois outils de génération d'images les plus utilisés : Midjourney, DALL-E (via ChatGPT ou l'API OpenAI) et Stable Diffusion (via une interface comme Automatic1111, ComfyUI ou une plateforme en ligne).</p>
+
+  <p>Un prompt bien écrit produit de bons résultats sur les trois, mais chaque outil a ses propres réglages techniques. C'est pour ça que chaque prompt est accompagné d'une ligne "Paramètres" avec les réglages suggérés pour chacun.</p>
+
+  <h3>Pourquoi les prompts sont rédigés en anglais</h3>
+  <p>Les trois outils comprennent le français, mais produisent des résultats plus précis et plus cohérents en anglais — c'est la langue sur laquelle ils ont été le plus entraînés. Chaque prompt de ce pack est donc rédigé directement en anglais, prêt à copier-coller tel quel.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Tu n'as pas besoin de parler anglais pour utiliser ce pack. Copie le prompt tel quel, remplace uniquement les champs entre [crochets], et colle le résultat dans ton outil.</p>
+  </div>
+
+  <h3>Comment lire un prompt de ce pack</h3>
+  <p>Chaque prompt suit la même structure : un titre qui décrit l'usage, le texte du prompt en anglais avec des champs [entre crochets] à personnaliser, et une ligne de paramètres suggérés par outil.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📝 Exemple de lecture</span>
+    <p><strong>Le champ [subject]</strong> — remplace-le par ce que tu veux représenter (ex. "a 35-year-old woman", "a leather handbag").</p>
+    <p><strong>Le champ [brand color]</strong> — remplace-le par la couleur de ta marque en anglais (ex. "deep navy blue", "warm gold").</p>
+    <p><strong>La ligne "Paramètres"</strong> — à ajouter à la fin du prompt selon l'outil que tu utilises, pas à la place du texte.</p>
+  </div>
+
+  <h3>Prérequis</h3>
+  <p>Un compte sur au moins un des trois outils suffit : un abonnement Midjourney (via Discord), un accès à DALL-E (via ChatGPT Plus ou l'API OpenAI), ou une installation ou un accès en ligne à Stable Diffusion. Aucune compétence technique ou artistique n'est nécessaire.</p>
+
+  <h3>Ce que ce pack ne couvre pas</h3>
+  <p>Ce pack donne des prompts et des réglages de départ. Il ne couvre pas l'installation technique de Stable Diffusion en local, ni la création de modèles personnalisés (fine-tuning, LoRA) — des sujets plus avancés qui dépassent le cadre d'un pack de prompts.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Génère toujours au moins 3 à 4 variations du même prompt avant de choisir : les outils d'IA générative produisent des résultats différents à chaque fois, même avec un prompt identique.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Portraits professionnels et photos d'équipe</h2>
+  <p class="lede">10 prompts pour générer des portraits et photos d'équipe à l'apparence professionnelle, pour un site web, un profil LinkedIn ou une page "à propos".</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Portrait corporate classique</span>
+    <span class="prompt-text">Professional corporate headshot of [subject], neutral grey studio background, soft even lighting, confident friendly expression, business attire, sharp focus, high-resolution photography, shot on 85mm lens</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 · DALL-E : précise "photographie, pas illustration" · Stable Diffusion : negative prompt "cartoon, illustration, blurry, low quality"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Photo de profil LinkedIn</span>
+    <span class="prompt-text">Professional LinkedIn profile photo of [subject], warm natural light, softly blurred office background, approachable smile, business casual attire, shallow depth of field, photorealistic</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : ajoute "portrait format carré" · Stable Diffusion : steps 30-40, CFG scale 6-7</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Portrait en extérieur, lumière naturelle</span>
+    <span class="prompt-text">Outdoor professional portrait of [subject], golden hour natural lighting, softly blurred urban background, relaxed confident posture, business casual attire, photorealistic, shot on 50mm lens</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 --style raw · DALL-E : précise "lumière dorée de fin de journée" · Stable Diffusion : sampler DPM++ 2M</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Photo d'équipe façon "à propos"</span>
+    <span class="prompt-text">Small professional team of [number] people standing together in a modern bright office, natural lighting, candid friendly expressions, business casual attire, wide shot, photorealistic</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise le nombre exact de personnes · Stable Diffusion : upscale x2 recommandé pour les visages</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Portrait avec fond neutre studio</span>
+    <span class="prompt-text">Studio portrait of [subject] against a solid [brand color] background, soft directional lighting, professional business attire, neutral confident expression, high-end commercial photography style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 · DALL-E : indique le code couleur en toutes lettres · Stable Diffusion : negative prompt "textured background, pattern"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Portrait "executive" noir et blanc</span>
+    <span class="prompt-text">Black and white executive portrait of [subject], dramatic side lighting, dark neutral background, formal business attire, serious confident expression, high contrast fine art photography</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 --style raw · DALL-E : précise "noir et blanc, fort contraste" · Stable Diffusion : negative prompt "color, colorful"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7 — Photo de profil pour audience internationale</span>
+    <span class="prompt-text">Professional headshot of [subject], clean minimal background in soft neutral tone, warm approachable expression, modern smart-casual attire, photorealistic, natural skin texture, high-resolution</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : ajoute "peau naturelle, pas lissée" · Stable Diffusion : CFG scale 5-6 pour un rendu plus naturel</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8 — Portrait créatif pour freelance</span>
+    <span class="prompt-text">Creative professional portrait of [subject], surrounded by subtle elements related to [profession, e.g. design tools, plants, books], warm natural lighting, relaxed authentic expression, photorealistic</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 --stylize 250 · DALL-E : décris précisément les éléments de contexte · Stable Diffusion : steps 35-45</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9 — Photo type "headshot" pour un CV</span>
+    <span class="prompt-text">Simple professional headshot of [subject], plain light grey background, direct eye contact, neutral friendly expression, formal business attire, even studio lighting, photorealistic, passport-style framing</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise "cadrage buste, regard caméra" · Stable Diffusion : negative prompt "side angle, tilted head"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10 — Portrait de groupe informel pour page "équipe"</span>
+    <span class="prompt-text">Casual group portrait of [number] colleagues laughing together in a bright modern workspace, natural candid moment, soft daylight, business casual attire, photorealistic, wide angle</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 --chaos 15 · DALL-E : précise "moment spontané, pas posé" · Stable Diffusion : upscale recommandé</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Visuels produits et e-commerce</h2>
+  <p class="lede">10 prompts pour générer des visuels produits propres et vendeurs, pour une fiche produit, une bannière ou un réseau social.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 11 — Photo produit sur fond blanc studio</span>
+    <span class="prompt-text">Professional product photo of [product], pure white studio background, soft even lighting, subtle shadow beneath the product, centered composition, high-resolution commercial photography</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise "fond blanc pur e-commerce" · Stable Diffusion : negative prompt "colored background, clutter"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 12 — Mise en situation lifestyle</span>
+    <span class="prompt-text">Lifestyle product photo of [product] being used in [context, e.g. a cozy modern kitchen], natural lighting, warm inviting atmosphere, photorealistic, shallow depth of field</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 · DALL-E : décris précisément le décor · Stable Diffusion : steps 30-40</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 13 — Packaging en gros plan</span>
+    <span class="prompt-text">Close-up product packaging shot of [product], soft studio lighting highlighting texture and details, neutral background, sharp focus on branding elements, high-end commercial photography</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 --stylize 150 · DALL-E : précise les matières (carton, verre, etc.) · Stable Diffusion : upscale x2 pour les détails</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 14 — Produit flottant avec ombre portée</span>
+    <span class="prompt-text">Floating product shot of [product] against a soft [brand color] gradient background, subtle drop shadow beneath, studio lighting, minimal composition, high-resolution commercial render</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise "objet en lévitation, ombre douce" · Stable Diffusion : negative prompt "hands, surface"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 15 — Composition flat lay pour réseaux sociaux</span>
+    <span class="prompt-text">Flat lay photography of [product] surrounded by [related items, e.g. notebook, coffee cup, plant], soft natural top-down lighting, neutral background, aesthetically arranged, photorealistic</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise "vue du dessus" · Stable Diffusion : steps 30-35</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 16 — Rendu produit avec éléments naturels</span>
+    <span class="prompt-text">Product photo of [product] styled with natural elements like [e.g. wood, stone, dried flowers], soft warm lighting, organic minimal composition, photorealistic, shallow depth of field</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 --stylize 200 · DALL-E : décris précisément la matière naturelle · Stable Diffusion : CFG scale 6-7</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 17 — Bannière produit pour site e-commerce</span>
+    <span class="prompt-text">Wide banner product photo of [product], centered with generous negative space on both sides for text overlay, soft studio lighting, [brand color] background, clean commercial style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise "espace vide à gauche et à droite" · Stable Diffusion : negative prompt "text, watermark"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 18 — Visuel "avant/après"</span>
+    <span class="prompt-text">Split-screen before and after product comparison of [product/situation], left side showing [before state], right side showing [after state], consistent lighting and background, photorealistic</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : décris précisément les deux états · Stable Diffusion : générer séparément puis assembler recommandé</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 19 — Produit en contexte d'utilisation réelle</span>
+    <span class="prompt-text">Candid photo of [subject] using [product] naturally in [setting], soft natural lighting, authentic unposed moment, photorealistic, shallow depth of field</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 · DALL-E : précise "moment naturel, pas publicitaire" · Stable Diffusion : steps 35-40</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 20 — Rendu produit façon publicité luxe</span>
+    <span class="prompt-text">High-end luxury product photography of [product], dramatic studio lighting with strong highlights, dark reflective surface beneath, minimal elegant composition, premium commercial style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 --stylize 400 · DALL-E : précise "éclairage dramatique, reflet" · Stable Diffusion : CFG scale 7-8</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Visuels pour réseaux sociaux et contenu</h2>
+  <p class="lede">10 prompts pour créer des visuels de contenu attractifs, sans dépendre d'un graphiste pour chaque publication.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 21 — Visuel carrousel Instagram minimaliste</span>
+    <span class="prompt-text">Minimalist Instagram carousel background illustration about [topic], soft [brand color] tones, clean geometric shapes, generous negative space for text overlay, modern flat design style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 --style raw · DALL-E : précise "design plat, pas de texte" · Stable Diffusion : negative prompt "text, letters"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 22 — Illustration de couverture d'article de blog</span>
+    <span class="prompt-text">Blog cover illustration representing [topic], modern flat illustration style, [brand color] palette, simple clear composition, wide format, professional editorial style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : décris précisément le concept à illustrer · Stable Diffusion : steps 30-35</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 23 — Visuel citation inspirante</span>
+    <span class="prompt-text">Soft abstract background image evoking [mood, e.g. calm, motivation, focus], gentle gradient in [brand color] tones, minimal composition with negative space for a text quote, aesthetic and clean</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise "pas de texte, fond seul" · Stable Diffusion : negative prompt "text, watermark, logo"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 24 — Image d'en-tête pour newsletter</span>
+    <span class="prompt-text">Wide header illustration for an email newsletter about [topic], modern flat illustration style, [brand color] palette, simple friendly composition, clean professional look</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise le format large et horizontal · Stable Diffusion : upscale recommandé pour la netteté</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 25 — Visuel "avant/après" storytelling</span>
+    <span class="prompt-text">Two-panel illustration showing a transformation from [before state] to [after state], consistent modern flat illustration style, [brand color] palette, clear visual contrast between panels</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : décris les deux états séparément · Stable Diffusion : générer séparément recommandé</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 26 — Illustration conceptuelle abstraite</span>
+    <span class="prompt-text">Abstract conceptual illustration representing [idea, e.g. growth, innovation, connection], modern flat illustration style, [brand color] palette, simple clean composition, professional editorial style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 --stylize 300 · DALL-E : décris précisément l'idée à représenter · Stable Diffusion : CFG scale 6-7</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 27 — Visuel type infographie simplifiée</span>
+    <span class="prompt-text">Simple infographic-style illustration showing [number] steps or elements related to [topic], modern flat design, [brand color] palette, clear visual hierarchy, clean professional layout</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 · DALL-E : précise le nombre exact d'éléments · Stable Diffusion : negative prompt "cluttered, text-heavy"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 28 — Image de couverture pour post LinkedIn</span>
+    <span class="prompt-text">Professional LinkedIn post cover illustration about [topic], modern flat corporate illustration style, [brand color] palette, clean confident composition, wide format</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise "style corporate, sobre" · Stable Diffusion : steps 30-35</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 29 — Visuel saisonnier ou thématique</span>
+    <span class="prompt-text">Seasonal themed illustration for [occasion, e.g. back to school, end of year], modern flat illustration style, [brand color] palette, warm inviting composition, clean professional look</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise l'occasion exacte · Stable Diffusion : CFG scale 6-7</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 30 — Illustration de mascotte de marque</span>
+    <span class="prompt-text">Friendly brand mascot character design representing [brand trait, e.g. reliability, energy], modern flat illustration style, [brand color] palette, simple expressive design, clean vector-like look</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 --stylize 250 · DALL-E : précise "style vectoriel simple" · Stable Diffusion : negative prompt "realistic, photo"</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Présentations, slides et visuels de marque</h2>
+  <p class="lede">10 prompts pour habiller une présentation ou un document de marque sans repartir d'un fond blanc.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 31 — Image de fond pour slide de titre</span>
+    <span class="prompt-text">Elegant abstract background for a presentation title slide, soft gradient in [brand color] tones, subtle geometric shapes, generous negative space for a title, clean professional style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise "espace vide au centre pour le titre" · Stable Diffusion : negative prompt "text, busy pattern"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 32 — Icône conceptuelle business</span>
+    <span class="prompt-text">Simple flat icon representing [business concept, e.g. growth, strategy, teamwork], single [brand color] tone, minimal line style, clean vector-like design, isolated on white background</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise "icône simple, fond blanc" · Stable Diffusion : negative prompt "realistic, gradient, shadow"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 33 — Visuel de séparation de section</span>
+    <span class="prompt-text">Minimal abstract background for a presentation section divider, subtle [brand color] gradient, simple geometric composition, generous negative space for a short heading, clean professional style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise "fond de transition sobre" · Stable Diffusion : steps 30-35</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 34 — Illustration de processus en étapes</span>
+    <span class="prompt-text">Simple flat illustration showing [number] connected steps of a process related to [topic], modern minimal style, [brand color] palette, clear left-to-right flow, clean professional layout</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise le nombre exact d'étapes · Stable Diffusion : negative prompt "cluttered, text-heavy"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 35 — Visuel de couverture de rapport annuel</span>
+    <span class="prompt-text">Professional cover design concept for an annual report about [industry/topic], elegant abstract [brand color] background, minimal sophisticated composition, generous negative space for a title</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 3:4 --v 6 --stylize 300 · DALL-E : précise le secteur d'activité · Stable Diffusion : CFG scale 6-7</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 36 — Image d'ambiance pour proposition commerciale</span>
+    <span class="prompt-text">Professional atmospheric background image evoking [mood, e.g. trust, expertise, innovation], soft [brand color] tones, minimal elegant composition, generous negative space for text</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 3:4 --v 6 · DALL-E : décris précisément l'ambiance recherchée · Stable Diffusion : negative prompt "cluttered, busy"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 37 — Visuel abstrait pour illustrer une idée</span>
+    <span class="prompt-text">Abstract minimal illustration representing [concept, e.g. growth, connection, momentum], modern flat style, [brand color] palette, clean simple composition, professional editorial look</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 --stylize 300 · DALL-E : décris précisément le concept · Stable Diffusion : steps 30-35</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 38 — Fond de slide avec espace négatif</span>
+    <span class="prompt-text">Clean minimal presentation background, soft [brand color] gradient concentrated on one side, large empty negative space on the other side for text and bullet points, modern professional style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise le côté qui doit rester vide · Stable Diffusion : negative prompt "text, pattern, clutter"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 39 — Visuel "vision/mission" d'entreprise</span>
+    <span class="prompt-text">Inspiring abstract illustration representing a company's vision around [value, e.g. sustainability, innovation, community], modern flat style, [brand color] palette, clean minimal composition</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : décris précisément la valeur à représenter · Stable Diffusion : CFG scale 6-7</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 40 — Illustration de roadmap visuelle</span>
+    <span class="prompt-text">Simple flat illustration of a roadmap with [number] milestones connected by a path, modern minimal style, [brand color] palette, clear left-to-right progression, clean professional layout</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise le nombre exact de jalons · Stable Diffusion : negative prompt "text-heavy, cluttered"</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Décors, arrière-plans et ambiances</h2>
+  <p class="lede">10 prompts pour générer des décors et arrière-plans réutilisables sur plusieurs supports (site web, réseaux sociaux, présentations).</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 41 — Arrière-plan bureau moderne épuré</span>
+    <span class="prompt-text">Modern minimalist office interior background, soft natural daylight, neutral tones, clean uncluttered composition, photorealistic, shallow depth of field</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise "aucune personne visible" · Stable Diffusion : negative prompt "people, clutter"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 42 — Décor extérieur urbain</span>
+    <span class="prompt-text">Modern urban street background, soft daylight, softly blurred architecture, neutral clean composition, photorealistic, shallow depth of field, suitable for compositing a subject in front</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise "flou d'arrière-plan prononcé" · Stable Diffusion : CFG scale 6-7</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 43 — Texture abstraite pour fond de site web</span>
+    <span class="prompt-text">Abstract smooth gradient texture in [brand color] tones, subtle soft shapes, minimal clean design, suitable as a website background, high resolution</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 --style raw · DALL-E : précise "texture douce, pas de motif net" · Stable Diffusion : negative prompt "sharp pattern, text"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 44 — Ambiance nature apaisante</span>
+    <span class="prompt-text">Calm natural landscape background evoking [mood, e.g. serenity, balance], soft morning light, muted natural tones, minimal composition, photorealistic</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : décris précisément le paysage souhaité · Stable Diffusion : steps 30-35</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 45 — Décor futuriste pour univers IA</span>
+    <span class="prompt-text">Futuristic abstract technology background, soft glowing [brand color] light accents, clean minimal composition, subtle depth, high-resolution digital art style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 --stylize 400 · DALL-E : précise "sobre, pas trop chargé" · Stable Diffusion : CFG scale 7-8</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 46 — Arrière-plan dégradé aux couleurs de marque</span>
+    <span class="prompt-text">Smooth abstract gradient background transitioning between [brand color] and a complementary tone, soft clean composition, high resolution, suitable for banners and covers</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 --style raw · DALL-E : précise les deux couleurs exactes · Stable Diffusion : negative prompt "texture, noise"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 47 — Décor cosy pour univers lifestyle</span>
+    <span class="prompt-text">Cozy warm interior background, soft natural window light, neutral inviting tones, minimal clutter, photorealistic, shallow depth of field</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 4:5 --v 6 · DALL-E : précise "ambiance chaleureuse, pas froide" · Stable Diffusion : steps 30-40</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 48 — Paysage minimaliste pour bannière large</span>
+    <span class="prompt-text">Minimalist wide landscape background, soft [brand color] toned sky, simple clean horizon composition, generous negative space, photorealistic or soft illustration style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 21:9 --v 6 · DALL-E : précise le format très large · Stable Diffusion : negative prompt "cluttered, busy"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 49 — Texture matière pour fond produit</span>
+    <span class="prompt-text">Close-up texture background of [material, e.g. natural wood, marble, textured paper], soft even lighting, neutral tones, high-resolution, suitable as a product photography backdrop</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise la matière exacte · Stable Diffusion : upscale x2 recommandé</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 50 — Ambiance nocturne urbaine premium</span>
+    <span class="prompt-text">Premium night cityscape background, soft glowing lights, [brand color] toned reflections, elegant minimal composition, photorealistic, shallow depth of field</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 --stylize 350 · DALL-E : précise "ambiance nocturne élégante, pas sombre" · Stable Diffusion : CFG scale 7-8</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Logos, icônes et éléments graphiques</h2>
+  <p class="lede">10 prompts pour explorer des pistes visuelles de logo, d'icônes et d'éléments graphiques — à affiner ensuite avec un designer pour un usage final.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Précision importante</span>
+    <p>Les prompts de logo génèrent des <strong>pistes d'exploration visuelle</strong>, pas des fichiers vectoriels prêts à l'emploi. Pour un logo final utilisé sur tous tes supports, fais vectoriser et affiner le résultat par un designer professionnel.</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 51 — Concept de logo minimaliste</span>
+    <span class="prompt-text">Minimalist logo concept for a brand related to [industry], simple geometric shape, single [brand color] tone, clean flat vector style, centered composition, isolated on white background</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 --style raw · DALL-E : précise "style vectoriel plat, pas de dégradé" · Stable Diffusion : negative prompt "realistic, 3D, shadow"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 52 — Icône plate pour fonctionnalité d'app</span>
+    <span class="prompt-text">Flat app icon representing [feature, e.g. messaging, scheduling, analytics], simple rounded shapes, single [brand color] tone, clean minimal vector style, isolated on white background</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise "icône d'application mobile" · Stable Diffusion : negative prompt "realistic, gradient"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 53 — Symbole abstrait de valeur de marque</span>
+    <span class="prompt-text">Abstract symbol representing [brand value, e.g. trust, growth, connection], simple geometric composition, single [brand color] tone, clean flat vector style, isolated on white background</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 --stylize 200 · DALL-E : décris précisément la valeur à représenter · Stable Diffusion : CFG scale 6-7</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 54 — Motif répétitif pour packaging</span>
+    <span class="prompt-text">Seamless repeating pattern design featuring [motif, e.g. simple leaves, geometric shapes], soft [brand color] palette, clean minimal style, suitable for packaging or fabric</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 --tile · DALL-E : précise "motif qui se répète sans coupure" · Stable Diffusion : extension "seamless texture" recommandée</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 55 — Badge ou emblème de certification</span>
+    <span class="prompt-text">Simple circular badge design for [purpose, e.g. quality certification, membership label], clean typography placeholder, single [brand color] tone, flat vector style, isolated on white background</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise "badge circulaire, style sobre" · Stable Diffusion : negative prompt "realistic, 3D"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 56 — Icône de réseau social personnalisée</span>
+    <span class="prompt-text">Custom rounded social media icon featuring [element, e.g. a simple letter mark or symbol], single [brand color] background, clean minimal flat design, centered composition</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise "icône carrée aux coins arrondis" · Stable Diffusion : negative prompt "gradient, shadow, texture"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 57 — Élément graphique de séparation</span>
+    <span class="prompt-text">Simple elegant divider graphic element featuring [motif, e.g. a thin line with a small geometric accent], single [brand color] tone, minimal flat style, isolated on white background</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise "élément fin et discret" · Stable Diffusion : steps 25-30</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 58 — Ensemble d'icônes cohérentes</span>
+    <span class="prompt-text">Set of [number] simple flat icons representing [related concepts, e.g. delivery, payment, support], consistent single [brand color] tone, uniform line weight, clean minimal style</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 16:9 --v 6 · DALL-E : précise le nombre exact d'icônes · Stable Diffusion : générer une par une recommandé pour la cohérence</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 59 — Mascotte simplifiée en icône</span>
+    <span class="prompt-text">Simplified flat icon version of a friendly mascot character representing [brand trait], single [brand color] tone, minimal clean shapes, centered composition, isolated on white background</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 --stylize 200 · DALL-E : précise "version simplifiée, icône seule" · Stable Diffusion : negative prompt "realistic, detailed"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 60 — Élément décoratif pour bordure ou cadre</span>
+    <span class="prompt-text">Elegant minimal decorative border frame element, thin lines with subtle [brand color] accents, clean flat style, isolated on white background, suitable for framing text or images</span>
+    <p class="prompt-params">Paramètres : Midjourney --ar 1:1 --v 6 · DALL-E : précise "cadre fin, centre vide" · Stable Diffusion : negative prompt "realistic, thick, cluttered"</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>8. Glossaire des paramètres techniques</h2>
+  <p class="lede">Les principaux réglages techniques utilisés dans ce pack, expliqués simplement, avec leur équivalent sur Midjourney, DALL-E et Stable Diffusion.</p>
+
+  <dl class="lexique">
+    <dt>Aspect ratio (--ar)</dt>
+    <dd>Le format de l'image générée (carré, portrait, paysage). Sur Midjourney : "--ar 16:9". Sur DALL-E : décris le format en toutes lettres. Sur Stable Diffusion : se règle directement dans les dimensions de sortie (largeur/hauteur en pixels).</dd>
+
+    <dt>Version du modèle (--v)</dt>
+    <dd>La version du modèle d'IA utilisée. Sur Midjourney, "--v 6" correspond à la version la plus récente et la plus réaliste au moment de la rédaction de ce pack — vérifie toujours la dernière version disponible.</dd>
+
+    <dt>Style raw (--style raw)</dt>
+    <dd>Sur Midjourney, réduit l'interprétation artistique automatique du modèle pour un rendu plus proche d'une photographie réelle. Utile pour les portraits et visuels produits.</dd>
+
+    <dt>Stylize (--stylize ou --s)</dt>
+    <dd>Sur Midjourney, contrôle à quel point le modèle privilégie l'esthétique par rapport à la fidélité stricte au prompt. Une valeur basse (100-200) donne un rendu plus littéral, une valeur haute (400+) donne un rendu plus artistique.</dd>
+
+    <dt>Chaos (--chaos)</dt>
+    <dd>Sur Midjourney, contrôle la diversité entre les 4 variations générées. Une valeur haute donne des résultats plus variés et parfois plus surprenants.</dd>
+
+    <dt>Seed</dt>
+    <dd>Un numéro qui détermine le point de départ aléatoire de la génération. Réutiliser le même seed avec un prompt similaire permet de garder une cohérence visuelle entre plusieurs images.</dd>
+
+    <dt>Negative prompt</dt>
+    <dd>Une liste d'éléments à exclure du résultat (ex. "blurry, low quality"). Disponible nativement sur Stable Diffusion ; sur Midjourney, s'utilise avec le paramètre "--no" suivi des éléments à exclure.</dd>
+
+    <dt>Steps</dt>
+    <dd>Sur Stable Diffusion, le nombre d'itérations de calcul pour générer l'image. Plus de steps donne généralement plus de détails, avec un temps de génération plus long. Une valeur entre 25 et 40 est un bon point de départ.</dd>
+
+    <dt>CFG scale (Classifier-Free Guidance)</dt>
+    <dd>Sur Stable Diffusion, contrôle à quel point l'image générée doit suivre fidèlement le prompt. Une valeur basse (5-6) laisse plus de liberté créative au modèle, une valeur haute (8+) colle plus strictement au texte.</dd>
+
+    <dt>Upscale</dt>
+    <dd>Une étape qui augmente la résolution et les détails d'une image déjà générée, sans changer sa composition. Recommandée avant tout usage professionnel ou impression.</dd>
+
+    <dt>Prompt weight (poids des mots-clés)</dt>
+    <dd>Une façon de donner plus ou moins d'importance à un mot précis du prompt (ex. "product::2" sur Midjourney pour renforcer l'importance du mot "product"). Utile quand un élément du prompt n'apparaît pas assez fortement dans le résultat.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>9. Droits d'usage commercial</h2>
+  <p class="lede">Ce qu'il faut vérifier avant d'utiliser une image générée avec l'IA dans un cadre professionnel ou commercial.</p>
+
+  <div class="box box-note">
+    <span class="box-title">🧭 Ce que dit ce chapitre</span>
+    <p>Les règles d'usage commercial des images générées par IA dépendent de l'outil utilisé et de la formule d'abonnement choisie, et elles évoluent régulièrement. Ce chapitre donne des repères généraux au moment de la rédaction de ce pack (2026) — vérifie toujours les conditions d'utilisation à jour de l'outil que tu utilises avant un usage commercial important.</p>
+  </div>
+
+  <h3>Midjourney</h3>
+  <p>Les abonnements payants Midjourney accordent en général des droits d'usage commercial sur les images générées. Les entreprises dont le chiffre d'affaires dépasse un certain seuil peuvent être soumises à des conditions spécifiques (abonnement "Pro" ou supérieur requis). Vérifie les conditions d'utilisation en vigueur sur le site officiel de Midjourney.</p>
+
+  <h3>DALL-E (via ChatGPT ou l'API OpenAI)</h3>
+  <p>OpenAI accorde en général aux utilisateurs les droits sur les images qu'ils génèrent, y compris pour un usage commercial, sous réserve du respect de sa politique d'utilisation (pas de contenu illégal, trompeur, ou portant atteinte à des droits de tiers). Vérifie les conditions d'utilisation à jour d'OpenAI.</p>
+
+  <h3>Stable Diffusion</h3>
+  <p>Les droits dépendent du modèle précis utilisé : certains modèles Stable Diffusion sont sous licence ouverte permettant un usage commercial, d'autres modèles dérivés partagés par la communauté peuvent avoir des restrictions spécifiques. Vérifie toujours la licence exacte du modèle utilisé avant un usage commercial.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Points de vigilance communs aux trois outils</span>
+    <p>Évite de générer des images reprenant le style reconnaissable d'un artiste vivant nommé explicitement, une marque déposée, ou le visage d'une personne réelle identifiable sans son consentement — ces usages posent des questions de droit d'auteur ou de droit à l'image, indépendamment des conditions d'utilisation de l'outil.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce chapitre donne des repères généraux, pas un avis juridique. Pour un usage commercial à fort enjeu (campagne publicitaire majeure, identité de marque déposée), un avis juridique spécialisé reste recommandé.</p>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Avertissement.</strong> Ce pack a une vocation pratique : il te fournit des prompts prêts à l'emploi et des repères généraux sur les paramètres techniques et les droits d'usage commercial des images générées par IA. Il ne constitue pas un avis juridique et ne remplace pas une vérification des conditions d'utilisation à jour de chaque outil (Midjourney, OpenAI, modèles Stable Diffusion utilisés), lesquelles évoluent régulièrement. Guido ne peut être tenu responsable de l'usage fait des images générées à partir de ces prompts.
+  </div>
+</section>
+
+</body>
+</html>

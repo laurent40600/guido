@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>31 prompts IA pour profs d'histoire-géographie</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 26pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  .subject-heading {
+    background: #1E2A4A; color: #fff; padding: 8pt 14pt; border-radius: 8pt;
+    font-size: 13pt; font-weight: 800; margin: 26pt 0 6pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — PACK DE PROMPTS 2026</span>
+  <h1>31 prompts IA pour profs d'histoire-géographie</h1>
+  <p class="tagline">Préparer, analyser et corriger plus vite</p>
+  <p class="meta">31 prompts prêts à copier-coller dans ChatGPT ou Claude, classés en 6 catégories,<br/>pour préparer tes séquences, analyser cartes et documents, créer des évaluations,<br/>différencier pour chaque élève et communiquer avec les familles</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Comment utiliser ce pack<span>Le principe des crochets, et comment bien les utiliser</span></li>
+    <li>Préparer ses séquences de cours<span>6 prompts</span></li>
+    <li>Analyser cartes et documents<span>6 prompts</span></li>
+    <li>Créer des évaluations et corrections<span>5 prompts</span></li>
+    <li>Différencier pour chaque élève<span>5 prompts</span></li>
+    <li>Supports de cours et frises<span>5 prompts</span></li>
+    <li>Corriger et communiquer<span>4 prompts</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Comment utiliser ce pack</h2>
+  <p class="lede">Chaque prompt contient des crochets [comme ceci] : remplace-les par ton chapitre, ton niveau ou ta période avant de coller le prompt dans ChatGPT ou Claude. Plus tu précises le contexte, plus le résultat sera exploitable directement en classe.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Vérifie toujours les dates, chiffres et faits générés par l'IA avant de les distribuer : les erreurs factuelles restent possibles.</p>
+    <p>Un prompt précis (période, notion, niveau exact) donne un résultat directement utilisable.</p>
+    <p>Garde ce document ouvert à côté de ton IA pour piocher le bon prompt selon ton besoin du moment.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Préparer ses séquences de cours</h2>
+  <p class="lede">Pour structurer un chapitre d'histoire ou de géographie sans partir d'une page blanche.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Séquence de cours en 4 séances</span>
+    <span class="prompt-text">Crée une séquence de cours en 4 séances sur [notion, ex : la Révolution française] pour des élèves de [niveau], avec pour chaque séance : l'objectif, le support principal et une problématique à traiter.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un chapitre complet avant de rédiger le détail de chaque séance</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Trois façons d'introduire un chapitre</span>
+    <span class="prompt-text">Propose 3 façons différentes d'introduire le chapitre sur [événement/notion] en classe : par un document choc, par une frise chronologique, par une accroche géographique locale.</span>
+    <p class="prompt-usage">À quoi ça sert : varier ses entrées en matière selon le profil de la classe</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Progression annuelle</span>
+    <span class="prompt-text">Rédige la progression annuelle d'histoire-géographie pour un niveau [niveau], en respectant l'ordre du programme officiel et en répartissant le temps entre histoire et géographie.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer sa programmation annuelle en début d'année</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Notion abstraite expliquée simplement</span>
+    <span class="prompt-text">Explique la notion de [concept, ex : la mondialisation] à des élèves de [niveau] avec une définition simple et un exemple concret et actuel.</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une explication claire pour une notion abstraite du programme</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Plan de révision sur 2 semaines</span>
+    <span class="prompt-text">Crée un plan de révision de 2 semaines avant l'évaluation sur [chapitre], avec les dates et notions prioritaires et un exercice type par jour.</span>
+    <p class="prompt-usage">À quoi ça sert : donner un plan de révision structuré plutôt que "révise ton chapitre"</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Activité d'accroche originale</span>
+    <span class="prompt-text">Propose une activité d'accroche originale (jeu de rôle, débat, étude de cas) pour démarrer l'étude de [événement/notion] et capter l'attention de la classe.</span>
+    <p class="prompt-usage">À quoi ça sert : varier le format d'entrée en matière au-delà du cours magistral</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Analyser cartes et documents</h2>
+  <p class="lede">Pour préparer questionnaires, grilles de lecture et confrontations de sources.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Exercice d'analyse de document</span>
+    <span class="prompt-text">Crée un exercice d'analyse de document (carte, texte, image) sur [sujet], avec 5 questions progressives et la correction, adapté à des élèves de [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : générer un exercice d'analyse de document complet en quelques minutes</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Grille de lecture cartographique</span>
+    <span class="prompt-text">Rédige une grille de lecture pour analyser une carte sur [sujet géographique], avec les éléments à identifier étape par étape (échelle, légende, localisation, message).</span>
+    <p class="prompt-usage">À quoi ça sert : donner une méthode claire pour la lecture cartographique</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Analyse critique d'un document</span>
+    <span class="prompt-text">Propose 5 questions d'analyse critique sur ce document historique, en identifiant sa nature, son auteur, son contexte et ses limites : [décrire ou coller le document].</span>
+    <p class="prompt-usage">À quoi ça sert : travailler l'esprit critique face à une source historique</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Comparaison de deux documents</span>
+    <span class="prompt-text">Compare ces deux documents sur [thème commun] et identifie leurs points communs et divergences de point de vue : [décrire les deux documents].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une séance de confrontation de sources</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Analyse d'une caricature ou affiche</span>
+    <span class="prompt-text">Rédige une analyse guidée d'une caricature ou d'une affiche de propagande sur [période/événement], adaptée à des élèves de [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer l'analyse d'un document iconographique souvent difficile pour les élèves</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Repérage sur fond de carte muette</span>
+    <span class="prompt-text">Propose un exercice de repérage sur fond de carte muette pour [région/pays], avec la liste des éléments à localiser et leur correction.</span>
+    <p class="prompt-usage">À quoi ça sert : créer rapidement un exercice de repérage spatial</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Créer des évaluations et corrections</h2>
+  <p class="lede">Pour gagner du temps sur la création et la correction des contrôles.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Évaluation de fin de chapitre</span>
+    <span class="prompt-text">Crée une évaluation de fin de chapitre sur [chapitre] pour des élèves de [niveau], mêlant questions de connaissances et analyse de document, avec le barème détaillé.</span>
+    <p class="prompt-usage">À quoi ça sert : générer un contrôle complet prêt à relire et ajuster</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Sujet de composition argumentée</span>
+    <span class="prompt-text">Rédige un sujet de composition/paragraphe argumenté sur [sujet], avec le plan attendu et les critères d'évaluation.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer un sujet de rédaction longue avec sa grille de correction</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Grille d'évaluation par compétences</span>
+    <span class="prompt-text">Propose une grille d'évaluation par compétences (analyser un document, se repérer dans le temps/l'espace, argumenter) pour ce contrôle sur [chapitre].</span>
+    <p class="prompt-usage">À quoi ça sert : basculer vers une évaluation par compétences sans repartir de zéro</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Évaluation diagnostique de rentrée</span>
+    <span class="prompt-text">Crée une évaluation diagnostique de début d'année sur les repères chronologiques et spatiaux essentiels attendus en [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : évaluer les repères de base d'une nouvelle classe en septembre</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Corrigé type avec barème</span>
+    <span class="prompt-text">Rédige un corrigé type avec le barème détaillé pour ce sujet de paragraphe argumenté : [sujet], en précisant les points accordés pour chaque idée attendue.</span>
+    <p class="prompt-usage">À quoi ça sert : harmoniser sa notation et gagner du temps à la correction</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Différencier pour chaque élève</h2>
+  <p class="lede">Pour adapter un même contenu aux élèves en difficulté comme aux plus avancés.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Exercice d'analyse à deux niveaux</span>
+    <span class="prompt-text">Transforme cet exercice d'analyse de document en deux versions : une simplifiée avec des questions plus guidées, une approfondie avec une question de synthèse. Exercice : [coller l'exercice]</span>
+    <p class="prompt-usage">À quoi ça sert : différencier sans créer deux exercices entièrement différents</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Adaptation pour élève en difficulté de lecture</span>
+    <span class="prompt-text">Propose une adaptation de cet énoncé pour un élève ayant des difficultés de lecture, en simplifiant le vocabulaire sans perdre le sens historique/géographique. Énoncé : [coller l'énoncé]</span>
+    <p class="prompt-usage">À quoi ça sert : adapter un énoncé pour un élève en difficulté de compréhension écrite</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Exercice de dépassement</span>
+    <span class="prompt-text">Crée un exercice de dépassement pour un élève qui maîtrise déjà [notion], qui pousse la réflexion vers une problématique plus complexe.</span>
+    <p class="prompt-usage">À quoi ça sert : occuper intelligemment les élèves en avance</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Frise chronologique simplifiée</span>
+    <span class="prompt-text">Rédige une frise chronologique simplifiée avec les 6 dates essentielles à retenir sur [période], pour les élèves qui ont besoin de repères visuels clairs.</span>
+    <p class="prompt-usage">À quoi ça sert : donner un support de mémorisation clair et minimal</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Activités de soutien ciblées</span>
+    <span class="prompt-text">Propose 3 activités de soutien courtes (15 minutes) pour un élève qui confond [deux notions proches, ex : Révolution et Empire], à faire en autonomie.</span>
+    <p class="prompt-usage">À quoi ça sert : cibler une remédiation précise sur une confusion fréquente</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Supports de cours et frises</h2>
+  <p class="lede">Pour des traces écrites, frises chronologiques et activités qui rendent le cours plus vivant.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Frise chronologique pédagogique</span>
+    <span class="prompt-text">Décris précisément une frise chronologique pédagogique sur [période], avec les dates clés et leur légende, que je pourrai reproduire au tableau ou dans un logiciel.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer la description d'un support visuel à recréer facilement</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Trace écrite de cours</span>
+    <span class="prompt-text">Rédige la trace écrite (le résumé de cours) à copier par les élèves sur [notion/événement], en langage simple, avec les dates et repères essentiels.</span>
+    <p class="prompt-usage">À quoi ça sert : générer un résumé de cours propre et court</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Jeu de rôle ou débat argumenté</span>
+    <span class="prompt-text">Propose un jeu de rôle ou débat argumenté en classe sur [événement historique/enjeu géographique], avec la description des rôles et les consignes de mise en œuvre.</span>
+    <p class="prompt-usage">À quoi ça sert : varier les formats pédagogiques au-delà du cours classique</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Carte mentale de chapitre</span>
+    <span class="prompt-text">Crée une carte mentale textuelle qui résume le chapitre sur [chapitre], avec les notions principales et leurs liens entre elles.</span>
+    <p class="prompt-usage">À quoi ça sert : donner une vue d'ensemble d'un chapitre pour la révision</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Anecdote historique marquante</span>
+    <span class="prompt-text">Rédige une anecdote ou un fait marquant peu connu lié à [événement/période] pour rendre le cours plus vivant en introduction.</span>
+    <p class="prompt-usage">À quoi ça sert : capter l'attention avec un détail historique surprenant</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Corriger et communiquer</h2>
+  <p class="lede">Pour accélérer la correction et personnaliser les retours aux élèves et familles.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Appréciation de bulletin</span>
+    <span class="prompt-text">Rédige une appréciation de bulletin pour un élève avec le profil suivant : [décrire le profil], en restant constructif et personnalisé.</span>
+    <p class="prompt-usage">À quoi ça sert : gagner du temps sur la rédaction des bulletins</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Message aux parents en début de trimestre</span>
+    <span class="prompt-text">Rédige un message pour les parents expliquant simplement ce que la classe va aborder ce trimestre en histoire-géographie, avec 2-3 conseils pour aider leur enfant à la maison.</span>
+    <p class="prompt-usage">À quoi ça sert : communiquer avec les familles sans y passer une soirée</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Conseils individualisés</span>
+    <span class="prompt-text">Propose 3 conseils concrets et actionnables à donner à un élève qui a des difficultés récurrentes en analyse de document ou en argumentation écrite.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un retour individualisé motivant</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Compte-rendu de réunion parents-profs</span>
+    <span class="prompt-text">Rédige un compte-rendu de réunion parents-professeurs sur la progression générale de la classe, avec points forts et points de vigilance collectifs.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer sa réunion parents-profs sans tout rédiger de zéro le jour même</p>
+  </div>
+</section>
+
+</body>
+</html>

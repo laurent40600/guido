@@ -17,7 +17,7 @@ export default function GuidesExplorer({
   const [category, setCategory] = useState<string | null>(null);
 
   const categories = useMemo(
-    () => Array.from(new Set(guides.map((guide) => guide.category))),
+    () => Array.from(new Set([...guides.map((guide) => guide.category), "Prompts"])),
     [guides],
   );
 
@@ -84,7 +84,9 @@ export default function GuidesExplorer({
         </div>
       ) : (
         <p className="mt-16 text-center text-stone-500">
-          Aucun guide ne correspond à « {query} » pour l&apos;instant.
+          {query.trim()
+            ? <>Aucun guide ne correspond à « {query} » pour l&apos;instant.</>
+            : "Aucun guide dans cette catégorie pour l'instant."}
         </p>
       )}
     </div>

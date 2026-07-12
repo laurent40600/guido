@@ -21,6 +21,9 @@ model User {
   phone         String   @default("")
   address       String   @default("")
   emailVerified DateTime?
+  // Donne accès au panneau d'administration (/admin). Attribué manuellement
+  // via scripts/make-admin.ts, jamais depuis une interface publique.
+  isAdmin       Boolean  @default(false)
   createdAt     DateTime @default(now())
 
   verificationTokens  VerificationToken[]
@@ -28,6 +31,7 @@ model User {
   emailChangeTokens   EmailChangeToken[]
   purchases           Purchase[]
   cartItems           CartItem[]
+  downloadEvents      DownloadEvent[]
 }
 
 model VerificationToken {
@@ -62,15 +66,46 @@ model EmailChangeToken {
 }
 
 model Purchase {
-  id         String   @id @default(cuid())
-  userId     String
-  guideSlug  String
-  offerId    String   @default("default")
-  purchasedAt DateTime @default(now())
+  id                String    @id @default(cuid())
+  userId            String
+  guideSlug         String
+  offerId           String    @default("default")
+  // Numéro de commande lisible, affiché à l'acheteur et intégré au filigrane
+  // du PDF téléchargé (traçabilité en cas de fuite). Distinct de `id` (cuid
+  // technique) : attribué séquentiellement à la création de la commande.
+  orderNumber       Int       @unique
+  purchasedAt       DateTime  @default(now())
+  // Horodatage de la case cochée par l'acheteur au moment de la commande,
+  // par laquelle il reconnaît demander l'accès immédiat au contenu numérique
+  // et renonce à son droit de rétractation (art. L.221-28, 13° du Code de
+  // la consommation). Preuve du consentement, à ne jamais back-dater.
+  withdrawalWaivedAt DateTime?
+  // Nombre de téléchargements déjà effectués et limite autorisée. Pas de
+  // limite de durée : uniquement un nombre fini de téléchargements réels.
+  downloadCount      Int       @default(0)
+  maxDownloads       Int       @default(2)
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  downloadEvents DownloadEvent[]
 
   @@unique([userId, guideSlug, offerId])
+}
+
+// Historique immuable de chaque téléchargement réellement effectué.
+// Sert à la fois de journal d'audit et de preuve en cas de fuite du fichier.
+model DownloadEvent {
+  id               String   @id @default(cuid())
+  purchaseId       String
+  userId           String
+  guideSlug        String
+  downloadNumber   Int
+  downloadedAt     DateTime @default(now())
+  uniqueDownloadId String   @unique
+  ipAddress        String?
+  userAgent        String?
+
+  purchase Purchase @relation(fields: [purchaseId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model CartItem {

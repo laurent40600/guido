@@ -47,3 +47,6 @@ next-env.d.ts
 /dev.db-journal
 /prisma/*.db
 /prisma/*.db-journal
+
+# sauvegardes locales de la base (contiennent des données utilisateur)
+/backups

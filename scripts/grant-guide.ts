@@ -2,7 +2,14 @@
 // Accorde manuellement l'accès à un guide (ou à une offre précise d'un guide à plusieurs
 // offres, ex. "seul" ou "pack") à un utilisateur déjà inscrit et vérifié, en attendant
 // que le vrai système de paiement soit en place.
+//
+// Ce script ne renseigne PAS withdrawalWaivedAt : cette date ne doit être
+// enregistrée que lorsque l'acheteur coche lui-même la case de renonciation
+// au droit de rétractation sur la page /panier, au moment d'un vrai paiement
+// en ligne. Tant que l'accès est accordé manuellement via ce script, gardez
+// une preuve écrite séparée (email, etc.) que le client a été informé.
 import { db } from "../src/lib/db";
+import { getNextOrderNumber } from "../src/lib/orders";
 
 async function main() {
   const [email, guideSlug, offerId = "default"] = process.argv.slice(2);
@@ -18,13 +25,15 @@ async function main() {
     process.exit(1);
   }
 
-  const purchase = await db.purchase.upsert({
+  const existing = await db.purchase.findUnique({
     where: { userId_guideSlug_offerId: { userId: user.id, guideSlug, offerId } },
-    update: {},
-    create: { userId: user.id, guideSlug, offerId },
   });
 
-  console.log(`Accès accordé : ${email} -> ${guideSlug} (offre: ${offerId}, purchase id: ${purchase.id})`);
+  const purchase = existing ?? await db.purchase.create({
+    data: { userId: user.id, guideSlug, offerId, orderNumber: await getNextOrderNumber() },
+  });
+
+  console.log(`Accès accordé : ${email} -> ${guideSlug} (offre: ${offerId}, commande #${purchase.orderNumber})`);
 }
 
 main().finally(() => db.$disconnect());

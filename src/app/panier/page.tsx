@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import RemoveFromCartButton from "@/components/cart/RemoveFromCartButton";
+import CheckoutConsent from "@/components/cart/CheckoutConsent";
 import { getSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getGuide } from "@/data/guides";
@@ -68,17 +69,7 @@ export default async function PanierPage() {
                 ))}
               </ul>
 
-              <div className="mt-10 flex flex-col gap-4 rounded-2xl border border-stone-200 bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-sm text-stone-600">
-                  Le paiement en ligne arrive bientôt — cette étape ne débite rien pour le moment.
-                </p>
-                <button
-                  disabled
-                  className="cursor-not-allowed rounded-xl bg-stone-200 px-6 py-3 font-semibold text-stone-500"
-                >
-                  Passer commande — bientôt disponible
-                </button>
-              </div>
+              <CheckoutConsent />
             </>
           )}
         </section>

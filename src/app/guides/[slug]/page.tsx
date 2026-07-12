@@ -6,6 +6,7 @@ import { Check } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import GuidePricing from "@/components/guides/GuidePricing";
+import GuideCard from "@/components/guides/GuideCard";
 import { guides, getGuide } from "@/data/guides";
 import { getSession } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -55,6 +56,13 @@ export default async function GuideDetailPage({
 
   const purchasedOfferIds = purchases.map((purchase) => purchase.offerId);
   const cartOfferIds = cartItems.map((item) => item.offerId);
+
+  const crossSellGuides = (guide.crossSell ?? [])
+    .map((crossSlug) => getGuide(crossSlug))
+    .filter(
+      (crossGuide): crossGuide is NonNullable<typeof crossGuide> =>
+        crossGuide !== undefined && crossGuide.slug !== guide.slug,
+    );
 
   return (
     <>
@@ -107,6 +115,24 @@ export default async function GuideDetailPage({
             {guide.pitch}
           </p>
 
+          {guide.promptPreview && guide.promptPreview.length > 0 && (
+            <div className="mt-8 space-y-3">
+              {guide.promptPreview.map((prompt, index) => (
+                <div
+                  key={index}
+                  className="rounded-xl border border-violet-600/25 bg-violet-50 p-4"
+                >
+                  <p className="text-xs font-bold uppercase tracking-wide text-violet-700">
+                    {prompt.title}
+                  </p>
+                  <p className="mt-1.5 font-mono text-sm leading-relaxed text-navy-900">
+                    {prompt.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+
           <GuidePricing
             guide={guide}
             isLoggedIn={!!session}
@@ -150,6 +176,23 @@ export default async function GuideDetailPage({
               ))}
             </div>
           </div>
+
+          {crossSellGuides.length > 0 && (
+            <div className="mt-16">
+              <h2 className="text-2xl font-bold text-navy-900">
+                Tu pourrais aussi aimer
+              </h2>
+              <p className="mt-2 text-stone-600">
+                Tu utilises déjà l&apos;IA pour ton business, tu pourrais aussi
+                aimer ce pack de prompts.
+              </p>
+              <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                {crossSellGuides.map((crossGuide) => (
+                  <GuideCard key={crossGuide.slug} guide={crossGuide} />
+                ))}
+              </div>
+            </div>
+          )}
         </section>
       </main>
       <Footer />

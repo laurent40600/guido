@@ -13,13 +13,24 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-10 text-base">
+        <div className="grid grid-cols-2 gap-10 text-base sm:grid-cols-3">
           <div>
             <h3 className="mb-4 font-semibold text-navy-900">Navigation</h3>
             <ul className="space-y-2 text-stone-500">
               <li><Link href="/guides" className="hover:text-gold-700">Tous les guides</Link></li>
+              <li><Link href="/prompts" className="hover:text-gold-700">Prompts</Link></li>
               <li><Link href="/a-propos" className="hover:text-gold-700">À propos</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-4 font-semibold text-navy-900">Informations légales</h3>
+            <ul className="space-y-2 text-stone-500">
+              <li><Link href="/mentions-legales" className="hover:text-gold-700">Mentions légales</Link></li>
               <li><Link href="/cgu" className="hover:text-gold-700">CGU</Link></li>
+              <li><Link href="/cgv" className="hover:text-gold-700">CGV</Link></li>
+              <li><Link href="/politique-de-confidentialite" className="hover:text-gold-700">Confidentialité</Link></li>
+              <li><Link href="/politique-de-remboursement" className="hover:text-gold-700">Remboursement</Link></li>
             </ul>
           </div>
 

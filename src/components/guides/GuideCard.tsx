@@ -17,6 +17,11 @@ export default function GuideCard({ guide }: { guide: Guide }) {
             fill
             className="object-cover object-top"
           />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-2.5 pb-1.5 pt-5">
+            <p className="line-clamp-2 text-[11px] font-bold leading-tight text-white">
+              {guide.title}
+            </p>
+          </div>
         </div>
       )}
 

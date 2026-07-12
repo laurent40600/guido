@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Ménopause : comprendre les symptômes et retrouver de l'énergie</title>
+<style>
+  @page { size: A4; margin: 29mm 24mm 27mm 24mm; }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 26pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-case { background: #f6f8f4; border-left: 5px solid #4d7c4a; }
+  .box-case .box-title { color: #3f6b3d; }
+  .box-medical {
+    background: #eef3f6; border: 1.5px solid #4a7a9e; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-medical .box-title { color: #2c5876; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; }
+  .box-template {
+    background: #fff; border: 1.5px dashed #1E2A4A; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-template .box-title { color: #1E2A4A; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+
+  .source { font-size: 10pt; color: #1a1a1a; font-style: italic; }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1E2A4A; font-size: 12.5pt; margin-bottom: 4pt; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+
+  ol.steps { padding-left: 0; list-style: none; counter-reset: step; }
+  ol.steps li { counter-increment: step; position: relative; padding-left: 40pt; margin-bottom: 16pt; }
+  ol.steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0;
+    width: 28pt; height: 28pt; border-radius: 50%;
+    background: #1E2A4A; color: #C98A2E; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps li strong { color: #1E2A4A; }
+
+  .subject-heading {
+    background: #1E2A4A; color: #fff; padding: 8pt 14pt; border-radius: 8pt;
+    font-size: 13pt; font-weight: 800; margin: 26pt 0 12pt;
+  }
+
+  .disclaimer {
+    margin-top: 24pt; padding: 16pt; background: #f8f6f2;
+    border-radius: 10pt; font-size: 11pt; color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Ménopause : comprendre les symptômes et retrouver de l'énergie</h1>
+  <p class="tagline">Comprendre ce qui se passe dans ton corps, et reprendre la main sur ton quotidien</p>
+  <p class="meta">Les phases, les symptômes et les idées reçues expliqués simplement, des pistes concrètes<br/>pour retrouver de l'énergie, et comment être bien accompagnée par un professionnel de santé —<br/>avec le Pack Énergie bonus : 30 prompts par usage + template Canva de tracker de symptômes</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction — un sujet encore trop tabou</li>
+    <li>Partie 1 — Comprendre ce qui se passe dans le corps<span>Les phases, les symptômes principaux, démêler le vrai du faux</span></li>
+    <li>Partie 2 — Retrouver de l'énergie au quotidien<span>Alimentation, activité physique, sommeil, fatigue mentale</span></li>
+    <li>Partie 3 — Naviguer le parcours de soin<span>Consulter, se faire entendre, comprendre les options sans se substituer au médecin</span></li>
+    <li>Partie 4 — Vivre cette étape sereinement<span>Plan sur 21 jours, checklist, erreurs à éviter</span></li>
+    <li id="toc-bonus-item">Partie 5 — Bonus : le Pack Énergie<span>30 prompts par usage + le template Canva de tracker de symptômes</span></li>
+    <li>Lexique</li>
+    <li>Questions fréquentes</li>
+    <li>Avertissement</li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction — un sujet encore trop tabou</h2>
+  <p class="lede">En sortant de cette introduction, tu sauras précisément ce que ce guide va t'apporter, et ce qu'il ne remplace jamais.</p>
+
+  <h3>Pourquoi ce sujet reste tabou</h3>
+  <p>La ménopause touche, tôt ou tard, toutes les femmes qui vivent assez longtemps. Et pourtant, elle reste rarement évoquée ouvertement — ni en famille, ni entre collègues, ni parfois même entre amies.</p>
+
+  <p>Ce silence a un effet bien réel : beaucoup de femmes découvrent leurs premiers symptômes sans savoir qu'ils sont liés à cette étape, se sentent seules face à des changements qu'elles ne comprennent pas, ou hésitent à en parler par peur d'être jugées ou minimisées.</p>
+
+  <p>Ce guide part d'un principe simple : comprendre ce qui se passe dans ton corps n'est pas un luxe, c'est la première étape pour reprendre la main sur ton quotidien.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Tu n'as rien fait de mal, tu ne "vieillis pas mal" : c'est une transition hormonale naturelle, qui mérite d'être comprise et accompagnée, pas subie en silence.</p>
+  </div>
+
+  <h3>Ce que ce guide propose concrètement</h3>
+  <p>Ce guide couvre quatre étapes, dans l'ordre où elles s'enchaînent naturellement :</p>
+  <ul>
+    <li><strong>Comprendre</strong> — ce qui se passe réellement dans ton corps, sans jargon médical inutile ;</li>
+    <li><strong>Retrouver de l'énergie</strong> — des pistes concrètes sur l'alimentation, l'activité physique et le sommeil ;</li>
+    <li><strong>Naviguer le parcours de soin</strong> — savoir quand consulter, quoi demander, et comment te faire entendre ;</li>
+    <li><strong>Vivre cette étape sereinement</strong> — un plan progressif sur 21 jours, sans pression inutile.</li>
+  </ul>
+
+  <p>Le Pack Énergie en bonus (partie 5) te donne 30 prompts prêts à l'emploi pour mieux organiser ton quotidien avec l'aide d'une IA, et un guide pas à pas pour recréer un tracker de symptômes hebdomadaire dans Canva — utile aussi à partager avec ton médecin.</p>
+
+  <div class="box-medical">
+    <span class="box-title">🩺 Ce que ce guide n'est pas</span>
+    <p>Ce guide est informatif et pratique : il t'aide à comprendre ce qui se passe et à adapter ton quotidien. Il ne constitue ni un diagnostic, ni un avis médical, ni une recommandation de traitement.</p>
+    <p>Il ne compare ni n'évalue de traitements hormonaux, médicaments ou compléments spécifiques. Pour toute décision de traitement, seul un médecin ou un gynécologue peut t'accompagner en tenant compte de ta situation personnelle. Ce guide t'aide à préparer ce dialogue, jamais à le remplacer.</p>
+  </div>
+
+  <h3>Prérequis</h3>
+  <p>Aucune compétence particulière n'est nécessaire pour suivre ce guide. Pour le Pack Énergie bonus, tu auras besoin d'un compte gratuit sur ChatGPT ou Claude — deux outils grand public — pour personnaliser tes questions et ton organisation avec les prompts fournis.</p>
+
+  <h3>Pour qui est ce guide, concrètement</h3>
+  <table>
+    <tr><th>Situation</th><th>Ce qui te parlera particulièrement</th></tr>
+    <tr><td>Symptômes récents, encore mal compris</td><td>La partie 1, pour mettre des mots clairs sur ce qui t'arrive</td></tr>
+    <tr><td>Fatigue et manque d'énergie au quotidien</td><td>La partie 2, avec des pistes concrètes et réalistes</td></tr>
+    <tr><td>Difficulté à te sentir entendue par un professionnel</td><td>La partie 3, avec des méthodes concrètes pour préparer et mener tes rendez-vous</td></tr>
+  </table>
+
+  <h3>Comment utiliser ce guide selon le temps dont tu disposes</h3>
+  <table>
+    <tr><th>Temps disponible</th><th>Ce que tu peux faire</th></tr>
+    <tr><td>10 minutes</td><td>Lire l'introduction et la partie "Démystifier les idées reçues" (chapitre 2.7)</td></tr>
+    <tr><td>Une heure</td><td>Lire la partie 1 en entier pour mettre des mots sur tes symptômes</td></tr>
+    <tr><td>Une semaine</td><td>Lire l'ensemble du guide et préparer ton prochain rendez-vous médical (partie 3)</td></tr>
+    <tr><td>Trois semaines</td><td>Suivre le plan progressif complet du chapitre 4.1</td></tr>
+  </table>
+
+  <h3>Ce que ce guide ne couvre pas</h3>
+  <p>Pour être honnête sur son périmètre, ce guide ne traite pas :</p>
+  <ul>
+    <li>Le choix ou la comparaison de traitements hormonaux, médicaments ou compléments spécifiques ;</li>
+    <li>Le diagnostic de symptômes qui pourraient avoir une autre origine médicale ;</li>
+    <li>Le suivi gynécologique de routine, qui reste du ressort exclusif de ton médecin.</li>
+  </ul>
+  <p>Sur ces sujets, ce guide te renvoie systématiquement vers un professionnel de santé, et t'aide à préparer ce dialogue plutôt qu'à le remplacer.</p>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Comprendre ce qui se passe dans le corps</h2>
+  <p class="lede">En sortant de cette partie, tu sauras distinguer les grandes phases de la ménopause, comprendre pourquoi tes symptômes surviennent, et démêler le vrai du faux sur les idées reçues les plus courantes.</p>
+
+  <h3>2.1 Les trois phases, expliquées simplement</h3>
+  <p>On parle souvent "de la ménopause" comme d'un seul moment, alors qu'il s'agit en réalité d'une transition en plusieurs phases, qui s'étend sur plusieurs années.</p>
+
+  <table>
+    <tr><th>Phase</th><th>Ce qui la caractérise</th></tr>
+    <tr><td>Périménopause</td><td>La phase de transition qui précède l'arrêt des règles, marquée par des cycles irréguliers et l'apparition progressive des premiers symptômes</td></tr>
+    <tr><td>Ménopause</td><td>Le moment où les règles se sont arrêtées depuis 12 mois consécutifs, marquant la fin de la fonction ovarienne</td></tr>
+    <tr><td>Post-ménopause</td><td>La période qui suit, durant laquelle certains symptômes s'atténuent progressivement tandis que d'autres aspects de santé méritent une attention continue</td></tr>
+  </table>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La périménopause peut commencer plusieurs années avant l'arrêt complet des règles. Si tu as des symptômes mais que tes règles n'ont pas encore cessé, tu es probablement déjà dans cette phase de transition.</p>
+  </div>
+
+  <h3>2.2 Les bouffées de chaleur : pourquoi et comment elles se manifestent</h3>
+  <p>Les bouffées de chaleur comptent parmi les symptômes les plus connus, mais aussi les plus mal compris. Elles sont liées aux variations hormonales qui affectent la régulation de la température corporelle par le cerveau.</p>
+
+  <p>Elles se manifestent généralement par une sensation de chaleur soudaine, souvent accompagnée de rougeurs et de sueurs, pouvant survenir le jour comme la nuit (on parle alors de sueurs nocturnes).</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Noter le moment et le contexte de tes bouffées de chaleur (chapitre 5.2) peut t'aider à repérer des déclencheurs personnels (stress, certains aliments, chaleur ambiante) et à en parler plus précisément avec ton médecin.</p>
+  </div>
+
+  <h3>2.3 Fatigue et niveaux d'énergie : pourquoi ils fluctuent</h3>
+  <p>La fatigue ressentie pendant cette période a rarement une seule cause. Elle résulte souvent d'une combinaison : sommeil perturbé par les sueurs nocturnes, variations hormonales affectant directement l'énergie, et charge mentale liée aux autres symptômes.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Cette fatigue n'est pas "dans ta tête" et n'est pas non plus une fatalité à laquelle tu ne peux rien. La partie 2 de ce guide te donne des pistes concrètes pour agir sur les facteurs qui dépendent de toi.</p>
+  </div>
+
+  <h3>2.4 Troubles du sommeil liés à cette période</h3>
+  <p>Le sommeil est l'un des aspects les plus fréquemment perturbés : sueurs nocturnes qui réveillent, difficultés d'endormissement, réveils plus fréquents. Ces perturbations aggravent en retour la fatigue diurne, créant un cercle qu'il est utile de comprendre pour mieux le rompre (voir chapitre 3.3).</p>
+
+  <h3>2.5 Changements d'humeur : ce qui se joue hormonalement</h3>
+  <p>Irritabilité, sensibilité émotionnelle accrue, sentiment de perdre parfois le contrôle de ses réactions : ces changements sont fréquemment rapportés et ont, eux aussi, un lien avec les variations hormonales de cette période, en plus de l'impact du manque de sommeil et de la fatigue.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Nommer ces changements auprès de ton entourage proche ("je traverse une période où mes émotions sont plus intenses") peut désamorcer des tensions et t'éviter d'avoir à t'auto-justifier en permanence.</p>
+  </div>
+
+  <h3>2.6 Troubles de la concentration et "brouillard mental"</h3>
+  <p>Difficultés à trouver ses mots, à se concentrer sur une tâche, impression de "brouillard mental" : ce symptôme, moins connu que les bouffées de chaleur, est pourtant fréquemment rapporté et peut avoir un impact réel au travail comme à la maison (voir chapitre 3.4 et 3.5).</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce brouillard mental est un symptôme reconnu de cette période de transition, pas un signe que "tu perds la mémoire" au sens inquiétant du terme. Il s'atténue généralement avec le temps.</p>
+  </div>
+
+  <h3>2.7 Démystifier les idées reçues</h3>
+  <table>
+    <tr><th>Idée reçue</th><th>Ce qu'on peut dire plus justement</th></tr>
+    <tr><td>"La ménopause, c'est juste la fin des règles"</td><td>C'est une transition hormonale qui affecte de nombreuses fonctions du corps, bien au-delà du cycle menstruel</td></tr>
+    <tr><td>"Il faut juste serrer les dents et attendre que ça passe"</td><td>De nombreuses pistes concrètes existent pour améliorer le quotidien (partie 2), et un accompagnement médical est possible (partie 3)</td></tr>
+    <tr><td>"Ça touche seulement les femmes âgées"</td><td>La périménopause peut débuter dès la fin de la trentaine ou au début de la quarantaine chez certaines femmes</td></tr>
+    <tr><td>"Tous les symptômes se ressemblent d'une femme à l'autre"</td><td>L'intensité et la combinaison des symptômes varient énormément d'une personne à l'autre</td></tr>
+  </table>
+
+  <h3>2.8 Cas particulier — ménopause précoce</h3>
+  <p>Certaines femmes vivent une ménopause précoce (avant 40-45 ans), naturellement ou à la suite d'un traitement médical. Cette situation mérite une attention médicale spécifique, notamment pour des questions de santé osseuse et cardiovasculaire à long terme.</p>
+
+  <div class="box-medical">
+    <span class="box-title">🩺 Précision</span>
+    <p>Si tu penses être concernée par une ménopause précoce, ce guide reste utile pour la partie compréhension et quotidien, mais un suivi médical spécifique est particulièrement important dans ton cas — n'attends pas pour en parler à un médecin (voir chapitre 3.1).</p>
+  </div>
+
+  <h3>2.9 Cas particulier — ménopause consécutive à un traitement médical</h3>
+  <p>Une ménopause peut aussi être provoquée par certains traitements médicaux (par exemple une intervention chirurgicale ou un traitement affectant la fonction ovarienne). Dans ce cas, les symptômes peuvent apparaître plus brutalement qu'une transition naturelle progressive.</p>
+
+  <div class="box-medical">
+    <span class="box-title">🩺 Précision</span>
+    <p>Si ta ménopause fait suite à un traitement médical, ton équipe soignante est la mieux placée pour t'accompagner sur ce point spécifique. Ce guide complète cet accompagnement pour la partie quotidien, il ne s'y substitue pas.</p>
+  </div>
+
+  <h3>2.10 Étude de cas complète — mettre des mots sur ce qui se passe</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Isabelle, 49 ans</span>
+    <p><strong>Le constat</strong> — Isabelle se sent épuisée depuis plusieurs mois, dort mal, et se surprend à être irritable avec ses proches sans bien comprendre pourquoi. Elle pensait "vieillir mal".</p>
+    <p><strong>Ce qu'elle découvre</strong> — En lisant sur les symptômes de la périménopause (chapitres 2.2 à 2.6), elle reconnaît précisément ce qu'elle vit : sueurs nocturnes, fatigue, irritabilité, difficultés de concentration.</p>
+    <p><strong>Ce que ça change</strong> — Mettre un nom sur ce qu'elle vit lui permet d'en parler à son médecin avec des mots précis (chapitre 3.2), et de ne plus se sentir seule ni anormale face à ces changements.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Retrouver de l'énergie au quotidien</h2>
+  <p class="lede">En sortant de cette partie, tu auras des pistes concrètes et réalistes sur l'alimentation, l'activité physique, le sommeil et la fatigue mentale — sans régime strict ni injonction irréaliste.</p>
+
+  <h3>3.1 Alimentation et énergie : les grands principes généraux</h3>
+  <p>Il ne s'agit pas ici de suivre un régime strict, mais de quelques principes généraux qui soutiennent le niveau d'énergie au quotidien pendant cette période.</p>
+
+  <table>
+    <tr><th>Principe</th><th>En pratique</th></tr>
+    <tr><td>Régularité des repas</td><td>Éviter les grands écarts entre les repas, qui peuvent accentuer les coups de fatigue</td></tr>
+    <tr><td>Hydratation suffisante</td><td>Particulièrement utile en cas de bouffées de chaleur fréquentes</td></tr>
+    <tr><td>Variété de l'alimentation</td><td>Privilégier une alimentation variée plutôt que des restrictions strictes difficiles à tenir</td></tr>
+  </table>
+
+  <p class="source">Ces principes sont des repères généraux de bon sens, pas des recommandations nutritionnelles personnalisées. Pour des besoins spécifiques, un médecin ou un diététicien reste le bon interlocuteur.</p>
+
+  <h3>3.2 Activité physique adaptée à cette période de vie</h3>
+  <p>Une activité physique régulière est associée à un meilleur niveau d'énergie général et peut aider à atténuer certains symptômes, sans qu'il soit nécessaire de viser une pratique intense.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Une marche quotidienne de 20-30 minutes est souvent plus facile à tenir dans la durée qu'un programme sportif ambitieux abandonné après deux semaines. Vise la régularité avant l'intensité.</p>
+  </div>
+
+  <h3>3.3 Gérer un sommeil perturbé par les symptômes</h3>
+  <p>Quand le sommeil est perturbé par des sueurs nocturnes ou des réveils fréquents, quelques ajustements simples de l'environnement peuvent aider : une chambre fraîche, une literie légère et respirante, et des vêtements de nuit adaptés.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Garder un linge de rechange à portée de main la nuit peut simplifier la reprise du sommeil après une sueur nocturne, sans avoir à te relever complètement.</p>
+  </div>
+
+  <h3>3.4 Composer avec la fatigue mentale et les trous de mémoire au travail</h3>
+  <p>Le brouillard mental (chapitre 2.6) peut affecter la concentration au travail. Quelques ajustements simples aident à limiter son impact : noter systématiquement les tâches plutôt que de compter sur sa mémoire, découper les tâches complexes en étapes plus courtes, et s'accorder de courtes pauses régulières.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Utiliser plus de pense-bêtes et de listes qu'avant n'est pas un aveu de faiblesse : c'est une adaptation intelligente à une période de transition bien réelle.</p>
+  </div>
+
+  <h3>3.5 Composer avec la fatigue mentale à la maison</h3>
+  <p>La charge mentale domestique peut sembler plus lourde à porter quand l'énergie et la concentration sont réduites. Répartir plus explicitement les tâches avec son entourage, plutôt que de continuer à tout gérer seule, est souvent un levier sous-utilisé.</p>
+
+  <h3>3.6 Exemple complet avant/après — organiser sa semaine</h3>
+  <div class="box box-template">
+    <span class="box-title">📝 Ce que tu tapes (brut, sans forme)</span>
+    j'ai plus d'energie du tout, je dors mal, jsuis irritable et jarrive plus a me concentrer au taf, jsais pas par ou commencer
+  </div>
+
+  <div class="box box-template">
+    <span class="box-title">✅ Ce que l'IA renvoie (extrait)</span>
+    <strong>Trois pistes pour commencer, une à la fois :</strong><br/>
+    1. Améliore d'abord ton environnement de sommeil (chambre fraîche, linge de rechange à portée de main) avant de changer autre chose.<br/>
+    2. Note systématiquement tes tâches au travail plutôt que de compter sur ta mémoire, pour réduire la charge mentale.<br/>
+    3. Choisis une seule activité physique simple et régulière (marche de 20 minutes) plutôt que plusieurs changements en même temps.
+  </div>
+
+  <p>Remarque l'approche progressive plutôt que de tout changer en même temps — c'est le principe qui structure le plan du chapitre 6.1.</p>
+
+  <h3>3.7 Cas particulier — reprendre une activité physique après un long arrêt</h3>
+  <p>Si tu n'as pas fait d'activité physique régulière depuis longtemps, il est normal de repartir doucement plutôt que de viser d'emblée une pratique intense.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Commence par une activité que tu apprécies déjà (marche, vélo, natation) plutôt que celle qui semble "la plus efficace" — la régularité prime sur le choix parfait de l'activité.</p>
+  </div>
+
+  <h3>3.8 Cas particulier — horaires de travail contraignants</h3>
+  <p>Avec des horaires de travail chargés, il peut sembler impossible de dégager du temps pour l'activité physique ou une routine de sommeil stable.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Intègre l'activité physique dans des trajets déjà existants (descendre un arrêt plus tôt, marcher pendant une pause déjeuner) plutôt que de chercher un créneau entièrement nouveau dans un emploi du temps déjà chargé.</p>
+  </div>
+
+  <h3>3.9 Gérer l'énergie en période de bouffées de chaleur nocturnes fréquentes</h3>
+  <p>Quand les sueurs nocturnes sont fréquentes, la qualité du sommeil en pâtit directement, avec un impact en cascade sur l'énergie du lendemain. Prioriser une chambre fraîche (autour de 18°C si possible) et des tissus respirants pour la literie peut limiter cet impact.</p>
+
+  <h3>3.10 Hydratation et petites habitudes qui font une différence</h3>
+  <p>Quelques petites habitudes simples soutiennent le niveau d'énergie sans effort majeur : garder une bouteille d'eau visible sur son bureau, prévoir une collation équilibrée en cas de coup de fatigue plutôt que de puiser dans les réserves de caféine ou de sucre.</p>
+
+  <h3>3.11 Étude de cas complète — reconstruire son énergie pas à pas</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Nathalie, 52 ans, cadre en entreprise</span>
+    <p><strong>Le point de départ</strong> — Nathalie se sent constamment fatiguée, dort mal à cause de sueurs nocturnes, et a l'impression de ne plus arriver à "tenir" ses journées de travail comme avant.</p>
+    <p><strong>La première semaine</strong> — Elle commence uniquement par baisser la température de sa chambre et prépare des vêtements de nuit plus légers.</p>
+    <p><strong>La deuxième semaine</strong> — Elle ajoute une marche de 20 minutes après le déjeuner, qu'elle intègre à sa pause existante plutôt que de chercher un nouveau créneau.</p>
+    <p><strong>Le bilan à un mois</strong> — Sans que tout soit résolu, Nathalie constate une nette amélioration de son énergie en journée, qu'elle attribue principalement à l'amélioration de son sommeil. Elle garde ces deux habitudes et envisage d'en parler à son médecin pour la suite (partie 3).</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Naviguer le parcours de soin</h2>
+  <p class="lede">En sortant de cette partie, tu sauras quand consulter, comment préparer ton rendez-vous, et comment te faire entendre si tu as l'impression que tes symptômes sont minimisés.</p>
+
+  <div class="box-medical">
+    <span class="box-title">🩺 Rappel important</span>
+    <p>Cette partie t'aide à préparer et à naviguer ton parcours de soin — elle ne remplace en aucun cas une consultation médicale. Toute décision de traitement doit être prise avec un médecin ou un gynécologue, en tenant compte de ta situation personnelle.</p>
+  </div>
+
+  <h3>4.1 Quand et pourquoi consulter un médecin ou un gynécologue</h3>
+  <p>Il n'est pas nécessaire d'attendre que les symptômes deviennent insupportables pour consulter. Dès que tu ressens des changements qui t'inquiètent ou qui affectent ta qualité de vie, une consultation est légitime.</p>
+
+  <table>
+    <tr><th>Situation</th><th>Pourquoi consulter</th></tr>
+    <tr><td>Symptômes qui affectent ton quotidien (sommeil, travail, relations)</td><td>Des options d'accompagnement existent, ton médecin peut t'orienter selon ta situation</td></tr>
+    <tr><td>Doute sur l'origine de tes symptômes</td><td>Certains symptômes peuvent avoir d'autres causes à écarter</td></tr>
+    <tr><td>Ménopause précoce suspectée ou consécutive à un traitement</td><td>Un suivi médical spécifique est particulièrement important dans ces situations (voir chapitres 2.8 et 2.9)</td></tr>
+  </table>
+
+  <h3>4.2 Préparer son rendez-vous : les questions à poser</h3>
+  <p>Un rendez-vous médical est souvent court. Arriver avec des questions préparées à l'avance permet d'en tirer le meilleur parti.</p>
+
+  <div class="box box-template">
+    <span class="box-title">📄 Template — Questions à préparer avant le rendez-vous</span>
+    <strong>Mes symptômes principaux (par ordre d'importance pour moi) :</strong> [liste]<br/>
+    <strong>Depuis quand et à quelle fréquence :</strong> [réponse]<br/>
+    <strong>Ce qui m'inquiète le plus :</strong> [réponse]<br/>
+    <strong>Ce que j'aimerais savoir ou comprendre :</strong> [réponse]
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Apporter ton tracker de symptômes rempli (chapitre 6.2) donne à ton médecin une vision concrète et objective de ta situation, plus utile qu'un souvenir approximatif en rendez-vous.</p>
+  </div>
+
+  <h3>4.3 Comprendre les grandes catégories d'options qui existent</h3>
+  <p>Sans entrer dans le détail de traitements spécifiques (ce qui relève exclusivement de ton médecin), il est utile de savoir que différentes catégories d'approches existent pour accompagner cette période : des ajustements du mode de vie, des approches non hormonales, et des approches hormonales.</p>
+
+  <div class="box-medical">
+    <span class="box-title">🩺 Précision importante</span>
+    <p>Ce guide ne recommande, ne compare ni n'évalue aucune option spécifique. Chaque situation est différente, et seul un médecin peut déterminer ce qui est adapté à ta santé, tes antécédents et tes préférences. L'objectif ici est uniquement que tu saches que ces catégories existent, pour pouvoir en discuter avec ton médecin — pas de faire un choix seule.</p>
+  </div>
+
+  <h3>4.4 Comment être entendue si tes symptômes sont minimisés</h3>
+  <p>Certaines femmes rapportent avoir eu l'impression que leurs symptômes étaient minimisés ("c'est normal à votre âge") sans proposition d'accompagnement. Si c'est ton cas, tu as le droit de demander des explications plus précises ou un deuxième avis.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Une formulation simple comme "j'aimerais comprendre plus précisément mes options" ou "ces symptômes affectent réellement ma qualité de vie" peut aider à recentrer la discussion sans confrontation.</p>
+  </div>
+
+  <h3>4.5 Le rôle des différents professionnels de santé</h3>
+  <table>
+    <tr><th>Professionnel</th><th>Rôle possible</th></tr>
+    <tr><td>Médecin traitant</td><td>Premier point de contact, peut t'orienter si nécessaire</td></tr>
+    <tr><td>Gynécologue</td><td>Suivi spécifique lié à cette période de transition</td></tr>
+    <tr><td>Autres spécialistes (selon symptômes)</td><td>Peuvent intervenir en complément selon les symptômes spécifiques évoqués avec ton médecin</td></tr>
+  </table>
+
+  <h3>4.6 Pourquoi un suivi régulier reste utile après la première consultation</h3>
+  <p>Cette transition évolue dans le temps : les symptômes peuvent changer, s'atténuer ou apparaître différemment. Un suivi régulier permet d'ajuster l'accompagnement en conséquence plutôt que de considérer la question comme "réglée" après un seul rendez-vous.</p>
+
+  <h3>4.7 Cas particulier — changer de médecin si tu ne te sens pas écoutée</h3>
+  <p>Si, malgré plusieurs tentatives pour exprimer tes préoccupations, tu ne te sens toujours pas entendue, il est tout à fait légitime de consulter un autre médecin ou de demander un deuxième avis.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Chercher un professionnel avec lequel tu te sens réellement écoutée n'est ni un caprice ni une démarche compliquée à justifier — c'est une part normale et légitime de ton parcours de soin.</p>
+  </div>
+
+  <h3>4.8 Utiliser ton tracker de symptômes comme support de dialogue</h3>
+  <p>Le tracker de symptômes hebdomadaire (chapitre 6.2) n'est pas seulement un outil personnel : présenté à ton médecin, il transforme des impressions générales ("je suis fatiguée depuis un moment") en données concrètes et datées, plus faciles à interpréter médicalement.</p>
+
+  <h3>4.9 Étude de cas complète — préparer et mener un rendez-vous</h3>
+  <div class="box box-case">
+    <span class="box-title">📖 Étude de cas — Sophie, 47 ans</span>
+    <p><strong>Avant</strong> — Sophie repoussait son rendez-vous médical depuis des mois, ne sachant pas comment "expliquer" ce qu'elle ressentait ni si c'était suffisamment sérieux pour en parler.</p>
+    <p><strong>La préparation</strong> — Elle remplit son tracker de symptômes pendant trois semaines (chapitre 6.2) et prépare ses questions à l'aide du template du chapitre 4.2.</p>
+    <p><strong>Le rendez-vous</strong> — Grâce à son tracker, elle peut montrer concrètement la fréquence de ses sueurs nocturnes et l'impact sur son sommeil, plutôt que de rester approximative.</p>
+    <p><strong>Le résultat</strong> — Sa préparation permet une discussion plus précise et productive avec son médecin, qui peut mieux évaluer sa situation et lui proposer un suivi adapté.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Vivre cette étape sereinement</h2>
+  <p class="lede">En sortant de cette partie, tu auras un plan progressif sur 21 jours, une checklist claire, et tu sauras repérer les erreurs les plus fréquentes à éviter.</p>
+
+  <h3>5.1 Plan progressif sur 21 jours</h3>
+
+  <h4>Semaine 1 — Comprendre et observer (jours 1 à 7)</h4>
+  <ul>
+    <li>Remplir le tracker de symptômes chaque soir (chapitre 6.2), sans encore rien changer d'autre ;</li>
+    <li>Lire la partie 1 pour mettre des mots précis sur tes symptômes ;</li>
+    <li>Identifier les deux ou trois symptômes qui affectent le plus ton quotidien.</li>
+  </ul>
+
+  <h4>Semaine 2 — Ajuster le quotidien (jours 8 à 14)</h4>
+  <ul>
+    <li>Mettre en place un ajustement simple de l'environnement de sommeil (chapitre 3.3) ;</li>
+    <li>Introduire une activité physique régulière et réaliste (chapitre 3.2) ;</li>
+    <li>Répartir plus explicitement une tâche domestique avec ton entourage (chapitre 3.5).</li>
+  </ul>
+
+  <h4>Semaine 3 — Consolider et préparer la suite (jours 15 à 21)</h4>
+  <ul>
+    <li>Garder les changements qui ont vraiment fait une différence pour toi ;</li>
+    <li>Préparer ton prochain rendez-vous médical avec le template du chapitre 4.2 ;</li>
+    <li>Faire le bilan de ton tracker sur les 21 jours pour objectiver ta progression.</li>
+  </ul>
+
+  <h3>5.2 Checklist récapitulative</h3>
+  <ul class="checklist">
+    <li>Je sais nommer mes symptômes principaux et comprendre pourquoi ils surviennent.</li>
+    <li>J'ai mis en place au moins un ajustement concret pour améliorer mon sommeil.</li>
+    <li>J'ai une activité physique régulière, même modeste, dans ma semaine.</li>
+    <li>Je répartis la charge mentale domestique plus explicitement avec mon entourage.</li>
+    <li>Je note mes symptômes pour objectiver ma situation.</li>
+    <li>Je sais que ce guide ne remplace pas un avis médical pour toute décision de traitement.</li>
+  </ul>
+
+  <h3>5.3 Erreurs à éviter</h3>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 1. S'isoler face aux symptômes</span>
+    <p>Ne pas en parler à son entourage ou à des amies qui traversent ou ont traversé la même étape prive d'un soutien précieux. Ce sujet mérite d'être partagé, pas gardé pour soi.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 2. Minimiser ses propres symptômes</span>
+    <p>Se dire "ce n'est pas si grave" ou "il faut juste tenir" retarde souvent une prise en charge qui pourrait réellement améliorer le quotidien. Tes symptômes méritent d'être pris au sérieux, y compris par toi-même.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 3. Attendre trop longtemps avant de consulter</span>
+    <p>Il n'y a pas de "bon moment" universel pour consulter — dès que les symptômes affectent ta qualité de vie, la consultation est légitime (voir chapitre 4.1).</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ 4. Vouloir tout changer en même temps</span>
+    <p>Modifier son alimentation, son sommeil et son activité physique simultanément mène souvent à l'abandon rapide. Un changement à la fois, tenu dans la durée, vaut mieux qu'un bouleversement complet abandonné après une semaine.</p>
+  </div>
+
+  <h3>5.4 Adapter le plan selon ton contexte</h3>
+  <table>
+    <tr><th>Contexte</th><th>Ajustement recommandé</th></tr>
+    <tr><td>Emploi du temps très chargé</td><td>Intègre les changements dans des routines déjà existantes plutôt que de chercher du temps entièrement nouveau</td></tr>
+    <tr><td>Entourage peu informé sur le sujet</td><td>Commence par une phrase simple d'explication plutôt qu'une longue discussion (voir chapitre 5.6)</td></tr>
+    <tr><td>Symptômes très intenses dès le départ</td><td>Priorise la prise de rendez-vous médical (partie 3) avant les ajustements de mode de vie</td></tr>
+  </table>
+
+  <h3>5.5 Cas particulier — une rechute ou une aggravation temporaire des symptômes</h3>
+  <p>Il est normal que les symptômes fluctuent, y compris après une période d'amélioration. Une aggravation temporaire ne signifie pas que les changements mis en place ne fonctionnent pas.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Si une aggravation est marquée ou dure dans le temps, c'est l'occasion d'en reparler à ton médecin plutôt que de simplement "attendre que ça passe" à nouveau.</p>
+  </div>
+
+  <h3>5.6 Impliquer son entourage</h3>
+  <p>Expliquer brièvement à ton entourage proche ce que tu traverses peut faciliter beaucoup de choses au quotidien — ne serait-ce que pour qu'il comprenne certains changements d'humeur ou besoins d'adaptation.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Une phrase simple ("je traverse une période hormonale qui affecte mon énergie et mon sommeil, ça va s'ajuster") suffit généralement à obtenir de la compréhension, sans avoir à entrer dans les détails si tu ne le souhaites pas.</p>
+  </div>
+
+  <h3>5.7 Bilan : ce qu'on peut réellement attendre après 21 jours</h3>
+  <p>Sois réaliste sur ce que ce plan peut t'apporter : il ne fera pas disparaître tous tes symptômes en trois semaines. Ce qu'on observe le plus souvent, c'est une meilleure compréhension de ce qui t'arrive, quelques ajustements concrets qui améliorent ton énergie, et une préparation plus sereine de ton parcours de soin.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>L'objectif de ce guide n'est pas de "guérir" cette transition naturelle, mais de la comprendre, de la traverser avec plus de sérénité, et d'être bien accompagnée sur le plan médical quand c'est nécessaire.</p>
+  </div>
+</section>
+
+<div id="bonus-section">
+<section class="chapter">
+  <h2>6. Partie 5 — Bonus : le Pack Énergie</h2>
+  <p class="lede">30 prompts prêts à l'emploi classés par usage, et un guide pas à pas pour recréer un tracker de symptômes hebdomadaire dans Canva en 10 minutes.</p>
+
+  <div class="box-medical">
+    <span class="box-title">🩺 Précision sur l'usage de ces prompts</span>
+    <p>Les prompts ci-dessous t'aident à mieux comprendre tes symptômes en langage simple et à organiser ton quotidien avec l'aide d'une IA (ChatGPT, Claude) — ils ne servent en aucun cas à obtenir un diagnostic ou un avis médical. Aucune IA ne peut te diagnostiquer ou te prescrire un traitement ; seul un professionnel de santé le peut.</p>
+  </div>
+
+  <h3>6.0 Comment bien utiliser ces prompts avec l'IA</h3>
+  <ul>
+    <li><strong>Sois précise dans les champs entre crochets</strong> — plus tu donnes de détails concrets, plus la réponse sera utile ;</li>
+    <li><strong>Garde en tête le périmètre</strong> — ces prompts t'aident à comprendre et à t'organiser, jamais à te substituer à un avis médical ;</li>
+    <li><strong>N'hésite pas à relancer</strong> — si une réponse ne te convient pas, précise ce qui ne colle pas à ta situation.</li>
+  </ul>
+
+  <h3>6.1 Trente prompts prêts à l'emploi, classés par usage</h3>
+  <p>Chaque prompt ci-dessous est directement copiable dans ChatGPT ou Claude. Remplace les champs entre crochets par tes propres informations avant de l'envoyer.</p>
+
+  <div class="subject-heading">🩺 Mieux comprendre ses symptômes en langage simple</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Comprendre un symptôme précis</span>
+    <span class="prompt-text">Je ressens [décris le symptôme] depuis [durée]. Explique-moi en langage simple ce qui pourrait expliquer ce type de symptôme pendant la périménopause ou la ménopause, sans me donner de diagnostic ni de conseil médical personnalisé.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Comprendre les phases de la ménopause</span>
+    <span class="prompt-text">Explique-moi simplement la différence entre périménopause, ménopause et post-ménopause, et à quelle phase mes symptômes actuels pourraient correspondre : [décris tes symptômes].</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Comprendre un symptôme inhabituel</span>
+    <span class="prompt-text">Je ressens un symptôme que je n'associais pas à la ménopause : [décris]. Explique-moi si ce type de symptôme est généralement rapporté pendant cette période, en m'invitant à en parler à mon médecin si besoin.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Mettre des mots sur un ensemble de symptômes</span>
+    <span class="prompt-text">Voici plusieurs symptômes que je ressens en ce moment : [liste-les]. Aide-moi à les regrouper et à les nommer clairement, pour que je puisse mieux les expliquer à mon médecin.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Comprendre l'évolution attendue d'un symptôme</span>
+    <span class="prompt-text">Mon symptôme [décris] a évolué de cette façon ces derniers mois : [décris l'évolution]. Explique-moi si ce type d'évolution est habituel pendant cette période de transition.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Démêler le vrai du faux sur une idée reçue</span>
+    <span class="prompt-text">J'ai entendu dire que [idée reçue sur la ménopause]. Aide-moi à comprendre ce qui est généralement admis à ce sujet et ce qui relève plutôt d'une idée reçue.</span>
+  </div>
+
+  <div class="subject-heading">📋 Préparer ses questions avant un rendez-vous médical</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7 — Construire sa liste de questions</span>
+    <span class="prompt-text">J'ai un rendez-vous avec mon médecin/gynécologue concernant mes symptômes de ménopause : [liste tes symptômes]. Aide-moi à préparer une liste claire de questions à poser pendant ce rendez-vous.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8 — Résumer sa situation en quelques phrases</span>
+    <span class="prompt-text">Voici mes symptômes et leur évolution ces derniers mois : [décris]. Aide-moi à résumer cette situation en quelques phrases claires que je pourrai dire à mon médecin en début de rendez-vous.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9 — Préparer des questions sur le suivi à long terme</span>
+    <span class="prompt-text">Au-delà de mes symptômes actuels, j'aimerais poser des questions sur le suivi à long terme de cette transition. Aide-moi à formuler ces questions pour mon prochain rendez-vous.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10 — Préparer des questions après une recherche personnelle</span>
+    <span class="prompt-text">J'ai lu des informations sur [sujet lié à la ménopause] et j'aimerais en discuter avec mon médecin sans avoir l'air de vouloir m'auto-diagnostiquer. Aide-moi à formuler mes questions de façon ouverte.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 11 — Préparer un compte-rendu de son tracker de symptômes</span>
+    <span class="prompt-text">Voici les données de mon tracker de symptômes sur les dernières semaines : [décris les tendances observées]. Aide-moi à en faire un résumé clair à présenter à mon médecin.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 12 — Préparer une demande de deuxième avis</span>
+    <span class="prompt-text">Je souhaite demander un deuxième avis médical concernant mes symptômes de ménopause, sans que ça soit perçu comme une remise en cause de mon premier médecin. Aide-moi à formuler cette demande.</span>
+  </div>
+
+  <div class="subject-heading">🍽️ Adapter son alimentation au quotidien</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 13 — Repérer des habitudes alimentaires simples à ajuster</span>
+    <span class="prompt-text">Voici mes habitudes alimentaires actuelles sur une journée type : [décris]. Propose 3 ajustements simples et réalistes, sans régime strict, pour soutenir mon énergie au quotidien.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 14 — Organiser des collations utiles en cas de coup de fatigue</span>
+    <span class="prompt-text">Je ressens souvent des coups de fatigue en milieu de journée. Voici ce que j'ai facilement sous la main : [décris]. Propose des idées de collations simples et équilibrées.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 15 — Planifier ses repas de la semaine simplement</span>
+    <span class="prompt-text">Voici mes contraintes de temps et mes préférences alimentaires : [décris]. Aide-moi à esquisser un plan de repas simple pour la semaine, sans complexité excessive.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 16 — Adapter son hydratation au quotidien</span>
+    <span class="prompt-text">J'ai tendance à ne pas assez boire dans la journée, notamment avec mes bouffées de chaleur. Aide-moi à trouver des rappels simples et réalistes pour mieux m'hydrater.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 17 — Gérer les repas en dehors de chez soi</span>
+    <span class="prompt-text">Je mange souvent à l'extérieur (travail, déplacements) et j'ai du mal à garder de bonnes habitudes alimentaires dans ce contexte : [décris ta situation]. Propose des pistes réalistes.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 18 — Faire le point sur son alimentation sur une semaine</span>
+    <span class="prompt-text">Voici ce que j'ai mangé cette semaine : [décris]. Aide-moi à identifier un ou deux ajustements simples pour la semaine prochaine, sans bouleverser toutes mes habitudes.</span>
+  </div>
+
+  <div class="subject-heading">😴 Améliorer son sommeil</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 19 — Adapter sa chambre aux sueurs nocturnes</span>
+    <span class="prompt-text">Je suis souvent réveillée par des sueurs nocturnes. Voici ma chambre actuelle : [décris]. Propose des ajustements simples et peu coûteux pour limiter leur impact sur mon sommeil.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 20 — Construire une routine du soir apaisante</span>
+    <span class="prompt-text">J'aimerais une routine du soir simple qui m'aide à mieux dormir malgré mes symptômes. Voici mes contraintes : [décris]. Propose une routine de 10-15 minutes maximum.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 21 — Gérer un réveil nocturne difficile à rendormir</span>
+    <span class="prompt-text">Quand je me réveille la nuit à cause d'une sueur nocturne, j'ai du mal à me rendormir ensuite. Propose des pistes simples pour faciliter le retour au sommeil.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 22 — Adapter son sommeil à des horaires irréguliers</span>
+    <span class="prompt-text">Mes horaires de sommeil sont irréguliers à cause de [décris ta situation]. Aide-moi à trouver des repères simples malgré cette irrégularité.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 23 — Faire le point sur son sommeil sur plusieurs semaines</span>
+    <span class="prompt-text">Voici les données de mon tracker concernant mon sommeil sur les dernières semaines : [décris]. Aide-moi à repérer des tendances utiles à partager avec mon médecin.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 24 — Gérer l'anxiété liée au manque de sommeil</span>
+    <span class="prompt-text">Le manque de sommeil m'inquiète et cette inquiétude elle-même m'empêche parfois de me rendormir. Aide-moi à trouver des pistes simples pour apaiser cette inquiétude au moment du coucher.</span>
+  </div>
+
+  <div class="subject-heading">💬 Communiquer avec son entourage</div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 25 — Expliquer sa situation à son partenaire</span>
+    <span class="prompt-text">J'aimerais expliquer à mon/ma partenaire ce que je traverse avec la ménopause, sans que ça sonne comme une plainte. Voici ce que je ressens : [décris]. Aide-moi à formuler ça simplement.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 26 — Expliquer sa situation à ses collègues</span>
+    <span class="prompt-text">J'aimerais évoquer certains de mes symptômes avec mes collègues sans entrer dans les détails médicaux. Aide-moi à trouver une formulation professionnelle et simple.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 27 — Demander du soutien à sa famille</span>
+    <span class="prompt-text">J'aimerais demander à ma famille de m'aider davantage sur [tâche/situation précise] pendant cette période. Aide-moi à formuler cette demande sans culpabiliser.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 28 — Répondre à une remarque maladroite</span>
+    <span class="prompt-text">Quelqu'un de mon entourage a fait une remarque maladroite sur mes symptômes ou mon âge : [décris la situation]. Aide-moi à trouver une réponse posée qui recentre la discussion.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 29 — Échanger avec d'autres femmes qui vivent la même étape</span>
+    <span class="prompt-text">J'aimerais trouver comment aborder ce sujet avec des amies qui vivent peut-être la même chose, sans savoir par où commencer. Aide-moi à formuler une première approche naturelle.</span>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 30 — Bilan de communication sur sa situation</span>
+    <span class="prompt-text">Voici avec qui j'ai (ou n'ai pas) parlé de ce que je traverse : [décris]. Aide-moi à identifier une personne de confiance avec qui il serait utile d'en parler davantage.</span>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ces 30 prompts sont des points de départ, pas des formules figées. N'hésite pas à les adapter à ta situation précise — et rappelle-toi qu'ils t'aident à comprendre et à t'organiser, jamais à obtenir un diagnostic ou un avis médical.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6.2 Le template Canva "tracker de symptômes hebdomadaire"</h2>
+  <p class="lede">Un guide pas à pas pour recréer toi-même, en 10 minutes, un tracker de symptômes hebdomadaire — utile pour objectiver ta situation et pour préparer tes rendez-vous médicaux.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Précision importante</span>
+    <p>Ce chapitre est un <strong>guide pour recréer le template toi-même dans Canva</strong>, pas un fichier .canva livré avec ce guide. Canva ne permet pas l'export ni le partage d'un modèle sous forme de fichier autonome utilisable hors de la plateforme — la seule façon de te transmettre ce design est de te donner les instructions précises pour le reconstruire, ce que fait ce chapitre.</p>
+  </div>
+
+  <h3>Format et couleurs</h3>
+  <table>
+    <tr><th>Élément</th><th>Réglage</th></tr>
+    <tr><td>Format</td><td>A4 portrait (21 × 29,7 cm)</td></tr>
+    <tr><td>Couleur principale (bandeau, titres)</td><td>Indigo #1E2A4A</td></tr>
+    <tr><td>Couleur d'accent (séparateurs, cases à remplir)</td><td>Doré #C98A2E</td></tr>
+    <tr><td>Fond des blocs secondaires</td><td>Beige clair #F4EBD9</td></tr>
+    <tr><td>Police des titres</td><td>Une police sans-serif épaisse type "Montserrat" ou "Poppins" (disponibles gratuitement dans Canva)</td></tr>
+    <tr><td>Police du texte courant</td><td>Une police sans-serif lisible type "Lato" ou "Open Sans"</td></tr>
+  </table>
+
+  <h3>Structure détaillée du tracker</h3>
+  <ol class="steps">
+    <li>
+      <strong>Bandeau titre</strong><br/>
+      Un rectangle pleine largeur en indigo #1E2A4A en haut de page, avec "Tracker de symptômes" et la semaine concernée.
+    </li>
+    <li>
+      <strong>Tableau principal — 7 jours</strong><br/>
+      Un tableau à 5 colonnes : Jour, Symptômes ressentis, Intensité (échelle simple), Sommeil, Énergie du jour, Note libre.
+    </li>
+    <li>
+      <strong>Bloc légende</strong><br/>
+      Un encadré beige clair #F4EBD9 expliquant l'échelle d'intensité utilisée (ex. de 1 à 5) et comment remplir la colonne "note libre".
+    </li>
+    <li>
+      <strong>Bloc bilan de la semaine</strong><br/>
+      Un encadré à bordure dorée en bas de page, pour noter une observation générale de la semaine — utile à relire avant un rendez-vous médical.
+    </li>
+  </ol>
+
+  <h3>Les étapes précises pour le construire dans Canva</h3>
+  <ol class="steps">
+    <li>
+      <strong>Ouvre Canva et cherche un modèle de base</strong><br/>
+      Dans la barre de recherche de modèles, tape "habit tracker" ou "health tracker" — Canva propose plusieurs modèles A4 déjà structurés en tableau, ce qui t'évite de partir d'une page blanche.
+    </li>
+    <li>
+      <strong>Choisis un modèle avec un tableau 7 jours</strong><br/>
+      Privilégie un modèle qui a déjà une grille ou un tableau pour 7 lignes — tu auras moins de mise en forme à faire toi-même.
+    </li>
+    <li>
+      <strong>Recolore aux couleurs de la charte</strong><br/>
+      Sélectionne chaque élément coloré et remplace la couleur par les codes hexadécimaux du tableau ci-dessus (#1E2A4A pour l'indigo, #C98A2E pour le doré, #F4EBD9 pour le beige clair) via le sélecteur de couleur personnalisée de Canva.
+    </li>
+    <li>
+      <strong>Ajuste les colonnes du tableau</strong><br/>
+      Renomme les colonnes existantes ou ajoutes-en pour obtenir : Jour, Symptômes ressentis, Intensité, Sommeil, Énergie du jour, Note libre.
+    </li>
+    <li>
+      <strong>Change les polices</strong><br/>
+      Sélectionne les titres et applique la police "Montserrat" ou "Poppins" ; sélectionne le texte courant et applique "Lato" ou "Open Sans", disponibles gratuitement dans la bibliothèque de polices Canva.
+    </li>
+    <li>
+      <strong>Enregistre-le comme modèle personnel</strong><br/>
+      Une fois satisfait du résultat, utilise la fonction "Enregistrer comme modèle" de Canva (accessible depuis le menu du fichier) pour le réutiliser chaque semaine sans repartir de zéro.
+    </li>
+  </ol>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Imprime ton tracker ou garde-le ouvert sur ta tablette — le remplir chaque soir prend moins d'une minute et devient vite un réflexe utile, tant pour toi que pour préparer tes rendez-vous médicaux (chapitre 4.8).</p>
+  </div>
+
+  <h3>Variantes du tracker selon tes préférences</h3>
+  <table>
+    <tr><th>Format</th><th>Avantage</th><th>Comment faire</th></tr>
+    <tr><td>Papier imprimé</td><td>Facile à apporter directement à un rendez-vous médical</td><td>Exporte ton modèle Canva en PDF et imprime une feuille par semaine</td></tr>
+    <tr><td>Tablette ou téléphone</td><td>Toujours à portée de main pour noter un symptôme au moment où il survient</td><td>Garde le fichier Canva ouvert en mode lecture sur ton appareil</td></tr>
+    <tr><td>Tableur simple (Google Sheets, Excel)</td><td>Pratique pour visualiser des tendances sur plusieurs mois</td><td>Recrée les mêmes colonnes que le tableau Canva dans une feuille de calcul</td></tr>
+  </table>
+
+  <h3>Foire aux questions sur le Pack Énergie</h3>
+
+  <div class="faq-item">
+    <p class="faq-q">Dois-je utiliser les 30 prompts, ou seulement certains ?</p>
+    <p>Utilise uniquement ceux qui correspondent à ta situation actuelle. Commence par la catégorie la plus utile à ton besoin immédiat, par exemple préparer un rendez-vous médical.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Le tracker Canva est-il indispensable pour suivre le plan 21 jours ?</p>
+    <p>Non. Le tracker facilite l'observation et la préparation des rendez-vous médicaux, mais tu peux suivre le plan du chapitre 5.1 avec un simple carnet si tu préfères.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je montrer directement les réponses de l'IA à mon médecin ?</p>
+    <p>Tu peux t'en servir comme support pour organiser tes propres mots, mais présente toujours tes symptômes avec tes propres termes lors du rendez-vous — l'IA t'aide à préparer, pas à remplacer l'échange direct avec ton médecin.</p>
+  </div>
+</section>
+</div>
+
+<section class="chapter">
+  <h2>7. Lexique</h2>
+  <p class="lede">Les termes utilisés dans ce guide, expliqués simplement.</p>
+
+  <dl class="lexique">
+    <dt>Périménopause</dt>
+    <dd>Phase de transition qui précède l'arrêt des règles, marquée par des cycles irréguliers et l'apparition progressive des premiers symptômes.</dd>
+
+    <dt>Ménopause</dt>
+    <dd>Moment où les règles se sont arrêtées depuis 12 mois consécutifs, marquant la fin de la fonction ovarienne.</dd>
+
+    <dt>Post-ménopause</dt>
+    <dd>Période qui suit la ménopause, durant laquelle certains symptômes s'atténuent progressivement.</dd>
+
+    <dt>Bouffée de chaleur</dt>
+    <dd>Sensation de chaleur soudaine, souvent accompagnée de rougeurs et de sueurs, liée aux variations hormonales de cette période.</dd>
+
+    <dt>Sueurs nocturnes</dt>
+    <dd>Bouffées de chaleur survenant pendant le sommeil, pouvant perturber sa qualité.</dd>
+
+    <dt>Brouillard mental</dt>
+    <dd>Difficultés de concentration et de mémoire rapportées fréquemment pendant cette période de transition.</dd>
+
+    <dt>Ménopause précoce</dt>
+    <dd>Ménopause survenant avant 40-45 ans, naturellement ou à la suite d'un traitement médical, nécessitant une attention médicale spécifique.</dd>
+
+    <dt>Tracker de symptômes</dt>
+    <dd>Outil d'observation simple (papier ou numérique) permettant de noter chaque jour ses symptômes, pour objectiver sa situation et préparer ses rendez-vous médicaux.</dd>
+
+    <dt>Prompt</dt>
+    <dd>Le texte que tu écris à un assistant IA pour lui demander de faire quelque chose. Plus il est précis, meilleur est le résultat.</dd>
+
+    <dt>Deuxième avis médical</dt>
+    <dd>Consultation d'un autre professionnel de santé pour obtenir un avis complémentaire, une démarche légitime en cas de doute ou d'insatisfaction.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>8. Questions fréquentes</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide remplace-t-il un avis médical ?</p>
+    <p>Non, en aucun cas. Ce guide t'aide à comprendre et à organiser ton quotidien, mais toute décision de traitement doit être prise avec un médecin ou un gynécologue.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide recommande-t-il des traitements spécifiques ?</p>
+    <p>Non. Ce guide t'informe que différentes catégories d'options existent (chapitre 4.3), sans en recommander ni en comparer aucune. Cette décision revient exclusivement à ton médecin.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">À partir de quel âge peut-on être concernée par les symptômes évoqués dans ce guide ?</p>
+    <p>La périménopause peut débuter dès la fin de la trentaine ou au début de la quarantaine chez certaines femmes (voir chapitre 2.8 sur la ménopause précoce). Il n'y a pas d'âge unique.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Dois-je suivre les 4 parties dans l'ordre ?</p>
+    <p>L'ordre proposé suit une logique progressive, mais tu peux commencer directement par la partie qui répond à ton besoin le plus urgent, par exemple la partie 3 si tu as un rendez-vous médical à préparer rapidement.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Que faire si mes symptômes sont très différents de ceux décrits dans ce guide ?</p>
+    <p>Les symptômes varient énormément d'une femme à l'autre (chapitre 2.7). Si tes symptômes t'inquiètent ou sortent de ce qui est décrit ici, parles-en à ton médecin plutôt que de chercher une réponse uniquement dans ce guide.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide est-il utile si je n'ai pas encore de symptômes mais que je m'y prépare ?</p>
+    <p>Oui. Comprendre les phases et les symptômes possibles (partie 1) avant qu'ils n'apparaissent peut t'aider à les reconnaître plus vite et à ne pas te sentir déstabilisée si ils surviennent.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Les prompts du Pack Énergie remplacent-ils une consultation médicale ?</p>
+    <p>Non, ils t'aident à mieux comprendre tes symptômes en langage simple et à préparer tes rendez-vous — jamais à obtenir un diagnostic ou un avis médical à leur place.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Que faire si je n'arrive à suivre aucune étape du plan une semaine donnée ?</p>
+    <p>Reprends simplement la semaine suivante là où tu en étais, sans culpabiliser (voir chapitre 5.3). Une semaine sans progression n'annule pas les semaines précédentes.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Ce guide s'adresse-t-il aussi aux femmes ayant eu une ménopause précoce ou consécutive à un traitement ?</p>
+    <p>Oui pour la partie compréhension et quotidien, mais un suivi médical spécifique est particulièrement important dans ces situations (voir chapitres 2.8 et 2.9) — n'attends pas pour consulter.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Comment aborder ce sujet avec mon entourage si j'ai du mal à en parler ?</p>
+    <p>Le chapitre 5.6 et les prompts de la catégorie "Communiquer avec son entourage" (chapitre 6.1) proposent des formulations simples pour amorcer cette conversation sans avoir à tout expliquer d'un coup.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="disclaimer">
+    <strong>Avertissement.</strong> Ce guide a une vocation informative et pratique : il t'aide à comprendre les phases et symptômes de la ménopause et à adapter ton quotidien. Il ne constitue en aucun cas un diagnostic, un avis médical ou une recommandation de traitement, et ne remplace pas une consultation auprès d'un médecin ou d'un gynécologue. Ce guide ne recommande, ne compare ni n'évalue aucun traitement hormonal, médicament ou complément spécifique. Pour toute décision de traitement ou toute inquiétude concernant tes symptômes, consulte un professionnel de santé. Les informations générales de ce guide reflètent des connaissances médicales largement admises et peuvent évoluer ; elles ne remplacent pas un suivi médical personnalisé.
+  </div>
+</section>
+
+</body>
+</html>
