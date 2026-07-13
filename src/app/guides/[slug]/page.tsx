@@ -7,9 +7,10 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import GuidePricing from "@/components/guides/GuidePricing";
 import GuideCard from "@/components/guides/GuideCard";
-import { guides, getGuide } from "@/data/guides";
+import { guides, getGuide, findBundlesContaining } from "@/data/guides";
 import { getSession } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { resolveOfferPrice } from "@/lib/pricing";
 
 export async function generateStaticParams() {
   return guides.map((guide) => ({ slug: guide.slug }));
@@ -47,15 +48,52 @@ export default async function GuideDetailPage({
 
   const session = await getSession();
 
-  const [purchases, cartItems] = session
-    ? await Promise.all([
-        db.purchase.findMany({ where: { userId: session.userId, guideSlug: slug } }),
-        db.cartItem.findMany({ where: { userId: session.userId, guideSlug: slug } }),
-      ])
-    : [[], []];
+  let purchasedOfferIds: string[] = [];
+  let cartOfferIds: string[] = [];
 
-  const purchasedOfferIds = purchases.map((purchase) => purchase.offerId);
-  const cartOfferIds = cartItems.map((item) => item.offerId);
+  if (session) {
+    if (guide.bundleOf && guide.bundleOf.length > 0) {
+      // Un bundle ne crée pas de Purchase sur son propre slug : il est
+      // considéré "acheté" seulement si tous les guides qui le composent
+      // ont déjà été crédités individuellement (voir /api/admin/grant).
+      const constituentPurchases = await db.purchase.findMany({
+        where: {
+          userId: session.userId,
+          OR: guide.bundleOf.map((item) => ({
+            guideSlug: item.guideSlug,
+            offerId: item.offerId,
+          })),
+        },
+      });
+      const allOwned = guide.bundleOf.every((item) =>
+        constituentPurchases.some(
+          (purchase) =>
+            purchase.guideSlug === item.guideSlug && purchase.offerId === item.offerId,
+        ),
+      );
+      purchasedOfferIds = allOwned ? (guide.offers ?? []).map((offer) => offer.id) : [];
+    } else {
+      const purchases = await db.purchase.findMany({
+        where: { userId: session.userId, guideSlug: slug },
+      });
+      purchasedOfferIds = purchases.map((purchase) => purchase.offerId);
+    }
+
+    const cartItems = await db.cartItem.findMany({
+      where: { userId: session.userId, guideSlug: slug },
+    });
+    cartOfferIds = cartItems.map((item) => item.offerId);
+  }
+
+  const containingBundles = findBundlesContaining(guide.slug);
+
+  // Ponctuel : uniquement sur le guide général "L'IA pour les profs", dont les
+  // prompts sont vendus à part par matière. Ne pas généraliser à un composant
+  // réutilisable — chaque guide (ex. les guides "2 en 1" comme ia-ses) doit
+  // être évalué au cas par cas selon qu'il contient déjà ses propres prompts.
+  const promptsBundle = guide.slug === "ia-profs" ? getGuide("pack-prompts-profs-complet") : undefined;
+  const promptsBundleOffer = promptsBundle?.offers?.[0];
+  const promptsBundlePrice = promptsBundleOffer ? resolveOfferPrice(promptsBundleOffer) : undefined;
 
   const crossSellGuides = (guide.crossSell ?? [])
     .map((crossSlug) => getGuide(crossSlug))
@@ -133,12 +171,73 @@ export default async function GuideDetailPage({
             </div>
           )}
 
+          {containingBundles.map((bundle) => {
+            const bundleOffer = bundle.offers?.[0];
+            return (
+              <div
+                key={bundle.slug}
+                className="mt-8 rounded-xl border border-gold-600/30 bg-gold-50 p-4 text-sm text-navy-900"
+              >
+                <span className="font-semibold">Économise</span> en prenant les 5 packs
+                matières
+                {bundleOffer?.price && bundleOffer?.originalPrice && (
+                  <>
+                    {" "}
+                    à{" "}
+                    <span className="font-semibold text-gold-700">
+                      {bundleOffer.price} au lieu de {bundleOffer.originalPrice}
+                    </span>
+                  </>
+                )}
+                .{" "}
+                <Link
+                  href={`/guides/${bundle.slug}`}
+                  className="font-semibold text-gold-700 underline hover:text-gold-800"
+                >
+                  Voir le pack complet →
+                </Link>
+              </div>
+            );
+          })}
+
           <GuidePricing
             guide={guide}
             isLoggedIn={!!session}
             purchasedOfferIds={purchasedOfferIds}
             cartOfferIds={cartOfferIds}
           />
+
+          {promptsBundle && promptsBundlePrice && (
+            <div className="mt-6 rounded-2xl border border-navy-900/15 bg-navy-900 p-6 text-white">
+              <p className="text-sm font-semibold uppercase tracking-wide text-gold-600">
+                Pack complet disponible
+              </p>
+              <p className="mt-2 text-base leading-relaxed">
+                Tu enseignes plusieurs matières ou tu veux couvrir toute
+                l&apos;équipe ? Le{" "}
+                <span className="font-semibold">Pack Prompts Profs Complet</span>{" "}
+                regroupe 161 prompts pour 5 matières en un seul achat.
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-4">
+                <span className="flex items-baseline gap-2">
+                  {promptsBundlePrice.strikePrice && (
+                    <span className="text-base font-semibold text-white/50 line-through">
+                      {promptsBundlePrice.strikePrice}
+                    </span>
+                  )}
+                  <span className="text-2xl font-black text-white">
+                    {promptsBundlePrice.displayPrice}
+                  </span>
+                </span>
+                <Link
+                  href={`/guides/${promptsBundle.slug}`}
+                  className="rounded-xl bg-gold-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-700"
+                >
+                  Voir le pack complet →
+                </Link>
+              </div>
+            </div>
+          )}
 
           <div className="mt-16">
             <h2 className="text-2xl font-bold text-navy-900">

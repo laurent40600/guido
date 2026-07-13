@@ -40,7 +40,11 @@ export default function GrantGuideForm() {
       return;
     }
 
-    setSuccess(`Accès accordé — commande #${data.purchase.orderNumber}.`);
+    setSuccess(
+      data.bundle
+        ? `Accès accordé — ${data.purchases.length} guides débloqués pour ce client.`
+        : `Accès accordé — commande #${data.purchase.orderNumber}.`,
+    );
     setEmail("");
     router.refresh();
   }

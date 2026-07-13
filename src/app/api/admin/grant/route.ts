@@ -36,6 +36,32 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Offre introuvable pour ce guide." }, { status: 400 });
   }
 
+  if (guide.bundleOf && guide.bundleOf.length > 0) {
+    const purchases = [];
+    for (const item of guide.bundleOf) {
+      const existingItem = await db.purchase.findUnique({
+        where: {
+          userId_guideSlug_offerId: {
+            userId: buyer.id,
+            guideSlug: item.guideSlug,
+            offerId: item.offerId,
+          },
+        },
+      });
+      const itemPurchase = existingItem ?? await db.purchase.create({
+        data: {
+          userId: buyer.id,
+          guideSlug: item.guideSlug,
+          offerId: item.offerId,
+          orderNumber: await getNextOrderNumber(),
+        },
+      });
+      purchases.push(itemPurchase);
+    }
+
+    return NextResponse.json({ success: true, purchase: purchases[0], purchases, bundle: true });
+  }
+
   const existing = await db.purchase.findUnique({
     where: { userId_guideSlug_offerId: { userId: buyer.id, guideSlug, offerId } },
   });

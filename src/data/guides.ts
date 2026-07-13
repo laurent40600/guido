@@ -6,7 +6,10 @@ export interface GuideOffer {
   launchPromo?: { price: string; expiresAt: string };
   description: string;
   includes: string[];
-  pdfFile: string;
+  // Absent pour une offre "bundle" : il n'y a pas un seul fichier à servir,
+  // voir `Guide.bundleOf` sur le guide parent pour la liste des accès réels
+  // accordés à l'achat.
+  pdfFile?: string;
   featured?: boolean;
 }
 
@@ -27,6 +30,14 @@ export interface Guide {
   offers?: GuideOffer[];
   promptPreview?: { title: string; text: string }[];
   crossSell?: string[];
+  // Catégories additionnelles où ce guide doit aussi apparaître, en plus de
+  // sa `category` principale (ex. un bundle "Packs" listé aussi sous "Prompts").
+  crossListCategories?: string[];
+  // Pour un guide bundle : les (guideSlug, offerId) réels à créditer à
+  // l'acheteur. L'achat du bundle ne crée pas de Purchase sur son propre
+  // slug — il crédite directement les guides existants listés ici, pour
+  // réutiliser tel quel le système de téléchargement/filigrane/limite.
+  bundleOf?: { guideSlug: string; offerId: string }[];
 }
 
 export const guides: Guide[] = [
@@ -165,7 +176,7 @@ export const guides: Guide[] = [
         featured: true,
       },
     ],
-    crossSell: ["prompts-images-ia", "prompts-maths", "prompts-francais", "prompts-histgeo"],
+    crossSell: ["ia-ses", "prompts-images-ia", "prompts-maths", "prompts-francais", "prompts-histgeo"],
   },
   {
     slug: "ia-immobilier",
@@ -233,6 +244,149 @@ export const guides: Guide[] = [
       },
     ],
     crossSell: ["prompts-images-ia"],
+  },
+  {
+    slug: "ia-ses",
+    title: "L'IA pour les profs de SES : préparer, illustrer et corriger plus vite",
+    tagline: "Un seul guide, tout intégré : cours, exercices, correction et 35 prompts prêts à l'emploi",
+    pitch:
+      "Construire une étude de cas à partir de données réelles, générer des EC1, EC2, EC3 et des sujets de dissertation calibrés au programme, corriger plus vite sans jamais déléguer la notation : ce guide couvre tout le cycle de préparation en SES, avec une bibliothèque de 35 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Spécifique au programme de Sciences économiques et sociales, aucune compétence technique requise.",
+    price: "18€",
+    format: "PDF · 60 pages",
+    audience: "Professeurs de SES (lycée), sans compétences techniques, qui veulent gagner du temps sur la préparation, les exercices et la correction",
+    category: "IA",
+    cover: "/covers/ia-ses.png",
+    bestseller: false,
+    highlights: [
+      "Générer une séquence complète ou une étude de cas sur une notion économique ou sociologique, en quelques minutes",
+      "Créer des questions EC1, EC2, EC3 et des sujets de dissertation calibrés au programme",
+      "Un premier passage de correction assisté par IA, avec ce qu'elle ne doit JAMAIS faire (notation finale, biais, RGPD élèves)",
+      "35 prompts prêts à l'emploi intégrés au guide, classés par usage — aucun pack séparé à acheter",
+      "Un plan de mise en place sur 3 semaines, checklist et erreurs propres à la discipline (données périmées, perte de rigueur méthodologique)",
+      "Aucune compétence technique requise, avec les offres gratuites de ChatGPT et Claude",
+    ],
+    faq: [
+      {
+        question: "Ce guide contient-il vraiment les prompts, ou faut-il acheter un pack séparé ?",
+        answer:
+          "Les 35 prompts sont intégrés directement dans ce guide (partie 5), au format 2 en 1. Il n'existe pas de pack de prompts SES vendu séparément — tout est inclus dans cet unique achat.",
+      },
+      {
+        question: "Faut-il des compétences techniques pour l'utiliser ?",
+        answer:
+          "Non. Si tu sais copier-coller un texte dans une page web, tu sais utiliser tout ce que ce guide contient. Un compte gratuit sur ChatGPT ou Claude suffit pour commencer.",
+      },
+      {
+        question: "Les données chiffrées générées par l'IA sont-elles fiables ?",
+        answer:
+          "Non, jamais sans vérification. Le guide insiste sur ce point à plusieurs reprises : tout chiffre généré doit être recoupé avec une source officielle (INSEE, Eurostat) avant toute utilisation en classe.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Séquence de cours en 4 séances",
+        text: "Crée une séquence de cours en 4 séances sur [notion, ex : le marché du travail] pour des élèves de [niveau], avec pour chaque séance : l'objectif, le support et l'activité principale.",
+      },
+      {
+        title: "Sujet EC3 avec dossier documentaire",
+        text: "Voici un dossier de 2-3 documents sur [notion] : [coller les documents]. Rédige un sujet de type EC3 (raisonnement appuyé sur un dossier documentaire), avec la consigne complète.",
+      },
+      {
+        title: "Grille de relecture avant notation",
+        text: "Voici une copie anonymisée : [coller le texte]. Indique si la consigne est traitée, si le plan est identifiable, et quelles notions du programme sont mobilisées, correctement ou non — sans attribuer de note.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Guide complet",
+        price: "18€",
+        originalPrice: "27€",
+        description: "Le guide entier (4 parties) + la bibliothèque de 35 prompts intégrée",
+        includes: [
+          "Partie 1 — Préparer ses cours et séquences",
+          "Partie 2 — Créer exercices et études de cas",
+          "Partie 3 — Corriger plus vite",
+          "Partie 4 — Mettre en place ton système",
+          "Partie 5 — Bibliothèque de 35 prompts SES",
+          "PDF · 60 pages",
+        ],
+        pdfFile: "guido-ia-ses",
+      },
+    ],
+    crossSell: ["ia-profs", "pack-prompts-profs-complet", "prompts-images-ia"],
+  },
+  {
+    slug: "ia-eleves",
+    title: "L'IA pour réussir ses cours : comprendre, s'entraîner et réviser efficacement",
+    tagline: "Progresser avec l'IA, sans jamais se faire aider à sa place",
+    pitch:
+      "Comprendre un cours difficile, s'entraîner avant un contrôle, réviser sans stress et structurer un devoir sans se le faire rédiger : ce guide couvre toutes les matières, avec une bibliothèque de 24 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Pensé pour progresser vraiment, pas pour tricher — un devoir rendu doit toujours rester ton travail.",
+    price: "15€",
+    format: "PDF · 41 pages",
+    audience: "Élèves de collège et de lycée, et leurs parents",
+    category: "IA",
+    cover: "/covers/ia-eleves.png",
+    bestseller: false,
+    highlights: [
+      "Faire reformuler une notion mal comprise et obtenir des exemples concrets, matière par matière",
+      "Générer des exercices, des quiz d'auto-évaluation et se faire interroger à l'oral avant un contrôle",
+      "Créer des fiches de révision synthétiques et un vrai planning jour par jour",
+      "Structurer un devoir (consigne, plan) sans jamais se faire rédiger le contenu à la place",
+      "24 prompts prêts à l'emploi intégrés au guide, toutes matières confondues — aucun pack séparé à acheter",
+      "Pensé pour progresser, pas pour tricher : ce que l'IA doit faire pour toi, et ce qu'elle ne doit jamais faire",
+    ],
+    faq: [
+      {
+        question: "Ce guide aide-t-il à tricher aux devoirs ?",
+        answer:
+          "Non, c'est explicitement l'inverse. Le guide explique pourquoi faire rédiger un devoir noté par l'IA ne sert à rien pour progresser, et se concentre sur les usages qui aident vraiment à comprendre, s'entraîner et réviser.",
+      },
+      {
+        question: "Ce guide contient-il vraiment les prompts, ou faut-il acheter un pack séparé ?",
+        answer:
+          "Les 24 prompts sont intégrés directement dans ce guide (partie 5), au format 2 en 1. Il n'existe pas de pack de prompts séparé — tout est inclus dans cet unique achat.",
+      },
+      {
+        question: "Ce guide couvre-t-il toutes les matières ?",
+        answer:
+          "Oui. Les méthodes et les prompts sont conçus pour s'adapter à n'importe quelle matière : il suffit de remplacer les champs [entre crochets] par ta notion, ton chapitre ou ta matière avant de coller le prompt dans ChatGPT ou Claude.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Comprendre une notion mal maîtrisée",
+        text: "Explique-moi [notion] comme si j'avais 12 ans, avec un exemple concret de la vie de tous les jours.",
+      },
+      {
+        title: "Créer un quiz d'auto-évaluation",
+        text: "Crée un quiz de 10 questions sur [chapitre] pour que je vérifie si je suis prêt pour le contrôle, avec les réponses cachées jusqu'à ce que je les demande.",
+      },
+      {
+        title: "Se faire aider à construire un plan",
+        text: "Aide-moi à construire le plan de ce devoir (juste le plan, pas le contenu rédigé) sur le sujet suivant : [sujet du devoir].",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Guide complet",
+        price: "15€",
+        originalPrice: "22€",
+        description: "Le guide entier (4 parties) + la bibliothèque de 24 prompts intégrée",
+        includes: [
+          "Partie 1 — Comprendre un cours plus vite",
+          "Partie 2 — S'entraîner efficacement",
+          "Partie 3 — Réviser sans stress",
+          "Partie 4 — Structurer ses devoirs sans se faire aider à sa place",
+          "Partie 5 — Bibliothèque de 24 prompts, toutes matières",
+          "PDF · 41 pages",
+        ],
+        pdfFile: "guido-ia-eleves",
+      },
+    ],
   },
   {
     slug: "freelance-40ans",
@@ -883,6 +1037,97 @@ export const guides: Guide[] = [
       },
     ],
   },
+  {
+    slug: "pack-prompts-profs-complet",
+    title: "Le Pack Prompts Profs Complet : 161 prompts pour toutes les matières",
+    tagline: "Maths, français, histoire-géo, sciences, langues — les 5 packs en un seul achat",
+    pitch:
+      "Les 5 bibliothèques de prompts Guido réunies en un seul pack : 36 prompts pour les maths, 32 pour le français, 31 pour l'histoire-géographie, 32 pour les sciences (SVT et physique-chimie) et 30 pour les langues vivantes, soit 161 prompts prêts à copier-coller dans ChatGPT ou Claude, quelle que soit la matière enseignée. Ce pack ne contient que les 5 bibliothèques de prompts — il ne comprend pas le guide « L'IA pour les profs », qui reste disponible séparément.",
+    price: "34€",
+    format: "5 PDF · 161 prompts au total",
+    audience: "Professeurs de toutes matières, équipes pédagogiques et CDI qui veulent équiper toute une équipe avec les 5 packs de prompts Guido",
+    category: "Packs",
+    crossListCategories: ["Prompts"],
+    cover: "/covers/pack-prompts-profs-complet.png",
+    bestseller: false,
+    highlights: [
+      "Les 5 packs de prompts par matière réunis : maths, français, histoire-géo, sciences, langues vivantes",
+      "161 prompts au total, classés par usage dans chaque matière (séquences, exercices, évaluations, correction...)",
+      "5 fichiers PDF distincts et téléchargeables séparément — aucun contenu recréé ou dupliqué par rapport aux packs déjà en ligne",
+      "34€ au lieu de 60€ en achetant les 5 packs séparément (12€ x 5)",
+      "Adapté à un achat pour toute une équipe pédagogique ou un CDI, avec mise à disposition possible pour plusieurs enseignants",
+      "Ne contient pas le guide « L'IA pour les profs » (préparation de cours, exercices, correction), vendu séparément",
+    ],
+    faq: [
+      {
+        question: "Ce pack contient-il le guide « L'IA pour les profs » ?",
+        answer:
+          "Non. Ce pack ne regroupe que les 5 bibliothèques de prompts par matière (maths, français, histoire-géo, sciences, langues). Le guide « L'IA pour les profs », qui couvre la préparation de cours, les exercices et la correction, reste un produit séparé.",
+      },
+      {
+        question: "Peut-on l'acheter pour toute une équipe ou un CDI ?",
+        answer:
+          "Oui. Ce pack est pensé aussi bien pour un enseignant seul que pour un achat groupé par une équipe pédagogique ou un CDI, avec une mise à disposition possible pour plusieurs enseignants de l'établissement. Contacte-nous pour organiser un achat groupé.",
+      },
+      {
+        question: "Je reçois combien de fichiers, et sous quelle forme ?",
+        answer:
+          "L'achat donne accès aux 5 PDF existants (un par matière), chacun téléchargeable séparément depuis ton compte, exactement comme si tu avais acheté les 5 packs un par un — sans fichier recréé ou fusionné.",
+      },
+      {
+        question: "Faut-il payer un abonnement pour utiliser ces prompts ?",
+        answer:
+          "Non. Les offres gratuites de ChatGPT et Claude suffisent pour la plupart des usages décrits dans les 5 packs. Un abonnement payant devient utile seulement si tu dépasses régulièrement les limites d'usage gratuites.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Maths — Série d'exercices progressifs",
+        text: "Crée 8 exercices progressifs (du plus facile au plus difficile) sur [notion, ex : les fractions] pour des élèves de [niveau], avec correction détaillée pour chaque exercice.",
+      },
+      {
+        title: "Sciences — Protocole d'expérience sécurisé",
+        text: "Propose un protocole d'expérience simple et réalisable en classe pour illustrer [notion], avec la liste du matériel, les étapes et les consignes de sécurité.",
+      },
+      {
+        title: "Langues — Jeu de rôle du quotidien",
+        text: "Crée un jeu de rôle en [langue] sur une situation du quotidien (ex : [situation, commander au restaurant, demander son chemin]), adapté à un niveau [niveau], avec les rôles et le vocabulaire utile.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Pack complet 5 matières",
+        price: "34€",
+        originalPrice: "60€",
+        launchPromo: { price: "26€", expiresAt: "2026-07-27T23:59:59" },
+        description: "Les 5 bibliothèques de prompts, en un seul achat",
+        includes: [
+          "36 prompts IA pour profs de mathématiques — PDF · 16 pages",
+          "32 prompts IA pour profs de français — PDF · 15 pages",
+          "31 prompts IA pour profs d'histoire-géographie — PDF · 15 pages",
+          "32 prompts IA pour profs de sciences — PDF · 15 pages",
+          "30 prompts IA pour profs de langues vivantes — PDF · 14 pages",
+          "161 prompts au total, dans 5 fichiers PDF téléchargeables séparément",
+        ],
+      },
+    ],
+    bundleOf: [
+      { guideSlug: "prompts-maths", offerId: "unique" },
+      { guideSlug: "prompts-francais", offerId: "unique" },
+      { guideSlug: "prompts-histgeo", offerId: "unique" },
+      { guideSlug: "prompts-sciences", offerId: "unique" },
+      { guideSlug: "prompts-langues", offerId: "unique" },
+    ],
+  },
 ];
 
 export const getGuide = (slug: string) => guides.find((guide) => guide.slug === slug);
+
+// Bundles (guides avec `bundleOf`) qui incluent ce guide, pour afficher un
+// bandeau "économise en prenant le pack" sur la page d'un guide individuel.
+export const findBundlesContaining = (guideSlug: string) =>
+  guides.filter((guide) =>
+    guide.bundleOf?.some((item) => item.guideSlug === guideSlug),
+  );

@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>L'IA pour les profs de SES</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 27pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+  .box-template {
+    background: #fff; border: 1.5px dashed #1E2A4A; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-template .box-title { color: #1E2A4A; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>L'IA pour les profs de SES</h1>
+  <p class="tagline">Préparer, illustrer et corriger plus vite</p>
+  <p class="meta">Un guide complet + une bibliothèque de 35 prompts intégrée,<br/>spécifique au programme de Sciences économiques et sociales</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction — le vrai coût du temps de préparation en SES<span>Ce que ce guide va changer, prérequis</span></li>
+    <li>Partie 1 — Préparer ses cours et séquences<span>Générer une séquence, une étude de cas, un template réutilisable</span></li>
+    <li>Partie 2 — Créer exercices et études de cas<span>EC1, EC2, EC3, dissertation, lecture de statistiques</span></li>
+    <li>Partie 3 — Corriger plus vite<span>Premier passage assisté, commentaires personnalisés, limites à ne jamais franchir</span></li>
+    <li>Partie 4 — Mettre en place son système<span>Planning sur 3 semaines, checklist, erreurs à éviter</span></li>
+    <li>Partie 5 — Bibliothèque de prompts SES<span>35 prompts prêts à l'emploi, classés par usage</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction — le vrai coût du temps de préparation en SES</h2>
+  <p class="lede">En sortant de cette introduction, tu sauras ce que ce guide va changer concrètement dans ta pratique, et tu n'auras besoin d'aucune compétence technique pour l'utiliser.</p>
+
+  <p>En SES, la préparation ne se limite jamais à relire un cours. Il faut construire une étude de cas cohérente, choisir des données récentes et fiables, rédiger des questions qui testent vraiment le raisonnement, puis corriger des copies où la méthode compte autant que le fond.</p>
+  <p>Une dissertation ou une épreuve composée (EC1, EC2, EC3) bien corrigée demande facilement 15 à 20 minutes de lecture attentive. Multiplie ça par une classe de 35 élèves, deux ou trois classes, et la correction seule dévore une grande partie de tes soirées et de tes week-ends.</p>
+  <p>Les données posent un problème spécifique à la discipline : un chiffre INSEE d'il y a cinq ans peut être encore juste sur la tendance, mais faux sur le niveau. Actualiser une étude de cas chaque année, sans repartir de zéro, prend du temps que peu de professeurs ont réellement.</p>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>Ce guide avance en cinq étapes, dans un ordre qui s'enchaîne naturellement :</p>
+  <ul>
+    <li>Préparer — générer une séquence complète ou une étude de cas sur une notion du programme, sans partir d'une page blanche ;</li>
+    <li>Créer des exercices — produire des EC1, EC2, EC3 et des sujets de dissertation qui respectent les attendus de l'épreuve ;</li>
+    <li>Corriger plus vite — un premier passage assisté par IA sur tes copies, sans jamais lui laisser la notation finale ;</li>
+    <li>Mettre en place ton système — un plan progressif sur 3 semaines pour intégrer ces outils sans tout bouleverser d'un coup.</li>
+  </ul>
+  <p>La partie 5 fait partie intégrante de ce guide : une bibliothèque de 35 prompts prêts à copier-coller, classés par usage, directement utilisables dans ChatGPT ou Claude pour chacune des situations décrites plus haut.</p>
+
+  <h3>Prérequis</h3>
+  <p>Aucune compétence technique n'est nécessaire. Si tu sais copier un texte et le coller dans une page web, tu sais utiliser tout ce que ce guide contient. Un compte gratuit sur ChatGPT ou Claude suffit pour commencer.</p>
+
+  <h3>Pour qui est ce guide, concrètement</h3>
+  <table>
+    <tr><th>Situation</th><th>Ce qui te parlera particulièrement</th></tr>
+    <tr><td>Tu passes tes dimanches à construire des études de cas</td><td>La partie 1, pour générer une base solide en quelques minutes</td></tr>
+    <tr><td>Tu manques de sujets d'EC1/EC2/EC3 variés et bien calibrés</td><td>La partie 2 et la bibliothèque de prompts</td></tr>
+    <tr><td>La correction des dissertations t'épuise</td><td>La partie 3, pour un premier passage assisté sans perdre la main sur la notation</td></tr>
+  </table>
+
+  <h3>Ce que ce guide ne couvre pas</h3>
+  <p>Pour être honnête sur son périmètre, ce guide ne traite pas :</p>
+  <ul>
+    <li>Le programme officiel de SES lui-même, ni son évolution réglementaire ;</li>
+    <li>L'utilisation de l'IA par les élèves (ce guide s'adresse aux professeurs, pas aux élèves) ;</li>
+    <li>Les outils payants spécialisés — tout est expliqué avec les offres gratuites de ChatGPT et Claude.</li>
+  </ul>
+
+  <h3>Le vrai coût du temps, tâche par tâche</h3>
+  <p>Pour donner une idée concrète, voici des ordres de grandeur réalistes du temps que prennent les tâches les plus courantes en SES, avant tout usage de l'IA. Ils varient selon ton expérience et ta discipline de fond (économie, sociologie, science politique), mais l'ordre de grandeur reste comparable d'un professeur à l'autre.</p>
+  <table>
+    <tr><th>Tâche</th><th>Temps estimé, à la main</th></tr>
+    <tr><td>Construire une étude de cas complète sur une notion nouvelle</td><td>2 à 4 heures</td></tr>
+    <tr><td>Rédiger un sujet d'EC3 avec dossier documentaire cohérent</td><td>1 à 2 heures</td></tr>
+    <tr><td>Corriger un paquet de 35 dissertations ou EC3</td><td>8 à 12 heures</td></tr>
+    <tr><td>Rédiger 35 appréciations de bulletin personnalisées</td><td>2 à 3 heures</td></tr>
+  </table>
+  <p>Ce guide ne prétend pas réduire ce temps à zéro. Il vise une réduction réaliste, de l'ordre de 30 à 50 % selon les tâches, en gardant intact ce qui relève réellement de ton jugement professionnel : la notation, le choix pédagogique, la relation avec tes élèves.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">📝 À faire maintenant, en 2 minutes</span>
+    <p>Pense à la dernière étude de cas que tu as construite à la main. Note le temps que ça t'a pris. Tu vas t'en servir comme point de comparaison en lisant la partie 1.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Préparer ses cours et séquences</h2>
+  <p class="lede">En sortant de cette partie, tu sauras générer une séquence complète sur une notion du programme, construire une étude de cas à partir de données réelles, et tu auras un template de fiche de préparation réutilisable toute l'année.</p>
+
+  <h3>2.1 Générer une séquence complète sur une notion économique ou sociologique</h3>
+  <p>Une séquence de SES suit presque toujours la même logique : une accroche, l'apport des notions et mécanismes, une mise en application sur données, puis une synthèse. Ce squelette ne change pas d'une notion à l'autre — seul le contenu change.</p>
+  <p>L'IA est particulièrement efficace pour remplir ce squelette rapidement, à condition de lui donner la notion précise, le niveau de classe et le nombre de séances visé. Plus tu es précis dans la demande, moins tu as de retouches à faire ensuite.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ne demande jamais « fais-moi un cours sur le marché du travail » : demande une séquence avec un nombre de séances, un niveau, et un objectif précis par séance. Le résultat sera directement exploitable, pas à réécrire.</p>
+  </div>
+  <p>Une fois la séquence générée, relis-la avec l'œil du programme officiel : vérifie que les notions exigibles sont bien couvertes et que rien d'hors-programme ne s'est glissé dedans. L'IA peut élargir un sujet au-delà de ce qui est attendu à l'examen.</p>
+
+  <h3>2.2 Construire une étude de cas à partir de données réelles ou d'un contexte d'actualité</h3>
+  <p>L'étude de cas est le cœur du cours de SES : elle donne corps à une notion abstraite. Construire une bonne étude de cas suppose de réunir des données cohérentes, un fil directeur clair, et des questions qui progressent du simple constat vers l'analyse.</p>
+  <p>Tu peux demander à l'IA de construire le squelette d'une étude de cas — la structure, le fil directeur, les questions — sans lui demander d'inventer les chiffres eux-mêmes. Les données précises restent à vérifier et à insérer depuis une source officielle.</p>
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Vigilance données</span>
+    <p>Une IA générative peut produire des chiffres plausibles mais faux, ou périmés de plusieurs années. Ne mets jamais en classe un chiffre généré par l'IA sans l'avoir vérifié sur le site de l'INSEE, d'Eurostat, ou d'une source institutionnelle équivalente.</p>
+  </div>
+  <p>Une fois le squelette validé, tu actualises toi-même les données à partir des bases officielles. C'est cette étape — remplacer un chiffre de 2019 par la donnée la plus récente — que l'IA te permet de faire en quelques minutes plutôt qu'en refaisant toute l'étude de cas.</p>
+
+  <h3>2.3 Partir d'un fait d'actualité pour amorcer un chapitre</h3>
+  <p>Une accroche d'actualité capte l'attention bien mieux qu'une définition en ouverture de cours. L'IA peut relier un fait d'actualité récent — que tu lui fournis — à la notion du programme qu'il illustre, et proposer une question de lancement.</p>
+  <p>Attention : l'IA ne connaît pas nécessairement l'actualité la plus récente selon le modèle utilisé. C'est toi qui apportes le fait d'actualité (un article, un chiffre, un événement), et l'IA t'aide à en tirer une accroche pédagogique exploitable.</p>
+
+  <h3>2.4 Le template de fiche de préparation à réutiliser</h3>
+  <p>Voici un template de fiche de préparation que tu peux redemander à l'identique pour chaque nouvelle séquence, en changeant seulement la notion et le niveau :</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Template — fiche de préparation de séquence</span>
+    <p>Notion : [notion]. Niveau : [niveau]. Nombre de séances : [nombre]. Pour chaque séance : objectif, support utilisé, activité principale, trace écrite attendue. Ajoute en fin de séquence les notions clés à maîtriser et une proposition d'évaluation finale.</p>
+  </div>
+  <p>Ce template fonctionne aussi bien pour une notion d'économie (le marché du travail, les défaillances de marché) que pour une notion de sociologie (la stratification sociale, la socialisation) ou de science politique (l'action publique, le pouvoir politique).</p>
+
+  <h3>2.5 Cas particuliers : adapter selon le niveau</h3>
+  <p>La SES ne se travaille pas de la même façon en seconde, en première et en terminale. L'IA produit un contenu plus juste si tu lui précises explicitement à quel niveau il s'adresse, pas seulement l'âge des élèves.</p>
+  <p>En seconde, la SES est un enseignement commun de découverte : les notions restent introductives, et l'évaluation ressemble davantage à des questions de cours et de petits exercices qu'aux épreuves formelles de première et terminale. Demande à l'IA un contenu « d'introduction, sans jargon », explicitement.</p>
+  <p>En première et terminale, la SES est une spécialité choisie : les élèves ont un niveau d'exigence plus élevé, et les notions se complexifient d'année en année. C'est à ce niveau que les formats EC1, EC2, EC3 et dissertation deviennent pertinents — ils n'existent pas en seconde.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ne demande jamais un « exercice EC2 » pour une classe de seconde : ce format n'existe qu'en première et terminale spécialité. En seconde, parle de « question de cours » ou « exercice d'application » à l'IA pour obtenir un format réellement adapté.</p>
+  </div>
+
+  <h3>2.6 Exemple concret : une séquence générée, commentée</h3>
+  <p>Voici un exemple de résultat obtenu avec le template de la fiche de préparation, sur la notion de « la mobilité sociale » pour une classe de première.</p>
+  <div class="box box-template">
+    <span class="box-title">Exemple de séquence générée</span>
+    <p>Séance 1 — Accroche à partir d'un témoignage d'ascension sociale, puis définition de la mobilité sociale et de ses formes (verticale, horizontale, intergénérationnelle). Séance 2 — Lecture d'une table de mobilité sociale, méthode de lecture des lignes et des colonnes. Séance 3 — Les déterminants de la mobilité (école, capital culturel, marché du travail). Séance 4 — Synthèse et étude de cas sur l'évolution de la mobilité sociale en France.</p>
+  </div>
+  <p>Ce résultat est un bon point de départ, mais deux ajustements restent nécessaires avant de l'utiliser : vérifier que la séance 2 s'appuie bien sur une vraie table de mobilité sociale récente (INSEE), et resserrer la séance 3 si elle déborde sur des déterminants hors programme.</p>
+
+  <h3>2.7 Deuxième exemple : une étude de cas générée, sur une notion économique</h3>
+  <p>Pour équilibrer l'exemple précédent, plus sociologique, voici un exemple obtenu sur la notion des « défaillances de marché », pour une classe de terminale.</p>
+  <div class="box box-template">
+    <span class="box-title">Exemple de squelette d'étude de cas généré</span>
+    <p>Fil directeur : la pollution industrielle comme illustration d'une externalité négative. Question 1 (constat) : identifier, à partir d'un document, un cas concret de pollution liée à une activité productive. Question 2 (analyse) : expliquer pourquoi le marché seul ne prend pas en compte ce coût. Question 3 (mise en relation) : présenter deux outils de régulation possibles (taxation, réglementation) et leurs effets attendus. Question 4 (synthèse) : discuter des limites de chaque outil.</p>
+  </div>
+  <p>Comme pour le premier exemple, ce squelette reste à compléter avec des données réelles : un chiffre sur le coût social d'une pollution précise, une donnée sur l'efficacité mesurée d'une taxation comparable, à aller chercher sur une source institutionnelle avant utilisation en classe.</p>
+
+  <h3>2.8 Cas particulier : notions transversales entre économie, sociologie et science politique</h3>
+  <p>La spécificité de la SES est de croiser trois approches disciplinaires. Une notion comme le travail, par exemple, se traite différemment selon l'angle : économique (marché du travail, chômage), sociologique (rapport au travail, identité professionnelle) ou politique (régulation du marché du travail, dialogue social).</p>
+  <p>Quand tu demandes une séquence à l'IA, précise explicitement l'angle disciplinaire attendu, ou demande une séquence qui articule volontairement plusieurs angles si le chapitre l'exige. Sans cette précision, l'IA tend à privilégier l'angle économique par défaut.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le programme de SES attend souvent une mise en relation explicite entre les approches. Une séquence purement économique sur une notion à dimension sociologique manque une partie de ce qui est réellement évalué à l'examen.</p>
+  </div>
+
+  <h3>2.9 Construire une progression sur les deux années de spécialité (première et terminale)</h3>
+  <p>La spécialité SES se prépare sur deux ans, avec une logique de progression : certaines notions de première sont réinvesties et complexifiées en terminale. L'IA peut t'aider à visualiser ces liens pour éviter les redites inutiles ou les trous de progression.</p>
+  <p>Demande-lui une progression qui indique explicitement, pour chaque notion de terminale, la ou les notions de première sur lesquelles elle s'appuie. Ce repérage t'aide à savoir quels rappels sont nécessaires en début de chapitre de terminale.</p>
+
+  <h3>2.10 Foire aux questions</h3>
+  <div class="box box-tip">
+    <span class="box-title">L'IA connaît-elle le programme officiel actuel de SES ?</span>
+    <p>Pas nécessairement dans le détail, et pas de façon fiable à 100 %. Donne-lui toi-même les notions exigibles issues du programme officiel plutôt que de lui demander de les deviner : le résultat sera plus fiable.</p>
+  </div>
+  <div class="box box-tip">
+    <span class="box-title">Faut-il vérifier une séquence générée avant chaque utilisation, même la deuxième fois ?</span>
+    <p>Oui pour les données chiffrées, qui peuvent se périmer. Non pour la structure pédagogique elle-même, qui reste valable d'une année sur l'autre si elle a déjà été validée une première fois.</p>
+  </div>
+
+  <h3>2.11 Affiner un résultat par le dialogue</h3>
+  <p>Le premier résultat généré est rarement parfait du premier coup, et ce n'est pas un problème : l'IA se corrige très bien quand tu lui donnes un retour précis, plutôt que de relancer une demande de zéro.</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Modèle — affiner une séquence en 2 échanges</span>
+    <p>Échange 1 : « Cette séquence est trop centrée sur l'aspect économique, ajoute une dimension sociologique à la séance 2. » Échange 2 : « La séance 3 dépasse le programme de [niveau], recentre-la sur les notions exigibles uniquement. » Deux échanges ciblés suffisent la plupart du temps à obtenir un résultat directement exploitable.</p>
+  </div>
+  <p>Cette logique de dialogue court, plutôt que de relance complète, s'applique à tous les usages décrits dans ce guide — elle fait gagner un temps considérable une fois qu'elle devient un réflexe.</p>
+
+  <h3>2.12 Lexique des notions récurrentes de cette partie</h3>
+  <table>
+    <tr><th>Terme</th><th>Définition courte</th></tr>
+    <tr><td>Séquence</td><td>Ensemble structuré de plusieurs séances construites autour d'une même notion ou d'un même chapitre</td></tr>
+    <tr><td>Étude de cas</td><td>Support pédagogique construit à partir de documents et de données réelles, illustrant une notion du programme</td></tr>
+    <tr><td>Notion exigible</td><td>Connaissance explicitement mentionnée au programme officiel, pouvant faire l'objet d'une évaluation</td></tr>
+    <tr><td>Trace écrite</td><td>Synthèse rédigée à l'issue d'une séance, que les élèves conservent comme référence de cours</td></tr>
+  </table>
+
+  <h3>2.13 Ressources officielles à connaître</h3>
+  <p>Pour actualiser tes données, quelques sources reviennent systématiquement en SES et valent la peine d'être gardées en favori dans ton navigateur, à côté de ton outil d'IA.</p>
+  <ul>
+    <li>Le site de l'INSEE, pour les données démographiques, économiques et sociales françaises ;</li>
+    <li>Eurostat, pour les comparaisons entre pays européens ;</li>
+    <li>Les publications « Insee Références », qui compilent chaque année des dossiers thématiques déjà mis en forme ;</li>
+    <li>Le site Éduscol, pour le programme officiel et les ressources pédagogiques institutionnelles.</li>
+  </ul>
+  <p>Ces sources ne remplacent pas l'IA pour la mise en forme pédagogique, mais restent la seule référence fiable pour les chiffres eux-mêmes.</p>
+
+  <h3>2.14 Foire aux questions</h3>
+  <div class="box box-tip">
+    <span class="box-title">Combien de temps pour générer une séquence complète, en pratique ?</span>
+    <p>Compte 5 à 10 minutes pour un premier résultat, et 5 minutes supplémentaires pour l'affiner par le dialogue si nécessaire. C'est très inférieur aux 2-4 heures d'une préparation entièrement manuelle.</p>
+  </div>
+  <div class="box box-tip">
+    <span class="box-title">Peut-on demander une séquence dans un style pédagogique particulier (inversée, projet) ?</span>
+    <p>Oui, précise-le explicitement dans le prompt (« en pédagogie de classe inversée », « en mode projet sur 3 séances »). L'IA adapte la structure proposée à ce format si tu le demandes clairement.</p>
+  </div>
+
+  <h3>2.15 Cas particulier — la dimension quantitative propre à la SES</h3>
+  <p>La SES mobilise des outils quantitatifs (pourcentages, coefficients multiplicateurs, indices) qui rejoignent le programme de mathématiques sans s'y confondre. Quand une séquence demande un calcul, précise à l'IA le niveau de maîtrise mathématique attendu à ce stade du programme, pour éviter un exercice qui suppose des notions non encore vues.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un exercice de lecture de coefficient multiplicateur ou de taux de variation reste un attendu méthodologique de la discipline SES elle-même, pas seulement un prérequis mathématique externe. Ne le déléguer à l'IA sans vérification revient à perdre cette compétence propre à la matière.</p>
+  </div>
+
+  <h3>2.16 Cas particulier — travailler à partir d'un manuel scolaire existant</h3>
+  <p>Tu n'es pas obligé de partir de zéro : l'IA peut aussi t'aider à réorganiser ou compléter une séquence déjà construite à partir d'un manuel. Donne-lui la table des matières du chapitre concerné et demande une séquence qui suit cette progression, en ajoutant les éléments qui manquent (accroche, synthèse, évaluation).</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Méthode — compléter une séquence de manuel</span>
+    <p>Voici la table des matières d'un chapitre de manuel : [coller ou lister les sous-parties]. Propose une accroche, une synthèse de fin de chapitre et une proposition d'évaluation qui suivent cette même progression, sans dupliquer ce que le manuel contient déjà.</p>
+  </div>
+  <p>Cette approche est particulièrement utile en début de carrière, quand le manuel sert de colonne vertébrale rassurante, tout en te laissant construire tes propres accroches et évaluations plutôt que de recopier celles du manuel telles quelles.</p>
+
+  <h3>2.17 Erreurs fréquentes à éviter</h3>
+  <ul>
+    <li>Accepter une séquence générée sans vérifier qu'elle colle au programme officiel de l'année en cours ;</li>
+    <li>Utiliser des données chiffrées générées par l'IA sans les recouper avec une source officielle ;</li>
+    <li>Demander une notion trop large d'un coup (« la mondialisation ») plutôt qu'un angle précis et traitable en 3-4 séances ;</li>
+    <li>Oublier de préciser le niveau de classe, ce qui produit un contenu trop simple ou trop complexe ;</li>
+    <li>Demander un format d'évaluation (EC1, EC2, EC3) pour une classe de seconde, où ce format n'existe pas.</li>
+  </ul>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Créer exercices et études de cas</h2>
+  <p class="lede">En sortant de cette partie, tu sauras générer des exercices de mobilisation des connaissances, des questions d'EC1, EC2 et EC3 bien calibrées, et exploiter des statistiques et graphiques comme supports d'exercice.</p>
+
+  <h3>3.1 Générer des exercices de mobilisation des connaissances et de raisonnement</h3>
+  <p>Deux compétences reviennent sans cesse en SES : mobiliser une connaissance précise (définition, mécanisme) et construire un raisonnement à partir d'un dossier documentaire. Chacune se travaille avec un type d'exercice différent.</p>
+  <p>Pour la mobilisation des connaissances, l'IA peut générer une série de questions courtes et précises sur une notion, avec la réponse attendue en 3-4 lignes — exactement le format exigé à l'épreuve EC1.</p>
+  <p>Pour le raisonnement, elle peut construire un exercice progressif : d'abord identifier l'information dans un document, puis la relier à une notion, puis construire un argument complet. Cette progression évite de demander directement l'exercice le plus difficile.</p>
+
+  <h3>3.2 Créer des questions EC1, EC2, EC3 adaptées au programme</h3>
+  <p>Chaque épreuve composée a une logique propre. L'EC1 mobilise une connaissance isolée. L'EC2 fait travailler un document unique (texte ou statistique). L'EC3 demande un raisonnement complet appuyé sur un dossier documentaire de 2 à 3 documents.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un sujet d'EC bien calibré précise toujours la notion attendue, le ou les documents à exploiter, et la consigne exacte (« Vous montrerez que… », « À l'aide du document, vous… »). Redemande une reformulation si le sujet généré reste vague sur la consigne.</p>
+  </div>
+  <p>Pour un sujet de dissertation de terminale, la logique change : il faut une problématique, un plan en deux parties argumentées, et une mobilisation de connaissances plus large. L'IA peut générer un sujet complet avec sa problématique, mais le plan proposé reste à valider — vérifie qu'il correspond à une vraie tension analytique, pas juste à une liste de deux thèmes juxtaposés.</p>
+
+  <h3>3.3 Exploiter des statistiques et graphiques (lecture de données chiffrées)</h3>
+  <p>Savoir lire un tableau ou un graphique est une compétence méthodologique à part entière en SES, distincte de la connaissance de la notion elle-même. L'IA peut générer des questions de lecture de données — évolution, structure, comparaison — à partir d'un tableau ou d'un graphique que tu lui fournis.</p>
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Vigilance données</span>
+    <p>Ne demande jamais à l'IA d'inventer un tableau de statistiques : donne-lui toujours un tableau réel (collé depuis l'INSEE, Eurostat ou une autre source officielle), et demande-lui seulement de construire les questions de lecture autour.</p>
+  </div>
+  <p>Ce sont surtout les formulations de consigne — « Vous calculerez… », « Vous comparerez l'évolution de… », « Vous caractériserez la structure de… » — que l'IA génère efficacement, une fois que tu lui as fourni des données réelles et fiables.</p>
+
+  <h3>3.4 Cas particulier — SES en seconde : pas d'EC, d'autres formats</h3>
+  <p>Comme rappelé en partie 1, les formats EC1/EC2/EC3 et la dissertation n'existent qu'en première et terminale spécialité. En seconde, les évaluations types restent les questions de cours, les exercices d'application sur un document unique, et de courtes synthèses.</p>
+  <p>Pour une classe de seconde, remplace la demande « EC1 » par « question de cours avec réponse attendue en quelques lignes », et la demande « EC2 » par « exercice d'application à partir d'un document, avec des questions guidées plus nombreuses qu'en première ».</p>
+
+  <h3>3.5 Exemple concret : une EC2 générée, commentée</h3>
+  <p>Voici un exemple d'EC2 obtenu à partir d'un graphique réel sur l'évolution du taux de chômage, pour une classe de première.</p>
+  <div class="box box-template">
+    <span class="box-title">Exemple d'EC2 générée</span>
+    <p>Document : graphique de l'évolution du taux de chômage en France entre 2000 et l'année la plus récente disponible (source à insérer). Consigne : « À l'aide du document, vous caractériserez l'évolution du taux de chômage en France sur la période représentée. » Question de guidage : identifier les phases de hausse et de baisse, puis les relier à un contexte économique connu.</p>
+  </div>
+  <p>Ce résultat est directement exploitable une fois le graphique réel inséré à la place du graphique fictif généré par défaut par l'IA — c'est la seule étape qui reste manuelle.</p>
+
+  <h3>3.6 Varier les formats d'exercices au-delà des EC</h3>
+  <p>Toutes les évaluations de l'année n'ont pas besoin d'être des EC ou des dissertations complètes. Des formats plus courts — QCM, vrai/faux argumenté, exercice de définitions — restent utiles pour des évaluations formatives régulières, moins lourdes à corriger.</p>
+  <p>L'IA génère efficacement ces formats courts à partir d'une simple liste de notions, avec un corrigé automatique inclus pour les QCM — un gain de temps réel sur les évaluations intermédiaires, hors des devoirs sur table notés au trimestre.</p>
+
+  <h3>3.7 Exemple concret : un sujet de dissertation généré, commenté</h3>
+  <p>Voici un exemple de sujet obtenu sur la notion de « la mondialisation des échanges », pour une classe de terminale.</p>
+  <div class="box box-template">
+    <span class="box-title">Exemple de sujet de dissertation généré</span>
+    <p>Sujet : « Dans quelle mesure la mondialisation des échanges profite-t-elle à l'ensemble des pays qui y participent ? » Esquisse de plan : Partie 1 — Les gains attendus des échanges internationaux (spécialisation, gains à l'échange, accès à des biens plus variés). Partie 2 — Des gains inégalement répartis, entre pays et à l'intérieur des pays (concurrence internationale, délocalisations, inégalités de développement).</p>
+  </div>
+  <p>Ce plan est un bon point de départ, mais reste à vérifier : la problématique doit correspondre exactement au sujet posé, et chaque sous-partie doit être développée avec un mécanisme précis du programme, pas seulement une idée générale.</p>
+
+  <h3>3.8 Foire aux questions</h3>
+  <div class="box box-tip">
+    <span class="box-title">L'IA peut-elle générer un sujet inédit, jamais tombé ailleurs ?</span>
+    <p>Elle peut recombiner des formulations connues, mais ne garantit pas l'originalité absolue. Ce n'est pas un problème pour un usage en classe ou en devoir maison, mais reste un point de vigilance pour une épreuve blanche officielle.</p>
+  </div>
+  <div class="box box-tip">
+    <span class="box-title">Peut-on demander plusieurs sujets d'un coup pour varier les groupes ?</span>
+    <p>Oui, c'est même un des usages les plus efficaces : demander 3 variantes d'un même sujet permet de limiter la triche par recopiage entre élèves voisins, pour un coût de préparation quasi nul.</p>
+  </div>
+
+  <h3>3.9 Exemples concrets : une EC1 et une EC3, commentées</h3>
+  <p>Pour compléter l'exemple d'EC2 déjà vu, voici un exemple d'EC1 et un exemple d'EC3, sur deux notions différentes.</p>
+  <div class="box box-template">
+    <span class="box-title">Exemple d'EC1 générée</span>
+    <p>Sujet : « Vous montrerez que le marché du travail est un marché particulier. » Réponse attendue en 3-4 lignes : rappel de la loi de l'offre et de la demande appliquée au travail, puis identification d'au moins une spécificité (asymétrie d'information, rigidités salariales, ou rôle des institutions).</p>
+  </div>
+  <div class="box box-template">
+    <span class="box-title">Exemple d'EC3 générée (dossier de 2 documents)</span>
+    <p>Consigne : « À l'aide du dossier documentaire et de vos connaissances, vous montrerez que la mondialisation des échanges transforme la structure du marché du travail. » Document 1 : statistiques sur l'évolution des délocalisations. Document 2 : texte sur la polarisation des emplois. Les deux documents doivent être mobilisés et mis en relation, pas traités séparément.</p>
+  </div>
+
+  <h3>3.10 Affiner un sujet par le dialogue</h3>
+  <div class="box box-template">
+    <span class="box-title">🧭 Modèle — affiner un sujet en 2 échanges</span>
+    <p>Échange 1 : « La consigne de cette EC3 est trop vague, reformule-la pour qu'elle demande explicitement une mise en relation des deux documents. » Échange 2 : « Le niveau de difficulté est trop élevé pour une classe de première, simplifie le vocabulaire de la consigne sans changer la notion. »</p>
+  </div>
+
+  <h3>3.11 Construire un devoir maison complet</h3>
+  <p>Un devoir maison combine souvent plusieurs formats : une question de mobilisation des connaissances, une exploitation de document, et une question de synthèse. L'IA peut assembler ces briques en un seul devoir cohérent, à partir des éléments que tu lui as déjà fait générer séparément.</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Méthode — assembler un devoir maison</span>
+    <p>Donne à l'IA la question EC1, le document et la question EC2, et le sujet EC3 déjà générés séparément. Demande-lui de les assembler en un devoir maison unique, avec une numérotation claire, un barème global sur 20, et un temps indicatif par partie.</p>
+  </div>
+
+  <h3>3.12 Cas particulier — préparer une notion en vue du Grand Oral</h3>
+  <p>En terminale, certains élèves choisissent une question de Grand Oral appuyée sur une notion de SES. L'IA peut t'aider à préparer des questions de relance pour un entraînement à l'oral, à partir de la notion et de l'angle choisis par l'élève.</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Méthode — questions de relance pour le Grand Oral</span>
+    <p>Donne à l'IA la question de Grand Oral de l'élève et le plan qu'il a préparé. Demande 5 questions de relance possibles côté jury, classées de la plus prévisible à la plus exigeante, pour un entraînement progressif.</p>
+  </div>
+
+  <h3>3.13 Foire aux questions</h3>
+  <div class="box box-tip">
+    <span class="box-title">Peut-on générer un exercice directement au format d'impression pour distribution ?</span>
+    <p>L'IA génère le texte de l'exercice, pas sa mise en page finale. Colle le résultat dans ton traitement de texte habituel pour la mise en forme et l'impression.</p>
+  </div>
+  <div class="box box-tip">
+    <span class="box-title">Faut-il varier systématiquement les sujets d'une année sur l'autre ?</span>
+    <p>Ce n'est pas obligatoire si le sujet reste pertinent, mais c'est facile à faire avec l'IA (prompt 21) et cela limite la circulation de corrigés d'une promotion à l'autre.</p>
+  </div>
+
+  <h3>3.14 Récapitulatif — les 5 réflexes à garder de cette partie</h3>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>1. Jamais de données inventées, toujours fournies par toi. 2. Une consigne précise vaut mieux qu'un exercice généré deux fois. 3. Un format d'EC n'existe qu'à partir de la première spécialité. 4. Le plan d'une dissertation générée reste à valider comme une vraie problématique. 5. Varier les sujets limite la circulation de corrigés.</p>
+  </div>
+
+  <h3>3.15 Cas particulier — s'appuyer sur une annale ou un sujet zéro</h3>
+  <p>Plutôt que de demander un sujet entièrement inédit, tu peux fournir une annale existante à l'IA et lui demander une variante sur une notion proche. Cette méthode donne généralement un résultat plus fidèle aux attendus réels de l'épreuve qu'une génération sans référence.</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Méthode — variante à partir d'une annale</span>
+    <p>Colle une annale officielle ou un sujet déjà utilisé. Demande à l'IA une variante sur une autre notion du même chapitre, en conservant exactement la structure et le niveau d'exigence de l'original.</p>
+  </div>
+
+  <h3>3.16 Cas particulier — exercices pour un contrôle continu léger (interrogation courte)</h3>
+  <p>Toutes les évaluations n'ont pas la même importance. Une interrogation courte de 15-20 minutes en fin de chapitre demande un format plus resserré qu'une EC complète, sans en perdre pour autant la rigueur méthodologique.</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Méthode — interrogation courte de fin de chapitre</span>
+    <p>Demande à l'IA 2 questions de mobilisation des connaissances courtes et 1 mini-exercice sur document, calibrés pour être traités en 15-20 minutes maximum, avec un barème simple sur 10 points.</p>
+  </div>
+  <p>Ce format allégé est particulièrement utile pour vérifier régulièrement l'acquisition des notions au fil du chapitre, sans attendre le devoir sur table pour détecter une incompréhension qui aurait pu être corrigée plus tôt.</p>
+
+  <h3>3.17 Cas particulier — exercices pour une classe à effectif réduit ou en demi-groupe</h3>
+  <p>En demi-groupe ou en petit effectif, les formats collectifs (jeu de rôle, débat argumenté à partir d'un dossier documentaire) deviennent plus faciles à organiser qu'en classe entière. L'IA peut adapter un exercice individuel existant en version collective pour ce contexte.</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Méthode — adapter un exercice en version collective</span>
+    <p>Voici un exercice individuel : [coller l'exercice]. Transforme-le en débat argumenté pour un groupe de 8 à 12 élèves, avec deux positions à défendre et une liste d'arguments à préparer pour chaque camp.</p>
+  </div>
+
+  <h3>3.18 Exemple concret : un jeu de données complet, prêt à insérer</h3>
+  <p>Voici un exemple de la façon de présenter un jeu de données réel à l'IA pour qu'elle en tire un exercice exploitable, sur le taux de pauvreté par tranche d'âge.</p>
+  <div class="box box-template">
+    <span class="box-title">Exemple de mise en forme d'un prompt (valeurs fictives, à remplacer par les tiennes)</span>
+    <p>« Voici les données du taux de pauvreté par tranche d'âge que j'ai relevées sur le site de l'INSEE : moins de 18 ans : [valeur] % ; 18-29 ans : [valeur] % ; 30-49 ans : [valeur] % ; 50-64 ans : [valeur] % ; 65 ans et plus : [valeur] %. Propose 3 questions de lecture et d'analyse progressives à partir de ce tableau, pour un niveau première. »</p>
+  </div>
+  <p>Fournir les chiffres directement dans le prompt, comme dans cet exemple, garantit que les questions générées s'appuient exactement sur les valeurs que tu as toi-même relevées à la source, plutôt que sur des données approximées ou datées par l'IA.</p>
+
+  <h3>3.19 Erreurs fréquentes à éviter</h3>
+  <ul>
+    <li>Laisser l'IA générer des chiffres de toutes pièces pour un exercice de lecture de données ;</li>
+    <li>Accepter un sujet de dissertation sans vérifier que le plan proposé correspond à une vraie problématique analytique ;</li>
+    <li>Confondre les attendus de l'EC1, l'EC2 et l'EC3 en générant un exercice hybride qui ne correspond à aucune épreuve réelle ;</li>
+    <li>Ne pas préciser le barème ou le nombre de points attendus, ce qui rend l'exercice difficile à calibrer en classe ;</li>
+    <li>Demander un format d'EC pour une classe de seconde, où ce format n'existe pas encore.</li>
+  </ul>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Corriger plus vite</h2>
+  <p class="lede">En sortant de cette partie, tu sauras utiliser l'IA pour un premier passage de correction sur dissertations et épreuves composées, générer des commentaires personnalisés sans les écrire un par un, et tu sauras précisément où s'arrête son rôle.</p>
+
+  <h3>4.1 Premier passage de correction assisté par IA</h3>
+  <p>L'idée n'est pas de faire corriger la copie par l'IA, mais de lui faire produire un premier repérage : la copie répond-elle à la consigne, la structure est-elle identifiable, les notions attendues apparaissent-elles ? Ce repérage te fait gagner du temps de lecture, pas de jugement.</p>
+  <p>Concrètement, tu colles le texte de la copie (retapé ou dicté) et tu demandes à l'IA de relever, sans noter : la présence ou l'absence du plan attendu, les notions du programme mobilisées, les éventuelles confusions de vocabulaire économique ou sociologique.</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Méthode — grille de relecture avant notation</span>
+    <p>Demande à l'IA de répondre à 4 questions sur la copie : la consigne est-elle traitée ? Le plan est-il visible ? Quelles notions du programme sont mobilisées, correctement ou non ? Quels arguments manquent pour répondre complètement au sujet ? Tu notes ensuite toi-même, à partir de ce repérage.</p>
+  </div>
+  <p>Ce repérage est particulièrement utile sur les EC3 et les dissertations, où la longueur du texte rend la première lecture plus longue que l'évaluation elle-même. Sur une EC1, plus courte, le gain de temps est plus limité.</p>
+
+  <h3>4.2 Générer des commentaires personnalisés sans les écrire un par un</h3>
+  <p>Écrire une appréciation différente pour chaque élève, sur 35 copies, prend un temps disproportionné par rapport à sa valeur pédagogique réelle. L'IA peut générer une base de commentaire à partir d'un profil que tu décris en une phrase, que tu ajustes ensuite en 30 secondes.</p>
+  <p>Le principe : tu donnes le point fort et le point faible principal de la copie (« bonne mobilisation des connaissances, mais raisonnement mal structuré »), et l'IA rédige une appréciation constructive et personnalisée à partir de cette base.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un commentaire généré reste un brouillon. Relis-le toujours avant de le coller sur une copie ou un bulletin : le ton doit correspondre à ta relation avec l'élève, pas seulement au contenu factuel.</p>
+  </div>
+
+  <h3>4.3 Ce que l'IA ne doit JAMAIS faire</h3>
+  <p>Cette partie est la plus importante de tout le guide. Elle fixe une limite claire, à ne jamais franchir, quelle que soit la pression du temps.</p>
+  <table>
+    <tr><th>À faire avec l'IA</th><th>À ne jamais lui déléguer</th></tr>
+    <tr><td>Repérer la structure et les notions mobilisées</td><td>Attribuer une note finale</td></tr>
+    <tr><td>Générer une base de commentaire à personnaliser</td><td>Copier un commentaire généré sans le relire</td></tr>
+    <tr><td>Identifier les points de blocage collectifs de la classe</td><td>Décider seule des sanctions ou des signalements</td></tr>
+    <tr><td>Préparer une grille d'évaluation par compétences</td><td>Traiter des données nominatives d'élèves sans anonymisation</td></tr>
+  </table>
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Notation finale : jamais déléguée</span>
+    <p>La notation engage ta responsabilité professionnelle et ton jugement pédagogique sur un élève précis, dans un contexte que l'IA ne connaît pas. Le repérage qu'elle produit t'aide à lire plus vite ; la décision de la note reste entièrement la tienne, sur chaque copie, sans exception.</p>
+  </div>
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Biais et RGPD élèves</span>
+    <p>Ne colle jamais le nom, la classe complète ou toute donnée identifiante d'un élève dans un outil d'IA grand public : ces données peuvent être conservées par le service. Anonymise systématiquement (« l'élève », « la copie ») avant tout usage. Sois aussi vigilant·e sur les biais : une IA peut reproduire des attentes stéréotypées sur un profil d'élève si tu les lui suggères involontairement dans ta description.</p>
+  </div>
+
+  <h3>4.4 Exemple concret : un repérage de copie généré, commenté</h3>
+  <p>Voici un exemple de repérage obtenu sur une copie anonymisée d'EC3, avant notation.</p>
+  <div class="box box-template">
+    <span class="box-title">Exemple de repérage généré</span>
+    <p>Consigne traitée : partiellement — le document 2 n'est pas exploité. Plan visible : oui, deux parties identifiables. Notions mobilisées : « défaillances de marché » utilisée correctement ; « externalité » citée mais non expliquée. Argument manquant : aucune mise en relation explicite entre les deux documents fournis.</p>
+  </div>
+  <p>Ce repérage te permet de savoir en 30 secondes où porter ton attention à la lecture complète de la copie, plutôt que de découvrir ces points un par un pendant une lecture linéaire. La notation reste entièrement construite par toi, à partir de ce repérage et de ta propre lecture.</p>
+
+  <h3>4.5 Gérer le temps de correction sur toute une période</h3>
+  <p>Le gain de temps du premier passage assisté se voit surtout à l'échelle d'un trimestre entier, pas sur une copie isolée. Sur un trimestre avec 3 paquets de copies pour 2 classes, le temps cumulé économisé peut représenter plusieurs soirées complètes.</p>
+  <table>
+    <tr><th>Sans IA</th><th>Avec repérage assisté</th></tr>
+    <tr><td>20 min de lecture attentive par copie d'EC3/dissertation</td><td>12 à 14 min, repérage déjà fait en amont</td></tr>
+    <tr><td>3 heures pour rédiger 35 appréciations personnalisées</td><td>environ 1h30, base générée puis ajustée</td></tr>
+  </table>
+
+  <h3>4.6 Cas particulier — copies rendues sous forme manuscrite photographiée</h3>
+  <p>La plupart des copies restent manuscrites. Certains outils d'IA savent lire une photo de texte manuscrit (reconnaissance de caractères), mais la fiabilité varie selon la lisibilité de l'écriture — une retranscription erronée fausserait le repérage.</p>
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Fiabilité de la reconnaissance manuscrite</span>
+    <p>Si tu utilises une photo de copie manuscrite, relis toujours la transcription produite par l'IA avant de lui demander un repérage : une erreur de lecture sur un mot clé (« ne pas » lu comme « peut ») fausserait complètement l'analyse qui suit.</p>
+  </div>
+
+  <h3>4.7 Cas particulier — un grand nombre de copies à corriger d'un coup</h3>
+  <p>Sur un paquet de 35 copies, le premier passage assisté par IA copie après copie prend encore du temps s'il est fait une par une dans une conversation continue. Repartir d'une nouvelle conversation pour chaque copie évite que l'IA « mélange » les repérages entre plusieurs élèves.</p>
+  <p>Une routine simple : ouvre une nouvelle conversation pour chaque copie, colle le texte anonymisé, demande le repérage, note toi-même, referme. Ce n'est pas plus rapide qu'un algorithme magique — c'est un gain réel mais raisonnable, de l'ordre de 30 à 40 % de temps de lecture en moins sur les copies longues.</p>
+
+  <h3>4.8 Cas particulier — préparer un conseil de classe</h3>
+  <p>Rédiger un bilan par élève avant un conseil de classe demande de croiser plusieurs notes et observations. L'IA peut t'aider à structurer ce bilan à partir des éléments factuels que tu lui fournis toi-même — jamais à partir de son propre jugement sur l'élève.</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Méthode — bilan avant conseil de classe</span>
+    <p>Donne à l'IA les notes du trimestre et une ou deux observations factuelles (« bonne participation à l'oral, méthode encore fragile à l'écrit »). Demande une synthèse en 2-3 phrases, neutre et factuelle, que tu ajustes avant de la présenter en conseil.</p>
+  </div>
+
+  <h3>4.9 Cas particulier — répondre à une contestation de note</h3>
+  <p>Un parent ou un élève conteste parfois une note. L'IA peut t'aider à structurer une réponse factuelle et posée, à partir des éléments méthodologiques réels de la copie — mais jamais à décider si la note doit changer : cette décision reste uniquement la tienne.</p>
+  <p>Donne à l'IA les critères de notation utilisés et les points précis où la copie n'y répond pas, et demande une reformulation claire et pédagogique de ces éléments, à adresser au parent ou à l'élève.</p>
+
+  <h3>4.10 Exemple concret : un commentaire personnalisé généré</h3>
+  <p>Voici un exemple de commentaire obtenu à partir d'un profil décrit en une phrase : « bonne mobilisation des connaissances, mais raisonnement mal structuré, élève sérieux et appliqué ».</p>
+  <div class="box box-template">
+    <span class="box-title">Exemple de commentaire généré</span>
+    <p>« Un travail sérieux qui montre une bonne connaissance des notions du programme. La structuration du raisonnement doit maintenant être retravaillée : veille à annoncer clairement ton plan et à relier chaque argument à la problématique posée. Continue sur cette voie, la rigueur est là. »</p>
+  </div>
+  <p>Ce commentaire reste générique tant qu'il n'est pas relu et ajusté avec un détail propre à la copie réelle — une référence précise à un passage, par exemple — pour que l'élève sente que le retour lui est réellement destiné.</p>
+
+  <h3>4.11 Affiner un repérage ou un commentaire par le dialogue</h3>
+  <div class="box box-template">
+    <span class="box-title">🧭 Modèle — affiner un commentaire en 2 échanges</span>
+    <p>Échange 1 : « Le ton est trop sévère pour cet élève, qui manque surtout de confiance en lui, adoucis la formulation. » Échange 2 : « Ajoute un conseil concret et actionnable pour la prochaine évaluation, pas seulement un constat. »</p>
+  </div>
+
+  <h3>4.12 Cas particulier — la fin de trimestre, période de surcharge</h3>
+  <p>La fin de trimestre concentre corrections, bulletins et conseils de classe sur une période courte. C'est le moment où ces outils apportent le plus de soulagement réel, à condition d'avoir déjà pris l'habitude de les utiliser plus tôt dans le trimestre.</p>
+  <p>Ne découvre pas ces usages pour la première fois en pleine période de bulletins : teste-les en amont, sur un petit volume, pour que les réflexes (anonymisation, grille de relecture, ajustement du ton) soient déjà acquis quand la charge de travail augmente.</p>
+
+  <h3>4.13 Garder une trace de tes échanges avec l'IA</h3>
+  <p>Conserver un historique simple de tes échanges de correction assistée n'est pas obligatoire, mais devient utile si ta pratique est un jour questionnée — par un parent, un chef d'établissement, ou toi-même en cas de doute a posteriori sur une note attribuée.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le repérage généré par l'IA n'est jamais la preuve d'une note : c'est ta lecture complète et ton jugement qui justifient la note finale. Garder une trace sert seulement à retrouver ton raisonnement, pas à te couvrir à la place de ta propre analyse.</p>
+  </div>
+
+  <h3>4.14 Cas particulier — correction partagée entre collègues</h3>
+  <p>Quand plusieurs professeurs corrigent les mêmes sujets sur des classes parallèles, l'harmonisation de la notation est un vrai enjeu. Une grille de relecture commune, générée une fois puis partagée, aide à réduire les écarts de notation entre correcteurs sur un même sujet.</p>
+  <p>Chaque professeur reste libre d'ajuster sa notation selon sa connaissance de ses propres élèves — l'objectif de la grille commune est de partir d'une base partagée, pas d'uniformiser mécaniquement toutes les notes.</p>
+
+  <h3>4.15 Cas particulier — repérer une copie rédigée par l'IA</h3>
+  <p>De plus en plus d'élèves utilisent eux-mêmes l'IA pour rédiger tout ou partie d'une copie. Ce guide s'adresse à toi en tant que professeur utilisant l'IA pour ta propre préparation, mais la question de la détection côté élève reste liée et mérite d'être abordée.</p>
+  <p>Un style trop lisse, un vocabulaire plus soutenu que le niveau habituel de l'élève, ou une structure très générique sans référence à ce qui a été vu en classe, sont des signaux à considérer — sans certitude absolue, car aucun détecteur n'est totalement fiable. En cas de doute, un échange oral avec l'élève sur le contenu de sa copie reste le moyen le plus sûr de vérifier une réelle compréhension.</p>
+
+  <h3>4.16 Cas particulier — copies très longues (dissertations de 4 pages et plus)</h3>
+  <p>Sur une copie très longue, colle-la en plusieurs blocs si l'outil que tu utilises limite la longueur de texte acceptée en une fois. Demande le repérage sur l'ensemble avant de commencer ta propre lecture, pour avoir une vision globale de la copie avant de l'aborder partie par partie.</p>
+
+  <h3>4.17 Checklist avant de rendre les copies</h3>
+  <ul class="checklist">
+    <li>Chaque copie a été notée par ta propre lecture complète, pas seulement à partir du repérage assisté ;</li>
+    <li>Aucune donnée nominative d'élève n'est restée dans l'historique d'un outil d'IA grand public ;</li>
+    <li>Les commentaires générés ont tous été relus et, si besoin, réajustés au ton souhaité ;</li>
+    <li>La notation reste cohérente d'une copie à l'autre, vérifiée par un rapide passage croisé sur 2-3 copies de niveaux différents.</li>
+  </ul>
+
+  <h3>4.18 Foire aux questions</h3>
+  <div class="box box-tip">
+    <span class="box-title">Puis-je utiliser un outil d'IA intégré à un tableur ou un traitement de texte plutôt que ChatGPT/Claude directement ?</span>
+    <p>Oui, le principe reste le même. Vérifie simplement les conditions d'utilisation de l'outil sur le traitement des données que tu lui soumets, en particulier si des établissements scolaires imposent des outils spécifiques validés RGPD.</p>
+  </div>
+  <div class="box box-tip">
+    <span class="box-title">Le repérage assisté fonctionne-t-il aussi bien sur une copie très faible que sur une bonne copie ?</span>
+    <p>Oui, mais il est plus utile sur les copies longues et denses, où la lecture attentive prend le plus de temps. Sur une copie très courte ou hors sujet, le repérage manuel reste souvent plus rapide.</p>
+  </div>
+
+  <h3>4.19 Cas particulier — dictée vocale pour retranscrire une copie</h3>
+  <p>Retaper une copie manuscrite entièrement à la main pour la coller dans un outil d'IA prend du temps. Une alternative : dicter la copie à voix haute avec un outil de reconnaissance vocale, puis relire la transcription avant de la soumettre au repérage.</p>
+  <p>Cette méthode reste plus rapide que la retranscription manuelle complète, à condition de garder la même vigilance que pour une transcription photographiée : une erreur de dictée peut fausser le repérage sur un mot clé.</p>
+
+  <h3>4.20 Workflow complet illustré, du paquet de copies à la remise des notes</h3>
+  <div class="box box-template">
+    <span class="box-title">🧭 Déroulé complet d'une session de correction</span>
+    <p>1. Anonymise chaque copie (numéro plutôt que nom). 2. Ouvre une nouvelle conversation par copie. 3. Colle le texte, demande le repérage avec la grille de la partie 4.1. 4. Lis la copie en entier en t'appuyant sur ce repérage. 5. Note toi-même, à la main. 6. Si besoin, génère une base de commentaire à partir du point fort/point faible identifié. 7. Relis et ajuste chaque commentaire avant de le reporter sur la copie. 8. Une fois le paquet terminé, utilise le prompt 32 pour analyser les résultats globaux de la classe.</p>
+  </div>
+  <p>Ce déroulé complet, répété copie après copie, devient rapidement un réflexe qui ne demande plus d'effort de mémorisation après les deux ou trois premiers paquets corrigés de cette façon.</p>
+
+  <h3>4.21 Cas particulier — corriger une copie hors sujet</h3>
+  <p>Une copie hors sujet ne bénéficie pas du même repérage qu'une copie qui traite la consigne : demande plutôt à l'IA d'identifier quelle notion la copie traite réellement, pour t'aider à comprendre l'erreur d'interprétation de l'élève et à la lui expliquer clairement dans ton commentaire.</p>
+
+  <h3>4.22 Cas particulier — copies rédigées dans une langue académique fragile</h3>
+  <p>Certains élèves maîtrisent le fond mais s'expriment avec difficulté à l'écrit. Le repérage assisté t'aide à distinguer une confusion de notion d'une simple maladresse d'expression, en te demandant explicitement de séparer les deux dans son analyse.</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Méthode — distinguer fond et forme</span>
+    <p>Demande à l'IA deux repérages séparés sur la même copie : un sur les notions et le raisonnement (le fond), un sur la clarté d'expression uniquement (la forme). Cette séparation t'aide à valoriser un bon raisonnement mal exprimé, plutôt que de le sous-noter par confusion avec la forme.</p>
+  </div>
+
+  <h3>4.23 Cas particulier — élève en situation de handicap ou aménagements d'examen</h3>
+  <p>Certains élèves bénéficient d'aménagements (temps majoré, secrétaire, police agrandie) qui changent la forme de la copie sans changer les attendus de fond. Le repérage assisté reste utilisable normalement, en gardant à l'esprit que la longueur ou la présentation ne doit pas être comparée à celle d'une copie standard.</p>
+  <p>Pour un élève avec un plan d'accompagnement personnalisé impliquant une dictée à l'adulte, la copie retranscrite peut déjà être plus proche de l'oral que de l'écrit habituel : ajuste ta lecture du repérage en conséquence, sans pénaliser un style qui reflète l'aménagement plutôt qu'une vraie faiblesse.</p>
+
+  <h3>4.24 Exemple concret : un paragraphe argumenté annoté</h3>
+  <p>Pour illustrer concrètement ce que le repérage assisté peut mettre en évidence, voici un exemple de paragraphe d'élève, avec l'annotation qu'un repérage IA en ferait.</p>
+  <div class="box box-template">
+    <span class="box-title">Paragraphe d'élève (extrait fictif)</span>
+    <p>« Le chômage est un problème pour l'économie. Il y a plusieurs causes au chômage, comme le manque de croissance. Il faut donc que l'État agisse pour le réduire, par exemple avec des aides aux entreprises. »</p>
+  </div>
+  <div class="box box-template">
+    <span class="box-title">Repérage généré sur ce paragraphe</span>
+    <p>Notion mobilisée : chômage, cité mais non défini précisément. Mécanisme manquant : aucun mécanisme économique n'explique le lien entre croissance et chômage (ex. loi d'Okun, non mentionnée). Argumentation : l'affirmation « il faut que l'État agisse » n'est pas justifiée par un mécanisme, elle reste une opinion non étayée. Point positif : la structure logique (constat, cause, préconisation) est présente et exploitable.</p>
+  </div>
+  <p>Ce type de repérage te permet de voir immédiatement qu'il manque un mécanisme précis, sans avoir à le chercher toi-même dans le paragraphe : c'est exactement le gain de temps que ce guide vise, sur une tâche où ton œil reste seul juge de la notation finale.</p>
+
+  <h3>4.25 Récapitulatif — les 5 réflexes à garder de cette partie</h3>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>1. L'IA repère, tu notes. 2. Aucune donnée nominative d'élève dans un outil grand public. 3. Chaque commentaire généré est relu avant envoi. 4. Une conversation par copie, jamais un lot entier mélangé. 5. La méthode disciplinaire (identifier, prélever, interpréter) reste ton exigence, pas celle de l'IA.</p>
+  </div>
+
+  <h3>4.26 Erreurs fréquentes à éviter</h3>
+  <ul>
+    <li>Demander à l'IA d'attribuer une note, même « à titre indicatif » — la référence chiffrée influence ensuite ton propre jugement ;</li>
+    <li>Coller une copie avec le nom de l'élève visible dans l'outil ;</li>
+    <li>Copier-coller un commentaire généré sans l'adapter à l'élève réel ;</li>
+    <li>Traiter toutes les copies dans une seule et même conversation, ce qui brouille les repérages d'une copie à l'autre ;</li>
+    <li>Laisser l'IA rédiger seule une réponse à une contestation de note sans revalider chaque argument avec la copie réelle.</li>
+  </ul>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Mettre en place son système</h2>
+  <p class="lede">En sortant de cette partie, tu auras un plan concret sur 3 semaines pour intégrer ces outils dans ta pratique, sans tout bouleverser d'un coup, et une checklist des erreurs les plus fréquentes à éviter.</p>
+
+  <h3>5.1 Planning de mise en place sur 3 semaines</h3>
+  <p>Adopter tous les usages décrits dans ce guide en même temps est inutile et fatigant. Le plan ci-dessous les introduit un par un, dans l'ordre où ils rapportent le plus de temps gagné pour le moins d'effort d'adaptation.</p>
+  <table>
+    <tr><th>Semaine</th><th>Ce que tu mets en place</th></tr>
+    <tr><td>Semaine 1</td><td>Générer une séquence complète sur une notion à venir, avec le template de la partie 1. Comparer le temps passé à ton habitude.</td></tr>
+    <tr><td>Semaine 2</td><td>Créer une série d'EC1/EC2/EC3 ou un sujet de dissertation avec la partie 2, pour le prochain devoir sur table.</td></tr>
+    <tr><td>Semaine 3</td><td>Tester le premier passage de correction assisté sur un paquet de copies réel, avec la grille de relecture de la partie 3.</td></tr>
+  </table>
+  <p>À la fin des trois semaines, tu as testé chaque usage au moins une fois sur un cas réel. C'est à ce moment que tu sais lesquels garder dans ta routine et lesquels laisser de côté.</p>
+
+  <h3>5.2 Checklist avant de démarrer</h3>
+  <div class="box box-template">
+    <span class="box-title">🧭 Checklist de démarrage</span>
+    <p>Un compte gratuit ChatGPT ou Claude créé. Une notion ou un chapitre à venir identifié pour t'entraîner. Un dossier de sources fiables sous la main (INSEE, Eurostat, Insee Références) pour actualiser tes études de cas. Une méthode d'anonymisation des copies définie avant toute correction assistée.</p>
+  </div>
+
+  <h3>5.3 Erreurs à éviter dans la durée</h3>
+  <p>Deux erreurs reviennent particulièrement souvent une fois l'outil adopté dans la routine, au-delà des erreurs déjà signalées dans les parties précédentes.</p>
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Données périmées réutilisées par erreur</span>
+    <p>Une étude de cas générée une année reste dans tes dossiers l'année suivante — avec des chiffres qui, eux, ont vieilli. Prends l'habitude de vérifier la date des données à chaque réutilisation d'un support, pas seulement lors de sa création.</p>
+  </div>
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Perte de rigueur méthodologique</span>
+    <p>La méthode d'une EC2 ou d'une EC3 (identifier, prélever, interpréter la donnée) est une compétence propre à la discipline, qui s'apprend par la pratique répétée. Un exercice généré trop vite, sans vérifier qu'il respecte cette progression méthodologique, n'entraîne pas vraiment tes élèves à l'épreuve réelle.</p>
+  </div>
+  <p>Relire ce guide une fois par trimestre suffit pour garder ces réflexes actifs, sans avoir à tout retenir dès la première lecture.</p>
+
+  <h3>5.4 Cas particulier — début de carrière vs enseignant expérimenté</h3>
+  <p>Si tu débutes dans le métier, ces outils t'aident surtout à construire une première base de séquences et d'exercices rapidement, à retravailler avec l'expérience au fil des années. Prends le temps de bien vérifier chaque contenu généré : tu n'as pas encore les réflexes qui permettent de repérer instantanément une erreur.</p>
+  <p>Si tu enseignes depuis longtemps, ces outils te font surtout gagner du temps sur ce que tu sais déjà faire — actualiser une étude de cas, varier des formulations de sujets, produire une première série d'exercices que tu ajustes ensuite avec ton expérience du niveau réel de tes classes.</p>
+
+  <h3>5.5 Cas particulier — travailler en équipe disciplinaire</h3>
+  <p>Si plusieurs professeurs de SES de ton établissement adoptent ces outils, mutualiser les prompts qui fonctionnent bien évite à chacun de repartir de zéro. Un dossier partagé avec les prompts ajustés à vos pratiques communes suffit, sans outil compliqué.</p>
+  <p>Cette mutualisation est particulièrement utile pour harmoniser les grilles d'évaluation par compétences entre collègues qui partagent des classes de même niveau, un point souvent source de désaccords informels en salle des professeurs.</p>
+
+  <h3>5.6 Indicateurs simples pour mesurer les bénéfices</h3>
+  <p>Pas besoin d'un tableau de bord complexe : trois indicateurs simples suffisent pour savoir si ces outils t'apportent un vrai bénéfice, à évaluer toi-même après quelques semaines d'usage.</p>
+  <table>
+    <tr><th>Indicateur</th><th>Comment l'observer simplement</th></tr>
+    <tr><td>Temps de préparation d'une séquence</td><td>Chronomètre approximatif, comparé à ton habitude avant ce guide</td></tr>
+    <tr><td>Temps de correction d'un paquet de copies</td><td>Heure de début et de fin notées, comparées d'un paquet à l'autre</td></tr>
+    <tr><td>Qualité perçue des retours aux élèves</td><td>Ton propre ressenti, et éventuellement celui des élèves sur la clarté des appréciations</td></tr>
+  </table>
+
+  <h3>5.7 Bilan après un trimestre</h3>
+  <p>Après un trimestre d'usage, prends 10 minutes pour faire le point avec ces trois questions simples :</p>
+  <ul>
+    <li>Quels usages m'ont fait gagner du temps réel, sans perte de qualité pédagogique ?</li>
+    <li>Ai-je repéré des erreurs de données ou de méthode qui seraient passées inaperçues sans vérification ?</li>
+    <li>Quel usage n'ai-je pas encore testé et qui pourrait m'aider le trimestre prochain ?</li>
+  </ul>
+  <p>Ce bilan simple suffit à ajuster ta pratique sans avoir besoin de repartir de zéro à chaque nouvelle année scolaire.</p>
+
+  <h3>5.8 Petit glossaire IA pour non-initiés</h3>
+  <table>
+    <tr><th>Terme</th><th>Ce que ça veut dire, simplement</th></tr>
+    <tr><td>Prompt</td><td>La demande que tu tapes à l'IA — plus elle est précise, meilleur est le résultat</td></tr>
+    <tr><td>Hallucination</td><td>Une information fausse mais formulée avec assurance par l'IA, comme un chiffre inventé</td></tr>
+    <tr><td>Conversation</td><td>Le fil d'échange avec l'IA — l'IA se souvient des messages précédents dans la même conversation</td></tr>
+    <tr><td>Modèle</td><td>Le programme d'IA lui-même (ex. ChatGPT, Claude) — leurs résultats diffèrent légèrement d'un modèle à l'autre</td></tr>
+  </table>
+
+  <h3>5.9 Cas particulier — établissement avec un réseau filtré ou sans licence</h3>
+  <p>Certains établissements filtrent l'accès aux outils d'IA sur le réseau professionnel, ou n'ont pas encore de politique claire sur leur usage. Dans ce cas, les usages de préparation (séquences, exercices) peuvent se faire depuis un appareil personnel, hors du réseau de l'établissement.</p>
+  <p>Pour la correction, qui implique des données d'élèves même anonymisées, vérifie la politique de ton établissement avant de t'y engager. En cas de doute, privilégie les usages de préparation, moins sensibles, en attendant une clarification.</p>
+
+  <h3>5.10 Checklist de fin d'année</h3>
+  <ul class="checklist">
+    <li>Les séquences générées et validées cette année sont classées par notion, prêtes à être réutilisées ;</li>
+    <li>Les données chiffrées utilisées sont notées avec leur date de collecte, pour un contrôle rapide l'année suivante ;</li>
+    <li>Les prompts qui ont le mieux fonctionné sont notés quelque part, pas seulement dans l'historique de conversation ;</li>
+    <li>Un premier bilan des bénéfices réels de l'année est fait, pour ajuster la pratique à la rentrée suivante.</li>
+  </ul>
+
+  <h3>5.11 Cas particulier — remplaçant ou enseignant à temps partiel</h3>
+  <p>Si tu remplaces un collègue en cours d'année ou que tu interviens sur plusieurs établissements, le temps de prise en main d'une classe et d'un programme déjà entamé est particulièrement serré. Ces outils sont alors surtout utiles pour reconstruire rapidement une séquence cohérente à partir de ce qui a déjà été vu, sans connaître l'historique complet de la classe.</p>
+  <p>Demande à l'IA une séquence de transition qui rappelle brièvement les prérequis probables avant d'attaquer la suite du programme, plutôt qu'une séquence qui suppose une continuité parfaite avec ce que tu n'as pas toi-même enseigné.</p>
+
+  <h3>5.12 Foire aux questions</h3>
+  <div class="box box-tip">
+    <span class="box-title">Combien de temps avant de voir un vrai bénéfice ?</span>
+    <p>La plupart des professeurs ressentent un gain dès la première séquence générée. Le gain devient net et installé après 3 à 4 semaines, une fois les prompts ajustés à ta façon d'enseigner.</p>
+  </div>
+  <div class="box box-tip">
+    <span class="box-title">Faut-il continuer à préparer certains cours entièrement à la main ?</span>
+    <p>Oui, sans hésitation, en particulier sur les notions que tu maîtrises déjà parfaitement et pour lesquelles tu n'as aucun gain de temps réel à attendre. Ce guide est un outil parmi d'autres, pas un remplacement systématique de ta pratique.</p>
+  </div>
+
+  <h3>5.13 Cas particulier — enseigner la spécialité SES et le tronc commun en parallèle</h3>
+  <p>Beaucoup de professeurs de SES partagent leur service entre la spécialité (première, terminale) et l'enseignement commun de seconde. Basculer d'un format d'évaluation à l'autre plusieurs fois par semaine demande une vigilance particulière sur les prompts utilisés.</p>
+  <p>Une astuce simple : commence systématiquement tes prompts de préparation par le niveau et le statut de l'enseignement (« Pour une classe de seconde, enseignement commun » ou « Pour une classe de terminale, spécialité SES »). Ce réflexe évite la confusion de format la plus fréquente signalée dans ce guide.</p>
+  <p>Cette double charge de travail, fréquente en SES, rend d'autant plus utile la logique de templates réutilisables développée tout au long de ce guide : une fois qu'un template de fiche de préparation, une grille de relecture ou une checklist de démarrage sont posés pour un niveau, les redemander pour l'autre niveau ne prend que quelques minutes d'ajustement, plutôt qu'une nouvelle réflexion complète à chaque bascule entre tes classes.</p>
+
+  <h3>5.14 Cas particulier — évolution du programme d'une année sur l'autre</h3>
+  <p>Le programme officiel de SES peut évoluer, même légèrement, d'une année à l'autre. Un contenu généré et validé l'année précédente doit être revérifié au regard du programme en vigueur avant toute réutilisation telle quelle, pas seulement pour les données chiffrées mais aussi pour les notions elles-mêmes.</p>
+  <div class="box box-warning">
+    <span class="box-title">⚠️ Vigilance programme</span>
+    <p>L'IA n'est pas informée automatiquement d'un changement de programme officiel intervenu après sa dernière mise à jour de connaissances. Vérifie toujours une séquence ancienne par rapport au texte du programme actuellement en vigueur, disponible sur Éduscol.</p>
+  </div>
+  <p>Ce réflexe de vérification prend quelques minutes en début d'année et évite de transmettre, sans le vouloir, une notion formulée selon une ancienne version du programme à toute une classe.</p>
+
+  <h3>5.15 Récapitulatif — les 10 réflexes à garder de ce guide</h3>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>1. Précise toujours notion et niveau. 2. Ne jamais utiliser un chiffre généré sans le vérifier sur une source officielle. 3. Affiner par le dialogue plutôt que relancer de zéro. 4. Ne jamais déléguer la notation finale. 5. Anonymiser systématiquement avant toute correction assistée. 6. Relire chaque commentaire avant envoi. 7. Vérifier la cohérence avec le programme officiel de l'année. 8. Une conversation par copie. 9. Actualiser les données à chaque réutilisation d'un support. 10. Faire un bilan chaque trimestre pour ajuster sa pratique.</p>
+  </div>
+
+  <p>Ce guide n'a pas vocation à remplacer ton expertise disciplinaire, construite au fil des années : il vise à t'éviter les tâches répétitives à faible valeur ajoutée, pour te laisser plus de temps sur ce qui compte vraiment — la relation avec tes élèves et la qualité de ton enseignement.</p>
+</section>
+
+<section class="chapter">
+  <h2>6. Partie 5 — Bibliothèque de prompts SES</h2>
+  <p class="lede">Cette bibliothèque fait partie intégrante de ce guide : 35 prompts prêts à copier-coller dans ChatGPT ou Claude, classés par usage, propres à la discipline SES. Chaque prompt contient des champs [entre crochets] à remplacer par ta notion, ton niveau ou ton thème avant de l'utiliser.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Précise toujours le niveau (seconde, première, terminale) et, quand c'est pertinent, la voie (générale) dans tes prompts : c'est ce qui calibre le mieux la difficulté et le format attendu du résultat.</p>
+  </div>
+
+  <p>Ces prompts fonctionnent aussi bien dans ChatGPT que dans Claude. Les résultats diffèrent légèrement d'un outil à l'autre — teste le même prompt dans les deux si l'un des résultats ne te convient pas, plutôt que de reformuler plusieurs fois dans le même outil.</p>
+
+  <h3>6.1 Préparer une séquence sur une notion économique ou sociologique</h3>
+  <p>Pour structurer un chapitre ou une progression sans partir d'une page blanche.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Séquence de cours en 4 séances</span>
+    <span class="prompt-text">Crée une séquence de cours en 4 séances sur [notion, ex : le marché du travail] pour des élèves de [niveau], avec pour chaque séance : l'objectif, le support et l'activité principale.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un chapitre complet avant de détailler chaque séance</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Trois façons d'introduire une notion</span>
+    <span class="prompt-text">Propose 3 façons différentes d'introduire la notion de [notion] en classe de SES : par un fait d'actualité, par un document chiffré, par une situation concrète du quotidien des élèves.</span>
+    <p class="prompt-usage">À quoi ça sert : varier ses accroches de cours selon le profil de la classe</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Progression annuelle SES</span>
+    <span class="prompt-text">Rédige la progression annuelle de SES pour un niveau [niveau], en respectant l'ordre logique des prérequis entre les notions d'économie, de sociologie et de science politique.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer sa programmation en début d'année</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Reformulation pour élève en difficulté</span>
+    <span class="prompt-text">Explique la notion de [notion, ex : les défaillances de marché] à un élève qui n'a pas compris, avec une analogie simple et un exemple concret du quotidien.</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une reformulation prête pour les élèves qui décrochent en cours</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Plan de révision sur 2 semaines</span>
+    <span class="prompt-text">Crée un plan de révision de 2 semaines avant le contrôle sur [chapitre/notions], avec les notions prioritaires et un exercice type par jour.</span>
+    <p class="prompt-usage">À quoi ça sert : donner un vrai plan de révision structuré aux élèves</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Notions clés d'un chapitre</span>
+    <span class="prompt-text">Liste les notions clés à maîtriser absolument pour le chapitre sur [chapitre], avec pour chacune une définition en une phrase et un exemple d'application.</span>
+    <p class="prompt-usage">À quoi ça sert : constituer une fiche de révision synthétique en quelques minutes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7 — Accroche à partir d'un fait d'actualité</span>
+    <span class="prompt-text">Voici un fait d'actualité : [coller l'article ou le fait]. Propose une façon de le relier à la notion de [notion] pour amorcer un chapitre, avec une question de lancement.</span>
+    <p class="prompt-usage">À quoi ça sert : transformer une actualité fournie en accroche pédagogique exploitable</p>
+  </div>
+
+  <h3>6.2 Construire des études de cas à partir de données ou d'actualité</h3>
+  <p>Pour bâtir un support d'étude de cas cohérent, à compléter avec des données réelles vérifiées.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8 — Squelette d'étude de cas</span>
+    <span class="prompt-text">Construis le squelette d'une étude de cas sur [notion] pour un niveau [niveau] : un fil directeur, 4 à 5 questions progressives (constat, analyse, mise en relation), sans inventer de données chiffrées.</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir une structure prête à remplir avec des données réelles</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9 — Questions autour d'un tableau de statistiques</span>
+    <span class="prompt-text">Voici un tableau de données réelles : [coller le tableau]. Propose 4 questions de lecture et d'analyse progressives à partir de ce tableau, adaptées à un niveau [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : générer des questions de lecture de données à partir d'un support réel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10 — Dossier documentaire sur une notion</span>
+    <span class="prompt-text">Voici deux documents sur [notion] : [coller les documents]. Propose un dossier documentaire structuré avec une consigne de type EC3 et 3 questions de guidage.</span>
+    <p class="prompt-usage">À quoi ça sert : assembler plusieurs sources fournies en un dossier documentaire exploitable</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 11 — Article de presse transformé en support</span>
+    <span class="prompt-text">Voici un article de presse : [coller l'article]. Résume-le en 10 lignes pour des élèves de [niveau], et propose 3 questions de compréhension et de mise en relation avec la notion de [notion].</span>
+    <p class="prompt-usage">À quoi ça sert : transformer rapidement un article en support de cours exploitable</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 12 — Étude de cas comparative</span>
+    <span class="prompt-text">Construis le squelette d'une étude de cas comparative entre [pays/période A] et [pays/période B] sur la notion de [notion], avec les axes de comparaison à documenter à partir de sources officielles.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une comparaison structurée sans inventer les données de comparaison</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 13 — Simulation ou jeu de rôle</span>
+    <span class="prompt-text">Propose un jeu de rôle ou une simulation en classe pour illustrer [notion, ex : la négociation salariale, un marché avec offre et demande], adapté à un niveau [niveau], avec les rôles et les consignes.</span>
+    <p class="prompt-usage">À quoi ça sert : varier les formats au-delà du dossier documentaire classique</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 14 — Actualiser une étude de cas existante</span>
+    <span class="prompt-text">Voici une étude de cas que j'ai déjà utilisée : [coller l'étude de cas]. Identifie les éléments dont les données sont probablement datées, sans les remplacer toi-même — liste-les pour que je les actualise depuis une source officielle.</span>
+    <p class="prompt-usage">À quoi ça sert : repérer rapidement ce qui doit être vérifié avant de réutiliser un support</p>
+  </div>
+
+  <h3>6.3 Générer des questions EC1/EC2/EC3 et des sujets de dissertation</h3>
+  <p>Pour produire des sujets d'évaluation qui respectent les attendus réels de chaque épreuve.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 15 — Question EC1</span>
+    <span class="prompt-text">Rédige une question de type EC1 (mobilisation des connaissances) sur la notion de [notion], avec la réponse attendue en 3-4 lignes.</span>
+    <p class="prompt-usage">À quoi ça sert : générer rapidement une série de questions d'EC1 calibrées</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 16 — Question EC2 à partir d'un document</span>
+    <span class="prompt-text">Voici un document (texte ou statistique) : [coller le document]. Rédige une question de type EC2 (étude d'un document) à partir de ce document, adaptée à un niveau [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : construire une EC2 sur un support réel plutôt qu'inventé</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 17 — Sujet EC3 avec dossier documentaire</span>
+    <span class="prompt-text">Voici un dossier de 2-3 documents sur [notion] : [coller les documents]. Rédige un sujet de type EC3 (raisonnement appuyé sur un dossier documentaire), avec la consigne complète.</span>
+    <p class="prompt-usage">À quoi ça sert : produire une EC3 complète à partir de documents déjà réunis</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 18 — Sujet de dissertation avec problématique</span>
+    <span class="prompt-text">Propose un sujet de dissertation de terminale sur la notion de [notion], avec une problématique claire et une esquisse de plan en deux parties argumentées.</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir un sujet et une problématique de départ à valider et affiner</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 19 — Grille d'évaluation par compétences</span>
+    <span class="prompt-text">Propose une grille d'évaluation par compétences (mobilisation des connaissances, exploitation des documents, argumentation) pour cette épreuve : [préciser EC1/EC2/EC3/dissertation] sur [notion].</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier les attendus de notation avant la correction</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 20 — Plan détaillé pour un sujet donné</span>
+    <span class="prompt-text">Voici un sujet de dissertation : [coller le sujet]. Propose un plan détaillé en deux parties et sous-parties, avec pour chaque sous-partie l'idée principale et un exemple ou mécanisme à mobiliser.</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir une base de plan à critiquer et retravailler avant de la donner en correction</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 21 — Adapter un sujet à un autre niveau</span>
+    <span class="prompt-text">Voici un sujet destiné à un niveau [niveau A] : [coller le sujet]. Adapte-le pour un niveau [niveau B], en ajustant la complexité des documents ou de la consigne sans changer la notion centrale.</span>
+    <p class="prompt-usage">À quoi ça sert : réutiliser un bon sujet existant pour une autre classe</p>
+  </div>
+
+  <h3>6.4 Différencier selon les niveaux de classe</h3>
+  <p>Pour adapter un même contenu aux élèves en difficulté comme aux plus avancés.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 22 — Dossier documentaire à deux niveaux</span>
+    <span class="prompt-text">Voici un dossier documentaire : [coller le dossier]. Propose une version simplifiée (vocabulaire et consignes) pour des élèves en difficulté, et une version approfondie avec une question bonus pour les élèves avancés.</span>
+    <p class="prompt-usage">À quoi ça sert : différencier sans construire deux dossiers entièrement séparés</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 23 — Fiche méthode simplifiée</span>
+    <span class="prompt-text">Rédige une fiche méthode simplifiée en 4 étapes numérotées pour réussir un [EC1/EC2/EC3/dissertation], avec un exemple entièrement traité.</span>
+    <p class="prompt-usage">À quoi ça sert : donner un support écrit clair aux élèves qui ont besoin de repères visuels</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 24 — Activité de soutien ciblée</span>
+    <span class="prompt-text">Propose une activité de soutien courte (15 minutes) pour un élève qui n'a pas compris [notion], à faire en autonomie ou en petit groupe.</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une activité de remédiation ciblée prête pour l'aide personnalisée</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 25 — Exercice de dépassement</span>
+    <span class="prompt-text">Crée un exercice de dépassement pour un élève qui maîtrise déjà [notion] et s'ennuie en classe, qui pousse la réflexion sans sortir du programme du niveau.</span>
+    <p class="prompt-usage">À quoi ça sert : occuper intelligemment les élèves en avance sans leur donner « plus de la même chose »</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 26 — Simplification d'un document sans perdre le sens</span>
+    <span class="prompt-text">Simplifie ce document en gardant le sens général, pour le rendre accessible à un élève ayant des difficultés de lecture : [coller le document].</span>
+    <p class="prompt-usage">À quoi ça sert : adapter un document authentique trop difficile sans le dénaturer</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 27 — Groupes de niveau</span>
+    <span class="prompt-text">Suggère 3 façons de regrouper une classe en groupes de niveau pour travailler [notion], avec une tâche différente et adaptée pour chaque groupe.</span>
+    <p class="prompt-usage">À quoi ça sert : organiser un travail en groupes de besoin sur une séance</p>
+  </div>
+
+  <h3>6.5 Corriger et donner un retour personnalisé</h3>
+  <p>Pour accélérer la correction et personnaliser les retours aux élèves et familles, dans les limites fixées en partie 3.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 28 — Corrigé type avec barème</span>
+    <span class="prompt-text">Rédige un corrigé type avec barème détaillé pour ce sujet [EC1/EC2/EC3/dissertation] : [coller le sujet], en indiquant les points accordés pour chaque compétence évaluée.</span>
+    <p class="prompt-usage">À quoi ça sert : harmoniser sa notation et gagner du temps à la correction</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 29 — Grille de relecture avant notation</span>
+    <span class="prompt-text">Voici une copie anonymisée : [coller le texte]. Indique si la consigne est traitée, si le plan est identifiable, et quelles notions du programme sont mobilisées, correctement ou non — sans attribuer de note.</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir un repérage rapide avant de noter soi-même la copie</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 30 — Appréciation de bulletin personnalisée</span>
+    <span class="prompt-text">Rédige une appréciation de bulletin pour un élève avec le profil suivant : [décrire le profil, ex : bonne mobilisation des connaissances mais raisonnement à structurer], en restant constructif et personnalisé.</span>
+    <p class="prompt-usage">À quoi ça sert : gagner du temps sur la rédaction des bulletins tout en restant personnalisé</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 31 — Message de suivi individualisé</span>
+    <span class="prompt-text">Prépare un message clair à envoyer à un élève en difficulté méthodologique sur [EC1/EC2/EC3/dissertation], avec des conseils concrets et actionnables pour progresser d'ici la prochaine évaluation.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un message de suivi individualisé motivant, pas culpabilisant</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 32 — Analyse des résultats de classe</span>
+    <span class="prompt-text">Voici une synthèse des résultats de la classe sur ce devoir : [décrire les résultats généraux]. Propose des pistes d'explication sur les erreurs les plus fréquentes probables.</span>
+    <p class="prompt-usage">À quoi ça sert : identifier les points de blocage collectifs à retravailler avant de continuer</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 33 — Message aux parents en début de trimestre</span>
+    <span class="prompt-text">Rédige un message pour les parents expliquant simplement ce que la classe va aborder ce trimestre en SES, avec les grandes échéances d'évaluation à venir.</span>
+    <p class="prompt-usage">À quoi ça sert : communiquer avec les familles sans y passer une soirée</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 34 — Synthèse de progrès sur l'année</span>
+    <span class="prompt-text">Voici les notes et observations d'un élève sur les deux premiers trimestres : [coller les éléments]. Rédige une synthèse de progression pour le bilan de fin d'année, en valorisant les points d'amélioration réels.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer un bilan annuel sans relire tout l'historique de l'élève au dernier moment</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 35 — Préparer un rendez-vous avec une famille</span>
+    <span class="prompt-text">Voici la situation d'un élève en difficulté : [décrire la situation]. Prépare 3 points clairs et factuels à aborder lors d'un rendez-vous avec sa famille, avec une proposition d'accompagnement concret.</span>
+    <p class="prompt-usage">À quoi ça sert : arriver préparé·e à un rendez-vous sensible, sans improviser sur place</p>
+  </div>
+
+  <h3>6.6 Enchaîner plusieurs prompts pour couvrir un chapitre entier</h3>
+  <p>Ces 35 prompts sont conçus pour être combinés, pas seulement utilisés isolément. Voici un exemple d'enchaînement complet, du lancement d'un chapitre jusqu'à sa correction, sur une même notion.</p>
+  <div class="box box-template">
+    <span class="box-title">🧭 Exemple d'enchaînement complet sur un chapitre</span>
+    <p>1. Prompt 1 (séquence de cours) pour construire le chapitre. 2. Prompt 8 (squelette d'étude de cas) pour l'illustrer avec des données réelles. 3. Prompt 15 ou 17 (EC1 ou EC3) pour l'évaluation de fin de chapitre. 4. Prompt 28 (corrigé type) pour préparer la correction. 5. Prompt 30 (appréciation de bulletin) pour le retour final aux élèves.</p>
+  </div>
+  <p>Cet enchaînement complet, du premier prompt au dernier, représente généralement moins d'une heure de travail au total — contre plusieurs heures pour la même préparation entièrement manuelle.</p>
+
+  <h3>6.7 Deuxième exemple : préparer une période d'examens blancs</h3>
+  <div class="box box-template">
+    <span class="box-title">🧭 Exemple d'enchaînement pour un examen blanc</span>
+    <p>1. Prompt 18 ou 20 (sujet de dissertation avec plan détaillé) pour composer le sujet. 2. Prompt 19 (grille d'évaluation par compétences) pour préparer le barème avec tes collègues. 3. Prompt 29 (grille de relecture) pour le premier passage de correction sur chaque copie. 4. Prompt 32 (analyse des résultats de classe) pour préparer le débriefing collectif après l'examen blanc.</p>
+  </div>
+  <p>Cette combinaison est particulièrement utile en période d'examens blancs, où plusieurs classes composent sur le même sujet et où l'harmonisation entre correcteurs devient un enjeu central.</p>
+
+  <h3>6.8 Récapitulatif de la bibliothèque</h3>
+  <table>
+    <tr><th>Catégorie</th><th>Nombre de prompts</th></tr>
+    <tr><td>Préparer une séquence sur une notion économique ou sociologique</td><td>7</td></tr>
+    <tr><td>Construire des études de cas à partir de données ou d'actualité</td><td>7</td></tr>
+    <tr><td>Générer des questions EC1/EC2/EC3 et des sujets de dissertation</td><td>7</td></tr>
+    <tr><td>Différencier selon les niveaux de classe</td><td>6</td></tr>
+    <tr><td>Corriger et donner un retour personnalisé</td><td>8</td></tr>
+  </table>
+  <p>Garde cette page en tête : c'est ton sommaire rapide pour retrouver le bon prompt sans reparcourir toute la bibliothèque, une fois que tu connais déjà ce guide.</p>
+
+  <h3>6.9 Et maintenant ?</h3>
+  <p>Choisis un seul prompt de cette bibliothèque, sur une notion que tu prépares cette semaine, et teste-le aujourd'hui. C'est en l'utilisant sur un cas réel — pas en lisant ce guide une deuxième fois — que tu sauras s'il te fait vraiment gagner du temps.</p>
+</section>
+
+</body>
+</html>

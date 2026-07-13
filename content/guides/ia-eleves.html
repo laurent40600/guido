@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>L'IA pour réussir ses cours</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 26pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+  .box-template {
+    background: #fff; border: 1.5px dashed #1E2A4A; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11.5pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-template .box-title { color: #1E2A4A; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>L'IA pour réussir ses cours</h1>
+  <p class="tagline">Comprendre, s'entraîner et réviser efficacement</p>
+  <p class="meta">Un guide complet + une bibliothèque de 24 prompts intégrée,<br/>toutes matières confondues — pensé pour progresser, pas pour tricher</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction<span>Utiliser l'IA honnêtement, ce que ce guide va changer</span></li>
+    <li>Partie 1 — Comprendre un cours plus vite<span>Reformulation, exemples concrets, bonnes questions</span></li>
+    <li>Partie 2 — S'entraîner efficacement<span>Exercices, quiz, interrogation à l'oral</span></li>
+    <li>Partie 3 — Réviser sans stress<span>Fiches, planning, mémorisation</span></li>
+    <li>Partie 4 — Structurer ses devoirs sans se faire aider à sa place<span>Consignes, plan, le risque réel de la triche</span></li>
+    <li>Partie 5 — Bibliothèque de prompts<span>24 prompts prêts à l'emploi, classés par usage</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction</h2>
+
+  <h3>L'IA peut vraiment t'aider à progresser, si tu l'utilises bien</h3>
+  <p>Tu utilises peut-être déjà l'IA pour tes devoirs. La question n'est pas de savoir si tu dois l'utiliser, mais comment. Il y a une énorme différence entre demander à l'IA de t'expliquer une notion que tu n'as pas comprise, et lui demander de rédiger ton devoir à ta place.</p>
+  <p>Dans le premier cas, tu progresses vraiment : tu comprends mieux, tu t'entraînes, tu retiens plus facilement. Dans le second cas, tu obtiens une note à court terme, mais tu n'apprends rien, et le jour du contrôle sur table, sans IA sous la main, le problème réapparaît intact.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce qu'on comprend et pratique soi-même, on le retient. Ce qu'on copie, on l'oublie aussitôt.</p>
+    <p>L'IA est un excellent prof particulier disponible 24h/24, pas un outil pour éviter de travailler.</p>
+    <p>Les contrôles sur table et les examens ne te laisseront jamais l'IA sous la main — autant t'entraîner sans elle dès maintenant, avec son aide.</p>
+  </div>
+
+  <h3>Utiliser l'IA honnêtement</h3>
+  <p>Ce guide ne te dira jamais comment faire rédiger un devoir noté par l'IA à ta place, ni comment cacher que tu utilises l'IA. Ce n'est pas une question de morale abstraite : c'est que ça ne sert à rien pour toi. Un devoir rendu doit rester ton travail — c'est aussi ce qui te permet de vraiment progresser d'un contrôle à l'autre.</p>
+  <p>Ce que l'IA doit faire pour toi : expliquer, entraîner, réviser, structurer ta réflexion. Ce qu'elle ne doit jamais faire : rédiger le devoir final à ta place.</p>
+
+  <h3>Trois erreurs fréquentes à éviter dès le départ</h3>
+  <ul>
+    <li>Copier-coller directement une réponse de l'IA dans un devoir noté, sans même la comprendre ;</li>
+    <li>Utiliser l'IA seulement la veille d'un contrôle, au lieu de t'en servir tout au long de l'année pour comprendre et t'entraîner régulièrement ;</li>
+    <li>Accepter une explication sans vérifier qu'elle correspond bien à ton cours réel — l'IA peut se tromper ou simplifier à l'excès.</li>
+  </ul>
+
+  <h3>Comment ce guide est organisé</h3>
+  <p>Les parties 1 à 4 suivent le cycle naturel du travail scolaire : comprendre un cours, s'entraîner, réviser, puis structurer un devoir. La partie 5 regroupe tous les prompts du guide en un seul endroit, classés par usage, pour que tu puisses y revenir rapidement sans relire tout le guide à chaque fois.</p>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>À la fin de ce guide, tu sauras utiliser l'IA pour comprendre plus vite un cours difficile, t'entraîner efficacement avant un contrôle, réviser sans stress et structurer tes devoirs sans jamais te faire rédiger le contenu à ta place.</p>
+  <p>Aucune compétence technique n'est nécessaire : si tu sais utiliser une IA comme ChatGPT ou Claude sur ton téléphone ou ton ordinateur, tu as tout ce qu'il faut.</p>
+
+  <h3>Ce guide s'adresse à toutes les matières, collège comme lycée</h3>
+  <p>Les méthodes de ce guide fonctionnent aussi bien en mathématiques qu'en français, en histoire-géographie, en langues ou en sciences : seule la notion demandée à l'IA change, pas la méthode elle-même.</p>
+  <p>Au collège, l'enjeu est souvent de comprendre une notion nouvelle et de s'entraîner régulièrement. Au lycée, s'ajoutent des exercices plus longs (dissertation, commentaire, étude de document) où structurer sa réflexion devient aussi important que connaître le cours. Ce guide couvre les deux niveaux, avec des exemples adaptés à chacun.</p>
+
+  <h3>Ton premier réflexe à adopter dès aujourd'hui</h3>
+  <div class="box box-tip">
+    <span class="box-title">📝 À faire maintenant, en 2 minutes</span>
+    <p>Pense au dernier cours que tu n'as pas bien compris. Ouvre ChatGPT ou Claude et demande-lui de te l'expliquer autrement, avec un exemple de ta vie quotidienne. Tu verras par toi-même la différence avec le fait de relire ta feuille de cours en boucle.</p>
+  </div>
+
+  <h3>Le rôle des parents dans l'utilisation de l'IA</h3>
+  <p>Si tu es un parent et que tu lis ce guide avec ou pour ton enfant, ta place n'est pas de vérifier qu'il n'utilise jamais l'IA, mais de l'aider à distinguer les deux usages décrits plus haut : celui qui fait progresser, et celui qui fait illusion à court terme.</p>
+  <p>Beaucoup de parents se sentent démunis face à l'IA parce qu'ils ne l'utilisent pas eux-mêmes au quotidien. Il n'est pas nécessaire de devenir expert : comprendre la distinction centrale de ce guide (comprendre/s'entraîner/réviser d'un côté, faire rédiger un devoir de l'autre) suffit pour accompagner efficacement, sans avoir à maîtriser l'outil techniquement.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir (pour les parents)</span>
+    <p>Un devoir rendu trop parfait par rapport au niveau habituel de votre enfant est un signal à ne pas ignorer, pas nécessairement pour sanctionner, mais pour en parler ouvertement.</p>
+    <p>Demander "comment as-tu utilisé l'IA pour préparer ce devoir ?" ouvre une conversation plus utile que d'interdire l'outil purement et simplement.</p>
+    <p>Les usages décrits dans ce guide (comprendre, s'entraîner, réviser) sont ceux à encourager ; celui à surveiller est la rédaction complète d'un devoir noté par l'IA.</p>
+  </div>
+
+  <h3>Instaurer un cadre familial simple</h3>
+  <p>Plutôt que d'interdire ou d'autoriser l'IA en bloc, il est souvent plus efficace de fixer des règles simples et claires avec votre enfant : quels usages sont encouragés (ceux de ce guide), lequel est à éviter (la rédaction complète d'un devoir noté), et à quel moment en reparler si un doute survient sur un devoir précis.</p>
+  <p>Ce cadre gagne à être discuté calmement, en dehors de tout contexte de crise (une mauvaise note, un devoir suspect) — une règle posée à froid est mieux acceptée qu'une interdiction décidée après coup.</p>
+
+  <h3>Foire aux questions</h3>
+  <div class="box box-warning">
+    <span class="box-title">Utiliser l'IA pour ses devoirs, est-ce autorisé ?</span>
+    <p>Ça dépend entièrement de l'établissement et du type de devoir. Ce guide ne remplace pas les règles fixées par tes professeurs : en cas de doute, demande-leur directement ce qui est autorisé pour un devoir précis.</p>
+  </div>
+  <div class="box box-warning">
+    <span class="box-title">Est-ce que mon professeur peut savoir que j'ai utilisé l'IA ?</span>
+    <p>Certains outils de détection existent, mais ce n'est pas le sujet de ce guide. La vraie raison de ne pas faire rédiger un devoir par l'IA n'est pas le risque de détection : c'est que tu n'apprends rien pour le contrôle suivant.</p>
+  </div>
+  <div class="box box-warning">
+    <span class="box-title">Quelle IA choisir, ChatGPT ou Claude ?</span>
+    <p>Les deux fonctionnent bien pour tous les usages de ce guide, dans leur offre gratuite. Si un prompt donne un résultat qui ne te convainc pas, teste-le dans l'autre outil avant de l'abandonner — les résultats varient légèrement d'un outil à l'autre.</p>
+  </div>
+
+  <h3>Un exemple concret pour bien démarrer</h3>
+  <p>Prenons un cas très courant : tu as un contrôle de mathématiques dans une semaine sur un chapitre que tu ne maîtrises qu'à moitié. Voici comment ce guide t'accompagnerait, étape par étape.</p>
+  <table>
+    <tr><th>Jour</th><th>Ce que tu fais, avec ce guide</th></tr>
+    <tr><td>Jour 1</td><td>Partie 1 — tu fais reformuler les notions les moins claires du chapitre</td></tr>
+    <tr><td>Jour 2-4</td><td>Partie 2 — tu t'entraînes avec des exercices progressifs et un quiz</td></tr>
+    <tr><td>Jour 5-6</td><td>Partie 3 — tu crées une fiche de révision et tu la relis chaque soir</td></tr>
+    <tr><td>Jour 7</td><td>Révision légère de la fiche uniquement, pas de nouvel exercice la veille</td></tr>
+  </table>
+  <p>C'est cette logique — comprendre, puis s'entraîner, puis réviser, dans cet ordre — qui structure les quatre premières parties de ce guide.</p>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Comprendre un cours plus vite</h2>
+  <p class="lede">En sortant de cette partie, tu sauras faire reformuler une notion mal comprise, demander des exemples concrets et poser les bonnes questions pour vérifier une vraie compréhension.</p>
+
+  <h3>Faire reformuler une notion mal comprise</h3>
+  <p>Quand une explication du cours ne rentre pas, la pire idée est de la relire en boucle en espérant qu'elle devienne plus claire. La bonne stratégie, c'est de demander une reformulation différente, avec d'autres mots et un autre exemple.</p>
+  <p>L'IA est particulièrement douée pour ça : elle peut reformuler une même notion de dix façons différentes jusqu'à trouver celle qui te parle, sans jamais se lasser ni te juger de ne pas avoir compris du premier coup.</p>
+
+  <h3>Demander des exemples concrets</h3>
+  <p>Une notion abstraite devient beaucoup plus facile à retenir quand elle est reliée à un exemple concret de ta vie quotidienne. Demande systématiquement un exemple quand une notion te semble trop théorique.</p>
+
+  <h3>Poser les bonnes questions</h3>
+  <p>Il y a une vraie différence entre demander "donne-moi la réponse" et demander "pose-moi des questions pour vérifier que j'ai compris". La deuxième approche t'oblige à réfléchir activement, ce qui est prouvé comme bien plus efficace pour mémoriser durablement.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Demande toujours une reformulation avant de recopier une définition que tu ne comprends pas.</p>
+    <p>Un exemple concret vaut mieux qu'une définition apprise par cœur sans la comprendre.</p>
+    <p>Se faire questionner est plus efficace que se faire donner directement la réponse.</p>
+  </div>
+
+  <h3>Exemples par matière</h3>
+  <p>La méthode ne change pas d'une matière à l'autre, seule la formulation change. Quelques exemples pour t'inspirer :</p>
+  <table>
+    <tr><th>Matière</th><th>Ce que tu peux demander</th></tr>
+    <tr><td>Mathématiques</td><td>« Explique-moi pourquoi cette formule fonctionne, pas seulement comment l'appliquer »</td></tr>
+    <tr><td>Histoire-géographie</td><td>« Explique-moi ce qui a causé cet événement, avec un exemple simple »</td></tr>
+    <tr><td>Français</td><td>« Explique-moi cette figure de style avec un exemple tiré d'une chanson ou d'un film que je connais »</td></tr>
+    <tr><td>Langues vivantes</td><td>« Explique-moi cette règle de grammaire avec 3 exemples de phrases simples »</td></tr>
+    <tr><td>SVT / Physique-chimie</td><td>« Explique-moi ce phénomène comme si je n'avais jamais entendu ce mot avant »</td></tr>
+  </table>
+
+  <h3>Exemple concret : une reformulation, avant/après</h3>
+  <div class="box box-template">
+    <span class="box-title">Avant (définition du cours, non comprise)</span>
+    <p>« La photosynthèse est le processus par lequel les plantes chlorophylliennes synthétisent des composés organiques à partir de dioxyde de carbone, d'eau et de lumière. »</p>
+  </div>
+  <div class="box box-template">
+    <span class="box-title">Après (reformulation obtenue avec un prompt de ce guide)</span>
+    <p>« Une plante, c'est un peu comme une usine miniature qui fabrique sa propre nourriture. Elle prend l'eau dans le sol, le CO2 dans l'air, et utilise la lumière du soleil comme source d'énergie pour fabriquer du sucre — sa nourriture — et rejette de l'oxygène au passage. »</p>
+  </div>
+  <p>Les deux phrases disent la même chose, mais la seconde se retient beaucoup plus facilement parce qu'elle utilise une image concrète (l'usine) au lieu du vocabulaire technique brut.</p>
+
+  <h3>Cas particulier : collège ou lycée</h3>
+  <p>Au collège, privilégie des reformulations très simples et des exemples tirés directement de ton quotidien. Au lycée, tu peux demander des reformulations plus nuancées, qui gardent une partie du vocabulaire technique attendu à l'examen — tu dois progressivement apprendre à utiliser ce vocabulaire toi-même, pas seulement le comprendre.</p>
+
+  <h3>Foire aux questions</h3>
+  <div class="box box-warning">
+    <span class="box-title">Et si l'IA se trompe dans son explication ?</span>
+    <p>Ça arrive, surtout sur des notions très techniques ou récentes. Recoupe toujours une explication importante avec ton cours ou ton manuel — l'IA t'aide à comprendre plus vite, elle ne remplace pas la source officielle du cours.</p>
+  </div>
+  <div class="box box-warning">
+    <span class="box-title">Combien de fois puis-je redemander une reformulation ?</span>
+    <p>Autant de fois que nécessaire. Contrairement à un professeur ou un parent, l'IA ne se lasse jamais de reformuler une même notion dix fois différemment jusqu'à ce que tu la comprennes vraiment.</p>
+  </div>
+
+  <h3>Affiner une explication par le dialogue</h3>
+  <p>La première explication n'est pas toujours la bonne pour toi. Plutôt que d'abandonner, continue la conversation avec des retours précis.</p>
+  <div class="box box-template">
+    <span class="box-title">Modèle — affiner une explication en 2 échanges</span>
+    <p>Échange 1 : « Ton exemple ne me parle pas, essaie avec quelque chose lié au sport / à un jeu vidéo / à la cuisine. » Échange 2 : « C'est plus clair, mais peux-tu résumer en une seule phrase simple ce qu'il faut retenir ? »</p>
+  </div>
+  <p>Ce réflexe — préciser ce qui ne marche pas plutôt que de relancer une demande vague — fonctionne pour tous les usages décrits dans ce guide, pas seulement pour comprendre un cours.</p>
+
+  <h3>Cas particulier : les langues étrangères</h3>
+  <p>Pour une langue étrangère, demande systématiquement à l'IA de répondre dans les deux langues (la tienne et celle que tu apprends), pour comparer directement. Précise aussi ton niveau (débutant, intermédiaire) pour éviter un vocabulaire trop complexe dès le départ.</p>
+
+  <h3>Cas particulier : troubles de l'attention ou dyslexie</h3>
+  <p>Si tu as besoin d'explications plus courtes, plus visuelles, ou découpées en petites étapes, demande-le explicitement à l'IA : « explique-moi en 3 phrases très courtes maximum » ou « utilise des puces plutôt que des paragraphes ». L'IA s'adapte très bien à ce type de consigne, bien mieux qu'un support de cours figé.</p>
+
+  <h3>Vérifier qu'on a vraiment compris, pas juste qu'on a lu</h3>
+  <p>Lire une explication et se dire "ça a l'air logique" n'est pas la même chose que vraiment comprendre. Un bon test : essaie de réexpliquer la notion à voix haute, sans regarder ta feuille, comme si tu l'expliquais à quelqu'un qui ne la connaît pas du tout.</p>
+  <div class="box box-template">
+    <span class="box-title">Modèle — se tester après une explication</span>
+    <p>« Je viens de lire ton explication sur [notion]. Voici comment je la reformule avec mes propres mots : [ta reformulation]. Est-ce que c'est juste, et qu'est-ce qui manque ou qui est faux ? »</p>
+  </div>
+  <p>Ce prompt inverse les rôles : c'est toi qui expliques, et l'IA qui vérifie. C'est souvent la meilleure preuve que tu as vraiment compris, bien plus fiable que "je pense avoir compris".</p>
+
+  <h3>Cas particulier : rattraper un cours manqué</h3>
+  <p>Si tu as manqué un cours (maladie, absence), demande à un camarade ses notes en premier — elles restent la source la plus fidèle à ce qui a réellement été dit en classe. Utilise ensuite l'IA pour clarifier les passages de ces notes que tu ne comprends pas, plutôt que pour reconstituer le cours entier à partir de rien.</p>
+
+  <h3>Pourquoi ne pas se contenter d'une recherche classique sur internet</h3>
+  <p>Une recherche classique te renvoie des pages génériques, pas toujours adaptées à ton niveau ni à la façon dont ta notion a été présentée en cours. L'IA, elle, peut adapter directement son explication à ton niveau et reformuler autant de fois que nécessaire — c'est cette interactivité qui fait la différence.</p>
+
+  <h3>Bilan de cette partie, en une question</h3>
+  <p>Avant de passer à la partie suivante, demande-toi honnêtement : est-ce que je viens de lire une explication, ou est-ce que je viens vraiment de comprendre ? Si tu hésites, c'est le signe qu'il faut redemander une reformulation ou un test avant de continuer — mieux vaut passer deux minutes de plus ici que de découvrir un trou de compréhension le jour du contrôle.</p>
+
+  <h3>Récapitulatif — les 3 réflexes à garder</h3>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>1. Reformuler plutôt que relire en boucle. 2. Toujours demander un exemple concret pour une notion abstraite. 3. Se faire questionner ou réexpliquer à voix haute pour vérifier une vraie compréhension.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — S'entraîner efficacement</h2>
+  <p class="lede">En sortant de cette partie, tu sauras générer des exercices supplémentaires, créer des quiz d'auto-évaluation et te faire interroger à l'oral, avec un seul objectif : t'entraîner activement plutôt que relire passivement.</p>
+
+  <h3>Générer des exercices supplémentaires</h3>
+  <p>Ton cours ou ton manuel ne propose parfois pas assez d'exercices sur une notion que tu maîtrises mal. L'IA peut en générer autant que nécessaire, avec un niveau de difficulté progressif, et te laisser chercher avant de donner la correction.</p>
+
+  <h3>Créer des quiz d'auto-évaluation</h3>
+  <p>Avant un contrôle, la meilleure façon de savoir si tu es prêt n'est pas de relire ton cours, mais de te tester activement avec des questions. Un quiz généré par l'IA à partir de ton chapitre te donne une vraie mesure de ce que tu maîtrises ou non.</p>
+
+  <h3>Se faire interroger à l'oral</h3>
+  <p>Pour les leçons à apprendre par cœur (vocabulaire, dates, définitions), demande à l'IA de t'interroger question par question, comme le ferait un parent ou un camarade de classe.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>S'entraîner activement (exercices, quiz) est bien plus efficace que relire passivement son cours.</p>
+    <p>Cache toujours la correction jusqu'à avoir essayé de répondre par toi-même.</p>
+    <p>Demande un retour sur ta méthode, pas seulement sur ton résultat final.</p>
+  </div>
+
+  <h3>Exemples par matière</h3>
+  <table>
+    <tr><th>Matière</th><th>Ce que tu peux demander</th></tr>
+    <tr><td>Mathématiques</td><td>Des exercices progressifs sur une notion précise, avec correction cachée</td></tr>
+    <tr><td>Langues vivantes</td><td>Un quiz de vocabulaire ou de conjugaison, ou une interrogation orale simulée</td></tr>
+    <tr><td>Histoire-géographie</td><td>Des questions de cours pour vérifier les dates et les repères essentiels</td></tr>
+    <tr><td>Français</td><td>Des questions sur un texte étudié, pour vérifier la compréhension avant l'analyse</td></tr>
+    <tr><td>SVT / Physique-chimie</td><td>Un quiz sur le vocabulaire scientifique et les définitions du chapitre</td></tr>
+  </table>
+
+  <h3>Exemple concret : un quiz généré, avant de s'en servir</h3>
+  <div class="box box-template">
+    <span class="box-title">Exemple de quiz généré sur un chapitre d'histoire</span>
+    <p>1. En quelle année a eu lieu [événement] ? 2. Quelles sont les deux causes principales de [événement] ? 3. Quel personnage a joué un rôle clé dans [événement], et pourquoi ? (Réponses cachées, à demander une par une après avoir essayé de répondre soi-même.)</p>
+  </div>
+  <p>La qualité du quiz dépend directement de ce que tu donnes à l'IA en entrée : plus tu lui donnes de détails sur ton chapitre précis, plus les questions seront pertinentes pour ton contrôle réel.</p>
+
+  <h3>Cas particulier : collège ou lycée</h3>
+  <p>Au collège, des quiz courts (5-10 questions) sur une notion isolée suffisent généralement. Au lycée, tu peux demander des exercices plus longs qui combinent plusieurs notions d'un même chapitre, plus proches de ce qui t'attend le jour du contrôle.</p>
+
+  <h3>Foire aux questions</h3>
+  <div class="box box-warning">
+    <span class="box-title">Dois-je regarder la correction si je bloque longtemps sur un exercice ?</span>
+    <p>Essaie d'abord de demander un indice plutôt que la correction complète : « donne-moi juste un indice, pas la réponse ». Tu apprends davantage en débloquant toi-même avec un petit coup de pouce qu'en lisant directement la solution.</p>
+  </div>
+  <div class="box box-warning">
+    <span class="box-title">Combien d'exercices dois-je faire avant de me sentir prêt ?</span>
+    <p>Il n'y a pas de nombre magique : arrête de demander des exercices sur une notion quand tu enchaînes plusieurs bonnes réponses sans hésiter, pas après un nombre fixe d'exercices.</p>
+  </div>
+
+  <h3>Utiliser la répétition espacée</h3>
+  <p>Une notion travaillée une seule fois s'oublie vite. La répétition espacée consiste à retravailler une même notion à intervalles grandissants (le lendemain, puis 3 jours après, puis une semaine après) plutôt que de tout faire d'un coup puis plus jamais.</p>
+  <div class="box box-template">
+    <span class="box-title">Modèle — organiser une répétition espacée</span>
+    <p>« Je veux mémoriser durablement [notion/liste]. Propose-moi un calendrier de révision sur 3 semaines avec des rappels espacés (pas tous les jours), et à chaque rappel une question rapide pour vérifier que je m'en souviens encore. »</p>
+  </div>
+
+  <h3>Cas particulier : les exercices de rédaction (français, langues)</h3>
+  <p>Pour un exercice de rédaction, demande à l'IA de te donner un sujet d'entraînement puis de commenter uniquement ta méthode et ta structure — pas de réécrire tes phrases à ta place. Garde toujours la rédaction elle-même de ton côté, y compris en entraînement.</p>
+
+  <h3>Petit glossaire pour les parents</h3>
+  <table>
+    <tr><th>Terme</th><th>Ce que ça veut dire, simplement</th></tr>
+    <tr><td>Prompt</td><td>La demande tapée à l'IA — plus elle est précise, meilleur est le résultat</td></tr>
+    <tr><td>Hallucination</td><td>Une information fausse mais donnée avec assurance par l'IA</td></tr>
+    <tr><td>Répétition espacée</td><td>Une méthode de mémorisation qui étale les révisions dans le temps plutôt que de tout faire d'un coup</td></tr>
+  </table>
+
+  <h3>Exemple concret : un exercice généré, avant/après correction</h3>
+  <div class="box box-template">
+    <span class="box-title">Exercice généré (correction cachée)</span>
+    <p>« Résous : si x + 5 = 12, quelle est la valeur de x ? Essaie d'abord seul, je te donnerai la correction seulement quand tu me le demanderas. »</p>
+  </div>
+  <div class="box box-template">
+    <span class="box-title">Retour obtenu après avoir donné sa réponse</span>
+    <p>« Ta réponse (x = 7) est correcte, et ta méthode (soustraire 5 des deux côtés) est la bonne technique à retenir pour ce type d'équation. »</p>
+  </div>
+  <p>Le point important : la correction n'arrive qu'après avoir essayé, et porte autant sur la méthode que sur le résultat — c'est ce qui distingue un vrai entraînement d'une simple vérification de réponse.</p>
+
+  <h3>Cas particulier : le sport et les activités extrascolaires</h3>
+  <p>Si ton emploi du temps est chargé par des activités en dehors de l'école, des sessions d'entraînement courtes (10-15 minutes, un quiz de 5 questions) réparties dans la semaine restent plus efficaces qu'une longue session unique le week-end que tu risques d'écourter ou d'annuler faute de temps.</p>
+
+  <h3>Ce que l'entraînement actif change vraiment</h3>
+  <p>La différence entre relire un cours et s'entraîner activement n'est pas qu'une question de motivation : c'est aussi une question de mémoire. Relire donne une impression de familiarité ("je reconnais cette phrase") qui n'est pas la même chose que la capacité à restituer l'information sans support, ce qu'un contrôle exige réellement.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>"Je reconnais" n'est pas la même chose que "je sais restituer sans aide". Seul un vrai entraînement actif (exercice, quiz, interrogation) teste la deuxième compétence, qui est celle évaluée en contrôle.</p>
+  </div>
+
+  <h3>Récapitulatif — les 3 réflexes à garder</h3>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>1. S'entraîner activement plutôt que relire passivement. 2. Cacher la correction jusqu'à avoir essayé. 3. Étaler les révisions dans le temps plutôt que tout faire d'un coup.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Réviser sans stress</h2>
+  <p class="lede">En sortant de cette partie, tu sauras créer des fiches de révision synthétiques, construire un vrai planning et utiliser des techniques de mémorisation adaptées à ce que tu dois retenir.</p>
+
+  <h3>Créer des fiches de révision synthétiques</h3>
+  <p>Une bonne fiche de révision ne doit pas être une copie de ton cours en plus court : elle doit contenir uniquement l'essentiel. L'IA peut t'aider à synthétiser un chapitre entier en quelques lignes clés, à condition de lui donner ton cours en entrée.</p>
+
+  <h3>Construire un vrai planning de révision</h3>
+  <p>"Je réviserai ce week-end" n'est pas un plan. Demande à l'IA de te construire un planning jour par jour avant un contrôle, avec ce qu'il faut réviser précisément chaque jour, pour éviter de tout faire la veille au soir.</p>
+
+  <h3>Utiliser des techniques de mémorisation</h3>
+  <p>Certaines notions (dates, vocabulaire, formules) se mémorisent mieux avec des moyens mnémotechniques ou des cartes mentales. L'IA peut t'en proposer, adaptés spécifiquement à ce que tu dois retenir.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une fiche de révision doit être plus courte et plus claire que le cours original, pas une simple copie.</p>
+    <p>Un planning de révision jour par jour évite le stress de dernière minute.</p>
+    <p>Les techniques de mémorisation fonctionnent mieux quand elles sont adaptées à ce que tu dois vraiment retenir.</p>
+  </div>
+
+  <h3>Techniques de mémorisation par type de contenu</h3>
+  <table>
+    <tr><th>Ce que tu dois retenir</th><th>Technique adaptée</th></tr>
+    <tr><td>Dates historiques</td><td>Frise chronologique visuelle, associations d'idées avec des événements connus</td></tr>
+    <tr><td>Vocabulaire en langue étrangère</td><td>Flashcards, association d'image mentale, répétition espacée sur plusieurs jours</td></tr>
+    <tr><td>Formules de maths ou de physique</td><td>Comprendre la démonstration plutôt que mémoriser par cœur, carte mentale des liens entre formules</td></tr>
+    <tr><td>Vocabulaire scientifique (SVT)</td><td>Décomposer le mot (préfixes, racines), relier à un schéma</td></tr>
+  </table>
+
+  <h3>Exemple concret : une fiche de révision, avant/après</h3>
+  <div class="box box-template">
+    <span class="box-title">Avant (cours complet, 4 pages)</span>
+    <p>Le cours original couvre la définition complète de la notion, plusieurs exemples détaillés, des exceptions et des cas particuliers, sur plusieurs pages.</p>
+  </div>
+  <div class="box box-template">
+    <span class="box-title">Après (fiche de révision générée, une demi-page)</span>
+    <p>Définition en une phrase. Trois points clés à retenir absolument. Un exemple unique, le plus représentatif. Les pièges fréquents à éviter, en une liste courte.</p>
+  </div>
+  <p>Une fiche de révision n'a pas vocation à tout couvrir : elle doit te permettre de vérifier en quelques minutes, la veille d'un contrôle, que tu maîtrises encore l'essentiel.</p>
+
+  <h3>Cas particulier : réviser pour un examen (brevet, bac)</h3>
+  <p>Pour un examen qui couvre plusieurs mois ou années de cours, un planning de révision doit être construit sur plusieurs semaines, pas sur les derniers jours. Demande à l'IA un planning qui répartit les chapitres à réviser en fonction du temps qu'il te reste, avec des sessions de relecture espacées plutôt que tout concentré à la fin.</p>
+
+  <h3>Foire aux questions</h3>
+  <div class="box box-warning">
+    <span class="box-title">Puis-je demander à l'IA de créer directement mes fiches à partir de mon cours photographié ?</span>
+    <p>Certains outils savent lire une photo de texte, mais la qualité de reconnaissance varie. Vérifie toujours que la fiche générée correspond bien à ton cours réel avant de l'apprendre.</p>
+  </div>
+  <div class="box box-warning">
+    <span class="box-title">Le planning de révision doit-il être le même pour toutes les matières ?</span>
+    <p>Non. Adapte le nombre de jours consacrés à chaque matière selon ce que tu maîtrises déjà et le coefficient de l'épreuve — demande à l'IA de pondérer le planning en conséquence si tu lui donnes ces informations.</p>
+  </div>
+
+  <h3>Gérer le stress avant un contrôle</h3>
+  <p>Le stress de dernière minute vient souvent d'un sentiment de ne pas savoir par où commencer. Un planning clair, construit à l'avance, réduit une bonne partie de ce stress simplement parce qu'il remplace l'incertitude par une liste d'actions concrètes.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La veille d'un contrôle, une révision légère et un bon sommeil valent mieux qu'une nuit blanche à tout relire d'un coup — la mémorisation de dernière minute est peu fiable.</p>
+  </div>
+
+  <h3>Cas particulier : réviser à plusieurs</h3>
+  <p>Réviser avec un camarade reste utile et complémentaire à l'IA : vous pouvez chacun générer un quiz sur le même chapitre et vous interroger mutuellement, ce qui ajoute une dimension sociale que l'IA seule ne remplace pas.</p>
+
+  <h3>Foire aux questions (suite)</h3>
+  <div class="box box-warning">
+    <span class="box-title">Réviser avec l'IA remplace-t-il complètement les fiches papier ?</span>
+    <p>Non, ça dépend de ta façon d'apprendre. Certains élèves retiennent mieux en écrivant à la main : dans ce cas, utilise l'IA pour générer le contenu de la fiche, puis recopie-la toi-même à la main plutôt que de simplement la relire à l'écran.</p>
+  </div>
+
+  <h3>Exemple concret : un planning de révision sur une semaine</h3>
+  <div class="box box-template">
+    <span class="box-title">Exemple de planning généré avant un contrôle de sciences</span>
+    <p>Lundi : relire le chapitre et créer la fiche de révision. Mardi : mémoriser le vocabulaire clé (flashcards). Mercredi : pause / révision légère de 15 minutes. Jeudi : faire un quiz d'auto-évaluation. Vendredi : revoir uniquement les points ratés au quiz. Weekend : dernière relecture rapide de la fiche, sans stress.</p>
+  </div>
+  <p>Ce planning répartit l'effort au lieu de le concentrer sur un seul jour, et prévoit volontairement une pause — un planning trop chargé sans respiration est rarement tenu jusqu'au bout.</p>
+
+  <h3>Cas particulier : réviser plusieurs matières en même temps</h3>
+  <p>Quand plusieurs contrôles tombent la même semaine, la tentation est de tout réviser en même temps sans ordre précis. Demande plutôt à l'IA de t'aider à prioriser : quelle matière as-tu le moins révisée, laquelle a le plus gros coefficient, laquelle arrive en premier dans la semaine.</p>
+  <div class="box box-template">
+    <span class="box-title">Modèle — prioriser plusieurs révisions</span>
+    <p>« J'ai 3 contrôles cette semaine : [matière A] le [jour], [matière B] le [jour], [matière C] le [jour]. Je maîtrise bien [la plus facile] mais pas du tout [la plus difficile]. Aide-moi à répartir mon temps de révision sur les jours qui restent. »</p>
+  </div>
+
+  <h3>Pourquoi éviter de réviser tard le soir</h3>
+  <p>La fatigue réduit fortement la capacité à mémoriser durablement, même si tu as l'impression de "rentrer" l'information sur le moment. Une session de révision courte le matin ou en début de soirée reste plus efficace qu'une session longue et tardive, même si elle paraît moins "productive" sur l'instant.</p>
+
+  <h3>Récapitulatif — les 3 réflexes à garder</h3>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>1. Une fiche de révision synthétise, elle ne recopie pas. 2. Un planning jour par jour vaut mieux qu'une intention floue. 3. Adapter la technique de mémorisation à ce qu'on doit vraiment retenir.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Structurer ses devoirs sans se faire aider à sa place</h2>
+  <p class="lede">En sortant de cette partie, tu sauras clarifier une consigne, te faire aider à construire un plan et comprendre pourquoi rendre un devoir rédigé par l'IA ne t'aide pas à progresser.</p>
+
+  <h3>Clarifier une consigne mal comprise</h3>
+  <p>Beaucoup d'élèves bloquent sur un devoir non pas parce qu'ils ne savent pas y répondre, mais parce qu'ils n'ont pas compris ce qu'on leur demande. Demande à l'IA de reformuler la consigne, sans lui demander la réponse.</p>
+
+  <h3>Se faire aider à construire un plan</h3>
+  <p>Demander de l'aide pour organiser tes idées dans un ordre logique est très différent de demander à l'IA de rédiger le devoir. Un plan t'aide à structurer ta réflexion ; le contenu final doit rester rédigé par toi.</p>
+
+  <h3>Le risque réel de la triche</h3>
+  <p>Rendre un devoir entièrement rédigé par l'IA n'est pas seulement risqué au niveau scolaire (détection, sanctions) : c'est surtout une perte de temps pour toi, puisque tu n'apprends rien pour le contrôle suivant qui, lui, se fera sans IA sous la main.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Demander de l'aide pour comprendre une consigne n'est pas tricher.</p>
+    <p>Un plan structuré par l'IA reste utile ; un devoir rédigé par l'IA ne t'aide pas à progresser.</p>
+    <p>Ce que tu ne rédiges pas toi-même, tu ne sauras pas le refaire seul au contrôle.</p>
+  </div>
+
+  <h3>Exemple concret : construire un plan sans se faire rédiger le devoir</h3>
+  <div class="box box-template">
+    <span class="box-title">Ce que tu peux demander à l'IA</span>
+    <p>« Voici mon sujet de dissertation : [sujet]. Aide-moi à construire un plan en deux parties, avec pour chaque partie une idée principale — mais ne rédige aucune phrase, je veux écrire moi-même. »</p>
+  </div>
+  <div class="box box-template">
+    <span class="box-title">Ce que tu dois faire ensuite, toi-même</span>
+    <p>À partir de ce plan (juste des idées organisées), tu rédiges chaque paragraphe avec tes propres mots, tes propres exemples et ton propre style. C'est cette étape de rédaction qui compte pour ta progression et qui sera évaluée.</p>
+  </div>
+
+  <h3>Exemples par type de devoir</h3>
+  <table>
+    <tr><th>Type de devoir</th><th>Ce que l'IA peut t'aider à structurer</th></tr>
+    <tr><td>Dissertation (français, philo)</td><td>Le plan en parties/sous-parties, sans rédiger les paragraphes</td></tr>
+    <tr><td>Rédaction d'histoire-géographie</td><td>L'ordre logique des idées et les transitions à prévoir</td></tr>
+    <tr><td>Exposé oral</td><td>Le déroulé (introduction, parties, conclusion) et les points à ne pas oublier</td></tr>
+    <tr><td>Rapport de sciences (TP, expérience)</td><td>La structure attendue (hypothèse, protocole, résultats, conclusion)</td></tr>
+  </table>
+
+  <h3>Pour les parents : accompagner sans faire à la place</h3>
+  <p>Si votre enfant vous montre un devoir structuré avec l'aide de l'IA, la meilleure question à poser n'est pas "est-ce que c'est bien écrit ?" mais "peux-tu m'expliquer avec tes mots ce que tu vas dire dans cette partie ?". S'il ne sait pas répondre, c'est le signe que la rédaction qui suit doit encore venir vraiment de lui.</p>
+
+  <h3>Foire aux questions</h3>
+  <div class="box box-warning">
+    <span class="box-title">Mon professeur peut-il refuser que j'utilise l'IA même pour un simple plan ?</span>
+    <p>Oui, certains professeurs préfèrent que la structuration elle-même vienne entièrement de l'élève. Demande toujours la règle exacte de ton établissement ou de ton professeur avant un devoir noté important.</p>
+  </div>
+  <div class="box box-warning">
+    <span class="box-title">Et si je ne sais vraiment pas quoi écrire, même avec un plan ?</span>
+    <p>C'est le bon moment pour demander de l'aide à un professeur ou un parent, pas pour laisser l'IA rédiger à ta place. Un plan vide de contenu est un vrai signal qu'il te manque une compréhension du cours à retravailler — reviens alors à la partie 1 de ce guide.</p>
+  </div>
+
+  <h3>Cas particulier : l'exposé oral</h3>
+  <p>Pour un exposé, demande à l'IA de t'aider à structurer ton déroulé (introduction, 2-3 parties, conclusion) et à préparer des réponses aux questions probables du jury ou de la classe — mais entraîne-toi à le dire à voix haute toi-même plusieurs fois, l'IA ne peut pas remplacer cet entraînement oral.</p>
+
+  <h3>Ce qu'il faut retenir avant de commencer un devoir noté</h3>
+  <div class="box box-warning">
+    <span class="box-title">Rappel</span>
+    <p>Consigne floue → demande une reformulation. Idées en vrac → demande de l'aide pour les organiser en plan. Rédaction → toujours toi, avec tes propres mots, jamais l'IA à ta place.</p>
+  </div>
+
+  <h3>Exemple concret : améliorer un brouillon sans se le faire réécrire</h3>
+  <div class="box box-template">
+    <span class="box-title">Ce que tu peux demander</span>
+    <p>« Voici mon brouillon : [coller ton texte]. Dis-moi seulement ce qui manque de clarté ou d'argument, sans réécrire mes phrases — je veux corriger moi-même à partir de tes remarques. »</p>
+  </div>
+  <div class="box box-template">
+    <span class="box-title">Retour type que tu peux obtenir</span>
+    <p>« Ton premier paragraphe manque d'un exemple concret pour appuyer ton idée. Ta transition entre les deux parties est trop brutale. Ta conclusion répète l'introduction au lieu d'ouvrir sur autre chose. »</p>
+  </div>
+  <p>Ce retour te dit quoi améliorer, pas comment le réécrire — c'est cette nuance qui fait la différence entre un devoir amélioré par toi et un devoir réécrit par l'IA.</p>
+
+  <h3>Foire aux questions (suite)</h3>
+  <div class="box box-warning">
+    <span class="box-title">Puis-je demander à l'IA de vérifier mes fautes d'orthographe ?</span>
+    <p>Oui, la correction orthographique et grammaticale reste différente de la rédaction du contenu : demander à corriger tes fautes une fois le texte rédigé par toi ne pose pas le même problème que faire rédiger le texte entier.</p>
+  </div>
+
+  <h3>Cas particulier : le travail de groupe</h3>
+  <p>Pour un exposé ou un projet à plusieurs, chaque membre du groupe peut utiliser l'IA pour structurer sa propre partie, mais la répartition du travail et la cohérence d'ensemble doivent rester une décision du groupe, pas de l'IA. Un exposé où chaque partie a un style radicalement différent est souvent le signe d'un manque de coordination entre élèves, pas un problème d'IA.</p>
+
+  <h3>Ce que les professeurs attendent vraiment</h3>
+  <p>Au-delà du contenu, un professeur évalue aussi ta capacité à structurer une pensée et à argumenter avec tes propres mots. C'est précisément ce que l'utilisation "structurer sans rédiger" décrite dans cette partie te permet de développer, contrairement à un devoir entièrement généré qui ne t'entraîne à rien de tout ça.</p>
+
+  <h3>Cas particulier : le mémoire ou le grand oral</h3>
+  <p>Pour un travail long (mémoire, grand oral, projet annuel), découpe l'accompagnement de l'IA en plusieurs étapes séparées dans le temps : d'abord le cadrage du sujet, puis le plan général, puis le plan détaillé de chaque partie au fur et à mesure de ton avancée — plutôt que de tout demander d'un coup en début de projet, ce qui donnerait un plan trop générique.</p>
+
+  <h3>Ce qui distingue une bonne utilisation d'une mauvaise, en une phrase</h3>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Si tu peux fermer la conversation avec l'IA et continuer à rédiger seul sans elle, tu l'as bien utilisée. Si tu es bloqué dès qu'elle n'est plus là, c'est le signe qu'elle a fait le travail à ta place.</p>
+  </div>
+
+  <h3>Récapitulatif — les 4 réflexes à garder</h3>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>1. Comprendre avant de mémoriser, jamais l'inverse. 2. S'entraîner activement, cacher la correction jusqu'à avoir essayé. 3. Réviser avec un vrai planning, pas la veille au soir. 4. Structurer ses devoirs avec l'IA, les rédiger soi-même.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Partie 5 — Bibliothèque de prompts</h2>
+  <p class="lede">Chaque prompt contient des crochets [comme ceci] : remplace-les par ta matière, ta notion ou ton chapitre avant de coller le prompt dans ChatGPT ou Claude.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">Rappel important</span>
+    <p>Ces prompts sont conçus pour t'aider à comprendre, t'entraîner et réviser — jamais pour obtenir un devoir fini à rendre tel quel.</p>
+    <p>Si un prompt te donne une réponse toute faite pour un devoir noté, ne la recopie pas : utilise-la pour comprendre, puis rédige avec tes propres mots.</p>
+  </div>
+
+  <h3>6.1 Comprendre une notion mal maîtrisée</h3>
+  <p>Pour obtenir des explications claires, adaptées à ton niveau.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Explique-moi [notion] comme si j'avais 12 ans, avec un exemple concret de la vie de tous les jours.</span>
+    <p class="prompt-usage">À quoi ça sert : comprendre une notion abstraite avec des mots simples</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Je ne comprends pas cette partie de mon cours : [coller le passage]. Explique-la autrement, avec un exemple différent de celui du cours.</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir une reformulation quand l'explication du cours n'a pas suffi</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Pose-moi 5 questions sur [notion] pour vérifier si j'ai vraiment compris, une par une, et donne-moi la correction seulement après que j'ai répondu.</span>
+    <p class="prompt-usage">À quoi ça sert : se tester activement plutôt que relire passivement son cours</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Donne-moi 3 exemples très différents qui illustrent la notion de [notion], pour que je comprenne dans quels contextes elle s'applique.</span>
+    <p class="prompt-usage">À quoi ça sert : généraliser une notion au-delà du seul exemple vu en cours</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Quelle est la différence entre [notion A] et [notion B] ? Je les confonds tout le temps.</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier une confusion fréquente entre deux notions proches</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Résume ce chapitre en 10 lignes maximum, en gardant uniquement les idées essentielles : [coller le cours ou décrire le chapitre].</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une vue d'ensemble rapide avant de rentrer dans le détail</p>
+  </div>
+
+  <h3>6.2 S'entraîner et se tester</h3>
+  <p>Pour pratiquer activement plutôt que relire passivement.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Donne-moi 5 exercices d'entraînement sur [notion], du plus facile au plus difficile, mais donne-moi la correction seulement quand je te la demande.</span>
+    <p class="prompt-usage">À quoi ça sert : s'entraîner activement sans voir la réponse trop tôt</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Crée un quiz de 10 questions sur [chapitre] pour que je vérifie si je suis prêt pour le contrôle, avec les réponses cachées jusqu'à ce que je les demande.</span>
+    <p class="prompt-usage">À quoi ça sert : s'auto-évaluer avant une évaluation</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Interroge-moi à l'oral sur [leçon/vocabulaire], une question à la fois, comme si tu étais mon professeur qui me fait réciter.</span>
+    <p class="prompt-usage">À quoi ça sert : réviser par l'oral, utile pour les leçons à apprendre par cœur</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Voici ma réponse à cet exercice : [coller ta réponse]. Dis-moi ce qui est juste, ce qui est faux, et pourquoi, sans me donner directement la bonne réponse.</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir un retour qui pousse à corriger soi-même son erreur</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Donne-moi un exercice similaire à celui-ci mais avec des valeurs différentes, pour que je m'entraîne encore sur la même méthode : [coller l'exercice]</span>
+    <p class="prompt-usage">À quoi ça sert : s'entraîner plusieurs fois sur une même méthode avec des variantes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Je viens de faire cet exercice, peux-tu me dire si ma méthode est la bonne, même si mon résultat final est faux ? [coller ta réponse et ta méthode]</span>
+    <p class="prompt-usage">À quoi ça sert : vérifier sa méthode de raisonnement, pas seulement le résultat</p>
+  </div>
+
+  <h3>6.3 Réviser efficacement</h3>
+  <p>Pour des fiches, plannings et techniques de mémorisation adaptés.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Crée une fiche de révision synthétique sur ce chapitre, avec les définitions, dates ou formules essentielles à retenir : [coller le cours ou décrire le chapitre].</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir une fiche de révision claire à partir de son propre cours</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Construis-moi un planning de révision sur [nombre] jours avant mon contrôle sur [matière/chapitre], avec ce qu'il faut réviser chaque jour.</span>
+    <p class="prompt-usage">À quoi ça sert : avoir un vrai planning plutôt que réviser sans méthode la veille</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Propose-moi une technique de mémorisation (moyen mnémotechnique, carte mentale, association d'idées) pour retenir [liste de notions/dates/vocabulaire].</span>
+    <p class="prompt-usage">À quoi ça sert : mémoriser plus facilement une liste difficile à apprendre par cœur</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Transforme ce cours en carte mentale textuelle, avec les idées principales et les liens entre elles : [coller le cours].</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une vue d'ensemble visuelle d'un chapitre pour réviser</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Donne-moi 10 flashcards (question/réponse courte) sur [chapitre] pour réviser rapidement entre deux activités.</span>
+    <p class="prompt-usage">À quoi ça sert : réviser par petites sessions courtes plutôt qu'en un seul bloc</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Je stresse avant mon contrôle de [matière]. Donne-moi 3 conseils concrets pour les dernières 24h avant l'épreuve.</span>
+    <p class="prompt-usage">À quoi ça sert : gérer le stress de dernière minute avec des conseils pratiques</p>
+  </div>
+
+  <h3>6.4 Structurer sa réflexion sans se faire aider à sa place</h3>
+  <p>Pour organiser ses idées tout en gardant la rédaction pour soi.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Je ne comprends pas cette consigne de devoir, peux-tu me l'expliquer autrement sans me dire quoi répondre : [coller la consigne].</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier une consigne floue sans obtenir la réponse directement</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à construire le plan de ce devoir (juste le plan, pas le contenu rédigé) sur le sujet suivant : [sujet du devoir].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer sa réflexion avant de rédiger soi-même</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Voici mes idées en vrac pour ce devoir : [lister tes idées]. Aide-moi à les organiser dans un ordre logique, sans rédiger le devoir à ma place.</span>
+    <p class="prompt-usage">À quoi ça sert : mettre de l'ordre dans ses propres idées avant la rédaction</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Pose-moi des questions qui m'aident à réfléchir sur ce sujet, pour que je trouve moi-même des arguments : [sujet du devoir].</span>
+    <p class="prompt-usage">À quoi ça sert : être guidé dans sa réflexion plutôt que recevoir un devoir tout fait</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Voici mon brouillon : [coller ton brouillon]. Dis-moi ce qui manque de clarté ou de structure, sans réécrire mes phrases à ma place.</span>
+    <p class="prompt-usage">À quoi ça sert : améliorer son propre travail sans se faire rédiger le texte final</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Quels sont les critères que mon professeur va probablement regarder pour noter ce type de devoir ? [type de devoir, ex : dissertation, exposé].</span>
+    <p class="prompt-usage">À quoi ça sert : comprendre les attentes avant de rédiger, pour mieux s'auto-évaluer</p>
+  </div>
+
+  <h3>6.5 Enchaîner plusieurs prompts sur un même chapitre</h3>
+  <p>Ces 24 prompts sont conçus pour être combinés, pas seulement utilisés isolément. Exemple d'enchaînement complet, de la découverte d'un chapitre jusqu'au contrôle :</p>
+  <div class="box box-template">
+    <span class="box-title">Exemple d'enchaînement complet sur un chapitre</span>
+    <p>1. Comprendre — prompt 1 de la catégorie « Comprendre une notion mal maîtrisée » pour découvrir la notion. 2. S'entraîner — prompt 1 de « S'entraîner et se tester » pour pratiquer. 3. Réviser — prompt 1 de « Réviser efficacement » pour créer ta fiche de révision juste avant le contrôle. 4. Si un devoir noté suit — prompt 2 de « Structurer sa réflexion » pour organiser ton plan, puis rédige toi-même.</p>
+  </div>
+  <p>Cet enchaînement, répété sur chaque nouveau chapitre, devient vite un réflexe qui ne demande plus de réfléchir à quel prompt utiliser.</p>
+
+  <h3>6.6 Récapitulatif de la bibliothèque</h3>
+  <table>
+    <tr><th>Catégorie</th><th>Nombre de prompts</th></tr>
+    <tr><td>Comprendre une notion mal maîtrisée</td><td>6</td></tr>
+    <tr><td>S'entraîner et se tester</td><td>6</td></tr>
+    <tr><td>Réviser efficacement</td><td>6</td></tr>
+    <tr><td>Structurer sa réflexion sans se faire aider à sa place</td><td>6</td></tr>
+  </table>
+  <p>Garde cette page en tête : c'est ton sommaire rapide pour retrouver le bon prompt sans reparcourir toute la bibliothèque, une fois que tu connais déjà ce guide.</p>
+
+  <h3>6.7 Et maintenant ?</h3>
+  <p>Choisis un seul prompt de cette bibliothèque, sur un cours ou un devoir que tu as cette semaine, et teste-le aujourd'hui. C'est en l'utilisant sur un cas réel — pas en lisant ce guide une deuxième fois — que tu sauras s'il t'aide vraiment.</p>
+</section>
+
+</body>
+</html>

@@ -17,12 +17,18 @@ export default function GuidesExplorer({
   const [category, setCategory] = useState<string | null>(null);
 
   const categories = useMemo(
-    () => Array.from(new Set([...guides.map((guide) => guide.category), "Prompts"])),
+    () => Array.from(new Set([...guides.map((guide) => guide.category), "Prompts", "Packs"])),
     [guides],
   );
 
   const guidesInCategory = useMemo(
-    () => (category ? guides.filter((guide) => guide.category === category) : guides),
+    () =>
+      category
+        ? guides.filter(
+            (guide) =>
+              guide.category === category || guide.crossListCategories?.includes(category),
+          )
+        : guides,
     [guides, category],
   );
 
