@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>32 prompts IA pour profs de sciences</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 26pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 10pt; font-size: 12pt; }
+  .toc li span { font-style: italic; font-size: 11pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  .subject-heading {
+    background: #1E2A4A; color: #fff; padding: 8pt 14pt; border-radius: 8pt;
+    font-size: 13pt; font-weight: 800; margin: 26pt 0 6pt;
+  }
+  .subject-lede {
+    font-style: italic; font-size: 11.5pt; color: #1a1a1a; margin-bottom: 14pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — PACK DE PROMPTS 2026</span>
+  <h1>32 prompts IA pour profs de sciences</h1>
+  <p class="tagline">Préparer, expérimenter et corriger plus vite</p>
+  <p class="meta">32 prompts prêts à copier-coller dans ChatGPT ou Claude, classés en 6 catégories,<br/>pour préparer tes séquences, concevoir des expériences et des TP,<br/>générer des exercices et évaluations, et communiquer avec élèves et familles</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Comment utiliser ce pack<span>Le principe des crochets, et comment bien les utiliser</span></li>
+    <li>Préparer ses séquences de cours<span>6 prompts</span></li>
+    <li>Concevoir expériences et TP<span>6 prompts</span></li>
+    <li>Générer des exercices<span>6 prompts</span></li>
+    <li>Créer des évaluations et corrections<span>5 prompts</span></li>
+    <li>Vulgariser les notions<span>5 prompts</span></li>
+    <li>Corriger et communiquer<span>4 prompts</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Comment utiliser ce pack</h2>
+  <p class="lede">Chaque prompt contient des crochets [comme ceci] : remplace-les par ta notion, ton niveau ou ton chapitre avant de coller le prompt dans ChatGPT ou Claude. Ces prompts fonctionnent aussi bien en SVT qu'en physique-chimie — adapte simplement la notion et le vocabulaire à ta discipline.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Vérifie toujours les protocoles expérimentaux générés avant de les mettre en œuvre : contrôle la sécurité et la faisabilité avec le matériel réel de ton labo.</p>
+    <p>Un prompt précis (notion exacte, niveau) donne un résultat directement exploitable en classe.</p>
+    <p>Garde ce document ouvert à côté de ton IA pour piocher le bon prompt selon ton besoin du moment.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Préparer ses séquences de cours</h2>
+  <p class="lede">Pour structurer un chapitre sans partir d'une page blanche.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Séquence de cours en 4 séances</span>
+    <span class="prompt-text">Crée une séquence de cours en 4 séances sur [notion, ex : la photosynthèse / les réactions chimiques] pour des élèves de [niveau], avec pour chaque séance : l'objectif, le support et les prérequis nécessaires.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un chapitre complet avant de rédiger le détail de chaque séance</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Trois façons d'introduire une notion</span>
+    <span class="prompt-text">Propose 3 façons différentes d'introduire la notion de [notion] en classe : par une expérience, par un problème du quotidien, par une vidéo ou un document déclencheur.</span>
+    <p class="prompt-usage">À quoi ça sert : varier ses accroches de cours selon le profil de la classe</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Progression annuelle</span>
+    <span class="prompt-text">Rédige la progression annuelle pour un niveau [niveau] en [SVT/physique-chimie], en respectant l'ordre logique des prérequis entre chapitres.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer sa programmation en début d'année</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Reformulation pour élève en difficulté</span>
+    <span class="prompt-text">Explique la notion de [notion scientifique] à un élève qui n'a pas compris, avec une analogie simple et un exemple concret du quotidien.</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une reformulation prête pour les élèves qui décrochent en cours</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Plan de révision sur 2 semaines</span>
+    <span class="prompt-text">Crée un plan de révision de 2 semaines avant le contrôle sur [chapitre], avec les notions prioritaires et un exercice type par jour.</span>
+    <p class="prompt-usage">À quoi ça sert : donner un vrai plan de révision structuré aux élèves</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Exercice diagnostic de prérequis</span>
+    <span class="prompt-text">Identifie les prérequis indispensables de [notion] et propose un exercice diagnostic de 5 questions pour vérifier si la classe les maîtrise avant de commencer.</span>
+    <p class="prompt-usage">À quoi ça sert : détecter les lacunes avant d'attaquer un nouveau chapitre</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Concevoir expériences et TP</h2>
+  <p class="lede">Pour des protocoles clairs, sûrs et prêts à mettre en œuvre.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Protocole d'expérience sécurisé</span>
+    <span class="prompt-text">Propose un protocole d'expérience simple et réalisable en classe pour illustrer [notion], avec la liste du matériel, les étapes et les consignes de sécurité.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une manipulation en quelques minutes, avec la sécurité intégrée</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Fiche de TP complète</span>
+    <span class="prompt-text">Rédige une fiche de TP structurée sur [expérience/notion] pour des élèves de [niveau], avec objectif, matériel, protocole, questions d'analyse et conclusion attendue.</span>
+    <p class="prompt-usage">À quoi ça sert : générer une fiche de travaux pratiques complète et prête à distribuer</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Expérience alternative</span>
+    <span class="prompt-text">Propose une expérience alternative à [expérience classique] qui utilise du matériel plus simple ou plus sûr, tout en gardant le même objectif pédagogique.</span>
+    <p class="prompt-usage">À quoi ça sert : adapter une expérience quand le matériel du labo manque ou pose un risque</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Sources d'erreur d'une expérience</span>
+    <span class="prompt-text">Identifie les sources d'erreur possibles dans cette expérience et comment les expliquer aux élèves si leurs résultats ne correspondent pas à la théorie : [décrire l'expérience].</span>
+    <p class="prompt-usage">À quoi ça sert : anticiper les questions des élèves quand une manipulation ne donne pas le résultat attendu</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Questions d'analyse de compte-rendu</span>
+    <span class="prompt-text">Rédige les questions d'analyse d'un compte-rendu de TP sur [expérience], qui poussent les élèves à interpréter leurs résultats plutôt qu'à simplement les décrire.</span>
+    <p class="prompt-usage">À quoi ça sert : aller au-delà de la simple observation dans les comptes-rendus</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Expérience de démonstration</span>
+    <span class="prompt-text">Propose une expérience de démonstration (faite par le professeur) pour illustrer [notion] de façon visuelle et marquante en début de séance.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une démonstration percutante pour capter l'attention</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Générer des exercices</h2>
+  <p class="lede">Pour produire des séries d'exercices variés et déjà corrigés.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Série d'exercices progressifs</span>
+    <span class="prompt-text">Crée 8 exercices progressifs sur [notion] pour des élèves de [niveau], du plus facile au plus difficile, avec correction détaillée pour chaque exercice.</span>
+    <p class="prompt-usage">À quoi ça sert : générer une série d'exercices d'entraînement complète rapidement</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Problème contextualisé</span>
+    <span class="prompt-text">Rédige un problème contextualisé dans la vie réelle ou l'actualité qui mobilise [notion scientifique], adapté à des élèves de [niveau], avec le barème.</span>
+    <p class="prompt-usage">À quoi ça sert : donner du sens à une notion abstraite via un exemple concret</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — QCM de révision</span>
+    <span class="prompt-text">Génère un QCM de 10 questions sur [chapitre] avec 4 propositions par question et une explication courte pour chaque réponse.</span>
+    <p class="prompt-usage">À quoi ça sert : créer rapidement un support de révision ou d'évaluation formative</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Exercice différencié</span>
+    <span class="prompt-text">Transforme cet exercice classique en une version différenciée : simplifiée pour les élèves en difficulté, approfondie pour les élèves avancés. Exercice : [coller l'exercice]</span>
+    <p class="prompt-usage">À quoi ça sert : différencier sans repartir de zéro</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Exercice de schéma légendé</span>
+    <span class="prompt-text">Propose un exercice de schéma légendé sur [phénomène/processus scientifique], avec la description précise de ce qui doit apparaître sur le schéma.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer un exercice de représentation scientifique, souvent difficile pour les élèves</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6 — Exercice de calcul appliqué</span>
+    <span class="prompt-text">Crée un exercice de calcul appliqué sur [notion, ex : les grandeurs physiques] avec les unités attendues et la méthode de résolution détaillée en correction.</span>
+    <p class="prompt-usage">À quoi ça sert : générer un exercice de calcul avec méthode explicite</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Créer des évaluations et corrections</h2>
+  <p class="lede">Pour gagner du temps sur la création et la correction des contrôles.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Évaluation de fin de chapitre</span>
+    <span class="prompt-text">Crée une évaluation de fin de chapitre sur [chapitre] pour des élèves de [niveau], avec 4 exercices de difficulté croissante et le barème détaillé.</span>
+    <p class="prompt-usage">À quoi ça sert : générer un contrôle complet prêt à relire et ajuster</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Corrigé type avec barème</span>
+    <span class="prompt-text">Rédige un corrigé type avec barème détaillé pour cet exercice : [coller l'exercice], en indiquant les points accordés pour une démarche juste même si le résultat final est faux.</span>
+    <p class="prompt-usage">À quoi ça sert : harmoniser sa notation et valoriser la démarche scientifique</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Grille d'évaluation par compétences</span>
+    <span class="prompt-text">Propose une grille d'évaluation par compétences (pratiquer une démarche scientifique, utiliser des outils mathématiques, communiquer) pour ce contrôle sur [chapitre].</span>
+    <p class="prompt-usage">À quoi ça sert : basculer vers une évaluation par compétences sans repartir de zéro</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Évaluation diagnostique de rentrée</span>
+    <span class="prompt-text">Rédige une évaluation diagnostique de début d'année sur les prérequis scientifiques essentiels de [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : évaluer le niveau réel d'une nouvelle classe en septembre</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Analyse des résultats de classe</span>
+    <span class="prompt-text">Analyse cette liste de résultats de classe et propose des pistes d'explication sur les erreurs les plus fréquentes probables : [décrire les résultats généraux].</span>
+    <p class="prompt-usage">À quoi ça sert : identifier les points de blocage collectifs à retravailler</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Vulgariser les notions</h2>
+  <p class="lede">Pour rendre une notion scientifique abstraite plus concrète et mémorable.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Analogie scientifique simple</span>
+    <span class="prompt-text">Explique le concept de [notion scientifique] avec une analogie simple et compréhensible par des élèves de [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : trouver une image parlante pour débloquer une notion abstraite</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Schéma légendé à reproduire</span>
+    <span class="prompt-text">Décris précisément un schéma légendé de [phénomène/processus scientifique], que je pourrai reproduire au tableau ou dans un logiciel de dessin.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer la description d'un support visuel à recréer facilement</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Trace écrite de cours</span>
+    <span class="prompt-text">Rédige la trace écrite (résumé de cours) à copier par les élèves sur [notion], en langage simple, avec définition, mécanisme et un exemple.</span>
+    <p class="prompt-usage">À quoi ça sert : générer un résumé de cours propre et court</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Situation-problème du quotidien</span>
+    <span class="prompt-text">Propose une situation-problème du quotidien qui permet d'introduire la notion de [notion] en cours de façon concrète.</span>
+    <p class="prompt-usage">À quoi ça sert : donner du sens à une notion avant de la formaliser</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5 — Anecdote scientifique marquante</span>
+    <span class="prompt-text">Rédige une anecdote ou une découverte scientifique marquante liée à [notion/domaine] pour rendre le cours plus vivant en introduction.</span>
+    <p class="prompt-usage">À quoi ça sert : capter l'attention avec un contexte historique ou une découverte récente</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Corriger et communiquer</h2>
+  <p class="lede">Pour accélérer la correction et personnaliser les retours aux élèves et familles.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1 — Appréciation de bulletin</span>
+    <span class="prompt-text">Rédige une appréciation de bulletin pour un élève avec le profil suivant : [décrire le profil], en restant constructif et personnalisé.</span>
+    <p class="prompt-usage">À quoi ça sert : gagner du temps sur la rédaction des bulletins</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2 — Conseils individualisés</span>
+    <span class="prompt-text">Propose 3 conseils concrets et actionnables à donner à un élève qui a des difficultés récurrentes en [méthode expérimentale/calcul/schématisation].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un retour individualisé motivant</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3 — Message aux parents en début de trimestre</span>
+    <span class="prompt-text">Rédige un message pour les parents expliquant simplement ce que la classe va aborder ce trimestre, avec 2-3 conseils pour aider leur enfant à la maison.</span>
+    <p class="prompt-usage">À quoi ça sert : communiquer avec les familles sans y passer une soirée</p>
+  </div>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4 — Réponse sur la sécurité en TP</span>
+    <span class="prompt-text">Prépare une réponse claire et rassurante à donner à un parent qui s'inquiète de la sécurité lors d'une séance de travaux pratiques.</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une réponse structurée prête sur un sujet sensible et récurrent</p>
+  </div>
+</section>
+
+</body>
+</html>

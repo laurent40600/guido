@@ -755,6 +755,134 @@ export const guides: Guide[] = [
       },
     ],
   },
+  {
+    slug: "prompts-sciences",
+    title: "32 prompts IA pour profs de sciences",
+    tagline: "Préparer, expérimenter et corriger plus vite",
+    pitch:
+      "32 prompts prêts à copier-coller dans ChatGPT ou Claude, classés en 6 catégories (préparer ses séquences, concevoir expériences et TP, générer des exercices, créer des évaluations, vulgariser les notions, corriger et communiquer), pour gagner du temps sans sacrifier la qualité pédagogique. Compatible SVT et physique-chimie. Chaque prompt contient des champs [entre crochets] à remplacer par ta notion, ton niveau ou ton chapitre avant de l'utiliser.",
+    price: "12€",
+    format: "PDF · 15 pages",
+    audience: "Professeurs de SVT et de physique-chimie du collège et du lycée qui veulent gagner du temps sur la préparation, les expériences et la correction",
+    category: "Prompts",
+    cover: "/covers/prompts-sciences.png",
+    bestseller: false,
+    highlights: [
+      "32 prompts prêts à copier-coller, classés en 6 catégories selon ton besoin",
+      "Préparer une séquence de cours ou une progression annuelle en quelques minutes",
+      "Concevoir des protocoles d'expérience et des fiches de TP sûrs et prêts à distribuer",
+      "Générer des exercices, QCM et évaluations déjà corrigés, avec barème détaillé",
+      "Vulgariser une notion abstraite avec une analogie, un schéma ou une anecdote scientifique",
+      "Des messages prêts pour les parents, les bulletins et les questions de sécurité en TP",
+    ],
+    faq: [
+      {
+        question: "Faut-il payer un abonnement pour utiliser ce pack ?",
+        answer:
+          "Non. Les offres gratuites de ChatGPT et Claude suffisent pour la plupart des usages décrits. Un abonnement payant devient utile seulement si tu dépasses régulièrement les limites d'usage gratuites.",
+      },
+      {
+        question: "Dois-je vérifier les protocoles et exercices générés par l'IA ?",
+        answer:
+          "Oui, systématiquement. L'IA peut se tromper sur un protocole expérimental ou une valeur numérique — vérifie toujours la sécurité et la faisabilité avec le matériel réel de ton labo avant de distribuer un contenu à tes élèves.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Séquence de cours en 4 séances",
+        text: "Crée une séquence de cours en 4 séances sur [notion, ex : la photosynthèse / les réactions chimiques] pour des élèves de [niveau], avec pour chaque séance : l'objectif, le support et les prérequis nécessaires.",
+      },
+      {
+        title: "Protocole d'expérience sécurisé",
+        text: "Propose un protocole d'expérience simple et réalisable en classe pour illustrer [notion], avec la liste du matériel, les étapes et les consignes de sécurité.",
+      },
+      {
+        title: "QCM de révision",
+        text: "Génère un QCM de 10 questions sur [chapitre] avec 4 propositions par question et une explication courte pour chaque réponse.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Pack complet",
+        price: "12€",
+        originalPrice: "18€",
+        description: "32 prompts prêts à l'emploi, classés en 6 catégories",
+        includes: [
+          "32 prompts classés en 6 catégories",
+          "Séquences, expériences et TP, exercices, évaluations",
+          "Vulgarisation des notions et communication avec les familles",
+          "PDF · 15 pages",
+        ],
+        pdfFile: "guido-prompts-sciences",
+      },
+    ],
+  },
+  {
+    slug: "prompts-langues",
+    title: "30 prompts IA pour profs de langues vivantes",
+    tagline: "Anglais, espagnol, allemand... préparer, faire pratiquer et corriger plus vite",
+    pitch:
+      "30 prompts prêts à copier-coller dans ChatGPT ou Claude, classés en 6 catégories (préparer ses séquences, compréhension écrite et orale, grammaire et vocabulaire, expression orale, créer des évaluations, corriger et communiquer), pour gagner du temps sans sacrifier la qualité pédagogique. Compatible avec toutes les langues vivantes (anglais, espagnol, allemand, italien...). Chaque prompt contient des champs [entre crochets] à remplacer par ta langue, ton thème ou ton niveau avant de l'utiliser.",
+    price: "12€",
+    format: "PDF · 14 pages",
+    audience: "Professeurs de langues vivantes du collège et du lycée qui veulent gagner du temps sur la préparation, la pratique orale et la correction",
+    category: "Prompts",
+    cover: "/covers/prompts-langues.png",
+    bestseller: false,
+    highlights: [
+      "30 prompts prêts à copier-coller, classés en 6 catégories selon ton besoin",
+      "Préparer une séquence de cours ou une progression annuelle en quelques minutes",
+      "Générer dialogues, textes et questionnaires de compréhension calibrés au niveau CECRL",
+      "Des fiches de vocabulaire, exercices de grammaire et jeux de rôle prêts à l'emploi",
+      "Préparer l'oral : grilles d'évaluation, questions de relance, accompagnement du stress",
+      "Des messages prêts pour les bulletins et la communication avec les familles",
+    ],
+    faq: [
+      {
+        question: "Faut-il payer un abonnement pour utiliser ce pack ?",
+        answer:
+          "Non. Les offres gratuites de ChatGPT et Claude suffisent pour la plupart des usages décrits. Un abonnement payant devient utile seulement si tu dépasses régulièrement les limites d'usage gratuites.",
+      },
+      {
+        question: "Dois-je vérifier le contenu généré par l'IA ?",
+        answer:
+          "Oui, systématiquement. L'IA peut produire des tournures peu naturelles selon la langue cible — relis toujours les textes et dialogues générés avant de les distribuer à tes élèves.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Séquence de cours en 4 séances",
+        text: "Crée une séquence de cours en 4 séances sur [thème, ex : les vacances] en [langue] pour un niveau [A1/A2/B1...], avec pour chaque séance : l'objectif communicatif, le support et l'activité principale.",
+      },
+      {
+        title: "Dialogue avec questions de compréhension",
+        text: "Crée un dialogue de niveau [A1/A2/B1...] en [langue] sur le thème de [thème du quotidien], avec traduction et 5 questions de compréhension.",
+      },
+      {
+        title: "Jeu de rôle du quotidien",
+        text: "Crée un jeu de rôle en [langue] sur une situation du quotidien (ex : [situation, commander au restaurant, demander son chemin]), adapté à un niveau [niveau], avec les rôles et le vocabulaire utile.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Pack complet",
+        price: "12€",
+        originalPrice: "18€",
+        description: "30 prompts prêts à l'emploi, classés en 6 catégories",
+        includes: [
+          "30 prompts classés en 6 catégories",
+          "Séquences, compréhension, grammaire/vocabulaire, expression orale",
+          "Évaluations et communication avec les familles",
+          "PDF · 14 pages",
+        ],
+        pdfFile: "guido-prompts-langues",
+      },
+    ],
+  },
 ];
 
 export const getGuide = (slug: string) => guides.find((guide) => guide.slug === slug);

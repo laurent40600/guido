@@ -52,11 +52,13 @@ export default function AboutPage() {
             </p>
 
             <p>
-              Guido est encore jeune : les premiers guides sont en cours de
-              finalisation. De nouveaux sujets ultra-ciblés seront publiés
-              régulièrement — n&apos;hésitez pas à nous écrire si vous avez
-              une question très précise à laquelle personne n&apos;a encore
-              vraiment répondu.
+              Le catalogue Guido couvre aujourd&apos;hui l&apos;entrepreneuriat,
+              l&apos;IA appliquée à des métiers précis, la reconversion
+              professionnelle, la santé et le bien-être, ainsi que des packs
+              de prompts prêts à l&apos;emploi. De nouveaux sujets
+              ultra-ciblés sont ajoutés régulièrement — n&apos;hésitez pas à
+              nous écrire si vous avez une question très précise à laquelle
+              personne n&apos;a encore vraiment répondu.
             </p>
           </div>
         </section>
