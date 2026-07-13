@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { getGuide } from "@/data/guides";
-import { getNextOrderNumber } from "@/lib/orders";
+import { grantPurchase, GuideNotFoundError, OfferNotFoundError } from "@/lib/purchases";
 
 async function requireAdmin() {
   const session = await getSession();
@@ -28,47 +27,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Aucun compte trouvé pour cette adresse email." }, { status: 404 });
   }
 
-  const guide = getGuide(guideSlug);
-  if (!guide) {
-    return NextResponse.json({ error: "Guide introuvable." }, { status: 404 });
-  }
-  if (guide.offers && guide.offers.length > 0 && !guide.offers.some((offer) => offer.id === offerId)) {
-    return NextResponse.json({ error: "Offre introuvable pour ce guide." }, { status: 400 });
-  }
-
-  if (guide.bundleOf && guide.bundleOf.length > 0) {
-    const purchases = [];
-    for (const item of guide.bundleOf) {
-      const existingItem = await db.purchase.findUnique({
-        where: {
-          userId_guideSlug_offerId: {
-            userId: buyer.id,
-            guideSlug: item.guideSlug,
-            offerId: item.offerId,
-          },
-        },
-      });
-      const itemPurchase = existingItem ?? await db.purchase.create({
-        data: {
-          userId: buyer.id,
-          guideSlug: item.guideSlug,
-          offerId: item.offerId,
-          orderNumber: await getNextOrderNumber(),
-        },
-      });
-      purchases.push(itemPurchase);
+  try {
+    const { purchases, bundle } = await grantPurchase(buyer.id, guideSlug, offerId);
+    return NextResponse.json({ success: true, purchase: purchases[0], purchases, bundle });
+  } catch (error) {
+    if (error instanceof GuideNotFoundError) {
+      return NextResponse.json({ error: "Guide introuvable." }, { status: 404 });
     }
-
-    return NextResponse.json({ success: true, purchase: purchases[0], purchases, bundle: true });
+    if (error instanceof OfferNotFoundError) {
+      return NextResponse.json({ error: "Offre introuvable pour ce guide." }, { status: 400 });
+    }
+    throw error;
   }
-
-  const existing = await db.purchase.findUnique({
-    where: { userId_guideSlug_offerId: { userId: buyer.id, guideSlug, offerId } },
-  });
-
-  const purchase = existing ?? await db.purchase.create({
-    data: { userId: buyer.id, guideSlug, offerId, orderNumber: await getNextOrderNumber() },
-  });
-
-  return NextResponse.json({ success: true, purchase });
 }

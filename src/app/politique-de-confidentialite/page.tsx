@@ -79,11 +79,12 @@ export default function PolitiqueConfidentialitePage() {
                 <li>Un cookie technique de session, nécessaire pour rester connecté à votre compte.</li>
               </ul>
               <p className="mt-4">
-                Nous ne collectons à ce jour aucune donnée de paiement : le
-                règlement en ligne n&apos;est pas encore activé sur le Site,
-                l&apos;accès aux guides étant accordé manuellement pendant
-                cette phase. Cette politique sera mise à jour dès la mise en
-                place d&apos;un prestataire de paiement.
+                Nous ne collectons ni ne stockons vos données bancaires : le
+                paiement est traité directement par notre prestataire Stripe,
+                sur une page sécurisée gérée par ses soins. Nous recevons
+                uniquement la confirmation du paiement et un identifiant de
+                transaction, nécessaires pour vous donner accès aux guides
+                achetés.
               </p>
             </div>
 
@@ -136,9 +137,10 @@ export default function PolitiqueConfidentialitePage() {
                 <Link href="/mentions-legales" className="font-semibold text-gold-700 hover:text-gold-800">
                   mentions légales
                 </Link>
-                ). Lorsqu&apos;un prestataire de paiement ou d&apos;emailing
-                sera intégré au Site, il sera ajouté à cette liste avant sa
-                mise en service.
+                ), ainsi qu&apos;à notre prestataire de paiement Stripe, qui
+                traite les transactions en votre nom. Lorsqu&apos;un
+                prestataire d&apos;emailing sera intégré au Site, il sera
+                ajouté à cette liste avant sa mise en service.
               </p>
             </div>
 

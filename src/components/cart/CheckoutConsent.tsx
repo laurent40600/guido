@@ -5,6 +5,28 @@ import Link from "next/link";
 
 export default function CheckoutConsent() {
   const [consentGiven, setConsentGiven] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleCheckout() {
+    setLoading(true);
+    setError(null);
+
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ consentGiven }),
+    });
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok || !data.url) {
+      setError(data.error ?? "Une erreur est survenue, réessaie dans un instant.");
+      setLoading(false);
+      return;
+    }
+
+    window.location.href = data.url;
+  }
 
   return (
     <div className="mt-10 rounded-2xl border border-stone-200 bg-white p-6">
@@ -35,21 +57,20 @@ export default function CheckoutConsent() {
           droit de rétractation de 14 jours applicable aux achats à distance.
         </span>
       </label>
-      {!consentGiven && (
-        <p className="mt-2 text-xs text-stone-500">
-          Cette case devra être cochée pour valider votre commande dès que le paiement en ligne sera activé.
-        </p>
-      )}
+
+      {error && <p className="mt-3 text-sm font-medium text-red-600">{error}</p>}
 
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-stone-600">
-          Le paiement en ligne arrive bientôt — cette étape ne débite rien pour le moment.
+          Paiement sécurisé par Stripe. Tu seras redirigé·e vers une page de paiement, puis reviens automatiquement ici une fois la commande validée.
         </p>
         <button
-          disabled
-          className="cursor-not-allowed rounded-xl bg-stone-200 px-6 py-3 font-semibold text-stone-500"
+          type="button"
+          onClick={handleCheckout}
+          disabled={!consentGiven || loading}
+          className="rounded-xl bg-gold-600 px-6 py-3 font-semibold text-white transition hover:bg-gold-700 disabled:cursor-not-allowed disabled:bg-stone-200 disabled:text-stone-500"
         >
-          Passer commande — bientôt disponible
+          {loading ? "Redirection..." : "Passer commande"}
         </button>
       </div>
     </div>

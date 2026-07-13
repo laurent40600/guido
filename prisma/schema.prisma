@@ -84,6 +84,10 @@ model Purchase {
   // limite de durée : uniquement un nombre fini de téléchargements réels.
   downloadCount      Int       @default(0)
   maxDownloads       Int       @default(2)
+  // Identifiant de la Checkout Session Stripe à l'origine de cet achat, pour
+  // retrouver le paiement dans le Dashboard Stripe en cas de support ou de
+  // litige. Absent pour les accès accordés manuellement (voir /api/admin/grant).
+  stripeCheckoutSessionId String?
 
   user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   downloadEvents DownloadEvent[]

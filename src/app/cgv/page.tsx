@@ -114,12 +114,10 @@ export default function CgvPage() {
                 paiement utilisé par le Site.
               </p>
               <p className="mt-4">
-                <strong>État actuel du service :</strong> le règlement en
-                ligne n&apos;est pas encore activé sur le Site. En attendant
-                sa mise en place, l&apos;accès à un Guide est accordé
-                manuellement par l&apos;éditeur après réception du
-                paiement par un autre moyen convenu. Cette clause sera mise
-                à jour dès l&apos;activation du paiement en ligne.
+                Le paiement en ligne est traité par notre prestataire de
+                paiement Stripe. Le Site ne stocke à aucun moment vos
+                coordonnées bancaires complètes, qui sont saisies directement
+                sur une page sécurisée gérée par Stripe.
               </p>
             </div>
 
