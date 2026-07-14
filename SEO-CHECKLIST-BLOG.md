@@ -25,15 +25,42 @@ Le JSON-LD inclut : `headline`, `description`, `image`, `datePublished`, `dateMo
 ⚠️ Le domaine utilisé dans le JSON-LD (`siteUrl` dans `page.tsx`) est actuellement
 codé en dur sur `https://guido.fr` — à mettre à jour si le nom de domaine change.
 
+## 0. Séries éditoriales (`series`)
+
+Chaque article a un champ `series: BlogSeries` obligatoire (type défini en haut
+de `src/data/blog.ts`). Deux séries existent à ce jour :
+- **"IA pour profs"** — 6 articles, complète (`chatgpt-preparer-ses-cours`,
+  `10-prompts-chatgpt-enseignants`, `chatgpt-corriger-copies`,
+  `creer-exercice-ia-5-minutes`, `ia-cours-maths-bonne-mauvaise-idee`,
+  `5-erreurs-ia-enseigner`).
+- **"IA pour métiers"** — démarrée le 2026-07-28 avec
+  `automatiser-devis-chatgpt-autoentrepreneur` (1 seul article pour l'instant).
+
+Pour démarrer une nouvelle série : ajouter la valeur au type `BlogSeries`, puis
+l'assigner au nouvel article. `/blog` affiche automatiquement un filtre par
+série (`src/components/blog/BlogExplorer.tsx`, pills "Tous" + une par série) et
+un badge de série sur chaque vignette + en haut de chaque page article — rien
+à coder en plus, uniquement renseigner le champ.
+
+**Règle de maillage entre séries** : ne pas lier un article d'une série à un
+article d'une autre série dans `relatedPosts` (ex. ne pas lier l'article
+auto-entrepreneur aux articles profs) — les séries restent des univers
+thématiques distincts pour le lecteur, même si le sujet de fond ("IA") se
+recoupe. Le filtre visuel sur `/blog` est le mécanisme prévu pour naviguer
+entre séries, pas les liens "À lire aussi".
+
 ## 3. Maillage interne entre articles ("À lire aussi")
 
 Pour chaque nouvel article, renseigner le champ `relatedPosts: string[]` avec les
-slugs des 1 à 2 autres articles les plus pertinents thématiquement (pas juste
-"tous les autres articles" si le blog grandit). La section "À lire aussi"
-s'affiche automatiquement en bas de l'article si `relatedPosts` est non vide.
+slugs des 1 à 2 autres articles les plus pertinents thématiquement, **de la
+même série** (pas juste "tous les autres articles" si le blog grandit). La
+section "À lire aussi" s'affiche automatiquement en bas de l'article si
+`relatedPosts` est non vide — et ne s'affiche pas du tout si le champ est
+omis, ce qui est normal pour le premier article d'une nouvelle série.
 
 Pense aussi à ajouter le nouveau slug dans le `relatedPosts` des articles
-existants qui s'y rapportent, pour que le lien soit réciproque.
+existants **de la même série** qui s'y rapportent, pour que le lien soit
+réciproque.
 
 **Cas "hub de série"** (ex. la série "IA pour profs", conclue à 6 articles avec
 `5-erreurs-ia-enseigner`) : quand un article ferme explicitement une série, ses
@@ -97,8 +124,15 @@ annulé avant publication, intertitres restaurés au texte source exact. Retenir
 ça : ne jamais retoucher un intertitre/une conclusion pour "faire remonter"
 le score de mot-clé, même involontairement en committant les blocs "d'un coup".
 
-Aucune reformulation n'a été appliquée sur les articles 1 à 4 — à valider avec
-l'auteur avant toute modification de texte.
+- `automatiser-devis-chatgpt-autoentrepreneur` (1er article de la série "IA
+  pour métiers") : "devis" très bien réparti — titre + intro + 2 des 7
+  intertitres + conclusion ("Le vrai gain de temps" : "...chaque nouveau devis
+  se prépare en quelques minutes..."), 11/17 blocs au total. "auto-entrepreneur"
+  en revanche suit le schéma déjà vu ailleurs : présent titre + intro + 1
+  paragraphe, absent des 7 intertitres et de la conclusion. Pas modifié, signalé.
+
+Aucune reformulation n'a été appliquée sur les articles 1 à 4 ni 6-7 — à
+valider avec l'auteur avant toute modification de texte.
 
 ## 5. Script de vérification rapide
 

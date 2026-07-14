@@ -93,7 +93,13 @@ export default async function BlogPostPage({
             ← Tous les articles
           </Link>
 
-          <h1 className="mt-6 text-4xl font-black leading-tight text-navy-900 md:text-5xl">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <span className="rounded-full bg-navy-900 px-3 py-1 text-xs font-semibold text-gold-400">
+              {post.series}
+            </span>
+          </div>
+
+          <h1 className="mt-4 text-4xl font-black leading-tight text-navy-900 md:text-5xl">
             {post.title}
           </h1>
 

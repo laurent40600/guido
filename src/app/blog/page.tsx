@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import BlogExplorer from "@/components/blog/BlogExplorer";
 import { blogPosts } from "@/data/blog";
 
 export const metadata: Metadata = {
@@ -32,39 +30,8 @@ export default function BlogPage() {
           </div>
 
           {blogPosts.length > 0 ? (
-            <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {blogPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group flex flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold-600 hover:shadow-xl hover:shadow-gold-900/10"
-                >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-navy-900">
-                    <Image
-                      src={post.coverImage}
-                      alt={post.coverAlt}
-                      fill
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <h2 className="text-lg font-bold leading-snug text-navy-900">
-                      {post.title}
-                    </h2>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-stone-600">
-                      {post.excerpt}
-                    </p>
-                    <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-gold-700">
-                      Lire l&apos;article
-                      <ArrowRight
-                        size={14}
-                        className="transition group-hover:translate-x-1"
-                      />
-                    </span>
-                  </div>
-                </Link>
-              ))}
+            <div className="mt-16">
+              <BlogExplorer posts={blogPosts} />
             </div>
           ) : (
             <div className="mx-auto mt-16 max-w-md rounded-2xl border border-stone-200 bg-white p-8 text-center">

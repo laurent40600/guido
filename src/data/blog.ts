@@ -4,8 +4,14 @@ export type BlogBlock =
   | { type: "list"; items: string[] }
   | { type: "prompt"; text: string; label?: string };
 
+// Série éditoriale à laquelle l'article appartient, utilisée pour les filtres
+// et badges sur /blog. Ajouter une nouvelle valeur ici pour démarrer une
+// nouvelle série (ex. "IA pour métiers", "Bien-être"...).
+export type BlogSeries = "IA pour profs" | "IA pour métiers";
+
 export interface BlogPost {
   slug: string;
+  series: BlogSeries;
   title: string;
   excerpt: string;
   seoTitle: string;
@@ -21,12 +27,14 @@ export interface BlogPost {
     href: string;
   };
   // Slugs d'autres articles à suggérer dans "À lire aussi".
+  // Convention : ne lier qu'à l'intérieur de la même série.
   relatedPosts?: string[];
 }
 
 const rawBlogPosts: BlogPost[] = [
   {
     slug: "chatgpt-preparer-ses-cours",
+    series: "IA pour profs",
     title: "Comment utiliser ChatGPT pour préparer ses cours : guide complet",
     excerpt:
       "Entre les programmes à respecter, les niveaux hétérogènes et le temps qui manque toujours, ChatGPT peut réellement alléger la préparation de tes cours — à condition de savoir comment l'utiliser.",
@@ -103,6 +111,7 @@ const rawBlogPosts: BlogPost[] = [
   },
   {
     slug: "10-prompts-chatgpt-enseignants",
+    series: "IA pour profs",
     title: "10 prompts ChatGPT indispensables pour les enseignants",
     excerpt:
       "Tu utilises déjà ChatGPT ou Claude, mais le résultat te déçoit souvent ? Le problème vient rarement de l'outil, mais du prompt. Voici 10 prompts prêts à copier-coller, quelle que soit ta matière.",
@@ -244,6 +253,7 @@ const rawBlogPosts: BlogPost[] = [
   },
   {
     slug: "chatgpt-corriger-copies",
+    series: "IA pour profs",
     title: "ChatGPT peut-il corriger des copies ? Ce qu'il faut savoir",
     excerpt:
       "La correction reste l'une des tâches les plus lourdes du métier d'enseignant. Voici une réponse honnête sur ce que ChatGPT peut vraiment faire, et ce qu'il ne doit jamais faire.",
@@ -308,6 +318,7 @@ const rawBlogPosts: BlogPost[] = [
   },
   {
     slug: "creer-exercice-ia-5-minutes",
+    series: "IA pour profs",
     title: "Comment créer un exercice avec l'IA en 5 minutes",
     excerpt:
       "Créer un exercice de A à Z prend facilement 15 à 20 minutes en partant de zéro. Avec l'IA, la même tâche peut se faire en 5 minutes — à condition de savoir précisément quoi demander.",
@@ -390,6 +401,7 @@ const rawBlogPosts: BlogPost[] = [
   },
   {
     slug: "ia-cours-maths-bonne-mauvaise-idee",
+    series: "IA pour profs",
     title: "L'IA en cours de maths : bonne ou mauvaise idée ?",
     excerpt:
       "Utiliser l'IA dans une matière où la rigueur du calcul compte autant, est-ce vraiment une bonne idée ? La réponse est plus nuancée qu'un simple oui ou non.",
@@ -454,6 +466,7 @@ const rawBlogPosts: BlogPost[] = [
   },
   {
     slug: "5-erreurs-ia-enseigner",
+    series: "IA pour profs",
     title: "5 erreurs à éviter quand on utilise l'IA pour enseigner",
     excerpt:
       "L'IA peut faire gagner un temps réel dans la préparation de cours, mais mal utilisée, elle peut aussi créer plus de problèmes qu'elle n'en résout. Voici les 5 erreurs les plus fréquentes.",
@@ -539,6 +552,77 @@ const rawBlogPosts: BlogPost[] = [
       "creer-exercice-ia-5-minutes",
       "ia-cours-maths-bonne-mauvaise-idee",
     ],
+  },
+  {
+    slug: "automatiser-devis-chatgpt-autoentrepreneur",
+    series: "IA pour métiers",
+    title: "Comment automatiser ses devis avec ChatGPT quand on est auto-entrepreneur",
+    excerpt:
+      "Rédiger un devis prend du temps : reformuler la prestation, calculer le montant, adapter le ton selon le client. Voici comment l'IA peut t'aider à automatiser une bonne partie de ce travail.",
+    seoTitle: "Comment automatiser ses devis avec ChatGPT en auto-entreprise | Guido",
+    seoDescription:
+      "La méthode pour créer un template de devis réutilisable avec ChatGPT et gagner un temps réel sur ton administratif d'auto-entrepreneur.",
+    coverImage:
+      "https://images.unsplash.com/photo-1709880945165-d2208c6ad2ec?auto=format&fit=crop&w=1600&q=80",
+    coverAlt: "Auto-entrepreneur rédigeant un devis avec l'aide de ChatGPT",
+    publishedAt: "2026-07-28",
+    body: [
+      {
+        type: "paragraph",
+        text: "Rédiger un devis prend du temps : reformuler la prestation, calculer le montant, adapter le ton selon le client. Pour un auto-entrepreneur qui jongle déjà entre son métier et son administratif, c'est une tâche qui s'accumule vite. Voici comment l'IA peut t'aider à automatiser une bonne partie de ce travail, sans perdre en professionnalisme.",
+      },
+      { type: "heading", text: "Pourquoi les devis prennent autant de temps" },
+      {
+        type: "paragraph",
+        text: "Un devis n'est jamais qu'un simple montant : il faut décrire précisément la prestation, poser les conditions (délais, modalités de paiement), et adapter le ton selon qu'on s'adresse à un particulier ou une entreprise. C'est cette part rédactionnelle, plus que le calcul lui-même, qui prend le plus de temps.",
+      },
+      { type: "heading", text: "Créer un template de devis réutilisable" },
+      {
+        type: "paragraph",
+        text: "Plutôt que de rédiger chaque devis de zéro, demande à l'IA de t'aider à construire un template de base pour ton activité, avec les sections essentielles (description de la prestation, montant, conditions, délai de validité). Une fois ce template validé, tu n'as plus qu'à en modifier les détails à chaque nouveau client, ce qui divise largement le temps de rédaction.",
+      },
+      {
+        type: "prompt",
+        label: "Exemple",
+        text: "Aide-moi à créer un template de devis pour mon activité de [ton métier], avec une description de prestation type, une section conditions de paiement, et un ton professionnel mais chaleureux.",
+      },
+      { type: "heading", text: "Adapter le ton selon le client" },
+      {
+        type: "paragraph",
+        text: "Un devis pour un particulier et un devis pour une entreprise n'ont pas forcément le même registre. L'IA peut ajuster rapidement le ton d'un même devis type : plus direct et simple pour un particulier, plus formel et structuré pour une entreprise.",
+      },
+      { type: "heading", text: "Personnaliser sans tout réécrire" },
+      {
+        type: "paragraph",
+        text: "Une fois ton template en place, tu peux demander à l'IA de l'adapter à une mission précise en lui donnant juste les éléments qui changent (nature de la prestation, montant, délai), plutôt que de repartir du texte complet à chaque fois.",
+      },
+      {
+        type: "prompt",
+        label: "Exemple",
+        text: "Adapte ce devis type à cette nouvelle mission : [décrire la mission, le montant, le délai], en gardant la structure et le ton habituels.",
+      },
+      { type: "heading", text: "Ce qu'il faut vérifier toi-même" },
+      {
+        type: "paragraph",
+        text: "L'IA peut t'aider sur la rédaction, mais elle ne connaît pas tes obligations légales précises (mentions obligatoires selon ton statut, TVA le cas échéant, conditions générales de vente propres à ton activité). Vérifie toujours qu'un devis généré respecte les mentions légales requises pour ton statut d'auto-entrepreneur avant de l'envoyer.",
+      },
+      { type: "heading", text: "Le vrai gain de temps" },
+      {
+        type: "paragraph",
+        text: "Ce n'est pas la première utilisation qui fait gagner du temps (il faut construire le template), mais toutes celles qui suivent : une fois le template validé, chaque nouveau devis se prépare en quelques minutes plutôt qu'en une demi-heure de rédaction complète.",
+      },
+      { type: "heading", text: "Pour aller plus loin" },
+      {
+        type: "paragraph",
+        text: "On a détaillé une méthode complète pour automatiser devis, relances clients et préparation de compta avec l'IA, avec des prompts et templates prêts à l'emploi.",
+      },
+    ],
+    cta: {
+      text: "Envie d'une méthode complète pour automatiser devis, relances clients et préparation de compta, avec des prompts et templates prêts à l'emploi ?",
+      linkLabel:
+        "L'IA pour les auto-entrepreneurs : automatiser devis, relances et compta",
+      href: "/guides/ia-autoentrepreneurs",
+    },
   },
 ];
 
