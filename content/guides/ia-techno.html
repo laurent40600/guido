@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>L'IA pour les profs de technologie</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 235mm; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 25pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 8pt; font-size: 11.5pt; }
+  .toc li span { font-style: italic; font-size: 10.5pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-example { background: #f1efec; border-left: 5px solid #8a8478; }
+  .box-example .box-title { color: #5c574c; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>L'IA pour les profs de technologie</h1>
+  <p class="tagline">Préparer, concevoir et corriger plus vite</p>
+  <p class="meta">Un guide complet + une bibliothèque de 34 prompts intégrée,<br/>spécifique au programme de technologie au collège</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Résumé exécutif<span>Les 4 gains de temps principaux et les points de vigilance à garder en tête</span></li>
+    <li>Introduction<span>Le vrai coût du temps de préparation en technologie</span></li>
+    <li>Partie 1 — Préparer ses séquences et projets plus vite<span>Structurer une séquence, cahier des charges, matériel disponible</span></li>
+    <li>Partie 2 — Concevoir des activités techniques variées<span>Programmation par blocs, modélisation 3D et CAO, analyse d'objets</span></li>
+    <li>Partie 3 — Évaluer par compétences et corriger plus vite<span>Grilles par compétences, valoriser la démarche, accélérer la correction</span></li>
+    <li>Partie 4 — Différencier et gérer l'hétérogénéité<span>Adapter la complexité sans dénaturer le projet, organiser le travail de groupe</span></li>
+    <li>Partie 5 — Mettre en place son système<span>Planning de mise en place sur 3 semaines, checklist, erreurs à éviter</span></li>
+    <li>Partie 6 — Adapter sa pratique selon le niveau<span>6e, 5e-4e, 3e</span></li>
+    <li>Questions fréquentes</li>
+    <li>Ressources complémentaires<span>Eduscol, réseaux de pairs, fournisseurs de matériel pédagogique</span></li>
+    <li>Annexe — Lexique du programme<span>Les 4 grandes compétences, chaîne d'énergie et d'information, CAO, prototype</span></li>
+    <li>Conclusion</li>
+    <li>Partie 7 — Bibliothèque de prompts<span>34 prompts prêts à l'emploi, classés par usage</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Résumé exécutif</h2>
+  <p class="lede">Si tu ne devais retenir que l'essentiel de ce guide avant de le lire en détail, voici les points clés.</p>
+
+  <h3>Les 4 gains de temps principaux</h3>
+  <ul>
+    <li>Générer une trame de séquence complète en quelques minutes plutôt qu'en repartant d'une page blanche.</li>
+    <li>Construire une bibliothèque réutilisable de cahiers des charges de projets.</li>
+    <li>Créer des grilles d'évaluation par compétences sans les réinventer à chaque projet.</li>
+    <li>Générer plusieurs versions différenciées d'un même projet pour gérer l'hétérogénéité.</li>
+  </ul>
+
+  <h3>Les points de vigilance à garder en tête</h3>
+  <ul>
+    <li>Toujours vérifier la faisabilité matérielle et la sécurité avant de mettre en œuvre une proposition technique.</li>
+    <li>Adapter systématiquement les prompts au matériel réellement disponible dans ta salle.</li>
+    <li>L'IA reste un outil d'accélération, pas un substitut à ta connaissance fine de tes élèves.</li>
+  </ul>
+
+  <h3>Comment utiliser ce guide</h3>
+  <p>Les Parties 1 à 4 couvrent la méthode (préparation, activités, évaluation, différenciation). La Partie 5 t'aide à passer à l'action progressivement. La Partie 6 adapte les principes selon le niveau. La bibliothèque de prompts en fin de guide te permet d'appliquer directement ces principes à tes propres séquences.</p>
+  <p>Chaque partie est illustrée par une étude de cas concrète, pour t'aider à visualiser comment ces principes s'appliquent dans une vraie salle de classe, avec de vrais élèves et de vraies contraintes matérielles.</p>
+</section>
+
+<section class="chapter">
+  <h2>2. Introduction</h2>
+
+  <h3>Le vrai coût du temps de préparation en technologie</h3>
+  <p>La technologie est une matière particulière : elle demande de préparer des séquences théoriques, mais aussi des projets pratiques complets, avec du matériel à anticiper, des schémas à concevoir, et une hétérogénéité de niveau technique parfois très marquée entre élèves, certains ayant déjà manipulé ce type d'outils à la maison, d'autres jamais.</p>
+  <p>Cette charge de préparation spécifique explique pourquoi tant de professeurs de technologie ressentent un temps de préparation disproportionné par rapport aux autres matières, malgré un nombre d'heures de cours souvent similaire.</p>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>Ce guide n'est pas un cours théorique sur l'intelligence artificielle. C'est un mode d'emploi pratique, pensé spécifiquement pour un professeur de technologie qui n'a ni le temps ni l'envie de devenir expert en IA, mais qui veut gagner un temps réel sur la préparation de ses séquences et projets.</p>
+  <p>À la fin de ce guide, tu sauras préparer tes séquences et cahiers des charges plus vite, concevoir des activités techniques variées (programmation, modélisation, analyse d'objets), évaluer par compétences sans y passer des heures, et différencier tes projets pour une classe hétérogène.</p>
+
+  <h3>Ce dont tu as besoin pour commencer</h3>
+  <p>Aucune compétence technique en IA n'est nécessaire. Si tu sais utiliser une boîte mail et un smartphone, tu as tout ce qu'il faut. Les prompts de ce guide sont prêts à copier-coller, à adapter simplement à ton niveau et ton matériel.</p>
+
+  <h3>Qui est concerné par ce guide</h3>
+  <p>Ce guide s'adresse aussi bien à un professeur expérimenté qui cherche à alléger sa charge de préparation récurrente, qu'à un professeur débutant qui découvre encore les spécificités de la matière et cherche des trames solides pour démarrer sereinement.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">Une précision importante</span>
+    <p>L'IA peut proposer des idées de montages, de protocoles ou de projets techniques : vérifie toujours la faisabilité réelle avec ton matériel et les consignes de sécurité de ton établissement avant de mettre en œuvre une proposition.</p>
+    <p>L'IA reste un outil d'aide à la préparation, pas un substitut à ton expertise technique et pédagogique.</p>
+  </div>
+
+  <p>On commence par la partie qui fait souvent gagner le plus de temps immédiatement : la préparation des séquences et des projets.</p>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 1 — Préparer ses séquences et projets plus vite</h2>
+
+  <h3>Structurer une séquence en quelques minutes</h3>
+  <p>Une séquence de technologie combine généralement des apports théoriques et une mise en pratique. Demander à l'IA de structurer les grandes lignes d'une séquence (objectifs, séances, supports) permet de gagner un temps précieux sur l'architecture globale, avant de rentrer dans le détail de chaque séance avec ton expertise propre.</p>
+  <p>Ce gain de temps est particulièrement appréciable en début d'année, quand il faut reconstruire une progression annuelle complète, ou après un changement de programme qui demande de repenser l'ordre des notions abordées.</p>
+
+  <h3>Concevoir un cahier des charges de projet</h3>
+  <p>Le cahier des charges est central en technologie : il cadre ce que les élèves doivent réaliser, avec quelles contraintes. Un cahier des charges mal calibré (trop vague ou trop complexe) est une des causes principales d'échec ou de découragement sur un projet long. L'IA peut proposer une première version structurée, que tu ajustes ensuite avec ta connaissance précise du matériel disponible et du niveau réel de ta classe.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Un cahier des charges bien calibré</span>
+    <p>Pour un projet sur les objets connectés en 4e, un cahier des charges trop ouvert ("créez un objet connecté utile") désoriente souvent les élèves. Un cahier des charges plus cadré ("créez un système qui détecte et signale une porte ouverte, avec un budget de composants limité et une contrainte de taille précise") donne un vrai cap sans étouffer la créativité.</p>
+  </div>
+
+  <h3>Adapter au matériel réellement disponible</h3>
+  <p>Une idée de projet technique généré par IA reste une idée générique tant qu'elle n'est pas confrontée à la réalité de ton matériel disponible en salle. Précise toujours dans tes prompts le matériel dont tu disposes réellement (kits de robotique, imprimante 3D, matériel électronique de base) pour obtenir des propositions directement exploitables plutôt que des idées à retravailler entièrement.</p>
+
+  <h3>Exercice pratique : ta bibliothèque de cahiers des charges</h3>
+  <p>Consacre une session à générer et affiner 3-4 cahiers des charges de projets types pour l'année, que tu pourras réutiliser et légèrement adapter d'une classe à l'autre. Cette bibliothèque, construite une fois, te fait gagner un temps considérable sur les années suivantes.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Structurer une séquence avec l'IA fait gagner du temps sur l'architecture globale, à affiner ensuite avec ton expertise.</p>
+    <p>Un cahier des charges bien calibré, ni trop vague ni trop complexe, est déterminant pour la réussite d'un projet.</p>
+    <p>Préciser le matériel réellement disponible dans tes prompts évite des propositions inexploitables.</p>
+    <p>Construire une bibliothèque de cahiers des charges réutilisables fait gagner du temps sur plusieurs années.</p>
+  </div>
+
+  <h3>Étude de cas : la réorganisation de Marc</h3>
+  <p>Marc, professeur de technologie depuis 10 ans, passait généralement tout son mois d'août à reconstruire ses cahiers des charges de projets pour l'année, en repartant quasiment de zéro chaque fois malgré des thématiques finalement assez proches d'une année sur l'autre.</p>
+  <p>En consacrant une seule session de travail avec l'IA à générer et affiner 5 cahiers des charges types couvrant les grandes thématiques du programme, puis en les adaptant légèrement chaque année selon le matériel et les élèves, Marc a réduit son temps de préparation estival de plusieurs jours, tout en gardant la possibilité d'ajuster chaque projet à sa classe du moment.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le travail de Marc n'était pas inutile les années précédentes, mais il repartait à chaque fois de zéro sur une base qui aurait pu être réutilisée et simplement adaptée, ce qui représentait un vrai gaspillage de temps évitable.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 2 — Concevoir des activités techniques variées</h2>
+
+  <h3>Programmation par blocs</h3>
+  <p>La programmation par blocs (type Scratch) fait désormais partie intégrante du programme de technologie. Générer des activités progressives, du plus simple (faire clignoter une LED) au plus complexe (systèmes conditionnels avec plusieurs capteurs), permet de construire une vraie progression pédagogique sans repartir de zéro à chaque nouvelle notion.</p>
+
+  <h3>Modélisation 3D et CAO</h3>
+  <p>Pour les élèves qui découvrent un logiciel de conception assistée par ordinateur, une progression très détaillée étape par étape est essentielle pour éviter le découragement face à un outil qui peut sembler complexe au premier abord. L'IA peut décrire ces étapes précisément, à valider ensuite avec le logiciel réellement utilisé dans ton établissement.</p>
+
+  <h3>Analyse d'objets techniques</h3>
+  <p>L'analyse d'un objet existant (son fonctionnement, ses matériaux, son impact environnemental) est une compétence centrale du programme. Varier les objets analysés d'une année sur l'autre, tout en gardant une structure d'analyse cohérente, aide à maintenir l'intérêt des élèves sans perdre en rigueur méthodologique.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Varier les objets tout en gardant la structure</span>
+    <p>Analyser un vélo électrique une année, puis une trottinette électrique l'année suivante, permet de traiter les mêmes notions de chaîne d'énergie et de transformation de mouvement, tout en renouvelant l'intérêt des élèves pour l'objet étudié.</p>
+  </div>
+
+  <h3>Projets liés au développement durable</h3>
+  <p>Connecter les projets technologiques à des enjeux environnementaux actuels (recyclage, énergie, mobilité douce) augmente généralement la motivation des élèves, qui perçoivent mieux l'utilité concrète de ce qu'ils apprennent au-delà de l'exercice scolaire.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La programmation par blocs se prête bien à une progression générée puis affinée avec l'IA.</p>
+    <p>Les étapes de modélisation 3D gagnent à être détaillées précisément pour les élèves débutants.</p>
+    <p>Varier les objets analysés tout en gardant une structure d'analyse cohérente maintient l'intérêt sans perdre en rigueur.</p>
+    <p>Les projets liés au développement durable augmentent généralement la motivation des élèves.</p>
+  </div>
+
+  <h3>Étude de cas : la progression de Nadia</h3>
+  <p>Nadia peinait à faire progresser ses élèves de 5e sur la programmation par blocs : certains maîtrisaient déjà bien l'outil, d'autres découvraient complètement le concept, ce qui rendait ses séances collectives inefficaces pour une partie de la classe.</p>
+  <p>En générant 3 versions progressives d'une même activité (découverte, intermédiaire, avancée) et en laissant les élèves choisir leur point de départ selon leur aisance réelle, Nadia a pu gérer cette hétérogénéité sans ralentir les élèves déjà à l'aise ni perdre les débutants.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Plutôt qu'une seule activité collective au rythme imposé, proposer 3 versions d'un même objectif pédagogique a permis à chaque élève de progresser à son propre rythme, une approche que l'IA facilite grandement puisqu'elle peut générer ces variantes rapidement.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 3 — Évaluer par compétences et corriger plus vite</h2>
+
+  <h3>L'évaluation par compétences, spécificité de la matière</h3>
+  <p>Le programme de technologie s'articule autour de grandes compétences (analyser, concevoir, réaliser, communiquer) plutôt qu'autour d'un simple contrôle de connaissances. Une grille d'évaluation par compétences, générée puis ajustée à ton projet précis, permet une évaluation plus juste qu'une simple note globale qui masquerait les points forts et faibles réels de chaque élève.</p>
+
+  <h3>Valoriser la démarche autant que le résultat</h3>
+  <p>Un projet technique peut échouer sur le résultat final (le prototype ne fonctionne pas parfaitement) tout en démontrant une excellente démarche (analyse rigoureuse, tests méthodiques, ajustements pertinents). Une évaluation qui valorise explicitement la démarche, pas seulement le résultat, reflète mieux la réalité de l'apprentissage technique, où l'échec du prototype fait partie intégrante du processus d'ingénierie.</p>
+
+  <h3>Accélérer la correction des projets</h3>
+  <p>Utiliser une grille de critères précise, préparée à l'avance avec l'aide de l'IA, accélère considérablement la correction de projets de groupe, en évitant de devoir réinventer les critères d'évaluation pour chaque production, souvent très différentes les unes des autres d'un groupe à l'autre.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>L'évaluation par compétences reflète mieux la réalité du programme de technologie qu'une note globale unique.</p>
+    <p>Valoriser la démarche autant que le résultat final est cohérent avec la réalité du travail d'ingénierie.</p>
+    <p>Une grille de critères préparée à l'avance accélère nettement la correction de projets de groupe variés.</p>
+  </div>
+
+  <h3>Étude de cas : la refonte d'évaluation de Karim</h3>
+  <p>Karim notait ses projets de groupe uniquement sur le résultat final (le prototype fonctionne ou non), ce qui pénalisait injustement des groupes ayant fourni un excellent travail d'analyse et de test malgré un résultat final imparfait, tout en survalorisant des groupes ayant eu un résultat correct par chance plus que par rigueur méthodologique.</p>
+  <p>En passant à une grille par compétences qui valorise explicitement la démarche (qualité de l'analyse, rigueur des tests, pertinence des ajustements) en plus du résultat, Karim a pu évaluer plus justement le travail réel fourni par chaque groupe, indépendamment du succès ou de l'échec du prototype final.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Un groupe qui a testé rigoureusement son prototype et documenté ses ajustements mérite une bonne évaluation même si le résultat final n'est pas parfait, car cette démarche reflète justement les compétences réelles visées par le programme.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Partie 4 — Différencier et gérer l'hétérogénéité</h2>
+
+  <h3>Une hétérogénéité technique parfois marquée</h3>
+  <p>Contrairement à d'autres matières où l'hétérogénéité se joue surtout sur la compréhension théorique, la technologie ajoute une dimension supplémentaire : certains élèves ont déjà manipulé des outils numériques ou techniques similaires à la maison, d'autres jamais. Cette hétérogénéité de familiarité pratique demande une différenciation spécifique.</p>
+
+  <h3>Adapter la complexité sans dénaturer le projet</h3>
+  <p>Réduire le nombre d'étapes ou simplifier les contraintes d'un projet pour un élève en difficulté doit se faire sans dénaturer l'objectif pédagogique central. L'IA peut proposer plusieurs versions d'un même projet à différents niveaux de complexité, à partir d'une version de référence que tu lui fournis.</p>
+
+  <h3>Organiser le travail de groupe intelligemment</h3>
+  <p>Les projets technologiques se prêtent particulièrement bien au travail de groupe, à condition de répartir les rôles en tenant compte des profils différents des élèves (certains plus à l'aise avec la manipulation, d'autres avec la conception ou la communication du projet), plutôt que de laisser les groupes s'auto-organiser sans cadre, ce qui mène souvent à ce qu'un seul élève fasse l'essentiel du travail.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Une répartition de rôles efficace</span>
+    <p>Dans un groupe de 4 sur un projet de robotique, attribuer explicitement les rôles de "responsable montage", "responsable programmation", "responsable tests" et "responsable présentation finale" évite qu'un seul élève monopolise le projet et permet à chacun de développer une compétence différente.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>L'hétérogénéité en technologie touche aussi la familiarité pratique avec les outils, pas seulement la compréhension théorique.</p>
+    <p>Adapter la complexité d'un projet doit se faire sans dénaturer son objectif pédagogique central.</p>
+    <p>Répartir explicitement les rôles dans un groupe évite qu'un seul élève ne fasse l'essentiel du travail.</p>
+  </div>
+
+  <h3>Étude de cas : la répartition de rôles de Sophie</h3>
+  <p>Sophie laissait ses groupes de projet s'organiser librement, ce qui menait systématiquement à ce qu'un ou deux élèves motivés fassent l'essentiel du travail pendant que les autres restaient en retrait, sans que Sophie puisse évaluer équitablement la contribution réelle de chacun.</p>
+  <p>En définissant explicitement des rôles tournants (responsable montage, responsable tests, responsable documentation, responsable présentation) générés et adaptés avec l'aide de l'IA selon le type de projet, Sophie a pu répartir plus équitablement l'implication de chaque élève et évaluer plus précisément la contribution individuelle au sein du groupe.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le problème de Sophie n'était pas la motivation générale de sa classe, mais l'absence de structure qui aurait permis à chaque élève de trouver naturellement sa place dans le projet collectif.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Partie 5 — Mettre en place son système</h2>
+
+  <h3>Un planning de mise en place sur 3 semaines</h3>
+  <p>Semaine 1 : constitue ta bibliothèque de cahiers des charges types et teste la génération de séquences pour tes prochains chapitres. Semaine 2 : intègre l'IA dans ta préparation d'activités techniques variées (programmation, modélisation, analyse d'objets). Semaine 3 : mets en place tes grilles d'évaluation par compétences et teste la différenciation de projets pour ta classe la plus hétérogène.</p>
+
+  <h3>Checklist récapitulative</h3>
+  <ul class="checklist">
+    <li>Vérifier systématiquement la faisabilité matérielle d'une proposition avant sa mise en œuvre en classe.</li>
+    <li>Adapter les prompts au matériel réellement disponible dans ta salle.</li>
+    <li>Construire une bibliothèque réutilisable de cahiers des charges et grilles d'évaluation.</li>
+    <li>Toujours valider les consignes de sécurité propres à ton établissement, jamais celles suggérées génériquement par l'IA.</li>
+  </ul>
+
+  <h3>Erreurs à éviter</h3>
+  <p>La principale erreur consiste à mettre en œuvre une proposition technique de l'IA sans vérification préalable de sa faisabilité réelle et de sa sécurité avec ton matériel précis. Une deuxième erreur fréquente est de déléguer entièrement la conception d'un projet à l'IA sans y intégrer ta connaissance fine du niveau réel de tes élèves, ce qui peut mener à des projets mal calibrés en pratique malgré une belle structure sur le papier.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un planning progressif sur 3 semaines permet d'intégrer l'IA sans bouleverser toute sa pratique d'un coup.</p>
+    <p>Vérifier systématiquement la faisabilité matérielle et la sécurité reste une responsabilité qui t'incombe entièrement.</p>
+    <p>L'IA reste un outil d'accélération, pas un substitut à ta connaissance fine de tes élèves et de ton matériel.</p>
+  </div>
+
+  <h3>Étude de cas : la mise en place progressive d'Élodie</h3>
+  <p>Élodie, débutante dans l'usage de l'IA pour sa préparation, avait peur de "mal faire" et de perdre plus de temps qu'elle n'en gagnerait à apprendre un nouvel outil en plus de sa charge de travail déjà importante.</p>
+  <p>En suivant un planning progressif sur 3 semaines plutôt que de vouloir tout changer d'un coup, en commençant simplement par la génération de trames de séquences avant d'oser les cahiers des charges puis les grilles d'évaluation, Élodie a intégré l'outil sans jamais se sentir dépassée, et a estimé après un trimestre gagner environ 3 heures par semaine sur sa préparation.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>La peur initiale d'Élodie n'était pas irrationnelle : adopter un nouvel outil d'un coup peut effectivement être contre-productif. La progression par étapes, comme recommandé dans ce guide, a été la clé de son adoption réussie et durable.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>8. Partie 6 — Adapter sa pratique selon le niveau</h2>
+  <p class="lede">Les principes de ce guide s'appliquent à tous les niveaux du collège, avec quelques ajustements utiles.</p>
+
+  <h3>6e : découverte et manipulation</h3>
+  <p>En 6e, l'accent porte sur la découverte et la manipulation concrète plutôt que sur la théorie. Les prompts de préparation gagnent à insister sur des activités très guidées, avec des étapes courtes et un vocabulaire technique introduit progressivement plutôt que d'un coup.</p>
+
+  <h3>5e-4e : consolidation et premiers projets autonomes</h3>
+  <p>Ces niveaux intermédiaires permettent d'introduire progressivement plus d'autonomie dans les projets, tout en gardant un cadre structurant via des cahiers des charges bien calibrés, comme vu en Partie 1.</p>
+
+  <h3>3e : projets ambitieux et préparation à l'orientation</h3>
+  <p>En 3e, les projets peuvent gagner en ambition et en durée (chef-d'œuvre, projets de fin de cycle), avec une dimension d'orientation professionnelle à intégrer : relier le projet technique à des métiers concrets aide certains élèves à se projeter dans une voie professionnelle qu'ils n'auraient pas envisagée spontanément.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>En 6e, privilégier des activités très guidées avec un vocabulaire introduit progressivement.</p>
+    <p>En 5e-4e, augmenter progressivement l'autonomie tout en gardant un cadre structurant.</p>
+    <p>En 3e, les projets peuvent gagner en ambition, avec une dimension d'orientation professionnelle à valoriser.</p>
+  </div>
+
+  <h3>Étude de cas : l'ajustement de Thomas en 3e</h3>
+  <p>Thomas proposait à ses élèves de 3e des projets techniques ambitieux, mais sans lien explicite avec des métiers réels, ce qui limitait la motivation de certains élèves qui ne voyaient pas où cela pourrait les mener concrètement.</p>
+  <p>En intégrant systématiquement une discussion sur les métiers liés à chaque projet (qui conçoit ce type d'objet dans la vraie vie, quelles études y mènent), générée et enrichie avec l'aide de l'IA, Thomas a observé un engagement plus fort de plusieurs élèves jusque-là peu investis, qui ont commencé à faire le lien entre la matière et leur réflexion d'orientation.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Un même projet technique gagne en motivation quand il est explicitement relié à une perspective concrète de métier, un lien qui ne se fait pas toujours spontanément dans l'esprit des élèves sans être nommé explicitement par l'enseignant.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>9. Questions fréquentes</h2>
+
+  <h4>L'IA peut-elle vraiment proposer des projets techniques réalisables ?</h4>
+  <p>Elle peut proposer des pistes structurées et cohérentes, mais la faisabilité réelle avec ton matériel précis et le niveau réel de tes élèves reste à vérifier systématiquement de ton côté. Considère les propositions de l'IA comme un point de départ solide à ajuster, pas comme un projet clé en main garanti.</p>
+
+  <h4>Comment gérer les questions de sécurité liées aux projets techniques ?</h4>
+  <p>Les consignes de sécurité de ton établissement et les protocoles validés par ta hiérarchie priment toujours sur toute suggestion générée par IA. Ne mets jamais en œuvre une proposition technique impliquant des risques matériels sans validation préalable selon les procédures de ton établissement.</p>
+
+  <h4>Est-ce que ce guide convient aussi pour les projets de type chef-d'œuvre ou concours techniques ?</h4>
+  <p>Oui, les principes de structuration de cahier des charges et de différenciation s'appliquent tout autant à ces formats de projets plus longs et ambitieux, avec une attention particulière à découper le projet en jalons intermédiaires clairs pour éviter que les élèves ne se dispersent sur un format aussi long.</p>
+
+  <h4>Comment gérer un projet qui prend du retard sur le planning prévu ?</h4>
+  <p>Un cahier des charges bien conçu dès le départ inclut idéalement des jalons intermédiaires qui permettent de détecter un retard tôt plutôt qu'à la dernière séance. Si un retard est constaté, l'IA peut aider à identifier les étapes à simplifier ou prioriser pour terminer le projet dans le temps restant sans en dénaturer l'objectif principal.</p>
+
+  <h4>Faut-il utiliser l'IA pour évaluer directement les projets des élèves ?</h4>
+  <p>Non, l'évaluation finale reste ta responsabilité professionnelle. L'IA peut t'aider à structurer une grille de critères en amont, mais l'évaluation elle-même du travail réel de chaque élève doit rester ton jugement professionnel direct.</p>
+
+  <h4>Ce guide est-il adapté si mon établissement a très peu de matériel ?</h4>
+  <p>Oui, à condition de bien préciser dans tes prompts les contraintes matérielles réelles de ton établissement. L'IA peut proposer des activités adaptées à un équipement limité, en te concentrant sur les compétences du programme qui ne nécessitent pas nécessairement du matériel coûteux (analyse d'objets du quotidien, schématisation, programmation sur ordinateurs basiques).</p>
+</section>
+
+<section class="chapter">
+  <h2>10. Ressources complémentaires</h2>
+  <p>Eduscol, le site officiel du ministère de l'Éducation nationale, reste la référence pour le programme précis de technologie et les repères de progressivité par cycle. Il est recommandé de toujours vérifier la conformité d'une séquence générée par IA avec les attendus officiels les plus récents avant sa mise en œuvre.</p>
+  <p>Les réseaux de professeurs de technologie (associations disciplinaires, groupes d'échange de ressources) restent aussi une source précieuse pour des retours d'expérience concrets sur du matériel spécifique ou des projets déjà testés en classe.</p>
+  <p>Les fournisseurs de matériel pédagogique spécialisés en technologie proposent également souvent des fiches d'activités déjà calibrées pour leurs kits spécifiques, une ressource complémentaire utile à croiser avec les propositions générées par IA dans ce guide.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Eduscol reste la référence officielle pour vérifier la conformité d'une séquence avec le programme.</p>
+    <p>Les réseaux de pairs complètent utilement ce guide pour des retours d'expérience très spécifiques au matériel utilisé.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>11. Annexe — Lexique du programme</h2>
+  <dl class="lexique">
+    <dt>Les 4 grandes compétences du programme</dt>
+    <dd>Analyser : comprendre le fonctionnement et les besoins liés à un objet ou système technique. Concevoir : imaginer et formaliser une solution technique. Réaliser : fabriquer concrètement la solution conçue. Communiquer : présenter et expliquer sa démarche et ses résultats.</dd>
+    <dt>Chaîne d'énergie et chaîne d'information</dt>
+    <dd>La chaîne d'énergie décrit comment un système transforme et transmet l'énergie nécessaire à son fonctionnement (alimenter, distribuer, convertir, transmettre). La chaîne d'information décrit comment un système acquiert, traite et communique des données (acquérir, traiter, communiquer).</dd>
+    <dt>CAO (Conception Assistée par Ordinateur)</dt>
+    <dd>Ensemble de logiciels permettant de modéliser des objets en 3D avant leur éventuelle fabrication, utilisés couramment dans les projets de modélisation en technologie.</dd>
+    <dt>Prototype et itération</dt>
+    <dd>Un prototype est une première version d'un objet technique, destinée à être testée puis améliorée. L'itération désigne ce cycle de test et d'ajustement répété, central dans la démarche de projet technologique et dans le développement de l'esprit critique face à un résultat imparfait.</dd>
+    <dt>Impact environnemental</dt>
+    <dd>Ensemble des conséquences écologiques liées à la fabrication, l'utilisation et la fin de vie d'un objet technique, notion de plus en plus intégrée dans l'analyse d'objets au programme.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>12. Conclusion</h2>
+  <p>L'IA ne remplace jamais l'expertise technique et pédagogique d'un professeur de technologie, en particulier sur les questions de faisabilité matérielle et de sécurité qui restent entièrement de ta responsabilité. Mais utilisée intelligemment, elle accélère considérablement les tâches de structuration, de différenciation et d'évaluation qui prennent habituellement le plus de temps dans cette matière.</p>
+  <p>Le gain de temps réel se construit progressivement, séquence après séquence, et non d'un coup en changeant toute sa pratique simultanément. Les études de cas de ce guide montrent des profils très différents de professeurs, mais toutes partagent ce même principe d'adoption progressive plutôt que de bouleversement brutal des habitudes de préparation.</p>
+  <p>Reviens vers ce guide et sa bibliothèque de prompts à chaque nouveau projet ou chapitre, pour gagner un temps réel sans jamais sacrifier la rigueur technique qui fait la valeur de ton enseignement.</p>
+</section>
+
+<section class="chapter">
+  <h2>13. Partie 7 — Bibliothèque de prompts</h2>
+  <p class="lede">Cette bibliothèque de prompts fait partie intégrante de ce guide (format 2 en 1). Chaque prompt contient des crochets [comme ceci] : remplace-les par ta notion, ton niveau ou ton projet avant de coller le prompt dans ChatGPT ou Claude.</p>
+  <div class="box box-warning">
+    <span class="box-title">Rappel important</span>
+    <p>Relis toujours les propositions techniques générées avant de les mettre en œuvre : vérifie la faisabilité et la sécurité avec ton matériel réel.</p>
+    <p>Un prompt précis (niveau, notion, matériel disponible) donne un résultat directement exploitable.</p>
+  </div>
+
+  <h3>13.1 Préparer ses séquences et projets</h3>
+  <p class="lede">Pour structurer un chapitre ou un projet sans partir d'une page blanche.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Crée une séquence de cours en 4 séances sur [notion, ex : la programmation par blocs / les objets techniques] pour des élèves de [niveau], avec pour chaque séance : l'objectif, le support et les prérequis nécessaires.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un chapitre complet avant de rédiger le détail de chaque séance</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Propose 3 façons différentes d'introduire un projet technologique sur [thème] en classe : par une problématique concrète, par la démonstration d'un objet existant, par un défi à relever en équipe.</span>
+    <p class="prompt-usage">À quoi ça sert : varier ses accroches de projet selon le profil de la classe</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Rédige la progression annuelle de technologie pour un niveau [niveau], en respectant l'ordre logique des compétences du programme (analyser, concevoir, réaliser, communiquer).</span>
+    <p class="prompt-usage">À quoi ça sert : préparer sa programmation en début d'année ou après un changement de niveau</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Explique la notion de [notion technique, ex : la chaîne d'énergie] à des élèves de [niveau] avec une définition simple et un exemple d'objet du quotidien.</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une explication claire adaptée au vocabulaire technique du collège</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Crée un cahier des charges simplifié pour un mini-projet technologique sur [thème], adapté à des élèves de [niveau], avec les contraintes essentielles à respecter.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un projet technologique cadré sans être trop complexe</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Propose une activité de découverte pratique (manipulation, démontage, observation) pour introduire la notion de [notion] en classe.</span>
+    <p class="prompt-usage">À quoi ça sert : démarrer un chapitre par une activité concrète plutôt que par la théorie</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Aide-moi à identifier les prérequis indispensables à la notion de [notion] et propose un exercice diagnostic rapide pour vérifier si la classe les maîtrise.</span>
+    <p class="prompt-usage">À quoi ça sert : détecter les lacunes avant d'attaquer un nouveau chapitre technique</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Propose un jalon intermédiaire clair pour vérifier l'avancement d'un projet long sur [thème], à mi-parcours de la séquence.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un point d'étape qui permet de détecter un retard tôt</p>
+  </div>
+
+  <h3>13.2 Concevoir des activités techniques</h3>
+  <p class="lede">Pour des activités de programmation, modélisation et analyse d'objets.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Crée une fiche d'activité de programmation par blocs (type Scratch) sur [objectif, ex : faire clignoter une LED], adaptée à des élèves de [niveau], avec les étapes détaillées.</span>
+    <p class="prompt-usage">À quoi ça sert : générer une activité de programmation prête à distribuer</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Propose un exercice de lecture de schéma technique (électrique, mécanique) sur [objet/système], avec des questions progressives et la correction.</span>
+    <p class="prompt-usage">À quoi ça sert : travailler la lecture de schémas, compétence clé du programme</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Rédige une fiche de projet en mode chef d'œuvre/défi technique sur [thème], avec les étapes de conception, réalisation et présentation attendues.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un projet long avec des jalons clairs</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Crée un exercice d'analyse d'un objet technique existant (fonctionnement, matériaux, impact environnemental) sur [objet], adapté à des élèves de [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : travailler l'analyse d'objets techniques, compétence centrale du programme</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Propose une activité de modélisation 3D simple sur [objet/pièce], avec les étapes pour des élèves qui découvrent un logiciel de CAO.</span>
+    <p class="prompt-usage">À quoi ça sert : introduire la modélisation 3D progressivement</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Rédige un protocole de test et de mesure pour vérifier le bon fonctionnement d'un prototype sur [projet], adapté à des élèves de [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une phase de test rigoureuse dans un projet technique</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Propose 3 idées de projets technologiques en lien avec le développement durable, adaptés à des élèves de [niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : connecter la technologie à des enjeux actuels qui motivent les élèves</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Aide-moi à décrire un schéma électrique simple sur [circuit/système], que je pourrai reproduire au tableau ou dans un logiciel de schématique.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer un support visuel technique à recréer facilement</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9</span>
+    <span class="prompt-text">Propose une activité de comparaison entre deux versions d'un même objet technique (ancienne et récente), pour illustrer l'évolution technologique sur [thème].</span>
+    <p class="prompt-usage">À quoi ça sert : travailler la notion d'évolution des objets techniques, présente au programme</p>
+  </div>
+
+  <h3>13.3 Créer des évaluations et corrections</h3>
+  <p class="lede">Pour gagner du temps sur la création et la correction.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Crée une évaluation de fin de séquence sur [chapitre] pour des élèves de [niveau], mêlant questions de connaissances et analyse de schéma/objet technique, avec le barème.</span>
+    <p class="prompt-usage">À quoi ça sert : générer un contrôle complet prêt à relire et ajuster</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Rédige une grille d'évaluation par compétences pour ce projet technologique sur [thème] (analyser, concevoir, réaliser, communiquer), avec les critères de réussite pour chaque compétence.</span>
+    <p class="prompt-usage">À quoi ça sert : évaluer un projet de façon structurée plutôt qu'avec une seule note globale</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Propose une grille d'auto-évaluation simple que les élèves peuvent utiliser pour vérifier leur propre projet avant de le rendre, sur [type de projet].</span>
+    <p class="prompt-usage">À quoi ça sert : responsabiliser les élèves sur la qualité de leur travail avant la remise</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Crée un questionnaire de révision de 10 questions sur [chapitre], avec les réponses et une courte explication pour chacune.</span>
+    <p class="prompt-usage">À quoi ça sert : générer un support de révision rapide avant une évaluation</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Rédige un corrigé type avec barème détaillé pour cette évaluation : [décrire le sujet], en valorisant la démarche même si le résultat final est imparfait.</span>
+    <p class="prompt-usage">À quoi ça sert : harmoniser sa notation et valoriser la démarche technique</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à identifier les erreurs les plus fréquentes probables sur ce type d'évaluation, à partir de cette description : [décrire le sujet et le niveau].</span>
+    <p class="prompt-usage">À quoi ça sert : anticiper les points de blocage collectifs avant de corriger</p>
+  </div>
+
+  <h3>13.4 Différencier pour chaque élève</h3>
+  <p class="lede">Pour adapter un même projet aux élèves en difficulté comme aux plus avancés.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Propose une version simplifiée de ce projet technologique pour un élève en difficulté, en réduisant le nombre d'étapes sans dénaturer l'objectif pédagogique : [décrire le projet].</span>
+    <p class="prompt-usage">À quoi ça sert : différencier un projet sans en réduire l'intérêt pédagogique</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Crée un défi technique supplémentaire pour un élève qui a terminé son projet en avance sur [thème], qui pousse plus loin la réflexion.</span>
+    <p class="prompt-usage">À quoi ça sert : occuper intelligemment les élèves avancés sans leur donner une tâche répétitive</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Rédige une fiche méthode simplifiée en 5 étapes numérotées pour réaliser [tâche technique, ex : un montage électrique simple], avec un schéma décrit précisément.</span>
+    <p class="prompt-usage">À quoi ça sert : donner un support visuel clair aux élèves qui ont besoin de repères</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Propose une adaptation de cette activité pour un groupe d'élèves ayant des difficultés de lecture, en simplifiant les consignes sans changer la difficulté technique : [décrire l'activité].</span>
+    <p class="prompt-usage">À quoi ça sert : adapter une consigne pour un élève en difficulté de compréhension écrite</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Suggère une répartition des rôles pour un projet de groupe sur [thème], adaptée à des profils d'élèves différents (organisateur, manipulateur, communicant).</span>
+    <p class="prompt-usage">À quoi ça sert : organiser un travail de groupe en valorisant différents profils d'élèves</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Propose 3 questions de relance à poser à un groupe qui semble bloqué sur son projet de [thème], sans leur donner directement la solution.</span>
+    <p class="prompt-usage">À quoi ça sert : débloquer un groupe en difficulté sans faire le travail à sa place</p>
+  </div>
+
+  <h3>13.5 Communiquer et évaluer à l'oral</h3>
+  <p class="lede">Pour les soutenances, bulletins et échanges avec les familles.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à préparer une grille d'évaluation de l'oral pour la présentation finale d'un projet technologique sur [thème], avec les critères attendus.</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier les attendus d'une soutenance de projet</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Rédige un message pour les parents expliquant simplement le projet technologique en cours et le matériel éventuellement nécessaire à la maison.</span>
+    <p class="prompt-usage">À quoi ça sert : communiquer avec les familles sur un projet en cours</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Rédige une appréciation de bulletin pour un élève avec le profil suivant en technologie : [décrire le profil], en restant constructif et personnalisé.</span>
+    <p class="prompt-usage">À quoi ça sert : gagner du temps sur la rédaction des bulletins</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Propose une explication simple à donner à un élève qui ne voit pas l'utilité de la technologie au collège par rapport à d'autres matières.</span>
+    <p class="prompt-usage">À quoi ça sert : avoir une réponse pédagogique prête pour une question fréquente</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à relier ce projet technologique sur [thème] à des métiers concrets, pour une classe de 3e en réflexion d'orientation.</span>
+    <p class="prompt-usage">À quoi ça sert : connecter un projet technique à une dimension d'orientation professionnelle</p>
+  </div>
+</section>
+
+</body>
+</html>

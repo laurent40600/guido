@@ -176,7 +176,7 @@ export const guides: Guide[] = [
         featured: true,
       },
     ],
-    crossSell: ["ia-ses", "prompts-images-ia", "prompts-maths", "prompts-francais", "prompts-histgeo"],
+    crossSell: ["ia-ses", "ia-techno", "prompts-images-ia", "prompts-maths", "prompts-francais", "prompts-histgeo"],
   },
   {
     slug: "ia-immobilier",
@@ -315,7 +315,81 @@ export const guides: Guide[] = [
         pdfFile: "guido-ia-ses",
       },
     ],
-    crossSell: ["ia-profs", "pack-prompts-profs-complet", "prompts-images-ia"],
+    crossSell: ["ia-profs", "ia-techno", "pack-prompts-profs-complet", "prompts-images-ia"],
+  },
+  {
+    slug: "ia-techno",
+    title: "L'IA pour les profs de technologie : préparer, concevoir et corriger plus vite",
+    tagline: "Un seul guide, tout intégré : séquences, projets, évaluation, différenciation et 34 prompts prêts à l'emploi",
+    pitch:
+      "Structurer une séquence et un cahier des charges de projet en quelques minutes, concevoir des activités techniques variées (programmation par blocs, modélisation 3D, analyse d'objets), évaluer par compétences en valorisant la démarche autant que le résultat, et différencier tes projets pour une classe hétérogène : ce guide couvre tout le cycle de préparation en technologie, avec une bibliothèque de 34 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Spécifique au programme de technologie au collège, aucune compétence technique en IA requise.",
+    price: "18€",
+    format: "PDF · 37 pages",
+    audience: "Professeurs de technologie (collège), sans compétences techniques particulières en IA, qui veulent gagner du temps sur la préparation, les activités et l'évaluation",
+    category: "IA",
+    cover: "/covers/ia-techno.png",
+    bestseller: false,
+    highlights: [
+      "Structurer une séquence complète et concevoir un cahier des charges de projet bien calibré, en quelques minutes",
+      "Concevoir des activités techniques variées : programmation par blocs, modélisation 3D/CAO, analyse d'objets techniques",
+      "Évaluer par compétences (analyser, concevoir, réaliser, communiquer) en valorisant la démarche autant que le résultat final",
+      "Différencier un même projet pour gérer l'hétérogénéité technique de la classe, sans dénaturer l'objectif pédagogique",
+      "Un plan de mise en place progressif sur 3 semaines, adapté à chaque niveau du collège (6e, 5e-4e, 3e)",
+      "34 prompts prêts à l'emploi intégrés au guide, classés par usage — aucun pack séparé à acheter",
+    ],
+    faq: [
+      {
+        question: "Ce guide contient-il vraiment les prompts, ou faut-il acheter un pack séparé ?",
+        answer:
+          "Les 34 prompts sont intégrés directement dans ce guide (partie 7), au format 2 en 1. Il n'existe pas de pack de prompts technologie vendu séparément — tout est inclus dans cet unique achat.",
+      },
+      {
+        question: "Faut-il des compétences techniques en IA pour l'utiliser ?",
+        answer:
+          "Non. Si tu sais utiliser une boîte mail et un smartphone, tu as tout ce qu'il faut. Les prompts de ce guide sont prêts à copier-coller, à adapter simplement à ton niveau et ton matériel.",
+      },
+      {
+        question: "Ce guide garantit-il la faisabilité et la sécurité des projets proposés par l'IA ?",
+        answer:
+          "Non, et le guide insiste sur ce point à plusieurs reprises : toute proposition technique générée par l'IA doit être vérifiée par toi, sur la faisabilité matérielle et les consignes de sécurité de ton établissement, avant sa mise en œuvre.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Structurer une séquence en 4 séances",
+        text: "Crée une séquence de cours en 4 séances sur [notion, ex : la programmation par blocs / les objets techniques] pour des élèves de [niveau], avec pour chaque séance : l'objectif, le support et les prérequis nécessaires.",
+      },
+      {
+        title: "Cahier des charges simplifié",
+        text: "Crée un cahier des charges simplifié pour un mini-projet technologique sur [thème], adapté à des élèves de [niveau], avec les contraintes essentielles à respecter.",
+      },
+      {
+        title: "Grille d'évaluation par compétences",
+        text: "Rédige une grille d'évaluation par compétences pour ce projet technologique sur [thème] (analyser, concevoir, réaliser, communiquer), avec les critères de réussite pour chaque compétence.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Guide complet",
+        price: "18€",
+        originalPrice: "27€",
+        description: "Le guide entier (7 parties) + la bibliothèque de 34 prompts intégrée",
+        includes: [
+          "Partie 1 — Préparer ses séquences et projets plus vite",
+          "Partie 2 — Concevoir des activités techniques variées",
+          "Partie 3 — Évaluer par compétences et corriger plus vite",
+          "Partie 4 — Différencier et gérer l'hétérogénéité",
+          "Partie 5 — Mettre en place son système",
+          "Partie 6 — Adapter sa pratique selon le niveau",
+          "Partie 7 — Bibliothèque de 34 prompts",
+          "PDF · 37 pages",
+        ],
+        pdfFile: "guido-ia-techno",
+      },
+    ],
+    crossSell: ["ia-profs", "ia-ses", "pack-prompts-profs-complet", "prompts-images-ia"],
   },
   {
     slug: "marketing-contenu",
