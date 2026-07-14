@@ -318,6 +318,80 @@ export const guides: Guide[] = [
     crossSell: ["ia-profs", "pack-prompts-profs-complet", "prompts-images-ia"],
   },
   {
+    slug: "marketing-contenu",
+    title: "L'IA pour créer du contenu qui marche : stratégie et posts réseaux sociaux",
+    tagline: "Un seul guide, tout intégré : stratégie, posts, calendrier et 43 prompts prêts à l'emploi",
+    pitch:
+      "Définir une stratégie de contenu claire, créer des posts qui captent l'attention sur chaque plateforme, construire un calendrier éditorial tenable, écrire des textes qui convertissent sans sonner robotiques, et analyser tes résultats pour ajuster dans la durée : ce guide couvre tout le cycle de création de contenu, avec une bibliothèque de 43 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Aucune compétence technique requise.",
+    price: "18€",
+    format: "PDF · 39 pages",
+    audience: "Entrepreneurs, freelances et créateurs de contenu, sans compétences techniques, qui veulent une vraie stratégie plutôt que poster au hasard",
+    category: "IA",
+    cover: "/covers/marketing-contenu.png",
+    bestseller: false,
+    highlights: [
+      "Définir son audience précisément et construire 3 à 5 piliers de contenu cohérents, plutôt que de publier sans fil conducteur",
+      "Créer des posts qui captent l'attention : structure, accroche, formats à fort engagement (carrousel, vidéo courte, storytelling)",
+      "Construire un calendrier éditorial tenable avec le batch content et le repurposing, sans épuisement créatif",
+      "Écrire pour convaincre sans sonner robotique : bénéfices plutôt que caractéristiques, retouche systématique du texte généré par IA",
+      "Analyser les bons indicateurs selon ton objectif (notoriété, engagement, conversion) et ajuster ta stratégie avec un bilan mensuel",
+      "43 prompts prêts à l'emploi intégrés au guide, classés par usage — aucun pack séparé à acheter",
+    ],
+    faq: [
+      {
+        question: "Ce guide contient-il vraiment les prompts, ou faut-il acheter un pack séparé ?",
+        answer:
+          "Les 43 prompts sont intégrés directement dans ce guide (partie 8), au format 2 en 1. Il n'existe pas de pack de prompts séparé — tout est inclus dans cet unique achat.",
+      },
+      {
+        question: "Faut-il des compétences techniques ou de design pour l'utiliser ?",
+        answer:
+          "Non. Si tu sais utiliser une IA comme ChatGPT ou Claude et une application de réseau social, tu as tout ce qu'il faut. Le guide reste volontairement centré sur la méthode plutôt que sur des outils spécifiques à maîtriser.",
+      },
+      {
+        question: "L'IA peut-elle remplacer entièrement ma création de contenu ?",
+        answer:
+          "Non, et ce n'est pas souhaitable. L'IA excelle pour structurer, accélérer et varier le contenu, mais le contenu qui fonctionne le mieux dans la durée garde une vraie voix personnelle. Le guide insiste sur la retouche systématique de tout texte généré avant publication.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Définir ses piliers de contenu",
+        text: "Je propose [décrire ton activité/produit] à [décrire ton audience cible]. Aide-moi à définir 4 piliers de contenu cohérents avec mon activité et utiles pour mon audience.",
+      },
+      {
+        title: "Rédiger des accroches percutantes",
+        text: "Rédige 5 accroches différentes pour un post sur [sujet du post], destinées à arrêter le défilement sur [plateforme].",
+      },
+      {
+        title: "Humaniser un texte généré par IA",
+        text: "Voici un post que je trouve trop \"robotique\" ou générique : [coller le post]. Réécris-le avec plus de personnalité et de ton naturel.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Guide complet",
+        price: "18€",
+        originalPrice: "27€",
+        description: "Le guide entier (7 parties) + la bibliothèque de 43 prompts intégrée",
+        includes: [
+          "Partie 1 — Définir sa stratégie de contenu",
+          "Partie 2 — Créer des posts qui captent l'attention",
+          "Partie 3 — Construire un calendrier éditorial tenable",
+          "Partie 4 — Copywriting et appels à l'action",
+          "Partie 5 — Analyser ses résultats et ajuster",
+          "Partie 6 — Adapter sa stratégie selon son activité, gérer sa communauté",
+          "Partie 7 — Bibliothèque de 43 prompts, classés par usage",
+          "PDF · 39 pages",
+        ],
+        pdfFile: "guido-marketing-contenu",
+      },
+    ],
+    crossSell: ["prompts-images-ia"],
+  },
+  {
     slug: "ia-eleves",
     title: "L'IA pour réussir ses cours : comprendre, s'entraîner et réviser efficacement",
     tagline: "Progresser avec l'IA, sans jamais se faire aider à sa place",

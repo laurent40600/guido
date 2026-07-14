@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>L'IA pour créer du contenu qui marche</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 235mm; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 25pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 8pt; font-size: 11.5pt; }
+  .toc li span { font-style: italic; font-size: 10.5pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-example { background: #f1efec; border-left: 5px solid #8a8478; }
+  .box-example .box-title { color: #5c574c; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>L'IA pour créer du contenu qui marche</h1>
+  <p class="tagline">Stratégie de contenu et posts réseaux sociaux</p>
+  <p class="meta">Un guide complet + une bibliothèque de 43 prompts intégrée,<br/>guidé par IA — aucune compétence technique requise</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction<span>Le vrai problème derrière "je ne sais pas quoi poster"</span></li>
+    <li>Partie 1 — Définir sa stratégie de contenu<span>Audience précise, piliers de contenu, choix des plateformes</span></li>
+    <li>Partie 2 — Créer des posts qui captent l'attention<span>Structure d'un bon post, accroche, formats à fort engagement</span></li>
+    <li>Partie 3 — Construire un calendrier éditorial tenable<span>Régularité, batch content, repurposing</span></li>
+    <li>Partie 4 — Copywriting et appels à l'action<span>Bénéfices plutôt que caractéristiques, éviter le ton robotique</span></li>
+    <li>Partie 5 — Analyser ses résultats et ajuster<span>Bons indicateurs, bilan mensuel, tester plutôt que deviner</span></li>
+    <li>Partie 6 — Adapter sa stratégie selon son activité<span>E-commerce, service, personal branding, commerce local</span></li>
+    <li>Partie 7 — Gérer sa communauté et ses commentaires<span>Répondre stratégiquement, gérer les critiques, construire une communauté</span></li>
+    <li>Questions fréquentes</li>
+    <li>Outils recommandés<span>Planification, design visuel, analyse de performance</span></li>
+    <li>Annexe — Glossaire des formats par plateforme<span>Instagram, LinkedIn, TikTok, Facebook</span></li>
+    <li>Conclusion</li>
+    <li>Partie 8 — Bibliothèque de prompts<span>43 prompts prêts à l'emploi, classés par usage</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction</h2>
+  <h3>Le vrai problème derrière "je ne sais pas quoi poster"</h3>
+  <p>La plupart des entrepreneurs, freelances et créateurs ne manquent pas d'idées : ils manquent de structure. Sans stratégie claire, chaque session de création de contenu recommence de zéro, ce qui explique la sensation d'épuisement créatif que beaucoup ressentent après quelques semaines de publication irrégulière.</p>
+  <p>Ce guide n'est pas un cours théorique de marketing digital : c'est un mode d'emploi pratique pour construire une vraie stratégie de contenu, créer des posts qui captent l'attention, et utiliser l'IA pour gagner un temps précieux à chaque étape.</p>
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>À la fin de ce guide, tu sauras définir une stratégie de contenu claire, créer des posts adaptés à chaque plateforme, construire un calendrier éditorial tenable, rédiger des textes qui convertissent sans sonner robotiques, et analyser tes résultats pour ajuster ta stratégie dans la durée.</p>
+  <h3>Ce dont tu as besoin pour commencer</h3>
+  <p>Aucune compétence technique n'est nécessaire : si tu sais utiliser une IA comme ChatGPT ou Claude et une application de réseau social, tu as tout ce qu'il faut. Ce guide s'adresse aussi bien à un entrepreneur solo qu'à une petite équipe qui gère sa communication en interne.</p>
+  <div class="box box-tip">
+    <span class="box-title">Une précision importante</span>
+    <p>L'IA t'aide à structurer, accélérer et varier ton contenu, mais elle ne remplace pas ta voix ni ton expertise réelle.</p>
+    <p>Le contenu qui fonctionne le mieux dans la durée reste celui qui garde une vraie personnalité, pas un texte générique interchangeable avec celui d'un concurrent.</p>
+    <p>Utilise l'IA pour gagner du temps sur la structure, pas pour déléguer entièrement ta communication.</p>
+  </div>
+  <p>On commence par le fondement de tout contenu efficace : la stratégie derrière.</p>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Définir sa stratégie de contenu</h2>
+  <h3>Pourquoi la stratégie précède le contenu</h3>
+  <p>Publier sans stratégie revient à parler sans savoir à qui on s'adresse ni pourquoi. Une stratégie de contenu claire répond à trois questions simples : à qui je m'adresse, quels sujets je couvre régulièrement, et quel résultat concret j'attends de cette présence en ligne.</p>
+  <p>Sans ces repères, chaque post devient une décision isolée et épuisante à prendre, ce qui explique pourquoi tant de comptes commencent avec enthousiasme puis s'essoufflent après quelques semaines.</p>
+  <h3>Définir son audience précisément</h3>
+  <p>"Tout le monde" n'est jamais une audience valable. Plus la description de ton client ou lecteur idéal est précise (son métier, ses problèmes concrets, ses questions fréquentes, ce qui le fait hésiter avant d'acheter), plus il devient facile de créer du contenu qui lui parle vraiment, plutôt que du contenu générique qui ne parle à personne en particulier.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Audience précise vs audience vague</span>
+    <p>"Les femmes de 25 à 45 ans" est trop vague. "Les jeunes mamans qui reprennent le travail après un congé parental et culpabilisent de manquer de temps pour elles" permet de créer un contenu qui résonne immédiatement, parce qu'il nomme un vécu précis.</p>
+  </div>
+  <h3>Construire ses piliers de contenu</h3>
+  <p>Un pilier de contenu est une grande thématique récurrente autour de laquelle organiser ses publications. Avoir 3 à 5 piliers clairement identifiés évite à la fois la dispersion (parler de tout et n'importe quoi) et la monotonie (parler toujours exactement de la même chose).</p>
+  <p>Des piliers classiques et efficaces incluent : l'expertise (montrer son savoir-faire), les coulisses (montrer l'humain derrière l'activité), la preuve sociale (témoignages, résultats clients), et l'engagement communautaire (questions, sondages, contenu qui invite à la conversation).</p>
+  <h4>Exercice pratique : cartographier ses piliers</h4>
+  <p>Liste tes 3 à 5 piliers de contenu, puis pour chacun, note 5 idées de sujets précis que tu pourrais traiter dans les prochains mois. Cet exercice, fait une seule fois sérieusement, te donne une réserve de contenu pour plusieurs semaines, bien plus efficace que de chercher une idée à chaque fois que tu veux publier.</p>
+  <h3>Choisir ses plateformes avec discernement</h3>
+  <p>Être présent sur toutes les plateformes en même temps dilue l'énergie et la qualité. Mieux vaut être vraiment bon sur une ou deux plateformes qui correspondent à ton audience et ton format de prédilection, plutôt que médiocre partout à la fois.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une stratégie claire précède toujours la création de contenu efficace.</p>
+    <p>Une audience précise permet un contenu qui résonne, contrairement à une audience vague.</p>
+    <p>3 à 5 piliers de contenu structurent la création sans enfermer dans la répétition.</p>
+    <p>Mieux vaut exceller sur peu de plateformes que d'être médiocre sur toutes à la fois.</p>
+  </div>
+  <h3>Étude de cas : le repositionnement de Camille</h3>
+  <p>Camille, coach en nutrition, publiait sans direction claire : parfois des recettes, parfois des citations motivantes, parfois des promotions de ses services, sans fil conducteur reconnaissable. Son audience restait stagnante malgré une régularité de publication correcte.</p>
+  <p>En définissant précisément son audience (les femmes actives de 35-50 ans en reprise de contrôle de leur alimentation après une période de stress intense) et 4 piliers clairs (éducation nutritionnelle, témoignages clients, coulisses de son activité, réponses aux questions fréquentes), Camille a pu structurer un contenu bien plus cohérent et reconnaissable.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le problème de Camille n'était pas un manque de régularité ni de qualité de contenu individuel, mais l'absence totale de fil conducteur reconnaissable, qui empêchait son audience de savoir à quoi s'attendre et de s'attacher à son compte dans la durée.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Créer des posts qui captent l'attention</h2>
+  <h3>La structure d'un bon post</h3>
+  <p>Un post efficace suit généralement une structure simple : une accroche qui arrête le défilement dans les 2-3 premières secondes, un développement qui tient la promesse de l'accroche, et une conclusion qui invite à une action précise (commenter, partager, cliquer, acheter).</p>
+  <p>Négliger l'accroche est l'erreur la plus fréquente : même un contenu excellent ne sera jamais lu si les premiers mots ne donnent pas envie de continuer la lecture.</p>
+  <h3>L'art de l'accroche</h3>
+  <p>Une bonne accroche crée une tension : une question inattendue, une affirmation qui bouscule une idée reçue, un chiffre surprenant, ou le début d'une histoire dont on veut connaître la suite. L'accroche ne doit jamais être une simple annonce plate du sujet ("aujourd'hui je vais vous parler de..."), qui ne donne aucune raison de continuer à lire.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Accroche plate vs accroche efficace</span>
+    <p>Plate : "Voici 5 conseils pour mieux gérer son temps." Efficace : "J'ai perdu 10 heures par semaine pendant 2 ans à cause d'une seule mauvaise habitude."</p>
+  </div>
+  <h3>Adapter le format à chaque plateforme</h3>
+  <p>Chaque plateforme a ses propres codes. LinkedIn valorise les retours d'expérience professionnels et un ton plus posé. Instagram privilégie le visuel et un ton plus personnel. TikTok récompense l'authenticité brute et le rythme rapide. Copier-coller un même contenu sans adaptation entre ces plateformes réduit fortement son efficacité.</p>
+  <h3>Les formats à fort engagement</h3>
+  <p>Le carrousel (plusieurs images/slides dans un même post) génère souvent un engagement supérieur car il incite au balayage actif plutôt qu'au simple défilement passif. La vidéo courte capte l'attention par le mouvement et le son. Le post texte pur, bien structuré avec des sauts de ligne aérés, reste redoutablement efficace sur LinkedIn en particulier.</p>
+  <h3>Utiliser le storytelling</h3>
+  <p>Une anecdote personnelle ou un cas client raconté sous forme d'histoire (contexte, difficulté, résolution) capte généralement mieux l'attention qu'une information présentée de façon purement factuelle, parce que le cerveau humain reste naturellement attiré par le récit.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>L'accroche des 2-3 premières secondes conditionne la lecture du reste du post.</p>
+    <p>Une bonne accroche crée une tension, elle n'annonce pas platement le sujet.</p>
+    <p>Chaque plateforme a ses propres codes : un même contenu doit être adapté, pas simplement dupliqué.</p>
+    <p>Le storytelling capte généralement mieux l'attention qu'une information purement factuelle.</p>
+  </div>
+  <h3>Étude de cas : le pivot de contenu de Thibault</h3>
+  <p>Thibault, artisan menuisier, publiait uniquement des photos de ses réalisations terminées avec une légende descriptive plate ("Nouvelle table réalisée pour un client"). Malgré un travail de qualité visible sur les photos, l'engagement restait faible.</p>
+  <p>En intégrant le storytelling (raconter le défi technique du projet, les échanges avec le client, les hésitations sur le choix du bois) plutôt que de simplement montrer le résultat final, Thibault a considérablement augmenté les commentaires et partages, ses abonnés s'attachant désormais autant au processus qu'au résultat.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le produit fini de Thibault n'avait pas changé de qualité : c'est la façon de le présenter, en racontant une histoire plutôt qu'en constatant un résultat, qui a transformé l'engagement de son audience.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Construire un calendrier éditorial tenable</h2>
+  <h3>Pourquoi la régularité compte plus que la fréquence</h3>
+  <p>Publier 3 fois par semaine de façon constante pendant 6 mois donne de meilleurs résultats que de publier tous les jours pendant 2 semaines puis d'abandonner par épuisement. La plupart des algorithmes de plateformes favorisent aussi la régularité, qui signale un compte actif et fiable.</p>
+  <p>Choisir une fréquence réaliste par rapport à son temps disponible, quitte à ce qu'elle soit modeste, vaut mieux qu'un objectif ambitieux qui s'effondre après quelques semaines.</p>
+  <h3>Le batch content : créer en une fois</h3>
+  <p>Plutôt que de créer un post par jour dans l'urgence, réserver un créneau dédié (par exemple 2-3 heures par semaine) pour créer plusieurs contenus d'un coup réduit drastiquement la charge mentale quotidienne et améliore généralement la qualité, car la création n'est plus polluée par l'urgence du moment.</p>
+  <h3>Réutiliser un même contenu sous plusieurs formats</h3>
+  <p>Un même sujet de fond peut alimenter plusieurs formats : un article de blog peut devenir un post carrousel, plusieurs posts texte courts, une vidéo courte, et une newsletter. Cette pratique, appelée repurposing, multiplie la portée d'un même travail de réflexion sans repartir de zéro à chaque fois.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Un contenu, plusieurs formats</span>
+    <p>Un article de blog sur "5 erreurs à éviter en négociation" peut devenir : un carrousel Instagram avec une erreur par slide, 5 posts LinkedIn séparés (un par erreur, sur plusieurs semaines), et un script de vidéo courte résumant les 3 erreurs les plus fréquentes.</p>
+  </div>
+  <h3>Anticiper les périodes clés</h3>
+  <p>Planifier son contenu autour d'événements prévisibles (rentrée, fêtes de fin d'année, soldes, événements sectoriels) permet d'aligner sa communication sur des moments où l'audience est naturellement plus réceptive à certains messages.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La régularité compte plus que la fréquence brute pour la performance à long terme.</p>
+    <p>Le batch content réduit la charge mentale et améliore souvent la qualité du contenu produit.</p>
+    <p>Réutiliser un même contenu sous plusieurs formats multiplie sa portée sans repartir de zéro.</p>
+    <p>Planifier autour des périodes clés aligne la communication sur les moments les plus réceptifs.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Copywriting et appels à l'action</h2>
+  <h3>Écrire pour convaincre sans sonner faux</h3>
+  <p>Le copywriting (l'art d'écrire pour convaincre) a mauvaise réputation quand il devient artificiellement pressant ou manipulateur. Un bon copywriting reste honnête : il met en avant un bénéfice réel, sans exagération mensongère ni fausse urgence.</p>
+  <h3>Parler bénéfices plutôt que caractéristiques</h3>
+  <p>Une caractéristique décrit un produit ("ce sac a 5 compartiments"). Un bénéfice décrit ce que ça change concrètement pour la personne ("tu retrouves toujours tes affaires en 2 secondes, même en courant pour attraper ton train"). Le bénéfice parle davantage à l'audience que la caractéristique brute, qui reste abstraite tant qu'elle n'est pas traduite en impact concret.</p>
+  <h3>Structurer un appel à l'action efficace</h3>
+  <p>Un bon appel à l'action est clair, unique (un seul appel à la fois, pas trois en même temps) et proportionné à la relation déjà construite avec l'audience. Demander un achat immédiat à quelqu'un qui découvre ton compte pour la première fois est généralement moins efficace que de proposer d'abord une action à faible engagement (s'abonner, télécharger une ressource gratuite).</p>
+  <h3>Éviter le ton robotique</h3>
+  <p>Un texte généré par IA sans retouche peut facilement sonner générique, avec des tournures trop lisses ou des formulations qu'on retrouve identiques sur des centaines d'autres comptes. Retravailler systématiquement le texte généré avec ton vocabulaire personnel, tes expressions habituelles et des détails propres à ton expérience réelle évite cet écueil.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Avant/après retouche personnelle</span>
+    <p>Générique : "Découvrez notre solution innovante qui va révolutionner votre quotidien." Personnalisé : "J'ai testé ça pendant 3 mois avant de le proposer à mes clients, et honnêtement, ça a changé ma façon de gérer mes matinées."</p>
+  </div>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un bon copywriting reste honnête, sans fausse urgence ni exagération mensongère.</p>
+    <p>Parler bénéfices plutôt que caractéristiques rend le message plus parlant pour l'audience.</p>
+    <p>Un appel à l'action doit être clair, unique et proportionné à la relation déjà construite.</p>
+    <p>Retravailler un texte généré par IA avec sa propre voix évite le ton robotique et générique.</p>
+  </div>
+  <h3>Étude de cas : la refonte des posts de Nadia</h3>
+  <p>Nadia, consultante en organisation, utilisait l'IA pour générer directement ses posts sans les retoucher, ce qui donnait un contenu correct mais impersonnel, difficile à distinguer de celui de dizaines d'autres consultants utilisant la même approche.</p>
+  <p>En prenant l'habitude de systématiquement réinjecter des détails de sa propre expérience (une anecdote client précise, une expression qu'elle utilise habituellement à l'oral, une opinion tranchée qui lui est propre) dans chaque texte généré par l'IA, Nadia a retrouvé une voix reconnaissable, tout en gardant le gain de temps de la génération initiale.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le problème de Nadia n'était pas l'utilisation de l'IA en elle-même, mais l'absence de retouche personnelle après génération. Le gain de temps de l'IA reste réel même en ajoutant cette étape de personnalisation, qui prend quelques minutes mais change complètement l'impact du contenu.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Partie 5 — Analyser ses résultats et ajuster</h2>
+  <h3>Suivre les bons indicateurs</h3>
+  <p>Le nombre de likes est souvent trompeur : c'est ce qu'on appelle une métrique de vanité, qui donne une impression de succès sans nécessairement refléter un impact réel sur l'activité. Selon l'objectif poursuivi (notoriété, engagement, conversion en clients), les indicateurs pertinents à suivre changent.</p>
+  <p>Pour la notoriété, la portée et les nouveaux abonnés comptent davantage. Pour l'engagement, les commentaires et partages sont plus révélateurs que les likes. Pour la conversion, le taux de clic vers le site ou le nombre de messages reçus après une publication sont les vrais indicateurs à suivre.</p>
+  <h3>Faire un bilan régulier</h3>
+  <p>Un point mensuel simple (qu'est-ce qui a bien fonctionné, qu'est-ce qui n'a pas marché, quelles hypothèses expliquent ces résultats) permet d'ajuster progressivement sa stratégie plutôt que de continuer indéfiniment sans jamais remettre en question ce qui ne fonctionne pas.</p>
+  <h3>Tester plutôt que deviner</h3>
+  <p>Plutôt que de changer toute sa stratégie sur une intuition, tester un élément à la fois (un nouveau type d'accroche, un nouveau format, un nouveau jour de publication) permet d'identifier plus précisément ce qui fait vraiment une différence, plutôt que de changer plusieurs variables en même temps sans pouvoir isoler la cause d'une amélioration ou d'une baisse.</p>
+  <h3>Erreurs à éviter</h3>
+  <p>Deux erreurs reviennent souvent : abandonner une stratégie après seulement quelques posts sans lui laisser le temps de produire des résultats, et à l'inverse, s'accrocher indéfiniment à une stratégie qui ne fonctionne clairement pas par simple habitude ou peur du changement.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Les likes sont souvent une métrique de vanité qui ne reflète pas l'impact réel selon l'objectif poursuivi.</p>
+    <p>Un bilan mensuel régulier permet d'ajuster progressivement sa stratégie.</p>
+    <p>Tester un élément à la fois permet d'isoler ce qui fait vraiment une différence.</p>
+    <p>Ni l'abandon précipité ni l'entêtement aveugle ne sont de bonnes stratégies face à des résultats décevants.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Partie 6 — Adapter sa stratégie selon son activité</h2>
+  <p class="lede">Les principes de ce guide s'appliquent largement, mais certains ajustements sont utiles selon le type d'activité.</p>
+  <h3>E-commerce et vente de produits</h3>
+  <p>Le contenu produit (mise en situation, avant/après, unboxing) fonctionne particulièrement bien, associé à de la preuve sociale (avis clients, contenu généré par les utilisateurs). Le calendrier éditorial gagne à intégrer les temps forts commerciaux (soldes, lancements, fêtes) de façon anticipée plutôt qu'improvisée.</p>
+  <h3>Activité de service (coaching, conseil, artisanat)</h3>
+  <p>Le contenu éducatif et la démonstration d'expertise priment généralement sur la promotion directe. Montrer sa méthode de travail, partager des cas clients anonymisés, et répondre publiquement aux questions fréquentes construit une crédibilité qui facilite ensuite la conversion, plus efficacement qu'une promotion directe répétée.</p>
+  <h3>Personal branding et création de contenu pur</h3>
+  <p>Pour une activité centrée sur la personne elle-même (créateur de contenu, expert reconnu), l'authenticité et la régularité de la voix personnelle comptent davantage que la perfection formelle de chaque post. L'audience s'attache à une personnalité reconnaissable, pas seulement à une expertise abstraite.</p>
+  <h3>Commerce local et point de vente physique</h3>
+  <p>Le contenu doit fortement ancrer la dimension locale et humaine : visages de l'équipe, ambiance du lieu, événements locaux, plutôt qu'un contenu qui pourrait provenir de n'importe quel commerce similaire ailleurs dans le pays.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>L'e-commerce profite particulièrement du contenu produit et de la preuve sociale.</p>
+    <p>Les activités de service gagnent à privilégier le contenu éducatif à la promotion directe répétée.</p>
+    <p>Le personal branding repose sur une authenticité reconnaissable plus que sur une perfection formelle.</p>
+    <p>Le commerce local doit ancrer fortement sa dimension humaine et géographique.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>8. Partie 7 — Gérer sa communauté et ses commentaires</h2>
+  <h3>Répondre aux commentaires stratégiquement</h3>
+  <p>Répondre systématiquement aux commentaires, même simplement, signale à l'algorithme un compte actif et engageant, en plus de construire une vraie relation avec son audience. Les premières heures après une publication sont particulièrement importantes pour ce type d'interaction rapide.</p>
+  <h3>Gérer les commentaires négatifs</h3>
+  <p>Un commentaire négatif ou une critique publique peut être source de stress, mais il représente aussi une opportunité de démontrer son professionnalisme face à une audience qui observe la réponse. Répondre calmement, sans se justifier excessivement ni ignorer complètement la critique, est généralement la meilleure approche.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Une réponse posée à une critique</span>
+    <p>Face à un commentaire critique sur un délai de livraison, plutôt que d'ignorer ou de se justifier longuement publiquement, une réponse du type "Je comprends votre frustration, je vous envoie un message privé pour régler ça rapidement" montre à la fois de l'écoute et du professionnalisme, sans exposer les détails du litige publiquement.</p>
+  </div>
+  <h3>Construire une vraie communauté, pas juste une audience</h3>
+  <p>Une audience regarde passivement ; une communauté interagit et se sent impliquée. Poser des questions, répondre aux messages privés, mettre en avant du contenu créé par sa communauté (avec son accord) transforme progressivement des simples abonnés en communauté engagée, plus fidèle et plus encline à recommander l'activité à d'autres.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Répondre aux commentaires rapidement renforce à la fois la relation avec l'audience et la performance algorithmique.</p>
+    <p>Une critique publique gérée calmement peut renforcer la crédibilité plutôt que la nuire.</p>
+    <p>Transformer une audience passive en communauté active demande une interaction réelle et régulière.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>9. Questions fréquentes</h2>
+  <h4>Est-ce que l'IA peut totalement remplacer la création de contenu ?</h4>
+  <p>Non, et ce n'est pas souhaitable. L'IA excelle pour structurer, accélérer et varier le contenu, mais le contenu qui fonctionne le mieux dans la durée garde une vraie voix personnelle et une expertise réelle, difficiles à simuler entièrement. Utilise l'IA comme un accélérateur, pas comme un substitut complet à ta réflexion.</p>
+  <h4>Combien de temps faut-il pour voir des résultats sur les réseaux sociaux ?</h4>
+  <p>Il n'y a pas de délai universel, mais compte généralement plusieurs mois de publication régulière avant de voir une vraie traction, sauf cas exceptionnel de contenu viral. La patience et la régularité comptent davantage que l'intensité ponctuelle.</p>
+  <h4>Faut-il être présent sur toutes les plateformes ?</h4>
+  <p>Non, c'est même contre-productif dans la plupart des cas pour un entrepreneur ou une petite structure avec des ressources limitées. Mieux vaut exceller sur une ou deux plateformes qui correspondent réellement à son audience et à son format préféré.</p>
+  <h4>Comment savoir si mon contenu est trop générique ?</h4>
+  <p>Un bon test consiste à te demander si un concurrent pourrait publier exactement le même post sans que ça choque personne. Si oui, ton contenu manque probablement de personnalité ou d'expertise spécifique qui te différencie vraiment.</p>
+  <h4>Que faire si je manque d'inspiration malgré ce guide ?</h4>
+  <p>Reviens à tes piliers de contenu et à l'exercice de cartographie de la Partie 1 : la panne d'inspiration vient souvent d'un manque de structure de base plutôt que d'un manque réel d'idées. Les prompts de ce guide sont aussi conçus pour débloquer ces moments de vide créatif.</p>
+  <h4>Dois-je répondre à tous les commentaires, même les plus anodins ?</h4>
+  <p>Dans l'idéal oui, au moins dans les premières heures suivant une publication, car cela favorise l'engagement algorithmique en plus de la relation avec l'audience. Si le volume devient trop important, priorise les commentaires qui posent une vraie question ou expriment un désaccord, qui méritent une réponse plus que les simples emojis ou "top !".</p>
+  <h4>Est-ce grave de ne pas suivre exactement mon calendrier éditorial une semaine donnée ?</h4>
+  <p>Non, un calendrier éditorial est un outil de structuration, pas une obligation rigide. L'essentiel est la tendance générale de régularité sur plusieurs semaines, pas la stricte exécution de chaque case du calendrier sans aucune flexibilité.</p>
+</section>
+
+<section class="chapter">
+  <h2>10. Outils recommandés</h2>
+  <p class="lede">Ce guide reste volontairement centré sur la méthode plutôt que sur des outils spécifiques, qui évoluent rapidement. Voici néanmoins quelques catégories d'outils utiles à connaître.</p>
+  <h3>Pour la planification et la publication</h3>
+  <p>Des outils de planification permettent de programmer ses publications à l'avance sur plusieurs plateformes simultanément, ce qui facilite grandement la pratique du batch content vue en Partie 3.</p>
+  <h3>Pour le design visuel</h3>
+  <p>Des outils de création graphique accessibles sans compétence en design permettent de créer des visuels cohérents avec son identité de marque, y compris pour des formats spécifiques comme les carrousels ou les stories.</p>
+  <h3>Pour l'analyse de performance</h3>
+  <p>Au-delà des statistiques natives de chaque plateforme, certains outils tiers permettent de centraliser l'analyse de plusieurs comptes et plateformes en un seul tableau de bord, facilitant le bilan mensuel évoqué en Partie 5.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Privilégie toujours la méthode et la stratégie avant l'outil : un bon outil ne compense jamais une stratégie floue.</p>
+    <p>Teste les versions gratuites des outils avant d'investir dans une version payante.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>11. Annexe — Glossaire des formats par plateforme</h2>
+  <p class="lede">Cette annexe résume les formats principaux à connaître selon les plateformes, à consulter comme référence rapide.</p>
+  <dl class="lexique">
+    <dt>Instagram</dt>
+    <dd>Post simple (image ou carrousel dans le fil), Story (contenu éphémère 24h, plus informel), Reel (vidéo courte verticale, format le plus poussé par l'algorithme actuellement).</dd>
+    <dt>LinkedIn</dt>
+    <dd>Post texte (souvent le format le plus performant sur cette plateforme), document/carrousel PDF, vidéo native, article long format pour un contenu plus approfondi.</dd>
+    <dt>TikTok</dt>
+    <dd>Vidéo courte verticale, format le plus authentique et brut des plateformes, où l'algorithme favorise fortement la rétention (le temps de visionnage complet) plus que le nombre d'abonnés du compte.</dd>
+    <dt>Facebook</dt>
+    <dd>Post texte/image classique, groupe (utile pour construire une communauté engagée plutôt qu'une simple audience passive), événement (utile pour la promotion d'un lancement ou d'un rendez-vous précis).</dd>
+  </dl>
+  <div class="box box-tip">
+    <span class="box-title">Comment utiliser cette annexe</span>
+    <p>Les codes de chaque plateforme évoluent régulièrement : considère cette annexe comme une base, pas une vérité figée.</p>
+    <p>Privilégie les formats qui correspondent à ton aisance naturelle plutôt que de forcer un format qui ne te convient pas.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>12. Conclusion</h2>
+  <p>Une stratégie de contenu efficace n'est pas affaire de trouver "la formule magique" une fois pour toutes, mais de mettre en place un système tenable qu'on ajuste progressivement à partir de résultats réels. L'IA est un formidable accélérateur dans ce processus, à condition de garder la main sur la direction stratégique et la personnalité de ta communication.</p>
+  <p>Reviens vers ce guide et sa bibliothèque de prompts chaque fois que tu as besoin de structurer une nouvelle campagne, de sortir d'une panne d'inspiration, ou simplement de faire un point sur ta stratégie.</p>
+</section>
+
+<section class="chapter">
+  <h2>13. Partie 8 — Bibliothèque de prompts</h2>
+  <p class="lede">Chaque prompt contient des crochets [comme ceci] : remplace-les par tes propres éléments avant de coller le prompt dans ChatGPT ou Claude.</p>
+  <div class="box box-warning">
+    <span class="box-title">Rappel important</span>
+    <p>Ces prompts génèrent une base de travail : retouche toujours le résultat avec ta propre voix avant de publier.</p>
+    <p>Plus tu donnes de contexte précis dans les crochets, plus le résultat sera directement exploitable.</p>
+  </div>
+
+  <h3>13.1 Définir sa stratégie</h3>
+  <p class="lede">Pour poser les bases avant de créer le moindre post.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Je propose [décrire ton activité/produit] à [décrire ton audience cible]. Aide-moi à définir 4 piliers de contenu cohérents avec mon activité et utiles pour mon audience.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer sa stratégie autour de piliers clairs plutôt que de poster au hasard</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à définir le persona de mon client idéal pour [activité], avec ses problèmes principaux, ses questions fréquentes et ce qui le convaincrait d'acheter.</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier précisément à qui l'on s'adresse avant de créer du contenu</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Voici mes 4 piliers de contenu : [lister tes piliers]. Propose-moi une répartition idéale entre eux sur un mois (combien de posts par pilier).</span>
+    <p class="prompt-usage">À quoi ça sert : équilibrer sa ligne éditoriale entre différents types de contenu</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Quelle plateforme (Instagram, LinkedIn, TikTok, Facebook) est la plus adaptée pour toucher [décrire ton audience cible] avec [décrire ton activité] ?</span>
+    <p class="prompt-usage">À quoi ça sert : prioriser ses efforts sur la bonne plateforme plutôt que de se disperser partout</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à définir 3 objectifs concrets et mesurables pour ma présence sur les réseaux sociaux ce trimestre, à partir de ma situation actuelle : [décrire ta situation].</span>
+    <p class="prompt-usage">À quoi ça sert : fixer des objectifs clairs plutôt que de publier sans direction précise</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Analyse ces 5 concurrents ou comptes inspirants dans mon secteur et identifie ce qui fonctionne bien dans leur contenu : [lister les comptes/décrire leur contenu].</span>
+    <p class="prompt-usage">À quoi ça sert : s'inspirer intelligemment de ce qui marche déjà sans copier à l'identique</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Aide-moi à identifier ce qui différencie vraiment mon activité de [décrire ton activité] de mes concurrents directs, pour construire un positionnement de contenu unique.</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier son positionnement différenciant avant de créer du contenu</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Propose-moi une accroche de bio/présentation qui résume mon positionnement en une phrase, à partir de : [décrire ton activité et ta différence].</span>
+    <p class="prompt-usage">À quoi ça sert : synthétiser son positionnement en une phrase mémorable</p>
+  </div>
+
+  <h3>13.2 Créer des posts qui captent l'attention</h3>
+  <p class="lede">Pour rédiger des posts adaptés à chaque plateforme.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Rédige 5 accroches différentes pour un post sur [sujet du post], destinées à arrêter le défilement sur [plateforme].</span>
+    <p class="prompt-usage">À quoi ça sert : générer plusieurs options d'accroche pour choisir la plus percutante</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Transforme cette idée brute en post complet pour [plateforme] : [décrire l'idée], avec une accroche, un développement et un appel à l'action.</span>
+    <p class="prompt-usage">À quoi ça sert : passer d'une idée informe à un post structuré et prêt à publier</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Rédige un post au format storytelling qui raconte [événement/anecdote lié à ton activité], pour capter l'attention avant d'arriver au message principal.</span>
+    <p class="prompt-usage">À quoi ça sert : utiliser la narration pour rendre un post plus engageant qu'une simple annonce</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Adapte ce post initialement pensé pour Instagram au format LinkedIn, en gardant le message mais en ajustant le ton et la structure : [coller le post].</span>
+    <p class="prompt-usage">À quoi ça sert : adapter un même contenu à différents codes de plateforme</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Rédige le script d'une vidéo courte (Reels/TikTok) de 30 secondes sur [sujet], avec les 3 premières secondes pensées pour capter l'attention immédiatement.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un script vidéo court avec un vrai enjeu d'accroche immédiate</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Propose-moi 5 idées de posts de type carrousel sur le thème de [thème], avec le titre de chaque slide.</span>
+    <p class="prompt-usage">À quoi ça sert : générer une trame de carrousel, format à fort engagement sur plusieurs plateformes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Rédige une légende de post qui pose une question à la fin pour encourager les commentaires, sur le sujet de [sujet].</span>
+    <p class="prompt-usage">À quoi ça sert : augmenter l'engagement en invitant explicitement à la conversation</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Voici un post qui n'a pas bien fonctionné : [coller le post et ses résultats]. Aide-moi à identifier ce qui pourrait expliquer ce manque d'engagement.</span>
+    <p class="prompt-usage">À quoi ça sert : analyser un échec de post pour ajuster sa prochaine tentative</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9</span>
+    <span class="prompt-text">Rédige 3 versions du même post avec des longueurs différentes (très court, moyen, détaillé) sur le sujet de [sujet], pour tester ce qui engage le plus mon audience.</span>
+    <p class="prompt-usage">À quoi ça sert : comparer différents formats de longueur pour un même message</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10</span>
+    <span class="prompt-text">Transforme ce témoignage client en post engageant, en gardant l'authenticité du témoignage original : [coller le témoignage].</span>
+    <p class="prompt-usage">À quoi ça sert : valoriser un témoignage client sous forme de post structuré et impactant</p>
+  </div>
+
+  <h3>13.3 Construire son calendrier éditorial</h3>
+  <p class="lede">Pour planifier et réutiliser son contenu efficacement.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Construis-moi un calendrier de contenu sur un mois pour [plateforme], à raison de [nombre] posts par semaine, réparti entre mes piliers de contenu : [lister tes piliers].</span>
+    <p class="prompt-usage">À quoi ça sert : planifier un mois de publication en une seule session plutôt qu'au jour le jour</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à décliner ce contenu long (article/vidéo) en 5 formats courts différents pour les réseaux sociaux : [décrire le contenu long].</span>
+    <p class="prompt-usage">À quoi ça sert : réutiliser un contenu existant en plusieurs formats plutôt que de tout créer de zéro</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Propose-moi un calendrier de contenu autour de [événement/date clé, ex : rentrée, fêtes de fin d'année] pour mon activité de [décrire ton activité].</span>
+    <p class="prompt-usage">À quoi ça sert : aligner son contenu sur des temps forts du calendrier commercial</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à identifier 10 sujets de contenu evergreen (toujours pertinents) liés à mon activité de [décrire ton activité], que je pourrai réutiliser sur plusieurs mois.</span>
+    <p class="prompt-usage">À quoi ça sert : constituer une réserve de sujets qui ne se périment pas</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Je publie de façon irrégulière et je veux instaurer une routine tenable. Aide-moi à définir une fréquence réaliste selon mon temps disponible : [décrire ton temps disponible].</span>
+    <p class="prompt-usage">À quoi ça sert : définir un rythme de publication réaliste plutôt qu'un objectif intenable</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à organiser une session de batch content de 2 heures : donne-moi un déroulé étape par étape pour créer 8 posts efficacement dans ce temps.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une session de création groupée pour maximiser son efficacité</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Propose-moi un système simple de classement de mes idées de contenu (par pilier, par format, par statut) que je pourrais tenir à jour facilement.</span>
+    <p class="prompt-usage">À quoi ça sert : organiser durablement sa réserve d'idées de contenu</p>
+  </div>
+
+  <h3>13.4 Copywriting et appels à l'action</h3>
+  <p class="lede">Pour convaincre sans sonner robotique ni artificiel.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Rédige un appel à l'action clair et non agressif pour ce post sur [sujet/offre], adapté à [plateforme].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un CTA efficace sans tomber dans le ton trop commercial</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Réécris cette description de produit de façon plus persuasive, en mettant en avant le bénéfice pour le client plutôt que les seules caractéristiques : [coller la description].</span>
+    <p class="prompt-usage">À quoi ça sert : transformer une description technique en argumentaire orienté bénéfices</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Voici un post que je trouve trop "robotique" ou générique : [coller le post]. Réécris-le avec plus de personnalité et de ton naturel.</span>
+    <p class="prompt-usage">À quoi ça sert : humaniser un texte qui sonne trop artificiel ou impersonnel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Rédige 3 versions d'un même message promotionnel sur [offre], avec des tons différents : urgence, humour, storytelling.</span>
+    <p class="prompt-usage">À quoi ça sert : tester différents tons pour un même message avant de choisir</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à rédiger une bio de profil percutante pour [plateforme], à partir de ces éléments : [lister activité, valeur ajoutée, cible].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une bio de profil qui capte en quelques secondes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Réécris ce post en respectant la limite de caractères de [plateforme], sans perdre le message principal : [coller le post].</span>
+    <p class="prompt-usage">À quoi ça sert : adapter un contenu aux contraintes techniques d'une plateforme précise</p>
+  </div>
+
+  <h3>13.5 Copywriting avancé</h3>
+  <p class="lede">Pour affiner titres, objections et adaptations de format.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Réécris ce post en respectant la limite de caractères de [plateforme], sans perdre le message principal : [coller le post].</span>
+    <p class="prompt-usage">À quoi ça sert : adapter un contenu aux contraintes techniques d'une plateforme précise</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à rédiger 3 titres différents pour ce contenu (article, vidéo, carrousel) sur le thème de [thème], optimisés pour donner envie de cliquer.</span>
+    <p class="prompt-usage">À quoi ça sert : tester plusieurs titres accrocheurs pour un même contenu</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Voici les objections fréquentes de mes prospects avant d'acheter [produit/service] : [lister les objections]. Aide-moi à les adresser dans un post sans paraître sur la défensive.</span>
+    <p class="prompt-usage">À quoi ça sert : transformer des objections client en contenu qui rassure en amont</p>
+  </div>
+
+  <h3>13.6 Analyser ses résultats</h3>
+  <p class="lede">Pour ajuster sa stratégie à partir de vraies données.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Voici les statistiques de mes 10 derniers posts : [lister les stats de base : likes, commentaires, portée]. Aide-moi à identifier ce qui fonctionne le mieux dans mon contenu.</span>
+    <p class="prompt-usage">À quoi ça sert : tirer des enseignements de ses propres statistiques de publication</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Quels indicateurs devrais-je suivre en priorité pour évaluer si ma stratégie de contenu fonctionne, à partir de mon objectif principal : [décrire ton objectif] ?</span>
+    <p class="prompt-usage">À quoi ça sert : identifier les bons indicateurs plutôt que de suivre des métriques de vanité</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à formuler 3 hypothèses sur pourquoi ce type de contenu fonctionne moins bien que les autres : [décrire le type de contenu et ses résultats].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une analyse plutôt que de constater un échec sans comprendre pourquoi</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Propose-moi un test A/B simple à mettre en place sur mes prochains posts pour comparer [élément à tester, ex : deux types d'accroche].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une démarche de test plutôt que de changer au hasard</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à faire un bilan mensuel de ma présence sur les réseaux sociaux : ce qui a bien fonctionné, ce qui n'a pas marché, et ce que j'ajuste le mois prochain.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un point d'étape régulier sur sa stratégie de contenu</p>
+  </div>
+
+  <h3>13.7 Gérer sa communauté</h3>
+  <p class="lede">Pour transformer les interactions en vraie relation avec son audience.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Rédige 3 exemples de réponses à des commentaires positifs sur mes posts, qui encouragent la conversation plutôt qu'un simple "merci".</span>
+    <p class="prompt-usage">À quoi ça sert : transformer une interaction basique en vraie conversation engageante</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à répondre calmement à ce commentaire négatif, sans être sur la défensive ni ignorer la critique : [coller le commentaire].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une réponse posée et professionnelle face à une critique publique</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Propose-moi 5 questions à poser à mon audience en story ou en post pour mieux comprendre ses besoins et attentes.</span>
+    <p class="prompt-usage">À quoi ça sert : générer des questions qui engagent et renseignent sur son audience</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à rédiger un message de bienvenue type pour les nouveaux abonnés de ma communauté, chaleureux mais pas trop long.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un premier contact accueillant avec de nouveaux abonnés</p>
+  </div>
+</section>
+
+</body>
+</html>
