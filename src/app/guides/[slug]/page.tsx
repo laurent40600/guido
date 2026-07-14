@@ -30,8 +30,8 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${guide.title} — Guido`,
-    description: guide.pitch,
+    title: guide.seoTitle ?? `${guide.title} — Guido`,
+    description: guide.seoDescription ?? guide.pitch,
   };
 }
 
@@ -96,6 +96,19 @@ export default async function GuideDetailPage({
   const promptsBundle = guide.slug === "ia-profs" ? getGuide("pack-prompts-profs-complet") : undefined;
   const promptsBundleOffer = promptsBundle?.offers?.[0];
   const promptsBundlePrice = promptsBundleOffer ? resolveOfferPrice(promptsBundleOffer) : undefined;
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: guide.faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 
   const crossSellGuides = (guide.crossSell ?? [])
     .map((crossSlug) => getGuide(crossSlug))
@@ -242,9 +255,9 @@ export default async function GuideDetailPage({
                   key={index}
                   className="border-b border-stone-200 pb-6 last:border-0"
                 >
-                  <p className="font-semibold text-navy-900">
+                  <h3 className="font-semibold text-navy-900">
                     {item.question}
-                  </p>
+                  </h3>
                   <p className="mt-2 leading-relaxed text-stone-600">
                     {item.answer}
                   </p>
@@ -252,6 +265,13 @@ export default async function GuideDetailPage({
               ))}
             </div>
           </div>
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
+            }}
+          />
 
           {crossSellGuides.length > 0 && (
             <div className="mt-16">

@@ -18,6 +18,10 @@ export interface Guide {
   title: string;
   tagline: string;
   pitch: string;
+  // Balises SEO dédiées (title 55-60 car., meta description 150-160 car.).
+  // Si absentes, generateMetadata retombe sur `${title} — Guido` / `pitch`.
+  seoTitle?: string;
+  seoDescription?: string;
   price: string;
   format: string;
   audience: string;
@@ -47,6 +51,8 @@ export const guides: Guide[] = [
     tagline: "Tout ce qui change en 2026, expliqué simplement, sans jargon",
     pitch:
       "Seuils de chiffre d'affaires, taux de cotisations, versement libératoire, nouvelles obligations déclaratives : la réglementation de la micro-entreprise évolue chaque année, et il est facile de rater une échéance ou de payer plus que nécessaire. Ce guide fait le point sur tout ce qui s'applique en 2026, avec des exemples chiffrés concrets.",
+    seoTitle: "Fiscalité auto-entrepreneur 2026 : le guide complet — Guido",
+    seoDescription: "Seuils, cotisations, versement libératoire : tout ce qui change pour les auto-entrepreneurs en 2026, expliqué simplement avec des exemples chiffrés concrets.",
     price: "14,90€",
     format: "PDF · 52 pages",
     audience: "Auto-entrepreneurs en activité ou en cours de création en France",
@@ -75,6 +81,7 @@ export const guides: Guide[] = [
       },
     ],
     available: true,
+    crossSell: ["ia-autoentrepreneurs"],
   },
   {
     slug: "ia-autoentrepreneurs",
@@ -82,6 +89,8 @@ export const guides: Guide[] = [
     tagline: "Gagner des heures chaque semaine, sans compétences techniques",
     pitch:
       "Générer un devis en 5 minutes, relancer un client sans se fâcher avec lui, catégoriser ses dépenses en quelques clics : ChatGPT et Claude peuvent déjà faire une bonne partie de ces tâches administratives à votre place. Ce guide vous montre exactement quoi taper, dans quel outil, et surtout où s'arrête l'IA — avec des scripts, des prompts et des outils réels, prix à l'appui.",
+    seoTitle: "IA pour auto-entrepreneurs : devis, relances, compta — Guido",
+    seoDescription: "ChatGPT pour auto-entrepreneurs : générer un devis en 5 min, relancer un client, catégoriser ses dépenses. Prompts et outils concrets, prix à l'appui.",
     price: "19,90€",
     format: "PDF · 56 pages",
     audience: "Auto-entrepreneurs sans compétences techniques qui veulent gagner du temps sur l'administratif",
@@ -109,7 +118,7 @@ export const guides: Guide[] = [
       },
     ],
     available: true,
-    crossSell: ["prompts-images-ia"],
+    crossSell: ["fiscal-auto-entrepreneur-2026", "prompts-images-ia"],
   },
   {
     slug: "ia-profs",
@@ -117,6 +126,8 @@ export const guides: Guide[] = [
     tagline: "Récupérer tes soirées et tes week-ends, sans perdre en qualité pédagogique",
     pitch:
       "Générer une séquence pédagogique complète à partir d'un objectif, créer des exercices variés et des grilles de correction automatiquement, obtenir un premier passage de correction assisté sans jamais déléguer la notation finale : ce guide montre exactement quoi taper, dans ChatGPT ou Claude, pour chaque étape de ta préparation de cours — avec les limites RGPD et pédagogiques à connaître avant de t'y mettre.",
+    seoTitle: "ChatGPT pour profs : cours, corrections, exercices — Guido",
+    seoDescription: "IA pour préparer ses cours 2x plus vite : séquences, exercices et corrections avec ChatGPT. Prompts prêts à l'emploi, limites RGPD et pédagogiques incluses.",
     price: "Dès 19€",
     format: "PDF · 53 à 65 pages",
     audience: "Enseignants du premier et du second degré qui veulent gagner du temps sans sacrifier la qualité pédagogique",
@@ -176,7 +187,7 @@ export const guides: Guide[] = [
         featured: true,
       },
     ],
-    crossSell: ["ia-ses", "ia-techno", "prompts-images-ia", "prompts-maths", "prompts-francais", "prompts-histgeo"],
+    crossSell: ["ia-ses", "ia-techno", "pack-prompts-profs-complet", "prompts-images-ia", "prompts-maths", "prompts-francais", "prompts-histgeo"],
   },
   {
     slug: "ia-immobilier",
@@ -184,6 +195,8 @@ export const guides: Guide[] = [
     tagline: "Récupérer des heures chaque semaine, sans rien perdre du contact humain qui fait vendre",
     pitch:
       "Générer une annonce complète à partir de quelques infos brutes, répondre plus vite aux demandes de visite, qualifier un prospect avant de perdre du temps sur une visite peu sérieuse : ce guide montre exactement quoi taper, dans ChatGPT ou Claude, pour chaque étape de ta semaine — avec les limites à connaître (obligations légales d'affichage, contact humain) avant de t'y mettre.",
+    seoTitle: "IA pour agents immobiliers : annonces et prospects — Guido",
+    seoDescription: "ChatGPT pour l'immobilier : rédiger une annonce complète en 5 minutes, répondre 2 fois plus vite aux prospects, qualifier une visite. Prompts prêts à l'emploi.",
     price: "Dès 19€",
     format: "PDF · 49 à 61 pages",
     audience: "Agents immobiliers en France, sans compétences techniques, qui veulent gagner du temps sur la rédaction et le suivi des prospects",
@@ -251,6 +264,8 @@ export const guides: Guide[] = [
     tagline: "Un seul guide, tout intégré : cours, exercices, correction et 35 prompts prêts à l'emploi",
     pitch:
       "Construire une étude de cas à partir de données réelles, générer des EC1, EC2, EC3 et des sujets de dissertation calibrés au programme, corriger plus vite sans jamais déléguer la notation : ce guide couvre tout le cycle de préparation en SES, avec une bibliothèque de 35 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Spécifique au programme de Sciences économiques et sociales, aucune compétence technique requise.",
+    seoTitle: "ChatGPT pour profs de SES : cours et correction — Guido",
+    seoDescription: "IA pour préparer ses cours de SES : études de cas, sujets EC1/EC2/EC3, correction assistée sans jamais déléguer la notation. 35 prompts ChatGPT intégrés.",
     price: "18€",
     format: "PDF · 59 pages",
     audience: "Professeurs de SES (lycée), sans compétences techniques, qui veulent gagner du temps sur la préparation, les exercices et la correction",
@@ -323,6 +338,8 @@ export const guides: Guide[] = [
     tagline: "Un seul guide, tout intégré : séquences, projets, évaluation, différenciation et 34 prompts prêts à l'emploi",
     pitch:
       "Structurer une séquence et un cahier des charges de projet en quelques minutes, concevoir des activités techniques variées (programmation par blocs, modélisation 3D, analyse d'objets), évaluer par compétences en valorisant la démarche autant que le résultat, et différencier tes projets pour une classe hétérogène : ce guide couvre tout le cycle de préparation en technologie, avec une bibliothèque de 34 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Spécifique au programme de technologie au collège, aucune compétence technique en IA requise.",
+    seoTitle: "ChatGPT pour profs de technologie : séquences pro — Guido",
+    seoDescription: "IA pour préparer ses cours de technologie : séquences, cahiers des charges, évaluation par compétences. 34 prompts ChatGPT enseignants prêts à l'emploi.",
     price: "18€",
     format: "PDF · 37 pages",
     audience: "Professeurs de technologie (collège), sans compétences techniques particulières en IA, qui veulent gagner du temps sur la préparation, les activités et l'évaluation",
@@ -397,6 +414,8 @@ export const guides: Guide[] = [
     tagline: "Un seul guide, tout intégré : stratégie, posts, calendrier et 43 prompts prêts à l'emploi",
     pitch:
       "Définir une stratégie de contenu claire, créer des posts qui captent l'attention sur chaque plateforme, construire un calendrier éditorial tenable, écrire des textes qui convertissent sans sonner robotiques, et analyser tes résultats pour ajuster dans la durée : ce guide couvre tout le cycle de création de contenu, avec une bibliothèque de 43 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Aucune compétence technique requise.",
+    seoTitle: "Stratégie de contenu pour réseaux sociaux avec l'IA — Guido",
+    seoDescription: "Créer une stratégie de contenu qui marche avec l'IA : posts qui captent l'attention, calendrier éditorial, copywriting. 43 prompts ChatGPT intégrés au guide.",
     price: "18€",
     format: "PDF · 39 pages",
     audience: "Entrepreneurs, freelances et créateurs de contenu, sans compétences techniques, qui veulent une vraie stratégie plutôt que poster au hasard",
@@ -471,6 +490,8 @@ export const guides: Guide[] = [
     tagline: "Un seul guide, tout intégré : principes communs, spécificités par plateforme et 30 prompts prêts à l'emploi",
     pitch:
       "Comprendre les principes communs à tous les algorithmes de recommandation, les spécificités de TikTok et Instagram en détail, les bases de LinkedIn et Facebook, et surtout les erreurs qui nuisent silencieusement à ta portée sans que tu t'en rendes toujours compte : ce guide couvre tout, avec une bibliothèque de 30 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Aucune compétence technique requise.",
+    seoTitle: "Algorithme Instagram et TikTok : comment ça marche — Guido",
+    seoDescription: "Comprendre l'algorithme Instagram, TikTok et LinkedIn : les signaux qui comptent, les erreurs qui nuisent à ta portée. Guide complet + 30 prompts intégrés.",
     price: "18€",
     format: "PDF · 41 pages",
     audience: "Entrepreneurs, freelances et créateurs de contenu, sans compétences techniques, qui veulent comprendre pourquoi certains posts marchent et d'autres non",
@@ -545,6 +566,8 @@ export const guides: Guide[] = [
     tagline: "Progresser avec l'IA, sans jamais se faire aider à sa place",
     pitch:
       "Comprendre un cours difficile, s'entraîner avant un contrôle, réviser sans stress et structurer un devoir sans se le faire rédiger : ce guide couvre toutes les matières, avec une bibliothèque de 24 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Pensé pour progresser vraiment, pas pour tricher — un devoir rendu doit toujours rester ton travail.",
+    seoTitle: "ChatGPT pour réviser ses cours et progresser vite — Guido",
+    seoDescription: "Utiliser l'IA pour comprendre un cours, s'entraîner avant un contrôle et réviser sans stress, sans jamais se faire aider à sa place. 24 prompts inclus.",
     price: "15€",
     format: "PDF · 40 pages",
     audience: "Élèves de collège et de lycée, et leurs parents",
@@ -616,6 +639,8 @@ export const guides: Guide[] = [
     tagline: "Mieux te connaître pour faire des choix de carrière alignés",
     pitch:
       "Faire ton bilan de compétences avec l'IA, mieux comprendre ta personnalité au travail (MBTI, DISC, auto-réflexion guidée), croiser les deux pour identifier des pistes de carrière alignées, gérer le syndrome de l'imposteur et négocier ton salaire à partir de réalisations concrètes : ce guide couvre toute la démarche, avec une bibliothèque de 58 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Aucune compétence technique requise.",
+    seoTitle: "Bilan de compétences et tests de personnalité IA — Guido",
+    seoDescription: "Faire ton bilan de compétences avec l'IA, comprendre ta personnalité au travail (MBTI, DISC) et identifier des pistes de carrière alignées. 58 prompts.",
     price: "18€",
     format: "PDF · 53 pages",
     audience: "Salariés qui stagnent ou se questionnent sur leur carrière, personnes en reconversion, jeunes diplômés hésitant entre plusieurs voies, et toute personne curieuse de mieux se comprendre professionnellement",
@@ -681,6 +706,7 @@ export const guides: Guide[] = [
         pdfFile: "guido-carriere-personnalite",
       },
     ],
+    crossSell: ["freelance-40ans", "confiance-soi"],
   },
   {
     slug: "confiance-soi",
@@ -688,6 +714,8 @@ export const guides: Guide[] = [
     tagline: "Reconstruire sa confiance par un travail concret, pas par la seule volonté",
     pitch:
       "Identifier tes schémas de pensée limitants (tout ou rien, généralisation, filtre négatif...), reconstruire ta confiance après un échec ou une rupture, développer l'affirmation de soi au quotidien et sortir du piège de la comparaison sociale : ce guide couvre tout le travail, avec une bibliothèque de 51 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Aucune compétence technique requise.",
+    seoTitle: "Retrouver confiance en soi : une méthode concrète — Guido",
+    seoDescription: "Identifier tes schémas de pensée limitants, reconstruire ta confiance après un échec et sortir du piège de la comparaison sociale. 51 prompts intégrés.",
     price: "16€",
     format: "PDF · 40 pages",
     audience: "Toute personne qui traverse une période de doute sur elle-même, suite à un événement identifiable (licenciement, rupture, échec) ou à une érosion plus progressive de la confiance",
@@ -753,6 +781,7 @@ export const guides: Guide[] = [
         pdfFile: "guido-confiance-soi",
       },
     ],
+    crossSell: ["carriere-personnalite", "procrastination"],
   },
   {
     slug: "freelance-40ans",
@@ -760,6 +789,8 @@ export const guides: Guide[] = [
     tagline: "Ton expérience est un vrai atout — encore faut-il sécuriser le saut correctement",
     pitch:
       "Calculer ton matelas de sécurité réel, connaître les dispositifs qui réduisent le risque (ARE, ACRE, portage salarial), transformer 15-20 ans de salariat en offre freelance claire, et décrocher tes 3 premiers clients en 90 jours grâce à ton réseau : ce guide te donne une méthode concrète pour sécuriser ta transition, sans minimiser les risques financiers réels d'une reconversion à cet âge.",
+    seoTitle: "Devenir freelance après 40 ans en toute sécurité — Guido",
+    seoDescription: "Reconversion professionnelle après 40 ans : calculer son matelas de sécurité, connaître l'ARE, l'ACRE, le portage salarial, décrocher ses 3 premiers clients.",
     price: "Dès 19€",
     format: "PDF · 49 à 60 pages",
     audience: "Salariés de 40 ans et plus qui envisagent de devenir freelance, avec des responsabilités financières (crédit, famille) qui rendent le saut plus risqué qu'à 25 ans",
@@ -819,6 +850,7 @@ export const guides: Guide[] = [
         featured: true,
       },
     ],
+    crossSell: ["carriere-personnalite"],
   },
   {
     slug: "sommeil-ecrans",
@@ -826,6 +858,8 @@ export const guides: Guide[] = [
     tagline: "Retrouver un vrai sommeil, sans culpabiliser et sans t'imposer l'impossible",
     pitch:
       "Sans trajet retour pour décompresser, la journée de travail déborde souvent sur la soirée, et les écrans repoussent mécaniquement l'heure du coucher. Ce guide t'aide à comprendre ce qui perturbe vraiment ton endormissement, à reprendre le contrôle de tes soirées et à construire un rituel de sommeil réaliste — avec un plan progressif sur 21 jours, sans pression ni solution extrême.",
+    seoTitle: "Sommeil et écrans : comment retrouver le sommeil — Guido",
+    seoDescription: "Télétravail et troubles du sommeil : comprendre ce qui perturbe ton endormissement et construire un rituel de coucher réaliste. Plan progressif sur 21 jours.",
     price: "Dès 19€",
     format: "PDF · 47 à 60 pages",
     audience: "Télétravailleurs et travailleurs à domicile dont le sommeil souffre de l'absence de frontière entre travail et repos",
@@ -885,6 +919,7 @@ export const guides: Guide[] = [
         featured: true,
       },
     ],
+    crossSell: ["menopause-energie", "procrastination"],
   },
   {
     slug: "menopause-energie",
@@ -892,6 +927,8 @@ export const guides: Guide[] = [
     tagline: "Comprendre ce qui se passe dans ton corps, et reprendre la main sur ton quotidien",
     pitch:
       "Bouffées de chaleur, fatigue, sommeil perturbé, brouillard mental : ces symptômes touchent tôt ou tard toutes les femmes, mais restent rarement expliqués clairement. Ce guide t'aide à comprendre ce qui se passe réellement dans ton corps, à retrouver de l'énergie au quotidien et à te faire entendre dans ton parcours de soin — avec un plan progressif sur 21 jours, sans jamais se substituer à un avis médical.",
+    seoTitle: "Ménopause : symptômes, fatigue et regain d'énergie — Guido",
+    seoDescription: "Bouffées de chaleur, fatigue, brouillard mental : comprendre les symptômes de la ménopause et retrouver de l'énergie au quotidien. Plan progressif sur 21 jours.",
     price: "Dès 19€",
     format: "PDF · 31 à 44 pages",
     audience: "Femmes en périménopause, ménopause ou post-ménopause qui veulent comprendre leurs symptômes et retrouver de l'énergie au quotidien",
@@ -951,6 +988,7 @@ export const guides: Guide[] = [
         featured: true,
       },
     ],
+    crossSell: ["sommeil-ecrans"],
   },
   {
     slug: "procrastination",
@@ -958,6 +996,8 @@ export const guides: Guide[] = [
     tagline: "Comprendre ton fonctionnement, avancer sans culpabiliser, et reprendre la main sur ton temps",
     pitch:
       "Repousser une tâche importante n'est pas un manque de volonté, mais un mécanisme réel : peur de l'échec, perfectionnisme, tâches floues ou trop grosses. Ce guide t'aide à comprendre pourquoi tu procrastines vraiment, à reprendre le contrôle de ton temps avec des méthodes concrètes et à retrouver une motivation qui tient dans la durée — avec un plan progressif sur 21 jours, sans culpabilisation ni promesse de transformation instantanée.",
+    seoTitle: "Sortir de la procrastination : méthode en 21 jours — Guido",
+    seoDescription: "Comprendre pourquoi tu procrastines vraiment (peur de l'échec, perfectionnisme) et reprendre le contrôle de ton temps avec un plan progressif sur 21 jours.",
     price: "Dès 19€",
     format: "PDF · 48 à 59 pages",
     audience: "Adultes qui procrastinent sur des tâches importantes, pro ou perso, et se sentent bloqués dans un cercle vicieux de culpabilité",
@@ -1017,6 +1057,7 @@ export const guides: Guide[] = [
         featured: true,
       },
     ],
+    crossSell: ["confiance-soi", "sommeil-ecrans"],
   },
   {
     slug: "prompts-images-ia",
@@ -1024,6 +1065,8 @@ export const guides: Guide[] = [
     tagline: "Compatible Midjourney, DALL-E et Stable Diffusion",
     pitch:
       "60 prompts prêts à copier-coller, classés en 6 catégories (portraits, produits, réseaux sociaux, présentations, décors, logos), pour générer des visuels professionnels sans compétence technique ni artistique. Chaque prompt est accompagné des réglages suggérés pour Midjourney, DALL-E et Stable Diffusion, avec un glossaire des paramètres techniques et une note sur les droits d'usage commercial de tes images.",
+    seoTitle: "60 prompts pour générer des images pro avec l'IA — Guido",
+    seoDescription: "60 prompts IA prêts à copier-coller pour Midjourney, DALL-E et Stable Diffusion : portraits, produits, réseaux sociaux, logos. Sans photographe ni graphiste.",
     price: "12€",
     format: "PDF · 27 pages",
     audience: "Entrepreneurs, freelances et créateurs de contenu qui veulent des visuels professionnels sans payer un photographe ou un graphiste",
@@ -1082,6 +1125,7 @@ export const guides: Guide[] = [
         pdfFile: "guido-prompts-images-ia",
       },
     ],
+    crossSell: ["marketing-contenu", "algorithmes"],
   },
   {
     slug: "prompts-maths",
@@ -1089,6 +1133,8 @@ export const guides: Guide[] = [
     tagline: "Préparer, différencier et corriger plus vite",
     pitch:
       "36 prompts prêts à copier-coller dans ChatGPT ou Claude, classés en 6 catégories (préparer ses séquences, générer des exercices, créer des évaluations, différencier pour chaque élève, vulgariser les notions, communiquer avec les familles), pour gagner du temps sans sacrifier la qualité pédagogique. Chaque prompt contient des champs [entre crochets] à remplacer par ta notion, ton niveau ou ton chapitre avant de l'utiliser.",
+    seoTitle: "36 prompts ChatGPT pour les profs de mathématiques — Guido",
+    seoDescription: "36 prompts ChatGPT prêts à l'emploi pour les professeurs de mathématiques : préparer ses séquences, différencier et corriger plus vite. 6 catégories au total.",
     price: "12€",
     format: "PDF · 15 pages",
     audience: "Professeurs de mathématiques du collège et du lycée qui veulent gagner du temps sur la préparation, la différenciation et la correction",
@@ -1146,6 +1192,7 @@ export const guides: Guide[] = [
         pdfFile: "guido-prompts-maths",
       },
     ],
+    crossSell: ["ia-profs", "pack-prompts-profs-complet"],
   },
   {
     slug: "prompts-francais",
@@ -1153,6 +1200,8 @@ export const guides: Guide[] = [
     tagline: "Préparer, analyser et corriger plus vite",
     pitch:
       "32 prompts prêts à copier-coller dans ChatGPT ou Claude, classés en 6 catégories (préparer ses séquences, analyser des textes, travailler l'écriture, préparer l'oral, vocabulaire et grammaire, corriger et communiquer), pour gagner du temps sans sacrifier la qualité pédagogique. Chaque prompt contient des champs [entre crochets] à remplacer par ton œuvre, ton niveau ou ton thème avant de l'utiliser.",
+    seoTitle: "32 prompts ChatGPT pour les professeurs de français — Guido",
+    seoDescription: "32 prompts ChatGPT enseignants pour le français : préparer ses séquences, analyser des textes, travailler l'écriture et corriger plus vite. 6 catégories.",
     price: "12€",
     format: "PDF · 14 pages",
     audience: "Professeurs de français du collège et du lycée qui veulent gagner du temps sur la préparation, l'analyse de textes et la correction",
@@ -1210,6 +1259,7 @@ export const guides: Guide[] = [
         pdfFile: "guido-prompts-francais",
       },
     ],
+    crossSell: ["ia-profs", "pack-prompts-profs-complet"],
   },
   {
     slug: "prompts-histgeo",
@@ -1217,6 +1267,8 @@ export const guides: Guide[] = [
     tagline: "Préparer, analyser et corriger plus vite",
     pitch:
       "31 prompts prêts à copier-coller dans ChatGPT ou Claude, classés en 6 catégories (préparer ses séquences, analyser cartes et documents, créer des évaluations, différencier pour chaque élève, supports de cours et frises, corriger et communiquer), pour gagner du temps sans sacrifier la qualité pédagogique. Chaque prompt contient des champs [entre crochets] à remplacer par ton chapitre, ton niveau ou ta période avant de l'utiliser.",
+    seoTitle: "31 prompts ChatGPT pour profs d'histoire-géographie — Guido",
+    seoDescription: "31 prompts ChatGPT enseignants pour l'histoire-géographie : analyser cartes et documents, créer des évaluations, corriger plus vite. Classés en 6 catégories.",
     price: "12€",
     format: "PDF · 14 pages",
     audience: "Professeurs d'histoire-géographie du collège et du lycée qui veulent gagner du temps sur la préparation, l'analyse de documents et la correction",
@@ -1274,6 +1326,7 @@ export const guides: Guide[] = [
         pdfFile: "guido-prompts-histgeo",
       },
     ],
+    crossSell: ["ia-profs", "pack-prompts-profs-complet"],
   },
   {
     slug: "prompts-sciences",
@@ -1281,6 +1334,8 @@ export const guides: Guide[] = [
     tagline: "Préparer, expérimenter et corriger plus vite",
     pitch:
       "32 prompts prêts à copier-coller dans ChatGPT ou Claude, classés en 6 catégories (préparer ses séquences, concevoir expériences et TP, générer des exercices, créer des évaluations, vulgariser les notions, corriger et communiquer), pour gagner du temps sans sacrifier la qualité pédagogique. Compatible SVT et physique-chimie. Chaque prompt contient des champs [entre crochets] à remplacer par ta notion, ton niveau ou ton chapitre avant de l'utiliser.",
+    seoTitle: "32 prompts ChatGPT pour les professeurs de sciences — Guido",
+    seoDescription: "32 prompts ChatGPT enseignants pour la SVT et la physique-chimie : préparer ses séquences, concevoir des TP, créer des évaluations. Classés en 6 catégories.",
     price: "12€",
     format: "PDF · 14 pages",
     audience: "Professeurs de SVT et de physique-chimie du collège et du lycée qui veulent gagner du temps sur la préparation, les expériences et la correction",
@@ -1338,6 +1393,7 @@ export const guides: Guide[] = [
         pdfFile: "guido-prompts-sciences",
       },
     ],
+    crossSell: ["ia-profs", "pack-prompts-profs-complet"],
   },
   {
     slug: "prompts-langues",
@@ -1345,6 +1401,8 @@ export const guides: Guide[] = [
     tagline: "Anglais, espagnol, allemand... préparer, faire pratiquer et corriger plus vite",
     pitch:
       "30 prompts prêts à copier-coller dans ChatGPT ou Claude, classés en 6 catégories (préparer ses séquences, compréhension écrite et orale, grammaire et vocabulaire, expression orale, créer des évaluations, corriger et communiquer), pour gagner du temps sans sacrifier la qualité pédagogique. Compatible avec toutes les langues vivantes (anglais, espagnol, allemand, italien...). Chaque prompt contient des champs [entre crochets] à remplacer par ta langue, ton thème ou ton niveau avant de l'utiliser.",
+    seoTitle: "30 prompts ChatGPT pour profs de langues vivantes — Guido",
+    seoDescription: "30 prompts ChatGPT enseignants pour les langues vivantes : préparer, faire pratiquer à l'oral et corriger plus vite. Anglais, espagnol, allemand, italien...",
     price: "12€",
     format: "PDF · 13 pages",
     audience: "Professeurs de langues vivantes du collège et du lycée qui veulent gagner du temps sur la préparation, la pratique orale et la correction",
@@ -1402,6 +1460,7 @@ export const guides: Guide[] = [
         pdfFile: "guido-prompts-langues",
       },
     ],
+    crossSell: ["ia-profs", "pack-prompts-profs-complet"],
   },
   {
     slug: "pack-prompts-profs-complet",
@@ -1409,6 +1468,8 @@ export const guides: Guide[] = [
     tagline: "Maths, français, histoire-géo, sciences, langues — les 5 packs en un seul achat",
     pitch:
       "Les 5 bibliothèques de prompts Guido réunies en un seul pack : 36 prompts pour les maths, 32 pour le français, 31 pour l'histoire-géographie, 32 pour les sciences (SVT et physique-chimie) et 30 pour les langues vivantes, soit 161 prompts prêts à copier-coller dans ChatGPT ou Claude, quelle que soit la matière enseignée. Ce pack ne contient que les 5 bibliothèques de prompts — il ne comprend pas le guide « L'IA pour les profs », qui reste disponible séparément.",
+    seoTitle: "161 prompts ChatGPT pour profs, toutes matières — Guido",
+    seoDescription: "Le pack complet : maths, français, histoire-géo, sciences et langues vivantes réunis. 161 prompts ChatGPT enseignants prêts à l'emploi, à prix réduit.",
     price: "34€",
     format: "5 PDF · 161 prompts au total",
     audience: "Professeurs de toutes matières, équipes pédagogiques et CDI qui veulent équiper toute une équipe avec les 5 packs de prompts Guido",
@@ -1479,6 +1540,7 @@ export const guides: Guide[] = [
         ],
       },
     ],
+    crossSell: ["ia-profs"],
     bundleOf: [
       { guideSlug: "prompts-maths", offerId: "unique" },
       { guideSlug: "prompts-francais", offerId: "unique" },
@@ -1493,6 +1555,8 @@ export const guides: Guide[] = [
     tagline: "Les deux guides IA marketing réunis en un seul achat",
     pitch:
       "Le pack réunit deux guides complets et complémentaires : « L'IA pour créer du contenu qui marche » (stratégie de contenu, posts qui captent l'attention, calendrier éditorial, copywriting) et « Comprendre les algorithmes des réseaux sociaux » (principes communs, spécificités TikTok/Instagram/LinkedIn, erreurs qui nuisent à ta portée). À eux deux, 73 prompts prêts à l'emploi intégrés directement dans les guides — aucun pack de prompts séparé à acheter.",
+    seoTitle: "Stratégie de contenu et algorithmes réseaux sociaux — Guido",
+    seoDescription: "Le pack qui réunit stratégie de contenu et algorithmes Instagram, TikTok, LinkedIn : 2 guides complets, 73 prompts ChatGPT intégrés, à prix réduit sur les deux.",
     price: "25€",
     format: "2 PDF · 73 prompts au total",
     audience: "Entrepreneurs, freelances et créateurs de contenu, sans compétences techniques, qui veulent à la fois une stratégie de contenu solide et comprendre pourquoi certains posts marchent et d'autres non",
@@ -1551,6 +1615,7 @@ export const guides: Guide[] = [
         ],
       },
     ],
+    crossSell: ["prompts-images-ia"],
     bundleOf: [
       { guideSlug: "marketing-contenu", offerId: "unique" },
       { guideSlug: "algorithmes", offerId: "unique" },

@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Guido — Des guides ultra-précis pour des questions ultra-précises",
+  title: "Guides pratiques ultra-ciblés sur des sujets précis — Guido",
   description:
-    "Guido publie des guides pratiques ultra-ciblés sur des sujets précis que personne d'autre ne traite en détail. Pas de blabla, des réponses concrètes.",
+    "Guido publie des guides pratiques ultra-ciblés sur des sujets précis que personne d'autre ne traite en détail. Pas de blabla, juste des réponses concrètes.",
 };
 
 export default function RootLayout({

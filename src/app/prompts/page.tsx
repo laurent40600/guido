@@ -5,9 +5,9 @@ import GuideCard from "@/components/guides/GuideCard";
 import { guides } from "@/data/guides";
 
 export const metadata: Metadata = {
-  title: "Prompts — Guido",
+  title: "Prompts ChatGPT prêts à l'emploi, classés par métier — Guido",
   description:
-    "Des packs de prompts prêts à l'emploi, classés par usage, pour avancer plus vite avec l'IA — texte comme image.",
+    "Des packs de prompts ChatGPT prêts à l'emploi, classés par usage (profs, images IA...), à copier-coller directement dans tes outils IA préférés du moment.",
 };
 
 export default async function PromptsPage() {

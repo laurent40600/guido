@@ -5,9 +5,9 @@ import GuideCard from "@/components/guides/GuideCard";
 import { guides } from "@/data/guides";
 
 export const metadata: Metadata = {
-  title: "Packs — Guido",
+  title: "Packs de guides et prompts ChatGPT à prix réduit — Guido",
   description:
-    "Des packs qui regroupent plusieurs guides ou packs de prompts Guido à prix réduit.",
+    "Des packs qui regroupent plusieurs guides ou packs de prompts ChatGPT déjà en ligne sur Guido, pour aller plus vite et payer moins cher que séparément.",
 };
 
 export default async function PacksPage() {

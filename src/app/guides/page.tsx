@@ -5,9 +5,9 @@ import GuidesExplorer from "@/components/search/GuidesExplorer";
 import { guides } from "@/data/guides";
 
 export const metadata: Metadata = {
-  title: "Tous les guides — Guido",
+  title: "Tous les guides pratiques Guido : IA, bien-être, carrière",
   description:
-    "La liste complète des guides ultra-spécifiques publiés par Guido.",
+    "Le catalogue complet des guides Guido : IA pour profs et entrepreneurs, bien-être, reconversion, développement personnel. Un sujet précis, en profondeur.",
 };
 
 export default async function GuidesPage({
