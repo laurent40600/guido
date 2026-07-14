@@ -51,15 +51,26 @@ Avant de publier, vérifie qu'il apparaît :
 **Ne jamais forcer le mot-clé artificiellement** s'il ne s'intègre pas
 naturellement — signale plutôt le manque et laisse l'auteur reformuler.
 
-**Constat sur les 3 premiers articles** (audité le 2026-07-18, à corriger dans
-une prochaine passe si validé) : les 3 utilisent "ChatGPT" dans leur titre mais
-retombent presque systématiquement sur le terme générique "l'IA" dans le corps du
-texte. Résultat : "ChatGPT" n'apparaît qu'une seule fois en dehors du titre sur
-`chatgpt-preparer-ses-cours` et `10-prompts-chatgpt-enseignants` (dans l'intro
-seulement, jamais dans un intertitre ni la conclusion), et une seule fois sur
-`chatgpt-corriger-copies` (dans un intertitre, pas dans l'intro ni la conclusion).
-Les 3 gagneraient à réintroduire "ChatGPT" à 1-2 endroits supplémentaires
-(un intertitre et la conclusion) — reformulation à valider avant application.
+**Constat récurrent (articles 1 à 4, dernière mise à jour 2026-07-20)** : sur
+les 4 articles publiés à ce jour, aucun ne respecte encore les 4 emplacements
+(titre + intro + intertitre + conclusion). Le mot-clé principal atterrit presque
+toujours dans le titre et l'intro, puis le texte bascule sur un terme générique
+("l'IA") pour le reste de l'article, y compris dans les intertitres et la
+dernière section ("Pour aller plus loin").
+
+- `chatgpt-preparer-ses-cours` : "ChatGPT" présent titre + intro, absent des
+  intertitres et de la conclusion.
+- `10-prompts-chatgpt-enseignants` : idem.
+- `chatgpt-corriger-copies` : "ChatGPT" présent titre + 1 intertitre, absent de
+  l'intro et de la conclusion.
+- `creer-exercice-ia-5-minutes` : "créer un exercice" et "IA" présents titre +
+  intro, absents des 7 intertitres ("Étape 1" à "Pour aller plus loin") et de
+  la conclusion — alors que le brief de cet article affirmait qu'ils y étaient
+  déjà. Vérifié par script, pas juste par lecture rapide : à corriger avant de
+  supposer que la présence dans le titre suffit.
+
+Aucune reformulation n'a été appliquée sur ces 4 articles — à valider avec
+l'auteur avant toute modification de texte.
 
 ## 5. Script de vérification rapide
 

@@ -230,7 +230,11 @@ const rawBlogPosts: BlogPost[] = [
       linkLabel: "Découvrir les packs de prompts par matière",
       href: "/prompts",
     },
-    relatedPosts: ["chatgpt-preparer-ses-cours", "chatgpt-corriger-copies"],
+    relatedPosts: [
+      "chatgpt-preparer-ses-cours",
+      "chatgpt-corriger-copies",
+      "creer-exercice-ia-5-minutes",
+    ],
   },
   {
     slug: "chatgpt-corriger-copies",
@@ -291,6 +295,88 @@ const rawBlogPosts: BlogPost[] = [
       href: "/guides/ia-profs",
     },
     relatedPosts: ["chatgpt-preparer-ses-cours", "10-prompts-chatgpt-enseignants"],
+  },
+  {
+    slug: "creer-exercice-ia-5-minutes",
+    title: "Comment créer un exercice avec l'IA en 5 minutes",
+    excerpt:
+      "Créer un exercice de A à Z prend facilement 15 à 20 minutes en partant de zéro. Avec l'IA, la même tâche peut se faire en 5 minutes — à condition de savoir précisément quoi demander.",
+    seoTitle: "Comment créer un exercice avec l'IA en 5 minutes | Guido",
+    seoDescription:
+      "La méthode en 5 étapes pour créer un exercice complet avec corrigé grâce à l'IA, en 5 minutes au lieu de 20.",
+    coverImage:
+      "https://images.unsplash.com/photo-1681164315747-ce3114015a55?auto=format&fit=crop&w=1600&q=80",
+    coverAlt: "Enseignant créant un exercice différencié avec l'aide de l'IA",
+    publishedAt: "2026-07-20",
+    body: [
+      {
+        type: "paragraph",
+        text: "Créer un exercice de A à Z (énoncé, mise en forme, correction) prend facilement 15 à 20 minutes quand on part de zéro. Avec l'IA, cette même tâche peut se faire en 5 minutes, à condition de savoir précisément quoi demander. Voici la méthode, étape par étape.",
+      },
+      { type: "heading", text: "Étape 1 : préciser le contexte exact" },
+      {
+        type: "paragraph",
+        text: "Le résultat dépend directement de la précision de ta demande. Au lieu de « crée un exercice de maths », précise la notion, le niveau de classe, et le nombre d'exercices souhaité. Plus le contexte est précis, moins tu auras à retravailler le résultat après coup.",
+      },
+      {
+        type: "prompt",
+        label: "Exemple",
+        text: "Crée 5 exercices progressifs sur les fractions pour des élèves de 5e, du plus facile au plus difficile.",
+      },
+      { type: "heading", text: "Étape 2 : demander la correction en même temps" },
+      {
+        type: "paragraph",
+        text: "Ne sépare pas la demande d'exercice de celle de la correction : demande les deux dans le même prompt. Ça t'évite un aller-retour supplémentaire et garantit une cohérence entre l'énoncé et le corrigé.",
+      },
+      {
+        type: "prompt",
+        label: "Exemple",
+        text: "...avec correction détaillée pour chaque exercice.",
+      },
+      { type: "heading", text: "Étape 3 : demander une difficulté progressive" },
+      {
+        type: "paragraph",
+        text: "Un exercice unique convient rarement à toute une classe hétérogène. Demander directement plusieurs niveaux de difficulté dans le même prompt (du plus facile au plus difficile) permet d'obtenir en une seule génération de quoi différencier immédiatement, sans repasser par une deuxième demande.",
+      },
+      { type: "heading", text: "Étape 4 : relire avant de distribuer" },
+      {
+        type: "paragraph",
+        text: "Cette étape n'est pas optionnelle. L'IA peut se tromper sur un calcul, une date ou une formulation ambiguë. Une relecture rapide de 2-3 minutes suffit généralement à repérer les erreurs éventuelles, pour un gain de temps net qui reste très largement positif par rapport à une création manuelle complète.",
+      },
+      {
+        type: "heading",
+        text: "Étape 5 : garder les meilleurs résultats pour les réutiliser",
+      },
+      {
+        type: "paragraph",
+        text: "Un exercice généré et validé une fois peut resservir l'année suivante, ou être légèrement modifié (changer les valeurs numériques, le contexte de l'énoncé) pour une nouvelle classe. Garder une bibliothèque personnelle de tes meilleures générations évite de repartir de zéro à chaque fois.",
+      },
+      { type: "heading", text: "Un exemple concret, du prompt au résultat" },
+      {
+        type: "paragraph",
+        text: "Voici à quoi ressemble une demande complète en une seule fois :",
+      },
+      {
+        type: "prompt",
+        label: "Exemple",
+        text: "Crée 6 exercices progressifs sur la conjugaison du passé composé, pour des élèves de 5e, du plus facile au plus difficile, avec correction détaillée pour chaque exercice.",
+      },
+      {
+        type: "paragraph",
+        text: "En une génération, tu obtiens une série complète, prête à relire et à distribuer — largement plus rapide qu'une création manuelle intégrale.",
+      },
+      { type: "heading", text: "Pour aller plus loin" },
+      {
+        type: "paragraph",
+        text: "Cette méthode fonctionne pour toutes les matières, mais chaque discipline a ses propres formulations qui donnent de meilleurs résultats. On a préparé des packs de prompts dédiés à chaque matière, déjà calibrés et prêts à copier-coller.",
+      },
+    ],
+    cta: {
+      text: "Chaque discipline a ses propres formulations qui donnent de meilleurs résultats : découvre les packs de prompts déjà calibrés pour ta matière.",
+      linkLabel: "Découvrir les packs de prompts par matière",
+      href: "/prompts",
+    },
+    relatedPosts: ["10-prompts-chatgpt-enseignants"],
   },
 ];
 
