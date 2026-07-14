@@ -20,6 +20,8 @@ export interface BlogPost {
     linkLabel: string;
     href: string;
   };
+  // Slugs d'autres articles à suggérer dans "À lire aussi".
+  relatedPosts?: string[];
 }
 
 const rawBlogPosts: BlogPost[] = [
@@ -34,7 +36,7 @@ const rawBlogPosts: BlogPost[] = [
       "Découvre comment utiliser ChatGPT pour préparer tes cours, créer des exercices différenciés et gagner du temps, sans jamais déléguer la notation finale.",
     coverImage:
       "https://images.unsplash.com/photo-1758685848142-06e158cf64bc?auto=format&fit=crop&w=1600&q=80",
-    coverAlt: "Une enseignante souriante prépare ses cours sur son ordinateur portable",
+    coverAlt: "Enseignante préparant ses cours avec ChatGPT sur son ordinateur portable",
     publishedAt: "2026-07-14",
     body: [
       {
@@ -93,6 +95,7 @@ const rawBlogPosts: BlogPost[] = [
         "L'IA pour les profs : créer ses cours, corrections et exercices en deux fois moins de temps",
       href: "/guides/ia-profs",
     },
+    relatedPosts: ["10-prompts-chatgpt-enseignants", "chatgpt-corriger-copies"],
   },
   {
     slug: "10-prompts-chatgpt-enseignants",
@@ -104,7 +107,7 @@ const rawBlogPosts: BlogPost[] = [
       "10 prompts ChatGPT prêts à copier-coller pour préparer des cours, créer des exercices et corriger plus vite, quelle que soit ta matière.",
     coverImage:
       "https://images.unsplash.com/photo-1761322572550-967ea8c0bfd9?auto=format&fit=crop&w=1600&q=80",
-    coverAlt: "Un cahier ouvert avec un stylo et des crayons sur un bureau, prêt à noter des prompts",
+    coverAlt: "Cahier et stylo sur un bureau, pour noter des prompts ChatGPT destinés aux enseignants",
     publishedAt: "2026-07-16",
     body: [
       {
@@ -227,6 +230,67 @@ const rawBlogPosts: BlogPost[] = [
       linkLabel: "Découvrir les packs de prompts par matière",
       href: "/prompts",
     },
+    relatedPosts: ["chatgpt-preparer-ses-cours", "chatgpt-corriger-copies"],
+  },
+  {
+    slug: "chatgpt-corriger-copies",
+    title: "ChatGPT peut-il corriger des copies ? Ce qu'il faut savoir",
+    excerpt:
+      "La correction reste l'une des tâches les plus lourdes du métier d'enseignant. Voici une réponse honnête sur ce que ChatGPT peut vraiment faire, et ce qu'il ne doit jamais faire.",
+    seoTitle: "ChatGPT peut-il corriger des copies ? Ce qu'il faut savoir | Guido",
+    seoDescription:
+      "Découvre ce que ChatGPT peut vraiment faire pour la correction de copies : préparer un barème, un premier commentaire, sans jamais déléguer la notation finale.",
+    coverImage:
+      "https://images.unsplash.com/photo-1550592704-6c76defa9985?auto=format&fit=crop&w=1600&q=80",
+    coverAlt: "Enseignant corrigeant une copie au stylo rouge sur son bureau",
+    publishedAt: "2026-07-18",
+    body: [
+      {
+        type: "paragraph",
+        text: "La correction reste l'une des tâches les plus lourdes du métier d'enseignant, surtout en période de bulletins ou d'évaluations groupées. Beaucoup de professeurs se demandent si l'IA peut vraiment aider sur ce terrain-là, et jusqu'où il est raisonnable d'aller. Voici une réponse honnête.",
+      },
+      { type: "heading", text: "Ce que ChatGPT peut faire concrètement" },
+      {
+        type: "paragraph",
+        text: "L'IA est efficace pour préparer les outils de correction en amont : générer un barème détaillé, lister les critères attendus, ou repérer les erreurs les plus fréquentes probables sur un type d'exercice donné. Elle peut aussi t'aider à rédiger un premier commentaire personnalisé sur une copie, que tu ajustes ensuite, plutôt que d'écrire chaque appréciation entièrement de zéro.",
+      },
+      {
+        type: "paragraph",
+        text: "Sur des tâches très cadrées (un QCM, un calcul avec une réponse unique), l'IA peut aussi faire un premier tri rapide, à condition de vérifier ensuite les résultats.",
+      },
+      { type: "heading", text: "Ce qu'elle ne doit jamais faire" },
+      {
+        type: "paragraph",
+        text: "Attribuer la note finale d'un élève à sa place. La notation engage ton jugement professionnel, ta connaissance de l'élève et du contexte de la classe — des éléments qu'une IA ne possède pas et ne peut pas évaluer correctement. Une copie identique peut mériter une appréciation différente selon la progression de l'élève, une information que seul toi détiens.",
+      },
+      { type: "heading", text: "Le problème de la confidentialité" },
+      {
+        type: "paragraph",
+        text: "Attention à ne jamais coller de copies contenant des informations identifiables sur tes élèves (nom complet, établissement, éléments personnels) dans un outil d'IA grand public. Anonymise toujours le contenu avant de le soumettre, ou reformule la question en termes génériques plutôt que de coller la copie telle quelle.",
+      },
+      { type: "heading", text: "Le risque de l'erreur silencieuse" },
+      {
+        type: "paragraph",
+        text: "L'IA peut se tromper, y compris sur des éléments qui semblent factuels : un calcul, une date, une règle de grammaire. Une erreur de correction générée par IA et non relue peut se répercuter directement sur la note d'un élève. La relecture n'est pas une option, c'est une étape obligatoire.",
+      },
+      { type: "heading", text: "Un vrai gain de temps, à condition de bien s'organiser" },
+      {
+        type: "paragraph",
+        text: "Le vrai levier n'est pas de déléguer la correction, mais d'accélérer sa préparation : un barème clair préparé à l'avance avec l'aide de l'IA fait gagner un temps considérable au moment de corriger 30 copies, bien plus qu'une tentative de faire corriger directement par l'outil.",
+      },
+      { type: "heading", text: "Pour aller plus loin" },
+      {
+        type: "paragraph",
+        text: "On a détaillé une méthode complète pour utiliser l'IA sur la correction sans jamais déléguer la notation finale, avec des prompts prêts à l'emploi pour préparer barèmes et appréciations.",
+      },
+    ],
+    cta: {
+      text: "Envie d'une méthode complète pour accélérer ta correction sans jamais déléguer la notation, avec des prompts prêts à l'emploi ?",
+      linkLabel:
+        "L'IA pour les profs : créer ses cours, corrections et exercices en deux fois moins de temps",
+      href: "/guides/ia-profs",
+    },
+    relatedPosts: ["chatgpt-preparer-ses-cours", "10-prompts-chatgpt-enseignants"],
   },
 ];
 
