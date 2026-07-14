@@ -51,12 +51,9 @@ Avant de publier, vérifie qu'il apparaît :
 **Ne jamais forcer le mot-clé artificiellement** s'il ne s'intègre pas
 naturellement — signale plutôt le manque et laisse l'auteur reformuler.
 
-**Constat récurrent (articles 1 à 4, dernière mise à jour 2026-07-20)** : sur
-les 4 articles publiés à ce jour, aucun ne respecte encore les 4 emplacements
-(titre + intro + intertitre + conclusion). Le mot-clé principal atterrit presque
-toujours dans le titre et l'intro, puis le texte bascule sur un terme générique
-("l'IA") pour le reste de l'article, y compris dans les intertitres et la
-dernière section ("Pour aller plus loin").
+**Constat par article (dernière mise à jour 2026-07-22)** : le mot-clé principal
+atterrit presque toujours dans le titre et l'intro ; ce qui varie d'un article à
+l'autre, c'est s'il revient ensuite dans un intertitre et dans la conclusion.
 
 - `chatgpt-preparer-ses-cours` : "ChatGPT" présent titre + intro, absent des
   intertitres et de la conclusion.
@@ -66,10 +63,24 @@ dernière section ("Pour aller plus loin").
 - `creer-exercice-ia-5-minutes` : "créer un exercice" et "IA" présents titre +
   intro, absents des 7 intertitres ("Étape 1" à "Pour aller plus loin") et de
   la conclusion — alors que le brief de cet article affirmait qu'ils y étaient
-  déjà. Vérifié par script, pas juste par lecture rapide : à corriger avant de
-  supposer que la présence dans le titre suffit.
+  déjà. Vérifié par script, pas juste par lecture rapide.
+- `ia-cours-maths-bonne-mauvaise-idee` : **premier article à couvrir les 4
+  emplacements naturellement**, sans aucune reformulation nécessaire — "IA" et
+  "maths"/"mathématiques" présents titre + intro + au moins 1 intertitre
+  ("Ce que l'IA fait très bien en maths") + conclusion ("En résumé" : "L'IA en
+  cours de maths n'est ni une solution miracle..."). Réparti sur 9/15 blocs
+  pour "IA" et 5/15 pour "maths". Aucune modification appliquée : c'est le
+  texte d'origine qui s'y prêtait déjà bien, contrairement aux 4 précédents.
 
-Aucune reformulation n'a été appliquée sur ces 4 articles — à valider avec
+⚠️ Piège vécu en rédigeant l'article 5 : avant de faire cette vérification,
+3 intertitres avaient été légèrement reformulés pour y glisser "IA"/"maths"
+(ex. "Ce qui reste risqué ou déconseillé" → "... en maths"). C'est exactement
+le genre de modification que ce point 4 interdit de faire soi-même — repéré et
+annulé avant publication, intertitres restaurés au texte source exact. Retenir
+ça : ne jamais retoucher un intertitre/une conclusion pour "faire remonter"
+le score de mot-clé, même involontairement en committant les blocs "d'un coup".
+
+Aucune reformulation n'a été appliquée sur les articles 1 à 4 — à valider avec
 l'auteur avant toute modification de texte.
 
 ## 5. Script de vérification rapide

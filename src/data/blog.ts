@@ -234,6 +234,7 @@ const rawBlogPosts: BlogPost[] = [
       "chatgpt-preparer-ses-cours",
       "chatgpt-corriger-copies",
       "creer-exercice-ia-5-minutes",
+      "ia-cours-maths-bonne-mauvaise-idee",
     ],
   },
   {
@@ -375,6 +376,70 @@ const rawBlogPosts: BlogPost[] = [
       text: "Chaque discipline a ses propres formulations qui donnent de meilleurs résultats : découvre les packs de prompts déjà calibrés pour ta matière.",
       linkLabel: "Découvrir les packs de prompts par matière",
       href: "/prompts",
+    },
+    relatedPosts: ["10-prompts-chatgpt-enseignants"],
+  },
+  {
+    slug: "ia-cours-maths-bonne-mauvaise-idee",
+    title: "L'IA en cours de maths : bonne ou mauvaise idée ?",
+    excerpt:
+      "Utiliser l'IA dans une matière où la rigueur du calcul compte autant, est-ce vraiment une bonne idée ? La réponse est plus nuancée qu'un simple oui ou non.",
+    seoTitle: "L'IA en cours de maths : bonne ou mauvaise idée ? | Guido",
+    seoDescription:
+      "L'IA en mathématiques : ce qu'elle fait bien, ses vrais risques (erreurs de calcul silencieuses), et comment l'utiliser sereinement en classe.",
+    coverImage:
+      "https://images.unsplash.com/photo-1758685734312-5134968399a8?auto=format&fit=crop&w=1600&q=80",
+    coverAlt:
+      "Tableau de mathématiques avec équations, illustrant l'usage de l'IA en cours de maths",
+    publishedAt: "2026-07-22",
+    body: [
+      {
+        type: "paragraph",
+        text: "C'est une question qui revient souvent chez les professeurs de mathématiques : utiliser l'IA dans une matière où la rigueur du calcul et de la méthode compte autant, est-ce vraiment une bonne idée ? La réponse est plus nuancée qu'un simple oui ou non.",
+      },
+      { type: "heading", text: "Le vrai risque : les erreurs de calcul silencieuses" },
+      {
+        type: "paragraph",
+        text: "Contrairement à une matière littéraire où une approximation reste souvent lisible, une erreur de calcul en mathématiques peut passer complètement inaperçue si elle n'est pas vérifiée. Une IA peut se tromper sur une valeur numérique, une simplification, ou une étape de résolution, tout en présentant le résultat avec la même assurance qu'une réponse juste. La relecture n'est donc pas une précaution facultative en maths : c'est une étape incontournable avant toute distribution aux élèves.",
+      },
+      { type: "heading", text: "Ce que l'IA fait très bien en maths" },
+      {
+        type: "paragraph",
+        text: "Générer des séries d'exercices progressifs sur une même notion, avec des valeurs numériques différentes à chaque fois, est une tâche où l'IA excelle et fait gagner un temps réel. De même pour la différenciation : transformer un exercice standard en version simplifiée ou approfondie se fait en quelques secondes plutôt qu'en réécrivant tout à la main.",
+      },
+      {
+        type: "paragraph",
+        text: "L'IA est aussi utile pour reformuler une notion abstraite avec un exemple concret différent de celui du cours, quand l'explication initiale n'a pas suffi pour une partie de la classe.",
+      },
+      { type: "heading", text: "Ce qui reste risqué ou déconseillé" },
+      {
+        type: "paragraph",
+        text: "Demander à l'IA de résoudre directement un problème complexe sans vérification, pour ensuite le distribuer tel quel comme corrigé officiel, est risqué : une erreur de méthode peut se glisser sans que ce soit visible au premier coup d'œil, surtout sur des calculs à plusieurs étapes.",
+      },
+      {
+        type: "paragraph",
+        text: "Il est également déconseillé de laisser les élèves eux-mêmes utiliser l'IA pour obtenir directement la réponse à un exercice noté : ça ne les fait pas progresser sur la compétence de calcul et de raisonnement visée par l'exercice.",
+      },
+      { type: "heading", text: "Une méthode simple pour l'utiliser sereinement" },
+      {
+        type: "paragraph",
+        text: "Toujours vérifier manuellement les valeurs numériques et la méthode de résolution avant de distribuer un exercice généré. Demander systématiquement la correction en même temps que l'exercice, pour repérer plus facilement une incohérence entre l'énoncé et le corrigé proposé. Et privilégier l'IA pour les tâches de structuration (créer plusieurs versions, varier les contextes) plutôt que pour la résolution de problèmes complexes sans supervision.",
+      },
+      { type: "heading", text: "En résumé" },
+      {
+        type: "paragraph",
+        text: "L'IA en cours de maths n'est ni une solution miracle ni un danger à éviter à tout prix : c'est un outil qui accélère la préparation, à condition de garder un contrôle rigoureux sur l'exactitude des calculs, exactement comme on vérifierait n'importe quelle ressource externe avant de l'utiliser en classe.",
+      },
+      { type: "heading", text: "Pour aller plus loin" },
+      {
+        type: "paragraph",
+        text: "On a préparé un pack de 36 prompts spécifiquement pensés pour les professeurs de mathématiques (séquences, exercices, évaluations, différenciation), avec les précautions à connaître pour chaque usage.",
+      },
+    ],
+    cta: {
+      text: "36 prompts spécifiquement pensés pour les professeurs de mathématiques, avec les précautions à connaître pour chaque usage.",
+      linkLabel: "Découvrir le pack de prompts pour profs de maths",
+      href: "/guides/prompts-maths",
     },
     relatedPosts: ["10-prompts-chatgpt-enseignants"],
   },
