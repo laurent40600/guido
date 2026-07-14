@@ -7,6 +7,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import GuidePricing from "@/components/guides/GuidePricing";
 import GuideCard from "@/components/guides/GuideCard";
+import BundlePromo from "@/components/guides/BundlePromo";
 import { guides, getGuide, findBundlesContaining } from "@/data/guides";
 import { getSession } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -88,9 +89,10 @@ export default async function GuideDetailPage({
   const containingBundles = findBundlesContaining(guide.slug);
 
   // Ponctuel : uniquement sur le guide général "L'IA pour les profs", dont les
-  // prompts sont vendus à part par matière. Ne pas généraliser à un composant
-  // réutilisable — chaque guide (ex. les guides "2 en 1" comme ia-ses) doit
-  // être évalué au cas par cas selon qu'il contient déjà ses propres prompts.
+  // prompts sont vendus à part par matière. Le style visuel est partagé via
+  // BundlePromo, mais cette logique reste au cas par cas — chaque guide (ex.
+  // les guides "2 en 1" comme ia-ses) doit être évalué selon qu'il contient
+  // déjà ses propres prompts.
   const promptsBundle = guide.slug === "ia-profs" ? getGuide("pack-prompts-profs-complet") : undefined;
   const promptsBundleOffer = promptsBundle?.offers?.[0];
   const promptsBundlePrice = promptsBundleOffer ? resolveOfferPrice(promptsBundleOffer) : undefined;
@@ -173,31 +175,21 @@ export default async function GuideDetailPage({
 
           {containingBundles.map((bundle) => {
             const bundleOffer = bundle.offers?.[0];
-            const bundlePrice = bundleOffer ? resolveOfferPrice(bundleOffer) : null;
+            if (!bundleOffer) return null;
+            const bundlePrice = resolveOfferPrice(bundleOffer);
             return (
-              <div
+              <BundlePromo
                 key={bundle.slug}
-                className="mt-8 rounded-xl border border-gold-600/30 bg-gold-50 p-4 text-sm text-navy-900"
-              >
-                <span className="font-semibold">Économise</span> avec{" "}
-                <span className="font-semibold">{bundle.title}</span>
-                {bundlePrice?.strikePrice && (
+                description={
                   <>
-                    {" "}
-                    à{" "}
-                    <span className="font-semibold text-gold-700">
-                      {bundlePrice.displayPrice} au lieu de {bundlePrice.strikePrice}
-                    </span>
+                    <span className="font-semibold">{bundle.title}</span> —{" "}
+                    {bundle.tagline}
                   </>
-                )}
-                .{" "}
-                <Link
-                  href={`/guides/${bundle.slug}`}
-                  className="font-semibold text-gold-700 underline hover:text-gold-800"
-                >
-                  Voir le pack complet →
-                </Link>
-              </div>
+                }
+                displayPrice={bundlePrice.displayPrice}
+                strikePrice={bundlePrice.strikePrice}
+                href={`/guides/${bundle.slug}`}
+              />
             );
           })}
 
@@ -209,35 +201,19 @@ export default async function GuideDetailPage({
           />
 
           {promptsBundle && promptsBundlePrice && (
-            <div className="mt-6 rounded-2xl border border-navy-900/15 bg-navy-900 p-6 text-white">
-              <p className="text-sm font-semibold uppercase tracking-wide text-gold-600">
-                Pack complet disponible
-              </p>
-              <p className="mt-2 text-base leading-relaxed">
-                Tu enseignes plusieurs matières ou tu veux couvrir toute
-                l&apos;équipe ? Le{" "}
-                <span className="font-semibold">Pack Prompts Profs Complet</span>{" "}
-                regroupe 161 prompts pour 5 matières en un seul achat.
-              </p>
-              <div className="mt-4 flex flex-wrap items-center gap-4">
-                <span className="flex items-baseline gap-2">
-                  {promptsBundlePrice.strikePrice && (
-                    <span className="text-base font-semibold text-white/50 line-through">
-                      {promptsBundlePrice.strikePrice}
-                    </span>
-                  )}
-                  <span className="text-2xl font-black text-white">
-                    {promptsBundlePrice.displayPrice}
-                  </span>
-                </span>
-                <Link
-                  href={`/guides/${promptsBundle.slug}`}
-                  className="rounded-xl bg-gold-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-700"
-                >
-                  Voir le pack complet →
-                </Link>
-              </div>
-            </div>
+            <BundlePromo
+              description={
+                <>
+                  Tu enseignes plusieurs matières ou tu veux couvrir toute
+                  l&apos;équipe ? Le{" "}
+                  <span className="font-semibold">Pack Prompts Profs Complet</span>{" "}
+                  regroupe 161 prompts pour 5 matières en un seul achat.
+                </>
+              }
+              displayPrice={promptsBundlePrice.displayPrice}
+              strikePrice={promptsBundlePrice.strikePrice}
+              href={`/guides/${promptsBundle.slug}`}
+            />
           )}
 
           <div className="mt-16">
