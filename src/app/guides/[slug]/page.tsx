@@ -173,19 +173,20 @@ export default async function GuideDetailPage({
 
           {containingBundles.map((bundle) => {
             const bundleOffer = bundle.offers?.[0];
+            const bundlePrice = bundleOffer ? resolveOfferPrice(bundleOffer) : null;
             return (
               <div
                 key={bundle.slug}
                 className="mt-8 rounded-xl border border-gold-600/30 bg-gold-50 p-4 text-sm text-navy-900"
               >
-                <span className="font-semibold">Économise</span> en prenant les 5 packs
-                matières
-                {bundleOffer?.price && bundleOffer?.originalPrice && (
+                <span className="font-semibold">Économise</span> avec{" "}
+                <span className="font-semibold">{bundle.title}</span>
+                {bundlePrice?.strikePrice && (
                   <>
                     {" "}
                     à{" "}
                     <span className="font-semibold text-gold-700">
-                      {bundleOffer.price} au lieu de {bundleOffer.originalPrice}
+                      {bundlePrice.displayPrice} au lieu de {bundlePrice.strikePrice}
                     </span>
                   </>
                 )}

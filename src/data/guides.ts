@@ -389,7 +389,81 @@ export const guides: Guide[] = [
         pdfFile: "guido-marketing-contenu",
       },
     ],
-    crossSell: ["prompts-images-ia"],
+    crossSell: ["algorithmes", "prompts-images-ia"],
+  },
+  {
+    slug: "algorithmes",
+    title: "Comprendre les algorithmes des réseaux sociaux : TikTok, Instagram, LinkedIn et les autres",
+    tagline: "Un seul guide, tout intégré : principes communs, spécificités par plateforme et 30 prompts prêts à l'emploi",
+    pitch:
+      "Comprendre les principes communs à tous les algorithmes de recommandation, les spécificités de TikTok et Instagram en détail, les bases de LinkedIn et Facebook, et surtout les erreurs qui nuisent silencieusement à ta portée sans que tu t'en rendes toujours compte : ce guide couvre tout, avec une bibliothèque de 30 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Aucune compétence technique requise.",
+    price: "18€",
+    format: "PDF · 41 pages",
+    audience: "Entrepreneurs, freelances et créateurs de contenu, sans compétences techniques, qui veulent comprendre pourquoi certains posts marchent et d'autres non",
+    category: "IA",
+    cover: "/covers/algorithmes.png",
+    bestseller: false,
+    highlights: [
+      "Les principes communs à tous les algorithmes : graphe d'intérêt, signaux qui comptent vraiment, originalité, cohérence thématique",
+      "TikTok et Instagram en détail : For You Page, taux de complétion, systèmes de classement multiples, pénalité du contenu recyclé",
+      "LinkedIn, Facebook et le principe transversal du temps d'attention, le signal le plus fiable et le plus difficile à manipuler",
+      "Les erreurs qui nuisent silencieusement à ta portée : republication excessive, engagement artificiel, spam de hashtags, inactivité",
+      "Adapter sa lecture des algorithmes selon son activité (contenu éducatif, e-commerce, service, local)",
+      "30 prompts prêts à l'emploi intégrés au guide, classés par usage — aucun pack séparé à acheter",
+    ],
+    faq: [
+      {
+        question: "Ce guide contient-il vraiment les prompts, ou faut-il acheter un pack séparé ?",
+        answer:
+          "Les 30 prompts sont intégrés directement dans ce guide (partie 8), au format 2 en 1. Il n'existe pas de pack de prompts séparé — tout est inclus dans cet unique achat.",
+      },
+      {
+        question: "Ce guide révèle-t-il le fonctionnement exact et secret des algorithmes ?",
+        answer:
+          "Non, et aucune ressource sérieuse ne le peut : les plateformes ne publient pas le détail complet de leurs algorithmes. Ce guide rassemble ce qui est raisonnablement établi à partir de déclarations officielles, d'analyses de créateurs et d'observateurs spécialisés, en distinguant le confirmé de l'observation empirique.",
+      },
+      {
+        question: "Ce guide sera-t-il encore valable dans un an ?",
+        answer:
+          "Les principes fondamentaux (signaux d'engagement profond, originalité, cohérence thématique, temps d'attention) sont stables depuis plusieurs années malgré les évolutions techniques. Les détails plus précis peuvent évoluer plus vite, comme le guide le précise dès l'introduction.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Auditer sa performance actuelle",
+        text: "Voici les statistiques de mes 10 derniers posts sur [plateforme] : [coller les stats]. Aide-moi à identifier lesquels ont le mieux performé sur les signaux qui comptent vraiment (sauvegardes, partages, temps de visionnage) plutôt que sur les likes.",
+      },
+      {
+        title: "Structurer un hook TikTok percutant",
+        text: "Aide-moi à écrire les 3 premières secondes du script de cette vidéo pour maximiser les chances que les gens ne scrollent pas : [décrire le sujet de la vidéo].",
+      },
+      {
+        title: "Diagnostiquer une baisse de portée",
+        text: "Ma portée a chuté depuis [période]. Voici ce qui a changé dans mes habitudes de publication récemment : [décrire les changements]. Aide-moi à identifier une cause probable.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Guide complet",
+        price: "18€",
+        originalPrice: "27€",
+        description: "Le guide entier (8 parties) + la bibliothèque de 30 prompts intégrée",
+        includes: [
+          "Résumé exécutif et Partie 1 — Les principes communs à tous les algorithmes",
+          "Partie 2 — TikTok en détail",
+          "Partie 3 — Instagram en détail",
+          "Partie 4 — LinkedIn, Facebook et les autres plateformes",
+          "Partie 5 — Les erreurs qui nuisent silencieusement à ta portée",
+          "Partie 6 et 7 — Adapter sa stratégie et sa lecture selon son activité",
+          "Partie 8 — Bibliothèque de 30 prompts, classés par usage",
+          "PDF · 41 pages",
+        ],
+        pdfFile: "guido-algorithmes",
+      },
+    ],
+    crossSell: ["marketing-contenu", "prompts-images-ia"],
   },
   {
     slug: "ia-eleves",
@@ -1337,6 +1411,75 @@ export const guides: Guide[] = [
       { guideSlug: "prompts-histgeo", offerId: "unique" },
       { guideSlug: "prompts-sciences", offerId: "unique" },
       { guideSlug: "prompts-langues", offerId: "unique" },
+    ],
+  },
+  {
+    slug: "pack-marketing-algorithmes",
+    title: "Le Pack Marketing & Algorithmes : stratégie de contenu et algorithmes des réseaux sociaux",
+    tagline: "Les deux guides IA marketing réunis en un seul achat",
+    pitch:
+      "Le pack réunit deux guides complets et complémentaires : « L'IA pour créer du contenu qui marche » (stratégie de contenu, posts qui captent l'attention, calendrier éditorial, copywriting) et « Comprendre les algorithmes des réseaux sociaux » (principes communs, spécificités TikTok/Instagram/LinkedIn, erreurs qui nuisent à ta portée). À eux deux, 73 prompts prêts à l'emploi intégrés directement dans les guides — aucun pack de prompts séparé à acheter.",
+    price: "25€",
+    format: "2 PDF · 73 prompts au total",
+    audience: "Entrepreneurs, freelances et créateurs de contenu, sans compétences techniques, qui veulent à la fois une stratégie de contenu solide et comprendre pourquoi certains posts marchent et d'autres non",
+    category: "Packs",
+    crossListCategories: ["IA"],
+    cover: "/covers/pack-marketing-algorithmes.png",
+    bestseller: false,
+    highlights: [
+      "Le guide complet « L'IA pour créer du contenu qui marche » : stratégie, posts, calendrier éditorial, copywriting, analyse des résultats (43 prompts intégrés)",
+      "Le guide complet « Comprendre les algorithmes des réseaux sociaux » : principes communs, TikTok, Instagram, LinkedIn, erreurs à éviter (30 prompts intégrés)",
+      "73 prompts au total, intégrés directement dans les deux guides — aucun pack de prompts séparé à acheter",
+      "25€ au lieu de 36€ en achetant les deux guides séparément (18€ + 18€)",
+      "Deux fichiers PDF distincts et téléchargeables séparément — aucun contenu recréé ou dupliqué par rapport aux guides déjà en ligne",
+      "Une vision complète : créer le bon contenu ET comprendre comment il est distribué",
+    ],
+    faq: [
+      {
+        question: "Est-ce que j'obtiens les deux guides complets, prompts inclus ?",
+        answer:
+          "Oui. Le pack donne accès aux deux guides complets tels que vendus séparément, chacun avec sa bibliothèque de prompts intégrée (43 pour le guide marketing, 30 pour le guide algorithmes) — soit 73 prompts au total, sans rien de recréé ou de résumé.",
+      },
+      {
+        question: "Je reçois combien de fichiers, et sous quelle forme ?",
+        answer:
+          "L'achat donne accès aux 2 PDF existants, chacun téléchargeable séparément depuis ton compte, exactement comme si tu avais acheté les deux guides un par un.",
+      },
+      {
+        question: "Le prix de lancement à 21€ est-il permanent ?",
+        answer:
+          "Non, c'est une offre de lancement limitée dans le temps. Passé ce délai, le pack reste à 25€, toujours moins cher que les deux guides achetés séparément (36€).",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Définir ses piliers de contenu",
+        text: "Je propose [décrire ton activité/produit] à [décrire ton audience cible]. Aide-moi à définir 4 piliers de contenu cohérents avec mon activité et utiles pour mon audience.",
+      },
+      {
+        title: "Structurer un hook TikTok percutant",
+        text: "Aide-moi à écrire les 3 premières secondes du script de cette vidéo pour maximiser les chances que les gens ne scrollent pas : [décrire le sujet de la vidéo].",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Pack complet 2 guides",
+        price: "25€",
+        originalPrice: "36€",
+        launchPromo: { price: "21€", expiresAt: "2026-07-28T23:59:59" },
+        description: "Les deux guides complets, avec leurs prompts intégrés, en un seul achat",
+        includes: [
+          "L'IA pour créer du contenu qui marche — 43 prompts intégrés, PDF · 39 pages",
+          "Comprendre les algorithmes des réseaux sociaux — 30 prompts intégrés, PDF · 41 pages",
+          "73 prompts au total, dans 2 fichiers PDF téléchargeables séparément",
+        ],
+      },
+    ],
+    bundleOf: [
+      { guideSlug: "marketing-contenu", offerId: "unique" },
+      { guideSlug: "algorithmes", offerId: "unique" },
     ],
   },
 ];

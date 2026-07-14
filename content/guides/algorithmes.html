@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Comprendre les algorithmes des réseaux sociaux</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 235mm; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 25pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 8pt; font-size: 11.5pt; }
+  .toc li span { font-style: italic; font-size: 10.5pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-example { background: #f1efec; border-left: 5px solid #8a8478; }
+  .box-example .box-title { color: #5c574c; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Comprendre les algorithmes des réseaux sociaux</h1>
+  <p class="tagline">TikTok, Instagram, LinkedIn et les autres</p>
+  <p class="meta">Un guide complet + une bibliothèque de 30 prompts intégrée,<br/>guidé par IA — aucune compétence technique requise</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Résumé exécutif<span>Les 5 principes clés et les erreurs les plus coûteuses à éviter</span></li>
+    <li>Introduction<span>Pourquoi ce guide, et ses limites honnêtes</span></li>
+    <li>Partie 1 — Les principes communs à tous les algorithmes<span>Graphe d'intérêt, signaux qui comptent, originalité, cohérence thématique</span></li>
+    <li>Partie 2 — TikTok en détail<span>For You Page, taux de complétion, autorité thématique</span></li>
+    <li>Partie 3 — Instagram en détail<span>Systèmes multiples, signaux confirmés, pénalité du contenu recyclé</span></li>
+    <li>Partie 4 — LinkedIn, Facebook et les autres plateformes<span>Discussions substantielles, groupes, temps d'attention transversal</span></li>
+    <li>Partie 5 — Les erreurs qui nuisent silencieusement à ta portée<span>Republication, engagement artificiel, spam de hashtags, inactivité</span></li>
+    <li>Partie 6 — Adapter concrètement sa stratégie<span>Prioriser les bons signaux, choisir ses batailles, rester à jour</span></li>
+    <li>Partie 7 — Adapter sa lecture des algorithmes selon son activité<span>Contenu éducatif, e-commerce, service, local</span></li>
+    <li>Comprendre l'évolution récente des algorithmes<span>Bascule vers l'intérêt, lutte contre le contenu recyclé, contenu généré par IA</span></li>
+    <li>Questions fréquentes</li>
+    <li>Annexe — Lexique des signaux d'algorithme<span>Taux de complétion, dwell time, graphe d'intérêt, cold start</span></li>
+    <li>Pour aller plus loin<span>Privilégier les sources officielles des plateformes</span></li>
+    <li>Conclusion</li>
+    <li>Partie 8 — Bibliothèque de prompts<span>30 prompts prêts à l'emploi, classés par usage</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Résumé exécutif</h2>
+  <p class="lede">Si tu ne devais retenir que l'essentiel de ce guide avant de le lire en détail, voici les points clés.</p>
+  <h3>Les 5 principes qui traversent presque tous les algorithmes</h3>
+  <ul>
+    <li>Les sauvegardes et partages en message privé comptent plus que les likes.</li>
+    <li>Le contenu original, créé nativement pour chaque plateforme, est favorisé face au contenu recyclé.</li>
+    <li>La cohérence thématique construit une autorité qui améliore la distribution dans la durée.</li>
+    <li>Le temps d'attention réellement capté est le signal le plus fiable et le plus difficile à manipuler.</li>
+    <li>La régularité compte généralement plus que l'intensité ponctuelle.</li>
+  </ul>
+  <h3>Les erreurs les plus coûteuses à éviter</h3>
+  <ul>
+    <li>Republier du contenu avec filigrane visible d'une autre plateforme.</li>
+    <li>Utiliser un nombre excessif de hashtags sans rapport réel avec le contenu.</li>
+    <li>Recourir à l'engagement artificiel ou aux pratiques de follow/unfollow automatisées.</li>
+    <li>Changer fréquemment de thématique sans fil conducteur reconnaissable.</li>
+  </ul>
+  <h3>Comment utiliser ce guide</h3>
+  <p>Les Parties 2 à 4 détaillent les spécificités de chaque plateforme majeure. La Partie 5 liste les erreurs à éviter en priorité. Les Parties 6 et 7 t'aident à passer à l'action concrètement. La bibliothèque de prompts en fin de guide te permet d'appliquer directement ces principes à ton propre contenu.</p>
+</section>
+
+<section class="chapter">
+  <h2>2. Introduction</h2>
+  <h3>Pourquoi ce guide, et ses limites honnêtes</h3>
+  <p>Aucune plateforme ne publie le détail complet de son algorithme : ce serait à la fois un secret industriel et une invitation ouverte à la manipulation du système. Ce que nous savons vient de déclarations publiques officielles des plateformes elles-mêmes, d'analyses de créateurs et d'observateurs spécialisés qui étudient les résultats à grande échelle, et de tests menés par des professionnels du secteur.</p>
+  <p>Ce guide rassemble ce qui est aujourd'hui raisonnablement établi sur le fonctionnement de ces algorithmes, en distinguant ce qui est confirmé officiellement de ce qui reste une observation empirique. Les algorithmes évoluent en permanence : certains détails de ce guide deviendront moins précis avec le temps, mais les grands principes qui les sous-tendent restent, eux, remarquablement stables d'une évolution à l'autre.</p>
+  <div class="box box-tip">
+    <span class="box-title">Une précision importante</span>
+    <p>Ce guide reflète l'état des connaissances publiques au moment de sa rédaction.</p>
+    <p>Les plateformes ajustent régulièrement leurs systèmes de recommandation, parfois plusieurs fois par an.</p>
+    <p>Concentre-toi sur les principes généraux (originalité, engagement réel, cohérence) plutôt que sur des astuces précises qui peuvent devenir obsolètes.</p>
+  </div>
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>À la fin de ce guide, tu comprendras les grands principes communs à tous les algorithmes de recommandation, les spécificités de TikTok et Instagram en détail, les bases de LinkedIn et Facebook, et surtout les erreurs qui nuisent silencieusement à ta portée sans que tu t'en rendes toujours compte.</p>
+  <h3>Ce dont tu as besoin pour commencer</h3>
+  <p>Aucune compétence technique n'est nécessaire. Ce guide s'adresse à toute personne qui publie du contenu régulièrement et veut comprendre pourquoi certains posts marchent et d'autres non, au-delà du simple hasard apparent.</p>
+  <h3>Qui est concerné par ce guide</h3>
+  <p>Ce guide s'adresse aussi bien à un créateur de contenu qui vit de son audience, qu'à un entrepreneur qui utilise les réseaux sociaux comme canal secondaire de communication, ou à une petite entreprise qui gère sa présence en ligne en interne sans expertise marketing dédiée. Les principes restent largement transposables d'un profil à l'autre, même si l'intensité d'usage varie.</p>
+  <p>On commence par les principes qui traversent presque tous les algorithmes actuels, avant de rentrer dans le détail de chaque plateforme.</p>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 1 — Les principes communs à tous les algorithmes</h2>
+  <h3>Du graphe de suivi au graphe d'intérêt</h3>
+  <p>Pendant longtemps, les réseaux sociaux montraient principalement du contenu des comptes qu'on suivait, dans un ordre plus ou moins chronologique. La grande bascule de ces dernières années est le passage à une recommandation basée sur l'intérêt : la plateforme montre le contenu qu'elle prédit comme intéressant pour chaque utilisateur, qu'il suive le compte ou non.</p>
+  <p>Cette bascule explique pourquoi un compte avec peu d'abonnés peut désormais obtenir une portée importante si son contenu est jugé pertinent pour un public plus large que ses seuls abonnés, et pourquoi à l'inverse un compte avec beaucoup d'abonnés n'est plus jamais assuré d'une portée automatique sur chaque publication.</p>
+  <h3>Les signaux qui comptent vraiment</h3>
+  <p>Le like reste le signal le plus visible mais le moins déterminant aujourd'hui sur la plupart des plateformes majeures. Les signaux qui pèsent le plus lourd sont ceux qui demandent un effort ou un engagement plus profond : le temps de visionnage complet, la sauvegarde d'un contenu pour le revoir plus tard, et le partage en message privé à quelqu'un d'autre.</p>
+  <p>Cette hiérarchie des signaux a une logique simple du point de vue des plateformes : un like coûte un geste instantané et ne garantit rien sur la qualité perçue du contenu, alors que sauvegarder ou partager en message privé demande une vraie conviction que le contenu vaut la peine d'être revu ou transmis.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Pourquoi les sauvegardes comptent tant</span>
+    <p>Un post qui reçoit peu de likes mais beaucoup de sauvegardes envoie un signal fort : les gens veulent pouvoir le retrouver plus tard, ce qui indique une vraie valeur perçue au-delà de l'appréciation immédiate et superficielle qu'un like représente.</p>
+  </div>
+  <h3>L'originalité comme critère de plus en plus déterminant</h3>
+  <p>Les plateformes majeures pénalisent de plus en plus explicitement le contenu republié tel quel d'une autre plateforme (en particulier repéré par un filigrane visible), au profit du contenu créé nativement pour l'app en question. Ce n'est pas qu'une question esthétique : les plateformes cherchent activement à éviter de devenir de simples relais de contenu produit ailleurs.</p>
+  <h3>La cohérence thématique</h3>
+  <p>Publier régulièrement autour d'un nombre limité de thématiques cohérentes aide les systèmes de recommandation à comprendre à qui montrer ton contenu, et construit progressivement ce qu'on appelle une autorité thématique. À l'inverse, un compte qui change fréquemment de sujet sans lien apparent rend la tâche de recommandation plus difficile pour l'algorithme, ce qui se traduit souvent par une portée plus faible et plus erratique.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La recommandation moderne se base sur l'intérêt prédit, pas uniquement sur le fait de suivre un compte.</p>
+    <p>Les sauvegardes et partages en message privé pèsent généralement plus lourd que les likes.</p>
+    <p>Le contenu original, créé nativement pour la plateforme, est de plus en plus favorisé face au contenu recyclé.</p>
+    <p>La cohérence thématique aide l'algorithme à comprendre et recommander ton contenu au bon public.</p>
+  </div>
+  <h3>Étude de cas : la découverte de Pauline</h3>
+  <p>Pauline, illustratrice indépendante avec seulement 200 abonnés, publiait un contenu varié sans grande attente de portée. Une de ses illustrations, qui abordait un sujet universellement partageable, a été massivement sauvegardée et envoyée en message privé par les quelques personnes qui l'ont vue initialement, ce qui a déclenché une diffusion bien au-delà de son cercle d'abonnés habituels.</p>
+  <p>Ce cas illustre concrètement la bascule vers la recommandation par intérêt : la taille de son audience de départ n'a pas été le facteur déterminant, mais bien la qualité des signaux d'engagement générés par ce contenu précis auprès d'un premier groupe restreint de spectateurs.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Pauline n'avait pas besoin d'une grande audience préexistante pour obtenir une portée importante : elle avait besoin d'un contenu qui génère les bons signaux auprès de qui le voit, aussi restreint que soit ce premier groupe.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 2 — TikTok en détail</h2>
+  <h3>Le fonctionnement du For You Page</h3>
+  <p>TikTok a construit sa réputation sur un système de recommandation particulièrement agressif dans sa personnalisation : chaque flux "For You" est unique et façonné par des milliers de micro-signaux de comportement observés dans le temps, bien plus que par le simple fait de suivre ou non un compte.</p>
+  <p>Selon les déclarations de la plateforme elle-même, le nombre d'abonnés n'est pas un facteur direct dans le système de recommandation : chaque vidéo est évaluée indépendamment selon les signaux d'engagement qu'elle génère auprès d'un premier groupe restreint de spectateurs test, avant une éventuelle diffusion plus large si les signaux sont favorables.</p>
+  <h3>Le taux de complétion, signal roi</h3>
+  <p>Le temps de visionnage et le taux de complétion (le pourcentage de la vidéo effectivement regardé) sont considérés comme les signaux les plus déterminants de l'algorithme TikTok. Une vidéo qui retient l'attention jusqu'au bout, ou mieux encore qui pousse au visionnage répété, envoie un signal extrêmement fort de qualité perçue.</p>
+  <p>C'est ce qui explique l'importance cruciale des toutes premières secondes d'une vidéo : un décrochage rapide de l'audience dans les premiers instants condamne généralement la portée de la vidéo, quelle que soit la qualité du reste du contenu.</p>
+  <h4>Exercice pratique : analyser ses 3 premières secondes</h4>
+  <p>Reprends tes 5 dernières vidéos et regarde uniquement les 3 premières secondes de chacune, en te demandant honnêtement si, en tant que spectateur neutre, tu aurais envie de continuer à regarder. Cet exercice simple révèle souvent des marges de progression immédiates sur l'élément le plus déterminant de la performance.</p>
+  <h3>L'autorité thématique et la niche</h3>
+  <p>Les comptes qui restent cohérents sur une thématique précise bénéficient généralement d'une portée plus stable que les comptes qui publient sur des sujets très variés sans lien apparent. Ce principe, déjà vu en Partie 1, est particulièrement marqué sur TikTok, où la personnalisation fine du système de recommandation pénalise fortement le manque de cohérence.</p>
+  <h3>Les évolutions récentes à connaître</h3>
+  <p>Le contenu généré ou modifié par IA (visages ou voix synthétiques notamment) fait désormais l'objet d'obligations de signalement explicite sur la plateforme. Le contenu non signalé mais détecté comme généré par IA peut voir sa portée réduite, alors que le signalement en lui-même n'est pas pénalisant. De même, le contenu à caractère politique ou électoral est généralement soumis à une diffusion initiale plus restreinte, quelle que soit la taille du compte.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le nombre d'abonnés n'est pas un facteur direct de recommandation sur TikTok : chaque vidéo est évaluée sur ses propres signaux.</p>
+    <p>Le taux de complétion et le temps de visionnage sont les signaux les plus déterminants.</p>
+    <p>Les 3 premières secondes conditionnent largement la suite de la performance d'une vidéo.</p>
+    <p>La cohérence thématique renforce la stabilité de la portée dans la durée.</p>
+  </div>
+  <h3>Étude de cas : le rebond de Maxime</h3>
+  <p>Maxime, professeur de guitare, publiait des vidéos de tutoriels complets de 3 minutes qui commençaient systématiquement par une introduction de sa chaîne, repoussant le contenu réellement utile après les 15 premières secondes. Ses vidéos peinaient à dépasser quelques centaines de vues malgré un contenu pédagogique de qualité.</p>
+  <p>En restructurant ses vidéos pour aller directement à l'élément le plus intéressant dès la première seconde (par exemple en montrant d'abord le résultat final impressionnant avant d'expliquer comment y arriver), Maxime a vu son taux de complétion et sa portée progresser nettement en quelques semaines, sans changer la qualité de son enseignement lui-même.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le contenu de Maxime n'avait pas besoin d'être meilleur : il avait besoin d'être réorganisé pour présenter l'élément le plus captivant en premier plutôt qu'en dernier.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 3 — Instagram en détail</h2>
+  <h3>Plusieurs systèmes, pas un seul algorithme</h3>
+  <p>Contrairement à une idée reçue répandue, Instagram ne fonctionne pas avec un algorithme unique : la plateforme utilise des systèmes de classement distincts pour le Fil, les Reels, les Stories et l'Explorer, chacun optimisé pour un usage différent. Un contenu qui performe bien en Reels ne garantit donc pas une performance équivalente s'il apparaît aussi dans le Fil ou l'Explorer.</p>
+  <h3>Les signaux confirmés officiellement</h3>
+  <p>Le responsable d'Instagram a confirmé publiquement plusieurs signaux de classement prioritaires : le temps de visionnage, les envois en message privé rapportés à la portée totale, et les likes rapportés à la portée (davantage que le nombre brut de likes). L'intérêt déjà démontré pour un type de contenu, la fraîcheur de la publication, la relation avec le compte (via les messages privés et sauvegardes passés), et la fréquence d'utilisation de l'application par chaque utilisateur entrent aussi en compte.</p>
+  <h3>La pénalité du contenu recyclé</h3>
+  <p>Le contenu republié tel quel depuis une autre plateforme, en particulier lorsqu'il conserve un filigrane visible, reçoit une distribution significativement réduite par rapport à un contenu créé nativement pour Instagram. Un compte qui republie de façon répétée du contenu provenant d'ailleurs peut, selon la plateforme, se voir purement et simplement exclu des systèmes de recommandation.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Adapter plutôt que dupliquer</span>
+    <p>Une vidéo initialement filmée pour TikTok peut être réutilisée sur Instagram, mais gagne à être ré-exportée sans filigrane et idéalement légèrement retravaillée (nouveau montage, nouvelle légende) plutôt que simplement re-téléversée à l'identique.</p>
+  </div>
+  <h3>Les comportements pénalisés</h3>
+  <p>Plusieurs pratiques sont explicitement détectées et pénalisées par la plateforme : l'utilisation coordonnée de groupes d'engagement artificiel, l'usage excessif de hashtags qui peut être perçu comme un signal de spam, et les pratiques automatisées de type follow/unfollow répétitif visant à gonfler artificiellement sa visibilité.</p>
+  <h3>L'importance de la réactivité</h3>
+  <p>Répondre rapidement aux commentaires et messages privés est également identifié comme un signal positif : un compte qui laisse ses interactions sans réponse pendant longtemps peut être perçu par le système comme moins actif, ce qui joue en défaveur de sa distribution.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Instagram utilise plusieurs systèmes de classement distincts selon le format (Fil, Reels, Stories, Explorer).</p>
+    <p>Les sauvegardes, envois en message privé et temps de visionnage priment sur le nombre brut de likes.</p>
+    <p>Le contenu recyclé depuis une autre plateforme, surtout avec filigrane visible, est pénalisé.</p>
+    <p>Une réactivité rapide aux commentaires et messages est un signal positif pour la distribution.</p>
+  </div>
+  <h3>Étude de cas : la stagnation de Léa</h3>
+  <p>Léa, créatrice de contenu lifestyle, republiait systématiquement ses vidéos TikTok directement sur Instagram, filigrane inclus, pour gagner du temps. Malgré une audience TikTok en croissance, son compte Instagram stagnait complètement depuis des mois.</p>
+  <p>En prenant l'habitude de ré-exporter ses vidéos sans filigrane et en adaptant légèrement chaque légende au ton plus visuel d'Instagram plutôt que de dupliquer le texte TikTok tel quel, Léa a vu sa portée Instagram redémarrer progressivement, ce contenu étant désormais traité comme natif plutôt que comme repost par le système de classement.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le problème de Léa n'était pas la qualité de son contenu, déjà solide sur TikTok, mais la pénalité spécifique et bien documentée qu'Instagram applique au contenu recyclé avec filigrane visible.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Partie 4 — LinkedIn, Facebook et les autres plateformes</h2>
+  <h3>LinkedIn : un algorithme orienté professionnel</h3>
+  <p>LinkedIn privilégie le contenu qui génère des discussions substantielles plutôt qu'un simple engagement rapide : un commentaire construit et détaillé pèse généralement plus lourd qu'un like ou une réaction rapide. Le temps passé sur un post (dwell time) est également un signal pris en compte, ce qui favorise les formats qui invitent à s'arrêter (texte structuré avec des sauts de ligne, documents/carrousels).</p>
+  <h3>Facebook : entre pages et groupes</h3>
+  <p>La distribution organique des pages Facebook reste globalement plus limitée que par le passé, la plateforme orientant fortement vers du contenu publicitaire pour les comptes professionnels. Les groupes Facebook, en revanche, conservent une dynamique d'engagement plus organique, ce qui en fait un format à considérer sérieusement pour construire une communauté engagée plutôt qu'une simple audience passive.</p>
+  <h3>Le principe transversal du temps d'attention</h3>
+  <p>Sur l'ensemble des plateformes majeures actuelles, le temps d'attention réellement capté (dwell time, temps de visionnage, temps de lecture) s'impose progressivement comme un signal plus fiable et plus difficile à manipuler artificiellement que les indicateurs de surface comme les likes, ce qui explique la convergence des stratégies gagnantes d'une plateforme à l'autre malgré leurs différences apparentes.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>LinkedIn favorise les discussions substantielles et le temps passé sur un post plutôt que l'engagement rapide.</p>
+    <p>Les groupes Facebook conservent une dynamique organique plus forte que les pages professionnelles.</p>
+    <p>Le temps d'attention réel devient un signal transversal de plus en plus déterminant sur toutes les plateformes majeures.</p>
+  </div>
+  <h3>Étude de cas : le changement de format de Sophie</h3>
+  <p>Sophie, consultante RH, publiait sur LinkedIn des posts très courts de type citation motivante, qui généraient quelques likes mais peu de vraie conversation. En passant à des posts plus longs et structurés (retour d'expérience détaillé avec sauts de ligne aérés, une vraie question ouverte en fin de post), elle a constaté une hausse nette des commentaires substantiels et du temps passé sur ses publications.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Sur LinkedIn en particulier, un post plus long mais qui invite vraiment à s'arrêter et à réagir en profondeur performe souvent mieux qu'un post court qui génère un like rapide sans engagement réel.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Partie 5 — Les erreurs qui nuisent silencieusement à ta portée</h2>
+  <h3>La republication excessive</h3>
+  <p>Republier un même contenu tel quel sur plusieurs plateformes, ou reposter du contenu qui n'est pas le tien, expose à des pénalités de plus en plus systématiques. Ce n'est pas une question de principe éditorial : c'est une pénalité algorithmique concrète et mesurable sur la distribution.</p>
+  <h3>L'engagement artificiel</h3>
+  <p>Les groupes d'engagement coordonné (où plusieurs comptes s'engagent mutuellement de façon systématique et artificielle) sont de plus en plus efficacement détectés par les systèmes de plateforme, avec des pénalités qui peuvent affecter durablement un compte repéré.</p>
+  <h3>Le sur-étiquetage et le spam de hashtags</h3>
+  <p>Utiliser un nombre excessif de hashtags, ou des hashtags sans rapport réel avec le contenu dans l'espoir de toucher plus de monde, est de plus en plus perçu comme un signal de spam plutôt que comme une stratégie de visibilité efficace.</p>
+  <h3>L'incohérence thématique</h3>
+  <p>Changer fréquemment et sans lien apparent de sujet de publication complique la tâche de catégorisation de l'algorithme et nuit généralement à la stabilité de la portée dans la durée, comme vu dans les parties précédentes.</p>
+  <h3>L'inactivité prolongée</h3>
+  <p>Une interruption prolongée de publication (plusieurs semaines sans nouveau contenu) tend à réduire la portée des publications suivantes, les systèmes de recommandation favorisant les comptes perçus comme actifs et engagés dans la durée plutôt que ceux qui publient de façon très sporadique.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La republication excessive de contenu recyclé ou emprunté expose à des pénalités concrètes.</p>
+    <p>L'engagement artificiel coordonné est de plus en plus efficacement détecté et pénalisé.</p>
+    <p>Le sur-étiquetage par hashtags est perçu comme un signal de spam plutôt que d'aide à la découverte.</p>
+    <p>L'inactivité prolongée réduit généralement la portée des publications qui suivent une reprise.</p>
+  </div>
+  <h3>Étude de cas : la remontée de Julien</h3>
+  <p>Julien, créateur de contenu voyage, utilisait systématiquement 25 à 30 hashtags sur chacune de ses publications Instagram, pensant maximiser sa visibilité. Sa portée organique déclinait pourtant progressivement depuis plusieurs mois, sans qu'il comprenne pourquoi.</p>
+  <p>En réduisant drastiquement son usage de hashtags à 3-5 hashtags réellement pertinents par publication, et en concentrant son énergie sur la qualité de sa légende et l'incitation au partage plutôt que sur la quantité de hashtags, Julien a observé une amélioration progressive de sa portée organique sur plusieurs semaines.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Ce qui semblait être une stratégie de visibilité maximale (beaucoup de hashtags) s'est avéré être un signal négatif perçu par l'algorithme comme un comportement de spam, illustrant bien pourquoi les intuitions sur les réseaux sociaux ne sont pas toujours alignées avec le fonctionnement réel des systèmes de recommandation actuels.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>8. Partie 6 — Adapter concrètement sa stratégie</h2>
+  <h3>Prioriser les bons signaux dès la création</h3>
+  <p>Plutôt que de créer un contenu puis d'espérer qu'il performe, intègre dès la conception la question : qu'est-ce qui, dans ce contenu précis, donnerait envie à quelqu'un de le sauvegarder ou de le partager en message privé à un ami ? Cette question, posée systématiquement, oriente naturellement la création vers les signaux qui comptent vraiment.</p>
+  <h3>Choisir ses batailles plutôt que d'être partout</h3>
+  <p>Comprendre les mécaniques de chaque plateforme permet de choisir en connaissance de cause où investir son énergie, plutôt que de se disperser sur toutes les plateformes avec la même stratégie générique, qui ne tire parti des spécificités d'aucune d'entre elles.</p>
+  <h3>Rester à jour sans paniquer à chaque changement</h3>
+  <p>Les algorithmes évoluent en permanence, et il est contre-productif de changer radicalement de stratégie à chaque rumeur de mise à jour. Les principes fondamentaux vus dans ce guide (originalité, engagement réel, cohérence, temps d'attention) restent généralement stables même quand les détails techniques évoluent.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Concevoir son contenu en pensant aux signaux forts (saves, sends) plutôt qu'aux likes change la qualité de sa stratégie.</p>
+    <p>Choisir consciemment ses plateformes prioritaires vaut mieux qu'une présence dispersée et générique partout.</p>
+    <p>Les principes fondamentaux restent stables même quand les détails techniques des algorithmes évoluent.</p>
+  </div>
+  <h3>Étude de cas : la stratégie recentrée d'Antoine</h3>
+  <p>Antoine, entrepreneur dans le secteur du bien-être, était présent sur 5 plateformes différentes avec la même stratégie de contenu générique partout, sans résultats significatifs nulle part malgré un temps de travail considérable chaque semaine.</p>
+  <p>En choisissant de concentrer ses efforts sur les deux plateformes les plus pertinentes pour son audience (Instagram et LinkedIn), et en adaptant réellement son contenu aux spécificités de chacune plutôt que de dupliquer un même post partout, Antoine a réduit son temps de création tout en améliorant significativement ses résultats sur ces deux plateformes prioritaires.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le problème d'Antoine n'était pas un manque d'effort, mais une dispersion qui l'empêchait d'exceller nulle part. Se concentrer sur moins de plateformes, mais avec une vraie adaptation à chacune, a été plus efficace que d'être partout de façon générique.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>9. Partie 7 — Adapter sa lecture des algorithmes selon son activité</h2>
+  <p class="lede">Les principes vus dans ce guide s'appliquent largement, mais certains signaux comptent plus ou moins selon le type de contenu et d'activité.</p>
+  <h3>Créateurs de contenu éducatif</h3>
+  <p>Le contenu éducatif bénéficie particulièrement des signaux de sauvegarde : les gens sauvegardent naturellement un contenu qu'ils veulent pouvoir retrouver et réappliquer plus tard. Structurer son contenu pour être facilement consultable a posteriori (étapes numérotées, formats clairs) renforce ce signal.</p>
+  <h3>E-commerce et vente de produits</h3>
+  <p>Le contenu produit profite davantage des signaux de partage en message privé ("regarde ce produit") que du contenu éducatif pur. Mettre en scène un produit d'une façon qui donne naturellement envie de le montrer à quelqu'un d'autre est une stratégie cohérente avec ce signal.</p>
+  <h3>Activité de service et conseil</h3>
+  <p>Pour une activité de service, les commentaires substantiels et les échanges en message privé générés par le contenu comptent double : ils signalent un engagement fort à l'algorithme tout en générant des opportunités de conversion directe vers l'activité commerciale.</p>
+  <h3>Contenu local et de proximité</h3>
+  <p>Le contenu ancré localement bénéficie souvent d'une recommandation renforcée auprès des utilisateurs de la même zone géographique sur plusieurs plateformes, un facteur de ciblage géographique qui s'ajoute aux signaux généraux vus dans ce guide.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le contenu éducatif profite particulièrement des sauvegardes.</p>
+    <p>Le contenu produit profite davantage des partages en message privé.</p>
+    <p>Les activités de service gagnent à encourager les commentaires substantiels et les échanges privés.</p>
+    <p>Le contenu local bénéficie souvent d'un signal de ciblage géographique complémentaire.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>10. Comprendre l'évolution récente des algorithmes</h2>
+  <p class="lede">Resituer les grandes évolutions récentes aide à comprendre la direction générale que prennent ces systèmes, au-delà de l'état précis à un instant donné.</p>
+  <h3>La bascule vers l'intérêt plutôt que le suivi</h3>
+  <p>Le changement le plus structurant de ces dernières années reste la généralisation de la recommandation par intérêt plutôt que par abonnement, initiée en grande partie par le succès de TikTok, qui a ensuite poussé les autres plateformes majeures à adopter des logiques similaires sur leurs propres formats vidéo courts.</p>
+  <h3>La montée en puissance de la lutte contre le contenu recyclé</h3>
+  <p>Face à la multiplication du contenu simplement recopié d'une plateforme à l'autre, les systèmes de détection de contenu dupliqué ou recyclé se sont considérablement affinés, rendant la stratégie de simple republication multi-plateforme de moins en moins efficace au fil du temps.</p>
+  <h3>La prise en compte croissante du contenu généré par IA</h3>
+  <p>Avec la démocratisation des outils de génération de contenu par IA, les plateformes ont introduit des mécanismes de signalement et parfois de détection de ce type de contenu, cherchant à équilibrer l'innovation créative avec la transparence nécessaire envers les utilisateurs.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La tendance de fond va vers une recommandation de plus en plus basée sur l'intérêt plutôt que sur le suivi.</p>
+    <p>La détection du contenu recyclé s'affine constamment, rendant cette pratique de moins en moins viable dans la durée.</p>
+    <p>La transparence sur le contenu généré par IA devient une exigence croissante des plateformes.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>11. Questions fréquentes</h2>
+  <h4>Est-ce que ce guide sera encore valable dans un an ?</h4>
+  <p>Les principes fondamentaux (privilégier les signaux d'engagement profond, l'originalité, la cohérence thématique, le temps d'attention) sont stables depuis plusieurs années malgré les évolutions techniques. Les détails plus précis (seuils exacts, fonctionnement précis d'une fonctionnalité) sont, eux, susceptibles d'évoluer plus vite.</p>
+  <h4>Comment savoir si mon compte est pénalisé par l'algorithme ?</h4>
+  <p>Une baisse de portée soudaine et durable, sans changement apparent dans la qualité du contenu, peut indiquer une pénalité. Vérifie en priorité si tu as adopté récemment un des comportements à risque vus en Partie 5 (republication excessive, hashtags en excès, inactivité prolongée).</p>
+  <h4>Faut-il utiliser tous les formats disponibles sur une plateforme (Stories, Reels, posts) ?</h4>
+  <p>Pas nécessairement tous en même temps ni avec la même intensité. Comprendre que chaque format répond à un système de classement différent permet de choisir ceux qui correspondent le mieux à ton contenu et à ton temps disponible, plutôt que de te forcer à tout utiliser par principe.</p>
+  <h4>Les algorithmes favorisent-ils vraiment les nouveaux comptes ?</h4>
+  <p>Sur certaines plateformes comme TikTok, un nouveau compte n'est effectivement pas structurellement désavantagé puisque chaque contenu est évalué sur ses propres signaux plutôt que sur l'ancienneté ou la taille du compte. Ce n'est cependant pas garanti sur toutes les plateformes de la même façon, notamment sur Instagram où le nombre d'abonnés reste pris en compte dans certains systèmes de classement.</p>
+  <h4>Est-ce risqué d'acheter des abonnés ou des vues ?</h4>
+  <p>Oui, clairement. Au-delà de la question éthique, les plateformes détectent de mieux en mieux ces pratiques et les signaux artificiels ne s'accompagnent généralement pas des vrais signaux d'engagement (sauvegardes, partages, commentaires substantiels) qui comptent réellement pour la distribution organique, ce qui peut même nuire à la crédibilité perçue par l'algorithme sur le compte concerné.</p>
+  <h4>Que faire si une vidéo devient soudainement virale de façon inattendue ?</h4>
+  <p>Profite de ce pic pour interagir rapidement avec les nouveaux commentaires (signal positif vu en Partie 3), et publie du contenu complémentaire dans la même thématique pendant que l'attention est là, plutôt que de changer immédiatement de sujet pour capitaliser sur un tout autre thème.</p>
+  <h4>Est-ce utile de supprimer d'anciens posts qui performent mal ?</h4>
+  <p>Généralement non : les systèmes de recommandation actuels évaluent majoritairement chaque contenu sur ses propres signaux au moment de sa publication, plutôt que sur une moyenne globale du compte. Supprimer d'anciens posts a donc rarement un effet significatif sur la performance future, et fait perdre l'historique de contenu qui peut continuer à apporter une valeur ponctuelle à ton audience.</p>
+</section>
+
+<section class="chapter">
+  <h2>12. Annexe — Lexique des signaux d'algorithme</h2>
+  <dl class="lexique">
+    <dt>Taux de complétion</dt>
+    <dd>Pourcentage d'une vidéo effectivement regardé jusqu'au bout par les spectateurs, signal majeur sur les plateformes vidéo courtes comme TikTok.</dd>
+    <dt>Sends per reach / envois rapportés à la portée</dt>
+    <dd>Nombre de fois qu'un contenu est partagé en message privé, rapporté au nombre total de personnes qui l'ont vu. Signal fort sur Instagram notamment.</dd>
+    <dt>Dwell time / temps d'attention</dt>
+    <dd>Temps passé par un utilisateur sur un contenu précis avant de continuer à faire défiler son fil, utilisé notamment par LinkedIn et de plus en plus par d'autres plateformes.</dd>
+    <dt>Graphe d'intérêt vs graphe de suivi</dt>
+    <dd>Le graphe de suivi recommande du contenu des comptes suivis ; le graphe d'intérêt recommande du contenu jugé pertinent indépendamment du fait de suivre le compte ou non. La plupart des plateformes majeures ont basculé vers une logique dominée par le graphe d'intérêt.</dd>
+    <dt>Autorité thématique</dt>
+    <dd>Reconnaissance progressive par l'algorithme qu'un compte est pertinent sur une thématique précise, du fait de sa cohérence de publication dans le temps, qui améliore la distribution sur les contenus liés à cette thématique.</dd>
+    <dt>Cold start / diffusion initiale test</dt>
+    <dd>Mécanisme par lequel une nouvelle publication est d'abord montrée à un échantillon restreint d'utilisateurs avant une éventuelle diffusion plus large, en fonction des signaux d'engagement générés lors de cette première phase de test.</dd>
+    <dt>Watermark / filigrane</dt>
+    <dd>Marque visuelle apposée par une plateforme sur les contenus exportés (souvent un logo semi-transparent), qui permet aux autres plateformes de détecter facilement qu'un contenu provient d'ailleurs et de le pénaliser en conséquence.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>13. Pour aller plus loin</h2>
+  <p>Les plateformes publient parfois elles-mêmes des informations officielles sur leur fonctionnement, notamment via les comptes créateurs et les blogs officiels de chaque application. Ces sources restent les plus fiables, davantage que la plupart des analyses tierces, y compris celles reprises dans ce guide.</p>
+  <p>Suivre les annonces officielles des responsables produits de chaque plateforme (quand elles existent et sont rendues publiques) permet de rester à jour sur les évolutions majeures, sans avoir à se fier uniquement à des rumeurs ou des analyses non vérifiées qui circulent largement dans le secteur.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Privilégie toujours les sources officielles des plateformes quand elles communiquent publiquement sur leur fonctionnement.</p>
+    <p>Reste prudent face aux analyses tierces qui annoncent des chiffres très précis sans source vérifiable.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>14. Conclusion</h2>
+  <p>Comprendre les algorithmes n'a pas pour but de "jouer le système" de façon artificielle, mais de créer un contenu qui répond authentiquement aux critères que ces systèmes ont été conçus pour repérer : un contenu qui retient vraiment l'attention, qui donne envie d'être partagé, et qui construit une vraie cohérence dans le temps.</p>
+  <p>Reviens vers ce guide et sa bibliothèque de prompts pour auditer régulièrement ta stratégie, surtout si tu remarques un changement notable de performance sur une plateforme.</p>
+</section>
+
+<section class="chapter">
+  <h2>15. Partie 8 — Bibliothèque de prompts</h2>
+  <p class="lede">Chaque prompt contient des crochets [comme ceci] : remplace-les par tes propres éléments avant de coller le prompt dans ChatGPT ou Claude.</p>
+  <div class="box box-warning">
+    <span class="box-title">Rappel important</span>
+    <p>Ces prompts t'aident à analyser et ajuster ta stratégie ; aucun outil ne garantit un résultat algorithmique précis, les systèmes évoluant en permanence.</p>
+  </div>
+
+  <h3>15.1 Auditer sa performance actuelle</h3>
+  <p class="lede">Pour comprendre où on en est avant d'ajuster sa stratégie.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Voici les statistiques de mes 10 derniers posts sur [plateforme] : [coller les stats]. Aide-moi à identifier lesquels ont le mieux performé sur les signaux qui comptent vraiment (sauvegardes, partages, temps de visionnage) plutôt que sur les likes.</span>
+    <p class="prompt-usage">À quoi ça sert : faire un audit de sa performance en se basant sur les bons signaux</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Est-ce que mon contenu récent sur [plateforme] pourrait être pénalisé pour manque d'originalité (republication, contenu recyclé) ? Voici ce que je publie habituellement : [décrire ton contenu].</span>
+    <p class="prompt-usage">À quoi ça sert : vérifier si son contenu risque une pénalité liée à l'originalité</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à identifier si mes sujets de publication sur [plateforme] sont assez cohérents pour construire une autorité thématique, à partir de mes 15 derniers posts : [lister les sujets].</span>
+    <p class="prompt-usage">À quoi ça sert : évaluer la cohérence thématique de son compte</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Voici mon rythme de publication actuel sur [plateforme] : [décrire ta fréquence]. Est-ce cohérent avec ce qui favorise généralement la portée sur cette plateforme ?</span>
+    <p class="prompt-usage">À quoi ça sert : évaluer si son rythme de publication est dans une fourchette raisonnable</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Ai-je adopté récemment des pratiques qui pourraient être perçues comme du spam par l'algorithme (hashtags excessifs, engagement artificiel, follow/unfollow) ? Voici mes habitudes : [décrire tes habitudes].</span>
+    <p class="prompt-usage">À quoi ça sert : vérifier l'absence de pratiques à risque de pénalité</p>
+  </div>
+
+  <h3>15.2 Optimiser pour TikTok</h3>
+  <p class="lede">Pour maximiser les signaux propres à cette plateforme.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à écrire les 3 premières secondes du script de cette vidéo pour maximiser les chances que les gens ne scrollent pas : [décrire le sujet de la vidéo].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un hook percutant, élément le plus déterminant sur TikTok</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Comment pourrais-je restructurer cette vidéo pour encourager le rewatch (le fait que les gens la regardent plusieurs fois) ? Voici le script actuel : [coller le script].</span>
+    <p class="prompt-usage">À quoi ça sert : optimiser un contenu pour un signal fort de l'algorithme TikTok</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Propose-moi 5 idées de vidéos qui restent bien dans ma niche de [décrire ta niche], pour ne pas disperser mon compte sur des sujets trop variés.</span>
+    <p class="prompt-usage">À quoi ça sert : générer des idées cohérentes avec sa thématique principale</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à rédiger une légende optimisée pour la recherche TikTok (mots-clés pertinents) sur le sujet de [sujet de la vidéo].</span>
+    <p class="prompt-usage">À quoi ça sert : optimiser sa légende pour le référencement interne à TikTok</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Propose-moi une structure de vidéo qui encourage naturellement le partage en message privé sur le sujet de [sujet].</span>
+    <p class="prompt-usage">À quoi ça sert : concevoir un contenu pensé pour le partage plutôt que la simple consultation</p>
+  </div>
+
+  <h3>15.3 Optimiser pour Instagram</h3>
+  <p class="lede">Pour maximiser les signaux propres à cette plateforme.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à transformer cette idée en Reel plutôt qu'en simple post statique, pour profiter du format le plus poussé actuellement sur Instagram : [décrire l'idée].</span>
+    <p class="prompt-usage">À quoi ça sert : adapter un contenu au format le plus favorisé par la plateforme</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Rédige une légende qui encourage explicitement à sauvegarder ou partager en message privé ce post sur [sujet], plutôt qu'à simplement liker.</span>
+    <p class="prompt-usage">À quoi ça sert : orienter le contenu vers les signaux qui comptent le plus (saves, sends)</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Comment pourrais-je adapter ce contenu initialement filmé pour TikTok afin qu'il ne soit pas pénalisé comme repost sur Instagram : [décrire le contenu] ?</span>
+    <p class="prompt-usage">À quoi ça sert : éviter la pénalité liée à la republication de contenu identique entre plateformes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à répondre rapidement et efficacement à ces commentaires reçus sur mon dernier post, pour montrer un compte actif à l'algorithme : [coller les commentaires].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer des réponses rapides qui favorisent le signal de vitesse d'interaction</p>
+  </div>
+
+  <h3>15.4 Stratégie globale multi-plateformes</h3>
+  <p class="lede">Pour arbitrer intelligemment entre les plateformes.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à définir un rythme de publication réaliste et tenable sur [plateforme], qui reste cohérent avec ce qui favorise la portée sans m'épuiser.</span>
+    <p class="prompt-usage">À quoi ça sert : équilibrer performance algorithmique et charge de travail réaliste</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Voici mon activité : [décrire ton activité]. Sur quelle plateforme mon contenu a-t-il le plus de chances de bien performer selon les mécaniques de recommandation actuelles ?</span>
+    <p class="prompt-usage">À quoi ça sert : choisir une plateforme prioritaire en fonction des mécaniques de recommandation</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à identifier 3 signaux d'engagement que je pourrais explicitement encourager dans mes prochains posts sur [plateforme] (sauvegarde, partage, commentaire construit).</span>
+    <p class="prompt-usage">À quoi ça sert : orienter consciemment son contenu vers les signaux qui comptent</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Je veux tester si le contenu original (créé spécifiquement pour la plateforme) performe vraiment mieux que le contenu recyclé sur mon compte. Aide-moi à structurer ce test.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une expérimentation personnelle sur l'originalité du contenu</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Résume-moi en une phrase simple, pour chaque plateforme où je suis présent ([lister tes plateformes]), le signal le plus important à prioriser en ce moment.</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir un rappel synthétique et actionnable par plateforme</p>
+  </div>
+
+  <h3>15.5 Optimiser pour LinkedIn</h3>
+  <p class="lede">Pour tirer parti des signaux propres à cette plateforme professionnelle.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Transforme ce post court en un post LinkedIn plus structuré, avec des sauts de ligne aérés et une question ouverte à la fin, sur le sujet de [sujet] : [coller le post].</span>
+    <p class="prompt-usage">À quoi ça sert : adapter un contenu court au format qui performe mieux sur LinkedIn</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Rédige un post LinkedIn de retour d'expérience professionnel sur [situation vécue], qui invite à un vrai commentaire plutôt qu'à un simple like.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un post orienté conversation substantielle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à transformer ce contenu en carrousel/document LinkedIn, format qui encourage un temps de lecture plus long : [décrire le contenu].</span>
+    <p class="prompt-usage">À quoi ça sert : adapter un contenu au format document, favorable au temps d'attention</p>
+  </div>
+
+  <h3>15.6 Adapter à son secteur d'activité</h3>
+  <p class="lede">Pour prioriser les bons signaux selon son type d'activité.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Mon activité est [décrire ton activité]. Quel type de signal (sauvegarde, partage, commentaire) devrais-je prioriser dans ma création de contenu ?</span>
+    <p class="prompt-usage">À quoi ça sert : identifier le signal le plus pertinent selon son secteur d'activité</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à concevoir un post qui donne naturellement envie d'être partagé en message privé, pour mon activité de [décrire ton activité].</span>
+    <p class="prompt-usage">À quoi ça sert : concevoir un contenu pensé pour le partage, utile notamment en e-commerce</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Comment puis-je renforcer l'ancrage local de mon contenu pour [décrire ton activité locale], afin de bénéficier d'une recommandation géographique ciblée ?</span>
+    <p class="prompt-usage">À quoi ça sert : renforcer le signal de proximité géographique pour un commerce local</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à identifier si mon activité de [décrire ton activité] gagnerait davantage à prioriser le contenu éducatif ou le contenu de preuve sociale (témoignages, résultats).</span>
+    <p class="prompt-usage">À quoi ça sert : arbitrer entre deux grandes familles de contenu selon son activité</p>
+  </div>
+
+  <h3>15.7 Diagnostiquer une baisse de portée</h3>
+  <p class="lede">Pour identifier et corriger une cause probable de baisse de performance.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Ma portée a chuté depuis [période]. Voici ce qui a changé dans mes habitudes de publication récemment : [décrire les changements]. Aide-moi à identifier une cause probable.</span>
+    <p class="prompt-usage">À quoi ça sert : diagnostiquer une baisse de portée en la reliant à un changement de comportement</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à comparer mes 5 posts les plus performants et mes 5 posts les moins performants du dernier mois pour identifier un pattern : [décrire ou coller les données].</span>
+    <p class="prompt-usage">À quoi ça sert : identifier un pattern de performance à partir d'une comparaison directe</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Ma fréquence de publication a-t-elle été irrégulière récemment ? Voici mon historique : [décrire ton historique de publication]. Est-ce que ça pourrait expliquer une partie de ma baisse de portée ?</span>
+    <p class="prompt-usage">À quoi ça sert : vérifier l'hypothèse de l'irrégularité comme cause de baisse de portée</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Propose-moi un plan sur 2 semaines pour tester un retour à des fondamentaux solides (contenu original, régularité, réactivité aux commentaires) après une période de baisse de portée.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un plan de reprise après une période de résultats décevants</p>
+  </div>
+</section>
+
+</body>
+</html>
