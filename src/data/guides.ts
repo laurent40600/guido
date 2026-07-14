@@ -397,7 +397,7 @@ export const guides: Guide[] = [
     price: "18€",
     format: "PDF · 54 pages",
     audience: "Salariés qui stagnent ou se questionnent sur leur carrière, personnes en reconversion, jeunes diplômés hésitant entre plusieurs voies, et toute personne curieuse de mieux se comprendre professionnellement",
-    category: "Reconversion",
+    category: "Développement personnel",
     cover: "/covers/carriere-personnalite.png",
     bestseller: false,
     highlights: [
