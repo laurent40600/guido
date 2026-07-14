@@ -95,7 +95,11 @@ const rawBlogPosts: BlogPost[] = [
         "L'IA pour les profs : créer ses cours, corrections et exercices en deux fois moins de temps",
       href: "/guides/ia-profs",
     },
-    relatedPosts: ["10-prompts-chatgpt-enseignants", "chatgpt-corriger-copies"],
+    relatedPosts: [
+      "10-prompts-chatgpt-enseignants",
+      "chatgpt-corriger-copies",
+      "5-erreurs-ia-enseigner",
+    ],
   },
   {
     slug: "10-prompts-chatgpt-enseignants",
@@ -235,6 +239,7 @@ const rawBlogPosts: BlogPost[] = [
       "chatgpt-corriger-copies",
       "creer-exercice-ia-5-minutes",
       "ia-cours-maths-bonne-mauvaise-idee",
+      "5-erreurs-ia-enseigner",
     ],
   },
   {
@@ -295,7 +300,11 @@ const rawBlogPosts: BlogPost[] = [
         "L'IA pour les profs : créer ses cours, corrections et exercices en deux fois moins de temps",
       href: "/guides/ia-profs",
     },
-    relatedPosts: ["chatgpt-preparer-ses-cours", "10-prompts-chatgpt-enseignants"],
+    relatedPosts: [
+      "chatgpt-preparer-ses-cours",
+      "10-prompts-chatgpt-enseignants",
+      "5-erreurs-ia-enseigner",
+    ],
   },
   {
     slug: "creer-exercice-ia-5-minutes",
@@ -377,7 +386,7 @@ const rawBlogPosts: BlogPost[] = [
       linkLabel: "Découvrir les packs de prompts par matière",
       href: "/prompts",
     },
-    relatedPosts: ["10-prompts-chatgpt-enseignants"],
+    relatedPosts: ["10-prompts-chatgpt-enseignants", "5-erreurs-ia-enseigner"],
   },
   {
     slug: "ia-cours-maths-bonne-mauvaise-idee",
@@ -441,7 +450,95 @@ const rawBlogPosts: BlogPost[] = [
       linkLabel: "Découvrir le pack de prompts pour profs de maths",
       href: "/guides/prompts-maths",
     },
-    relatedPosts: ["10-prompts-chatgpt-enseignants"],
+    relatedPosts: ["10-prompts-chatgpt-enseignants", "5-erreurs-ia-enseigner"],
+  },
+  {
+    slug: "5-erreurs-ia-enseigner",
+    title: "5 erreurs à éviter quand on utilise l'IA pour enseigner",
+    excerpt:
+      "L'IA peut faire gagner un temps réel dans la préparation de cours, mais mal utilisée, elle peut aussi créer plus de problèmes qu'elle n'en résout. Voici les 5 erreurs les plus fréquentes.",
+    seoTitle: "5 erreurs à éviter quand on utilise l'IA pour enseigner | Guido",
+    seoDescription:
+      "Les 5 erreurs les plus fréquentes des enseignants qui utilisent l'IA, et comment les éviter simplement pour gagner du temps sans risque.",
+    coverImage:
+      "https://images.unsplash.com/photo-1758685848226-eedca8f6bce7?auto=format&fit=crop&w=1600&q=80",
+    coverAlt:
+      "Enseignant vérifiant attentivement un contenu généré par IA avant de l'utiliser en classe",
+    publishedAt: "2026-07-24",
+    body: [
+      {
+        type: "paragraph",
+        text: "L'IA peut faire gagner un temps réel dans la préparation de cours, mais mal utilisée, elle peut aussi créer plus de problèmes qu'elle n'en résout. Voici les 5 erreurs les plus fréquentes, et comment les éviter simplement.",
+      },
+      { type: "heading", text: "Erreur 1 : ne pas relire avant de distribuer" },
+      {
+        type: "paragraph",
+        text: "C'est l'erreur la plus fréquente et la plus risquée. Un contenu généré par IA peut contenir une erreur factuelle, un calcul faux, ou une formulation ambiguë, sans que ça saute aux yeux au premier coup d'œil. Distribuer un exercice ou une évaluation sans relecture préalable expose à des erreurs qui retombent directement sur les élèves.",
+      },
+      {
+        type: "paragraph",
+        text: "Comment l'éviter : prévois systématiquement 2-3 minutes de relecture après chaque génération, avant toute distribution en classe.",
+      },
+      { type: "heading", text: "Erreur 2 : coller des données personnelles sur les élèves" },
+      {
+        type: "paragraph",
+        text: "Copier une copie d'élève avec son nom complet, ou décrire une situation personnelle identifiable dans un outil d'IA grand public, pose un vrai problème de confidentialité. Ces outils ne sont pas conçus comme des environnements sécurisés pour des données scolaires nominatives.",
+      },
+      {
+        type: "paragraph",
+        text: "Comment l'éviter : anonymise systématiquement (prénom générique, ou reformulation du profil sans détail identifiable) avant de coller quoi que ce soit lié à un élève précis.",
+      },
+      { type: "heading", text: "Erreur 3 : déléguer la notation finale" },
+      {
+        type: "paragraph",
+        text: "Utiliser l'IA pour préparer un barème ou structurer une grille de correction est utile. Lui laisser attribuer directement la note finale d'un élève ne l'est pas : la notation engage un jugement professionnel et une connaissance du contexte que l'outil ne possède pas.",
+      },
+      {
+        type: "paragraph",
+        text: "Comment l'éviter : garde toujours la décision finale de notation entre tes mains, en utilisant l'IA uniquement comme support de préparation.",
+      },
+      { type: "heading", text: "Erreur 4 : des prompts trop vagues" },
+      {
+        type: "paragraph",
+        text: "Demander « crée un exercice de français » donne un résultat générique, peu exploitable tel quel. Le niveau de précision du prompt détermine directement la qualité du résultat.",
+      },
+      {
+        type: "paragraph",
+        text: "Comment l'éviter : précise systématiquement le niveau, la notion exacte, et le format attendu dans chaque demande.",
+      },
+      { type: "heading", text: "Erreur 5 : vouloir tout changer d'un coup" },
+      {
+        type: "paragraph",
+        text: "Beaucoup de professeurs, enthousiasmés par les gains de temps possibles, essaient de tout intégrer en une seule semaine (préparation, exercices, évaluations, corrections) et finissent par abandonner par surcharge, faute d'avoir pris le temps de construire une vraie habitude progressive.",
+      },
+      {
+        type: "paragraph",
+        text: "Comment l'éviter : intègre l'IA progressivement, une tâche à la fois (par exemple la préparation de séquences d'abord, puis les exercices, puis les évaluations), plutôt que de tout bouleverser en même temps.",
+      },
+      { type: "heading", text: "En résumé" },
+      {
+        type: "paragraph",
+        text: "Ces 5 erreurs partagent un point commun : elles viennent presque toutes d'un manque de méthode plutôt que d'un problème avec l'outil lui-même. Une utilisation structurée, avec une relecture systématique et une intégration progressive, évite l'essentiel des risques tout en gardant les vrais bénéfices de gain de temps.",
+      },
+      { type: "heading", text: "Pour aller plus loin" },
+      {
+        type: "paragraph",
+        text: "On a construit une méthode complète, avec un planning de mise en place progressif et les précautions à connaître à chaque étape, pour utiliser l'IA sereinement dans sa pratique d'enseignant.",
+      },
+    ],
+    cta: {
+      text: "Envie d'une méthode complète, avec un planning de mise en place progressif et les précautions à connaître à chaque étape ?",
+      linkLabel:
+        "L'IA pour les profs : créer ses cours, corrections et exercices en deux fois moins de temps",
+      href: "/guides/ia-profs",
+    },
+    relatedPosts: [
+      "chatgpt-preparer-ses-cours",
+      "10-prompts-chatgpt-enseignants",
+      "chatgpt-corriger-copies",
+      "creer-exercice-ia-5-minutes",
+      "ia-cours-maths-bonne-mauvaise-idee",
+    ],
   },
 ];
 

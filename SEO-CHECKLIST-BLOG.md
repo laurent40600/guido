@@ -35,6 +35,15 @@ s'affiche automatiquement en bas de l'article si `relatedPosts` est non vide.
 Pense aussi à ajouter le nouveau slug dans le `relatedPosts` des articles
 existants qui s'y rapportent, pour que le lien soit réciproque.
 
+**Cas "hub de série"** (ex. la série "IA pour profs", conclue à 6 articles avec
+`5-erreurs-ia-enseigner`) : quand un article ferme explicitement une série, ses
+`relatedPosts` peuvent lister tous les articles de la série plutôt que 1-2 —
+et il faut alors ajouter réciproquement ce nouvel article dans le `relatedPosts`
+de **chacun** des articles précédents de la série, pas juste dans un seul sens.
+Pour 6 articles ça reste gérable à la main ; si une future série grandit
+beaucoup plus, envisager de dériver `relatedPosts` automatiquement par tag/série
+plutôt que de continuer à lister les slugs un par un.
+
 Le lien vers le guide/pack payant (`cta`) reste distinct de `relatedPosts` — il
 pointe vers une page produit, pas vers un autre article.
 
@@ -51,7 +60,7 @@ Avant de publier, vérifie qu'il apparaît :
 **Ne jamais forcer le mot-clé artificiellement** s'il ne s'intègre pas
 naturellement — signale plutôt le manque et laisse l'auteur reformuler.
 
-**Constat par article (dernière mise à jour 2026-07-22)** : le mot-clé principal
+**Constat par article (dernière mise à jour 2026-07-24)** : le mot-clé principal
 atterrit presque toujours dans le titre et l'intro ; ce qui varie d'un article à
 l'autre, c'est s'il revient ensuite dans un intertitre et dans la conclusion.
 
@@ -71,6 +80,14 @@ l'autre, c'est s'il revient ensuite dans un intertitre et dans la conclusion.
   cours de maths n'est ni une solution miracle..."). Réparti sur 9/15 blocs
   pour "IA" et 5/15 pour "maths". Aucune modification appliquée : c'est le
   texte d'origine qui s'y prêtait déjà bien, contrairement aux 4 précédents.
+
+- `5-erreurs-ia-enseigner` : "erreurs" très bien réparti (normal, c'est le fil
+  conducteur de l'article) — présent titre + intro + 5 des 7 intertitres
+  (chaque "Erreur N") + conclusion ("Ces 5 erreurs partagent un point commun...").
+  "IA" en revanche suit le même schéma que les articles 1, 2 et 4 : présent
+  titre + intro, mais absent des 7 intertitres et du paragraphe "En résumé"
+  (il ne réapparaît que plus loin, dans "Pour aller plus loin"). Pas modifié,
+  signalé pour le même arbitrage que les articles précédents.
 
 ⚠️ Piège vécu en rédigeant l'article 5 : avant de faire cette vérification,
 3 intertitres avaient été légèrement reformulés pour y glisser "IA"/"maths"
