@@ -9,6 +9,7 @@ import GuidePricing from "@/components/guides/GuidePricing";
 import GuideCard from "@/components/guides/GuideCard";
 import BundlePromo from "@/components/guides/BundlePromo";
 import { guides, getGuide, findBundlesContaining } from "@/data/guides";
+import { blogPosts } from "@/data/blog";
 import { getSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { resolveOfferPrice } from "@/lib/pricing";
@@ -97,6 +98,10 @@ export default async function GuideDetailPage({
   const promptsBundleOffer = promptsBundle?.offers?.[0];
   const promptsBundlePrice = promptsBundleOffer ? resolveOfferPrice(promptsBundleOffer) : undefined;
 
+  const relatedBlogPost = blogPosts.find(
+    (post) => post.cta.href === `/guides/${guide.slug}`,
+  );
+
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -167,6 +172,19 @@ export default async function GuideDetailPage({
           <p className="mt-6 text-lg leading-relaxed text-stone-600">
             {guide.pitch}
           </p>
+
+          {relatedBlogPost && (
+            <p className="mt-4 text-sm text-stone-500">
+              Tu veux en savoir plus avant d&apos;acheter ? Lis notre
+              article :{" "}
+              <Link
+                href={`/blog/${relatedBlogPost.slug}`}
+                className="font-semibold text-gold-700 underline hover:text-gold-800"
+              >
+                {relatedBlogPost.title}
+              </Link>
+            </p>
+          )}
 
           {guide.promptPreview && guide.promptPreview.length > 0 && (
             <div className="mt-8 space-y-3">
