@@ -2,7 +2,7 @@ export type BlogBlock =
   | { type: "paragraph"; text: string }
   | { type: "heading"; text: string }
   | { type: "list"; items: string[] }
-  | { type: "prompt"; text: string };
+  | { type: "prompt"; text: string; label?: string };
 
 export interface BlogPost {
   slug: string;
@@ -22,7 +22,7 @@ export interface BlogPost {
   };
 }
 
-export const blogPosts: BlogPost[] = [
+const rawBlogPosts: BlogPost[] = [
   {
     slug: "chatgpt-preparer-ses-cours",
     title: "Comment utiliser ChatGPT pour préparer ses cours : guide complet",
@@ -94,7 +94,145 @@ export const blogPosts: BlogPost[] = [
       href: "/guides/ia-profs",
     },
   },
+  {
+    slug: "10-prompts-chatgpt-enseignants",
+    title: "10 prompts ChatGPT indispensables pour les enseignants",
+    excerpt:
+      "Tu utilises déjà ChatGPT ou Claude, mais le résultat te déçoit souvent ? Le problème vient rarement de l'outil, mais du prompt. Voici 10 prompts prêts à copier-coller, quelle que soit ta matière.",
+    seoTitle: "10 prompts ChatGPT indispensables pour les enseignants | Guido",
+    seoDescription:
+      "10 prompts ChatGPT prêts à copier-coller pour préparer des cours, créer des exercices et corriger plus vite, quelle que soit ta matière.",
+    coverImage:
+      "https://images.unsplash.com/photo-1761322572550-967ea8c0bfd9?auto=format&fit=crop&w=1600&q=80",
+    coverAlt: "Un cahier ouvert avec un stylo et des crayons sur un bureau, prêt à noter des prompts",
+    publishedAt: "2026-07-16",
+    body: [
+      {
+        type: "paragraph",
+        text: "Tu utilises déjà ChatGPT ou Claude, mais tu tapes souvent des demandes vagues et le résultat te déçoit ? Le problème vient rarement de l'outil : il vient du prompt. Voici 10 prompts prêts à copier-coller, utilisables quelle que soit ta matière, à adapter simplement avec tes propres crochets [comme ceci].",
+      },
+      { type: "heading", text: "1. Structurer une séquence de cours" },
+      {
+        type: "prompt",
+        label: "Prompt 1",
+        text: "Crée une séquence de cours en 4 séances sur [notion], pour des élèves de [niveau], avec pour chaque séance : l'objectif, le support et les prérequis nécessaires.",
+      },
+      {
+        type: "paragraph",
+        text: "Parfait pour démarrer un nouveau chapitre sans repartir d'une page blanche.",
+      },
+      { type: "heading", text: "2. Générer des exercices progressifs" },
+      {
+        type: "prompt",
+        label: "Prompt 2",
+        text: "Crée 8 exercices progressifs sur [notion], du plus facile au plus difficile, pour des élèves de [niveau], avec correction détaillée pour chaque exercice.",
+      },
+      {
+        type: "paragraph",
+        text: "Un classique qui fait gagner un temps réel sur la création de séries d'entraînement.",
+      },
+      { type: "heading", text: "3. Différencier un exercice existant" },
+      {
+        type: "prompt",
+        label: "Prompt 3",
+        text: "Transforme cet exercice en deux versions : une simplifiée pour les élèves en difficulté, une approfondie pour les élèves avancés. Exercice : [coller l'exercice].",
+      },
+      {
+        type: "paragraph",
+        text: "La différenciation, souvent citée comme la tâche la plus difficile à mettre en œuvre concrètement, devient ici une simple question de quelques secondes.",
+      },
+      { type: "heading", text: "4. Créer un QCM de révision" },
+      {
+        type: "prompt",
+        label: "Prompt 4",
+        text: "Génère un QCM de 10 questions sur [chapitre] avec 4 propositions par question, une seule bonne réponse, et une explication courte pour chaque réponse.",
+      },
+      {
+        type: "paragraph",
+        text: "Idéal pour une révision rapide ou une évaluation formative.",
+      },
+      { type: "heading", text: "5. Reformuler une notion mal comprise" },
+      {
+        type: "prompt",
+        label: "Prompt 5",
+        text: "Explique la notion de [notion] à un élève qui n'a manifestement pas compris, avec une reformulation plus simple et un exemple très concret du quotidien.",
+      },
+      {
+        type: "paragraph",
+        text: "Utile quand l'explication du cours n'a pas suffi pour toute la classe.",
+      },
+      { type: "heading", text: "6. Rédiger une trace écrite" },
+      {
+        type: "prompt",
+        label: "Prompt 6",
+        text: "Rédige la trace écrite (le résumé de cours) à copier par les élèves sur la notion de [notion], en langage simple et avec un exemple.",
+      },
+      {
+        type: "paragraph",
+        text: "Un résumé propre et court, prêt à distribuer ou à copier au tableau.",
+      },
+      { type: "heading", text: "7. Créer une évaluation complète" },
+      {
+        type: "prompt",
+        label: "Prompt 7",
+        text: "Crée une évaluation de fin de chapitre sur [chapitre] pour des élèves de [niveau], avec 4 exercices de difficulté croissante et le barème détaillé.",
+      },
+      {
+        type: "paragraph",
+        text: "Un contrôle complet à relire et ajuster, plutôt qu'à construire de zéro.",
+      },
+      { type: "heading", text: "8. Générer un corrigé avec barème" },
+      {
+        type: "prompt",
+        label: "Prompt 8",
+        text: "Rédige un corrigé type d'évaluation avec le barème détaillé point par point pour cet exercice : [coller l'exercice], en indiquant les points accordés même pour une méthode juste avec un résultat faux.",
+      },
+      {
+        type: "paragraph",
+        text: "Ça harmonise ta notation et ça accélère nettement la correction.",
+      },
+      { type: "heading", text: "9. Préparer une réponse aux parents" },
+      {
+        type: "prompt",
+        label: "Prompt 9",
+        text: "Rédige un message pour les parents expliquant simplement ce que la classe va aborder ce trimestre, avec 2-3 conseils pour aider leur enfant à la maison.",
+      },
+      {
+        type: "paragraph",
+        text: "Un message clair, sans y passer une soirée.",
+      },
+      { type: "heading", text: "10. Rédiger une appréciation de bulletin" },
+      {
+        type: "prompt",
+        label: "Prompt 10",
+        text: "Rédige une appréciation de bulletin pour un élève avec le profil suivant : [décrire le profil], en restant constructif et personnalisé.",
+      },
+      {
+        type: "paragraph",
+        text: "Un vrai gain de temps en période de bulletins, sans perdre en personnalisation.",
+      },
+      { type: "heading", text: "Une précision importante" },
+      {
+        type: "paragraph",
+        text: "Relis toujours ce que génère l'IA avant de le distribuer à tes élèves : elle peut se tromper sur un calcul, une date ou une donnée précise. Et évite de coller des informations identifiables sur tes élèves dans un outil grand public.",
+      },
+      { type: "heading", text: "Pour aller plus loin" },
+      {
+        type: "paragraph",
+        text: "Ces 10 prompts fonctionnent pour toutes les matières, mais chaque discipline a ses propres besoins spécifiques (analyse de texte en français, protocoles en sciences, cartes en histoire-géo...). On a préparé des packs de 30 à 36 prompts dédiés à chaque matière, prêts à l'emploi.",
+      },
+    ],
+    cta: {
+      text: "Chaque discipline a ses propres besoins : découvre les packs de 30 à 36 prompts dédiés à ta matière, prêts à l'emploi.",
+      linkLabel: "Découvrir les packs de prompts par matière",
+      href: "/prompts",
+    },
+  },
 ];
+
+export const blogPosts: BlogPost[] = [...rawBlogPosts].sort(
+  (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+);
 
 export const getBlogPost = (slug: string) =>
   blogPosts.find((post) => post.slug === slug);

@@ -105,7 +105,7 @@ export default async function BlogPostPage({
                     className="mt-4 rounded-xl border border-gold-600/40 bg-gold-50 p-4"
                   >
                     <p className="text-xs font-bold uppercase tracking-wide text-gold-700">
-                      Exemple de prompt
+                      {block.label ?? "Exemple de prompt"}
                     </p>
                     <p className="mt-1.5 font-mono text-base leading-relaxed text-navy-900">
                       {block.text}
