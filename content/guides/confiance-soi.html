@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Retrouver confiance en soi</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 25pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 8pt; font-size: 11.5pt; }
+  .toc li span { font-style: italic; font-size: 10.5pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-example { background: #f1efec; border-left: 5px solid #8a8478; }
+  .box-example .box-title { color: #5c574c; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Retrouver confiance en soi</h1>
+  <p class="tagline">Identifier ses schémas de pensée limitants et avancer concrètement</p>
+  <p class="meta">Un guide complet + une bibliothèque de 51 prompts intégrée,<br/>guidé par IA — aucune compétence technique requise</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction<span>Pourquoi la confiance en soi vacille après une période difficile</span></li>
+    <li>Partie 1 — Comprendre ses schémas de pensée limitants<span>Origines, schémas les plus fréquents, comment les questionner sans les nier</span></li>
+    <li>Partie 2 — Reconstruire sa confiance après un échec ou une rupture<span>Séparer les faits de l'interprétation, reconstituer une base factuelle</span></li>
+    <li>Partie 3 — Développer l'affirmation de soi au quotidien<span>Dire non, poser ses limites, s'affirmer progressivement</span></li>
+    <li>Partie 4 — Sortir du piège de la comparaison et du perfectionnisme<span>Comparaison sociale, réseaux, se recentrer sur ses propres critères</span></li>
+    <li>Partie 5 — Passer à l'action au quotidien<span>Un plan progressif, célébrer les petites réussites, erreurs à éviter</span></li>
+    <li>Partie 6 — S'affirmer dans des contextes spécifiques<span>Au travail, en couple, en famille, avec des amis</span></li>
+    <li>Ressources complémentaires en France<span>Accompagnement psychologique, MonSoutienPsy, le 3114</span></li>
+    <li>Annexe — Lexique des distorsions cognitives<span>Raisonnement émotionnel, "devrait" excessif, étiquetage, lecture de pensée</span></li>
+    <li>Conclusion</li>
+    <li>Questions fréquentes</li>
+    <li>Partie 7 — Bibliothèque de prompts<span>51 prompts prêts à l'emploi, classés par usage</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction</h2>
+  <h3>Pourquoi la confiance en soi vacille après une période difficile</h3>
+  <p>Un licenciement, une rupture, un échec professionnel ou personnel marquant peuvent ébranler durablement la confiance en soi, bien au-delà de l'événement lui-même. Ce n'est pas un manque de caractère : c'est un mécanisme psychologique courant, où un événement ponctuel se met à colorer toute l'image qu'on a de soi-même.</p>
+  <p>Ce guide part d'un principe simple : la confiance en soi ne se décrète pas par la seule volonté ("il faut juste croire en toi"), mais se reconstruit par un travail concret sur ses pensées et ses actions, étape par étape.</p>
+  <p>Ce travail s'adresse à toute personne qui traverse une période de doute sur elle-même, que ce soit suite à un événement précis et identifiable, ou à une érosion plus progressive de la confiance au fil du temps, sans déclencheur unique clairement identifiable.</p>
+  <div class="box box-warning">
+    <span class="box-title">Une précision importante avant de commencer</span>
+    <p>Ce guide t'aide à travailler sur des schémas de pensée limitants et à reconstruire ta confiance après une période difficile.</p>
+    <p>Il ne remplace pas un accompagnement psychologique professionnel.</p>
+    <p>Si tu ressens une détresse importante et durable, des idées noires, ou un mal-être qui dépasse largement le cadre d'un manque de confiance ponctuel, il est important d'en parler à un professionnel de santé (médecin, psychologue) plutôt que de chercher uniquement des réponses ici.</p>
+  </div>
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>À la fin de ce guide, tu sauras identifier tes schémas de pensée limitants les plus fréquents, reconstruire ta confiance après un événement difficile, t'affirmer plus sereinement au quotidien, et sortir du piège de la comparaison permanente aux autres.</p>
+  <h3>Ce dont tu as besoin pour commencer</h3>
+  <p>Aucune compétence technique n'est nécessaire : si tu sais utiliser une IA comme ChatGPT ou Claude, tu as tout ce qu'il faut. Prends ce guide à ton rythme — certains exercices touchent à des sujets sensibles, et il n'y a aucune urgence à tout faire d'un coup.</p>
+  <h3>Comment ce guide est structuré</h3>
+  <p>Les deux premières parties posent les bases (comprendre ses schémas de pensée, reconstruire après un événement difficile). Les parties suivantes sont plus orientées vers l'action au quotidien (affirmation de soi, sortir de la comparaison, passer à l'action). Tu peux suivre l'ordre proposé ou aller directement à la partie qui répond à ton besoin le plus urgent aujourd'hui.</p>
+  <p>On commence par comprendre ce qui se joue vraiment derrière ces pensées qui te limitent au quotidien.</p>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Comprendre ses schémas de pensée limitants</h2>
+  <h3>Ce qu'est un schéma de pensée limitant</h3>
+  <p>Un schéma de pensée limitant est une croyance automatique, souvent installée depuis longtemps, qui déforme la façon dont on interprète une situation. Ces schémas ne sont pas des mensonges volontaires qu'on se raconte : ce sont des raccourcis mentaux, souvent hérités d'expériences passées, qui se déclenchent automatiquement sans qu'on les questionne.</p>
+  <p>Le problème n'est pas d'avoir ces pensées — tout le monde en a — mais de les prendre pour des faits objectifs plutôt que pour des interprétations qu'on peut questionner et nuancer.</p>
+  <h3>D'où viennent ces schémas</h3>
+  <p>Ces schémas se forment souvent tôt, à partir de messages reçus dans l'enfance ou l'adolescence (de la famille, de l'école, de premières expériences sociales marquantes), puis se renforcent au fil des expériences qui semblent les confirmer, tout en filtrant inconsciemment celles qui les contrediraient.</p>
+  <p>Comprendre l'origine d'un schéma n'a pas pour but de chercher un coupable, mais d'aider à réaliser que ce schéma s'est construit dans un contexte précis, qui n'est pas forcément celui d'aujourd'hui — ce qui ouvre la possibilité de le réviser.</p>
+  <h3>Les schémas les plus fréquents</h3>
+  <p>Certains schémas reviennent particulièrement souvent. La pensée "tout ou rien" : soit c'est un succès parfait, soit c'est un échec total, sans zone intermédiaire. La généralisation excessive : une seule expérience négative devient "ça arrive toujours" ou "je suis nul en général". Le filtre négatif : ne retenir que les éléments négatifs d'une situation en ignorant les éléments positifs pourtant présents.</p>
+  <p>La personnalisation excessive : se sentir responsable de choses qui ne dépendent pas entièrement de soi. Et la prédiction catastrophique : anticiper systématiquement le pire scénario possible avant même que la situation se déroule.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Un schéma en action</span>
+    <p>Après un refus à un entretien d'embauche, une personne peut penser "je ne serai jamais capable de retrouver un poste" (généralisation excessive) plutôt que "cet entretien précis ne s'est pas bien passé, pour des raisons que je peux analyser".</p>
+  </div>
+  <h4>Exercice pratique : repérer son schéma dominant</h4>
+  <p>Pendant une semaine, note chaque fois qu'une pensée négative sur toi-même surgit, avec la situation qui l'a déclenchée. À la fin de la semaine, regarde s'il y a un schéma qui revient plus que les autres (tout ou rien, généralisation, filtre négatif...). Ce repérage, à lui seul, réduit souvent l'emprise automatique de la pensée, simplement parce qu'on commence à l'observer plutôt qu'à la subir.</p>
+  <h3>Pourquoi ces schémas sont difficiles à voir seul</h3>
+  <p>Ces pensées sont si automatiques et familières qu'elles semblent être "la réalité" plutôt qu'une simple interprétation parmi d'autres possibles. C'est pour cela qu'un dialogue guidé, que ce soit avec un proche, un professionnel, ou une IA qui pose des questions structurées, aide à prendre du recul qu'on n'arrive pas toujours à prendre seul face à ses propres pensées.</p>
+  <h3>Questionner un schéma sans le nier</h3>
+  <p>Questionner un schéma de pensée ne signifie pas basculer dans le déni du problème réel qui a pu le déclencher. Il s'agit de vérifier si l'ampleur et la généralité de la pensée sont proportionnées aux faits réels, pas de prétendre qu'aucun problème n'existe.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un schéma de pensée limitant est une interprétation automatique, pas un fait objectif.</p>
+    <p>Ces schémas se forment souvent tôt et se renforcent par un filtrage inconscient des expériences qui les confirment.</p>
+    <p>Les schémas les plus fréquents sont la pensée tout-ou-rien, la généralisation, le filtre négatif, la personnalisation excessive et la prédiction catastrophique.</p>
+    <p>Observer ses schémas réduit déjà en partie leur emprise automatique.</p>
+    <p>Questionner un schéma ne signifie pas nier un problème réel qui existerait par ailleurs.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Reconstruire sa confiance après un échec ou une rupture</h2>
+  <h3>Séparer les faits de l'interprétation</h3>
+  <p>Après un événement difficile (licenciement, rupture amoureuse, échec d'un projet important), la première étape consiste à séparer clairement ce qui s'est objectivement passé de l'interprétation qu'on en fait sur sa propre valeur. "J'ai été licencié" est un fait. "Je suis quelqu'un d'incompétent" est une interprétation qui va souvent bien au-delà de ce que le fait justifie réellement.</p>
+  <p>Cette distinction, simple en apparence, est étonnamment difficile à appliquer sur le moment, tant l'émotion tend à fusionner le fait et le jugement de valeur qu'on en tire immédiatement.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Séparer fait et interprétation</span>
+    <p>Fait : "Ma relation de 5 ans s'est terminée." Interprétation à questionner : "Je ne suis pas capable de maintenir une relation durable." Une reformulation plus juste pourrait être : "Cette relation particulière, avec cette personne et dans ce contexte, n'a pas fonctionné, pour des raisons qui méritent d'être comprises."</p>
+  </div>
+  <h3>Le rôle du temps dans la reconstruction</h3>
+  <p>La confiance ne se reconstruit pas instantanément après un événement marquant, et c'est normal. Se donner un délai réaliste, plutôt que de s'en vouloir de "ne pas encore aller mieux" quelques semaines après un événement important, fait partie intégrante du processus de reconstruction plutôt que d'un échec supplémentaire à ajouter à la liste.</p>
+  <h3>Reconstituer une base factuelle de confiance</h3>
+  <p>Lister des réussites passées concrètes, même modestes, aide à reconstituer une base factuelle sur laquelle s'appuyer, en particulier quand l'esprit a tendance à ne retenir que les échecs récents dans les moments difficiles (le fameux filtre négatif vu en Partie 1).</p>
+  <h4>Exercice pratique : l'inventaire des preuves</h4>
+  <p>Liste 10 réussites ou moments de fierté de ta vie, dans n'importe quel domaine (professionnel, personnel, relationnel, sportif). Ne filtre pas selon ce qui te semble "assez impressionnant" : l'objectif est de rassembler des preuves factuelles de capacité, pas de te comparer à un standard extérieur.</p>
+  <h3>Étude de cas : le parcours de Marc</h3>
+  <p>Marc a été licencié après 8 ans dans la même entreprise, dans un contexte de restructuration qui n'avait rien à voir avec ses compétences individuelles. Malgré cela, il a développé la conviction que "personne ne voudra de moi" et a évité pendant plusieurs mois de postuler à de nouveaux postes.</p>
+  <p>En travaillant sur la séparation entre le fait (une restructuration collective) et l'interprétation (son incompétence personnelle), et en listant ses réussites concrètes des 8 dernières années, Marc a progressivement pu reformuler la situation : "j'ai perdu mon poste dans un contexte économique difficile, ce qui ne remet pas en cause mes compétences réelles, que je peux d'ailleurs lister précisément".</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Marc n'a pas eu besoin d'attendre que la confiance revienne "toute seule" : le travail actif de séparation entre fait et interprétation, appuyé sur des preuves concrètes, a accéléré sa reconstruction bien plus qu'une simple attente passive.</p>
+  </div>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Séparer le fait objectif de l'interprétation qu'on en tire est une étape clé de la reconstruction.</p>
+    <p>Se donner du temps fait partie du processus, pas un échec supplémentaire.</p>
+    <p>Une liste concrète de réussites passées contrebalance le filtre négatif qui domine souvent après un échec.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Développer l'affirmation de soi au quotidien</h2>
+  <h3>Ce qu'est vraiment l'affirmation de soi</h3>
+  <p>S'affirmer ne signifie pas être agressif ou imposer systématiquement son point de vue : c'est exprimer clairement ses besoins, ses limites et son ressenti, tout en respectant ceux de l'autre. Il existe une vraie différence entre l'affirmation de soi (assertivité), la passivité (ne jamais exprimer ses besoins) et l'agressivité (les imposer sans considération pour l'autre).</p>
+  <p>Beaucoup de personnes qui manquent de confiance basculent naturellement vers la passivité, par peur du conflit ou du jugement, ce qui alimente en retour un sentiment de ne pas être respecté ou entendu, renforçant encore le manque de confiance initial.</p>
+  <h3>Apprendre à dire non</h3>
+  <p>Dire non est souvent l'exercice le plus difficile pour les personnes en manque de confiance, par peur de décevoir ou d'être jugé égoïste. Un refus clair, sans justification excessive ni excuses répétées, est pourtant généralement mieux perçu qu'un oui contraint suivi d'un ressentiment silencieux qui finit par transparaître d'une autre façon.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Un refus assertif</span>
+    <p>Plutôt que "Euh, je sais pas, c'est compliqué, désolé, je pense pas pouvoir, enfin je vais essayer de voir", une réponse assertive pourrait être : "Je ne suis pas disponible pour ça, mais merci d'avoir pensé à moi."</p>
+  </div>
+  <h3>Poser ses limites sans culpabiliser</h3>
+  <p>Poser une limite n'est pas un acte hostile envers l'autre : c'est une information claire sur ce qui est acceptable ou non pour soi. La culpabilité ressentie après avoir posé une limite légitime est souvent un signe du schéma de pensée "je dois plaire à tout le monde", plutôt qu'un signal que la limite posée était réellement inappropriée.</p>
+  <h3>S'affirmer progressivement</h3>
+  <p>L'affirmation de soi se travaille progressivement, en commençant par des situations à faible enjeu (exprimer une préférence de restaurant, refuser une sollicitation mineure) avant de s'attaquer à des situations plus chargées émotionnellement (poser une limite avec un proche, négocier au travail). Vouloir s'affirmer fortement d'un coup, dans une situation à fort enjeu émotionnel, mène souvent à un recul plutôt qu'à une progression durable.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>L'affirmation de soi se situe entre la passivité et l'agressivité, pas du côté de l'agressivité.</p>
+    <p>Un refus clair et sans justification excessive est généralement mieux perçu qu'un oui contraint.</p>
+    <p>La culpabilité après avoir posé une limite légitime révèle souvent un schéma à questionner, pas une erreur réelle.</p>
+    <p>L'affirmation de soi se construit progressivement, des situations à faible enjeu vers les situations plus complexes.</p>
+  </div>
+  <h3>Étude de cas : le parcours de Julie</h3>
+  <p>Julie a toujours eu du mal à refuser des tâches supplémentaires au travail, par peur d'être perçue comme peu impliquée. Elle se retrouvait systématiquement surchargée, ce qui alimentait un stress chronique et, paradoxalement, une baisse de la qualité de son travail, ce qui renforçait encore son sentiment de ne pas être à la hauteur.</p>
+  <p>En travaillant sur l'affirmation de soi progressive, Julie a commencé par des refus à faible enjeu (décliner une sollicitation mineure d'un collègue), avant de s'attaquer à des situations plus complexes avec sa hiérarchie directe. Elle a préparé à l'avance des formulations claires, sans justification excessive, ce qui lui a permis de tenir sa position même face à l'insistance.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Julie n'a pas eu besoin de devenir une personne totalement différente du jour au lendemain. La progression par petites étapes lui a permis de construire une vraie compétence d'affirmation, bien plus durable qu'une tentative isolée et à fort enjeu qui aurait pu échouer et la décourager.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 4 — Sortir du piège de la comparaison et du perfectionnisme</h2>
+  <h3>Le mécanisme de la comparaison sociale</h3>
+  <p>Se comparer aux autres est un mécanisme humain naturel, qui a pu avoir une fonction utile dans un contexte social restreint (une petite communauté). Mais à l'ère des réseaux sociaux, ce mécanisme s'emballe : on se compare en permanence à des versions soigneusement mises en scène de la vie des autres, ce qui fausse structurellement la comparaison.</p>
+  <p>Cette comparaison touche particulièrement les moments de manque de confiance, où l'esprit cherche presque activement des preuves supplémentaires qu'on "ne fait pas aussi bien" que les autres.</p>
+  <h3>Le piège du perfectionnisme</h3>
+  <p>Le perfectionnisme est souvent perçu positivement ("j'aime le travail bien fait"), mais dans sa version problématique, il devient une source d'anxiété permanente : rien n'est jamais assez bien, chaque réussite est immédiatement minimisée, et l'attention se porte uniquement sur ce qui pourrait être amélioré plutôt que sur ce qui a été accompli.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — Perfectionnisme problématique</span>
+    <p>Une personne qui vient de réussir une présentation importante, mais qui ne retient de l'expérience qu'une hésitation de 3 secondes sur une diapositive, en ignorant totalement les retours positifs reçus par ailleurs.</p>
+  </div>
+  <h3>Se recentrer sur ses propres critères</h3>
+  <p>Sortir de la comparaison ne signifie pas ignorer complètement ce que font les autres, mais définir consciemment ses propres critères de réussite, indépendants d'une norme extérieure changeante et souvent biaisée par ce qu'on voit sur les réseaux sociaux.</p>
+  <h3>Limiter l'exposition quand nécessaire</h3>
+  <p>Réduire consciemment son exposition à certains contenus ou comptes sur les réseaux sociaux, particulièrement pendant une période de fragilité de confiance, n'est pas une fuite mais une gestion raisonnable de son environnement mental, au même titre qu'on éviterait de se mettre volontairement dans une situation qu'on sait difficile à gérer sur le moment.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La comparaison sociale est amplifiée et faussée par les réseaux sociaux, qui montrent une version mise en scène de la vie des autres.</p>
+    <p>Le perfectionnisme problématique empêche de reconnaître ses propres réussites.</p>
+    <p>Définir ses propres critères de réussite réduit la dépendance à une norme extérieure changeante.</p>
+    <p>Limiter son exposition à certains contenus pendant une période fragile est une gestion raisonnable, pas une fuite.</p>
+  </div>
+  <h3>Étude de cas : le parcours de Karim</h3>
+  <p>Karim, jeune entrepreneur, se comparait en permanence à des entrepreneurs plus visibles sur les réseaux sociaux, ce qui alimentait un sentiment constant d'être "à la traîne", malgré une activité qui se développait pourtant correctement à son propre rythme.</p>
+  <p>En travaillant sur ses propres critères de réussite (nombre de clients satisfaits, équilibre de vie préservé, apprentissages réalisés) plutôt que sur des métriques de visibilité qu'il ne maîtrisait pas et qui ne reflétaient pas nécessairement la réussite réelle des personnes qu'il observait, Karim a retrouvé une évaluation plus juste et plus apaisée de sa propre progression.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Karim n'a pas eu besoin d'arrêter de s'intéresser à ce que font les autres entrepreneurs : il a simplement appris à ne plus utiliser leur parcours, souvent partiellement visible et mis en scène, comme unique baromètre de sa propre réussite.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Partie 5 — Passer à l'action au quotidien</h2>
+  <h3>Un plan progressif, pas une transformation instantanée</h3>
+  <p>La confiance en soi se construit par la répétition de petites actions cohérentes dans le temps, pas par une décision unique ou une prise de conscience isolée, aussi forte soit-elle. Un plan progressif sur plusieurs semaines, avec des étapes réalistes, donne de meilleurs résultats durables qu'une tentative de "tout changer" immédiatement.</p>
+  <h3>Célébrer les petites réussites</h3>
+  <p>Une pratique simple mais efficace consiste à noter chaque jour une petite réussite ou un moment de fierté, même minime. Cette pratique régulière contrebalance directement le filtre négatif qui pousse à ne retenir que ce qui ne va pas.</p>
+  <h3>Erreurs à éviter</h3>
+  <p>Deux erreurs reviennent souvent dans ce type de démarche. La première : vouloir affronter directement les situations les plus difficiles émotionnellement, sans passer par des étapes progressives, ce qui mène souvent à un échec qui renforce paradoxalement le manque de confiance initial.</p>
+  <p>La seconde : chercher une transformation permanente et définitive ("je ne veux plus jamais douter de moi"), alors que le doute occasionnel fait partie de l'expérience humaine normale, y compris chez des personnes globalement confiantes. L'objectif réaliste n'est pas l'absence de doute, mais une relation plus apaisée avec ce doute quand il survient.</p>
+  <h3>Étude de cas : le parcours de Sophie</h3>
+  <p>Sophie, après une rupture amoureuse difficile, a décidé de "tout changer" immédiatement : nouveau look, nouvelle activité sportive intensive, nouveau cercle social, tout en même temps. Après deux semaines d'épuisement, elle a abandonné l'ensemble de ses nouvelles résolutions, ce qui a renforcé son sentiment de ne pas être capable de changer sa vie.</p>
+  <p>En reprenant une approche plus progressive, avec une seule petite action nouvelle par semaine plutôt qu'une transformation totale immédiate, Sophie a pu construire des changements qui, cette fois, ont tenu dans la durée, précisément parce qu'ils ne demandaient pas une énergie insoutenable sur le long terme.</p>
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le problème de Sophie n'était pas un manque de volonté, mais un rythme de changement intenable. Ralentir le rythme a été la clé de la réussite, pas un compromis au rabais.</p>
+  </div>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La confiance se construit par la répétition de petites actions, pas par une transformation instantanée.</p>
+    <p>Noter ses petites réussites quotidiennes contrebalance le filtre négatif.</p>
+    <p>Progresser par étapes réalistes évite l'échec qui renforcerait le manque de confiance initial.</p>
+    <p>L'objectif réaliste est une relation plus apaisée avec le doute, pas sa disparition totale.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Partie 6 — S'affirmer dans des contextes spécifiques</h2>
+  <p class="lede">L'affirmation de soi ne se manifeste pas de la même façon selon le contexte relationnel. Voici quelques ajustements utiles selon la situation.</p>
+  <h3>Au travail avec sa hiérarchie</h3>
+  <p>S'affirmer face à un supérieur hiérarchique comporte un enjeu particulier lié à la relation de pouvoir. Cela ne signifie pas qu'il faille éviter toute affirmation, mais qu'elle gagne à être particulièrement bien préparée, factuelle, et formulée dans un cadre approprié (un entretien plutôt qu'un couloir, par exemple).</p>
+  <h3>En couple</h3>
+  <p>Dans une relation intime, le manque de confiance peut se traduire par une difficulté à exprimer ses besoins par peur de créer un conflit ou de perdre l'affection du partenaire. Paradoxalement, cette rétention finit souvent par créer plus de tensions à long terme qu'une expression directe et respectueuse des besoins au moment où ils se présentent.</p>
+  <h3>En famille</h3>
+  <p>Les schémas relationnels familiaux sont souvent les plus anciens et les plus automatiques, ce qui rend l'affirmation de soi particulièrement difficile dans ce contexte précis, même chez des personnes qui s'affirment sans problème ailleurs. Reconnaître cette spécificité aide à ne pas se juger sévèrement si l'affirmation reste plus difficile en famille que dans d'autres sphères de vie.</p>
+  <h3>Avec des amis</h3>
+  <p>Poser une limite avec un ami proche peut sembler risqué pour la relation, alors que c'est souvent l'inverse qui se produit à long terme : une amitié qui ne permet pas d'exprimer un désaccord ou un besoin devient une source de frustration silencieuse qui finit par éroder la relation plus sûrement qu'un désaccord exprimé et discuté.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>L'affirmation de soi s'ajuste selon le contexte relationnel, sans jamais disparaître complètement.</p>
+    <p>Le contexte familial est souvent le plus difficile, même pour des personnes globalement assertives ailleurs.</p>
+    <p>Éviter systématiquement l'affirmation dans une relation proche crée souvent plus de tensions à long terme qu'elle n'en évite.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>8. Ressources complémentaires en France</h2>
+  <p class="lede">Ce guide propose un travail personnel structuré, mais certaines situations gagnent à être accompagnées par un professionnel. Voici quelques ressources utiles en France.</p>
+  <h3>Pour un accompagnement psychologique</h3>
+  <p>Un psychologue ou un psychiatre peut accompagner un travail plus approfondi sur la confiance en soi, en particulier si les difficultés sont anciennes, intenses, ou liées à un traumatisme. Certaines consultations chez le psychologue sont désormais partiellement prises en charge par l'Assurance Maladie via le dispositif MonSoutienPsy, sur orientation du médecin traitant.</p>
+  <div class="box box-warning">
+    <span class="box-title">En cas de détresse importante</span>
+    <p>Si tu traverses une détresse psychologique importante, le 3114 est le numéro national de prévention du suicide, gratuit, confidentiel et disponible 24h/24 et 7j/7 en France. Il s'adresse à toute personne en souffrance psychique, ainsi qu'à son entourage.</p>
+  </div>
+  <h3>Pour un accompagnement professionnel spécifique</h3>
+  <p>Si le manque de confiance est particulièrement lié au contexte professionnel, un coach professionnel certifié ou un conseiller en évolution professionnelle (souvent accessible gratuitement via France Travail ou l'APEC) peut apporter un accompagnement complémentaire à ce guide, notamment pour des mises en situation pratiques comme la préparation d'entretiens.</p>
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce guide est un point de départ personnel, pas un substitut à un accompagnement professionnel si tu en ressens le besoin.</p>
+    <p>Des dispositifs comme MonSoutienPsy facilitent l'accès à un accompagnement psychologique en France.</p>
+    <p>Le 3114 est disponible 24h/24 en cas de détresse importante.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>9. Annexe — Lexique des distorsions cognitives</h2>
+  <p class="lede">Cette annexe complète les schémas vus en Partie 1, à consulter comme référence rapide.</p>
+  <dl class="lexique">
+    <dt>Le raisonnement émotionnel</dt>
+    <dd>Prendre son émotion du moment comme une preuve de la réalité ("je me sens incompétent, donc je dois vraiment l'être"), alors qu'une émotion, aussi forte soit-elle, ne constitue pas une preuve factuelle.</dd>
+    <dt>Le "devrait" excessif</dt>
+    <dd>Se juger constamment à l'aune de règles rigides sur ce qu'on "devrait" faire ou être ("je devrais toujours être productif", "je ne devrais jamais me tromper"), créant une pression interne disproportionnée par rapport à des attentes réalistes.</dd>
+    <dt>L'étiquetage</dt>
+    <dd>Se résumer à une étiquette globale et négative à partir d'un comportement ponctuel ("j'ai fait une erreur" devient "je suis nul"), confondant un acte précis avec une identité entière.</dd>
+    <dt>La lecture de pensée</dt>
+    <dd>Supposer qu'on sait ce que les autres pensent de nous, généralement de façon négative, sans vérification réelle ("il doit penser que je suis incompétent"), sans jamais vérifier cette supposition auprès de la personne concernée.</dd>
+  </dl>
+  <div class="box box-tip">
+    <span class="box-title">Comment utiliser cette annexe</span>
+    <p>Quand une pensée négative surgit, essaie d'identifier si elle correspond à l'une de ces distorsions.</p>
+    <p>Nommer la distorsion aide déjà à prendre de la distance avec la pensée.</p>
+    <p>Ces distorsions sont universelles et non un signe de faiblesse personnelle particulière.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>10. Conclusion</h2>
+  <p>Reconstruire sa confiance en soi n'est pas un processus linéaire : il y aura des jours plus faciles et d'autres où les anciens schémas de pensée reprendront temporairement le dessus. Ce n'est pas un échec de la démarche, c'est simplement la réalité de tout changement profond, qui se fait rarement en ligne droite.</p>
+  <p>Le plus important n'est pas d'arriver à un état de confiance parfaite et permanente, qui n'existe d'ailleurs chez personne, mais de développer une relation plus juste et plus apaisée avec toi-même, où les doutes ponctuels n'ont plus le dernier mot sur ta valeur ou tes capacités.</p>
+  <p>Reviens vers ce guide et sa bibliothèque de prompts chaque fois que tu en ressens le besoin, que ce soit après un nouvel événement difficile ou simplement pour un point d'étape sur ta progression.</p>
+</section>
+
+<section class="chapter">
+  <h2>11. Questions fréquentes</h2>
+  <h4>Est-ce que ce genre de travail peut vraiment remplacer une thérapie ?</h4>
+  <p>Non, et ce n'est pas son objectif. Ce guide propose des outils de réflexion et d'action pour un manque de confiance ponctuel ou lié à un événement identifiable. Si tu ressens une souffrance profonde, durable, ou des symptômes qui affectent significativement ton quotidien (troubles du sommeil sévères, idées noires, perte d'intérêt généralisée), un accompagnement par un professionnel de santé est la démarche appropriée, en complément ou à la place de ce guide.</p>
+  <h4>Combien de temps faut-il pour retrouver confiance en soi ?</h4>
+  <p>Il n'y a pas de délai universel : ça dépend de la profondeur de l'événement déclencheur, de l'ancienneté des schémas de pensée concernés, et de la régularité du travail effectué. Certaines personnes ressentent des améliorations en quelques semaines de pratique régulière, d'autres ont besoin de plusieurs mois. Les deux sont parfaitement normaux.</p>
+  <h4>Que faire si je n'arrive pas à identifier mes schémas de pensée seul(e) ?</h4>
+  <p>C'est très fréquent : ces schémas sont souvent invisibles précisément parce qu'ils sont automatiques. Utiliser les prompts de ce guide avec une IA qui pose des questions structurées, ou en parler avec un proche de confiance ou un professionnel, aide à prendre le recul qu'on n'a pas toujours seul face à ses propres pensées.</p>
+  <h4>Est-ce normal de douter encore de soi après avoir fait tout ce travail ?</h4>
+  <p>Oui, complètement. L'objectif de ce guide n'est pas de supprimer totalement le doute, ce qui n'est ni réaliste ni même souhaitable, mais de réduire son emprise et de mieux savoir le gérer quand il survient, plutôt que de se laisser complètement submerger par lui.</p>
+  <h4>Faut-il faire les exercices dans l'ordre des parties ?</h4>
+  <p>Pas obligatoirement. Si un événement précis t'a amené à ce guide (un licenciement par exemple), tu peux commencer directement par la Partie 2 sur la reconstruction, puis revenir à la Partie 1 sur les schémas de pensée pour approfondir. Adapte l'ordre à ton besoin le plus urgent.</p>
+  <h4>Est-ce que je peux utiliser ce guide en complément d'une thérapie déjà en cours ?</h4>
+  <p>Oui, tout à fait, et ça peut même être complémentaire : les prompts peuvent t'aider à préparer des sujets à aborder en séance, ou à pratiquer entre deux rendez-vous ce que tu travailles avec ton thérapeute. Il peut être utile d'en parler avec lui pour vérifier la cohérence avec l'approche suivie.</p>
+  <h4>Mon entourage ne comprend pas pourquoi je manque de confiance alors que tout va bien objectivement. Est-ce normal ?</h4>
+  <p>Oui, c'est très fréquent. Le manque de confiance ne dépend pas uniquement des circonstances extérieures objectives, mais aussi de schémas de pensée internes qui peuvent persister indépendamment d'une situation de vie par ailleurs favorable. Ce décalage ne signifie pas que ton ressenti est illégitime.</p>
+</section>
+
+<section class="chapter">
+  <h2>12. Partie 7 — Bibliothèque de prompts</h2>
+  <p class="lede">Chaque prompt contient des crochets [comme ceci] : remplace-les par ta situation avant de coller le prompt dans ChatGPT ou Claude.</p>
+  <div class="box box-warning">
+    <span class="box-title">Rappel important</span>
+    <p>Ces prompts sont des outils de réflexion personnelle, pas un substitut à un accompagnement professionnel si tu en ressens le besoin.</p>
+    <p>Prends le temps de répondre honnêtement : la qualité de la réflexion dépend de la sincérité de tes réponses.</p>
+  </div>
+
+  <h3>12.1 Identifier ses schémas de pensée</h3>
+  <p class="lede">Pour repérer et questionner les pensées automatiques qui limitent la confiance.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Voici une pensée qui me revient souvent : [décrire la pensée, ex : "je vais échouer de toute façon"]. Aide-moi à identifier quel type de schéma de pensée limitant ça représente, et pose-moi des questions pour l'examiner.</span>
+    <p class="prompt-usage">À quoi ça sert : identifier et nommer un schéma de pensée récurrent</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Je viens de penser "[pensée négative]" après [situation]. Aide-moi à examiner si cette pensée est vraiment factuelle ou si elle exagère la réalité.</span>
+    <p class="prompt-usage">À quoi ça sert : confronter une pensée négative immédiate à la réalité des faits</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Pose-moi des questions, une par une, pour retracer d'où vient cette croyance sur moi-même : [décrire la croyance, ex : "je ne suis pas capable de diriger une équipe"].</span>
+    <p class="prompt-usage">À quoi ça sert : explorer l'origine d'une croyance limitante plutôt que de la subir passivement</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Voici une situation où j'ai pensé du mal de moi-même : [décrire la situation]. Reformule cette pensée de façon plus juste et plus nuancée, sans tomber dans le déni du problème réel.</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir une reformulation équilibrée, ni dans le déni ni dans l'auto-critique excessive</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à distinguer, dans cette situation, ce qui relève d'un fait objectif et ce qui relève de mon interprétation : [décrire la situation].</span>
+    <p class="prompt-usage">À quoi ça sert : séparer les faits de l'interprétation émotionnelle qu'on en fait</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Je remarque que je pense souvent en "tout ou rien" (soit je réussis parfaitement, soit c'est un échec total). Aide-moi à identifier des zones intermédiaires dans cette situation : [décrire la situation].</span>
+    <p class="prompt-usage">À quoi ça sert : sortir d'une pensée dichotomique en identifiant des nuances</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Aide-moi à identifier les situations qui déclenchent le plus souvent mon schéma de [nom du schéma, ex : généralisation excessive], pour mieux l'anticiper à l'avenir.</span>
+    <p class="prompt-usage">À quoi ça sert : cartographier les déclencheurs récurrents d'un schéma précis</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Voici comment je réagis habituellement à un refus ou une critique : [décrire ta réaction]. Aide-moi à comprendre le schéma de pensée qui sous-tend cette réaction.</span>
+    <p class="prompt-usage">À quoi ça sert : relier une réaction émotionnelle récurrente à un schéma de pensée sous-jacent</p>
+  </div>
+
+  <h3>12.2 Reconstruire après un échec ou une rupture</h3>
+  <p class="lede">Pour transformer un événement difficile en réflexion constructive.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Je viens de vivre [licenciement/rupture/échec]. Aide-moi à lister factuellement ce qui s'est passé, sans les jugements que je porte sur moi-même en plus.</span>
+    <p class="prompt-usage">À quoi ça sert : séparer les faits de l'auto-jugement après un événement difficile</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à identifier 5 réussites passées, même petites, qui contredisent l'idée que je ne suis "pas capable" en ce moment.</span>
+    <p class="prompt-usage">À quoi ça sert : reconstruire une base factuelle de confiance à partir de preuves concrètes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Je me sens diminué(e) après [événement]. Pose-moi des questions pour m'aider à distinguer ce que cet événement dit vraiment de moi, et ce qu'il ne dit pas.</span>
+    <p class="prompt-usage">À quoi ça sert : limiter la portée qu'on donne à un événement négatif sur son identité globale</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à écrire une lettre bienveillante à moi-même, comme si je parlais à un ami qui a vécu ce que je viens de vivre : [décrire la situation].</span>
+    <p class="prompt-usage">À quoi ça sert : prendre de la distance émotionnelle grâce à l'exercice de la lettre à un ami</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Quelles compétences ou qualités ai-je démontrées, même dans la façon dont j'ai géré cette période difficile, que je n'avais pas identifiées avant ?</span>
+    <p class="prompt-usage">À quoi ça sert : trouver des éléments positifs même dans une période difficile</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à construire un plan de reconstruction sur 4 semaines après [événement], avec une petite étape chaque semaine.</span>
+    <p class="prompt-usage">À quoi ça sert : transformer une période de reconstruction floue en étapes concrètes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Je n'arrive pas à tourner la page après [événement]. Pose-moi des questions pour comprendre ce qui me retient encore.</span>
+    <p class="prompt-usage">À quoi ça sert : explorer les freins qui empêchent d'avancer après un événement difficile</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Aide-moi à identifier ce que cette expérience difficile m'a appris sur moi-même, sans minimiser la difficulté que j'ai traversée.</span>
+    <p class="prompt-usage">À quoi ça sert : extraire un apprentissage réel sans forcer un optimisme artificiel</p>
+  </div>
+
+  <h3>12.3 Développer l'affirmation de soi</h3>
+  <p class="lede">Pour dire non, poser des limites et s'exprimer clairement.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à formuler poliment mais fermement un refus à cette demande : [décrire la demande], sans culpabiliser après coup.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un refus assertif sans agressivité ni excuses excessives</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Je dois poser une limite avec [personne/situation] sur [sujet]. Aide-moi à préparer ce que je vais dire, de façon claire et respectueuse.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une conversation de pose de limites à l'avance</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Voici ce que je ressens dans cette situation : [décrire la situation et le ressenti]. Aide-moi à l'exprimer clairement à la personne concernée, sans accusation.</span>
+    <p class="prompt-usage">À quoi ça sert : exprimer un ressenti de façon assertive plutôt que de le garder pour soi ou d'exploser</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Je viens d'accepter quelque chose que je ne voulais pas faire par peur de déplaire. Aide-moi à comprendre ce qui m'a empêché de dire non dans ce cas précis.</span>
+    <p class="prompt-usage">À quoi ça sert : analyser un schéma de soumission pour mieux l'anticiper la prochaine fois</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à préparer une réponse assertive si on me fait une remarque désobligeante en public sur [sujet], sans être agressif en retour.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une réponse ferme et posée face à une remarque désagréable</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Pose-moi des questions pour m'aider à identifier dans quelles situations précises j'ai le plus de mal à m'affirmer.</span>
+    <p class="prompt-usage">À quoi ça sert : cartographier ses propres zones de difficulté en affirmation de soi</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Aide-moi à préparer ce que je vais dire pour exprimer mon désaccord avec une décision prise par [personne/groupe], de façon constructive.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer l'expression d'un désaccord sans conflit inutile</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Je viens de m'affirmer dans une situation et je me sens coupable après coup. Aide-moi à examiner si cette culpabilité est justifiée ou si c'est un réflexe à questionner.</span>
+    <p class="prompt-usage">À quoi ça sert : examiner la culpabilité ressentie après un acte d'affirmation légitime</p>
+  </div>
+
+  <h3>12.4 Sortir de la comparaison sociale</h3>
+  <p class="lede">Pour se recentrer sur ses propres critères de réussite.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Je me compare constamment à [personne/groupe] et ça me fait du mal. Aide-moi à identifier ce que cette comparaison révèle vraiment de mes propres attentes.</span>
+    <p class="prompt-usage">À quoi ça sert : comprendre la fonction psychologique d'une comparaison plutôt que de la subir</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à lister mes propres critères de réussite, indépendamment de ce que font les autres autour de moi.</span>
+    <p class="prompt-usage">À quoi ça sert : se recentrer sur ses propres critères plutôt que sur une norme extérieure</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Je passe beaucoup de temps sur les réseaux sociaux et ça affecte ma confiance en moi. Propose-moi 3 ajustements concrets et réalistes à mettre en place.</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir des pistes concrètes face à l'impact des réseaux sociaux sur l'estime de soi</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Je me sens "en retard" par rapport à ce que je pensais avoir accompli à mon âge. Aide-moi à examiner d'où vient cette idée de calendrier de vie et si elle est vraiment pertinente pour moi.</span>
+    <p class="prompt-usage">À quoi ça sert : questionner une pression sociale de calendrier de vie</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à identifier 3 de mes qualités qui ne dépendent pas d'une comparaison avec quelqu'un d'autre.</span>
+    <p class="prompt-usage">À quoi ça sert : ancrer sa valeur sur des critères intrinsèques plutôt que relatifs</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Je viens de terminer une tâche mais je la trouve moins bien que ce que quelqu'un d'autre aurait fait. Aide-moi à évaluer objectivement mon propre travail, indépendamment de cette comparaison.</span>
+    <p class="prompt-usage">À quoi ça sert : évaluer une réalisation sur ses propres mérites plutôt que par comparaison</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Aide-moi à identifier ce qui, dans mon perfectionnisme sur [tâche/domaine], me sert vraiment et ce qui me nuit plus qu'autre chose.</span>
+    <p class="prompt-usage">À quoi ça sert : distinguer le perfectionnisme utile du perfectionnisme problématique</p>
+  </div>
+
+  <h3>12.5 Passer à l'action au quotidien</h3>
+  <p class="lede">Pour transformer la réflexion en petites actions concrètes.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Construis-moi un plan progressif sur 21 jours pour renforcer ma confiance en moi au quotidien, avec un petit exercice chaque jour.</span>
+    <p class="prompt-usage">À quoi ça sert : transformer une intention générale en plan d'action concret et progressif</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à préparer ce que je vais dire pour me présenter avec assurance lors de [situation, ex : un entretien, une réunion, un rendez-vous].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une prise de parole avec plus d'assurance</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Je viens de réussir quelque chose mais j'ai du mal à me l'approprier ("j'ai eu de la chance"). Aide-moi à reformuler cette réussite de façon plus juste.</span>
+    <p class="prompt-usage">À quoi ça sert : contrer la minimisation systématique de ses propres réussites</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Pose-moi une question chaque soir pendant une semaine pour m'aider à identifier une petite réussite ou un moment de fierté de la journée.</span>
+    <p class="prompt-usage">À quoi ça sert : créer une pratique régulière de reconnaissance de ses propres réussites</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Je dois faire quelque chose qui me fait peur (mais que je veux vraiment faire) : [décrire la situation]. Aide-moi à préparer mentalement cette étape.</span>
+    <p class="prompt-usage">À quoi ça sert : se préparer concrètement à affronter une peur précise et identifiée</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à identifier une action à faible enjeu que je pourrais faire cette semaine pour commencer à m'exercer à l'affirmation de soi.</span>
+    <p class="prompt-usage">À quoi ça sert : démarrer par une action simple et peu risquée plutôt qu'un grand saut</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Fais le bilan avec moi de ma semaine : qu'est-ce qui a bien fonctionné dans ma démarche de reconstruction de confiance, et qu'est-ce que je pourrais ajuster ?</span>
+    <p class="prompt-usage">À quoi ça sert : faire un point d'étape hebdomadaire structuré sur sa progression</p>
+  </div>
+
+  <h3>12.6 Gérer le doute au quotidien</h3>
+  <p class="lede">Pour traverser les moments de doute sans qu'ils prennent toute la place.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Je ressens un doute important en ce moment sur [situation]. Aide-moi à faire la différence entre un doute constructif (qui m'informe) et un doute qui me paralyse inutilement.</span>
+    <p class="prompt-usage">À quoi ça sert : distinguer un doute utile d'un doute paralysant</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Pose-moi des questions pour m'aider à identifier ce qui, concrètement, apaiserait mon doute actuel sur [situation].</span>
+    <p class="prompt-usage">À quoi ça sert : transformer un doute flou en besoin concret et actionnable</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Je viens de recevoir une critique sur [sujet]. Aide-moi à évaluer objectivement si cette critique est justifiée, en partie ou en totalité.</span>
+    <p class="prompt-usage">À quoi ça sert : traiter une critique de façon rationnelle plutôt que purement émotionnelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à préparer une réponse apaisante à me dire à moi-même la prochaine fois que je ressentirai un doute intense sur mes capacités.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer à l'avance une réponse interne apaisante pour les moments de doute</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Je me sens submergé(e) par le doute avant [événement à venir]. Aide-moi à identifier 3 éléments concrets qui plaident en ma faveur pour cet événement.</span>
+    <p class="prompt-usage">À quoi ça sert : contrebalancer un doute anticipatoire par des éléments factuels favorables</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à identifier si mon doute actuel sur [situation] est basé sur des informations réelles ou sur une projection anxieuse sans fondement concret.</span>
+    <p class="prompt-usage">À quoi ça sert : distinguer un doute informé d'une anxiété anticipatoire</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Je viens de prendre une décision difficile et je doute maintenant de l'avoir bien prise. Aide-moi à revoir objectivement les raisons qui m'ont conduit à ce choix.</span>
+    <p class="prompt-usage">À quoi ça sert : revenir sur une décision avec du recul plutôt que de céder au doute rétrospectif</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Pose-moi des questions pour m'aider à identifier ce qui déclenche le plus souvent mes moments de doute intense (fatigue, stress, certaines personnes, certains contextes).</span>
+    <p class="prompt-usage">À quoi ça sert : identifier les facteurs qui augmentent la vulnérabilité au doute</p>
+  </div>
+
+  <h3>12.7 Renforcer son estime au travail</h3>
+  <p class="lede">Pour objectiver sa valeur professionnelle avec des faits plutôt qu'un ressenti.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à identifier mes contributions réelles à [projet/équipe], que j'ai peut-être minimisées jusqu'ici.</span>
+    <p class="prompt-usage">À quoi ça sert : objectiver sa contribution réelle dans un contexte professionnel collectif</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Je viens de recevoir un feedback mitigé de mon manager. Aide-moi à en extraire les éléments constructifs sans les amplifier négativement au-delà de ce qui a été réellement dit.</span>
+    <p class="prompt-usage">À quoi ça sert : traiter un retour professionnel de façon proportionnée</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à préparer une présentation de mes réalisations pour mon entretien annuel, à partir de cette liste : [lister tes réalisations].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une auto-présentation professionnelle valorisante et factuelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Je me sens moins légitime que mes collègues dans [contexte précis]. Aide-moi à examiner objectivement ce qui justifie ou non ce sentiment.</span>
+    <p class="prompt-usage">À quoi ça sert : examiner un sentiment de moindre légitimité professionnelle avec des faits</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Pose-moi des questions pour m'aider à identifier ce qui, dans mon rôle actuel, correspond vraiment à mes forces plutôt qu'à mes complexes.</span>
+    <p class="prompt-usage">À quoi ça sert : recentrer l'auto-évaluation professionnelle sur ses forces réelles</p>
+  </div>
+</section>
+
+</body>
+</html>

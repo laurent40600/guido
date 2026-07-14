@@ -461,6 +461,78 @@ export const guides: Guide[] = [
     ],
   },
   {
+    slug: "confiance-soi",
+    title: "Retrouver confiance en soi : identifier ses schémas de pensée limitants et avancer concrètement",
+    tagline: "Reconstruire sa confiance par un travail concret, pas par la seule volonté",
+    pitch:
+      "Identifier tes schémas de pensée limitants (tout ou rien, généralisation, filtre négatif...), reconstruire ta confiance après un échec ou une rupture, développer l'affirmation de soi au quotidien et sortir du piège de la comparaison sociale : ce guide couvre tout le travail, avec une bibliothèque de 51 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Aucune compétence technique requise.",
+    price: "16€",
+    format: "PDF · 41 pages",
+    audience: "Toute personne qui traverse une période de doute sur elle-même, suite à un événement identifiable (licenciement, rupture, échec) ou à une érosion plus progressive de la confiance",
+    category: "Développement personnel",
+    cover: "/covers/confiance-soi.png",
+    bestseller: false,
+    highlights: [
+      "Identifier tes schémas de pensée limitants les plus fréquents (tout ou rien, généralisation, filtre négatif, prédiction catastrophique)",
+      "Reconstruire ta confiance après un échec ou une rupture en séparant les faits de l'interprétation, avec une base factuelle de réussites passées",
+      "Développer l'affirmation de soi au quotidien : dire non, poser ses limites, s'affirmer progressivement sans agressivité",
+      "Sortir du piège de la comparaison sociale et du perfectionnisme, en te recentrant sur tes propres critères de réussite",
+      "Un plan progressif pour passer à l'action, adapté aux contextes spécifiques (travail, couple, famille, amis)",
+      "51 prompts prêts à l'emploi intégrés au guide, classés par usage — aucun pack séparé à acheter",
+    ],
+    faq: [
+      {
+        question: "Ce guide contient-il vraiment les prompts, ou faut-il acheter un pack séparé ?",
+        answer:
+          "Les 51 prompts sont intégrés directement dans ce guide (partie 7), au format 2 en 1. Il n'existe pas de pack de prompts séparé — tout est inclus dans cet unique achat.",
+      },
+      {
+        question: "Ce genre de travail peut-il remplacer une thérapie ?",
+        answer:
+          "Non, et ce n'est pas son objectif. Ce guide propose des outils de réflexion et d'action pour un manque de confiance ponctuel ou lié à un événement identifiable. En cas de souffrance profonde et durable, un accompagnement par un professionnel de santé est la démarche appropriée, en complément ou à la place de ce guide.",
+      },
+      {
+        question: "Que faire si je ressens une détresse psychologique importante ?",
+        answer:
+          "Le 3114 est le numéro national de prévention du suicide, gratuit, confidentiel et disponible 24h/24 et 7j/7 en France. Ce guide couvre le travail sur la confiance en soi, pas la prise en charge d'une détresse psychologique sévère.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Identifier un schéma de pensée limitant",
+        text: "Voici une pensée qui me revient souvent : [décrire la pensée, ex : \"je vais échouer de toute façon\"]. Aide-moi à identifier quel type de schéma de pensée limitant ça représente, et pose-moi des questions pour l'examiner.",
+      },
+      {
+        title: "Reconstruire une base factuelle de confiance",
+        text: "Aide-moi à identifier 5 réussites passées, même petites, qui contredisent l'idée que je ne suis \"pas capable\" en ce moment.",
+      },
+      {
+        title: "Préparer un refus assertif",
+        text: "Aide-moi à formuler poliment mais fermement un refus à cette demande : [décrire la demande], sans culpabiliser après coup.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Guide complet",
+        price: "16€",
+        originalPrice: "24€",
+        description: "Le guide entier (6 parties) + la bibliothèque de 51 prompts intégrée",
+        includes: [
+          "Partie 1 — Comprendre ses schémas de pensée limitants",
+          "Partie 2 — Reconstruire sa confiance après un échec ou une rupture",
+          "Partie 3 — Développer l'affirmation de soi au quotidien",
+          "Partie 4 — Sortir du piège de la comparaison et du perfectionnisme",
+          "Partie 5 — Passer à l'action, s'affirmer dans des contextes spécifiques",
+          "Partie 6 — Bibliothèque de 51 prompts, classés par usage",
+          "PDF · 41 pages",
+        ],
+        pdfFile: "guido-confiance-soi",
+      },
+    ],
+  },
+  {
     slug: "freelance-40ans",
     title: "Devenir freelance après 40 ans : le guide pour sécuriser sa transition sans tout perdre",
     tagline: "Ton expérience est un vrai atout — encore faut-il sécuriser le saut correctement",
