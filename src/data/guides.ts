@@ -389,6 +389,78 @@ export const guides: Guide[] = [
     ],
   },
   {
+    slug: "carriere-personnalite",
+    title: "Carrière et développement personnel : bilan de compétences et tests de personnalité",
+    tagline: "Mieux te connaître pour faire des choix de carrière alignés",
+    pitch:
+      "Faire ton bilan de compétences avec l'IA, mieux comprendre ta personnalité au travail (MBTI, DISC, auto-réflexion guidée), croiser les deux pour identifier des pistes de carrière alignées, gérer le syndrome de l'imposteur et négocier ton salaire à partir de réalisations concrètes : ce guide couvre toute la démarche, avec une bibliothèque de 58 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Aucune compétence technique requise.",
+    price: "18€",
+    format: "PDF · 54 pages",
+    audience: "Salariés qui stagnent ou se questionnent sur leur carrière, personnes en reconversion, jeunes diplômés hésitant entre plusieurs voies, et toute personne curieuse de mieux se comprendre professionnellement",
+    category: "Reconversion",
+    cover: "/covers/carriere-personnalite.png",
+    bestseller: false,
+    highlights: [
+      "Identifier tes compétences transférables et valoriser un parcours atypique, même après une longue période sur le même poste",
+      "Mieux te connaître avec une auto-réflexion guidée par IA sur le MBTI, le DISC et les Big Five — pas un test figé, une vraie conversation",
+      "Croiser compétences et personnalité pour identifier plusieurs pistes de carrière réalistes, avec deux études de cas complètes",
+      "Gérer le syndrome de l'imposteur en confrontant le ressenti à des faits concrets, pas à du positivisme abstrait",
+      "Un plan d'action sur 30 jours, adapté à ta situation (jeune diplômé, reconversion, retour d'interruption, fin de carrière)",
+      "58 prompts prêts à l'emploi intégrés au guide, classés par usage — aucun pack séparé à acheter",
+    ],
+    faq: [
+      {
+        question: "Ce guide contient-il vraiment les prompts, ou faut-il acheter un pack séparé ?",
+        answer:
+          "Les 58 prompts sont intégrés directement dans ce guide (partie 13), au format 2 en 1. Il n'existe pas de pack de prompts séparé — tout est inclus dans cet unique achat.",
+      },
+      {
+        question: "Ce guide remplace-t-il un bilan de compétences certifié ou un accompagnement professionnel ?",
+        answer:
+          "Non. Ce guide te donne une méthode concrète pour commencer cette réflexion par toi-même, mais il ne remplace pas un bilan de compétences certifié (finançable via le CPF), un conseiller en évolution professionnelle ou un accompagnement psychologique si tu en ressens le besoin.",
+      },
+      {
+        question: "Dois-je prendre les résultats des tests de personnalité au sérieux ?",
+        answer:
+          "Prends-les comme une base de réflexion, pas comme une vérité scientifique. Le MBTI et le DISC sont des outils de réflexion personnelle populaires, pas des diagnostics validés cliniquement — le guide insiste sur ce point avant chaque exercice.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Faire émerger ses compétences transférables",
+        text: "Voici mon parcours professionnel : [décris tes postes, missions, formations]. Identifie mes compétences transférables qui pourraient s'appliquer à d'autres métiers ou secteurs.",
+      },
+      {
+        title: "Auto-réflexion guidée sur sa personnalité",
+        text: "Mène une analyse de ma personnalité au travail en me posant des questions une par une (pas toutes en même temps), sur ma façon de travailler, de décider, de gérer le stress et de collaborer avec les autres. À la fin, propose-moi une synthèse de mon profil.",
+      },
+      {
+        title: "Préparer une négociation salariale factuelle",
+        text: "Voici une liste de mes réalisations chiffrées ou concrètes sur les 12 derniers mois : [liste tes réalisations]. Aide-moi à en tirer un argumentaire de négociation salariale factuel, sans ton agressif ni excès de modestie.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Guide complet",
+        price: "18€",
+        originalPrice: "27€",
+        description: "Le guide entier (6 parties) + la bibliothèque de 58 prompts intégrée",
+        includes: [
+          "Partie 1 — Faire son bilan de compétences avec l'IA",
+          "Partie 2 — Mieux se connaître avec les tests de personnalité",
+          "Partie 3 — Faire des choix de carrière alignés, gérer le syndrome de l'imposteur",
+          "Partie 4 — Passer à l'action, adapter la démarche à ta situation",
+          "Partie 5 — Négocier son salaire et sa valeur",
+          "Partie 6 — Bibliothèque de 58 prompts, classés par usage",
+          "PDF · 54 pages",
+        ],
+        pdfFile: "guido-carriere-personnalite",
+      },
+    ],
+  },
+  {
     slug: "freelance-40ans",
     title: "Devenir freelance après 40 ans : le guide pour sécuriser sa transition sans tout perdre",
     tagline: "Ton expérience est un vrai atout — encore faut-il sécuriser le saut correctement",

@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Carrière et développement personnel</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 25pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 8pt; font-size: 11.5pt; }
+  .toc li span { font-style: italic; font-size: 10.5pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-example { background: #f1efec; border-left: 5px solid #8a8478; }
+  .box-example .box-title { color: #5c574c; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Carrière et développement personnel</h1>
+  <p class="tagline">Bilan de compétences et tests de personnalité pour mieux te connaître</p>
+  <p class="meta">Un guide complet + une bibliothèque de 58 prompts intégrée,<br/>guidé par IA — aucune compétence technique requise</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Introduction<span>Pourquoi mieux se connaître change tes choix de carrière</span></li>
+    <li>Partie 1 — Faire son bilan de compétences avec l'IA<span>Compétences transférables, parcours atypique, auto-dévalorisation</span></li>
+    <li>Partie 2 — Mieux se connaître avec les tests de personnalité<span>MBTI, DISC, auto-réflexion guidée</span></li>
+    <li>Partie 3 — Faire des choix de carrière alignés<span>Croiser compétences et personnalité, études de cas</span></li>
+    <li>Partie 3 bis — Gérer le syndrome de l'imposteur</li>
+    <li>Partie 4 — Passer à l'action<span>Plan sur 30 jours, erreurs à éviter</span></li>
+    <li>Partie 5 — Adapter la démarche à ta situation<span>Jeune diplômé, reconversion, retour d'interruption, fin de carrière</span></li>
+    <li>Questions fréquentes</li>
+    <li>Partie 6 — Négocier son salaire et sa valeur</li>
+    <li>Ressources complémentaires en France<span>France Travail, APEC, CPF, Transitions Pro, PMSMP</span></li>
+    <li>Annexe — Repères sur les grands frameworks de personnalité</li>
+    <li>Conclusion</li>
+    <li>Bibliothèque de prompts<span>58 prompts prêts à l'emploi, classés par usage</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Introduction</h2>
+
+  <h3>Pourquoi mieux se connaître change vraiment tes choix de carrière</h3>
+  <p>Beaucoup de décisions de carrière se prennent par défaut : on continue dans une voie parce qu'on l'a commencée, pas parce qu'elle nous correspond vraiment. On accepte un poste parce qu'il se présentait au bon moment, on reste dans une entreprise par confort ou par peur du changement, on évite une reconversion parce qu'elle semble trop risquée à envisager sérieusement.</p>
+  <p>Mieux comprendre ses compétences et sa personnalité ne donne pas une réponse magique à la question "que dois-je faire de ma vie professionnelle". Mais ça donne une base beaucoup plus solide pour choisir en connaissance de cause plutôt que par habitude, par peur, ou par manque d'alternative visible.</p>
+  <p>Ce guide s'adresse à toute personne qui se pose des questions sur sa trajectoire professionnelle : que tu envisages une reconversion complète, une simple évolution de poste, ou que tu veuilles simplement mieux comprendre pourquoi certaines situations de travail t'épuisent quand d'autres te portent.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Une situation fréquente</span>
+    <p>Sarah travaille depuis 8 ans dans la même entreprise. Elle n'est pas malheureuse, mais elle sent qu'elle "tourne en rond" sans savoir pourquoi ni vers quoi elle voudrait évoluer. Ce n'est pas un manque de compétences : c'est un manque de clarté sur ce qui compte vraiment pour elle.</p>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-title">Une précision importante avant de commencer</span>
+    <p>Les tests de personnalité comme le MBTI sont des outils de réflexion personnelle populaires, pas des diagnostics scientifiques validés.</p>
+    <p>Aucun résultat généré dans ce guide ne doit être pris comme une vérité figée sur qui tu es.</p>
+    <p>L'objectif est de t'aider à réfléchir sur toi-même, pas de t'enfermer dans une case.</p>
+  </div>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>À la fin de ce guide, tu sauras identifier tes compétences transférables, mieux comprendre ta personnalité au travail, croiser ces informations pour explorer des pistes de carrière alignées, et transformer cette réflexion en plan d'action concret plutôt qu'en intention qui reste dans un coin de ta tête.</p>
+  <p>Ce guide est structuré pour être suivi dans l'ordre, mais tu peux aussi piocher directement la partie qui répond à ton besoin le plus urgent du moment.</p>
+
+  <h3>Ce dont tu as besoin pour commencer</h3>
+  <p>Aucune compétence technique n'est nécessaire : si tu sais utiliser une IA comme ChatGPT ou Claude sur ton téléphone ou ton ordinateur, tu as tout ce qu'il faut pour commencer. Prévois simplement un moment au calme, sans être interrompu, car les meilleurs résultats viennent d'une vraie réflexion honnête, pas de réponses données à la va-vite entre deux tâches.</p>
+
+  <h3>Qui est concerné par ce guide</h3>
+  <p>Ce guide s'adresse à des profils très différents, avec des besoins parfois éloignés les uns des autres. Le salarié qui se sent stagner dans son poste depuis plusieurs années y trouvera de quoi clarifier ce qui lui manque vraiment. La personne en recherche d'emploi après une rupture professionnelle (licenciement, fin de contrat, rupture conventionnelle) y trouvera un cadre pour transformer une période difficile en réflexion constructive plutôt qu'en simple urgence de retrouver "n'importe quel poste".</p>
+  <p>Le jeune diplômé qui hésite entre plusieurs voies possibles y trouvera un moyen de clarifier ses préférences avant de s'engager dans une direction. Et la personne simplement curieuse de mieux se comprendre, sans projet de changement immédiat, y trouvera un exercice de réflexion personnelle qui garde toute sa valeur même sans urgence de carrière.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Trois profils, trois usages différents</span>
+    <p>Karim, cadre depuis 12 ans dans la même entreprise, utilise ce guide pour comprendre pourquoi il se sent "vidé" malgré un poste stable. Léa, tout juste diplômée, l'utilise pour choisir entre trois offres de stage très différentes. Nadia, en recherche d'emploi depuis 4 mois, l'utilise pour sortir d'une candidature "au hasard" et cibler des postes vraiment alignés avec elle.</p>
+  </div>
+
+  <p>On commence tout de suite par la partie qui donne souvent les résultats les plus immédiats : ton bilan de compétences.</p>
+</section>
+
+<section class="chapter">
+  <h2>2. Partie 1 — Faire son bilan de compétences avec l'IA</h2>
+
+  <h3>Identifier ses compétences transférables</h3>
+  <p>La plupart des gens sous-estiment largement leurs compétences transférables : ce qu'ils savent faire dans un contexte, ils oublient que ça s'applique souvent ailleurs. Une personne qui gère une équipe de bénévoles dans une association développe des compétences de management tout aussi réelles que celles d'un manager en entreprise, mais elle ne les nomme pas de la même façon et ne pense pas toujours à les valoriser.</p>
+  <p>Décrire ses expériences en détail à une IA et lui demander d'identifier ces compétences transférables fait souvent émerger des angles qu'on n'aurait pas vus seul. L'IA n'a pas de préjugé sur ce qui "compte" ou non comme expérience professionnelle valable — elle peut repérer une compétence de négociation dans un rôle de parent qui gère les devoirs et les conflits familiaux, tout autant que dans un poste commercial.</p>
+  <p>Ce travail d'identification est particulièrement précieux pour les personnes qui ont occupé un même poste pendant longtemps : à force de répéter les mêmes tâches, on finit par ne plus voir ce qu'on sait faire, tellement c'est devenu automatique et évident pour soi-même. Ce qui te semble banal est souvent une vraie compétence aux yeux de quelqu'un qui ne sait pas le faire.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Compétence transférable révélée</span>
+    <p>Un ancien serveur en restauration qui se reconvertit dans la gestion de projet ne réalise pas toujours que gérer un service en rush, prioriser les tables, anticiper les besoins et gérer le stress de plusieurs demandes simultanées sont exactement les compétences qu'on recherche pour un poste de coordination d'équipe.</p>
+  </div>
+
+  <h3>Valoriser un parcours atypique</h3>
+  <p>Un parcours non-linéaire (changements de secteur, périodes d'interruption, reconversions, temps partiel pour raisons familiales) peut sembler être un problème à expliquer, surtout face à un recruteur ou dans un CV qui semble "décousu". En réalité, c'est souvent une richesse mal racontée.</p>
+  <p>L'enjeu n'est pas de cacher les détours ou de les justifier comme des erreurs, mais de leur donner une cohérence narrative claire : quel fil conducteur relie ces expériences, même si ce fil n'était pas visible au moment où tu les vivais ? C'est souvent avec le recul qu'un parcours prend son sens.</p>
+  <p>Un parcours atypique bien raconté devient même parfois un vrai atout différenciant face à des candidats au profil plus classique : il montre une capacité d'adaptation, une curiosité, ou une résilience que peu de parcours linéaires peuvent démontrer aussi clairement.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Fil conducteur retrouvé</span>
+    <p>Une personne ayant travaillé successivement dans l'hôtellerie, puis dans l'événementiel, puis dans la formation professionnelle peut sembler avoir un parcours décousu. Mais un fil conducteur apparaît vite : dans les trois cas, il s'agit de créer une expérience positive pour un public, en gérant la logistique et l'humain en simultané.</p>
+  </div>
+
+  <h3>Structurer un vrai bilan de compétences</h3>
+  <p>Un bilan de compétences écrit n'est pas qu'un exercice pour un recruteur ou un conseiller en évolution professionnelle : c'est aussi un document personnel qui aide à y voir plus clair sur soi-même. Il doit rassembler formations, expériences marquantes et compétences clés dans une structure synthétique et honnête, ni trop modeste ni exagérée.</p>
+  <p>Un bon bilan de compétences répond à trois questions simples : qu'est-ce que je sais faire concrètement, dans quels contextes l'ai-je démontré, et qu'est-ce que ça me dit sur ce que je pourrais faire ensuite. Résiste à la tentation de le rendre exhaustif : un bilan trop long et détaillé perd en clarté ce qu'il gagne en exhaustivité.</p>
+
+  <h4>Exercice pratique : ton inventaire en 3 colonnes</h4>
+  <p>Avant même d'utiliser l'IA, prends une feuille ou un document et note trois colonnes : (1) les tâches que tu fais régulièrement dans ton activité actuelle ou passée, (2) la compétence précise que chaque tâche mobilise, (3) un exemple concret où cette compétence a fait une vraie différence. Cet exercice, fait honnêtement, révèle souvent 15 à 20 compétences qu'on n'aurait pas listées spontanément si on t'avait juste demandé "quelles sont tes compétences ?".</p>
+
+  <h3>Distinguer compétences techniques et compétences comportementales</h3>
+  <p>Les compétences techniques (maîtriser un logiciel, parler une langue, connaître une méthode) sont plus faciles à lister, mais les compétences comportementales (savoir gérer un conflit, s'adapter à l'imprévu, fédérer une équipe) sont souvent celles qui font vraiment la différence dans la durée. Prends le temps d'identifier les deux catégories séparément.</p>
+  <p>Une erreur fréquente est de se concentrer uniquement sur les compétences techniques, plus faciles à nommer et à mettre sur un CV, en négligeant les compétences comportementales qui sont pourtant souvent citées par les recruteurs comme décisives dans un choix final entre deux candidats aux compétences techniques similaires.</p>
+
+  <h3>Le piège de l'auto-dévalorisation</h3>
+  <p>Beaucoup de personnes, en particulier après une période difficile (licenciement, longue période sans emploi, syndrome de l'imposteur), ont tendance à minimiser systématiquement leurs compétences réelles. Ce n'est pas une question de manque de compétences, mais un biais de perception qui déforme l'auto-évaluation.</p>
+  <p>Faire cet exercice avec l'aide d'une IA, en décrivant factuellement ses expériences sans les commenter négativement, permet souvent d'obtenir un reflet plus objectif de ses compétences réelles que ce que l'auto-critique intérieure aurait laissé émerger seule.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une compétence développée dans un contexte s'applique souvent bien au-delà de ce contexte.</p>
+    <p>Un parcours atypique se valorise en racontant une histoire cohérente, pas en listant des postes disparates.</p>
+    <p>Un bon bilan de compétences sert autant à soi-même qu'à un recruteur.</p>
+    <p>Les compétences comportementales comptent souvent autant que les compétences techniques.</p>
+    <p>L'auto-dévalorisation fausse souvent l'auto-évaluation : viser la description factuelle plutôt que le jugement.</p>
+  </div>
+
+  <h3>Adapter la présentation selon le contexte</h3>
+  <p>Un même bilan de compétences ne se présente pas de la même façon selon son usage. Pour un CV, privilégie des formulations courtes et orientées résultats, avec des verbes d'action en début de ligne. Pour un entretien oral, prépare plutôt des exemples racontés sous forme d'histoires courtes (contexte, action, résultat), plus faciles à mémoriser et à restituer naturellement que des listes.</p>
+  <p>Pour un bilan de compétences formel (dans le cadre d'un accompagnement CPF ou d'un conseiller en évolution professionnelle), une version plus complète et nuancée est attendue, incluant aussi bien tes points forts que les axes que tu identifies toi-même comme à développer — cette honnêteté est perçue positivement, contrairement à ce qu'on pourrait croire.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Trois versions d'une même compétence</span>
+    <p>Compétence : gestion de projet. Pour un CV : "Piloté 3 projets simultanés avec des équipes de 5 à 8 personnes". Pour un entretien : "Sur mon dernier projet, j'ai dû réorganiser les priorités en cours de route quand un fournisseur clé s'est désisté, et l'équipe a quand même livré à temps". Pour un bilan formel : "Compétence de gestion de projet confirmée, avec une marge de progression identifiée sur la gestion des budgets serrés".</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 2 — Mieux se connaître avec les tests de personnalité</h2>
+
+  <h3>Comprendre les grands frameworks</h3>
+  <p>Le MBTI, le DISC ou le modèle des Big Five sont des cadres différents pour parler de personnalité. Le MBTI classe les personnes selon 4 axes (extraversion/introversion, sensation/intuition, pensée/sentiment, jugement/perception) pour aboutir à 16 profils. Le DISC se concentre sur le style comportemental au travail (dominance, influence, stabilité, conformité). Les Big Five (ouverture, conscienciosité, extraversion, agréabilité, névrosisme) sont le modèle le plus reconnu par la recherche académique en psychologie.</p>
+  <p>Aucun de ces outils n'est parfait, aucun n'est validé au même niveau qu'un outil scientifique clinique, mais chacun peut servir de point de départ à une vraie réflexion sur soi, à condition de ne pas les confondre avec un diagnostic médical ou psychologique.</p>
+
+  <h3>Les limites à garder en tête</h3>
+  <p>Le MBTI en particulier est largement critiqué par la communauté scientifique pour sa fiabilité limitée dans le temps : une même personne peut obtenir un résultat différent en le repassant quelques semaines plus tard, ce qui pose question sur sa capacité à mesurer un trait stable de personnalité.</p>
+  <p>Ça ne veut pas dire que l'exercice est inutile, mais qu'il faut le prendre pour ce qu'il est : un déclencheur de réflexion et un vocabulaire commun pour parler de soi, pas un verdict scientifique gravé dans le marbre.</p>
+
+  <h3>Une auto-réflexion guidée, pas un test figé</h3>
+  <p>Plutôt que de répondre à un questionnaire fermé avec des cases à cocher, ce guide te propose une approche conversationnelle : une IA qui te pose des questions une par une sur ta façon de travailler, de décider et de collaborer, pour t'aider à formuler toi-même ce que tu ressens plutôt que de te coller une étiquette toute faite.</p>
+  <p>Cette approche a un avantage réel sur un questionnaire classique : elle s'adapte à tes réponses au fur et à mesure, peut creuser un point qui semble ambigu, et te pousse à mettre des mots précis sur des situations vécues plutôt que de cocher des affirmations générales qui ne collent jamais parfaitement à ta réalité.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Question type de l'auto-réflexion guidée</span>
+    <p>"Quand tu dois prendre une décision importante au travail, préfères-tu en discuter d'abord avec plusieurs personnes, ou réfléchir seul(e) avant d'en parler ? Peux-tu me donner un exemple récent ?"</p>
+  </div>
+
+  <h4>Comment se déroule une session type</h4>
+  <p>Une session d'auto-réflexion guidée dure généralement 15 à 25 minutes si tu prends le temps de répondre en détail. L'IA commence en général par des questions larges (ton rapport à l'énergie sociale, ta façon de traiter l'information), puis affine progressivement en fonction de tes réponses, avant de proposer une synthèse à la fin.</p>
+  <p>N'hésite pas à répondre avec des exemples concrets plutôt que des généralités : "je suis plutôt sociable" est moins utile que "lors de la dernière réunion d'équipe, j'ai pris la parole spontanément trois fois pour proposer des idées". Plus tes réponses sont concrètes, plus la synthèse finale sera pertinente et personnalisée.</p>
+
+  <h3>Ce que révèlent vraiment ces exercices</h3>
+  <p>Le but n'est pas de sortir de cette réflexion avec une étiquette à quatre lettres (comme "INFJ" ou autre), mais avec une meilleure compréhension de tes propres préférences : dans quel type d'environnement tu es le plus efficace, ce qui te draine de l'énergie, ce qui au contraire te motive naturellement sans effort.</p>
+  <p>Ces exercices révèlent souvent des tensions internes qu'on n'avait pas formulées clairement : par exemple, aimer profondément travailler seul sur des tâches complexes, tout en ayant besoin ponctuellement d'interactions sociales pour se sentir stimulé. Ce n'est pas une contradiction à résoudre, mais une nuance à intégrer dans ses choix professionnels.</p>
+
+  <h3>Le DISC en pratique</h3>
+  <p>Le modèle DISC, très utilisé en entreprise, décrit 4 tendances comportementales dominantes : Dominance (orienté résultats, direct), Influence (orienté relationnel, enthousiaste), Stabilité (orienté coopération, posé), Conformité (orienté rigueur, précis). Contrairement au MBTI qui classe en catégories fixes, le DISC mesure des tendances qui peuvent varier selon le contexte (au travail vs à la maison, sous pression vs en période calme).</p>
+  <p>Demander à l'IA de t'aider à repérer laquelle de ces 4 tendances domine dans ton comportement professionnel actuel peut éclairer pourquoi certaines situations te mettent plus à l'aise que d'autres : une personne à forte tendance Stabilité peut se sentir en difficulté dans un environnement qui change constamment de priorités, sans que ce soit un manque de compétence de sa part.</p>
+
+  <h4>Comparer plusieurs contextes</h4>
+  <p>Un exercice révélateur consiste à observer si ton profil change selon le contexte : es-tu la même personne en réunion d'équipe, en tête-à-tête avec ton manager, ou en dehors du travail avec des amis ? Ces variations, loin d'être un problème, montrent ta capacité d'adaptation — mais elles peuvent aussi révéler un environnement professionnel qui te pousse à masquer une partie de toi-même en permanence, ce qui est plus épuisant sur la durée.</p>
+  <p>Une fois une synthèse obtenue, la tentation est parfois de l'utiliser comme excuse ("je suis comme ça, je ne peux pas changer") plutôt que comme point de départ ("voici ce qui semble naturel chez moi aujourd'hui, et voici ce que je pourrais développer si je le souhaite").</p>
+  <p>La personnalité professionnelle n'est pas figée à vie : elle évolue avec l'expérience, le contexte et l'effort conscient. Utilise ces résultats comme une photographie à un instant T, pas comme une prédiction définitive de ce que tu peux ou ne peux pas faire.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Aucun test de personnalité ne doit être pris comme une vérité absolue et définitive sur qui tu es.</p>
+    <p>L'intérêt de ces outils est de déclencher une réflexion, pas de fournir un résultat final.</p>
+    <p>Une conversation guidée, question par question, permet souvent une réflexion plus fine qu'un simple questionnaire à cocher.</p>
+    <p>L'objectif est de mieux comprendre tes préférences réelles, pas de mémoriser une étiquette.</p>
+    <p>Ta personnalité professionnelle évolue avec le temps : ne t'enferme pas dans une photographie figée.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 3 — Faire des choix de carrière alignés</h2>
+
+  <h3>Croiser compétences et personnalité</h3>
+  <p>Les deux réflexions précédentes prennent tout leur sens une fois croisées : une compétence forte dans un métier qui ne correspond pas à ta personnalité mènera souvent à l'épuisement, même en étant compétent. À l'inverse, un métier qui correspond bien à ta personnalité mais pour lequel tu n'as pas encore les compétences peut être une direction à construire progressivement, pas une impasse.</p>
+  <p>Croiser les deux permet d'identifier des pistes réalistes ET épanouissantes, plutôt que de choisir uniquement sur un critère ("je suis doué pour ça") en ignorant l'autre ("est-ce que ça me correspond vraiment").</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Croisement compétences/personnalité</span>
+    <p>Une personne très compétente en analyse de données mais de nature très sociale et orientée relation humaine risque de s'épuiser dans un poste purement analytique isolé, même si elle y excelle. Un poste qui combine analyse ET interaction avec des clients ou des équipes sera souvent plus durable pour elle.</p>
+  </div>
+
+  <h3>Explorer sans s'enfermer</h3>
+  <p>L'objectif n'est pas de sortir de cet exercice avec un seul métier "parfait" identifié, mais avec plusieurs pistes cohérentes à explorer plus concrètement : par des rencontres avec des personnes qui exercent ce métier, des stages découverte, des missions ponctuelles en freelance, ou simplement des lectures et témoignages.</p>
+  <p>Une piste identifiée n'est pas un engagement définitif — c'est une direction à tester avant de s'y investir pleinement.</p>
+
+  <h3>Éviter le piège du métier parfait</h3>
+  <p>Chercher un métier qui coche absolument toutes les cases (salaire élevé, sens profond, équilibre vie pro/perso parfait, sécurité de l'emploi, créativité quotidienne) mène souvent à ne jamais se décider, parce qu'un tel métier n'existe presque jamais tel quel.</p>
+  <p>Clarifier ses 2-3 priorités réellement non-négociables, et accepter de faire des compromis sur le reste, aide à sortir de cette paralysie du choix qui bloque beaucoup de réflexions de carrière pendant des années.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Clarifier ses priorités</span>
+    <p>Une personne qui identifie que ses 2 priorités non-négociables sont "la flexibilité des horaires" et "un travail qui a un impact social visible" peut accepter un salaire plus modeste ou un poste moins prestigieux si ces deux critères sont remplis, plutôt que de continuer à chercher le poste théoriquement parfait qui n'arrive jamais.</p>
+  </div>
+
+  <h4>Exercice pratique : le tri des priorités</h4>
+  <p>Liste 8 à 10 critères qui comptent pour toi dans un métier (salaire, sens, autonomie, stabilité, relations humaines, créativité, reconnaissance, horaires, localisation, évolution). Puis force-toi à en éliminer progressivement jusqu'à n'en garder que 3. Cet exercice de tri, volontairement inconfortable, révèle souvent ce qui compte vraiment une fois qu'on ne peut plus tout avoir.</p>
+
+  <h3>Tenir compte de la réalité du marché</h3>
+  <p>Une piste de carrière alignée avec sa personnalité et ses compétences doit aussi être confrontée à la réalité du marché de l'emploi dans son secteur et sa région : niveau de demande, salaires pratiqués, besoin de formation complémentaire. Ignorer cette dimension mène à des désillusions évitables.</p>
+  <p>Ça ne veut pas dire renoncer à une piste qui semble moins évidente sur le marché, mais l'aborder avec une vision réaliste du chemin à parcourir : formation nécessaire, temps d'adaptation du marché, réseau à construire.</p>
+
+  <h3>Le rôle du réseau dans l'exploration</h3>
+  <p>Discuter avec des personnes qui exercent déjà le métier envisagé apporte souvent plus d'informations utiles que des heures de recherche seule en ligne. Ces échanges permettent de confronter une image parfois idéalisée du métier à sa réalité quotidienne, ses contraintes et ses vraies satisfactions.</p>
+
+  <h3>Étude de cas complète : le parcours de Thomas</h3>
+  <p>Thomas travaille depuis 6 ans comme technicien de maintenance industrielle. Il se sent compétent dans son poste mais de plus en plus déconnecté de son travail, sans savoir pourquoi précisément. En utilisant les prompts de bilan de compétences, il identifie qu'il excelle non seulement en résolution technique de pannes, mais aussi en formation informelle de ses collègues plus jeunes — une compétence qu'il n'avait jamais mise en avant.</p>
+  <p>L'exercice d'auto-réflexion sur sa personnalité révèle qu'il a une forte préférence pour la transmission et l'explication pédagogique, plus que pour la réparation technique en elle-même, qui ne le stimule plus autant qu'à ses débuts. En croisant ces deux informations, une piste émerge naturellement : la formation professionnelle dans le domaine technique, un métier qui combine son expertise acquise et sa préférence pour la transmission.</p>
+  <p>Plutôt que de démissionner immédiatement, Thomas construit un plan sur 3 mois : discuter avec un formateur du secteur, se renseigner sur les certifications nécessaires, et proposer à son entreprise d'accompagner ponctuellement les nouveaux techniciens pour tester concrètement cette inclination avant de s'engager pleinement dans une reconversion.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir de cet exemple</span>
+    <p>Thomas n'a pas eu besoin de tout quitter du jour au lendemain. Le croisement compétences/personnalité lui a permis d'identifier une piste réaliste, qu'il a ensuite testée progressivement avant de s'engager pleinement — c'est cette méthode progressive qui réduit le risque d'une reconversion mal préparée.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une compétence n'est un atout durable que si elle s'exerce dans un contexte aligné avec ta personnalité.</p>
+    <p>Sortir de cet exercice avec plusieurs pistes à explorer est plus réaliste que d'en sortir avec une certitude unique.</p>
+    <p>Clarifier ses priorités non-négociables aide à sortir du piège du métier parfait qui n'existe pas.</p>
+    <p>Une piste de carrière doit aussi être confrontée à la réalité du marché de l'emploi.</p>
+    <p>Discuter avec des personnes du métier visé vaut souvent plus que des heures de recherche seule.</p>
+  </div>
+
+  <h3>Étude de cas complète : le parcours de Léa</h3>
+  <p>Léa est diplômée d'un master en communication, mais elle hésite entre plusieurs voies (agence de communication, poste en entreprise, freelance) sans savoir laquelle choisir. Son bilan de compétences révèle une forte appétence pour la coordination de projets multi-intervenants et la rédaction, plus que pour la créativité pure qu'elle pensait être son point fort principal.</p>
+  <p>L'exercice de personnalité révèle une préférence marquée pour la structure et la visibilité claire des objectifs (proche du profil Conformité du DISC), ce qui la pousse à privilégier un poste en entreprise avec un cadre défini plutôt que le flou parfois inhérent au travail en agence ou en freelance, du moins dans un premier temps de carrière.</p>
+  <p>Plutôt que d'écarter définitivement l'agence ou le freelance, Léa décide de commencer par un poste en entreprise pour consolider son expérience dans un cadre plus structurant, tout en gardant ces autres pistes en tête pour une évolution future une fois plus confiante dans ses compétences.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir de cet exemple</span>
+    <p>Léa n'a pas eu besoin de choisir "la bonne voie" définitivement dès le départ. Comprendre sa préférence actuelle pour la structure lui a permis de faire un choix pertinent pour cette étape de sa carrière, sans fermer la porte à d'autres options pour plus tard.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 3 bis — Gérer le syndrome de l'imposteur</h2>
+
+  <h3>Un phénomène très répandu, rarement nommé</h3>
+  <p>Le syndrome de l'imposteur touche une grande partie des professionnels, y compris ceux qui réussissent objectivement bien : la sensation persistante de ne pas mériter sa place, d'avoir eu de la chance plutôt que du mérite, et la peur d'être un jour "démasqué". Ce phénomène n'est pas un trouble psychologique grave, mais un biais cognitif courant qui peut sérieusement freiner une réflexion de carrière.</p>
+  <p>Ce syndrome touche particulièrement les personnes en reconversion, qui doutent légitimement de leur légitimité dans un nouveau domaine, mais aussi des personnes très expérimentées qui minimisent systématiquement leurs réussites en les attribuant à la chance ou aux circonstances plutôt qu'à leurs compétences réelles.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Un exemple révélateur</span>
+    <p>Une personne promue manager après 5 ans d'excellents résultats individuels peut se dire "ils se sont trompés" ou "j'ai eu de la chance que personne d'autre ne postule", alors que la réalité factuelle de ses résultats dit clairement le contraire.</p>
+  </div>
+
+  <h3>Distinguer humilité et auto-sabotage</h3>
+  <p>Il y a une différence entre rester humble (reconnaître qu'on a encore des choses à apprendre) et s'auto-saboter (refuser une opportunité par peur de ne pas être à la hauteur, alors que les faits montrent le contraire). Le syndrome de l'imposteur bascule souvent du premier vers le second sans qu'on s'en rende compte.</p>
+
+  <h3>Utiliser des faits contre le ressenti</h3>
+  <p>La meilleure arme contre ce syndrome n'est pas de "positiver" de façon abstraite, mais de confronter le ressenti à des faits concrets : quelles réalisations précises, quels retours reçus, quels résultats mesurables contredisent ce sentiment de ne pas être légitime ? Demander à une IA de t'aider à lister ces faits objectifs, à partir de tes expériences réelles, aide à sortir d'un dialogue intérieur purement émotionnel.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le syndrome de l'imposteur est un biais cognitif courant, pas un signe réel d'incompétence.</p>
+    <p>Il touche particulièrement les personnes en reconversion et les profils très expérimentés.</p>
+    <p>Confronter le ressenti à des faits concrets est plus efficace que de simplement se raisonner en pensées positives abstraites.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Partie 4 — Passer à l'action</h2>
+
+  <h3>Un plan sur 30 jours</h3>
+  <p>Une réflexion de carrière qui reste dans la tête n'avance jamais. Découper la réflexion en petites actions hebdomadaires (une conversation avec quelqu'un du métier visé, une recherche sur le marché, un test concret comme du bénévolat ou une mission courte) permet de sortir de la simple rumination et de commencer à obtenir de vraies informations plutôt que des suppositions.</p>
+  <p>Un plan sur 30 jours n'a pas besoin d'être ambitieux : il doit surtout être réaliste et tenable, avec des actions suffisamment petites pour être vraiment réalisées plutôt que reportées indéfiniment.</p>
+
+  <h3>S'entourer pour avancer</h3>
+  <p>Cette réflexion gagne à ne pas rester purement solitaire. Un conseiller en évolution professionnelle, un mentor dans le secteur visé, ou même simplement des proches de confiance peuvent apporter un regard extérieur précieux sur des angles morts que tu ne vois pas toi-même.</p>
+  <p>Certaines structures (Pôle Emploi devenu France Travail, associations locales, réseaux d'anciens élèves) proposent un accompagnement gratuit ou à coût réduit pour structurer une réflexion de carrière — ne néglige pas ces ressources sous prétexte que l'IA peut sembler suffire seule.</p>
+
+  <h4>Exercice pratique : ton tableau de suivi</h4>
+  <p>Crée un tableau simple avec 4 colonnes : l'action prévue, la date cible, ce que tu espères en apprendre, et ce que tu as effectivement appris une fois l'action réalisée. Ce suivi, même minimal, transforme une réflexion abstraite en démarche concrète et mesurable, et te permet de voir ta progression sur la durée plutôt que d'avoir l'impression de tourner en rond.</p>
+
+  <h3>Se donner le droit à l'erreur</h3>
+  <p>Une piste explorée qui ne se confirme pas n'est pas un échec de la démarche : c'est une information précieuse qui affine la réflexion. Beaucoup de personnes abandonnent toute réflexion de carrière après une première tentative de reconversion qui n'a pas fonctionné, alors que c'est souvent la deuxième ou troisième piste explorée qui s'avère la bonne.</p>
+  <p>Considère chaque exploration, réussie ou non, comme une donnée supplémentaire sur toi-même plutôt que comme un verdict définitif sur ta capacité à changer de voie.</p>
+
+  <h3>Gérer le doute pendant la transition</h3>
+  <p>Il est normal de douter au milieu d'une transition professionnelle, même quand la démarche est bien préparée. Ce doute ne signifie pas automatiquement que la direction choisie est mauvaise : il peut aussi simplement traduire l'inconfort naturel de sortir de sa zone de confort, un passage presque inévitable de tout changement significatif.</p>
+  <p>Distinguer un doute passager (lié à l'inconfort du changement) d'un signal réel (des informations concrètes qui contredisent la piste choisie) demande de la lucidité. Se reposer sur les éléments factuels rassemblés dans les parties précédentes (compétences identifiées, retours du terrain obtenus lors des explorations) aide à ne pas se laisser guider uniquement par l'émotion du moment.</p>
+
+  <h3>Erreurs à éviter</h3>
+  <p>Deux pièges reviennent particulièrement souvent dans ce type de démarche. Le premier : prendre un test de personnalité comme une vérité figée qui justifie de ne jamais sortir de sa zone de confort ("je suis introverti donc je ne peux pas faire de commercial", alors que la réalité est bien plus nuancée).</p>
+  <p>Le second piège : changer de voie sur un coup de tête, sous le coup d'une frustration ponctuelle, sans avoir vraiment structuré sa réflexion ni son plan de transition financière et professionnelle. Une reconversion réussie se prépare, elle ne se décide pas un lundi matin après une mauvaise semaine.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une petite action chaque semaine fait plus avancer qu'une grande décision jamais prise.</p>
+    <p>S'entourer de regards extérieurs aide à voir des angles morts qu'on ne perçoit pas seul.</p>
+    <p>Un test de personnalité ne doit jamais justifier de renoncer à explorer autre chose.</p>
+    <p>Un changement de carrière se prépare, il ne se décide pas sur un coup de tête.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Partie 5 — Adapter la démarche à ta situation</h2>
+  <p class="lede">Cette réflexion ne se vit pas de la même façon selon le moment de vie professionnelle où tu te trouves. Voici quelques ajustements utiles selon ta situation.</p>
+
+  <h3>Jeune diplômé sans expérience significative</h3>
+  <p>Sans longue expérience professionnelle à analyser, le bilan de compétences s'appuie davantage sur les expériences associatives, les stages, les projets académiques et même les activités extra-scolaires. Ne sous-estime pas ces expériences : organiser un événement étudiant mobilise de vraies compétences de gestion de projet, tout comme un stage même court révèle des préférences réelles sur ton mode de travail.</p>
+  <p>La réflexion de personnalité prend ici une importance particulière : à défaut d'un long historique professionnel à analyser, mieux comprendre tes préférences naturelles aide à orienter tes premiers choix de poste plutôt que d'accepter la première offre venue par manque de repères.</p>
+
+  <h3>Reconversion après une longue carrière dans un même secteur</h3>
+  <p>Après 15 ou 20 ans dans un même domaine, l'identité professionnelle est souvent très liée au métier exercé, ce qui peut rendre une reconversion émotionnellement plus complexe qu'un simple changement de poste. Prendre le temps de séparer "ce que je sais faire" de "qui je suis" aide à envisager sereinement un changement de cap.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Une réflexion à ne pas négliger</span>
+    <p>Une personne ayant passé 20 ans dans l'enseignement qui envisage une reconversion peut ressentir ce changement comme une perte d'identité, pas seulement un changement de métier. Nommer cette dimension émotionnelle, plutôt que de l'ignorer, facilite une transition plus sereine.</p>
+  </div>
+
+  <h3>Retour après une interruption de carrière</h3>
+  <p>Un retour au travail après un congé parental, une longue maladie, ou une période de proche aidance s'accompagne souvent d'une perte de confiance disproportionnée par rapport aux compétences réelles conservées pendant cette période. Le bilan de compétences est ici particulièrement utile pour objectiver ce qui a été maintenu ou même développé pendant l'interruption (organisation, gestion de l'imprévu, résilience).</p>
+
+  <h3>Fin de carrière et transmission</h3>
+  <p>Pour les professionnels en fin de carrière, la réflexion s'oriente souvent moins vers "quel nouveau métier" que vers "comment transmettre ce que j'ai appris" : mentorat, formation, conseil ponctuel. Cette phase mérite une réflexion à part entière, où la personnalité et les compétences accumulées trouvent un nouveau terrain d'expression plutôt qu'une simple prolongation du poste précédent.</p>
+
+  <h3>Changer de secteur sans diplôme dans ce nouveau secteur</h3>
+  <p>Beaucoup de personnes renoncent à explorer un secteur qui les attire uniquement parce qu'elles n'ont pas le diplôme "attendu" pour ce domaine. Dans de nombreux métiers, l'expérience concrète et les compétences transférables comptent davantage que le diplôme d'origine, en particulier dans les secteurs en tension qui peinent à recruter.</p>
+  <p>Une stratégie efficace consiste à identifier une porte d'entrée progressive : un poste junior ou une mission ponctuelle dans le secteur visé, qui permet d'acquérir une première expérience concrète avant d'envisager une formation complémentaire ciblée uniquement sur les lacunes réellement identifiées sur le terrain, plutôt que sur une formation complète "au cas où".</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un jeune diplômé peut analyser des expériences non professionnelles avec la même méthode.</p>
+    <p>Une reconversion après une longue carrière touche souvent à l'identité, pas seulement aux compétences.</p>
+    <p>Un retour après interruption sous-estime souvent les compétences réellement maintenues.</p>
+    <p>La fin de carrière peut s'orienter vers la transmission plutôt que vers un nouveau poste classique.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>8. Questions fréquentes</h2>
+
+  <h4>Est-ce que je dois vraiment tout prendre au sérieux dans un test de personnalité généré par IA ?</h4>
+  <p>Non, et c'est même l'inverse de l'esprit de ce guide. Prends ces résultats comme une base de réflexion à confronter à ton propre ressenti, pas comme une vérité extérieure à accepter telle quelle. Si une partie de la synthèse ne te semble pas correspondre à toi, c'est une information tout aussi utile que si elle correspondait parfaitement.</p>
+
+  <h4>Combien de temps faut-il prévoir pour faire tout le travail proposé dans ce guide ?</h4>
+  <p>Compte environ 3 à 5 heures réparties sur plusieurs jours ou semaines pour parcourir l'ensemble des exercices sérieusement, en laissant reposer ta réflexion entre chaque partie. Il ne s'agit pas d'une course : une réflexion de carrière mûrit avec le temps, pas en une seule session intensive.</p>
+
+  <h4>Que faire si les résultats de plusieurs exercices se contredisent ?</h4>
+  <p>C'est en réalité très fréquent et ce n'est pas un problème : les humains sont rarement parfaitement cohérents. Une contradiction apparente (par exemple, se sentir à la fois attiré par la stabilité et par le changement) reflète souvent une vraie tension à assumer plutôt qu'à résoudre artificiellement.</p>
+
+  <h4>Est-ce que je peux refaire ces exercices plusieurs mois plus tard ?</h4>
+  <p>Oui, et c'est même recommandé. Ta situation, ton expérience et parfois tes préférences évoluent avec le temps. Refaire l'exercice de personnalité ou de compétences un an plus tard peut révéler des évolutions intéressantes à suivre.</p>
+
+  <h4>Dois-je partager les résultats de ces réflexions avec mon employeur actuel ?</h4>
+  <p>Ça dépend entièrement de ta situation et de la relation de confiance avec ton employeur. Rien dans ce guide n'exige de partager quoi que ce soit : ces réflexions peuvent rester strictement personnelles jusqu'à ce que tu décides toi-même du bon moment pour en parler, si tu le souhaites.</p>
+
+  <h4>Ces prompts fonctionnent-ils avec n'importe quelle IA ?</h4>
+  <p>Oui, ils sont conçus pour fonctionner aussi bien avec ChatGPT, Claude, ou toute autre IA conversationnelle grand public. Les résultats peuvent varier légèrement d'un outil à l'autre, mais la méthode reste la même.</p>
+
+  <h4>Faut-il faire ce travail seul, ou est-ce compatible avec un accompagnement professionnel ?</h4>
+  <p>Les deux sont parfaitement compatibles, et même complémentaires. Ce guide peut très bien servir de préparation avant un rendez-vous avec un conseiller en évolution professionnelle, pour arriver avec une réflexion déjà entamée plutôt que de partir de zéro.</p>
+
+  <h4>Que faire si je n'ai pas de projet de reconversion précis, juste une envie floue de changement ?</h4>
+  <p>C'est en réalité le point de départ le plus courant. La Partie 1 sur le bilan de compétences et la Partie 2 sur la personnalité sont justement conçues pour transformer un ressenti flou en éléments concrets à partir desquels construire une direction.</p>
+
+  <h4>Est-ce que je dois payer pour un test de personnalité officiel en plus de ce guide ?</h4>
+  <p>Non, ce n'est pas nécessaire pour l'usage proposé ici. Les tests officiels payants (MBTI certifié notamment) sont surtout utiles dans un cadre d'accompagnement professionnel encadré. Pour une réflexion personnelle, l'approche conversationnelle proposée dans ce guide est largement suffisante.</p>
+</section>
+
+<section class="chapter">
+  <h2>9. Partie 6 — Négocier son salaire et sa valeur</h2>
+
+  <h3>Pourquoi la négociation est liée à la connaissance de soi</h3>
+  <p>Beaucoup de personnes négocient mal leur salaire non pas par manque de technique, mais par manque de clarté sur leur propre valeur réelle. Le travail fait dans les parties précédentes sur les compétences et les réalisations concrètes est justement ce qui manque le plus souvent au moment de négocier : sans preuves factuelles de sa valeur, la négociation repose uniquement sur un ressenti, ce qui affaiblit toute demande.</p>
+  <p>À l'inverse, arriver à une négociation avec une liste claire de réalisations chiffrées ou concrètes, identifiées grâce à ton bilan de compétences, change complètement la nature de la conversation : elle devient factuelle plutôt qu'émotionnelle.</p>
+
+  <h3>Se renseigner avant de négocier</h3>
+  <p>Avant toute négociation, informe-toi sur les fourchettes de salaire pratiquées pour ton poste, ton secteur et ta région. Les grilles de salaires publiées par certains cabinets de recrutement, les témoignages sur des plateformes spécialisées, ou même des échanges directs avec des pairs du secteur donnent une base réaliste, plutôt que de négocier à l'aveugle.</p>
+
+  <h3>Le rôle de la personnalité dans la négociation</h3>
+  <p>Ta personnalité influence aussi ta façon de négocier. Une personne à forte tendance Stabilité ou Conformité (dans le vocabulaire du DISC) peut avoir plus de réticence à défendre fermement sa position par peur du conflit, tandis qu'une personne à forte tendance Dominance peut au contraire aller trop vite en besogne sans construire suffisamment son argumentaire. Se connaître sur ce point aide à compenser consciemment sa tendance naturelle.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Adapter sa négociation à sa personnalité</span>
+    <p>Une personne qui sait qu'elle a tendance à céder trop vite par évitement du conflit peut préparer à l'avance des phrases toutes faites pour tenir sa position ("je comprends votre contrainte, mais au vu de mes réalisations sur [X], je pense que ma demande est justifiée"), plutôt que d'improviser sous le stress du moment.</p>
+  </div>
+
+  <h3>Négocier autre chose que le salaire</h3>
+  <p>La négociation ne se limite pas au salaire de base : télétravail, formation, jours de congés supplémentaires, primes, ou évolution de titre peuvent aussi faire l'objet d'une négociation, parfois plus facilement acceptée par un employeur qu'une augmentation directe de salaire.</p>
+
+  <h3>Choisir le bon moment</h3>
+  <p>Le moment de la négociation compte presque autant que l'argumentaire lui-même. Une négociation juste après une réussite marquante (projet livré avec succès, objectif dépassé) est structurellement plus favorable qu'une négociation isolée sans contexte particulier. De même, les périodes de campagne d'entretiens annuels ou de révision budgétaire de l'entreprise sont souvent plus propices qu'une demande isolée en dehors de ces cycles.</p>
+  <p>Si le moment ne te semble pas favorable, il est tout à fait légitime de le dire ouvertement à ton interlocuteur et de convenir d'un point d'étape à une date ultérieure plus propice, plutôt que d'insister dans un contexte défavorable ou d'abandonner complètement la démarche.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une négociation factuelle, appuyée sur des réalisations concrètes, est plus efficace qu'une négociation basée sur le seul ressenti.</p>
+    <p>Se renseigner sur les pratiques du marché évite de négocier à l'aveugle.</p>
+    <p>Connaître sa tendance naturelle en négociation aide à la compenser consciemment.</p>
+    <p>Le salaire n'est pas le seul levier de négociation possible.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>10. Ressources complémentaires en France</h2>
+  <p class="lede">Ce guide t'aide à structurer ta réflexion personnelle, mais plusieurs dispositifs et organismes en France peuvent compléter utilement cette démarche, notamment pour un accompagnement humain ou un financement de formation.</p>
+
+  <h3>Pour un accompagnement humain</h3>
+  <p>France Travail (anciennement Pôle Emploi) propose des ateliers et un accompagnement individuel gratuit pour les demandeurs d'emploi, incluant des bilans d'orientation. L'APEC propose un accompagnement spécifique pour les cadres, y compris les cadres en poste qui réfléchissent à une évolution. Les Missions Locales accompagnent spécifiquement les jeunes de moins de 26 ans dans leur orientation professionnelle.</p>
+
+  <h3>Pour financer une formation ou un bilan de compétences</h3>
+  <p>Le Compte Personnel de Formation (CPF) permet de financer un bilan de compétences certifié ou une formation de reconversion, avec des droits accumulés tout au long de la carrière. Transitions Pro accompagne spécifiquement les projets de reconversion professionnelle nécessitant une formation longue, avec des dispositifs de maintien de rémunération pendant la transition.</p>
+
+  <h3>Pour explorer un secteur avant de s'engager</h3>
+  <p>Le dispositif PMSMP (Période de Mise en Situation en Milieu Professionnel), accessible via France Travail, permet de découvrir un métier ou un secteur pendant quelques jours sans engagement, en conservant son statut actuel. C'est un excellent moyen de tester une piste identifiée grâce à ce guide avant de t'engager dans une reconversion complète.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Ce guide est un point de départ personnel, pas un substitut à un accompagnement professionnel si tu en ressens le besoin.</p>
+    <p>Plusieurs dispositifs gratuits existent en France pour t'accompagner ou financer une transition.</p>
+    <p>Teste une piste avant de t'engager pleinement grâce à des dispositifs comme les PMSMP.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>11. Annexe — Repères sur les grands frameworks de personnalité</h2>
+  <p class="lede">Cette annexe te donne une vue d'ensemble rapide des principaux frameworks mentionnés dans ce guide, à consulter comme référence plutôt qu'à lire en une fois.</p>
+
+  <h3>Les 4 dichotomies du MBTI</h3>
+  <p>Le MBTI repose sur 4 axes, chacun avec deux tendances possibles. Extraversion (E) vs Introversion (I) : d'où vient ton énergie, du monde extérieur ou de ton monde intérieur. Sensation (S) vs Intuition (N) : comment tu traites l'information, par les faits concrets ou par les possibilités et le sens global. Pensée (T) vs Sentiment (F) : comment tu prends tes décisions, par la logique ou par les valeurs et l'impact humain. Jugement (J) vs Perception (P) : comment tu organises ta vie, de façon structurée et planifiée ou flexible et adaptable.</p>
+
+  <h3>Les 4 profils du DISC</h3>
+  <p>Dominance : orienté résultats, direct, aime les défis et la prise de décision rapide. Influence : orienté relationnel, enthousiaste, aime convaincre et travailler avec les autres. Stabilité : orienté coopération, posé, apprécie la routine et les relations de confiance durables. Conformité : orienté rigueur, précis, attaché aux règles et à la qualité du travail bien fait.</p>
+
+  <h3>Les 5 grandes dimensions (Big Five)</h3>
+  <p>Ouverture à l'expérience : curiosité intellectuelle, créativité, goût pour la nouveauté. Conscienciosité : organisation, fiabilité, discipline personnelle. Extraversion : sociabilité, énergie tournée vers l'extérieur. Agréabilité : coopération, empathie, tendance à la bienveillance envers les autres. Névrosisme (ou stabilité émotionnelle) : tendance à ressentir des émotions négatives comme le stress ou l'anxiété face aux difficultés.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">Comment utiliser cette annexe</span>
+    <p>Ne cherche pas à te faire rentrer de force dans une case précise de ces modèles.</p>
+    <p>Utilise ce vocabulaire comme un outil de communication pour mieux te décrire à toi-même et aux autres.</p>
+    <p>Rappelle-toi que ces modèles décrivent des tendances, pas des catégories figées et exclusives.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>12. Conclusion</h2>
+  <p>Ce guide ne remplace pas un accompagnement professionnel approfondi (bilan de compétences certifié, coaching de carrière, accompagnement psychologique si nécessaire), mais il te donne une méthode concrète pour commencer cette réflexion par toi-même, avec un outil disponible à tout moment : une IA conversationnelle.</p>
+  <p>Le plus important n'est pas d'obtenir une réponse parfaite du premier coup, mais d'entrer dans une dynamique de réflexion active sur ta trajectoire professionnelle, plutôt que de la laisser se décider par défaut, au fil des opportunités qui se présentent sans que tu aies vraiment choisi.</p>
+  <p>Reviens vers ce guide et sa bibliothèque de prompts chaque fois que tu sens le besoin de faire le point : sur un nouveau poste, une proposition inattendue, ou simplement un moment de doute sur ta direction actuelle. Cette réflexion n'est jamais figée, et c'est très bien ainsi.</p>
+</section>
+
+<section class="chapter">
+  <h2>13. Bibliothèque de prompts</h2>
+  <p class="lede">Chaque prompt contient des crochets [comme ceci] : remplace-les par tes propres éléments avant de coller le prompt dans ChatGPT ou Claude.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">Rappel important</span>
+    <p>Aucun résultat généré par ces prompts n'est un diagnostic scientifique — ce sont des outils de réflexion sur toi-même.</p>
+    <p>Prends le temps de répondre honnêtement aux questions posées : la qualité de la réflexion dépend de la sincérité de tes réponses.</p>
+  </div>
+
+  <h3>13.1 Identifier et formuler ses compétences</h3>
+  <p>Pour repérer et valoriser ce que tu sais vraiment faire.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Voici mon parcours professionnel : [décris tes postes, missions, formations]. Identifie mes compétences transférables qui pourraient s'appliquer à d'autres métiers ou secteurs.</span>
+    <p class="prompt-usage">À quoi ça sert : repérer des compétences qu'on ne pense pas à valoriser en dehors de son poste actuel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à reformuler cette mission de mon CV de façon plus percutante, en mettant en avant le résultat obtenu plutôt que la tâche réalisée : [coller la mission].</span>
+    <p class="prompt-usage">À quoi ça sert : transformer une description plate en réalisation valorisante</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Mon parcours est atypique : [décris ton parcours, ex : plusieurs changements de secteur]. Aide-moi à raconter une histoire cohérente de ce parcours plutôt qu'une liste de postes disparates.</span>
+    <p class="prompt-usage">À quoi ça sert : donner du sens à un parcours non-linéaire pour un recruteur ou pour soi-même</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Pose-moi 8 questions, une par une, pour m'aider à faire émerger mes compétences les plus fortes à partir de mes expériences passées.</span>
+    <p class="prompt-usage">À quoi ça sert : faire émerger ses compétences par la réflexion plutôt que de les lister à froid</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à structurer un bilan de compétences complet à partir de ces éléments : [lister formations, expériences, réussites], avec une synthèse de mes points forts.</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir une trame complète de bilan de compétences</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Quelles compétences dois-je développer pour évoluer vers [poste/métier visé], à partir de mon profil actuel : [décrire ton profil] ?</span>
+    <p class="prompt-usage">À quoi ça sert : identifier l'écart entre son profil actuel et un objectif professionnel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Rédige une accroche de CV percutante en 2-3 lignes à partir de mon profil : [décrire ton profil et tes compétences clés].</span>
+    <p class="prompt-usage">À quoi ça sert : synthétiser son profil en une accroche mémorable</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Voici une offre d'emploi : [coller l'offre]. Quelles compétences de mon profil devrais-je mettre en avant en priorité pour cette candidature précise ? Mon profil : [décrire ton profil].</span>
+    <p class="prompt-usage">À quoi ça sert : adapter la mise en avant de ses compétences à une offre précise</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9</span>
+    <span class="prompt-text">Aide-moi à préparer des exemples concrets (méthode situation-action-résultat) pour illustrer ma compétence en [compétence], à partir de cette expérience : [décrire l'expérience].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer des exemples convaincants pour un entretien</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10</span>
+    <span class="prompt-text">Quelles compétences suis-je en train de développer actuellement dans mon poste actuel sans forcément m'en rendre compte, à partir de cette description de mon quotidien : [décrire ton quotidien professionnel] ?</span>
+    <p class="prompt-usage">À quoi ça sert : repérer des compétences en cours d'acquisition, pas seulement déjà acquises</p>
+  </div>
+
+  <h3>13.2 Auto-réflexion sur sa personnalité au travail</h3>
+  <p>Pour mieux comprendre ta façon de travailler, décider et collaborer.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Mène une analyse de ma personnalité au travail en me posant des questions une par une (pas toutes en même temps), sur ma façon de travailler, de décider, de gérer le stress et de collaborer avec les autres. À la fin, propose-moi une synthèse de mon profil. Précise bien que ce n'est pas un test validé scientifiquement mais un outil de réflexion sur moi-même.</span>
+    <p class="prompt-usage">À quoi ça sert : le prompt phare de ce guide : une auto-réflexion guidée et conversationnelle sur sa personnalité professionnelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Explique-moi simplement les 4 grandes dimensions du MBTI (énergie, information, décision, organisation), sans me dire quel type je suis.</span>
+    <p class="prompt-usage">À quoi ça sert : comprendre le cadre théorique avant de se situer soi-même dedans</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Voici comment je réagis dans ces situations professionnelles : [décrire 2-3 situations vécues]. À quel profil de personnalité ces réactions correspondent-elles le plus, et pourquoi ?</span>
+    <p class="prompt-usage">À quoi ça sert : partir de situations concrètes plutôt que de questions abstraites</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Quelles sont les limites du test MBTI que je devrais garder en tête avant de baser des décisions de carrière dessus ?</span>
+    <p class="prompt-usage">À quoi ça sert : garder un regard critique sur la portée réelle de ce type d'outil</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Je pense être plutôt [décrire ton profil supposé, ex : introverti et analytique]. Aide-moi à explorer les métiers qui correspondent généralement bien à ce profil, sans m'enfermer dedans.</span>
+    <p class="prompt-usage">À quoi ça sert : explorer des pistes sans se sentir figé dans une case</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Pose-moi des questions sur ma façon de gérer les conflits au travail, une par une, pour m'aider à mieux comprendre mon propre style relationnel.</span>
+    <p class="prompt-usage">À quoi ça sert : approfondir un aspect précis de sa personnalité professionnelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Explique-moi la différence entre le modèle DISC et le MBTI, et quel type de question chacun pose différemment.</span>
+    <p class="prompt-usage">À quoi ça sert : comprendre les nuances entre deux frameworks populaires avant de choisir une approche</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Pose-moi des questions, une par une, pour identifier dans quel type d'environnement de travail (calme/dynamique, seul/en équipe, structuré/flexible) je me sens le plus efficace.</span>
+    <p class="prompt-usage">À quoi ça sert : cerner ses préférences d'environnement de travail plutôt que de personnalité pure</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9</span>
+    <span class="prompt-text">Voici une situation où je me suis senti(e) particulièrement épuisé(e) au travail : [décrire la situation]. Aide-moi à comprendre ce qui, dans mon profil, explique cet épuisement.</span>
+    <p class="prompt-usage">À quoi ça sert : relier une expérience négative à des traits de personnalité pour mieux l'anticiper à l'avenir</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10</span>
+    <span class="prompt-text">Pose-moi des questions sur ma façon de réagir face à un imprévu ou un changement soudain de priorités au travail.</span>
+    <p class="prompt-usage">À quoi ça sert : explorer sa tolérance à l'incertitude et au changement</p>
+  </div>
+
+  <h3>13.3 Explorer des pistes de métiers et de reconversion</h3>
+  <p>Pour croiser compétences et personnalité et générer des pistes concrètes.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Voici mes compétences principales : [lister] et mon profil de personnalité : [décrire]. Propose-moi 5 pistes de métiers ou de secteurs qui pourraient bien correspondre, avec une explication pour chacun.</span>
+    <p class="prompt-usage">À quoi ça sert : croiser compétences et personnalité pour générer des pistes concrètes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">J'envisage une reconversion vers [métier/secteur visé]. Quelles sont les compétences de mon profil actuel qui seraient un atout, et lesquelles me manquent ?</span>
+    <p class="prompt-usage">À quoi ça sert : évaluer la cohérence d'une reconversion envisagée</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à comparer ces deux pistes de carrière selon mes priorités : [lister tes priorités, ex : salaire, sens, équilibre vie pro/perso] : [piste A] vs [piste B].</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier un choix entre deux options en fonction de ses propres priorités</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Je cherche un métier qui coche toutes les cases, mais je n'en trouve pas. Aide-moi à identifier mes 3 priorités non-négociables pour arrêter de chercher le métier parfait.</span>
+    <p class="prompt-usage">À quoi ça sert : sortir du piège du métier idéal en clarifiant ses vrais critères prioritaires</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Quelles questions devrais-je me poser avant de me lancer dans une reconversion vers [métier/secteur], que je n'ai peut-être pas encore envisagées ?</span>
+    <p class="prompt-usage">À quoi ça sert : anticiper des angles morts avant une décision importante</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Résume-moi les tendances actuelles du marché de l'emploi dans le secteur de [secteur visé], pour situer ma réflexion dans un contexte réaliste.</span>
+    <p class="prompt-usage">À quoi ça sert : ancrer sa réflexion de carrière dans une réalité de marché, pas juste dans l'idéal</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Quelles formations ou certifications sont généralement attendues pour évoluer vers [métier visé], à partir de mon profil actuel : [décrire ton profil] ?</span>
+    <p class="prompt-usage">À quoi ça sert : identifier les besoins de formation avant de se lancer dans une reconversion</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Aide-moi à préparer 5 questions pertinentes à poser à quelqu'un qui exerce déjà le métier de [métier visé], pour mieux comprendre sa réalité quotidienne.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer un échange de réseau constructif plutôt qu'une conversation superficielle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9</span>
+    <span class="prompt-text">Je veux tester une piste de reconversion vers [métier visé] sans tout quitter immédiatement. Propose-moi 3 façons concrètes de le faire (bénévolat, mission courte, formation à côté de mon poste actuel).</span>
+    <p class="prompt-usage">À quoi ça sert : explorer une piste progressivement plutôt que de sauter dans le vide</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10</span>
+    <span class="prompt-text">Voici deux secteurs qui m'intéressent : [secteur A] et [secteur B]. Compare-les selon les critères suivants : perspectives d'emploi, niveau de salaire moyen, accessibilité pour mon profil.</span>
+    <p class="prompt-usage">À quoi ça sert : comparer objectivement deux pistes sur des critères concrets</p>
+  </div>
+
+  <h3>13.4 Préparer un changement de carrière</h3>
+  <p>Pour transformer ta réflexion en plan d'action concret.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Construis-moi un plan sur 30 jours pour avancer concrètement sur ma réflexion de carrière, avec une petite action chaque semaine.</span>
+    <p class="prompt-usage">À quoi ça sert : transformer une réflexion floue en plan d'action concret</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à préparer les points clés à aborder lors d'un entretien avec un conseiller en évolution professionnelle, à partir de ma situation : [décrire ta situation].</span>
+    <p class="prompt-usage">À quoi ça sert : arriver préparé à un rendez-vous d'orientation professionnelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Rédige une version courte et percutante de mon profil professionnel, à utiliser sur LinkedIn ou lors d'un rendez-vous de réseau : [lister tes éléments clés].</span>
+    <p class="prompt-usage">À quoi ça sert : synthétiser son profil pour le présenter rapidement à quelqu'un</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Je me sens bloqué dans ma réflexion de carrière depuis des mois. Pose-moi des questions pour m'aider à comprendre ce qui me freine réellement.</span>
+    <p class="prompt-usage">À quoi ça sert : débloquer une réflexion qui tourne en rond depuis longtemps</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à fixer un objectif de carrière réaliste sur les 12 prochains mois, à partir de ma situation actuelle : [décrire ta situation].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un objectif concret plutôt qu'une intention vague</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à préparer ma présentation pour un entretien de reconversion, en expliquant clairement pourquoi je change de voie sans que ça sonne comme une fuite : [décrire ta situation].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un discours cohérent et rassurant sur son changement de parcours</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Construis-moi une liste de 5 signaux qui indiqueraient que ma piste de reconversion vers [métier visé] avance dans la bonne direction, pour suivre mes progrès objectivement.</span>
+    <p class="prompt-usage">À quoi ça sert : définir des indicateurs concrets de progression plutôt que de juger au ressenti</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Je viens de recevoir un refus après un entretien pour un poste qui m'intéressait vraiment. Aide-moi à en tirer des enseignements constructifs sans que ça remette en cause toute ma démarche.</span>
+    <p class="prompt-usage">À quoi ça sert : rebondir après un échec ponctuel sans se décourager sur l'ensemble du projet</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9</span>
+    <span class="prompt-text">Construis-moi un budget prévisionnel simple pour anticiper une baisse de revenu temporaire si je me lance dans [reconversion/formation], à partir de ma situation financière actuelle : [décrire ta situation].</span>
+    <p class="prompt-usage">À quoi ça sert : anticiper concrètement l'aspect financier d'une transition professionnelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 10</span>
+    <span class="prompt-text">Aide-moi à rédiger un message à envoyer à un ancien collègue ou contact professionnel pour reprendre contact dans le cadre de ma réflexion de carrière, sans que ça paraisse intéressé.</span>
+    <p class="prompt-usage">À quoi ça sert : réactiver son réseau de façon naturelle et non forcée</p>
+  </div>
+
+  <h3>13.5 Développement personnel général</h3>
+  <p>Pour approfondir ta réflexion au-delà du seul aspect professionnel.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Pose-moi des questions pour m'aider à identifier ce qui me donne vraiment de l'énergie et de la satisfaction dans mon travail actuel.</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier ses véritables sources de motivation professionnelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Je manque de confiance pour me lancer dans [projet/changement]. Aide-moi à identifier d'où vient ce manque de confiance et ce qui pourrait m'aider à avancer malgré tout.</span>
+    <p class="prompt-usage">À quoi ça sert : explorer un frein personnel de façon structurée</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à formuler 3 objectifs de vie clairs pour les prochaines années, au-delà de la seule carrière professionnelle.</span>
+    <p class="prompt-usage">À quoi ça sert : élargir la réflexion au-delà du seul aspect professionnel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Je viens de vivre un échec professionnel : [décrire la situation]. Aide-moi à en tirer des enseignements constructifs plutôt que de rester bloqué dessus.</span>
+    <p class="prompt-usage">À quoi ça sert : transformer un échec en réflexion utile plutôt qu'en rumination</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Pose-moi des questions pour m'aider à identifier mes valeurs professionnelles les plus importantes (au-delà du salaire), à partir de ce qui m'a le plus marqué dans mes expériences passées.</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier ses valeurs profondes pour orienter ses choix futurs</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à formuler une affirmation positive et réaliste sur mes capacités, à partir de mes réussites passées : [lister 2-3 réussites].</span>
+    <p class="prompt-usage">À quoi ça sert : renforcer sa confiance à partir de faits concrets plutôt que de pensées négatives abstraites</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Je compare constamment mon parcours à celui des autres et ça me décourage. Aide-moi à recentrer ma réflexion sur mon propre chemin plutôt que sur cette comparaison.</span>
+    <p class="prompt-usage">À quoi ça sert : sortir d'une comparaison sociale qui nuit à la clarté de sa propre réflexion</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Pose-moi des questions pour m'aider à faire le point sur mon équilibre actuel entre vie professionnelle et vie personnelle, et ce que j'aimerais changer.</span>
+    <p class="prompt-usage">À quoi ça sert : élargir la réflexion de carrière à l'équilibre de vie global</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9</span>
+    <span class="prompt-text">Aide-moi à identifier 3 petites habitudes que je pourrais mettre en place cette semaine pour avancer sur ma réflexion de carrière, même de façon minime.</span>
+    <p class="prompt-usage">À quoi ça sert : transformer une grande réflexion en actions minuscules et immédiatement réalisables</p>
+  </div>
+
+  <h3>13.6 Négocier et évoluer en interne</h3>
+  <p>Pour ceux qui veulent progresser sans changer d'entreprise.</p>
+
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à préparer les arguments pour demander une augmentation ou une évolution de poste, à partir de mes réalisations récentes : [lister tes réalisations].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une négociation interne avec des arguments concrets</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Je veux évoluer vers [poste visé] au sein de mon entreprise actuelle. Aide-moi à identifier les étapes à suivre et les personnes à qui en parler.</span>
+    <p class="prompt-usage">À quoi ça sert : construire un plan d'évolution interne réaliste</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Rédige un message à envoyer à mon manager pour lui proposer un entretien sur mon évolution de carrière, sans que ça sonne comme une menace de départ.</span>
+    <p class="prompt-usage">À quoi ça sert : amorcer une conversation d'évolution interne avec le bon ton</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à préparer ma réponse si mon manager me demande où je me vois dans 3 ans, à partir de ma réflexion actuelle : [résumer ta réflexion].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une réponse authentique à une question fréquente en entretien</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Je viens d'obtenir une promotion mais je doute de ma légitimité (syndrome de l'imposteur). Aide-moi à identifier objectivement ce qui justifie cette évolution.</span>
+    <p class="prompt-usage">À quoi ça sert : contrer le syndrome de l'imposteur avec des faits concrets</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à préparer un plan de développement sur 6 mois pour combler l'écart entre mon poste actuel et [poste visé en interne], avec des étapes concrètes.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une évolution interne progressive plutôt qu'un saut direct</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Rédige une auto-évaluation annuelle honnête et valorisante à partir de mes réalisations de l'année : [lister tes réalisations].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer un entretien annuel avec une auto-évaluation structurée</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Je pense que mon poste actuel n'évolue plus. Aide-moi à identifier si le problème vient du poste, de l'entreprise, ou d'un manque d'initiative de ma part.</span>
+    <p class="prompt-usage">À quoi ça sert : diagnostiquer objectivement la source d'un sentiment de stagnation</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 9</span>
+    <span class="prompt-text">Aide-moi à formuler une demande de mobilité interne vers un autre service ou une autre équipe, à partir de mes motivations : [décrire tes motivations].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une demande de mobilité interne cohérente</p>
+  </div>
+</section>
+
+</body>
+</html>
