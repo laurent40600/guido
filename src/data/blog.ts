@@ -632,7 +632,7 @@ const rawBlogPosts: BlogPost[] = [
         "L'IA pour les auto-entrepreneurs : automatiser devis, relances et compta",
       href: "/guides/ia-autoentrepreneurs",
     },
-    relatedPosts: ["rediger-annonce-immobiliere-ia"],
+    relatedPosts: ["rediger-annonce-immobiliere-ia", "emails-professionnels-efficaces-ia"],
   },
   {
     slug: "rediger-annonce-immobiliere-ia",
@@ -699,7 +699,7 @@ const rawBlogPosts: BlogPost[] = [
         "L'IA pour les agents immobiliers : rédiger ses annonces et répondre aux prospects deux fois plus vite",
       href: "/guides/ia-immobilier",
     },
-    relatedPosts: ["automatiser-devis-chatgpt-autoentrepreneur", "generer-visuels-professionnels-ia"],
+    relatedPosts: ["automatiser-devis-chatgpt-autoentrepreneur", "generer-visuels-professionnels-ia", "emails-professionnels-efficaces-ia"],
   },
   {
     slug: "chatgpt-cours-ses-professeurs",
@@ -2157,6 +2157,72 @@ const rawBlogPosts: BlogPost[] = [
       linkLabel: "Gérer sa trésorerie quand les revenus sont irréguliers : guide pour freelances et auto-entrepreneurs",
       href: "/guides/tresorerie-freelance",
     },
+  },
+  {
+    slug: "emails-professionnels-efficaces-ia",
+    series: "IA pour métiers",
+    title: "Comment rédiger des emails professionnels efficaces avec l'IA",
+    excerpt:
+      "Structurer, relancer et rédiger un email professionnel efficace prend souvent plus de temps qu'il ne devrait. Voici la méthode pour le faire avec l'IA, sans jamais sonner robotique.",
+    seoTitle: "Comment rédiger des emails professionnels efficaces avec l'IA | Guido",
+    seoDescription:
+      "La méthode pour structurer, relancer et rédiger des emails professionnels efficaces avec l'IA, sans sonner robotique.",
+    coverImage:
+      "https://images.unsplash.com/photo-1499914485622-a88fac536970?auto=format&fit=crop&w=1600&q=80",
+    coverAlt: "Personne tapant un email professionnel sur son ordinateur portable à un bureau",
+    publishedAt: "2026-10-08",
+    body: [
+      {
+        type: "paragraph",
+        text: "Rédiger un email professionnel efficace prend souvent 15 à 30 minutes, simplement parce qu'on cherche la bonne formulation, qu'on hésite sur le ton, ou qu'on relit plusieurs fois avant d'envoyer. Multiplié sur une semaine de travail, ce temps de rédaction représente une charge sous-estimée — voici comment la réduire avec l'IA, sans jamais sonner robotique.",
+      },
+      { type: "heading", text: "La structure d'un email professionnel efficace" },
+      {
+        type: "paragraph",
+        text: "Un email professionnel efficace va droit au but : une phrase d'accroche qui contextualise rapidement, le message principal clairement énoncé, et une conclusion qui précise l'action attendue ou la prochaine étape. Demander à l'IA de générer un premier jet structuré selon cette logique, à partir d'une description brute de ce que tu veux communiquer, permet de gagner un temps considérable sur la mise en forme, tout en gardant le contrôle sur le contenu final.",
+      },
+      {
+        type: "prompt",
+        label: "Exemple",
+        text: "Rédige un email professionnel pour [décrire l'objectif], adressé à [destinataire], sur un ton [formel/cordial].",
+      },
+      { type: "heading", text: "Soigner l'objet, souvent négligé" },
+      {
+        type: "paragraph",
+        text: "L'objet d'un email détermine s'il sera ouvert rapidement ou relégué au fond d'une boîte de réception surchargée. Un objet clair et informatif (« Validation nécessaire avant vendredi : budget Q3 » plutôt que « Question ») augmente nettement les chances d'une réponse rapide — un détail que l'IA peut générer en un instant à partir du contenu du message.",
+      },
+      { type: "heading", text: "Relancer sans être insistant" },
+      {
+        type: "paragraph",
+        text: "Une relance efficace rappelle brièvement le contexte, reformule la demande de façon encore plus concise que le message initial, et propose éventuellement une échéance si le silence se prolonge. Le ton de reproche (« comme déjà dit précédemment ») braque plus qu'il ne débloque une situation : c'est justement le genre de nuance à préciser explicitement dans ton prompt pour obtenir une relance qui reste ferme sans accuser.",
+      },
+      {
+        type: "prompt",
+        label: "Exemple",
+        text: "Aide-moi à relancer poliment ce message resté sans réponse depuis [durée] : [résumer le message initial].",
+      },
+      { type: "heading", text: "Adapter son ton selon le destinataire" },
+      {
+        type: "paragraph",
+        text: "Le message que tu enverrais à un collègue proche, à ton supérieur hiérarchique, et à un client externe pour la même information ne devrait jamais être identique. Un message à un supérieur gagne généralement à être plus concis et orienté résultats, tandis que la communication vers un client externe demande plus de formalisme et de prudence dans le choix des mots. Préciser explicitement le profil du destinataire dans ton prompt permet à l'IA d'ajuster automatiquement ce niveau de formalité, plutôt que de retravailler manuellement chaque message pour chaque interlocuteur.",
+      },
+      { type: "heading", text: "Toujours retoucher avec sa propre voix" },
+      {
+        type: "paragraph",
+        text: "Un texte généré directement par l'IA, sans retouche, peut sonner générique et interchangeable avec celui de n'importe qui d'autre utilisant le même outil. C'est justement l'absence de cette retouche qui rend un email professionnel reconnaissable comme généré par IA, avec des tournures trop lisses. Prendre l'habitude d'ajuster quelques formulations avec ton vocabulaire habituel évite cet écueil, pour un coût en temps minime par rapport au gain initial de la génération.",
+      },
+      { type: "heading", text: "Pour aller plus loin" },
+      {
+        type: "paragraph",
+        text: "On a construit un guide complet sur la rédaction professionnelle avec l'IA, qui couvre aussi les comptes-rendus de réunion, l'adaptation du ton selon le destinataire et les situations délicates à l'écrit, avec une bibliothèque de 27 prompts intégrée.",
+      },
+    ],
+    cta: {
+      text: "Envie d'une méthode complète pour rédiger emails, comptes-rendus et documents professionnels efficaces avec l'IA, avec 27 prompts intégrés ?",
+      linkLabel: "Rédaction professionnelle avec l'IA : emails, comptes-rendus et communication écrite",
+      href: "/guides/redaction-professionnelle-ia",
+    },
+    relatedPosts: ["automatiser-devis-chatgpt-autoentrepreneur", "rediger-annonce-immobiliere-ia"],
   },
 ];
 

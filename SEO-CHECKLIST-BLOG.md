@@ -3,6 +3,13 @@
 À appliquer à chaque nouvel article publié dans `src/data/blog.ts`. Référence-toi
 à ce fichier plutôt que de tout retaper : « applique la SEO-CHECKLIST-BLOG » suffit.
 
+**Pages produit (guides/packs)** : Product Schema, FAQPage, canonical, Breadcrumbs
+et Open Graph sont générés automatiquement pour toute entrée de `src/data/guides.ts`
+par l'infra générique (`src/app/guides/[slug]/page.tsx` + `src/lib/productSchema.ts`)
+— rien à dupliquer ici, seulement vérifier que `seoTitle`/`seoDescription`/`faq`
+sont bien renseignés. Le guide `redaction-professionnelle-ia` (2026-10-08) suit
+cette voie générique, vérifié en JSON-LD après publication.
+
 ## 1. Texte alternatif de l'image de couverture
 
 - `coverAlt` doit décrire la scène de façon concrète, jamais "image" ou le nom du fichier.
@@ -28,13 +35,19 @@ codé en dur sur `https://guido.fr` — à mettre à jour si le nom de domaine c
 ## 0. Séries éditoriales (`series`)
 
 Chaque article a un champ `series: BlogSeries` obligatoire (type défini en haut
-de `src/data/blog.ts`). Deux séries existent à ce jour :
+de `src/data/blog.ts`). État au 2026-10-08, 31 articles au total :
 - **"IA pour profs"** — 6 articles, complète (`chatgpt-preparer-ses-cours`,
   `10-prompts-chatgpt-enseignants`, `chatgpt-corriger-copies`,
   `creer-exercice-ia-5-minutes`, `ia-cours-maths-bonne-mauvaise-idee`,
   `5-erreurs-ia-enseigner`).
-- **"IA pour métiers"** — démarrée le 2026-07-28 avec
-  `automatiser-devis-chatgpt-autoentrepreneur` (1 seul article pour l'instant).
+- **"IA pour métiers"** — 11 articles (démarrée le 2026-07-28 avec
+  `automatiser-devis-chatgpt-autoentrepreneur`, la plus fournie ; dernier ajout
+  `emails-professionnels-efficaces-ia`).
+- **"Marketing & réseaux sociaux"** — 5 articles.
+- **"Reconversion"** — 2 articles.
+- **"Bien-être"** — 3 articles.
+- **"Développement personnel"** — 3 articles.
+- **"Finance"** — 1 article (`chiffre-affaires-vs-tresorerie-freelance`).
 
 Pour démarrer une nouvelle série : ajouter la valeur au type `BlogSeries`, puis
 l'assigner au nouvel article. `/blog` affiche automatiquement un filtre par
@@ -133,6 +146,24 @@ le score de mot-clé, même involontairement en committant les blocs "d'un coup"
 
 Aucune reformulation n'a été appliquée sur les articles 1 à 4 ni 6-7 — à
 valider avec l'auteur avant toute modification de texte.
+
+⚠️ **Le journal ci-dessus n'a pas été tenu à jour pour les 24 articles publiés
+entre le 2026-07-28 et le 2026-10-08** (fin de la série "IA pour métiers",
+"Marketing & réseaux sociaux", "Reconversion", "Bien-être", "Développement
+personnel", et le 1er article "Finance") — non audités un par un faute de
+demande explicite à ce moment-là. Seul le dernier article ci-dessous a été
+vérifié avec la méthode du point 5.
+
+- `emails-professionnels-efficaces-ia` (guide associé : `redaction-professionnelle-ia`,
+  mot-clé principal "email professionnel" / concept secondaire "rédaction
+  [avec l']IA") : "email professionnel"/"emails professionnels" présent titre +
+  intro + 1 intertitre (« La structure d'un email professionnel efficace »),
+  **absent de la conclusion** ("Pour aller plus loin" ne le reprend pas
+  littéralement). "IA" présent titre + intro + conclusion, **absent des 6
+  intertitres**. Même schéma récurrent que les articles précédents (le concept
+  qui sert de fil conducteur descriptif se répartit mieux que le mot "IA" lui-
+  même, qui reste surtout dans le cadrage). Pas modifié, signalé comme demandé
+  plutôt que retouché.
 
 ## 5. Script de vérification rapide
 

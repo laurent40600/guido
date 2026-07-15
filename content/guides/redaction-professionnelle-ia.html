@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Rédaction professionnelle avec l'IA</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 235mm; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 25pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 8pt; font-size: 11.5pt; }
+  .toc li span { font-style: italic; font-size: 10.5pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-example { background: #f1efec; border-left: 5px solid #8a8478; }
+  .box-example .box-title { color: #5c574c; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1E2A4A; font-size: 12.5pt; margin-bottom: 4pt; }
+  .faq-a { margin-top: 4pt; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Rédaction professionnelle avec l'IA</h1>
+  <p class="tagline">Emails, comptes-rendus et communication écrite</p>
+  <p class="meta">Un guide complet + une bibliothèque de 27 prompts intégrée,<br/>pour toute personne qui écrit régulièrement au travail,<br/>sans compétences techniques requises</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Résumé exécutif<span>Ce que ce guide couvre et le principe central de la méthode</span></li>
+    <li>Introduction<span>Pourquoi la rédaction professionnelle prend autant de temps</span></li>
+    <li>Partie 1 — Rédiger des emails professionnels efficaces<span>Structure, objet, relances, refus polis</span></li>
+    <li>Partie 2 — Structurer des comptes-rendus de réunion<span>Notes brutes, niveau de détail, ordre du jour</span></li>
+    <li>Partie 3 — Adapter son ton selon le destinataire<span>Hiérarchie, client externe, collègue proche</span></li>
+    <li>Partie 4 — Rédiger des documents plus longs<span>Structurer avant de rédiger, note de synthèse, introduction</span></li>
+    <li>Partie 5 — Gérer les situations délicates à l'écrit<span>Mauvaise nouvelle, désaccord, excuses, conflit naissant</span></li>
+    <li>Partie 6 — Optimiser son temps de rédaction dans la durée<span>Bibliothèque de templates, retouche, batching</span></li>
+    <li>Partie 7 — Adapter selon sa fonction<span>RH, commercial, management, support client</span></li>
+    <li>Partie 7 bis — Construire sa checklist de relecture</li>
+    <li>Partie 8 — Mettre en place son système<span>Plan de mise en place sur 3 semaines, erreurs à éviter</span></li>
+    <li>Questions / Réponses</li>
+    <li>Annexe — Modèles de structure rapide</li>
+    <li>Ressources complémentaires</li>
+    <li>Conclusion</li>
+    <li>Partie 9 — Bibliothèque de prompts<span>27 prompts prêts à l'emploi, classés en 5 catégories</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Résumé exécutif</h2>
+  <p class="lede">Si tu ne devais retenir que l'essentiel de ce guide avant de le lire en détail, voici les points clés.</p>
+
+  <h3>Ce que ce guide couvre</h3>
+  <ul>
+    <li>Rédiger des emails professionnels efficaces, du message simple à la relance délicate.</li>
+    <li>Structurer des comptes-rendus de réunion clairs et actionnables.</li>
+    <li>Adapter son ton selon le destinataire (hiérarchie, client, collègue).</li>
+    <li>Rédiger des documents plus longs (rapports, notes de synthèse).</li>
+    <li>Gérer les situations délicates à l'écrit (désaccord, mauvaise nouvelle, excuses).</li>
+  </ul>
+
+  <h3>Le principe central du guide</h3>
+  <p>L'IA excelle pour structurer et accélérer une première version de texte professionnel, mais le résultat générique doit toujours être retouché avec ta propre voix et ta connaissance du contexte et du destinataire, pour ne jamais sonner robotique ou déplacé.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">Une précision importante</span>
+    <p>Ce guide t'aide à structurer et accélérer ta rédaction professionnelle, pas à déléguer entièrement ta communication. Relis toujours un message généré avant de l'envoyer, en particulier pour les situations délicates ou les destinataires importants.</p>
+    <p>Le ton et les nuances propres à ta culture d'entreprise restent de ta responsabilité, une IA généraliste ne les connaît pas.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Introduction</h2>
+
+  <h3>Pourquoi la rédaction professionnelle prend autant de temps</h3>
+  <p>Rédiger un email important, structurer un compte-rendu clair, ou trouver les mots justes pour une situation délicate peut facilement prendre 15 à 30 minutes, simplement parce qu'on cherche la bonne formulation, qu'on hésite sur le ton, ou qu'on relit plusieurs fois avant d'envoyer.</p>
+  <p>Multiplié sur une semaine de travail, ce temps de rédaction représente une part significative et souvent sous-estimée de la charge de travail quotidienne, en particulier pour les postes à forte composante de communication écrite (management, RH, commercial, support client, coordination de projet).</p>
+  <p>Ce guide part d'un principe simple : l'IA peut prendre en charge la structuration et la première rédaction, ce qui te laisse te concentrer sur la relecture, l'ajustement de ton, et la décision finale — les parties qui demandent vraiment ton jugement.</p>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>À la fin de ce guide, tu sauras rédiger des emails professionnels efficaces pour toutes les situations courantes, structurer des comptes-rendus clairs et actionnables, adapter ton ton selon ton interlocuteur, rédiger des documents plus longs sans stress, et gérer les situations délicates à l'écrit sans perdre de temps ni te tromper de ton.</p>
+
+  <h3>Qui est concerné par ce guide</h3>
+  <p>Ce guide s'adresse à toute personne qui écrit régulièrement dans un contexte professionnel, quel que soit son métier ou son secteur : cadre, manager, indépendant, assistant, chargé de projet, commercial, chargé de recrutement. Les principes restent les mêmes, seuls les exemples concrets varient selon la fonction.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Trois profils concernés</span>
+    <p>Nadia, manager d'équipe, passe une grande partie de sa journée à rédiger des retours et des comptes-rendus. Thomas, commercial indépendant, doit constamment ajuster son ton entre prospects et clients fidèles. Julie, chargée de recrutement, rédige des dizaines de messages similaires chaque semaine à des candidats différents.</p>
+  </div>
+
+  <h3>Ce dont tu as besoin pour commencer</h3>
+  <p>Aucune compétence technique n'est nécessaire. Si tu sais utiliser une IA comme ChatGPT ou Claude, tu as tout ce qu'il faut. Ce guide fonctionne avec n'importe quel assistant généraliste, les prompts proposés sont conçus pour être universels.</p>
+
+  <h3>Comment ce guide est structuré</h3>
+  <p>Les cinq premières parties couvrent les formats de communication les plus courants (emails, comptes-rendus, adaptation de ton, documents longs, situations délicates). Les parties suivantes t'aident à optimiser ton usage dans la durée et à l'adapter à ta fonction précise. Tu peux suivre l'ordre proposé ou aller directement à la partie qui répond à ton besoin le plus urgent aujourd'hui.</p>
+  <p>On commence par le socle de toute communication professionnelle écrite : l'email.</p>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 1 — Rédiger des emails professionnels efficaces</h2>
+
+  <h3>La structure d'un bon email professionnel</h3>
+  <p>Un email efficace va droit au but : une phrase d'accroche qui contextualise rapidement, le message principal clairement énoncé, et une conclusion qui précise l'action attendue ou la prochaine étape. Un email qui multiplie les détours avant d'arriver au sujet principal risque d'être survolé plutôt que vraiment lu.</p>
+  <p>Demander à l'IA de générer un premier jet structuré selon cette logique, à partir d'une description brute de ce que tu veux communiquer, permet de gagner un temps considérable sur la mise en forme, tout en gardant le contrôle sur le contenu final.</p>
+
+  <h3>Soigner l'objet du message</h3>
+  <p>L'objet d'un email est souvent négligé, alors qu'il détermine si le message sera ouvert rapidement ou relégué au fond d'une boîte de réception surchargée. Un objet clair et informatif (« Validation nécessaire avant vendredi : budget Q3 » plutôt que « Question ») augmente nettement les chances d'une réponse rapide.</p>
+
+  <h4>Exercice pratique : l'audit de tes objets d'email</h4>
+  <p>Reprends tes 10 derniers emails envoyés et regarde leurs objets : sont-ils suffisamment précis pour que le destinataire comprenne l'urgence et le sujet sans ouvrir le message ? Cet exercice simple révèle souvent une marge de progression immédiate et facile à corriger.</p>
+
+  <h3>Relancer sans être insistant</h3>
+  <p>Une relance email efficace rappelle brièvement le contexte, reformule la demande de façon encore plus concise que le message initial, et propose éventuellement une échéance ou une alternative si le silence se prolonge. Éviter absolument le ton de reproche (« comme déjà dit précédemment »), qui braque plus qu'il ne débloque une situation.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Une relance efficace</span>
+    <p>« Je me permets de revenir vers vous concernant [sujet], resté sans réponse depuis quelques jours. Si le sujet nécessite plus de temps de votre côté, n'hésitez pas à me le signaler. » Ce ton reste ferme sur le rappel, sans accuser ni culpabiliser.</p>
+  </div>
+
+  <h3>Décliner une demande poliment</h3>
+  <p>Refuser une demande par écrit demande un équilibre : rester clair sur le refus, sans se justifier excessivement (ce qui peut donner l'impression de chercher des excuses), tout en restant professionnel et ouvert si une alternative existe.</p>
+
+  <h4>Étude de cas : la refonte des emails de Nadia</h4>
+  <p>Nadia, manager d'équipe, passait beaucoup de temps à rédiger des emails de suivi de projet trop détaillés, ce qui décourageait leur lecture complète par son équipe. En structurant systématiquement ses emails avec un objet précis, un résumé en 2 lignes en début de message, puis les détails ensuite pour qui voulait aller plus loin, elle a constaté une nette amélioration du taux de réponse et de suivi de ses équipes.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le problème de Nadia n'était pas le contenu de ses messages, mais leur structure qui obligeait à tout lire pour comprendre l'essentiel. Mettre l'information clé en évidence dès le début a résolu ce problème sans réduire la richesse d'information disponible pour qui voulait creuser.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un bon email va droit au but : contexte bref, message clair, action attendue précisée.</p>
+    <p>Un objet précis augmente nettement les chances d'une lecture et d'une réponse rapides.</p>
+    <p>Une relance efficace rappelle le contexte sans reprocher, et reste plus concise que le message initial.</p>
+    <p>Décliner une demande demande fermeté sans justification excessive.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 2 — Structurer des comptes-rendus de réunion</h2>
+
+  <h3>Pourquoi un compte-rendu doit être actionnable, pas juste informatif</h3>
+  <p>Un compte-rendu qui se contente de résumer ce qui a été dit, sans distinguer clairement les décisions prises et les actions à suivre, perd une grande partie de son utilité pratique. Le format le plus efficace sépare toujours clairement trois éléments : ce qui a été discuté, ce qui a été décidé, et ce qui doit être fait, par qui, avant quand.</p>
+
+  <h3>Transformer des notes brutes en compte-rendu structuré</h3>
+  <p>L'IA excelle particulièrement pour cette tâche : à partir de notes prises en direct pendant une réunion, souvent désordonnées, elle peut reconstituer une structure claire en quelques secondes, à condition de lui fournir des notes suffisamment complètes sur les points clés abordés.</p>
+
+  <h4>Exercice pratique : prendre des notes optimisées pour l'IA</h4>
+  <p>Pendant tes prochaines réunions, note systématiquement trois types d'information distinctement : les sujets abordés, les décisions prises (même informelles), et toute mention d'action ou de responsable. Cette habitude de prise de notes structurée facilite grandement la génération d'un compte-rendu de qualité ensuite.</p>
+
+  <h3>Adapter le niveau de détail selon l'audience</h3>
+  <p>Un compte-rendu complet destiné aux participants directs n'a pas la même longueur ni le même niveau de détail qu'une synthèse destinée à des personnes qui n'ont pas assisté à la réunion. Préparer les deux versions à partir d'une même base de notes, avec des prompts différents, est bien plus rapide que de rédiger deux documents de zéro.</p>
+
+  <h3>L'ordre du jour, souvent négligé</h3>
+  <p>Préparer un ordre du jour structuré avant la réunion, avec un minutage indicatif par point, améliore significativement l'efficacité de la réunion elle-même, en plus de faciliter la prise de notes et donc la rédaction du compte-rendu qui suivra.</p>
+
+  <h4>Étude de cas : la structuration de Karim</h4>
+  <p>Karim, chef de projet, envoyait des comptes-rendus sous forme de texte continu, ce qui rendait difficile pour son équipe de retrouver rapidement qui devait faire quoi. En adoptant systématiquement une structure en trois blocs distincts (sujets discutés / décisions / actions avec responsables et échéances), généré à partir de ses notes de réunion, Karim a nettement amélioré le suivi effectif des actions décidées.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le contenu des réunions de Karim n'avait pas changé : c'est la structure de restitution qui a transformé un compte-rendu illisible en document réellement utile et suivi d'effet.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un compte-rendu efficace distingue clairement sujets discutés, décisions et actions à suivre.</p>
+    <p>Prendre des notes structurées en direct facilite grandement la génération d'un bon compte-rendu ensuite.</p>
+    <p>Un ordre du jour préparé en amont améliore à la fois la réunion et le compte-rendu qui en découle.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 3 — Adapter son ton selon le destinataire</h2>
+
+  <h3>Pourquoi un même message ne convient jamais à tous</h3>
+  <p>Le message que tu enverrais à un collègue proche, à ton supérieur hiérarchique, et à un client externe pour la même information ne devrait jamais être identique. Le niveau de formalité, la longueur, et même le choix des mots doivent s'ajuster selon la relation et le contexte.</p>
+
+  <h3>Vers la hiérarchie</h3>
+  <p>Un message à un supérieur gagne généralement à être plus concis et orienté résultats/décisions attendues, avec moins de détails intermédiaires que ce que tu partagerais avec un pair sur le même sujet. La clarté prime sur l'exhaustivité dans ce contexte.</p>
+
+  <h3>Vers un client ou un partenaire externe</h3>
+  <p>La communication externe demande généralement plus de formalisme et de prudence dans le choix des mots, en particulier sur des sujets sensibles (retard, problème de qualité, désaccord commercial), où chaque mot peut avoir des implications plus larges que dans un contexte interne.</p>
+
+  <h3>Vers un collègue proche</h3>
+  <p>Un ton trop formel avec un collègue avec qui la relation est détendue peut paraître froid ou distant, alors qu'un peu plus de naturel renforce généralement la collaboration sans nuire au professionnalisme du contenu.</p>
+
+  <h4>Exercice pratique : la matrice de tes destinataires</h4>
+  <p>Liste tes 5 interlocuteurs professionnels les plus fréquents, et note pour chacun le niveau de formalité qui te semble approprié (très formel, formel, cordial, décontracté). Cette cartographie, une fois faite, t'évite de te reposer la question à chaque message et facilite grandement l'utilisation de l'IA pour ajuster automatiquement le ton selon le destinataire visé.</p>
+
+  <h4>Étude de cas : l'ajustement de Thomas</h4>
+  <p>Thomas, commercial indépendant, utilisait le même ton assez direct et enjoué avec tous ses interlocuteurs, ce qui fonctionnait bien avec ses clients habituels mais desservait sa crédibilité auprès de nouveaux prospects plus institutionnels.</p>
+  <p>En prenant l'habitude de préciser explicitement le profil du destinataire dans ses prompts de rédaction, et en demandant systématiquement un ajustement de ton selon ce profil, Thomas a réussi à garder son style naturel avec ses clients fidèles tout en gagnant en crédibilité auprès de prospects plus formels.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le style personnel de Thomas n'était pas le problème : c'est son application uniforme à tous les contextes qui limitait son efficacité avec certains profils de clients plus formels.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un même message ne devrait jamais être identique selon qu'il s'adresse à la hiérarchie, un client externe ou un collègue proche.</p>
+    <p>La communication externe demande généralement plus de prudence et de formalisme que la communication interne.</p>
+    <p>Cartographier ses interlocuteurs habituels facilite l'ajustement systématique du ton.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Partie 4 — Rédiger des documents plus longs</h2>
+
+  <h3>Structurer avant de rédiger</h3>
+  <p>Pour un rapport ou une note de synthèse, la tentation est souvent de commencer directement la rédaction en détail, ce qui mène régulièrement à des documents mal équilibrés ou à devoir tout réorganiser après coup. Demander d'abord une structure globale (plan, grandes parties, objectif de chaque section) avant de rédiger le détail évite cet écueil.</p>
+
+  <h3>La note de synthèse, un exercice à part</h3>
+  <p>Une note de synthèse efficace tient sur une page maximum et va à l'essentiel : contexte en une phrase, points clés, recommandation ou conclusion claire. C'est souvent l'exercice le plus difficile car il demande de trancher sur ce qui est vraiment essentiel, plus que de simplement condenser un texte existant.</p>
+
+  <h3>Soigner son introduction</h3>
+  <p>L'introduction d'un document professionnel long détermine largement si le lecteur ira au bout ou survolera le reste. Une bonne introduction contextualise brièvement, annonce clairement le plan, et donne envie de continuer la lecture sans dévoiler toutes les conclusions immédiatement.</p>
+
+  <h3>Relire avec un regard extérieur</h3>
+  <p>Une fois un document rédigé, demander à l'IA de le relire en identifiant les passages peu clairs ou trop longs apporte un regard complémentaire à ta propre relecture, souvent biaisée par ta connaissance déjà acquise du sujet qui te fait sous-estimer ce qui reste confus pour un lecteur externe.</p>
+
+  <h4>Étude de cas : le rapport de Julie</h4>
+  <p>Julie, chargée de recrutement, devait produire un rapport trimestriel sur ses indicateurs de recrutement, une tâche qu'elle redoutait chaque trimestre par manque de méthode claire pour s'y attaquer. En structurant d'abord son plan avec l'IA (contexte, indicateurs clés, analyse, recommandations) avant de rédiger le détail de chaque partie, elle a réduit son temps de préparation de plusieurs heures tout en produisant un rapport globalement mieux structuré que ses versions précédentes.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>La difficulté de Julie n'était pas le manque de contenu à rapporter, mais l'absence de structure claire pour l'organiser. Poser le plan avant de rédiger le détail a résolu ce blocage récurrent.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Structurer un document long avant de le rédiger en détail évite les réorganisations tardives.</p>
+    <p>Une bonne note de synthèse tient sur une page et tranche sur l'essentiel plutôt que de tout condenser.</p>
+    <p>Une introduction soignée détermine largement l'engagement du lecteur pour la suite du document.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Partie 5 — Gérer les situations délicates à l'écrit</h2>
+
+  <h3>Annoncer une mauvaise nouvelle</h3>
+  <p>Annoncer par écrit un retard, un refus, ou une décision défavorable demande un équilibre entre clarté (ne pas noyer la mauvaise nouvelle dans des formulations vagues) et respect (ne pas être brutal ou froid). La structure la plus efficace annonce clairement l'information, en explique brièvement la raison si pertinent, puis propose si possible une suite ou une alternative.</p>
+
+  <h3>Exprimer un désaccord professionnel</h3>
+  <p>Exprimer un désaccord par écrit sans envenimer une relation professionnelle demande de séparer clairement le fait contesté de toute attaque personnelle, et de proposer si possible une alternative constructive plutôt que de se contenter de critiquer une décision déjà prise.</p>
+
+  <h3>Rédiger des excuses professionnelles</h3>
+  <p>Des excuses professionnelles efficaces reconnaissent clairement l'erreur sans minimiser ni en faire trop, expliquent brièvement (sans se justifier excessivement) ce qui a mené à l'erreur, et proposent une action corrective concrète. Un excès d'excuses répétées peut paradoxalement affaiblir le message plutôt que le renforcer.</p>
+
+  <h3>Désamorcer un conflit naissant par écrit</h3>
+  <p>Face à une tension qui monte par email, changer volontairement de canal (proposer un appel ou une rencontre plutôt que de continuer l'échange écrit) est souvent la meilleure décision. Quand l'écrit reste nécessaire, adopter un ton délibérément plus posé que ce que la situation inspirerait naturellement aide à désamorcer plutôt qu'à envenimer.</p>
+
+  <h4>Étude de cas : la gestion de crise de Sophie</h4>
+  <p>Sophie a dû annoncer à un client important un retard de livraison significatif, une situation qu'elle appréhendait particulièrement. En structurant son message avec l'annonce claire du retard, une explication brève et honnête de la cause, et une proposition concrète de compensation, elle a reçu une réponse bien plus compréhensive qu'elle ne l'anticipait.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>La transparence structurée (annonce claire + explication brève + solution proposée) a été mieux reçue qu'une annonce vague ou excessivement plate d'excuses répétées, qui aurait pu paraître moins sincère ou moins professionnelle.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Annoncer une mauvaise nouvelle demande clarté et respect, sans noyer l'information dans le vague.</p>
+    <p>Exprimer un désaccord efficacement sépare le fait contesté de toute attaque personnelle.</p>
+    <p>Des excuses professionnelles reconnaissent l'erreur et proposent une action corrective, sans excès.</p>
+    <p>Face à un conflit qui monte, changer de canal est souvent plus efficace que de continuer l'échange écrit.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>8. Partie 6 — Optimiser son temps de rédaction dans la durée</h2>
+
+  <h3>Construire une bibliothèque de templates personnels</h3>
+  <p>Une fois qu'un type de message (relance, compte-rendu, réponse à une objection fréquente) a été bien calibré avec l'aide de l'IA, le conserver comme modèle réutilisable évite de repartir de zéro à chaque situation similaire. Cette bibliothèque personnelle, construite progressivement, devient un vrai gain de temps cumulé sur plusieurs mois.</p>
+
+  <h3>Toujours retoucher avec sa propre voix</h3>
+  <p>Un texte généré directement par IA, sans retouche, peut sonner générique et interchangeable avec celui de n'importe qui d'autre utilisant le même outil. Prendre l'habitude de systématiquement ajuster quelques formulations avec ton vocabulaire habituel évite cet écueil, pour un coût en temps minime par rapport au gain initial de la génération.</p>
+
+  <h3>Le batching pour la correspondance récurrente</h3>
+  <p>Pour les fonctions à forte volumétrie d'emails similaires (recrutement, support client, relance commerciale), traiter plusieurs messages similaires en une seule session plutôt qu'au fil de l'eau permet de rester dans une même logique de ton et de gagner en cohérence, en plus de la rapidité.</p>
+
+  <h3>Mesurer le gain de temps réel</h3>
+  <p>Tenir un suivi même informel du temps passé sur la rédaction avant et après l'adoption de cette méthode permet d'objectiver le gain réel plutôt que de se fier uniquement à une impression subjective, ce qui aide aussi à identifier plus précisément quelles tâches bénéficient le plus de cette approche.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une bibliothèque de templates personnels, construite progressivement, fait gagner un temps cumulé important.</p>
+    <p>Retoucher systématiquement avec sa propre voix évite le ton générique et interchangeable.</p>
+    <p>Le traitement groupé de correspondance similaire améliore cohérence et rapidité à la fois.</p>
+    <p>Mesurer objectivement le gain de temps aide à identifier les usages les plus rentables pour soi.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>9. Partie 7 — Adapter selon sa fonction</h2>
+  <p class="lede">Les principes de ce guide s'appliquent largement, mais certains usages sont particulièrement pertinents selon la fonction exercée.</p>
+
+  <h3>Ressources humaines et recrutement</h3>
+  <p>La rédaction de réponses à candidats (positives comme négatives), d'annonces de poste, et de communications internes sensibles (réorganisation, changement de politique) bénéficie particulièrement d'un gain de temps sur la structuration, tout en demandant une vigilance particulière sur le ton empathique dans les refus de candidature.</p>
+
+  <h3>Commercial et relation client</h3>
+  <p>La rédaction de propositions commerciales, de réponses aux objections fréquentes, et de relances de prospects représente un volume important de rédaction récurrente, particulièrement adapté à la construction d'une bibliothèque de templates personnalisables.</p>
+
+  <h3>Management et encadrement d'équipe</h3>
+  <p>Les comptes-rendus de réunion d'équipe, les retours de performance, et les communications de changement organisationnel demandent un soin particulier sur le ton, l'IA aidant surtout à structurer clairement la communication plutôt qu'à générer un contenu émotionnellement sensible sans retouche humaine importante.</p>
+
+  <h3>Support client et service après-vente</h3>
+  <p>Le volume élevé de réponses à des demandes similaires rend cette fonction particulièrement propice à la construction de templates réutilisables, avec une attention particulière à personnaliser suffisamment chaque réponse pour ne pas paraître automatisée aux yeux du client.</p>
+
+  <h4>Étude de cas : le gain de temps de Farid en RH</h4>
+  <p>Farid, chargé de recrutement, répondait individuellement à chaque candidat non retenu avec un message très généreux mais chronophage, ce qui le poussait parfois à repousser ces réponses par manque de temps, au détriment de l'expérience candidat. En construisant un template empathique et personnalisable rapidement selon le profil du candidat, il a pu répondre systématiquement et rapidement à tous les candidats, sans sacrifier la qualité du message.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le problème de Farid n'était pas son manque de considération pour les candidats, mais le temps que demandait une rédaction individuelle complète à chaque fois. Un template bien construit a résolu la tension entre qualité et volume.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Les RH bénéficient particulièrement de gains de temps sur les communications sensibles, avec vigilance sur le ton empathique.</p>
+    <p>Le commercial profite grandement d'une bibliothèque de templates pour la correspondance récurrente.</p>
+    <p>Le management demande une retouche humaine importante sur les communications émotionnellement sensibles.</p>
+    <p>Le support client doit personnaliser suffisamment ses réponses pour ne pas paraître automatisées.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>10. Partie 7 bis — Construire sa checklist de relecture</h2>
+
+  <h3>Pourquoi une checklist plutôt qu'une relecture au hasard</h3>
+  <p>Une relecture sans méthode précise laisse souvent passer les mêmes types d'erreurs : ton mal calibré, information manquante, action attendue pas assez claire. Une checklist courte et systématique, appliquée à chaque message important, rattrape ces oublis récurrents bien plus efficacement qu'une relecture générale.</p>
+
+  <h3>Les points essentiels à vérifier systématiquement</h3>
+  <p>Avant d'envoyer un message professionnel important, vérifie : le ton correspond-il bien au destinataire ? L'action attendue est-elle explicite ? Le message contient-il une information sensible qui mériterait d'être reformulée ? Le texte sonne-t-il comme toi, ou reste-t-il trop générique ?</p>
+
+  <h3>Adapter sa checklist selon le type de message</h3>
+  <p>Une checklist pour un email courant n'a pas besoin d'être aussi poussée que pour une communication délicate ou un document destiné à la direction. Adapte le niveau de rigueur de ta relecture à l'enjeu réel du message, plutôt que d'appliquer systématiquement le même niveau de vérification à tout.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Une checklist courte et systématique rattrape mieux les erreurs récurrentes qu'une relecture générale sans méthode.</p>
+    <p>Adapte le niveau de rigueur de ta relecture à l'enjeu réel du message.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>11. Partie 8 — Mettre en place son système</h2>
+
+  <h3>Un plan de mise en place sur 3 semaines</h3>
+  <p>Semaine 1 : commence par les emails du quotidien (relances, réponses courantes), en observant les gains de temps réels. Semaine 2 : élargis aux comptes-rendus de réunion, en adoptant une méthode de prise de notes structurée. Semaine 3 : construis ta bibliothèque de templates personnels pour les messages récurrents propres à ta fonction.</p>
+
+  <h3>Checklist récapitulative</h3>
+  <ul class="checklist">
+    <li>Toujours relire un message généré avant de l'envoyer, en particulier pour les destinataires importants ou les situations délicates.</li>
+    <li>Retoucher systématiquement avec sa propre voix pour éviter le ton générique.</li>
+    <li>Ne jamais coller d'informations confidentielles ou personnelles identifiables dans un outil d'IA grand public.</li>
+    <li>Construire progressivement une bibliothèque de templates réutilisables.</li>
+  </ul>
+
+  <h3>Erreurs à éviter</h3>
+  <p>Envoyer un message généré sans aucune relecture ni retouche est l'erreur la plus risquée, en particulier pour des communications sensibles ou des destinataires importants. Une autre erreur fréquente est de vouloir tout déléguer d'un coup, sans prendre le temps d'observer ce qui fonctionne vraiment pour son propre style et son contexte professionnel spécifique.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un déploiement progressif sur 3 semaines permet d'intégrer la méthode sans se précipiter.</p>
+    <p>La relecture avant envoi n'est jamais une étape optionnelle, quelle que soit la qualité apparente du texte généré.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>12. Questions / Réponses</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Est-ce que mes collègues remarqueront que j'utilise l'IA pour écrire ?</p>
+    <p class="faq-a">Pas si tu retouches systématiquement le texte généré avec ta propre voix et tes formulations habituelles. C'est justement l'absence de cette retouche qui rend un texte reconnaissable comme généré, avec des tournures trop lisses ou génériques.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Puis-je utiliser l'IA pour des communications très confidentielles ?</p>
+    <p class="faq-a">Évite de coller des informations sensibles (données personnelles identifiables, informations stratégiques confidentielles) dans un outil d'IA grand public. Pour ce type de communication, rédige toi-même ou utilise, si ton entreprise en dispose, un outil interne sécurisé prévu à cet effet.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Comment gérer le cas où l'IA génère un ton que je trouve inapproprié ?</p>
+    <p class="faq-a">Précise davantage le contexte et le ton souhaité dans ton prompt (destinataire, relation, ton exact recherché), et n'hésite pas à demander explicitement une reformulation si le premier résultat ne convient pas. Cela reste plus rapide que de rédiger entièrement de zéro.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Est-ce risqué d'utiliser l'IA pour des communications légales ou contractuelles ?</p>
+    <p class="faq-a">Oui, pour tout engagement contractuel ou juridique, une IA généraliste ne remplace jamais l'avis d'un professionnel du droit. Utilise-la éventuellement pour structurer une première version à faire ensuite valider, jamais comme validation finale.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Combien de temps faut-il pour vraiment gagner du temps avec cette méthode ?</p>
+    <p class="faq-a">Les premiers gains sont généralement perceptibles dès les premières semaines sur les tâches répétitives (emails courants, comptes-rendus). Le gain de temps s'accroît ensuite progressivement à mesure que ta bibliothèque de templates personnels se construit.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Que faire si je travaille dans un secteur avec un jargon très spécifique ?</p>
+    <p class="faq-a">Précise ce jargon et son usage dans tes prompts, ou fournis un exemple de document déjà rédigé dans ce style pour que l'IA s'en inspire. Plus tu donnes de contexte spécifique à ton secteur, plus le résultat sera adapté.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>13. Annexe — Modèles de structure rapide</h2>
+
+  <h3>Structure email standard</h3>
+  <p>Objet précis → Salutation → Contexte en une phrase → Message principal → Action attendue ou prochaine étape → Formule de politesse adaptée au destinataire.</p>
+
+  <h3>Structure compte-rendu standard</h3>
+  <p>Participants et date → Sujets abordés (liste courte) → Décisions prises → Actions à suivre (qui, quoi, quand).</p>
+
+  <h3>Structure note de synthèse</h3>
+  <p>Contexte en une phrase → 3 à 5 points clés → Recommandation ou conclusion claire, le tout tenant sur une page maximum.</p>
+
+  <h3>Structure message de situation délicate</h3>
+  <p>Annonce claire du fait → Explication brève si pertinente → Proposition d'action ou d'alternative → Ouverture à la discussion si besoin.</p>
+</section>
+
+<section class="chapter">
+  <h2>14. Ressources complémentaires</h2>
+  <p>Au-delà de ce guide, des ouvrages de référence sur la communication écrite professionnelle en français peuvent compléter utilement ces principes, notamment sur les codes précis de certains secteurs très normés (juridique, diplomatique, institutionnel).</p>
+  <p>Certains outils de correction linguistique complémentaires peuvent aussi t'aider à repérer les fautes ou lourdeurs de style qu'une relecture rapide pourrait manquer, en complément de la structuration apportée par l'IA.</p>
+</section>
+
+<section class="chapter">
+  <h2>15. Conclusion</h2>
+  <p>Bien écrire au travail n'a jamais été qu'une question de talent inné : c'est avant tout une question de méthode et de structure, que l'IA peut désormais t'aider à appliquer bien plus rapidement qu'auparavant. Le vrai gain de ce guide n'est pas seulement le temps économisé, mais la clarté et l'efficacité renforcées de ta communication professionnelle.</p>
+  <p>Reviens vers ce guide et sa bibliothèque de prompts chaque fois que tu affrontes une situation de rédaction délicate ou que tu veux simplement accélérer une tâche récurrente.</p>
+</section>
+
+<section class="chapter">
+  <h2>16. Partie 9 — Bibliothèque de prompts</h2>
+  <p class="lede">Cette bibliothèque de prompts fait partie intégrante de ce guide (format 2 en 1). Chaque prompt contient des crochets [comme ceci] : remplace-les par tes propres éléments avant de coller le prompt dans ChatGPT ou Claude.</p>
+  <div class="box box-warning">
+    <span class="box-title">Rappel important</span>
+    <p>Retouche toujours le résultat généré avec ta propre voix avant d'envoyer.</p>
+    <p>Ne colle jamais d'informations confidentielles ou personnelles identifiables dans un outil d'IA grand public.</p>
+  </div>
+
+  <h3>16.1 Emails professionnels</h3>
+  <p class="lede">Pour rédiger, relancer et répondre efficacement.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Rédige un email professionnel pour [décrire l'objectif, ex : demander un délai supplémentaire], adressé à [destinataire], sur un ton [formel/cordial].</span>
+    <p class="prompt-usage">À quoi ça sert : générer un premier jet d'email structuré selon le contexte</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Voici un email que j'ai reçu : [coller l'email]. Aide-moi à rédiger une réponse claire qui couvre tous les points soulevés.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une réponse complète sans oublier d'élément</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Raccourcis cet email pour qu'il aille droit au but, en gardant les informations essentielles : [coller l'email].</span>
+    <p class="prompt-usage">À quoi ça sert : condenser un email trop long en un message concis</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Rédige un objet d'email clair et informatif pour ce message : [résumer le contenu du message].</span>
+    <p class="prompt-usage">À quoi ça sert : trouver un objet qui donne envie d'ouvrir l'email et facilite son classement</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à relancer poliment ce message resté sans réponse depuis [durée] : [résumer le message initial].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une relance efficace sans paraître impatient</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Rédige un email pour décliner poliment cette demande : [décrire la demande], en restant professionnel et sans se justifier excessivement.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un refus assertif à l'écrit</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 7</span>
+    <span class="prompt-text">Aide-moi à rédiger un email d'introduction pour me présenter à [décrire le contact], dans le cadre de [contexte].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une prise de contact professionnelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 8</span>
+    <span class="prompt-text">Rédige un email de remerciement professionnel suite à [décrire la situation, ex : un entretien, une collaboration], sans être trop long.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un remerciement sincère et concis</p>
+  </div>
+
+  <h3>16.2 Comptes-rendus de réunion</h3>
+  <p class="lede">Pour structurer et rendre actionnables tes réunions.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Transforme ces notes de réunion en compte-rendu structuré, avec les décisions prises et les actions à suivre : [coller les notes].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer rapidement un compte-rendu à partir de notes brutes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Rédige un compte-rendu de réunion avec la structure suivante : participants, sujets abordés, décisions, actions avec responsables et échéances, à partir de : [décrire la réunion].</span>
+    <p class="prompt-usage">À quoi ça sert : générer un compte-rendu complet et actionnable</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Résume cette réunion en 5 lignes maximum pour les personnes qui n'ont pas pu y assister : [décrire la réunion].</span>
+    <p class="prompt-usage">À quoi ça sert : produire une synthèse ultra-courte pour les absents</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à extraire uniquement les actions à faire et leurs responsables à partir de ce compte-rendu long : [coller le compte-rendu].</span>
+    <p class="prompt-usage">À quoi ça sert : isoler la partie actionnable d'un document plus large</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Rédige un ordre du jour structuré pour une réunion sur [sujet], avec un minutage indicatif par point.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer une réunion efficace avant qu'elle n'ait lieu</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à rédiger un message de relance des actions non terminées à partir de ce compte-rendu de la réunion précédente : [coller le compte-rendu].</span>
+    <p class="prompt-usage">À quoi ça sert : assurer le suivi effectif des actions décidées en réunion</p>
+  </div>
+
+  <h3>16.3 Adapter son ton</h3>
+  <p class="lede">Pour ajuster un message selon le destinataire.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Réécris ce message pour qu'il s'adresse à [supérieur hiérarchique/client/collègue proche], en ajustant le niveau de formalité : [coller le message].</span>
+    <p class="prompt-usage">À quoi ça sert : adapter un même message à différents destinataires</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Ce message me semble trop familier pour un contexte professionnel externe. Rends-le plus formel sans le rendre froid : [coller le message].</span>
+    <p class="prompt-usage">À quoi ça sert : ajuster le registre d'un message vers plus de professionnalisme</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Ce message me semble trop rigide pour un collègue avec qui j'ai une relation détendue. Rends-le plus naturel : [coller le message].</span>
+    <p class="prompt-usage">À quoi ça sert : assouplir un message trop formel pour un contexte informel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à identifier si le ton de ce message pourrait être mal interprété par le destinataire : [coller le message et décrire le destinataire].</span>
+    <p class="prompt-usage">À quoi ça sert : anticiper une mauvaise interprétation avant l'envoi</p>
+  </div>
+
+  <h3>16.4 Documents longs</h3>
+  <p class="lede">Pour structurer rapports et notes de synthèse.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à structurer un rapport sur [sujet] avec une introduction, un développement en parties, et une conclusion avec recommandations.</span>
+    <p class="prompt-usage">À quoi ça sert : poser la structure d'un document long avant de le rédiger en détail</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Rédige une note de synthèse d'une page maximum à partir de ce document plus long : [coller ou décrire le document].</span>
+    <p class="prompt-usage">À quoi ça sert : produire un résumé exécutif à partir d'un contenu détaillé</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à rédiger l'introduction de ce rapport, qui doit donner envie de lire la suite et annoncer clairement le plan : [décrire le sujet du rapport].</span>
+    <p class="prompt-usage">À quoi ça sert : soigner l'accroche d'un document professionnel long</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Relis ce document et identifie les passages qui manquent de clarté ou qui pourraient être raccourcis : [coller le document].</span>
+    <p class="prompt-usage">À quoi ça sert : améliorer la clarté d'un document déjà rédigé</p>
+  </div>
+
+  <h3>16.5 Situations délicates</h3>
+  <p class="lede">Pour gérer les messages difficiles avec justesse.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à annoncer cette mauvaise nouvelle par écrit de façon claire et respectueuse : [décrire la situation], à [destinataire].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une annonce difficile sans minimiser ni dramatiser</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Rédige un message pour exprimer mon désaccord avec cette décision, de façon constructive et sans être perçu comme conflictuel : [décrire la décision et ton désaccord].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer l'expression d'un désaccord professionnel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à rédiger des excuses professionnelles sincères pour [décrire l'erreur], sans en faire trop ni minimiser.</span>
+    <p class="prompt-usage">À quoi ça sert : trouver le bon équilibre dans des excuses professionnelles</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Ce message contient une critique que je dois faire à un collègue/collaborateur. Aide-moi à la formuler de façon constructive : [décrire la situation].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un retour critique constructif à l'écrit</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Rédige un message pour gérer ce conflit par email avant qu'il ne s'aggrave : [décrire la situation de tension].</span>
+    <p class="prompt-usage">À quoi ça sert : désamorcer une tension par écrit avant qu'elle empire</p>
+  </div>
+</section>
+
+</body>
+</html>

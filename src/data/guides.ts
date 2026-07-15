@@ -419,6 +419,83 @@ export const guides: Guide[] = [
     crossSell: ["ia-profs", "ia-ses", "pack-prompts-profs-complet", "prompts-images-ia"],
   },
   {
+    slug: "redaction-professionnelle-ia",
+    title: "Rédaction professionnelle avec l'IA : emails, comptes-rendus et communication écrite",
+    tagline: "Un seul guide, tout intégré : emails, comptes-rendus, ton et 27 prompts prêts à l'emploi",
+    pitch:
+      "Rédiger des emails professionnels efficaces, structurer des comptes-rendus de réunion actionnables, adapter son ton selon le destinataire, rédiger des documents plus longs et gérer les situations délicates à l'écrit sans perdre de temps ni se tromper de ton : ce guide couvre toute la communication écrite professionnelle, avec une bibliothèque de 27 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Aucune compétence technique requise.",
+    seoTitle: "Rédaction professionnelle avec l'IA : emails, comptes-rendus et communication écrite | Guido",
+    seoDescription: "Rédige des emails, comptes-rendus et documents professionnels efficaces avec l'IA. Guide complet + 27 prompts prêts à l'emploi.",
+    price: "18€",
+    format: "PDF · 39 pages",
+    audience: "Tout professionnel qui écrit régulièrement au travail (cadre, manager, indépendant, assistant, commercial, RH), sans compétences techniques requises",
+    category: "IA",
+    cover: "/covers/redaction-professionnelle-ia.png",
+    bestseller: false,
+    highlights: [
+      "Rédiger des emails professionnels efficaces : structure, objet, relances, refus polis",
+      "Structurer des comptes-rendus de réunion clairs et actionnables à partir de notes brutes",
+      "Adapter son ton selon le destinataire : hiérarchie, client externe, collègue proche",
+      "Rédiger des documents plus longs (rapports, notes de synthèse) sans stress",
+      "Gérer les situations délicates à l'écrit : mauvaise nouvelle, désaccord, excuses, conflit naissant",
+      "27 prompts prêts à l'emploi intégrés au guide, classés en 5 catégories — aucun pack séparé à acheter",
+    ],
+    faq: [
+      {
+        question: "Ce guide contient-il vraiment les prompts, ou faut-il acheter un pack séparé ?",
+        answer:
+          "Les 27 prompts sont intégrés directement dans ce guide (partie 9), au format 2 en 1. Il n'existe pas de pack de prompts séparé — tout est inclus dans cet unique achat.",
+      },
+      {
+        question: "Est-ce que mes collègues remarqueront que j'utilise l'IA pour écrire ?",
+        answer:
+          "Pas si tu retouches systématiquement le texte généré avec ta propre voix et tes formulations habituelles. C'est justement l'absence de cette retouche qui rend un texte reconnaissable comme généré, avec des tournures trop lisses ou génériques.",
+      },
+      {
+        question: "Puis-je utiliser l'IA pour des communications très confidentielles ?",
+        answer:
+          "Évite de coller des informations sensibles (données personnelles identifiables, informations stratégiques confidentielles) dans un outil d'IA grand public. Pour ce type de communication, rédige toi-même ou utilise un outil interne sécurisé si ton entreprise en dispose.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Rédiger un email professionnel",
+        text: "Rédige un email professionnel pour [décrire l'objectif, ex : demander un délai supplémentaire], adressé à [destinataire], sur un ton [formel/cordial].",
+      },
+      {
+        title: "Transformer des notes en compte-rendu",
+        text: "Transforme ces notes de réunion en compte-rendu structuré, avec les décisions prises et les actions à suivre : [coller les notes].",
+      },
+      {
+        title: "Adapter le ton d'un message",
+        text: "Réécris ce message pour qu'il s'adresse à [supérieur hiérarchique/client/collègue proche], en ajustant le niveau de formalité : [coller le message].",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Guide complet",
+        price: "18€",
+        originalPrice: "27€",
+        description: "Le guide entier (11 parties) + la bibliothèque de 27 prompts intégrée",
+        includes: [
+          "Résumé exécutif et Introduction",
+          "Partie 1 — Rédiger des emails professionnels efficaces",
+          "Partie 2 — Structurer des comptes-rendus de réunion",
+          "Partie 3 — Adapter son ton selon le destinataire",
+          "Partie 4 — Rédiger des documents plus longs",
+          "Partie 5 — Gérer les situations délicates à l'écrit",
+          "Partie 6 (et 7, 7 bis, 8) — Optimiser dans la durée, adapter selon sa fonction, checklist, mise en place",
+          "Partie 9 — Bibliothèque de 27 prompts",
+          "PDF · 39 pages",
+        ],
+        pdfFile: "guido-redaction-pro",
+      },
+    ],
+    crossSell: ["ia-autoentrepreneurs", "marketing-contenu"],
+  },
+  {
     slug: "marketing-contenu",
     title: "L'IA pour créer du contenu qui marche : stratégie et posts réseaux sociaux",
     tagline: "Un seul guide, tout intégré : stratégie, posts, calendrier et 43 prompts prêts à l'emploi",
