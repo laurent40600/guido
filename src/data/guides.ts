@@ -13,6 +13,15 @@ export interface GuideOffer {
   featured?: boolean;
 }
 
+// Avis client affiché sur la page produit et agrégé dans le Product Schema
+// (aggregateRating) une fois au moins un avis présent. Ajoutés manuellement.
+export interface GuideReview {
+  author: string;
+  rating: 1 | 2 | 3 | 4 | 5;
+  comment: string;
+  date: string;
+}
+
 export interface Guide {
   slug: string;
   title: string;
@@ -42,6 +51,7 @@ export interface Guide {
   // slug — il crédite directement les guides existants listés ici, pour
   // réutiliser tel quel le système de téléchargement/filigrane/limite.
   bundleOf?: { guideSlug: string; offerId: string }[];
+  reviews?: GuideReview[];
 }
 
 export const guides: Guide[] = [
@@ -81,7 +91,7 @@ export const guides: Guide[] = [
       },
     ],
     available: true,
-    crossSell: ["ia-autoentrepreneurs"],
+    crossSell: ["ia-autoentrepreneurs", "micro-entreprise-2026"],
   },
   {
     slug: "ia-autoentrepreneurs",
@@ -850,7 +860,161 @@ export const guides: Guide[] = [
         featured: true,
       },
     ],
-    crossSell: ["carriere-personnalite"],
+    crossSell: ["carriere-personnalite", "micro-entreprise-2026", "tresorerie-freelance"],
+  },
+  {
+    slug: "micro-entreprise-2026",
+    title: "Créer sa micro-entreprise en 2026 : ce qui change et ce qu'il faut savoir",
+    tagline: "Un seul guide, tout intégré : immatriculation, TVA, facturation et 31 prompts prêts à l'emploi",
+    pitch:
+      "S'immatriculer sur le Guichet unique, comprendre la franchise en base de TVA et la facturation conforme, mettre en place une routine administrative simple et sécuriser sa relation client avec de vraies CGV : ce guide couvre tout le cycle de création d'une micro-entreprise, avec une bibliothèque de 31 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Les démarches d'immatriculation, de TVA et de facturation sont expliquées simplement — vérifie toujours les chiffres officiels à jour sur les sites gouvernementaux avant de t'engager.",
+    seoTitle: "Créer sa micro-entreprise en 2026 : le guide complet | Guido",
+    seoDescription: "Guide complet + 31 prompts intégrés pour créer sa micro-entreprise en 2026 : immatriculation, TVA, facturation. Vérifie toujours les chiffres officiels à jour.",
+    price: "18€",
+    format: "PDF · 52 pages",
+    audience: "Futurs et nouveaux micro-entrepreneurs en France, sans compétences techniques ou juridiques, qui veulent créer leur structure sereinement et sans erreur",
+    category: "Finance",
+    cover: "/covers/micro-entreprise-2026.png",
+    bestseller: false,
+    highlights: [
+      "S'immatriculer étape par étape sur le Guichet unique : documents à préparer, délais, SIRET, aides (ACRE, cumul ARE/ARCE)",
+      "Comprendre la franchise en base de TVA, les mentions obligatoires de facturation et la réforme de la facturation électronique",
+      "Mettre en place une routine administrative simple : livre des recettes, déclaration URSSAF, bons outils, compte dédié",
+      "Adapter la démarche selon ton activité (produits numériques, conseil, stock, artisanat) et éviter les erreurs les plus coûteuses",
+      "Comprendre sa protection sociale, sa fiscalité personnelle, et sécuriser sa relation client avec de vraies CGV",
+      "31 prompts prêts à l'emploi intégrés au guide, classés en 7 catégories — aucun pack séparé à acheter",
+    ],
+    faq: [
+      {
+        question: "Ce guide contient-il vraiment les prompts, ou faut-il acheter un pack séparé ?",
+        answer:
+          "Les 31 prompts sont intégrés directement dans ce guide (partie 7), au format 2 en 1. Il n'existe pas de pack de prompts séparé — tout est inclus dans cet unique achat.",
+      },
+      {
+        question: "Puis-je créer ma micro-entreprise si je suis déjà salarié ?",
+        answer:
+          "Oui, le cumul est autorisé, sous réserve de vérifier l'absence de clause de non-concurrence ou d'exclusivité dans ton contrat de travail, et de veiller à ce que ton activité indépendante ne concurrence pas directement ton employeur.",
+      },
+      {
+        question: "Ce guide remplace-t-il un expert-comptable ?",
+        answer:
+          "Non. Il te donne une méthode et des repères généraux pour créer et gérer ta micro-entreprise sereinement, mais les seuils, taux de cotisations et montants précis évoluent chaque année : vérifie toujours les chiffres exacts sur les sites officiels, et fais appel à un expert-comptable pour toute décision fiscale ou juridique structurante.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Choisir son statut",
+        text: "Voici mon projet d'activité : [décrire ton activité]. Est-ce que la micro-entreprise est adaptée, ou devrais-je envisager un autre statut dès le départ ?",
+      },
+      {
+        title: "Modèle de facture conforme",
+        text: "Aide-moi à créer un modèle de facture conforme aux mentions obligatoires pour mon activité de [décrire ton activité], en régime de franchise en base de TVA.",
+      },
+      {
+        title: "CGV simples et claires",
+        text: "Aide-moi à rédiger des CGV simples et claires pour mon activité de [décrire ton activité], couvrant les modalités de paiement, de livraison/accès, et de rétractation.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Guide complet",
+        price: "18€",
+        originalPrice: "27€",
+        description: "Le guide entier (15 parties) + la bibliothèque de 31 prompts intégrée",
+        includes: [
+          "Résumé exécutif et Introduction",
+          "Partie 1 — Choisir le bon statut",
+          "Partie 2 — S'immatriculer étape par étape",
+          "Partie 3 — Comprendre la TVA et la facturation",
+          "Partie 4 (et 4 bis) — Obligations déclaratives et bons outils",
+          "Partie 5 (bis à septies) — Ce qui évolue, cas particuliers, erreurs à éviter, protection sociale, fiscalité, évolution de l'activité, relation client",
+          "Partie 6 — Mettre en place son système",
+          "Partie 7 — Bibliothèque de 31 prompts",
+          "PDF · 52 pages",
+        ],
+        pdfFile: "guido-micro-entreprise-2026",
+      },
+    ],
+    crossSell: ["fiscal-auto-entrepreneur-2026", "freelance-40ans", "tresorerie-freelance"],
+  },
+  {
+    slug: "tresorerie-freelance",
+    title: "Gérer sa trésorerie quand les revenus sont irréguliers : guide pour freelances et auto-entrepreneurs",
+    tagline: "Un seul guide, tout intégré : matelas de sécurité, salaire fixe et 36 prompts prêts à l'emploi",
+    pitch:
+      "Construire un matelas de sécurité réaliste, se verser un salaire fixe mensuel même quand les encaissements varient, provisionner automatiquement cotisations et impôts, anticiper les creux d'activité et accélérer ses encaissements : ce guide couvre toute la méthode pour reprendre le contrôle de sa trésorerie, avec une bibliothèque de 36 prompts intégrée directement dedans (format 2 en 1, pas de pack séparé à acheter). Une méthode et des outils concrets, qui ne remplacent pas les conseils d'un expert-comptable pour une situation complexe.",
+    seoTitle: "Gérer sa trésorerie freelance aux revenus irréguliers | Guido",
+    seoDescription: "Guide complet + 36 prompts intégrés pour gérer sa trésorerie de freelance : matelas de sécurité, salaire fixe mensuel, provisionner et anticiper les creux d'activité.",
+    price: "18€",
+    format: "PDF · 39 pages",
+    audience: "Freelances et auto-entrepreneurs aux revenus irréguliers ou saisonniers, sans compétences en gestion financière, qui veulent sortir du stress de trésorerie permanent",
+    category: "Finance",
+    cover: "/covers/tresorerie-freelance.png",
+    bestseller: false,
+    highlights: [
+      "Comprendre pourquoi les revenus irréguliers déstabilisent la trésorerie, au-delà du seul niveau de chiffre d'affaires",
+      "Construire un matelas de sécurité réaliste, calculé à partir de tes charges fixes incompressibles",
+      "Se verser un salaire fixe mensuel et provisionner automatiquement cotisations et impôts à chaque encaissement",
+      "Anticiper et lisser les creux d'activité avec un prévisionnel de trésorerie simple à tenir à jour chaque semaine",
+      "Accélérer tes encaissements : acomptes, délais de paiement, relances progressives et gestion des impayés",
+      "36 prompts prêts à l'emploi intégrés au guide, classés en 6 catégories — aucun pack séparé à acheter",
+    ],
+    faq: [
+      {
+        question: "Ce guide contient-il vraiment les prompts, ou faut-il acheter un pack séparé ?",
+        answer:
+          "Les 36 prompts sont intégrés directement dans ce guide (partie 7), au format 2 en 1. Il n'existe pas de pack de prompts séparé — tout est inclus dans cet unique achat.",
+      },
+      {
+        question: "Ce guide remplace-t-il un expert-comptable ?",
+        answer:
+          "Non. Il te donne une méthode et des outils concrets pour piloter ta trésorerie au quotidien, mais ne remplace pas les conseils d'un expert-comptable pour une situation fiscale ou financière complexe, ni un conseiller bancaire pour une décision de financement structurante.",
+      },
+      {
+        question: "Faut-il un compte bancaire professionnel séparé pour appliquer cette méthode ?",
+        answer:
+          "Ce n'est obligatoire qu'à partir d'un certain seuil de chiffre d'affaires en micro-entreprise, mais fortement recommandé dès le départ : mélanger dépenses personnelles et professionnelles sur un même compte rend le suivi de trésorerie beaucoup plus confus.",
+      },
+    ],
+    available: true,
+    promptPreview: [
+      {
+        title: "Diagnostiquer sa régularité",
+        text: "Voici mes encaissements réels des 12 derniers mois : [liste les montants mois par mois]. Aide-moi à identifier mes mois les plus faibles et les plus forts, et les schémas récurrents.",
+      },
+      {
+        title: "Calculer son salaire fixe mensuel",
+        text: "Aide-moi à calculer un salaire mensuel fixe réaliste à partir de mon chiffre d'affaires annuel encaissé de [montant] et de mes charges professionnelles annuelles de [montant].",
+      },
+      {
+        title: "Structurer une relance de paiement",
+        text: "Rédige une première relance amicale à envoyer à un client dont la facture est en retard de [nombre] jours, sur un ton factuel et non accusateur.",
+      },
+    ],
+    offers: [
+      {
+        id: "unique",
+        label: "Guide complet",
+        price: "18€",
+        originalPrice: "27€",
+        description: "Le guide entier (6 parties) + la bibliothèque de 36 prompts intégrée",
+        includes: [
+          "Résumé exécutif et Introduction",
+          "Partie 1 — Comprendre pourquoi les revenus irréguliers déstabilisent la trésorerie",
+          "Partie 2 — Construire un matelas de sécurité réaliste",
+          "Partie 3 — Se verser un salaire fixe et provisionner automatiquement",
+          "Partie 4 — Anticiper et lisser les creux d'activité",
+          "Partie 5 — Accélérer les encaissements et réduire les délais de paiement",
+          "Partie 6 — S'équiper et mettre en place sa routine de pilotage",
+          "Partie 7 — Bibliothèque de 36 prompts",
+          "PDF · 39 pages",
+        ],
+        pdfFile: "guido-tresorerie-freelance",
+      },
+    ],
+    crossSell: ["micro-entreprise-2026", "freelance-40ans"],
   },
   {
     slug: "sommeil-ecrans",
@@ -1619,6 +1783,75 @@ export const guides: Guide[] = [
     bundleOf: [
       { guideSlug: "marketing-contenu", offerId: "unique" },
       { guideSlug: "algorithmes", offerId: "unique" },
+    ],
+  },
+  {
+    slug: "pack-lancement-independant",
+    title: "Le Pack Lancement Indépendant : sécuriser sa transition, créer sa structure et gérer sa trésorerie",
+    tagline: "Les 3 guides essentiels pour se lancer en freelance sereinement, réunis en un seul achat",
+    pitch:
+      "Le pack réunit trois guides complets et complémentaires : « Devenir freelance après 40 ans » (sécuriser sa transition financière, valoriser son expérience, trouver ses premiers clients), « Créer sa micro-entreprise en 2026 » (immatriculation, TVA, facturation) et « Gérer sa trésorerie quand les revenus sont irréguliers » (matelas de sécurité, salaire fixe, lisser les creux d'activité). Trois étapes du même parcours — se décider, se structurer, tenir dans la durée — réunies en un seul achat, même si elles appartiennent à deux sections différentes du site (Reconversion et Finance).",
+    seoTitle: "Pack Lancement Indépendant : 3 guides réunis | Guido",
+    seoDescription: "Le pack qui réunit sécuriser sa transition freelance, créer sa micro-entreprise et gérer sa trésorerie : 3 guides complets, 67 prompts intégrés, à prix réduit.",
+    price: "35€",
+    format: "3 PDF · 3 guides complets",
+    audience: "Futurs et nouveaux freelances et auto-entrepreneurs qui veulent aborder les 3 étapes clés du lancement (sécuriser sa transition, se structurer, gérer sa trésorerie) sans acheter les 3 guides séparément",
+    category: "Packs",
+    crossListCategories: ["Reconversion", "Finance"],
+    cover: "/covers/pack-lancement-independant.png",
+    bestseller: false,
+    highlights: [
+      "Le guide complet « Devenir freelance après 40 ans » : sécuriser sa transition, valoriser son expérience, trouver ses premiers clients",
+      "Le guide complet « Créer sa micro-entreprise en 2026 » : immatriculation, TVA, facturation, 31 prompts intégrés",
+      "Le guide complet « Gérer sa trésorerie quand les revenus sont irréguliers » : matelas de sécurité, salaire fixe, 36 prompts intégrés",
+      "67 prompts au total, intégrés directement dans les deux guides Finance — aucun pack de prompts séparé à acheter",
+      "35€ au lieu de 55€ en achetant les 3 guides séparément (19€ + 18€ + 18€)",
+      "Trois fichiers PDF distincts et téléchargeables séparément — aucun contenu recréé ou dupliqué par rapport aux guides déjà en ligne",
+    ],
+    faq: [
+      {
+        question: "Est-ce que j'obtiens les 3 guides complets, prompts inclus ?",
+        answer:
+          "Oui. Le pack donne accès aux 3 guides complets tels que vendus séparément : le guide freelance après 40 ans (offre « Guide seul »), et les deux guides Finance avec leurs bibliothèques de prompts intégrées (31 pour la micro-entreprise, 36 pour la trésorerie) — soit 67 prompts au total, sans rien de recréé ou de résumé.",
+      },
+      {
+        question: "Pourquoi ce pack mélange-t-il des guides de sections différentes (Reconversion et Finance) ?",
+        answer:
+          "Parce que ce sont les 3 étapes du même parcours pour qui se lance en indépendant : décider et sécuriser sa transition, créer sa structure, puis tenir financièrement dans la durée. Les regrouper malgré leurs sections différentes, c'est justement la valeur de ce pack.",
+      },
+      {
+        question: "Je reçois combien de fichiers, et sous quelle forme ?",
+        answer:
+          "L'achat donne accès aux 3 PDF existants, chacun téléchargeable séparément depuis ton compte, exactement comme si tu avais acheté les 3 guides un par un.",
+      },
+      {
+        question: "Le prix de lancement à 29€ est-il permanent ?",
+        answer:
+          "Non, c'est une offre de lancement limitée dans le temps. Passé ce délai, le pack reste à 35€, toujours moins cher que les 3 guides achetés séparément (55€).",
+      },
+    ],
+    available: true,
+    offers: [
+      {
+        id: "unique",
+        label: "Pack complet 3 guides",
+        price: "35€",
+        originalPrice: "55€",
+        launchPromo: { price: "29€", expiresAt: "2026-07-29T23:59:59" },
+        description: "Les 3 guides complets, avec leurs prompts intégrés, en un seul achat",
+        includes: [
+          "Devenir freelance après 40 ans (Guide seul) — PDF · 49 pages",
+          "Créer sa micro-entreprise en 2026 — 31 prompts intégrés, PDF · 52 pages",
+          "Gérer sa trésorerie quand les revenus sont irréguliers — 36 prompts intégrés, PDF · 39 pages",
+          "67 prompts au total, dans 3 fichiers PDF téléchargeables séparément",
+        ],
+      },
+    ],
+    crossSell: ["carriere-personnalite"],
+    bundleOf: [
+      { guideSlug: "freelance-40ans", offerId: "seul" },
+      { guideSlug: "micro-entreprise-2026", offerId: "unique" },
+      { guideSlug: "tresorerie-freelance", offerId: "unique" },
     ],
   },
 ];

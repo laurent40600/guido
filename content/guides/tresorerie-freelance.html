@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Gérer sa trésorerie quand les revenus sont irréguliers</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 235mm; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 25pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 8pt; font-size: 11.5pt; }
+  .toc li span { font-style: italic; font-size: 10.5pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-example { background: #f1efec; border-left: 5px solid #8a8478; }
+  .box-example .box-title { color: #5c574c; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1E2A4A; font-size: 12.5pt; margin-bottom: 4pt; }
+  .faq-a { margin-top: 4pt; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14pt 0 18pt; font-size: 11pt; }
+  th, td { border: 1px solid #d6d3ce; padding: 7pt 9pt; text-align: left; }
+  th { background: #1E2A4A; color: #fff; }
+  tr:nth-child(even) td { background: #f8f6f2; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Gérer sa trésorerie quand les revenus sont irréguliers</h1>
+  <p class="tagline">Le guide pour freelances et auto-entrepreneurs</p>
+  <p class="meta">Un guide complet + une bibliothèque de 36 prompts intégrée,<br/>pour construire un matelas de sécurité, lisser ses revenus<br/>et ne plus subir les creux d'activité</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Résumé exécutif<span>Les principes clés pour sortir du stress de trésorerie</span></li>
+    <li>Introduction<span>Pourquoi la trésorerie, pas le chiffre d'affaires, est ce qui compte vraiment</span></li>
+    <li>Partie 1 — Comprendre pourquoi les revenus irréguliers déstabilisent la trésorerie<span>Le décalage encaissement/activité, la saisonnalité, le piège du chiffre d'affaires</span></li>
+    <li>Partie 2 — Construire un matelas de sécurité réaliste<span>Calculer ses charges incompressibles, la règle des mois de couverture</span></li>
+    <li>Partie 3 — Se verser un salaire fixe et provisionner automatiquement<span>La méthode des enveloppes, séparer pro et personnel</span></li>
+    <li>Partie 4 — Anticiper et lisser les creux d'activité<span>Le prévisionnel de trésorerie simple, diversifier ses sources de revenus</span></li>
+    <li>Partie 5 — Accélérer les encaissements et réduire les délais de paiement<span>Conditions de paiement, relances, gérer un impayé</span></li>
+    <li>Partie 6 — S'équiper et mettre en place sa routine de pilotage<span>Outils de suivi, routine hebdomadaire, checklist de mise en place</span></li>
+    <li>Questions / Réponses</li>
+    <li>Annexe — Lexique des termes utilisés</li>
+    <li>Ressources complémentaires</li>
+    <li>Conclusion</li>
+    <li>Partie 7 — Bibliothèque de prompts<span>36 prompts prêts à l'emploi, classés en 6 catégories</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Résumé exécutif</h2>
+  <p class="lede">Si tu ne devais retenir que l'essentiel de ce guide avant de le lire en détail, voici les points clés.</p>
+
+  <h3>Les 5 principes pour sortir du stress de trésorerie</h3>
+  <ul>
+    <li>Raisonner en trésorerie réelle (ce qui est sur le compte) plutôt qu'en chiffre d'affaires facturé.</li>
+    <li>Construire un matelas de sécurité couvrant plusieurs mois de charges fixes, avant de se sentir en sécurité.</li>
+    <li>Se verser un revenu mensuel fixe depuis un compte dédié, indépendamment du rythme réel des encaissements.</li>
+    <li>Provisionner cotisations et impôts dès l'encaissement, jamais après coup.</li>
+    <li>Suivre un prévisionnel simple pour voir venir les creux d'activité plutôt que de les subir.</li>
+  </ul>
+
+  <h3>Ce que ce guide ne remplace pas</h3>
+  <p>Ce guide donne une méthode et des outils concrets pour piloter sa trésorerie au quotidien. Il ne remplace pas les conseils d'un expert-comptable pour une situation fiscale ou financière complexe, ni un conseiller bancaire pour une décision de financement structurante.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">Une précision essentielle avant de commencer</span>
+    <p>Les montants utilisés dans les exemples de ce guide sont volontairement génériques et servent à illustrer une méthode, pas des seuils réglementaires. Les taux de cotisations sociales et seuils fiscaux évoluent chaque année : vérifie toujours les chiffres exacts sur les sites officiels (URSSAF, impots.gouv.fr) avant de construire ton propre prévisionnel.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Introduction</h2>
+
+  <h3>Pourquoi la trésorerie, pas le chiffre d'affaires, est ce qui compte vraiment</h3>
+  <p>Un freelance ou un auto-entrepreneur qui facture bien peut quand même se retrouver en difficulté financière. La raison est presque toujours la même : il raisonne en chiffre d'affaires facturé, pas en trésorerie réellement disponible sur son compte au moment où les charges tombent. Entre une facture émise et son paiement effectif, il peut s'écouler plusieurs semaines, parfois plusieurs mois — un décalage qui, cumulé à des revenus irréguliers d'un mois sur l'autre, crée un stress financier permanent même quand l'activité se porte bien sur l'année.</p>
+  <p>Ce guide part d'un principe simple : la irrégularité des revenus n'est pas un problème à éliminer (elle fait partie du travail indépendant), mais un problème à gérer avec une méthode, exactement comme n'importe quelle autre contrainte du métier.</p>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>À la fin de ce guide, tu sauras construire un matelas de sécurité réaliste, te verser un revenu mensuel stable même quand tes encaissements ne le sont pas, anticiper tes creux d'activité avant qu'ils ne deviennent un problème, et accélérer tes encaissements pour réduire le décalage entre ton travail et ton argent disponible.</p>
+
+  <h3>Qui est concerné par ce guide</h3>
+  <p>Ce guide s'adresse à toute personne en activité indépendante dont les revenus varient d'un mois sur l'autre : freelances facturés à la mission, auto-entrepreneurs avec une activité saisonnière, consultants entre deux contrats, créateurs dont les ventes fluctuent. Que l'irrégularité soit ponctuelle ou structurelle à ton activité, la méthode reste la même.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Deux profils concernés</span>
+    <p>Yasmine, graphiste freelance, facture des missions ponctuelles avec des délais de paiement de 30 à 60 jours, et connaît un creux d'activité chaque été. Karim, formateur indépendant, a une activité concentrée sur l'année scolaire avec des mois d'été quasiment sans revenu. Les deux ont besoin de la même méthode : lisser dans le temps ce qui arrive de façon irrégulière.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">Une précision importante</span>
+    <p>Ce guide couvre la gestion de trésorerie personnelle et professionnelle d'un indépendant. Il ne couvre pas la comptabilité légale de ton activité (déjà traitée dans nos guides fiscaux dédiés), ni les questions de financement d'investissement lourd, qui relèvent d'un accompagnement bancaire ou d'un expert-comptable.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 1 — Comprendre pourquoi les revenus irréguliers déstabilisent la trésorerie</h2>
+
+  <h3>Le décalage entre l'activité et l'encaissement</h3>
+  <p>Le travail que tu factures aujourd'hui n'est presque jamais l'argent que tu as aujourd'hui. Entre la réalisation d'une mission, l'émission de la facture, et le paiement effectif par le client, il peut s'écouler plusieurs semaines. Ce décalage, invisible tant qu'il reste stable, devient un vrai problème dès que le rythme de tes missions varie : un mois de forte activité peut correspondre à un mois de trésorerie faible, simplement parce que les encaissements liés à ce travail arriveront plus tard.</p>
+
+  <h3>La saisonnalité, structurelle ou ponctuelle</h3>
+  <p>Certaines activités ont une saisonnalité prévisible (formation calée sur l'année scolaire, activité liée à des périodes de l'année précises). D'autres subissent une irrégularité plus imprévisible, liée au rythme d'arrivée des missions ou des clients. Dans les deux cas, la bonne nouvelle est la même : une fois identifiée, cette variation peut être anticipée et lissée avec une méthode, plutôt que subie mois après mois.</p>
+
+  <h3>Le piège de raisonner en chiffre d'affaires</h3>
+  <p>Un chiffre d'affaires annuel confortable peut masquer une trésorerie extrêmement tendue certains mois si les encaissements sont mal répartis dans le temps. C'est l'erreur la plus fréquente chez les nouveaux indépendants : se rassurer avec un total annuel, sans jamais regarder la répartition mois par mois de ce qui arrive réellement sur le compte.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Le piège du bon chiffre d'affaires annuel</span>
+    <p>Un freelance qui facture 40 000 € sur l'année peut sembler à l'aise. Mais si 60 % de ce montant est encaissé sur seulement 4 mois de l'année, les 8 autres mois représentent une vraie tension de trésorerie, malgré un total annuel confortable qui ne raconte pas cette réalité mois par mois.</p>
+  </div>
+
+  <h4>Exercice pratique : ton diagnostic de régularité</h4>
+  <p>Reprends tes encaissements réels des 12 derniers mois (pas ton chiffre d'affaires facturé, ce qui est vraiment arrivé sur ton compte) et note-les mois par mois. Identifie tes 2-3 mois les plus faibles et les 2-3 mois les plus forts. Ce diagnostic simple est le point de départ de tout le reste de ce guide.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le décalage entre l'activité et l'encaissement crée un stress de trésorerie même quand l'activité se porte bien.</p>
+    <p>La saisonnalité, prévisible ou non, peut être anticipée une fois identifiée mois par mois.</p>
+    <p>Un chiffre d'affaires annuel confortable peut masquer une trésorerie tendue certains mois précis.</p>
+  </div>
+
+  <h4>Étude de cas : la prise de conscience de Yasmine</h4>
+  <p>Yasmine, graphiste freelance depuis 2 ans, se sentait en permanence sous tension financière malgré un chiffre d'affaires annuel qu'elle jugeait correct. En reprenant ses encaissements réels mois par mois, elle a découvert que juillet et août représentaient systématiquement moins de 10 % de son chiffre d'affaires annuel cumulé, alors qu'elle continuait à dépenser au même rythme toute l'année.</p>
+  <p>Cette prise de conscience lui a permis de comprendre que son problème n'était pas un manque de chiffre d'affaires global, mais une mauvaise répartition de ses dépenses face à une activité prévisiblement plus faible l'été — un problème de lissage, pas de volume d'activité.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Un problème de trésorerie n'est pas toujours un problème de chiffre d'affaires insuffisant : c'est souvent un problème de répartition dans le temps, qui se résout avec une méthode de lissage plutôt qu'en travaillant davantage.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 2 — Construire un matelas de sécurité réaliste</h2>
+
+  <h3>Calculer ses charges fixes incompressibles</h3>
+  <p>Avant de calculer combien mettre de côté, il faut savoir précisément combien tu dépenses chaque mois de façon incompressible : loyer ou crédit, charges courantes, alimentation, assurances, cotisations minimales. Ce montant, souvent sous-estimé, est la base de tout calcul de matelas de sécurité réaliste.</p>
+
+  <h3>La règle des mois de couverture</h3>
+  <p>Une référence courante consiste à viser un matelas de sécurité couvrant 3 à 6 mois de charges fixes incompressibles, personnelles et professionnelles cumulées. Le montant exact dépend de la stabilité de ton activité : plus tes revenus sont irréguliers ou saisonniers, plus la fourchette haute (5-6 mois) devient pertinente plutôt qu'un objectif minimal.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Calculer son matelas cible</span>
+    <p>Pour des charges fixes incompressibles de 1 800 € par mois (personnelles et professionnelles cumulées), un matelas de sécurité de 4 mois représente 7 200 €. Ce montant n'est pas à constituer d'un coup, mais progressivement, en se fixant une étape intermédiaire réaliste (par exemple 1 mois de charges, puis 2, puis 3) plutôt qu'un objectif qui paraît hors de portée.</p>
+  </div>
+
+  <h3>Où placer ce matelas de sécurité</h3>
+  <p>Ce montant doit rester accessible rapidement en cas de besoin, ce qui exclut les placements bloqués ou trop risqués. Un compte séparé de ton compte courant (livret ou compte d'épargne classique) est généralement adapté : suffisamment accessible pour un besoin réel, mais suffisamment séparé pour ne pas être dépensé par erreur dans le quotidien.</p>
+
+  <h4>Exercice pratique : ton plan de constitution progressif</h4>
+  <p>À partir de ton diagnostic de charges fixes, fixe-toi un montant mensuel réaliste à mettre de côté (même modeste au départ) jusqu'à atteindre ton objectif de mois de couverture. Un virement automatique programmé juste après chaque encaissement significatif évite de devoir "penser" à le faire chaque mois.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le matelas de sécurité se calcule à partir de charges fixes réelles, personnelles et professionnelles cumulées.</p>
+    <p>3 à 6 mois de couverture est une référence courante, à ajuster selon l'irrégularité réelle de ton activité.</p>
+    <p>Un compte séparé et accessible reste le meilleur emplacement pour ce matelas.</p>
+  </div>
+
+  <h4>Étude de cas : la constitution progressive de Karim</h4>
+  <p>Karim, formateur indépendant avec des mois d'été quasiment sans revenu, s'est fixé un objectif de matelas de 5 mois de charges, qui lui semblait au départ hors de portée. Plutôt que de viser ce montant d'un coup, il a mis en place un virement automatique de 10 % de chaque encaissement vers un compte séparé, sans se fixer de délai précis pour atteindre l'objectif final.</p>
+  <p>En 18 mois, sans jamais ressentir cet effort comme une contrainte lourde, il a constitué un matelas suffisant pour aborder ses étés sereinement, sans avoir à réduire son niveau de vie de façon perceptible d'un mois sur l'autre.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Un objectif de matelas de sécurité qui paraît hors de portée devient réaliste dès qu'il est découpé en un pourcentage automatique régulier, plutôt que perçu comme un montant fixe à trouver d'un coup.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 3 — Se verser un salaire fixe et provisionner automatiquement</h2>
+
+  <h3>Le principe de la méthode des enveloppes</h3>
+  <p>Plutôt que de dépenser directement depuis le compte où arrivent tes encaissements irréguliers, la méthode des enveloppes consiste à répartir chaque encaissement, dès son arrivée, entre plusieurs destinations distinctes : un virement fixe mensuel vers ton compte personnel (ton "salaire"), une provision pour cotisations et impôts, une part pour le matelas de sécurité, et le reste pour les charges professionnelles courantes.</p>
+
+  <h3>Se verser un salaire fixe, indépendant du rythme des encaissements</h3>
+  <p>Fixe-toi un montant mensuel stable à te verser, calculé à partir d'une moyenne réaliste de tes revenus sur l'année (pas sur ton meilleur mois). Ce montant reste identique chaque mois, que l'encaissement du mois ait été élevé ou faible — c'est justement ce qui lisse ton niveau de vie face à des revenus irréguliers.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Calculer son salaire fixe mensuel</span>
+    <p>Pour un chiffre d'affaires annuel encaissé de 36 000 €, après déduction des charges professionnelles et provisions de cotisations, un revenu net disponible de 24 000 € sur l'année représente un salaire fixe mensuel réaliste de 2 000 €, versé chaque mois indépendamment de ce qui a été réellement encaissé ce mois précis.</p>
+  </div>
+
+  <h3>Provisionner cotisations et impôts dès l'encaissement</h3>
+  <p>Plutôt que d'attendre l'échéance de déclaration pour découvrir le montant à payer, mets de côté un pourcentage de chaque encaissement dès son arrivée, calculé à partir de ton taux de cotisations réel. Cette habitude évite la confusion classique entre chiffre d'affaires encaissé et revenu réellement disponible, une des causes les plus fréquentes de difficultés de trésorerie chez les indépendants.</p>
+
+  <h3>Séparer strictement trésorerie professionnelle et personnelle</h3>
+  <p>Un compte professionnel dédié, distinct de ton compte personnel, rend la méthode des enveloppes beaucoup plus simple à appliquer et à suivre : tu vois clairement ce qui appartient à l'activité et ce qui a déjà été "payé" sous forme de salaire, plutôt que de mélanger les deux dans un même solde qui ne raconte rien de clair.</p>
+
+  <h4>Exercice pratique : construire tes propres enveloppes</h4>
+  <p>À partir de ton chiffre d'affaires annuel moyen, définis un pourcentage cible pour chaque enveloppe (salaire fixe, provisions cotisations/impôts, matelas de sécurité, charges professionnelles). Applique ce découpage à chaque nouvel encaissement, par virement immédiat si possible, plutôt que de le faire mentalement sans mouvement réel d'argent.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La méthode des enveloppes répartit chaque encaissement en plusieurs destinations dès son arrivée.</p>
+    <p>Un salaire fixe mensuel, calculé sur une moyenne annuelle réaliste, lisse ton niveau de vie face à des revenus irréguliers.</p>
+    <p>Provisionner cotisations et impôts dès l'encaissement évite la confusion entre chiffre d'affaires et revenu disponible.</p>
+  </div>
+
+  <h4>Étude de cas : le système de Yasmine</h4>
+  <p>Yasmine a mis en place un système simple : à chaque encaissement client, elle vire immédiatement 25 % vers un compte de provisions cotisations/impôts, 10 % vers son matelas de sécurité, et garde le reste sur son compte professionnel. Chaque fin de mois, elle se verse un salaire fixe de 1 800 € vers son compte personnel, quel que soit le solde réel de son compte professionnel ce mois-là.</p>
+  <p>Ce système lui a permis de traverser ses étés habituellement difficiles sans stress financier, le compte professionnel jouant désormais le rôle de tampon entre des encaissements irréguliers et un niveau de vie personnel stable.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Un compte professionnel qui absorbe l'irrégularité des encaissements, couplé à un salaire personnel fixe, transforme un revenu instable en niveau de vie stable — sans changer le montant total gagné sur l'année.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Partie 4 — Anticiper et lisser les creux d'activité</h2>
+
+  <h3>Construire un prévisionnel de trésorerie simple</h3>
+  <p>Un prévisionnel de trésorerie n'a pas besoin d'être complexe pour être utile : un tableau mensuel simple, avec les encaissements attendus (à partir de tes factures en cours et de ton historique) et les sorties prévues (charges fixes, provisions, salaire), suffit à visualiser plusieurs mois à l'avance et à repérer un creux avant qu'il ne devienne un problème.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Mets à jour ton prévisionnel chaque semaine plutôt qu'une fois par mois : les ajustements sont plus petits et plus faciles à absorber que si tu découvres un écart important d'un coup après plusieurs semaines sans suivi.</p>
+  </div>
+
+  <h3>Identifier ses creux récurrents à l'avance</h3>
+  <p>À partir de ton diagnostic de régularité (vu en Partie 1), identifie les mois qui reviennent structurellement plus faibles d'une année sur l'autre. Cette anticipation permet de préparer ces périodes en amont (renforcement temporaire du matelas, réduction de dépenses non essentielles) plutôt que de les découvrir chaque année avec la même surprise.</p>
+
+  <h3>Diversifier pour lisser, sans se disperser</h3>
+  <p>Ajouter une source de revenus complémentaire dont la saisonnalité est différente de ton activité principale peut réduire mécaniquement l'irrégularité globale. L'objectif n'est pas de multiplier les activités sans lien entre elles, mais de trouver un complément cohérent avec ton expertise, dont le rythme compense partiellement les creux de ton activité principale.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Diversifier intelligemment</span>
+    <p>Karim, formateur avec des étés creux, a ajouté une activité de conseil ponctuel pour des entreprises, dont la demande est justement plus présente en dehors de la période scolaire. Cette diversification cohérente avec son expertise a réduit son irrégularité globale, sans le disperser sur une activité sans lien avec son métier.</p>
+  </div>
+
+  <h4>Exercice pratique : ton calendrier d'anticipation</h4>
+  <p>Sur un calendrier annuel simple, marque tes mois identifiés comme creux récurrents, et note pour chacun une action concrète à préparer en amont (prospection anticipée, renforcement du matelas, réduction temporaire d'une dépense non essentielle). Prépare ces actions avant d'entrer dans le creux, pas pendant.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un prévisionnel de trésorerie simple, mis à jour régulièrement, permet de voir venir un creux avant qu'il ne devienne un problème.</p>
+    <p>Les creux récurrents identifiés à l'avance peuvent être préparés plutôt que subis chaque année.</p>
+    <p>Une diversification cohérente avec son expertise, sur un rythme différent, réduit l'irrégularité globale sans disperser l'activité.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Partie 5 — Accélérer les encaissements et réduire les délais de paiement</h2>
+
+  <h3>Revoir ses conditions de paiement dès le devis</h3>
+  <p>Demander un acompte à la commande (souvent 30 à 50 % selon les pratiques du secteur) réduit mécaniquement le décalage entre le début du travail et le premier encaissement. Un délai de paiement plus court que la norme de ton secteur, quand c'est négociable, réduit d'autant le temps pendant lequel ton travail est déjà réalisé mais pas encore payé.</p>
+
+  <h3>Relancer efficacement sans dégrader la relation client</h3>
+  <p>Une relance envoyée dès l'échéance dépassée, avec un ton factuel et professionnel plutôt qu'agressif, reste la méthode la plus efficace pour la grande majorité des retards de paiement, qui viennent souvent d'un oubli plutôt que d'un refus de payer. Une escalade progressive du ton, sur plusieurs relances espacées, permet de garder la relation intacte tout en augmentant la pression au fil du temps si nécessaire.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Une séquence de relance progressive</span>
+    <p>Une relance amicale à J+7 après l'échéance (« petit rappel, avez-vous bien reçu la facture ? »), une relance plus ferme à J+15 (rappel du délai contractuel), puis une mise en demeure formelle à J+30 en l'absence de réponse : cette progression donne toutes les chances à une résolution amiable avant d'envisager une procédure plus lourde.</p>
+  </div>
+
+  <h3>Que faire face à un impayé qui se prolonge</h3>
+  <p>Au-delà d'un certain délai sans réponse malgré plusieurs relances, une mise en demeure formelle (par lettre recommandée) constitue une étape nécessaire avant toute procédure judiciaire éventuelle. Pour des montants significatifs, l'appui d'un professionnel du droit ou d'une société de recouvrement devient pertinent plutôt que de continuer à relancer seul indéfiniment.</p>
+
+  <h4>Exercice pratique : ta politique de paiement type</h4>
+  <p>Définis par écrit tes conditions de paiement standard (pourcentage d'acompte, délai de règlement, pénalités de retard) et intègre-les systématiquement dans tes devis et CGV, plutôt que de les négocier au cas par cas à chaque nouveau client.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un acompte à la commande et un délai de paiement court réduisent mécaniquement le décalage encaissement/activité.</p>
+    <p>Une relance factuelle et progressive reste efficace pour la grande majorité des retards de paiement.</p>
+    <p>Une politique de paiement définie à l'avance, intégrée aux devis et CGV, évite les négociations au cas par cas.</p>
+  </div>
+
+  <h4>Étude de cas : le changement de politique de Yasmine</h4>
+  <p>Yasmine facturait historiquement l'intégralité de ses missions à la livraison, avec un délai de paiement de 30 jours, ce qui créait un décalage important entre son travail et son encaissement. Elle a mis en place un acompte de 40 % à la commande pour toute nouvelle mission, et a réduit son délai de paiement standard à 15 jours dans ses nouvelles CGV.</p>
+  <p>Ce changement, accepté sans difficulté par l'essentiel de ses clients, a réduit significativement son décalage moyen entre travail réalisé et trésorerie disponible, sans affecter sa relation commerciale avec sa clientèle existante.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Revoir ses conditions de paiement standard, plutôt que de les négocier une par une, change durablement le rythme des encaissements sans nécessiter de renégocier chaque mission individuellement.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>8. Partie 6 — S'équiper et mettre en place sa routine de pilotage</h2>
+
+  <h3>Les outils pour suivre sa trésorerie</h3>
+  <p>Un tableau simple (tableur ou application dédiée) suffit pour la plupart des indépendants : il n'est pas nécessaire d'investir dans un outil complexe pour appliquer les principes de ce guide. Certaines applications bancaires ou de gestion permettent de synchroniser automatiquement les mouvements et de visualiser un prévisionnel sans ressaisie manuelle.</p>
+
+  <h3>Une routine hebdomadaire de suivi</h3>
+  <p>Bloque un créneau fixe chaque semaine (15 à 20 minutes suffisent) pour mettre à jour ton prévisionnel, vérifier tes factures en attente de paiement, et ajuster tes enveloppes si besoin. Cette régularité évite de découvrir un écart important après plusieurs semaines sans suivi, au moment où il devient plus difficile à corriger.</p>
+
+  <h3>Un bilan mensuel pour ajuster sur la durée</h3>
+  <p>Une fois par mois, prends le temps de comparer ton prévisionnel aux encaissements réels du mois écoulé, et ajuste tes hypothèses pour le mois suivant. Ce bilan régulier affine progressivement la précision de ton prévisionnel, mois après mois, plutôt que de repartir d'hypothèses approximatives à chaque fois.</p>
+
+  <div class="box box-tip">
+    <span class="box-title">💎 Astuce</span>
+    <p>Note chaque écart significatif entre ton prévisionnel et la réalité, avec sa cause probable. Après quelques mois, ce journal fait apparaître des schémas récurrents (un client qui paie systématiquement en retard, un mois toujours plus faible) que tu peux anticiper directement dans tes prévisionnels suivants.</p>
+  </div>
+
+  <h4>Exercice pratique : ta checklist de mise en place</h4>
+  <ul class="checklist">
+    <li>Calculer ses charges fixes incompressibles, personnelles et professionnelles.</li>
+    <li>Ouvrir un compte professionnel séparé si ce n'est pas déjà fait.</li>
+    <li>Définir son salaire fixe mensuel à partir d'une moyenne annuelle réaliste.</li>
+    <li>Mettre en place les virements automatiques de provisionnement à chaque encaissement.</li>
+    <li>Construire un prévisionnel de trésorerie simple sur les 6 prochains mois.</li>
+    <li>Revoir ses conditions de paiement standard (acompte, délai) dans ses devis et CGV.</li>
+    <li>Bloquer un créneau hebdomadaire fixe de suivi de trésorerie.</li>
+  </ul>
+
+  <h3>Les erreurs les plus fréquentes à cette étape</h3>
+  <p>La première erreur consiste à vouloir un système parfait dès le départ, ce qui retarde indéfiniment la mise en place. La seconde est d'abandonner le suivi dès que la trésorerie s'améliore, en pensant que le problème est définitivement résolu. La troisième est de ne pas ajuster son salaire fixe quand l'activité change durablement (croissance ou baisse structurelle), ce qui finit par déconnecter le système de la réalité.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Repartir d'un système trop complexe</span>
+    <p>Un indépendant qui tente de suivre sa trésorerie avec un tableau à quinze colonnes et des catégories très fines abandonne souvent après quelques semaines, faute de temps pour l'alimenter sérieusement chaque semaine. Un tableau à cinq lignes (encaissements attendus, salaire fixe, provisions, matelas, solde) suivi religieusement fait généralement plus gagner en visibilité qu'un système sophistiqué laissé à l'abandon après le premier mois.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un système simple mis en place immédiatement vaut mieux qu'un système parfait sans cesse repoussé.</p>
+    <p>Le suivi de trésorerie reste utile même quand la situation s'améliore, pour ne pas revenir aux anciennes habitudes.</p>
+    <p>Le salaire fixe et les pourcentages de provisionnement doivent être révisés quand l'activité change durablement.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>9. Questions / Réponses</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Combien de temps faut-il pour constituer un vrai matelas de sécurité ?</p>
+    <p class="faq-a">Ça dépend entièrement de ta capacité d'épargne mensuelle et de ton objectif de mois de couverture. Avec un pourcentage automatique régulier plutôt qu'un objectif figé dans le temps, la plupart des indépendants constituent un matelas confortable en 12 à 24 mois, sans que cet effort soit ressenti comme une contrainte lourde au quotidien.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Que faire si je n'arrive pas à me verser un salaire fixe certains mois ?</p>
+    <p class="faq-a">C'est le rôle du matelas de sécurité et du compte professionnel tampon : si un mois faible ne permet pas de couvrir le salaire fixe habituel, le compte professionnel (alimenté par les mois précédents plus forts) absorbe cet écart. Si cette situation devient récurrente, c'est le signal qu'il faut réviser ton salaire fixe à la baisse plutôt que d'épuiser ton matelas de sécurité.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Faut-il un compte bancaire professionnel séparé même en micro-entreprise ?</p>
+    <p class="faq-a">Ce n'est obligatoire qu'à partir d'un certain seuil de chiffre d'affaires, mais fortement recommandé dès le départ pour appliquer sereinement la méthode des enveloppes de ce guide : mélanger dépenses personnelles et professionnelles sur un même compte rend le suivi de trésorerie beaucoup plus confus.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Comment gérer une année exceptionnellement plus faible que les précédentes ?</p>
+    <p class="faq-a">Une baisse ponctuelle se gère avec le matelas de sécurité déjà constitué. Une baisse qui semble durable doit t'amener à revoir ton salaire fixe mensuel à la baisse plus rapidement que tu ne le voudrais, plutôt que d'épuiser ton matelas en espérant un rebond qui n'arrive pas.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Les pourcentages de provisionnement proposés dans ce guide sont-ils universels ?</p>
+    <p class="faq-a">Non, ce sont des exemples pédagogiques à adapter à ta situation réelle : ton taux de cotisations sociales précis, ta tranche d'imposition, et le niveau de charges professionnelles de ton activité déterminent les pourcentages qui te conviennent réellement. Vérifie ton taux exact sur les sites officiels avant de fixer tes propres enveloppes.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Est-ce que ce système fonctionne aussi pour une activité tout juste démarrée, sans historique ?</p>
+    <p class="faq-a">Oui, avec un ajustement : sans historique d'encaissements, fixe ton salaire mensuel sur une hypothèse prudente plutôt qu'optimiste, et révise-la après quelques mois d'activité réelle une fois que tu as un premier historique à partir duquel calculer une vraie moyenne.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Un prêt ou une ligne de crédit peut-il remplacer un matelas de sécurité ?</p>
+    <p class="faq-a">Non, et ce n'est pas recommandé comme solution principale : un crédit a un coût et doit être remboursé, ce qui aggrave la pression de trésorerie plutôt que de la résoudre durablement. Un matelas constitué progressivement reste la solution la plus saine, un financement bancaire restant pertinent seulement pour un besoin d'investissement ponctuel et identifié, pas pour absorber une irrégularité structurelle de revenus.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Dois-je appliquer les mêmes pourcentages d'enveloppes toute l'année, même pendant un creux ?</p>
+    <p class="faq-a">Le pourcentage de provisionnement pour les cotisations et impôts reste calé sur ce que tu encaisses réellement, donc il s'ajuste naturellement. En revanche, ton salaire fixe et ta part vers le matelas de sécurité sont justement pensés pour rester stables pendant un creux, absorbés par le compte professionnel — c'est tout l'intérêt de la méthode plutôt que de tout recalculer chaque mois.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Comment savoir si mon irrégularité de revenus est vraiment structurelle ou juste une mauvaise année ?</p>
+    <p class="faq-a">Il faut généralement 2 à 3 ans d'historique pour distinguer un schéma structurel (qui se répète chaque année à la même période) d'un accident ponctuel. En l'absence de recul suffisant, mieux vaut traiter la situation comme potentiellement structurelle et construire un matelas de sécurité solide, plutôt que de supposer optimistement qu'elle ne se reproduira pas.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>10. Annexe — Lexique des termes utilisés</h2>
+  <dl class="lexique">
+    <dt>Trésorerie</dt>
+    <dd>Montant réellement disponible sur les comptes bancaires à un instant donné, à distinguer du chiffre d'affaires facturé ou du bénéfice comptable.</dd>
+    <dt>Décalage de paiement</dt>
+    <dd>Écart de temps entre la réalisation d'une prestation (ou la vente d'un produit) et l'encaissement effectif du paiement correspondant.</dd>
+    <dt>Matelas de sécurité</dt>
+    <dd>Somme mise de côté, généralement exprimée en mois de charges fixes couvertes, destinée à absorber un creux d'activité ou un imprévu sans mettre en péril le quotidien.</dd>
+    <dt>Méthode des enveloppes</dt>
+    <dd>Technique consistant à répartir chaque encaissement, dès son arrivée, entre plusieurs destinations prédéfinies (salaire, provisions, matelas, charges) plutôt que de le laisser sur un compte unique non affecté.</dd>
+    <dt>Prévisionnel de trésorerie</dt>
+    <dd>Tableau simple projetant les encaissements et sorties attendus sur les prochains mois, utilisé pour anticiper un creux d'activité avant qu'il ne survienne.</dd>
+    <dt>Acompte</dt>
+    <dd>Somme versée par le client au moment de la commande, avant la réalisation complète de la prestation, qui réduit le décalage entre le début du travail et le premier encaissement.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>11. Ressources complémentaires</h2>
+  <p>autoentrepreneur.urssaf.fr — pour vérifier ton taux de cotisations exact à provisionner à chaque encaissement.</p>
+  <p>impots.gouv.fr — pour les questions de fiscalité personnelle liées à ton activité indépendante.</p>
+  <p>Ta banque ou un courtier professionnel — pour les questions de compte professionnel dédié et d'éventuelles solutions de lissage bancaire.</p>
+  <p>Un expert-comptable — reste la ressource la plus fiable pour adapter précisément les pourcentages de ce guide à ta situation réelle.</p>
+</section>
+
+<section class="chapter">
+  <h2>12. Conclusion</h2>
+  <p>Gérer sa trésorerie quand les revenus sont irréguliers n'est pas une question de gagner plus, mais de mieux répartir dans le temps ce qui arrive de façon inégale. Un matelas de sécurité, un salaire fixe mensuel, un provisionnement automatique et un prévisionnel simple suivi régulièrement suffisent à transformer un stress permanent en une contrainte gérée avec méthode.</p>
+  <p>Ce guide te donne une méthode complète, mais elle ne prend tout son sens qu'appliquée progressivement : commence par ton diagnostic de régularité, puis mets en place une seule brique à la fois plutôt que de vouloir tout changer en même temps.</p>
+  <p>Reviens vers ce guide et sa bibliothèque de prompts à chaque étape de la mise en place de ton système, et n'hésite pas à consulter un expert-comptable pour adapter précisément les pourcentages à ta situation réelle.</p>
+</section>
+
+<section class="chapter">
+  <h2>13. Partie 7 — Bibliothèque de prompts</h2>
+  <p class="lede">Cette bibliothèque de prompts fait partie intégrante de ce guide (format 2 en 1). Chaque prompt contient des crochets [comme ceci] : remplace-les par tes propres éléments avant de coller le prompt dans ChatGPT ou Claude.</p>
+  <div class="box box-warning">
+    <span class="box-title">Rappel important</span>
+    <p>Ces prompts t'aident à structurer ta méthode et tes calculs, ils ne remplacent jamais une vérification de tes taux réels sur les sites officiels ni l'avis d'un expert-comptable pour une décision structurante.</p>
+  </div>
+
+  <h3>13.1 Diagnostiquer sa situation</h3>
+  <p class="lede">Pour comprendre précisément où se situe ton problème de trésorerie.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Voici mes encaissements réels des 12 derniers mois : [liste les montants mois par mois]. Aide-moi à identifier mes mois les plus faibles et les plus forts, et les schémas récurrents.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer son diagnostic de régularité à partir de données réelles</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à lister mes charges fixes incompressibles, personnelles et professionnelles, à partir de : [décrire tes dépenses principales].</span>
+    <p class="prompt-usage">À quoi ça sert : établir la base de calcul du matelas de sécurité</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Mon activité de [décrire ton activité] connaît des variations d'un mois sur l'autre. Aide-moi à identifier si cette irrégularité est plutôt saisonnière, liée au rythme de mes clients, ou aux deux.</span>
+    <p class="prompt-usage">À quoi ça sert : distinguer la nature de son irrégularité pour mieux l'anticiper</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à calculer le décalage moyen entre la réalisation de mes missions et leur encaissement effectif, à partir de : [décrire tes délais de paiement habituels].</span>
+    <p class="prompt-usage">À quoi ça sert : quantifier précisément son décalage encaissement/activité</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Explique-moi la différence entre chiffre d'affaires, bénéfice et trésorerie disponible, avec un exemple chiffré basé sur mon activité de [décrire ton activité].</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier ces notions souvent confondues avant de construire son système</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à estimer le montant de matelas de sécurité adapté à mon activité de [décrire ton activité], sachant que mes charges fixes mensuelles sont de [montant] et que mon irrégularité est [décrire : forte/modérée/faible].</span>
+    <p class="prompt-usage">À quoi ça sert : dimensionner un objectif de matelas réaliste et personnalisé</p>
+  </div>
+
+  <h3>13.2 Construire son matelas de sécurité</h3>
+  <p class="lede">Pour passer du diagnostic à un plan de constitution concret.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à construire un plan de constitution progressif de mon matelas de sécurité, avec un objectif de [montant ou nombre de mois], à partir de ma capacité d'épargne actuelle de [montant par mois].</span>
+    <p class="prompt-usage">À quoi ça sert : transformer un objectif global en étapes mensuelles réalistes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Quelles options existent pour placer un matelas de sécurité tout en le gardant rapidement accessible, sans prendre de risque de perte en capital ?</span>
+    <p class="prompt-usage">À quoi ça sert : identifier des pistes de placement sécurisées à vérifier ensuite avec sa banque</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à rédiger une règle simple pour définir dans quelles conditions précises je peux puiser dans mon matelas de sécurité, sans céder à la tentation de l'utiliser pour une dépense non urgente.</span>
+    <p class="prompt-usage">À quoi ça sert : se fixer un cadre clair avant d'avoir besoin d'y puiser</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Mon matelas de sécurité est actuellement de [montant], pour un objectif de [montant]. Aide-moi à ajuster mon plan de constitution si mon activité vient de changer : [décrire le changement].</span>
+    <p class="prompt-usage">À quoi ça sert : réviser son plan face à un changement d'activité</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à comparer les avantages d'un matelas de sécurité personnel par rapport à une ligne de crédit professionnelle pour absorber un creux d'activité ponctuel.</span>
+    <p class="prompt-usage">À quoi ça sert : objectiver le choix entre épargne propre et financement externe</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Rédige-moi un rappel motivant à me relire chaque mois, expliquant pourquoi mettre de côté [pourcentage]% de chaque encaissement vaut l'effort à long terme.</span>
+    <p class="prompt-usage">À quoi ça sert : garder la motivation sur un effort d'épargne qui prend du temps à porter ses fruits</p>
+  </div>
+
+  <h3>13.3 Se verser un salaire fixe</h3>
+  <p class="lede">Pour lisser son niveau de vie face à des revenus irréguliers.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à calculer un salaire mensuel fixe réaliste à partir de mon chiffre d'affaires annuel encaissé de [montant] et de mes charges professionnelles annuelles de [montant].</span>
+    <p class="prompt-usage">À quoi ça sert : fixer un montant de salaire personnel basé sur une moyenne réelle plutôt qu'optimiste</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à répartir chaque encaissement entre salaire, provisions cotisations/impôts, matelas de sécurité et charges professionnelles, avec les pourcentages suivants : [tes pourcentages].</span>
+    <p class="prompt-usage">À quoi ça sert : structurer sa méthode des enveloppes de façon claire et applicable</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Explique-moi comment calculer approximativement le pourcentage de chaque encaissement à provisionner pour mes cotisations sociales, sachant que mon activité est de type [BIC vente / BIC service / BNC].</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir un ordre de grandeur de provisionnement à vérifier ensuite avec les taux officiels</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Mon activité a connu une hausse durable depuis [période]. Aide-moi à déterminer si et comment ajuster mon salaire fixe mensuel en conséquence.</span>
+    <p class="prompt-usage">À quoi ça sert : réviser son salaire fixe face à une évolution durable de l'activité</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à structurer l'ouverture d'un compte professionnel séparé et les virements automatiques nécessaires pour appliquer la méthode des enveloppes sans y penser chaque mois.</span>
+    <p class="prompt-usage">À quoi ça sert : automatiser la mise en place du système pour ne pas dépendre de sa discipline personnelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Ce mois-ci, mon encaissement réel est inférieur à mon salaire fixe habituel de [montant]. Aide-moi à décider si je dois puiser dans mon matelas ou ajuster mon salaire ce mois-ci.</span>
+    <p class="prompt-usage">À quoi ça sert : prendre une décision structurée face à un mois faible ponctuel</p>
+  </div>
+
+  <h3>13.4 Anticiper les creux d'activité</h3>
+  <p class="lede">Pour construire et exploiter un prévisionnel de trésorerie simple.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à structurer un tableau de prévisionnel de trésorerie simple sur les 6 prochains mois, à partir de mes factures en cours : [liste tes factures et échéances connues].</span>
+    <p class="prompt-usage">À quoi ça sert : construire un premier prévisionnel exploitable rapidement</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Mon activité connaît historiquement un creux en [période]. Aide-moi à préparer un plan d'action concret à mettre en place avant d'entrer dans cette période.</span>
+    <p class="prompt-usage">À quoi ça sert : transformer une anticipation en actions concrètes préparées à l'avance</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à identifier une activité complémentaire cohérente avec mon expertise de [décrire ton métier], dont la saisonnalité serait différente de mon activité principale.</span>
+    <p class="prompt-usage">À quoi ça sert : explorer des pistes de diversification pertinentes pour lisser son activité</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Compare mon prévisionnel de trésorerie du mois dernier à mes encaissements réels : [décrire les écarts constatés]. Aide-moi à comprendre les causes de ces écarts.</span>
+    <p class="prompt-usage">À quoi ça sert : affiner progressivement la précision de son prévisionnel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à prioriser mes actions de prospection commerciale sur les 2 mois précédant un creux d'activité identifié, pour lisser mon calendrier de missions.</span>
+    <p class="prompt-usage">À quoi ça sert : anticiper la prospection plutôt que de la faire dans l'urgence</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à rédiger une checklist mensuelle pour comparer mon prévisionnel à la réalité et ajuster mes hypothèses pour le mois suivant.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un rituel de bilan mensuel simple et répétable</p>
+  </div>
+
+  <h3>13.5 Accélérer ses encaissements</h3>
+  <p class="lede">Pour réduire le décalage entre le travail réalisé et l'argent disponible.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à rédiger une clause d'acompte à intégrer dans mes devis pour mon activité de [décrire ton activité], avec un pourcentage cohérent avec les pratiques de mon secteur.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une clause d'acompte claire et professionnelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Rédige une première relance amicale à envoyer à un client dont la facture est en retard de [nombre] jours, sur un ton factuel et non accusateur.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une première relance efficace et professionnelle</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Rédige une relance plus ferme pour une facture impayée depuis [nombre] jours malgré une première relance restée sans réponse, en rappelant les conditions contractuelles.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer l'étape suivante d'une séquence de relance progressive</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à définir une politique de paiement standard (acompte, délai, pénalités de retard) pour mon activité de [décrire ton activité], à intégrer dans mes CGV.</span>
+    <p class="prompt-usage">À quoi ça sert : formaliser une politique de paiement cohérente une bonne fois pour toutes</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Un client conteste une facture pour [raison invoquée]. Aide-moi à rédiger une réponse professionnelle qui clarifie ma position sans dégrader la relation commerciale.</span>
+    <p class="prompt-usage">À quoi ça sert : gérer un désaccord de paiement avec un ton posé et professionnel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à évaluer si je dois proposer un paiement échelonné à un client en difficulté ponctuelle, plutôt que d'engager une procédure de recouvrement immédiate.</span>
+    <p class="prompt-usage">À quoi ça sert : arbitrer entre souplesse commerciale et fermeté selon la situation du client</p>
+  </div>
+
+  <h3>13.6 Mettre en place sa routine de pilotage</h3>
+  <p class="lede">Pour transformer la méthode de ce guide en habitude durable.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à structurer une routine hebdomadaire de suivi de trésorerie pour mon activité de [décrire ton activité], réalisable en 15-20 minutes maximum.</span>
+    <p class="prompt-usage">À quoi ça sert : mettre en place un suivi léger mais régulier</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à préparer un bilan mensuel simple comparant mes prévisions à mes encaissements réels, avec les questions à me poser à chaque fois.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un rituel de bilan mensuel réutilisable chaque mois</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Compare les outils suivants pour suivre ma trésorerie d'indépendant : tableur simple, application bancaire de gestion, logiciel de facturation avec suivi intégré. Aide-moi à identifier celui adapté à mon niveau d'activité : [décrire ton activité].</span>
+    <p class="prompt-usage">À quoi ça sert : choisir un outil de suivi adapté à sa situation sans surinvestir</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à identifier les signaux qui devraient m'alerter que mon système de gestion de trésorerie doit être révisé (matelas, salaire fixe, pourcentages de provisionnement).</span>
+    <p class="prompt-usage">À quoi ça sert : savoir reconnaître le moment où le système doit être ajusté</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à préparer les questions à poser à un expert-comptable pour valider et affiner mon système de gestion de trésorerie, à partir de ma situation : [décrire ta situation].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer un échange constructif et ciblé avec un professionnel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 6</span>
+    <span class="prompt-text">Aide-moi à rédiger un plan de mise en place sur 30 jours pour appliquer progressivement l'ensemble des principes de ce guide, une brique à la fois plutôt que tout en même temps.</span>
+    <p class="prompt-usage">À quoi ça sert : transformer l'ensemble de la méthode en un plan d'action concret et progressif</p>
+  </div>
+</section>
+
+</body>
+</html>

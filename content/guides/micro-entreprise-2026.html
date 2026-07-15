@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Créer sa micro-entreprise en 2026</title>
+<style>
+  @page {
+    size: A4; margin: 29mm 24mm 27mm 24mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9pt;
+      color: #1a1a1a;
+    }
+  }
+  @page :first {
+    @bottom-center { content: ""; }
+  }
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4 { color: #1E2A4A; font-weight: 800; }
+  h1 { font-size: 23pt; margin: 0 0 8pt; }
+  h2 {
+    font-size: 17pt; margin: 0 0 16pt; padding-bottom: 8pt;
+    border-bottom: 2px solid #C98A2E;
+  }
+  h3 { font-size: 13.5pt; margin: 22pt 0 9pt; }
+  h4 { font-size: 12pt; margin: 16pt 0 6pt; color: #C98A2E; }
+
+  p { margin: 0 0 12pt; }
+  ul, ol { margin: 0 0 12pt; padding-left: 20pt; }
+  li { margin-bottom: 5pt; }
+
+  .cover {
+    height: 235mm; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #1E2A4A; color: #C98A2E;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26pt; font-weight: 900; margin-bottom: 18pt;
+  }
+  .cover .kicker {
+    display: inline-block; background: #fdf6e8; color: #a86f22;
+    border: 1px solid #C98A2E66; border-radius: 999px;
+    padding: 6pt 16pt; font-size: 10.5pt; font-weight: 700; margin-bottom: 18pt;
+  }
+  .cover h1 { font-size: 25pt; max-width: 560px; line-height: 1.24; }
+  .cover .tagline { color: #C98A2E; font-weight: 700; font-size: 14pt; margin-top: 12pt; }
+  .cover .meta { margin-top: 44pt; color: #1a1a1a; font-size: 11pt; line-height: 1.6; }
+
+  .toc { page-break-after: always; }
+  .toc ol { padding-left: 22pt; }
+  .toc li { margin-bottom: 8pt; font-size: 11.5pt; }
+  .toc li span { font-style: italic; font-size: 10.5pt; display: block; font-weight: 400; margin-top: 2pt; }
+
+  section.chapter { page-break-before: always; }
+  section.chapter:first-of-type { page-break-before: auto; }
+
+  .lede {
+    font-style: italic; color: #1a1a1a;
+    border-left: 3px solid #1E2A4A; padding-left: 12pt; margin-bottom: 18pt;
+  }
+
+  .box {
+    border-radius: 10pt; padding: 14pt 18pt; margin: 16pt 0; font-size: 11.8pt;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box p:last-child { margin-bottom: 0; }
+  .box-title { font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-retain { background: #eef0f5; border-left: 5px solid #1E2A4A; }
+  .box-retain .box-title { color: #1E2A4A; }
+  .box-tip { background: #fdf6e8; border-left: 5px solid #C98A2E; }
+  .box-tip .box-title { color: #a86f22; }
+  .box-warning { background: #fdf0ec; border-left: 5px solid #b3492f; }
+  .box-warning .box-title { color: #b3492f; }
+  .box-example { background: #f1efec; border-left: 5px solid #8a8478; }
+  .box-example .box-title { color: #5c574c; }
+  .box-prompt {
+    background: #F4EBD9; border: 1.5px solid #C98A2E; border-radius: 10pt;
+    padding: 14pt 18pt; margin: 16pt 0; font-size: 11pt; line-height: 1.6;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  .box-prompt .box-title { color: #a86f22; font-weight: 800; margin-bottom: 6pt; display: block; }
+  .box-prompt .prompt-text { font-family: "Courier New", monospace; color: #1a1a1a; display: block; }
+  .box-prompt .prompt-usage {
+    margin: 8pt 0 0; font-size: 9.5pt; font-style: italic; color: #a86f22;
+  }
+
+  dl.lexique dt { font-weight: 800; color: #1E2A4A; margin-top: 14pt; font-size: 12pt; }
+  dl.lexique dd { margin: 3pt 0 0; }
+
+  ul.checklist { list-style: none; padding: 0; }
+  ul.checklist li {
+    padding: 9pt 0 9pt 26pt; position: relative;
+    border-bottom: 1px solid #e7e5e4; margin-bottom: 0;
+  }
+  ul.checklist li::before {
+    content: "☐"; position: absolute; left: 0; color: #C98A2E; font-size: 14pt;
+  }
+
+  .faq-item { margin-bottom: 18pt; padding-bottom: 18pt; border-bottom: 1px solid #e7e5e4; }
+  .faq-q { font-weight: 800; color: #1E2A4A; font-size: 12.5pt; margin-bottom: 4pt; }
+  .faq-a { margin-top: 4pt; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">G</div>
+  <span class="kicker">GUIDO — GUIDE PRATIQUE 2026</span>
+  <h1>Créer sa micro-entreprise en 2026</h1>
+  <p class="tagline">Ce qui change et ce qu'il faut savoir</p>
+  <p class="meta">Un guide complet + une bibliothèque de 31 prompts intégrée,<br/>les démarches d'immatriculation, TVA et facturation expliquées simplement</p>
+</div>
+
+<div class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li>Résumé exécutif<span>Les 5 étapes de la création et ce qui évolue en 2026</span></li>
+    <li>Introduction<span>Pourquoi créer sa structure est une étape à ne pas négliger</span></li>
+    <li>Partie 1 — Choisir le bon statut<span>Micro-entreprise, BIC ou BNC, et les vrais critères face à une société</span></li>
+    <li>Partie 2 — S'immatriculer étape par étape<span>Le Guichet unique, les documents, le SIRET, les aides à connaître</span></li>
+    <li>Partie 3 — Comprendre la TVA et la facturation<span>Franchise en base, mentions obligatoires, facturation électronique</span></li>
+    <li>Partie 4 — Les obligations déclaratives au quotidien<span>Livre des recettes, déclaration URSSAF, cumul avec d'autres statuts</span></li>
+    <li>Partie 4 bis — S'équiper des bons outils<span>Facturation en ligne, compte dédié, automatisation</span></li>
+    <li>Partie 5 — Ce qui évolue régulièrement<span>Où vérifier les chiffres exacts et à jour</span></li>
+    <li>Partie 5 bis — Adapter sa démarche selon son activité<span>Produits numériques, conseil, stock, activité artisanale</span></li>
+    <li>Partie 5 ter — Les erreurs administratives les plus coûteuses</li>
+    <li>Partie 5 quater — Comprendre sa protection sociale<span>Maladie, retraite, indemnités journalières</span></li>
+    <li>Partie 5 quinquies — La fiscalité personnelle du micro-entrepreneur<span>Abattement forfaitaire, CFE</span></li>
+    <li>Partie 5 sexies — Faire évoluer son activité dans la durée<span>Recruter, diversifier, se faire accompagner</span></li>
+    <li>Partie 5 septies — Sécuriser sa relation avec les clients<span>CGV, droit de rétractation, gestion des litiges</span></li>
+    <li>Partie 6 — Mettre en place son système<span>Planning de lancement sur 4 semaines, checklist, erreurs à éviter</span></li>
+    <li>Questions / Réponses</li>
+    <li>Annexe — Lexique des termes utilisés</li>
+    <li>Ressources complémentaires</li>
+    <li>Conclusion</li>
+    <li>Partie 7 — Bibliothèque de prompts<span>31 prompts prêts à l'emploi, classés en 7 catégories</span></li>
+  </ol>
+</div>
+
+<section class="chapter">
+  <h2>1. Résumé exécutif</h2>
+  <p class="lede">Si tu ne devais retenir que l'essentiel de ce guide avant de le lire en détail, voici les points clés.</p>
+
+  <h3>Les 5 étapes de la création</h3>
+  <ul>
+    <li>S'immatriculer gratuitement sur le Guichet unique (procedures.inpi.fr).</li>
+    <li>Recevoir son SIRET, indispensable avant toute première facturation.</li>
+    <li>Ouvrir un compte bancaire dédié à l'activité.</li>
+    <li>Vérifier sa situation TVA (franchise en base au départ dans la majorité des cas).</li>
+    <li>Mettre en place sa facturation conforme et son livre des recettes.</li>
+  </ul>
+
+  <h3>Ce qui évolue en 2026</h3>
+  <ul>
+    <li>Les seuils de chiffre d'affaires sont ajustés chaque année : vérifie toujours le montant exact en vigueur sur autoentrepreneur.urssaf.fr.</li>
+    <li>La réforme de la facturation électronique progresse : les micro-entrepreneurs doivent pouvoir recevoir des factures électroniques dès 2026, l'émission généralisée arrivant ensuite.</li>
+    <li>Le statut reste cumulable avec un emploi salarié, une retraite ou des études, sous certaines conditions.</li>
+  </ul>
+
+  <div class="box box-warning">
+    <span class="box-title">Une précision essentielle avant de commencer</span>
+    <p>Ce guide donne une méthode et des repères généraux, pas un conseil fiscal ou juridique personnalisé. Les seuils, taux de cotisations et montants précis évoluent chaque année : vérifie toujours les chiffres exacts sur les sites officiels (Guichet unique, URSSAF, impots.gouv.fr) avant de t'engager.</p>
+    <p>Pour toute décision fiscale ou juridique structurante, l'avis d'un expert-comptable reste la référence.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>2. Introduction</h2>
+
+  <h3>Pourquoi créer sa structure est une étape à ne pas négliger</h3>
+  <p>Beaucoup de personnes qui se lancent en freelance ou en activité indépendante repoussent la création officielle de leur structure, par méconnaissance des démarches ou par peur de la complexité administrative. Or, dès qu'une activité devient régulière et lucrative, l'immatriculation devient obligatoire — il n'existe aucun seuil de tolérance légal en dessous duquel on pourrait facturer sans statut.</p>
+  <p>La bonne nouvelle : depuis la mise en place du Guichet unique, cette démarche est devenue nettement plus simple qu'auparavant. Ce guide te donne une méthode claire pour la faire sereinement, sans te perdre dans le jargon administratif.</p>
+
+  <h3>Ce que ce guide va changer concrètement</h3>
+  <p>À la fin de ce guide, tu sauras choisir le statut adapté à ton projet, t'immatriculer étape par étape, comprendre tes obligations de TVA et de facturation, et mettre en place une routine administrative simple pour gérer ton activité au quotidien sans mauvaise surprise.</p>
+
+  <h3>Qui est concerné par ce guide</h3>
+  <p>Ce guide s'adresse à toute personne qui envisage de se lancer en freelance, en vente de produits ou services indépendants, que ce soit en complément d'un emploi salarié, après un licenciement, ou en sortie d'études. Il est particulièrement pensé pour les activités de vente de produits numériques, de prestations de services et de conseil, sans matériel lourd à gérer.</p>
+  <p>Que tu envisages une activité principale ou un simple complément de revenu, la méthode de ce guide reste la même : les obligations administratives ne changent pas selon l'ampleur de l'activité envisagée, seule leur importance relative dans ton quotidien varie.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Trois profils concernés</span>
+    <p>Amina, salariée, veut tester une activité de vente de formations en ligne le soir et le week-end. Thomas, tout juste diplômé, veut se lancer directement en freelance graphiste. Sophie, licenciée récemment, envisage de transformer son expertise en activité de conseil indépendant.</p>
+  </div>
+
+  <div class="box box-warning">
+    <span class="box-title">Une précision importante</span>
+    <p>Ce guide couvre la micro-entreprise, adaptée à la grande majorité des lancements d'activité indépendante en solo. Si ton projet implique des investissements lourds, des associés, ou des charges très importantes dès le départ, une société peut être plus adaptée — ce guide t'aide à faire la distinction.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>3. Partie 1 — Choisir le bon statut</h2>
+
+  <h3>Pourquoi la micro-entreprise convainc autant</h3>
+  <p>La micro-entreprise (toujours couramment appelée auto-entrepreneur) séduit par sa simplicité : création gratuite et rapide, comptabilité allégée (un livre des recettes suffit), et des cotisations calculées uniquement sur ce qui est réellement encaissé — pas de chiffre d'affaires, pas de charges à payer.</p>
+  <p>Ce régime convient particulièrement bien pour tester une activité, démarrer en solo sans lourds investissements, ou exercer une activité en complément d'un autre revenu (salariat, retraite, études).</p>
+
+  <h3>BIC ou BNC : une distinction à comprendre</h3>
+  <p>Le régime fiscal dépend de la nature de l'activité. Les BIC (Bénéfices Industriels et Commerciaux) couvrent la vente de biens et certaines prestations commerciales. Les BNC (Bénéfices Non Commerciaux) couvrent les professions libérales et certaines prestations intellectuelles. Une activité de vente de contenus numériques (ebooks, guides) relève généralement des BIC, catégorie vente.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — BIC ou BNC selon l'activité</span>
+    <p>Un consultant qui facture des heures de conseil relève généralement des BNC. Un créateur qui vend des ebooks ou des templates numériques directement depuis son site relève généralement des BIC, catégorie vente de marchandises/produits.</p>
+  </div>
+
+  <h3>Micro-entreprise vs société : les vrais critères de choix</h3>
+  <p>La micro-entreprise devient moins avantageuse fiscalement quand les charges réelles de l'activité (achat de matériel, stock, publicité) dépassent une part importante du chiffre d'affaires, car ce régime ne permet pas de déduire les charges réelles — seul un abattement forfaitaire s'applique. Une société (SASU, EURL) permet de déduire ces charges réelles, ce qui devient intéressant au-delà d'un certain niveau de dépenses professionnelles.</p>
+  <p>Un autre critère : la société permet de dissocier plus clairement le patrimoine personnel de l'activité professionnelle, ce qui peut rassurer sur des projets à risque financier plus élevé.</p>
+
+  <h4>Exercice pratique : ton diagnostic de statut</h4>
+  <p>Liste tes charges professionnelles prévisionnelles pour la première année (matériel, logiciels, publicité, déplacements). Si elles représentent moins de 30 % de ton chiffre d'affaires prévisionnel, la micro-entreprise reste probablement le choix le plus simple et le plus avantageux pour démarrer. Au-delà, il vaut la peine de comparer plus précisément avec un expert-comptable.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La micro-entreprise convient à la grande majorité des lancements d'activité indépendante en solo, avec peu de charges.</p>
+    <p>Le régime BIC ou BNC dépend de la nature exacte de l'activité, pas d'un choix libre.</p>
+    <p>Une société devient intéressante quand les charges réelles deviennent significatives par rapport au chiffre d'affaires.</p>
+  </div>
+
+  <h4>Étude de cas : l'hésitation de Marc</h4>
+  <p>Marc voulait lancer une activité de vente d'accessoires électroniques et hésitait entre micro-entreprise et société, sans savoir sur quel critère trancher. En listant précisément ses charges prévisionnelles (achat de stock, frais de plateforme, publicité), il a réalisé qu'elles représentaient plus de 50 % de son chiffre d'affaires prévisionnel — un niveau où la micro-entreprise, qui ne permet pas de déduire les charges réelles, devenait fiscalement pénalisante par rapport à une société.</p>
+  <p>Marc a finalement opté pour une société dès le départ, après avoir confirmé ce calcul avec un expert-comptable. À l'inverse, pour une activité de conseil ou de vente de contenu numérique avec très peu de charges, la micro-entreprise reste souvent le choix le plus pertinent au démarrage.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le choix du statut ne doit jamais se faire par défaut ou par simplicité perçue : un calcul rapide des charges prévisionnelles par rapport au chiffre d'affaires attendu permet de trancher objectivement plutôt qu'au ressenti.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>4. Partie 2 — S'immatriculer étape par étape</h2>
+
+  <h3>Le Guichet unique, point d'entrée unique</h3>
+  <p>Depuis 2023, toutes les démarches de création d'entreprise passent par un site unique, procedures.inpi.fr, qui a remplacé les anciens sites séparés selon le type d'activité. L'immatriculation en micro-entreprise y est gratuite et se fait entièrement en ligne.</p>
+
+  <h3>Les documents à préparer</h3>
+  <p>Avant de démarrer la démarche, prépare un justificatif d'identité et un justificatif de domiciliation de l'activité (ton domicile personnel convient dans la grande majorité des cas pour une activité de service ou de vente en ligne, sauf réglementation spécifique à ton secteur).</p>
+
+  <h3>Décrire son activité</h3>
+  <p>Le formulaire demande une description de l'activité exercée, à partir de laquelle un code APE est attribué automatiquement. Pour une activité de vente de produits numériques, la catégorie « vente à distance sur catalogue général ou spécialisé » est généralement la plus pertinente.</p>
+
+  <h3>Recevoir son SIRET</h3>
+  <p>Une fois le dossier validé, le numéro SIRET est délivré, généralement sous 1 à 4 semaines selon les périodes. C'est ce numéro qui doit obligatoirement figurer sur toutes tes factures et mentions légales.</p>
+
+  <div class="box box-warning">
+    <span class="box-title">Un point crucial à retenir</span>
+    <p>Tu peux préparer ton projet et construire ton site pendant l'attente du SIRET, mais tu ne dois pas encaisser de vente avant de l'avoir reçu. Facturer avant l'immatriculation officielle t'expose à des risques (travail dissimulé, absence de protection sociale).</p>
+  </div>
+
+  <h3>Les aides à connaître au moment de l'immatriculation</h3>
+  <p>L'ACRE (Aide à la Création ou à la Reprise d'Entreprise) permet une exonération partielle de cotisations sociales la première année, sous certaines conditions d'éligibilité. Si tu es demandeur d'emploi, le cumul avec l'ARE (allocation chômage) ou l'ARCE (capital versé en une fois) peut aussi s'appliquer selon ta situation — ces dispositifs se cumulent différemment, il est important de vérifier lequel correspond le mieux à ton cas avant de faire un choix irréversible.</p>
+
+  <h4>Étude de cas : le choix d'Amina</h4>
+  <p>Amina, salariée à temps plein, souhaitait lancer une activité de vente de formations en ligne en parallèle. Avant de s'immatriculer, elle a vérifié qu'aucune clause de non-concurrence ne l'en empêchait dans son contrat de travail, puis a choisi le versement libératoire de l'impôt sur le revenu, plus simple à gérer en parallèle de son salaire déjà imposé.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le cumul avec un emploi salarié est légalement possible, mais demande de vérifier deux points précis avant de se lancer : l'absence de clause de non-concurrence, et le choix fiscal le plus adapté à sa situation personnelle globale.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le Guichet unique (procedures.inpi.fr) est le point d'entrée officiel et gratuit pour l'immatriculation.</p>
+    <p>Aucune vente ne doit être encaissée avant la réception effective du SIRET.</p>
+    <p>Des aides comme l'ACRE ou le cumul ARE/ARCE peuvent s'appliquer selon ta situation : vérifie ton éligibilité avant de choisir.</p>
+  </div>
+
+  <h4>Étude de cas : la transition de Sophie après un licenciement</h4>
+  <p>Sophie, licenciée après 8 ans dans la même entreprise, envisageait de transformer son expertise en activité de conseil indépendant. Avant de s'immatriculer, elle a vérifié son éligibilité au cumul entre l'ARE (allocation chômage) et ses futurs revenus d'activité, une option qui lui permettait de lisser sa transition financière plutôt que de choisir entre les deux de façon binaire.</p>
+  <p>Elle a aussi comparé l'ARCE (versement en capital d'une partie de ses droits restants) au maintien mensuel de l'ARE en complément de ses revenus d'activité, et a choisi cette seconde option pour garder une sécurité financière mensuelle pendant que son activité démarrait progressivement.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Le choix entre ARE maintenue et ARCE en capital dépend fortement du profil de démarrage de l'activité : un besoin d'investissement initial important favorise l'ARCE, tandis qu'un démarrage progressif sans gros investissement favorise le maintien mensuel de l'ARE.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>5. Partie 3 — Comprendre la TVA et la facturation</h2>
+
+  <h3>La franchise en base de TVA</h3>
+  <p>En micro-entreprise, tu démarres en franchise en base de TVA tant que ton chiffre d'affaires reste sous les seuils en vigueur (à vérifier précisément chaque année sur le site des impôts, car ces seuils sont réévalués régulièrement). Concrètement, cela signifie que tu ne factures pas de TVA à tes clients, et que tu ne la récupères pas non plus sur tes propres achats professionnels.</p>
+
+  <h3>Les mentions obligatoires sur une facture</h3>
+  <p>Chaque facture doit comporter : ton numéro SIRET, un numéro de facture unique, la date d'émission, une description précise de la prestation ou du produit vendu, le montant hors taxes et toutes taxes comprises, et la mention « TVA non applicable, article 293 B du CGI » tant que tu es en franchise en base.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — Une facture conforme</span>
+    <p>Une facture émise par un micro-entrepreneur en franchise de TVA doit clairement indiquer son SIRET, un numéro de facture séquentiel (ex : FACT-2026-001), la nature exacte de la prestation, et la mention de non-application de la TVA — l'absence de l'une de ces mentions peut poser problème en cas de contrôle.</p>
+  </div>
+
+  <h3>Que se passe-t-il en cas de dépassement du seuil</h3>
+  <p>Si le chiffre d'affaires dépasse le seuil de franchise en base en cours d'année, un seuil de tolérance (seuil majoré) permet généralement de continuer à bénéficier du régime pendant l'année en cours. Si le dépassement se poursuit sur deux années consécutives, l'assujettissement à la TVA devient obligatoire à partir de l'année suivante, avec l'obligation de facturer la TVA aux clients et d'obtenir un numéro de TVA intracommunautaire.</p>
+
+  <h3>La réforme de la facturation électronique</h3>
+  <p>Une réforme progressive de la facturation électronique est en cours de déploiement en France. Les micro-entrepreneurs doivent être en mesure de recevoir des factures électroniques de leurs fournisseurs professionnels, avec une généralisation de l'émission de factures électroniques prévue dans les années suivantes. Les échéances précises de cette réforme évoluent : vérifie le calendrier à jour sur le site des impôts avant de t'organiser techniquement.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La franchise en base de TVA dispense de facturer et de récupérer la TVA tant que les seuils ne sont pas dépassés.</p>
+    <p>Une facture non conforme aux mentions obligatoires expose à des risques en cas de contrôle.</p>
+    <p>La réforme de la facturation électronique progresse : reste informé du calendrier officiel à jour.</p>
+  </div>
+
+  <h4>Étude de cas : le dépassement de seuil de Sophie</h4>
+  <p>Sophie, consultante indépendante, a vu son activité décoller plus vite que prévu et a dépassé le seuil de franchise en base de TVA en cours d'année, sans s'en rendre compte immédiatement faute de suivre régulièrement son chiffre d'affaires cumulé.</p>
+  <p>Après avoir consulté un expert-comptable, elle a découvert qu'un seuil de tolérance lui permettait de rester en franchise pour l'année en cours, mais qu'un dépassement l'année suivante l'obligerait à facturer la TVA. Elle a anticipé ce changement en informant ses clients à l'avance et en ajustant sa grille tarifaire en conséquence, plutôt que de découvrir la contrainte au dernier moment.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Suivre régulièrement son chiffre d'affaires cumulé sur l'année, plutôt que de le découvrir a posteriori, permet d'anticiper un changement de régime de TVA au lieu de le subir dans l'urgence.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>6. Partie 4 — Les obligations déclaratives au quotidien</h2>
+
+  <h3>Le livre des recettes</h3>
+  <p>L'obligation comptable centrale du micro-entrepreneur est simple : tenir à jour un livre des recettes chronologique, qui recense chaque somme encaissée avec sa date, son montant, sa nature et le mode de règlement. Ce document doit être conservé et peut être demandé en cas de contrôle.</p>
+
+  <h3>La déclaration de chiffre d'affaires</h3>
+  <p>Le chiffre d'affaires encaissé doit être déclaré régulièrement à l'URSSAF (mensuellement ou trimestriellement selon l'option choisie), même si ce montant est nul sur une période donnée — une déclaration à zéro reste obligatoire. C'est à partir de cette déclaration que les cotisations sociales sont calculées et prélevées.</p>
+
+  <h3>Le cumul avec d'autres statuts</h3>
+  <p>Le statut de micro-entrepreneur est cumulable avec un emploi salarié, une retraite, ou des études, sous réserve de vérifier l'absence de clause contractuelle contraire (notamment une clause de non-concurrence ou d'exclusivité dans un contrat de travail) et de veiller à ce que l'activité indépendante ne concurrence pas directement un employeur existant.</p>
+
+  <h4>Exercice pratique : ta routine administrative mensuelle</h4>
+  <p>Bloque un créneau récurrent chaque mois (30 minutes suffisent généralement pour une petite activité) pour mettre à jour ton livre des recettes, vérifier tes factures en attente de paiement, et préparer ta déclaration URSSAF. Cette régularité évite l'accumulation de retard qui rend la tâche bien plus lourde si elle est repoussée plusieurs mois.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le livre des recettes est l'obligation comptable centrale, simple mais non négociable.</p>
+    <p>Une déclaration URSSAF reste obligatoire même à chiffre d'affaires nul sur la période.</p>
+    <p>Le cumul avec un emploi salarié est possible sous réserve de vérifier les clauses de son contrat de travail.</p>
+  </div>
+
+  <h4>Étude de cas : le rattrapage de Julien</h4>
+  <p>Julien a négligé la tenue de son livre des recettes pendant 4 mois, se disant qu'il rattraperait « plus tard ». Au moment de préparer sa déclaration, il a dû reconstituer manuellement l'ensemble de ses encaissements à partir de ses relevés bancaires, une tâche bien plus longue et source d'erreurs que s'il avait tenu son livre au fil de l'eau.</p>
+  <p>Depuis, Julien a mis en place un rappel automatique chaque vendredi pour mettre à jour son livre des recettes, une habitude qui lui prend désormais moins de 10 minutes par semaine plutôt que plusieurs heures de rattrapage stressant en fin de trimestre.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>La régularité d'une petite tâche administrative coûte largement moins de temps cumulé que son report suivi d'un rattrapage en urgence — un principe qui s'applique à la quasi-totalité des obligations administratives d'une micro-entreprise.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>7. Partie 4 bis — S'équiper des bons outils</h2>
+
+  <h3>Les outils de facturation en ligne</h3>
+  <p>Plusieurs outils dédiés aux micro-entrepreneurs permettent de générer des factures conformes, suivre son livre des recettes et préparer ses déclarations en quelques clics, souvent avec une version gratuite suffisante pour une petite activité. Ces outils réduisent significativement le risque d'oubli d'une mention obligatoire sur une facture.</p>
+
+  <h3>La tenue de compte séparée</h3>
+  <p>Même si un compte bancaire professionnel dédié n'est obligatoire qu'à partir d'un certain seuil de chiffre d'affaires, l'ouvrir dès le départ facilite grandement le suivi de son activité et évite de mélanger dépenses personnelles et professionnelles dans le même relevé, ce qui complique toute reconstitution ultérieure.</p>
+
+  <h3>Automatiser ce qui peut l'être</h3>
+  <p>Certains outils permettent de synchroniser automatiquement les encaissements bancaires avec le livre des recettes, réduisant encore le temps de saisie manuelle. Ce type d'automatisation devient particulièrement utile dès que le volume de transactions augmente.</p>
+
+  <h4>Exercice pratique : ton kit de démarrage</h4>
+  <p>Avant ta première facture, choisis un outil de facturation, ouvre ton compte bancaire dédié, et prépare un dossier numérique organisé (factures émises, factures reçues, justificatifs) pour éviter d'avoir à tout réorganiser après coup une fois l'activité lancée.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Les outils de facturation en ligne réduisent le risque d'erreur sur les mentions obligatoires.</p>
+    <p>Un compte bancaire dédié dès le départ facilite grandement le suivi, même avant qu'il ne devienne obligatoire.</p>
+    <p>Automatiser la synchronisation bancaire fait gagner du temps dès que le volume d'activité augmente.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>8. Partie 5 — Ce qui évolue régulièrement, et comment rester à jour</h2>
+
+  <h3>Des seuils réévalués chaque année</h3>
+  <p>Les seuils de chiffre d'affaires pour rester en micro-entreprise, ainsi que les seuils de franchise en base de TVA, sont réévalués périodiquement par l'administration. Ces montants ne sont volontairement pas répétés de façon précise dans ce guide au-delà d'ordres de grandeur généraux, car ils changent et pourraient induire en erreur s'ils sont cités comme définitifs.</p>
+
+  <h3>Où vérifier les chiffres exacts et à jour</h3>
+  <p>Le site autoentrepreneur.urssaf.fr reste la référence officielle pour les seuils de chiffre d'affaires et les taux de cotisations sociales en vigueur. Le site impots.gouv.fr fait référence pour les seuils de TVA et les obligations fiscales. Consulte ces sources directement avant toute décision structurante plutôt que de te fier à un article ou un guide, aussi récent soit-il.</p>
+
+  <h3>Les réformes en cours à surveiller</h3>
+  <p>Au-delà de la facturation électronique déjà évoquée, le cadre réglementaire des micro-entreprises continue d'évoluer régulièrement (ajustements de taux de cotisations, évolutions des dispositifs d'aide). S'abonner à la newsletter officielle de l'URSSAF ou consulter régulièrement le site officiel permet de ne pas être pris au dépourvu par un changement de règle.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Les seuils et taux évoluent régulièrement : ne te fie jamais à un chiffre non vérifié sur les sites officiels.</p>
+    <p>autoentrepreneur.urssaf.fr et impots.gouv.fr restent les références à jour.</p>
+    <p>Rester informé des réformes en cours évite les mauvaises surprises administratives.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>9. Partie 5 bis — Adapter sa démarche selon son activité</h2>
+  <p class="lede">Les principes de ce guide s'appliquent largement, mais certains points méritent une attention particulière selon le type d'activité.</p>
+
+  <h3>Vente de produits numériques (ebooks, formations, templates)</h3>
+  <p>Ce type d'activité relève généralement des BIC, catégorie vente. Les charges y sont souvent très faibles (pas de stock physique, pas de local), ce qui rend la micro-entreprise particulièrement adaptée dans la durée, sans bascule rapide vers une société nécessaire.</p>
+
+  <h3>Prestations de conseil et service intellectuel</h3>
+  <p>Ces activités relèvent généralement des BNC. Le seuil de chiffre d'affaires pour rester en micro-entreprise y est historiquement différent de celui des activités de vente — vérifie bien la catégorie exacte applicable à ton activité précise plutôt que de supposer un seuil unique pour toutes les activités.</p>
+
+  <h3>Vente de produits physiques avec stock</h3>
+  <p>Cette activité implique des charges réelles souvent plus importantes (achat de stock, stockage, expédition), ce qui rend le calcul du seuil de pertinence entre micro-entreprise et société particulièrement important à faire tôt, comme vu dans l'étude de cas de Marc en Partie 1.</p>
+
+  <h3>Activité artisanale</h3>
+  <p>Si l'activité implique une dimension de fabrication artisanale, une immatriculation complémentaire à la Chambre de Métiers et de l'Artisanat (CMA) peut être requise en plus de l'immatriculation classique, avec des obligations de formation spécifiques selon le métier exercé.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La vente de produits numériques, avec peu de charges, est un cas particulièrement favorable à la micro-entreprise durable.</p>
+    <p>Les seuils diffèrent entre activités de vente et prestations de service : vérifie la catégorie exacte applicable.</p>
+    <p>Une activité artisanale peut impliquer une immatriculation complémentaire à la CMA.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>10. Partie 5 ter — Les erreurs administratives les plus coûteuses</h2>
+
+  <h3>Facturer avant l'immatriculation</h3>
+  <p>C'est l'erreur la plus risquée : facturer avant d'avoir reçu son SIRET expose à une requalification en travail dissimulé, avec des conséquences potentiellement lourdes (redressement, absence de protection sociale sur cette période). Il vaut toujours mieux patienter quelques semaines de plus que prendre ce risque.</p>
+
+  <h3>Confondre chiffre d'affaires et bénéfice</h3>
+  <p>Une erreur fréquente chez les nouveaux indépendants est de considérer tout le chiffre d'affaires encaissé comme un revenu disponible, en oubliant de provisionner les cotisations sociales et l'éventuel impôt à venir. Cette confusion mène régulièrement à des difficultés de trésorerie évitables.</p>
+
+  <h3>Négliger la déclaration à zéro</h3>
+  <p>Beaucoup de micro-entrepreneurs pensent, à tort, qu'une absence de chiffre d'affaires sur une période dispense de toute déclaration. Ce n'est pas le cas : une déclaration à zéro reste obligatoire, et son omission répétée peut entraîner des pénalités.</p>
+
+  <h3>Ignorer les clauses de son contrat de travail en cas de cumul</h3>
+  <p>Lancer une activité indépendante en parallèle d'un emploi salarié sans avoir vérifié l'absence de clause de non-concurrence ou d'exclusivité expose à un risque de conflit avec l'employeur, potentiellement coûteux en cas de litige.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Facturer avant réception du SIRET est l'erreur la plus risquée de toutes.</p>
+    <p>Le chiffre d'affaires encaissé n'est pas un revenu net disponible : provisionne toujours cotisations et impôts.</p>
+    <p>Une déclaration à zéro reste obligatoire même sans chiffre d'affaires sur la période.</p>
+    <p>Vérifie toujours ton contrat de travail avant de cumuler avec une activité indépendante.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>11. Partie 5 quater — Comprendre sa protection sociale</h2>
+
+  <h3>Ce que couvrent tes cotisations sociales</h3>
+  <p>Les cotisations sociales versées en tant que micro-entrepreneur financent ta couverture maladie-maternité, ta retraite de base et complémentaire, ainsi que les allocations familiales. Contrairement à une idée reçue, le statut de micro-entrepreneur donne bien accès à une protection sociale réelle, proportionnelle aux cotisations versées, mais celle-ci reste généralement moins complète que celle d'un salarié classique, notamment sur les indemnités journalières en cas d'arrêt maladie.</p>
+
+  <h3>Les indemnités journalières en cas d'arrêt maladie</h3>
+  <p>Un micro-entrepreneur peut percevoir des indemnités journalières en cas d'arrêt maladie, sous réserve d'avoir cotisé suffisamment et respecté un délai de carence. Ces indemnités sont généralement moins élevées que celles d'un salarié à revenu équivalent, ce qui justifie pour certains la souscription d'une prévoyance complémentaire privée.</p>
+
+  <h3>La retraite du micro-entrepreneur</h3>
+  <p>Les trimestres de retraite sont validés en fonction du chiffre d'affaires réalisé, avec des seuils minimums à atteindre chaque année pour valider un trimestre complet. Une activité très irrégulière ou à très faible chiffre d'affaires peut donc avoir un impact sur la constitution des droits à la retraite, un point à surveiller sur le long terme plutôt qu'année par année isolément.</p>
+
+  <h4>Exercice pratique : vérifier ses droits</h4>
+  <p>Consulte régulièrement ton relevé de carrière sur le site officiel de l'Assurance Retraite pour vérifier que tes trimestres sont bien validés en cohérence avec ton activité déclarée. Cette vérification, souvent négligée par les indépendants, permet de repérer une éventuelle anomalie plusieurs années avant la retraite plutôt qu'au moment de la liquider.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Les cotisations sociales du micro-entrepreneur financent une vraie protection sociale, mais souvent moins complète que celle d'un salarié.</p>
+    <p>Les indemnités journalières en cas d'arrêt maladie sont généralement plus faibles, ce qui justifie parfois une prévoyance complémentaire.</p>
+    <p>La validation des trimestres de retraite dépend du chiffre d'affaires réalisé : à surveiller sur le long terme.</p>
+  </div>
+
+  <h4>Étude de cas : la découverte de Nadia</h4>
+  <p>Nadia, micro-entrepreneuse depuis 3 ans avec un chiffre d'affaires modeste en complément de son activité principale, a découvert en consultant son relevé de carrière qu'elle n'avait validé aucun trimestre de retraite sur les deux dernières années, son chiffre d'affaires étant resté sous le seuil minimum requis sans qu'elle le sache.</p>
+  <p>Cette découverte lui a permis d'ajuster consciemment sa stratégie : soit augmenter légèrement son activité pour valider ses trimestres, soit accepter ce compromis en toute connaissance de cause si son activité salariée principale couvre déjà suffisamment ses droits à la retraite.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Vérifier régulièrement son relevé de carrière permet de faire un choix éclairé plutôt que de découvrir un manque de droits accumulé sur plusieurs années au moment de la retraite, quand il est trop tard pour ajuster.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>12. Partie 5 quinquies — La fiscalité personnelle du micro-entrepreneur</h2>
+
+  <h3>Comment le chiffre d'affaires s'intègre à ton impôt sur le revenu</h3>
+  <p>Sauf option pour le versement libératoire (vu en Partie 2), le chiffre d'affaires du micro-entrepreneur est reporté chaque année sur la déclaration de revenus classique, avec un abattement forfaitaire automatique qui varie selon la nature de l'activité (vente ou service), avant d'être intégré au revenu global du foyer fiscal et imposé selon le barème progressif habituel.</p>
+
+  <h3>L'abattement forfaitaire, un mécanisme à bien comprendre</h3>
+  <p>Cet abattement représente une estimation forfaitaire des charges professionnelles, appliquée automatiquement sans qu'il soit nécessaire de justifier de charges réelles. C'est un avantage en cas de charges réelles faibles (typiquement pour la vente de produits numériques), mais un désavantage si les charges réelles dépassent largement ce forfait, un point qui rejoint la réflexion sur le choix du statut vue en Partie 1.</p>
+
+  <h3>La CFE, une charge parfois oubliée</h3>
+  <p>La Cotisation Foncière des Entreprises (CFE) est un impôt local dû par la plupart des micro-entrepreneurs à partir de la deuxième année d'activité, dont le montant varie selon la commune et le chiffre d'affaires réalisé. Certaines exonérations existent la première année et pour de très faibles chiffres d'affaires : vérifie ton éligibilité auprès du service des impôts des entreprises de ta zone.</p>
+
+  <h4>Exercice pratique : anticiper sa charge fiscale globale</h4>
+  <p>Additionne mentalement cotisations sociales, éventuel impôt sur le revenu proportionnel à ton activité, et CFE prévisionnelle pour obtenir une vision plus complète de ta charge fiscale et sociale globale, plutôt que de raisonner uniquement en termes de cotisations sociales URSSAF.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Le chiffre d'affaires est reporté sur la déclaration de revenus classique, avec un abattement forfaitaire automatique.</p>
+    <p>L'abattement forfaitaire avantage les activités à faibles charges réelles, comme la vente de produits numériques.</p>
+    <p>La CFE est une charge locale parfois oubliée, à anticiper dès la deuxième année d'activité.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>13. Partie 5 sexies — Faire évoluer son activité dans la durée</h2>
+
+  <h3>Quand envisager de recruter</h3>
+  <p>Le statut de micro-entrepreneur ne permet pas d'embaucher de salarié. Si ton activité se développe au point de nécessiter une aide régulière, ce signal doit t'amener à envisager une transformation de statut vers une entreprise individuelle classique ou une société, plutôt que de chercher des solutions de contournement risquées.</p>
+
+  <h3>Diversifier son activité sans se disperser</h3>
+  <p>Beaucoup de micro-entrepreneurs, une fois leur activité stabilisée, sont tentés d'ajouter de nouvelles prestations ou de nouveaux produits. C'est tout à fait possible dans le même statut, à condition que ces nouvelles activités restent cohérentes avec le code d'activité déclaré, ou que tu déclares une activité complémentaire si nécessaire.</p>
+
+  <h3>Se faire accompagner quand l'activité se complexifie</h3>
+  <p>Un expert-comptable, même ponctuellement pour un bilan annuel ou une question précise, devient un investissement de plus en plus pertinent à mesure que l'activité grandit et que les enjeux financiers et fiscaux se complexifient. Ce n'est pas un aveu d'échec de la simplicité du régime micro-entreprise, mais une évolution naturelle avec la croissance de l'activité.</p>
+
+  <h4>Étude de cas : la croissance de Karim</h4>
+  <p>Karim, graphiste indépendant, a vu son activité croître fortement après deux ans, au point de refuser des clients faute de temps. Plutôt que de continuer à s'épuiser seul, il a d'abord envisagé de sous-traiter ponctuellement certaines missions, avant de réaliser que cette pratique répétée impliquait de repenser son statut vers une société pour pouvoir structurer une vraie collaboration avec d'autres professionnels.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Un signal de croissance forte de l'activité (refuser des clients faute de temps) est le bon moment pour se poser sérieusement la question d'une évolution de statut, plutôt que d'attendre une situation intenable pour y réfléchir.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>La micro-entreprise ne permet pas d'embaucher : un besoin d'aide régulière signale le moment de changer de statut.</p>
+    <p>Diversifier son activité reste possible dans le même statut, en cohérence avec le code d'activité déclaré.</p>
+    <p>Un accompagnement par un expert-comptable devient plus pertinent à mesure que l'activité se complexifie.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>14. Partie 5 septies — Sécuriser sa relation avec les clients</h2>
+
+  <h3>L'importance des CGV même en micro-entreprise</h3>
+  <p>Beaucoup de micro-entrepreneurs pensent que les Conditions Générales de Vente (CGV) ne concernent que les grandes entreprises. En réalité, elles sont obligatoires dès qu'on vend à des professionnels et fortement recommandées même pour la vente aux particuliers, car elles précisent les modalités de paiement, de livraison ou d'accès (pour un produit numérique), et les conditions de rétractation.</p>
+
+  <h3>Le droit de rétractation sur les produits numériques</h3>
+  <p>La vente de contenu numérique (ebooks, guides) à des particuliers est soumise à des règles spécifiques concernant le droit de rétractation : celui-ci peut être levé si le client donne son accord exprès pour un accès immédiat au contenu et renonce explicitement à son droit de rétractation, une mention qui doit apparaître clairement au moment de l'achat.</p>
+
+  <h3>Gérer un litige client</h3>
+  <p>En cas de désaccord avec un client (produit jugé non conforme, remboursement demandé), privilégier toujours une résolution à l'amiable en premier lieu, avec une trace écrite des échanges. Ce n'est qu'en dernier recours, en l'absence d'accord, qu'une procédure plus formelle doit être envisagée, idéalement avec l'appui d'un professionnel du droit si les montants en jeu le justifient.</p>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Les CGV sont obligatoires pour la vente à des professionnels et fortement recommandées pour les particuliers.</p>
+    <p>Le droit de rétractation sur un produit numérique peut être levé avec l'accord exprès du client, à condition de le mentionner clairement.</p>
+    <p>Privilégier toujours une résolution amiable avant d'envisager une procédure plus formelle en cas de litige.</p>
+  </div>
+
+  <h4>Étude de cas : la mésaventure évitée de Léa</h4>
+  <p>Léa vendait ses guides numériques sans CGV claires ni mention de renonciation au droit de rétractation. Un client a demandé un remboursement plusieurs jours après avoir téléchargé et vraisemblablement lu l'intégralité du guide, invoquant son droit de rétractation légal.</p>
+  <p>N'ayant pas fait valider explicitement la renonciation à ce droit au moment de l'achat, Léa s'est retrouvée en position fragile pour refuser ce remboursement. Elle a depuis ajouté une case à cocher obligatoire avant paiement, avec la mention exacte de renonciation au droit de rétractation pour un accès immédiat au contenu numérique.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Une mention simple, ajoutée avant la mise en ligne de la boutique, aurait évité cette situation délicate à Léa — un exemple concret de l'importance de sécuriser ces détails dès le lancement plutôt qu'après un premier incident.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>15. Partie 6 — Mettre en place son système</h2>
+
+  <h3>Un planning de lancement sur 4 semaines</h3>
+  <p>Semaine 1 : rassembler les documents nécessaires et s'immatriculer sur le Guichet unique. Semaine 2 : pendant l'attente du SIRET, préparer son modèle de facture et son livre des recettes. Semaine 3 : dès réception du SIRET, ouvrir un compte bancaire dédié et finaliser les mentions légales de son site ou de son activité. Semaine 4 : effectuer sa première facturation et mettre en place sa routine administrative mensuelle.</p>
+
+  <h3>Checklist récapitulative</h3>
+  <ul class="checklist">
+    <li>Vérifier son éligibilité aux aides (ACRE, cumul ARE/ARCE) avant l'immatriculation.</li>
+    <li>Ne jamais encaisser de vente avant la réception effective du SIRET.</li>
+    <li>Mettre en place un modèle de facture conforme dès le départ.</li>
+    <li>Tenir son livre des recettes à jour chaque semaine plutôt qu'en une seule fois en fin de mois.</li>
+    <li>Vérifier les seuils exacts en vigueur sur les sites officiels, jamais sur un article non daté.</li>
+  </ul>
+
+  <h3>Erreurs à éviter</h3>
+  <p>La première erreur consiste à commencer à facturer avant d'avoir reçu son SIRET, par impatience ou méconnaissance du risque. La seconde est de négliger le livre des recettes pendant plusieurs mois, ce qui rend la reconstitution a posteriori fastidieuse et source d'erreurs. La troisième est de se fier à des chiffres de seuils ou de taux trouvés sur un article ancien plutôt que de vérifier sur les sites officiels à jour.</p>
+
+  <h4>Étude de cas : le lancement structuré de Thomas</h4>
+  <p>Thomas, tout juste diplômé, a suivi scrupuleusement un planning de lancement sur 4 semaines avant de facturer sa première mission de graphisme freelance : préparation des documents, immatriculation, attente du SIRET en préparant son modèle de facture, puis ouverture de compte bancaire dédié dès réception du numéro.</p>
+  <p>Cette approche méthodique, plutôt que de vouloir facturer au plus vite par impatience, lui a évité toute erreur de démarrage et lui a permis d'aborder sereinement sa première facturation, avec tous les outils déjà en place.</p>
+
+  <div class="box box-example">
+    <span class="box-title">Exemple — La leçon à retenir</span>
+    <p>Un lancement structuré sur quelques semaines, plutôt que précipité, évite la quasi-totalité des erreurs classiques de démarrage recensées dans ce guide.</p>
+  </div>
+
+  <div class="box box-retain">
+    <span class="box-title">À retenir</span>
+    <p>Un lancement progressif sur 4 semaines permet de sécuriser chaque étape sans se précipiter.</p>
+    <p>La tenue régulière du livre des recettes évite un travail de rattrapage pénible.</p>
+    <p>Toujours vérifier les chiffres réglementaires sur les sources officielles à jour.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>16. Questions / Réponses</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Puis-je créer ma micro-entreprise si je suis déjà salarié ?</p>
+    <p class="faq-a">Oui, le cumul est autorisé, sous réserve de vérifier l'absence de clause de non-concurrence ou d'exclusivité dans ton contrat de travail, et de veiller à ce que ton activité indépendante ne concurrence pas directement ton employeur.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Combien de temps faut-il pour recevoir son SIRET ?</p>
+    <p class="faq-a">Généralement entre 1 et 4 semaines selon les périodes, mais ce délai peut varier. Ne planifie pas de premières ventes fermes avant d'avoir concrètement reçu ce numéro.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Dois-je obligatoirement passer par un site payant pour m'immatriculer ?</p>
+    <p class="faq-a">Non. L'immatriculation en micro-entreprise est gratuite et faisable seul sur procedures.inpi.fr. Les sites payants proposent un accompagnement, ce qui peut rassurer, mais ce n'est jamais une obligation pour un projet simple.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Que se passe-t-il si je dépasse les seuils de chiffre d'affaires ?</p>
+    <p class="faq-a">Un seuil de tolérance existe généralement la première année de dépassement. Au-delà de deux années consécutives de dépassement, le régime bascule automatiquement vers un autre statut fiscal. C'est un signal positif (l'activité se développe), qui mérite d'être anticipé avec un expert-comptable plutôt que subi.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Puis-je changer de statut plus tard si mon activité grandit ?</p>
+    <p class="faq-a">Oui, il est tout à fait possible de fermer sa micro-entreprise pour créer une société une fois que l'activité justifie ce changement, notamment quand les charges réelles deviennent significatives par rapport au chiffre d'affaires.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Ai-je besoin d'une assurance professionnelle ?</p>
+    <p class="faq-a">Ce n'est pas systématiquement obligatoire pour toutes les activités, mais fortement recommandé dès que l'activité implique un risque (conseil, prestation avec engagement de résultat, stockage de biens). Vérifie les obligations spécifiques à ton secteur précis.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Puis-je domicilier mon activité à mon domicile personnel ?</p>
+    <p class="faq-a">Dans la grande majorité des cas pour une activité de service ou de vente en ligne, oui. Certaines copropriétés ou baux locatifs peuvent toutefois comporter des clauses restrictives : vérifie ton règlement de copropriété ou ton contrat de bail si tu es locataire.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Que faire si je veux arrêter mon activité après quelques mois ?</p>
+    <p class="faq-a">La cessation d'activité se déclare également via le Guichet unique, une démarche généralement simple et gratuite tant qu'aucune procédure complexe n'est en cours. N'hésite pas à le faire proprement plutôt que de laisser une structure inactive sans la fermer officiellement.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Puis-je avoir plusieurs activités différentes sous une seule micro-entreprise ?</p>
+    <p class="faq-a">Oui, dans une certaine mesure : tu peux déclarer une activité principale et une ou plusieurs activités secondaires, à condition qu'elles restent cohérentes et que les seuils de chiffre d'affaires applicables (qui peuvent différer entre vente et service) soient bien respectés pour l'ensemble de tes activités cumulées.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Que se passe-t-il si je ne déclare pas mon chiffre d'affaires à temps ?</p>
+    <p class="faq-a">Un retard de déclaration expose à des pénalités financières, calculées en fonction du retard constaté. En cas de retards répétés, l'URSSAF peut aussi procéder à une taxation d'office basée sur une estimation, généralement moins favorable que ta déclaration réelle.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Dois-je facturer mes clients situés à l'étranger différemment ?</p>
+    <p class="faq-a">Oui, des règles spécifiques de TVA s'appliquent selon que le client est un particulier ou un professionnel, et selon qu'il se trouve dans l'Union européenne ou hors UE. Ces règles sont plus complexes que la facturation domestique classique : vérifie-les précisément si une part significative de ton activité se fait à l'international, idéalement avec l'aide d'un expert-comptable.</p>
+  </div>
+</section>
+
+<section class="chapter">
+  <h2>17. Annexe — Lexique des termes utilisés</h2>
+  <dl class="lexique">
+    <dt>SIRET / SIREN</dt>
+    <dd>Le SIREN identifie l'entreprise elle-même (9 chiffres). Le SIRET identifie un établissement précis de cette entreprise (14 chiffres, SIREN + 5 chiffres supplémentaires). C'est le SIRET qui doit figurer sur les factures.</dd>
+    <dt>Franchise en base de TVA</dt>
+    <dd>Régime qui dispense de facturer et de récupérer la TVA tant que le chiffre d'affaires reste sous certains seuils réévalués périodiquement.</dd>
+    <dt>Versement libératoire</dt>
+    <dd>Option permettant de payer son impôt sur le revenu en même temps que ses cotisations sociales, selon un taux forfaitaire, plutôt qu'en une régularisation annuelle classique.</dd>
+    <dt>ACRE</dt>
+    <dd>Aide à la Création ou à la Reprise d'Entreprise, permettant une exonération partielle de cotisations sociales la première année sous certaines conditions d'éligibilité.</dd>
+    <dt>CFE (Cotisation Foncière des Entreprises)</dt>
+    <dd>Impôt local dû par la plupart des micro-entrepreneurs à partir de la deuxième année d'activité, avec des exonérations possibles la première année et pour les très faibles chiffres d'affaires.</dd>
+    <dt>Abattement forfaitaire</dt>
+    <dd>Pourcentage automatiquement déduit du chiffre d'affaires déclaré pour estimer les charges professionnelles, sans besoin de justifier de charges réelles, variable selon la nature de l'activité (vente ou service).</dd>
+    <dt>Guichet unique</dt>
+    <dd>Portail administratif unique (procedures.inpi.fr) regroupant depuis 2023 toutes les démarches de création, modification et cessation d'entreprise en France, quel que soit le statut choisi.</dd>
+  </dl>
+</section>
+
+<section class="chapter">
+  <h2>18. Ressources complémentaires</h2>
+  <p>procedures.inpi.fr — le Guichet unique officiel pour l'immatriculation, gratuit.</p>
+  <p>autoentrepreneur.urssaf.fr — le site officiel de référence pour les seuils, taux de cotisations et déclarations.</p>
+  <p>impots.gouv.fr — pour les questions de TVA et de fiscalité générale.</p>
+  <p>Un expert-comptable ou une association de gestion agréée reste la ressource la plus fiable pour toute question précise sur ta situation personnelle.</p>
+</section>
+
+<section class="chapter">
+  <h2>19. Conclusion</h2>
+  <p>Créer sa micro-entreprise est une démarche accessible et aujourd'hui largement simplifiée, mais elle mérite d'être faite avec méthode plutôt que dans la précipitation. Prendre le temps de choisir le bon statut, de comprendre ses obligations de TVA et de facturation, et de mettre en place une routine administrative simple dès le départ évite la plupart des difficultés rencontrées par les nouveaux indépendants.</p>
+  <p>Ce guide te donne une base solide, mais les chiffres réglementaires évoluent : reviens vérifier les sources officielles avant toute décision importante, et n'hésite pas à consulter un expert-comptable dès que ta situation se complexifie.</p>
+</section>
+
+<section class="chapter">
+  <h2>20. Partie 7 — Bibliothèque de prompts</h2>
+  <p class="lede">Cette bibliothèque de prompts fait partie intégrante de ce guide (format 2 en 1). Chaque prompt contient des crochets [comme ceci] : remplace-les par tes propres éléments avant de coller le prompt dans ChatGPT ou Claude.</p>
+  <div class="box box-warning">
+    <span class="box-title">Rappel important</span>
+    <p>Ces prompts t'aident à comprendre et organiser ta démarche, ils ne remplacent jamais une vérification sur les sites officiels ni l'avis d'un expert-comptable pour une décision structurante.</p>
+  </div>
+
+  <h3>20.1 Choisir son statut</h3>
+  <p class="lede">Pour clarifier si la micro-entreprise est adaptée à ton projet.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Voici mon projet d'activité : [décrire ton activité]. Est-ce que la micro-entreprise est adaptée, ou devrais-je envisager un autre statut dès le départ ?</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier si le statut envisagé correspond bien à son projet</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Explique-moi simplement la différence entre BIC et BNC pour une activité de [décrire ton activité], et laquelle s'applique à mon cas.</span>
+    <p class="prompt-usage">À quoi ça sert : comprendre sa catégorie fiscale sans jargon</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à comparer les avantages et inconvénients de la micro-entreprise par rapport à une société (SASU/EURL) pour mon projet : [décrire ton projet].</span>
+    <p class="prompt-usage">À quoi ça sert : comparer objectivement les deux grandes options de statut</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Mon activité va générer des charges importantes (achat de matériel, stock). Est-ce que ça change la pertinence du statut micro-entreprise pour moi ?</span>
+    <p class="prompt-usage">À quoi ça sert : évaluer l'impact du niveau de charges sur le choix du statut</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à calculer le seuil de charges à partir duquel une société deviendrait plus avantageuse qu'une micro-entreprise pour mon activité : [décrire ton activité et tes charges prévisionnelles].</span>
+    <p class="prompt-usage">À quoi ça sert : objectiver le point de bascule entre les deux statuts</p>
+  </div>
+
+  <h3>20.2 S'immatriculer</h3>
+  <p class="lede">Pour préparer et sécuriser sa démarche d'immatriculation.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à préparer la liste des documents dont j'aurai besoin pour m'immatriculer en micro-entreprise, à partir de ma situation : [décrire ta situation, ex : salarié en parallèle, déjà en recherche d'emploi].</span>
+    <p class="prompt-usage">À quoi ça sert : préparer son dossier avant de commencer la démarche en ligne</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Explique-moi la différence entre l'ACRE et le cumul ARE, et laquelle de ces aides pourrait s'appliquer à ma situation : [décrire ta situation].</span>
+    <p class="prompt-usage">À quoi ça sert : identifier les aides potentiellement applicables à son cas</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à rédiger la description de mon activité pour le formulaire d'immatriculation, à partir de : [décrire ton activité en langage courant].</span>
+    <p class="prompt-usage">À quoi ça sert : formuler une description d'activité claire pour le dossier officiel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Qu'est-ce que le versement libératoire, et est-ce intéressant pour ma situation fiscale : [décrire ta situation, ex : autres revenus du foyer] ?</span>
+    <p class="prompt-usage">À quoi ça sert : évaluer la pertinence d'une option fiscale précise</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à vérifier si mon contrat de travail actuel pourrait poser problème pour lancer mon activité en parallèle : [décrire les clauses de ton contrat que tu connais].</span>
+    <p class="prompt-usage">À quoi ça sert : anticiper un conflit potentiel avec un emploi salarié existant</p>
+  </div>
+
+  <h3>20.3 Facturation et TVA</h3>
+  <p class="lede">Pour comprendre et structurer sa facturation conforme.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à créer un modèle de facture conforme aux mentions obligatoires pour mon activité de [décrire ton activité], en régime de franchise en base de TVA.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer un modèle de facture réutilisable et conforme</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Explique-moi simplement ce que je dois faire si mon chiffre d'affaires dépasse le seuil de la franchise en base de TVA en cours d'année.</span>
+    <p class="prompt-usage">À quoi ça sert : anticiper les conséquences d'un dépassement de seuil</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à comprendre la réforme de la facturation électronique et ce qu'elle change concrètement pour mon activité de [décrire ton activité].</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier une réforme réglementaire récente et son impact réel</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Rédige un rappel poli mais ferme à envoyer à un client qui n'a pas payé une facture émise il y a 15 jours.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une relance de paiement efficace</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 5</span>
+    <span class="prompt-text">Aide-moi à vérifier si le montant de cette prestation, une fois facturé, risque de me faire dépasser le seuil de franchise en base de TVA sur l'année : [montant de la prestation et CA déjà réalisé].</span>
+    <p class="prompt-usage">À quoi ça sert : anticiper un dépassement de seuil avant qu'il ne survienne</p>
+  </div>
+
+  <h3>20.4 Gestion administrative quotidienne</h3>
+  <p class="lede">Pour mettre en place une routine simple et durable.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à structurer un livre des recettes simple à tenir à jour chaque semaine pour mon activité de [décrire ton activité].</span>
+    <p class="prompt-usage">À quoi ça sert : mettre en place l'obligation comptable de base sans complexité inutile</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Explique-moi comment calculer approximativement mes cotisations sociales à partir de mon chiffre d'affaires prévisionnel de [montant] sur [type d'activité].</span>
+    <p class="prompt-usage">À quoi ça sert : obtenir un ordre de grandeur des cotisations à anticiper</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Aide-moi à préparer un rappel mensuel des démarches administratives à ne pas oublier (déclaration URSSAF, suivi des factures) pour mon activité.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une routine administrative récurrente</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Je cumule mon activité de micro-entrepreneur avec un emploi salarié. Quels points de vigilance dois-je garder en tête ?</span>
+    <p class="prompt-usage">À quoi ça sert : identifier les précautions spécifiques au cumul d'activités</p>
+  </div>
+
+  <h3>20.5 Cas particuliers selon ton activité</h3>
+  <p class="lede">Pour adapter la démarche à ta situation précise.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Mon activité est [vente de produits numériques / prestation de conseil / vente avec stock]. Quelles spécificités dois-je connaître pour ce type précis d'activité ?</span>
+    <p class="prompt-usage">À quoi ça sert : identifier les points de vigilance propres à son secteur</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Je veux tester une activité en parallèle de mes études. Quelles règles spécifiques s'appliquent à ma situation ?</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier le cadre applicable au cumul avec des études</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Je suis retraité et je veux lancer une activité complémentaire. Y a-t-il des règles spécifiques à connaître dans mon cas ?</span>
+    <p class="prompt-usage">À quoi ça sert : clarifier le cadre applicable au cumul avec la retraite</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Mon activité implique une dimension artisanale (fabrication). Dois-je faire une démarche complémentaire à la Chambre de Métiers ?</span>
+    <p class="prompt-usage">À quoi ça sert : vérifier une obligation d'immatriculation complémentaire spécifique</p>
+  </div>
+
+  <h3>20.6 Comprendre sa protection sociale</h3>
+  <p class="lede">Pour anticiper sa couverture santé et ses droits à la retraite.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Explique-moi simplement ce que couvrent mes cotisations sociales de micro-entrepreneur, à partir de mon chiffre d'affaires prévisionnel de [montant].</span>
+    <p class="prompt-usage">À quoi ça sert : comprendre concrètement ce que financent ses cotisations</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Aide-moi à comprendre combien de trimestres de retraite je pourrais valider avec un chiffre d'affaires annuel de [montant] dans mon activité de [type d'activité].</span>
+    <p class="prompt-usage">À quoi ça sert : estimer l'impact de son niveau d'activité sur ses droits à la retraite</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Devrais-je envisager une prévoyance complémentaire privée vu mon activité de [décrire ton activité] et ma situation familiale : [décrire ta situation] ?</span>
+    <p class="prompt-usage">À quoi ça sert : évaluer la pertinence d'une protection complémentaire</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à préparer les questions à poser à un conseiller de l'Assurance Retraite pour vérifier mes droits en tant que micro-entrepreneur.</span>
+    <p class="prompt-usage">À quoi ça sert : préparer un échange constructif avec un organisme officiel</p>
+  </div>
+
+  <h3>20.7 Sécuriser sa relation client</h3>
+  <p class="lede">Pour des CGV solides et une gestion posée des litiges.</p>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 1</span>
+    <span class="prompt-text">Aide-moi à rédiger des CGV simples et claires pour mon activité de [décrire ton activité], couvrant les modalités de paiement, de livraison/accès, et de rétractation.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer des CGV de base à faire relire ensuite par un professionnel si besoin</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 2</span>
+    <span class="prompt-text">Rédige la mention de renonciation au droit de rétractation à faire valider par mes clients au moment de l'achat d'un produit numérique, conforme aux règles applicables en France.</span>
+    <p class="prompt-usage">À quoi ça sert : sécuriser la vente immédiate de contenu numérique</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 3</span>
+    <span class="prompt-text">Un client me demande un remboursement pour [raison invoquée]. Aide-moi à rédiger une réponse professionnelle qui clarifie ma position sans être agressive.</span>
+    <p class="prompt-usage">À quoi ça sert : structurer une réponse posée face à une demande de remboursement</p>
+  </div>
+  <div class="box box-prompt">
+    <span class="box-title">Prompt 4</span>
+    <span class="prompt-text">Aide-moi à rédiger un message de relance amiable avant d'envisager une procédure plus formelle pour une facture impayée depuis [durée].</span>
+    <p class="prompt-usage">À quoi ça sert : tenter une dernière résolution amiable avant d'escalader un litige</p>
+  </div>
+</section>
+
+</body>
+</html>
