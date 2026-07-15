@@ -12,6 +12,8 @@ import { DOWNLOAD_LIMIT_MESSAGE } from "@/lib/downloads";
 
 export const metadata: Metadata = {
   title: "Mon compte — Guido",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/compte" },
 };
 
 export default async function ComptePage() {

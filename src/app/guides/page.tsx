@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Tous les guides pratiques Guido : IA, bien-être, carrière",
   description:
     "Le catalogue complet des guides Guido : IA pour profs et entrepreneurs, bien-être, reconversion, développement personnel. Un sujet précis, en profondeur.",
+  alternates: { canonical: "/guides" },
 };
 
 export default async function GuidesPage({

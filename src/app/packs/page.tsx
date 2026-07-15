@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Packs de guides et prompts ChatGPT à prix réduit — Guido",
   description:
     "Des packs qui regroupent plusieurs guides ou packs de prompts ChatGPT déjà en ligne sur Guido, pour aller plus vite et payer moins cher que séparément.",
+  alternates: { canonical: "/packs" },
 };
 
 export default async function PacksPage() {

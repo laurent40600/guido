@@ -10,6 +10,8 @@ import { db } from "@/lib/db";
 
 export const metadata: Metadata = {
   title: "Paramètres du compte — Guido",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/compte/parametres" },
 };
 
 const EMAIL_ERROR_MESSAGES: Record<string, string> = {

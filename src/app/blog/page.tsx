@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: "Blog Guido : conseils pratiques et cas concrets",
   description:
     "Des articles pratiques pour aller plus loin sur l'IA, la productivité et le bien-être, avant de choisir le guide Guido qui te correspond.",
+  alternates: {
+    canonical: "/blog",
+    types: { "application/rss+xml": "/blog/rss.xml" },
+  },
 };
 
 export default function BlogPage() {

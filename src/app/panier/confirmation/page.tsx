@@ -8,6 +8,8 @@ import { stripe } from "@/lib/stripe";
 
 export const metadata: Metadata = {
   title: "Commande confirmée — Guido",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/panier/confirmation" },
 };
 
 export default async function PanierConfirmationPage({

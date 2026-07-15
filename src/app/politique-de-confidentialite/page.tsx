@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Politique de confidentialité — Guido",
   description:
     "Politique de confidentialité du site Guido : données collectées, finalités, durée de conservation, droits RGPD.",
+  alternates: { canonical: "/politique-de-confidentialite" },
 };
 
 export default function PolitiqueConfidentialitePage() {

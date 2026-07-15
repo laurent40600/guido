@@ -30,6 +30,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Explicite : "next start" compresse déjà les réponses en gzip/brotli par
+  // défaut, ce flag documente que ce n'est pas désactivé par erreur.
+  compress: true,
   images: {
     remotePatterns: [
       {
@@ -43,6 +46,27 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        // Assets statiques versionnés à la main (pas de hash dans le nom) :
+        // cache modéré avec revalidation plutôt qu'immutable, pour ne pas
+        // servir une couverture périmée après un remplacement de fichier.
+        source: "/covers/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
+        source: "/:path*.svg",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+        ],
       },
     ];
   },

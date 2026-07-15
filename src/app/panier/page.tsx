@@ -12,6 +12,8 @@ import { resolveOfferPrice } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Mon panier — Guido",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/panier" },
 };
 
 export default async function PanierPage() {

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Conditions Générales d'Utilisation — Guido",
   description:
     "Conditions générales d'utilisation du site Guido : propriété intellectuelle, compte utilisateur, usage autorisé.",
+  alternates: { canonical: "/cgu" },
 };
 
 export default function CguPage() {

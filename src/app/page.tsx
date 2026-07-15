@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import WhyGuido from "@/components/sections/WhyGuido";
 import FeaturedGuides from "@/components/sections/FeaturedGuides";
 import Footer from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

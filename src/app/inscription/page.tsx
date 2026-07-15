@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SignupForm from "@/components/auth/SignupForm";
+
+export const metadata: Metadata = {
+  title: "Créer un compte — Guido",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/inscription" },
+};
 
 export default function InscriptionPage() {
   return (

@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ResetPasswordForm from "@/components/auth/ResetPasswordForm";
+
+export const metadata: Metadata = {
+  title: "Réinitialiser le mot de passe — Guido",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/reinitialiser-mot-de-passe" },
+};
 
 export default function ReinitialiserMotDePassePage() {
   return (

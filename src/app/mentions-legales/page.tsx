@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "Mentions légales — Guido",
   description: "Mentions légales du site Guido : éditeur, hébergeur, directeur de publication.",
+  alternates: { canonical: "/mentions-legales" },
 };
 
 export default function MentionsLegalesPage() {

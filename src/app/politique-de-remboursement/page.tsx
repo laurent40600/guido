@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Politique de remboursement — Guido",
   description:
     "Politique de remboursement des guides numériques Guido : cas éligibles et procédure de demande.",
+  alternates: { canonical: "/politique-de-remboursement" },
 };
 
 export default function PolitiqueRemboursementPage() {

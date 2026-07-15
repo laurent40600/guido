@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Conditions Générales de Vente — Guido",
   description:
     "Conditions générales de vente du site Guido : produits, prix, commande, paiement, livraison numérique.",
+  alternates: { canonical: "/cgv" },
 };
 
 export default function CgvPage() {
