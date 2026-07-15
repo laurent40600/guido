@@ -8,11 +8,17 @@ import Footer from "@/components/layout/Footer";
 import GuidePricing from "@/components/guides/GuidePricing";
 import GuideCard from "@/components/guides/GuideCard";
 import BundlePromo from "@/components/guides/BundlePromo";
+import GuideReviews from "@/components/guides/GuideReviews";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import JsonLd from "@/components/seo/JsonLd";
+import ShareButtons from "@/components/blog/ShareButtons";
 import { guides, getGuide, findBundlesContaining } from "@/data/guides";
 import { blogPosts } from "@/data/blog";
 import { getSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { resolveOfferPrice } from "@/lib/pricing";
+import { buildProductJsonLd } from "@/lib/productSchema";
+import { absoluteUrl } from "@/lib/site";
 
 export async function generateStaticParams() {
   return guides.map((guide) => ({ slug: guide.slug }));
@@ -30,9 +36,26 @@ export async function generateMetadata({
     return {};
   }
 
+  const title = guide.seoTitle ?? `${guide.title} — Guido`;
+  const description = guide.seoDescription ?? guide.pitch;
+
   return {
-    title: guide.seoTitle ?? `${guide.title} — Guido`,
-    description: guide.seoDescription ?? guide.pitch,
+    title,
+    description,
+    alternates: { canonical: `/guides/${guide.slug}` },
+    openGraph: {
+      type: "website",
+      url: `/guides/${guide.slug}`,
+      title,
+      description,
+      images: guide.cover ? [{ url: guide.cover, alt: guide.title }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: guide.cover ? [guide.cover] : undefined,
+    },
   };
 }
 
@@ -122,11 +145,28 @@ export default async function GuideDetailPage({
         crossGuide !== undefined && crossGuide.slug !== guide.slug,
     );
 
+  const categoryCrumb =
+    guide.category === "Prompts"
+      ? { label: "Prompts", href: "/prompts" }
+      : guide.category === "Packs"
+        ? { label: "Packs", href: "/packs" }
+        : { label: "Guides", href: "/guides" };
+
+  const productJsonLd = buildProductJsonLd(guide);
+
   return (
     <>
       <Navbar />
       <main className="flex-1">
         <section className="mx-auto max-w-3xl px-6 py-24">
+          <JsonLd data={productJsonLd} />
+          <Breadcrumbs
+            items={[
+              { label: "Accueil", href: "/" },
+              categoryCrumb,
+              { label: guide.title },
+            ]}
+          />
           <Link
             href="/guides"
             className="text-sm font-semibold text-gold-700 hover:text-gold-800"
@@ -172,6 +212,14 @@ export default async function GuideDetailPage({
           <p className="mt-6 text-lg leading-relaxed text-stone-600">
             {guide.pitch}
           </p>
+
+          <div className="mt-6">
+            <ShareButtons
+              url={absoluteUrl(`/guides/${guide.slug}`)}
+              title={guide.title}
+              image={guide.cover ? absoluteUrl(guide.cover) : absoluteUrl("/logo-mark-512.png")}
+            />
+          </div>
 
           {relatedBlogPost && (
             <p className="mt-4 text-sm text-stone-500">
@@ -284,12 +332,9 @@ export default async function GuideDetailPage({
             </div>
           </div>
 
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
-            }}
-          />
+          <JsonLd data={faqJsonLd} />
+
+          <GuideReviews reviews={guide.reviews} />
 
           {crossSellGuides.length > 0 && (
             <div className="mt-16">

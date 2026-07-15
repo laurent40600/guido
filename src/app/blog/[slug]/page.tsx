@@ -5,7 +5,12 @@ import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import JsonLd from "@/components/seo/JsonLd";
+import ShareButtons from "@/components/blog/ShareButtons";
 import { blogPosts, getBlogPost } from "@/data/blog";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { getStructuredSteps, buildStructuredStepsJsonLd } from "@/lib/structuredContent";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -26,6 +31,24 @@ export async function generateMetadata({
   return {
     title: post.seoTitle,
     description: post.seoDescription,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      // Pas d'`images` ici : la miniature de partage est générée par
+      // opengraph-image.tsx (visuel de marque Guido), pas par la photo
+      // Unsplash utilisée comme illustration dans l'article lui-même.
+      type: "article",
+      url: `/blog/${post.slug}`,
+      title: post.seoTitle,
+      description: post.seoDescription,
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
+      authors: [SITE_NAME],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.seoTitle,
+      description: post.seoDescription,
+    },
   };
 }
 
@@ -41,7 +64,7 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  const siteUrl = "https://guido.fr";
+  const siteUrl = SITE_URL;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -50,7 +73,7 @@ export default async function BlogPostPage({
     description: post.seoDescription,
     image: [post.coverImage],
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     author: {
       "@type": "Organization",
       name: "Guido",
@@ -70,6 +93,11 @@ export default async function BlogPostPage({
     },
   };
 
+  const structuredSteps = getStructuredSteps(post);
+  const structuredStepsJsonLd = structuredSteps
+    ? buildStructuredStepsJsonLd(post, structuredSteps, siteUrl)
+    : undefined;
+
   const relatedPosts = (post.relatedPosts ?? [])
     .map((relatedSlug) => getBlogPost(relatedSlug))
     .filter((related): related is NonNullable<typeof related> => related !== undefined);
@@ -79,11 +107,15 @@ export default async function BlogPostPage({
       <Navbar />
       <main className="flex-1">
         <article className="mx-auto max-w-3xl px-6 py-24">
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c"),
-            }}
+          <JsonLd data={articleJsonLd} />
+          {structuredStepsJsonLd && <JsonLd data={structuredStepsJsonLd} />}
+
+          <Breadcrumbs
+            items={[
+              { label: "Accueil", href: "/" },
+              { label: "Blog", href: "/blog" },
+              { label: post.title },
+            ]}
           />
 
           <Link
@@ -103,14 +135,32 @@ export default async function BlogPostPage({
             {post.title}
           </h1>
 
-          <p className="mt-4 text-sm font-medium text-stone-500">
-            Publié le{" "}
-            {new Date(post.publishedAt).toLocaleDateString("fr-FR", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </p>
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-sm font-medium text-stone-500">
+              Publié le{" "}
+              {new Date(post.publishedAt).toLocaleDateString("fr-FR", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+              {post.updatedAt && post.updatedAt !== post.publishedAt && (
+                <>
+                  {" "}
+                  — Mis à jour le{" "}
+                  {new Date(post.updatedAt).toLocaleDateString("fr-FR", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </>
+              )}
+            </p>
+            <ShareButtons
+              url={`${SITE_URL}/blog/${post.slug}`}
+              title={post.title}
+              image={post.coverImage}
+            />
+          </div>
 
           <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-navy-900 shadow-lg sm:aspect-[2/1]">
             <Image
